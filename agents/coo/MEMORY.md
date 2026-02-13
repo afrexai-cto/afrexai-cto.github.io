@@ -28,8 +28,14 @@
 
 ## Key Decisions
 
-_(None yet — Chief is freshly initialized.)_
+- **2026-02-13:** First ops run. 5/8 agents are dark (no HANDOFF). Ledger, Oracle, Sage have protocols but no active work. Priority #1 is getting all agents initialized and the revenue monitoring loop closed.
+- **2026-02-13 (PM):** Second run confirmed zero state change since first run. No agents were initialized during the day. Cron fired at 9:11 PM instead of 8 AM — schedule config needs fixing. The swarm cannot generate revenue until at minimum Marketing + Outbound are live.
+- **2026-02-13 (PM #2):** Third run at 9:27 PM. Still zero change. Three runs in one day, all showing the same dead swarm. The bottleneck is clear: someone needs to create HANDOFF.md files and cron jobs for the 5 dark agents. Chief can write directives but dark agents can't receive them. This is a founder-level action item.
+- **2026-02-13 (PM #3):** Fourth run at 9:30 PM. Zero change. Four identical runs. Chief is the only operational agent. The swarm will remain at $0 until dark agents are initialized. This is the single highest-priority action item for AfrexAI.
+- **2026-02-13 (PM #4):** Fifth run at 9:30 PM. Day 2 of dead swarm. Still zero change. 5 runs producing identical output. The bottleneck is unchanged: founder must provision 5 dark agents (HANDOFF.md + cron). This is not a Chief problem — it's a provisioning problem.
 
 ## Lessons Learned
 
-_(Accumulate over time.)_
+- Most agents were built with handoff *protocols* but never given a first directive or HANDOFF.md. Protocol ≠ operational.
+- Revenue infrastructure exists (Stripe, products, CRM) but no agent owns the monitoring loop. Critical gap.
+- Three founder-level blockers (DNS, Google Workspace, LinkedIn) have been sitting unresolved — need escalation.

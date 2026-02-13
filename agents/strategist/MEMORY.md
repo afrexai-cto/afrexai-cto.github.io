@@ -50,9 +50,22 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - Target: East Coast initially (NYC financial services, Boston healthcare)
 - Need US-based sales presence within 6 months of first US customer
 
+## Key Intelligence (Updated 2026-02-13)
+
+- **Lyzr.ai** raised $10.5M with Accenture as investor, created "Agentic Transformation Consultants" — direct competitor signal. Generalist approach is their weakness vs. our vertical focus.
+- **Insurance** emerging as strong sub-vertical under Financial Services. Giants deploying agentic AI in back offices (PYMNTS, Feb 12). Same buyer profile as banking.
+- **Microsoft** actively pushing healthcare agentic AI readiness — doing our market education for free. Position as implementation layer on top of Azure.
+- **AI funding** remains massive ($55B+ Jan 2026). Investors want revenue traction, not prototypes. Our VADIS pre-payment is strong signal.
+- **Thomson Reuters 2026 Report**: 40% org-wide AI adoption in professional services, only 18% track ROI. Our "recovered capacity" framing directly solves this gap.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?
 - Which vertical do we lead with for US entry?
 - Partnership vs direct sales for initial US traction?
 - How do we price the transition from project-based to AaaS?
+
+## TARGET MARKET
+- **US ONLY** — AfrexAI is a US-based company
+- Focus on US competitive landscape and US market opportunities
+- Currency: USD ($)

@@ -16,7 +16,17 @@ Each sequence: 4-touch (Day 1 intro → Day 3 value → Day 7 proof → Day 14 b
 
 - **100 prospects emailed** across verticals (batch 1 complete)
 - **100 financial services targets** researched and ready for batch 2
+- **20 new prospects** researched (IDs 001–020) across Legal, Financial Services, Construction, Real Estate, Recruitment, Healthcare
+- All 20 at RESEARCHED stage — need contact details (names + emails) before outreach
 - Prospect tracker: `prospects/outreach-tracker.csv`
+
+## Vertical Intelligence (Feb 2026)
+
+- **Construction:** AI adoption jumped 15%→75% in 2 years. Hot vertical. Willmott Dixon, Kier, Balfour Beatty all investing.
+- **
+- **Legal:** "AI paradox" — high adoption, low integration. Mid-market firms (Shoosmiths, Browne Jacobson) are sweet spot.
+- **Recruitment:** Sector under cost pressure — AI automation = cost savings pitch. SThree and HeadFirst Global are top targets.
+- **Real Estate:** $34B efficiency gains estimated by 2030 (Morgan Stanley). Savills/Knight Frank for enterprise, look for mid-market next.
 
 ## Infrastructure
 
@@ -46,3 +56,11 @@ Email deliverability is **NOT READY**:
 - Legal firms care about billable hour recovery
 - Keep subject lines under 6 words
 - Personalize the first line with something specific (recent funding, job posting, LinkedIn post)
+
+## TARGET MARKET
+- **US ONLY** — AfrexAI is a US-based company
+- Focus: US mid-market (50-500 employees)
+- Top metros: NYC, Chicago, LA, Dallas, Atlanta, Miami, Boston
+- Currency: USD ($)
+- Verticals: Financial Services, Legal, Healthcare, Construction, Real Estate, Recruitment, Insurance
+- DO NOT prospect UK/EU companies

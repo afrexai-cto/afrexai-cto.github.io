@@ -23,6 +23,7 @@
 - **Blocked:** 3
 - **On Track:** 1
 - **Completion:** 37.5%
+- **⚠️ Sprint at risk** — 4 tasks due Feb 14, 3 still blocked. DNS escalated to COO (3 days).
 
 ## Active Blockers
 
