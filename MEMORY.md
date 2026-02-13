@@ -21,6 +21,8 @@
 - **Calendly (Christina):** https://calendly.com/cbeckford-afrexai/30min
 - **Kalin email:** ksmolichki@afrexai.com
 - **Christina email:** cbeckford@afrexai.com
+- **YouTube:** https://www.youtube.com/@AfrexAI (Christina's channel, early stage)
+- **LinkedIn:** https://www.linkedin.com/in/kalin-smolichki/ (Kalin — NO AfrexAI posts, Matillion private)
 
 ## What's Live
 - ClawHub skills: afrexai-humanizer, afrexai-prospect-researcher, afrexai-email-triager (+10 publishing)
@@ -33,6 +35,10 @@
 - Skills Showcase page
 - Case Studies page (VADIS $1.6M, SiteVoice $52K)
 - Pricing page (PIA tiers)
+- 15+ pages built (2026-02-13), not yet pushed to GitHub Pages
+- Daily 100 cold email cron (8am GMT, job: 13649531-284a-4029-8aea-0b768a525a09)
+- Next: Google Workspace Admin API for autopilot agent accounts
+- Next: Push all pages live to GitHub Pages
 
 ## The 9-Agent Swarm
 Executive Assistant, Marketing Analyst, Content Writer, Outbound Sales, Bookkeeper, COO, Strategist, Consultant, Project Manager — running on cron (8am/8pm)
@@ -48,3 +54,11 @@ Executive Assistant, Marketing Analyst, Content Writer, Outbound Sales, Bookkeep
 - File-based agent communication (HANDOFF.md) > APIs
 - Draft-only mode is non-negotiable for external comms
 - US market: lead with outcomes, not technology
+- Top verticals: Financial Services, Healthcare, Legal (fastest sales cycles)
+- Pricing: hybrid retainer + per-agent + performance bonuses
+- ~32 customers at $344K avg = $11M ARR
+- Competitors sell platforms, AfrexAI sells managed results — that's the wedge
+- Position as "OpenClaw for Business"
+- 95% of AI pilots fail (organizational barriers) — AfrexAI bridges the gap
+- SOC 2 is table stakes for US market
+- White-label Agent Workforce Kits = highest-margin play
