@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Skills Showcase — ClawHub Skills | AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700}
+nav .links{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.9rem}
+nav .links a{color:#aaa}nav .links a:hover{color:#FFD700}
+.hero{text-align:center;padding:5rem 2rem 2rem;max-width:800px;margin:0 auto}
+.hero h1{font-size:2.8rem;margin-bottom:1rem}.hero h1 span{color:#FFD700}
+.hero p{font-size:1.1rem;color:#999;max-width:650px;margin:0 auto}
+.filters{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;padding:2rem 2rem 3rem}
+.filter-btn{background:#1a1a1a;border:1px solid #333;color:#ccc;padding:.5rem 1.2rem;border-radius:2rem;cursor:pointer;font-size:.85rem;transition:all .3s}
+.filter-btn:hover,.filter-btn.active{background:#FFD700;color:#000;border-color:#FFD700}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;padding:0 2rem 4rem}
+.skill-card{background:#111;border:1px solid #222;border-radius:14px;padding:1.5rem;transition:border-color .3s,transform .3s}
+.skill-card:hover{border-color:#FFD700;transform:translateY(-3px)}
+.skill-card .cat{color:#FFD700;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.skill-card h3{color:#fff;font-size:1.15rem;margin-bottom:.5rem}
+.skill-card p{color:#999;font-size:.9rem;margin-bottom:1rem}
+.use-cases{margin-bottom:1rem}
+.use-cases span{display:inline-block;background:#1a1a1a;border:1px solid #2a2a2a;padding:.2rem .6rem;border-radius:1rem;font-size:.75rem;color:#aaa;margin:0 .3rem .3rem 0}
+.install-cmd{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:.6rem 1rem;font-family:'SF Mono',Monaco,monospace;font-size:.8rem;color:#FFD700;margin-bottom:1rem;overflow-x:auto}
+.skill-card .link{font-size:.85rem;color:#FFD700}
+.coming{opacity:.5}
+.coming .cat::after{content:" · COMING SOON";color:#666}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #222;color:#666;font-size:.85rem}
+@media(max-width:600px){.hero h1{font-size:1.8rem}.skills-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">AfrexAI</div>
+<div class="links">
+<a href="/agent-marketplace/">Marketplace</a>
+<a href="/skills/">Skills</a>
+<a href="/case-studies/">Case Studies</a>
+<a href="/pricing/">Pricing</a>
+<a href="/context-packs/">Context Packs</a>
+<a href="/ai-revenue-calculator/">Calculator</a>
+<a href="/agent-setup/">Setup Wizard</a>
+</div>
+</nav>
+
+<div class="hero">
+<h1>ClawHub <span>Skills</span></h1>
+<p>Production-tested AI skills you can install in seconds. Built from running a 9-agent swarm in the real world.</p>
+</div>
+
+<div class="filters">
+<button class="filter-btn active" onclick="filterSkills('all')">All Skills</button>
+<button class="filter-btn" onclick="filterSkills('content')">Content</button>
+<button class="filter-btn" onclick="filterSkills('sales')">Sales</button>
+<button class="filter-btn" onclick="filterSkills('operations')">Operations</button>
+<button class="filter-btn" onclick="filterSkills('research')">Research</button>
+<button class="filter-btn" onclick="filterSkills('finance')">Finance</button>
+</div>
+
+<div class="skills-grid" id="skills-grid">
+
+<div class="skill-card" data-cat="content">
+<div class="cat">Content</div>
+<h3>🎭 afrexai-humanizer</h3>
+<p>Transforms AI-generated text into natural, human-sounding content. Adjusts tone, adds personality, and removes robotic patterns.</p>
+<div class="use-cases"><span>Blog posts</span><span>Email copy</span><span>Social media</span><span>Client comms</span></div>
+<div class="install-cmd">openclaw install afrexai-humanizer</div>
+<a href="#" class="link">View on ClawHub →</a>
+</div>
+
+<div class="skill-card" data-cat="sales">
+<div class="cat">Sales</div>
+<h3>🔍 afrexai-prospect-researcher</h3>
+<p>Deep-dives into prospect companies and contacts. Pulls firmographics, tech stack, recent news, and buying signals.</p>
+<div class="use-cases"><span>Lead enrichment</span><span>Account research</span><span>ICP matching</span><span>Personalisation</span></div>
+<div class="install-cmd">openclaw install afrexai-prospect-researcher</div>
+<a href="#" class="link">View on ClawHub →</a>
+</div>
+
+<div class="skill-card" data-cat="operations">
+<div class="cat">Operations</div>
+<h3>📧 afrexai-email-triager</h3>
+<p>Classifies, prioritises, and routes incoming emails. Drafts responses for routine queries and escalates important ones.</p>
+<div class="use-cases"><span>Inbox zero</span><span>Auto-replies</span><span>Lead routing</span><span>Support triage</span></div>
+<div class="install-cmd">openclaw install afrexai-email-triager</div>
+<a href="#" class="link">View on ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="sales">
+<div class="cat">Sales</div>
+<h3>📤 afrexai-outreach-writer</h3>
+<p>Crafts personalised cold outreach sequences using prospect research and proven frameworks.</p>
+<div class="use-cases"><span>Cold email</span><span>LinkedIn DMs</span><span>Follow-ups</span></div>
+<div class="install-cmd">openclaw install afrexai-outreach-writer</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="operations">
+<div class="cat">Operations</div>
+<h3>📋 afrexai-meeting-summariser</h3>
+<p>Summarises meetings, extracts action items, and distributes notes to attendees automatically.</p>
+<div class="use-cases"><span>Meeting notes</span><span>Action items</span><span>Follow-ups</span></div>
+<div class="install-cmd">openclaw install afrexai-meeting-summariser</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="research">
+<div class="cat">Research</div>
+<h3>📊 afrexai-market-analyst</h3>
+<p>Researches markets, competitors, and industry trends. Delivers structured intelligence reports.</p>
+<div class="use-cases"><span>Competitive intel</span><span>Market sizing</span><span>Trend analysis</span></div>
+<div class="install-cmd">openclaw install afrexai-market-analyst</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="content">
+<div class="cat">Content</div>
+<h3>📝 afrexai-blog-writer</h3>
+<p>Writes SEO-optimised blog posts from briefs. Handles research, structure, and brand voice alignment.</p>
+<div class="use-cases"><span>Blog posts</span><span>SEO content</span><span>Thought leadership</span></div>
+<div class="install-cmd">openclaw install afrexai-blog-writer</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="sales">
+<div class="cat">Sales</div>
+<h3>🗃️ afrexai-crm-updater</h3>
+<p>Automatically logs interactions, updates deal stages, and keeps your CRM data clean and current.</p>
+<div class="use-cases"><span>CRM hygiene</span><span>Deal tracking</span><span>Activity logging</span></div>
+<div class="install-cmd">openclaw install afrexai-crm-updater</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="finance">
+<div class="cat">Finance</div>
+<h3>💰 afrexai-invoice-processor</h3>
+<p>Extracts data from invoices, matches to POs, and categorises expenses automatically.</p>
+<div class="use-cases"><span>AP automation</span><span>Expense tracking</span><span>Reconciliation</span></div>
+<div class="install-cmd">openclaw install afrexai-invoice-processor</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="operations">
+<div class="cat">Operations</div>
+<h3>📅 afrexai-scheduler</h3>
+<p>Manages calendar conflicts, books meetings across time zones, and sends reminders.</p>
+<div class="use-cases"><span>Scheduling</span><span>Time zones</span><span>Reminders</span></div>
+<div class="install-cmd">openclaw install afrexai-scheduler</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="research">
+<div class="cat">Research</div>
+<h3>🔎 afrexai-lead-qualifier</h3>
+<p>Scores and qualifies inbound leads against your ICP criteria automatically.</p>
+<div class="use-cases"><span>Lead scoring</span><span>ICP matching</span><span>Routing</span></div>
+<div class="install-cmd">openclaw install afrexai-lead-qualifier</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="content">
+<div class="cat">Content</div>
+<h3>📱 afrexai-social-poster</h3>
+<p>Creates and schedules social media posts across platforms with brand-consistent messaging.</p>
+<div class="use-cases"><span>Social media</span><span>Scheduling</span><span>Multi-platform</span></div>
+<div class="install-cmd">openclaw install afrexai-social-poster</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+<div class="skill-card coming" data-cat="finance">
+<div class="cat">Finance</div>
+<h3>📈 afrexai-report-generator</h3>
+<p>Pulls data from multiple sources and generates formatted business reports on schedule.</p>
+<div class="use-cases"><span>KPI reports</span><span>Dashboards</span><span>Exec summaries</span></div>
+<div class="install-cmd">openclaw install afrexai-report-generator</div>
+<a href="#" class="link">Coming to ClawHub →</a>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 AfrexAI — AI Agent Workforce Solutions</p>
+<p style="margin-top:.5rem"><a href="/context-packs/">Context Packs</a> · <a href="/ai-revenue-calculator/">Revenue Calculator</a> · <a href="/agent-setup/">Setup Wizard</a></p>
+</footer>
+
+<script>
+function filterSkills(cat){
+document.querySelectorAll('.filter-btn').forEach(b=>{b.classList.remove('active');if(b.textContent.toLowerCase().includes(cat)||cat==='all'&&b.textContent==='All Skills')b.classList.add('active')});
+document.querySelectorAll('.skill-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none'});
+}
+</script>
+</body>
+</html>
