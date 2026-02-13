@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Your AI Workforce. Deployed.</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+.gold{color:#FFD700}
+nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700}
+nav .links{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.9rem}
+nav .links a{color:#aaa}nav .links a:hover{color:#FFD700}
+.hero{text-align:center;padding:6rem 2rem 3rem;max-width:900px;margin:0 auto}
+.hero h1{font-size:3.2rem;margin-bottom:1rem;line-height:1.1;color:#fff}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.25rem;color:#999;max-width:650px;margin:0 auto 2.5rem}
+.stats-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:2rem;margin:0 auto 3rem;max-width:900px;background:#111;border:1px solid #222;border-radius:16px}
+.stat{text-align:center}
+.stat .num{font-size:2rem;font-weight:800;color:#FFD700;display:block}
+.stat .label{font-size:.85rem;color:#888}
+.section{max-width:1100px;margin:0 auto;padding:4rem 2rem}
+.section h2{text-align:center;font-size:2.2rem;color:#fff;margin-bottom:.5rem}
+.section .sub{text-align:center;color:#888;margin-bottom:3rem;font-size:1.05rem}
+.pia-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
+.pia-step{background:#111;border:1px solid #222;border-radius:14px;padding:2rem;text-align:center;transition:border-color .3s}
+.pia-step:hover{border-color:#FFD700}
+.pia-step .icon{font-size:2.5rem;margin-bottom:1rem}
+.pia-step h3{color:#FFD700;margin-bottom:.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em}
+.pia-step p{color:#aaa;font-size:.9rem}
+.agents-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
+.agent-prev{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;text-align:center;transition:border-color .3s,transform .3s}
+.agent-prev:hover{border-color:#FFD700;transform:translateY(-3px)}
+.agent-prev .icon{font-size:2rem;margin-bottom:.5rem}
+.agent-prev h4{color:#fff;font-size:1rem;margin-bottom:.3rem}
+.agent-prev p{color:#888;font-size:.8rem}
+.cta-btn{display:inline-block;padding:.9rem 2.5rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;text-align:center;transition:opacity .3s}
+.cta-btn:hover{opacity:.9;text-decoration:none}
+.cta-center{text-align:center;margin-top:2.5rem}
+.case-preview{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.case-card{background:#111;border:1px solid #222;border-radius:14px;padding:2rem;transition:border-color .3s}
+.case-card:hover{border-color:#FFD700}
+.case-card h4{color:#fff;margin-bottom:.5rem}
+.case-card .metric{color:#FFD700;font-size:1.4rem;font-weight:700;margin-bottom:.5rem}
+.case-card p{color:#888;font-size:.9rem}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #222;color:#666;font-size:.85rem;margin-top:2rem}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+footer .footer-links a{color:#888;font-size:.85rem}footer .footer-links a:hover{color:#FFD700}
+@media(max-width:600px){.hero h1{font-size:2rem}.stats-bar{gap:1.5rem}.section h2{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">AfrexAI</div>
+<div class="links">
+<a href="/agent-marketplace/">Marketplace</a>
+<a href="/skills/">Skills</a>
+<a href="/case-studies/">Case Studies</a>
+<a href="/pricing/">Pricing</a>
+<a href="/blog/">Blog</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+</div>
+</nav>
+
+<div class="hero">
+<h1>Your AI Workforce. <span>Deployed.</span></h1>
+<p>Not chatbots. Not dashboards. Real AI agents that do the work — billing, compliance, follow-ups, collections — running 24/7 so your team doesn't have to.</p>
+<a href="/contact/" class="cta-btn">Book a Discovery Call →</a>
+</div>
+
+<div class="stats-bar">
+<div class="stat"><span class="num">9</span><span class="label">Agents Running</span></div>
+<div class="stat"><span class="num">$1.6M</span><span class="label">Recovered for Clients</span></div>
+<div class="stat"><span class="num">90%</span><span class="label">Time Savings</span></div>
+</div>
+
+<div class="section">
+<h2>How It Works</h2>
+<p class="sub">The PIA Framework — Pain, Impact, Architect</p>
+<div class="pia-grid">
+<div class="pia-step">
+<div class="icon">🔍</div>
+<h3>Find the Cracks</h3>
+<p>We audit your operations to find where time and money are leaking — unbilled hours, missed follow-ups, manual data entry, compliance gaps.</p>
+</div>
+<div class="pia-step">
+<div class="icon">🔥</div>
+<h3>Calculate the Burn Rate</h3>
+<p>We quantify exactly how much those cracks cost you per month. Most businesses are shocked — the average mid-size firm leaks $200K+ annually.</p>
+</div>
+<div class="pia-step">
+<div class="icon">🏗️</div>
+<h3>Architect the Workforce</h3>
+<p>We deploy AI agents tailored to your workflows. Each agent gets its own email, integrations, and processes — like hiring an employee, but better.</p>
+</div>
+</div>
+<div class="cta-center"><a href="/roi/" class="cta-btn">Calculate Your ROI →</a></div>
+</div>
+
+<div class="section">
+<h2>Our Agents</h2>
+<p class="sub">Pre-built AI employees ready to deploy in 24 hours</p>
+<div class="agents-preview">
+<div class="agent-prev"><div class="icon">🗂️</div><h4>Executive Assistant</h4><p>Email, scheduling, inbox triage</p></div>
+<div class="agent-prev"><div class="icon">💰</div><h4>Billing Agent</h4><p>Invoice generation & follow-up</p></div>
+<div class="agent-prev"><div class="icon">⚖️</div><h4>Compliance Monitor</h4><p>Regulatory tracking & alerts</p></div>
+<div class="agent-prev"><div class="icon">📊</div><h4>Data Analyst</h4><p>Reports, dashboards, insights</p></div>
+<div class="agent-prev"><div class="icon">📞</div><h4>Collections Agent</h4><p>AR follow-up & recovery</p></div>
+<div class="agent-prev"><div class="icon">📝</div><h4>Content Writer</h4><p>Blog posts, social, newsletters</p></div>
+<div class="agent-prev"><div class="icon">🎯</div><h4>Lead Gen Agent</h4><p>Prospecting & outreach</p></div>
+<div class="agent-prev"><div class="icon">🛡️</div><h4>QA Auditor</h4><p>Quality checks & error catching</p></div>
+</div>
+<div class="cta-center"><a href="/agent-marketplace/" class="cta-btn">Browse All Agents →</a></div>
+</div>
+
+<div class="section">
+<h2>Case Studies</h2>
+<p class="sub">Real results from real businesses</p>
+<div class="case-preview">
+<div class="case-card">
+<div class="metric">$1.6M Recovered</div>
+<h4>VADIS Law Firm</h4>
+<p>A mid-size law firm discovered $1.6M in unbilled hours and revenue leaks. Our agent workforce automated billing, compliance tracking, and collections.</p>
+</div>
+<div class="case-card">
+<div class="metric">90% Time Saved</div>
+<h4>Operations Overhaul</h4>
+<p>Manual data entry consuming 40+ hours per week was replaced by an AI agent swarm — the team now focuses on strategy instead of spreadsheets.</p>
+</div>
+</div>
+<div class="cta-center"><a href="/case-studies/" class="cta-btn">View All Case Studies →</a></div>
+</div>
+
+<div class="section">
+<h2>Skills & Tools</h2>
+<p class="sub">The capabilities powering your AI workforce</p>
+<div class="pia-grid">
+<div class="pia-step"><div class="icon">📧</div><h3>Email & Calendar</h3><p>Gmail, Outlook, scheduling, inbox management with full autonomy.</p></div>
+<div class="pia-step"><div class="icon">📄</div><h3>Document Processing</h3><p>PDF extraction, contract review, data entry, form filling.</p></div>
+<div class="pia-step"><div class="icon">🔗</div><h3>Integrations</h3><p>Clio, QuickBooks, Salesforce, Slack, and 50+ more via API.</p></div>
+</div>
+<div class="cta-center"><a href="/skills/" class="cta-btn">Explore All Skills →</a></div>
+</div>
+
+<footer>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/agent-marketplace/">Marketplace</a>
+<a href="/skills/">Skills</a>
+<a href="/case-studies/">Case Studies</a>
+<a href="/pricing/">Pricing</a>
+<a href="/blog/">Blog</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/roi/">ROI Calculator</a>
+<a href="/context-packs/">Context Packs</a>
+<a href="/ai-revenue-calculator/">Revenue Calculator</a>
+<a href="/agent-setup/">Setup Wizard</a>
+</div>
+<p>🖤💛 AfrexAI — Your AI Workforce, Deployed. © 2025</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROI Calculator — How Much Is Your Business Leaking? | AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700}
+nav .links{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.9rem}
+nav .links a{color:#aaa}nav .links a:hover{color:#FFD700}
+.hero{text-align:center;padding:5rem 2rem 2rem;max-width:750px;margin:0 auto}
+.hero h1{font-size:2.8rem;margin-bottom:1rem;color:#fff}.hero h1 span{color:#FFD700}
+.hero p{font-size:1.1rem;color:#999}
+.calc-section{max-width:650px;margin:3rem auto;padding:0 2rem}
+.calc-card{background:#111;border:1px solid #222;border-radius:16px;padding:2.5rem}
+.input-group{margin-bottom:1.5rem}
+.input-group label{display:block;color:#ccc;font-size:.9rem;margin-bottom:.5rem;font-weight:600}
+.input-group input{width:100%;padding:.8rem 1rem;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#fff;font-size:1.1rem;outline:none;transition:border-color .3s}
+.input-group input:focus{border-color:#FFD700}
+.input-group .hint{color:#666;font-size:.75rem;margin-top:.3rem}
+.results{margin-top:2rem;padding-top:2rem;border-top:1px solid #222}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-bottom:1px solid #1a1a1a}
+.result-row:last-child{border-bottom:none}
+.result-row .label{color:#aaa;font-size:.95rem}
+.result-row .value{font-size:1.3rem;font-weight:700;color:#FFD700}
+.result-row .value.red{color:#ff4444}
+.result-row .value.green{color:#44ff88}
+.roi-highlight{background:#1a1a0a;border:2px solid #FFD700;border-radius:12px;padding:1.5rem;text-align:center;margin-top:1.5rem}
+.roi-highlight .big{font-size:2.2rem;font-weight:800;color:#FFD700}
+.roi-highlight p{color:#888;font-size:.9rem;margin-top:.3rem}
+.cta-btn{display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;transition:opacity .3s;margin-top:1.5rem}
+.cta-btn:hover{opacity:.9;text-decoration:none}
+.cta-center{text-align:center;margin-top:2rem}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #222;color:#666;font-size:.85rem;margin-top:4rem}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+footer .footer-links a{color:#888;font-size:.85rem}footer .footer-links a:hover{color:#FFD700}
+@media(max-width:600px){.hero h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo"><a href="/" style="color:#FFD700">AfrexAI</a></div>
+<div class="links">
+<a href="/">Home</a>
+<a href="/agent-marketplace/">Marketplace</a>
+<a href="/pricing/">Pricing</a>
+<a href="/contact/">Contact</a>
+</div>
+</nav>
+
+<div class="hero">
+<h1>How Much Is Your Business <span>Leaking?</span></h1>
+<p>Manual tasks bleed money every single day. Enter your numbers below and see exactly what you're losing — and what AI agents can recover.</p>
+</div>
+
+<div class="calc-section">
+<div class="calc-card">
+<div class="input-group">
+<label>Number of Employees on Manual Tasks</label>
+<input type="number" id="employees" value="10" min="1" oninput="calc()">
+<div class="hint">How many people regularly do repetitive admin, data entry, billing, follow-ups?</div>
+</div>
+<div class="input-group">
+<label>Average Hourly Cost per Employee ($)</label>
+<input type="number" id="hourly" value="45" min="1" oninput="calc()">
+<div class="hint">Include salary, benefits, overhead — fully loaded cost</div>
+</div>
+<div class="input-group">
+<label>Hours Spent on Manual Tasks per Employee per Week</label>
+<input type="number" id="hours" value="15" min="1" max="60" oninput="calc()">
+<div class="hint">Time on tasks that could be automated: billing, follow-ups, data entry, compliance</div>
+</div>
+
+<div class="results">
+<div class="result-row">
+<span class="label">Weekly Waste</span>
+<span class="value red" id="weeklyWaste">$6,750</span>
+</div>
+<div class="result-row">
+<span class="label">Monthly Waste</span>
+<span class="value red" id="monthlyWaste">$29,250</span>
+</div>
+<div class="result-row">
+<span class="label">Annual Waste</span>
+<span class="value red" id="annualWaste">$351,000</span>
+</div>
+<div class="result-row">
+<span class="label">Potential Savings with AI Agents (80%)</span>
+<span class="value green" id="savings">$280,800</span>
+</div>
+</div>
+
+<div class="roi-highlight">
+<div class="big" id="roiMonths">ROI in &lt;1 month</div>
+<p>Based on average AfrexAI deployment costs vs. your current burn rate</p>
+</div>
+
+<div class="cta-center">
+<a href="/pricing/" class="cta-btn">See How AfrexAI Can Recover This →</a>
+</div>
+</div>
+</div>
+
+<script>
+function calc(){
+  const emp=Math.max(1,parseInt(document.getElementById('employees').value)||1);
+  const hr=Math.max(1,parseFloat(document.getElementById('hourly').value)||1);
+  const hrs=Math.max(1,parseFloat(document.getElementById('hours').value)||1);
+  const weekly=emp*hr*hrs;
+  const monthly=weekly*4.33;
+  const annual=weekly*52;
+  const savings=annual*0.8;
+  const fmt=n=>'$'+n.toLocaleString('en-US',{maximumFractionDigits:0});
+  document.getElementById('weeklyWaste').textContent=fmt(weekly);
+  document.getElementById('monthlyWaste').textContent=fmt(monthly);
+  document.getElementById('annualWaste').textContent=fmt(annual);
+  document.getElementById('savings').textContent=fmt(savings);
+  const agentCostMonthly=emp*500;
+  const monthsToROI=agentCostMonthly/(monthly*0.8);
+  document.getElementById('roiMonths').textContent=monthsToROI<1?'ROI in <1 month':'ROI in ~'+Math.ceil(monthsToROI)+' month'+(Math.ceil(monthsToROI)>1?'s':'');
+}
+calc();
+</script>
+
+<footer>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/agent-marketplace/">Marketplace</a>
+<a href="/case-studies/">Case Studies</a>
+<a href="/pricing/">Pricing</a>
+<a href="/blog/">Blog</a>
+<a href="/contact/">Contact</a>
+</div>
+<p>🖤💛 AfrexAI — Your AI Workforce, Deployed. © 2025</p>
+</footer>
+</body>
+</html>
