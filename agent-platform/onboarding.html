@@ -180,7 +180,7 @@ function show(){
   document.getElementById('nextBtn').textContent=current===total?'🚀 Launch Agents':'Continue →';
   if(current===4)updateSummary();
 }
-function nextStep(){if(current===total){window.location.href='index.html';return}current++;show()}
+function nextStep(){if(current===total){window.location.href='https://calendly.com/cbeckford-afrexai/30min';return}current++;show()}
 function prevStep(){if(current>1){current--;show()}}
 function toggleAgent(el){el.classList.toggle('selected')}
 function toggleInt(el){el.classList.toggle('connected');el.querySelector('.int-status').textContent=el.classList.contains('connected')?'✅ Connected':'Connect'}
