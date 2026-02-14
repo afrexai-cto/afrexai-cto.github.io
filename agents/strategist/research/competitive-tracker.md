@@ -14,6 +14,8 @@ Last full update: 2026-02-13
 | Lyzr.ai | Agent Platform | $10.5M raised, Accenture investor, "Agentic Transformation Consultants" | 🟡 Medium | 2026-02-13 |
 | Monaco AI | AI Sales Agents | $35M raised (Founders Fund), targeting Salesforce market | 🟢 Low | 2026-02-13 |
 | Microsoft (Healthcare AI) | Platform | Joint healthcare agentic AI readiness push with Health Mgmt Academy | 🟡 Medium | 2026-02-13 |
+| Anthropic | Platform/Legal | Legal AI plug-in triggered market selloff; moving toward vertical solutions | 🔴 High | 2026-02-14 |
+| Altruist | Wealth Mgmt AI | AI-enabled tax planning features spooked entire brokerage sector | 🟢 Low | 2026-02-14 |
 
 ## Strategic Position
 

@@ -60,11 +60,28 @@
 - **Kyndryl "Policy as Code"** for agentic AI governance (Feb 11) — validates need for governance-aware agent platforms
 - **Complyance raised $20M** (GV-led) for agentic AI GRC — validates compliance + agents intersection
 - **Healthcare AI:** Bessemer's "services-as-software" thesis — AI-native companies hitting $500K+ ARR/FTE with 70-80% margins
+- **"Autonomous Finance"** expected to handle 40%+ of middle-office ops by EOY 2026 (TechBullion, Feb 14)
+- **Healthcare agentic AI gap:** 43% piloting, only 3% in production (Microsoft + Health Management Academy, Feb 12). 80%+ execs expect value in 2026 (Deloitte). Massive opportunity.
+- **ZeroDrift** ($2M pre-seed, a16z speedrun) — AI compliance firewall for regulated comms. 5→25 employees planned. Expanding to insurance/healthcare/ESG.
+- **Secai/Voxira** ($6.2M Series A, Feb 11) — first govt-certified voice AI for healthcare patient access. Expanding US.
+- **LendingTree** cutting 24 jobs, shifting to AI automation (Feb 10) — public company actively restructuring.
+- **Thomson Reuters 2026 AI in Professional Services Report** dropped — AI transforming legal, tax, accounting, risk, fraud, govt.
+- **AutoGen confirmed slowest framework** (consensus overhead). CrewAI still prototyping > production. LangGraph gaining as serious enterprise choice.
+- **Snowflake VCs:** "2026 is the year real breakthroughs emerge" — market shifting from exploration to ROI focus.
+- **Anthropic valued at $380B** ($30B Series G, Feb 12) — biggest AI funding round ever. Agentic AI is the thesis.
+- **Salesforce State of Sales 2026:** 87% of orgs using AI, 54% deploying AI agents across sales cycle. High-performers 1.7x more likely to use agents for prospecting. Market is mainstream.
+- **Riff white paper (Feb 13):** "Agentic AI succeeds where digital transformation stalled" — enterprise narrative officially shifting from DT to agentic automation.
+- **Aurora Mobile / GPTBots.ai** integrating GLM-5 — more enterprise AI agent platforms entering market. Competition growing but market growing faster.
 
 ## Top Prospects Found
 
 | Date | Company | Vertical | ICP Score |
 |------|---------|----------|-----------|
+| 2026-02-14 | LendingTree | Fintech | 8/10 |
+| 2026-02-14 | ZeroDrift | Finserv/Compliance | 8/10 |
+| 2026-02-14 | Secai (Voxira) | Healthcare | 7/10 |
+| 2026-02-14 | Pelgo | Fintech/Ops | 7/10 |
+| 2026-02-14 | OpenKit | Legal/EdTech | 6/10 |
 | 2026-02-13 | Complyance (GRC AI) | Finserv/Compliance | 9/10 |
 | 2026-02-13 | Alaffia Health | Healthcare | 8/10 |
 | 2026-02-13 | Radius Payment Solutions | Fintech | 8/10 |

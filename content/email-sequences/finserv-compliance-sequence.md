@@ -1,11 +1,11 @@
 # Financial Services — Compliance Automation Email Sequence
-*Created: 2026-02-13 | Target: VP/Head of Compliance at mid-market financial firms*
-*Brand: AfrexAI | Sender: Christina Beckford, CEO*
+Created: 2026-02-13 | Target: VP/Head of Compliance at mid-market financial firms
+Brand: AfrexAI | Sender: Christina Beckford, CEO
 
 ---
 
 ## Email 1: The Hook (Day 0)
-**Subject:** 95% of AI pilots fail. Your compliance team doesn't have to.
+Subject: 95% of AI pilots fail. Your compliance team doesn't have to.
 
 Hi {{first_name}},
 
@@ -26,7 +26,7 @@ afrexai.com
 ---
 
 ## Email 2: The Proof (Day 3)
-**Subject:** Re: How Klarna saved $60M with AI agents
+Subject: Re: How Klarna saved $60M with AI agents
 
 {{first_name}},
 
@@ -36,11 +36,7 @@ Klarna deployed AI agents that now handle 2.3 million conversations per month. R
 
 That's customer service. Compliance automation gets even better ROI because the cost per error is so much higher — one missed SAR filing can mean seven-figure fines.
 
-We're not Klarna's vendor, but we build the same calibre of AI workforce, specifically tuned for financial compliance workflows:
-
-- **KYC/AML screening** — 4x faster, fewer false positives
-- **Regulatory change monitoring** — auto-flags relevant updates across jurisdictions
-- **SAR/CTR preparation** — drafts filings, human reviews, submit
+We're not Klarna's vendor, but we build the same calibre of AI workforce, specifically tuned for financial compliance workflows. Our agents handle KYC/AML screening 4x faster with fewer false positives. They auto-flag relevant regulatory updates across jurisdictions. And they draft SAR/CTR filings for human review before submission.
 
 We guarantee measurable results in 90 days or you don't pay. That's our "$40K Recovery" promise.
 
@@ -51,15 +47,15 @@ Christina
 ---
 
 ## Email 3: The Angle (Day 7)
-**Subject:** Your competitors are already doing this
+Subject: Your competitors are already doing this
 
 {{first_name}},
 
 I'll keep this short. Three things happening right now in financial services:
 
-1. SEC's AI disclosure requirements are creating new compliance workload
-2. Fintechs are using AI to process applications 10x faster than traditional firms
-3. The firms that automate compliance first get a structural cost advantage that compounds every quarter
+1. SEC's AI disclosure requirements are creating new compliance workload.
+2. Fintechs are using AI to process applications 10x faster than traditional firms.
+3. The firms that automate compliance first get a structural cost advantage that compounds every quarter.
 
 We work with mid-market financial firms ($500M-$5B revenue) to deploy AI compliance workforces. Not chatbots. Not dashboards. Actual agents that do the work.
 
@@ -72,7 +68,7 @@ Christina
 ---
 
 ## Email 4: The Breakup (Day 14)
-**Subject:** Closing the loop
+Subject: Closing the loop
 
 {{first_name}},
 

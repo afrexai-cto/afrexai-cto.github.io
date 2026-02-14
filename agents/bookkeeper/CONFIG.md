@@ -1,5 +1,18 @@
 # CONFIG.md — Ledger's Operating Schedule
 
+## Credentials
+
+### Stripe (via 1Password)
+- **op.env:** `agents/bookkeeper/op.env`
+- Usage: `op run --env-file=op.env -- <command>`
+- Fields: `op://AfrexAI/Stripe/publishable_key`, `op://AfrexAI/Stripe/secret_key`
+- **NEVER** read, echo, or log raw key values
+
+### QuickBooks Online
+- **Status:** NOT YET CONFIGURED — need OAuth credentials
+- Realm ID: `9341456225186016`
+- Will be added to 1Password as `op://AfrexAI/QuickBooks` when ready
+
 ## Cron Schedule
 
 ### 08:00 AM GMT — Morning Check

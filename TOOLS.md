@@ -13,6 +13,17 @@ Things like:
 - Device nicknames
 - Anything environment-specific
 
+## Secrets — 1Password CLI
+
+- **All credentials** go in 1Password vault "AfrexAI"
+- Use `op read "op://AfrexAI/<Item>/<field>"` to inject at runtime
+- Use `op run --env-file=op.env -- <command>` for multi-secret commands
+- **NEVER** echo, cat, print, or log secret values
+- **NEVER** store secrets in plain files
+- Agent op.env files contain references only (e.g., `STRIPE_SK=op://AfrexAI/Stripe/secret_key`)
+- Full guide: `docs/security/VAULT-GUIDE.md`
+- Old vault files at `/Users/openclaw/.openclaw/vault/` — migrate to 1Password and delete
+
 ## Examples
 
 ```markdown

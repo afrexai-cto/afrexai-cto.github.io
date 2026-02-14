@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI CRM Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#141414;--card2:#1a1a1a;--border:#2a2a2a;--gold:#FFD700;--gold2:#e6c200;--text:#e0e0e0;--muted:#888;--green:#4ade80;--red:#f87171;--blue:#60a5fa}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--gold);text-decoration:none}
+button{cursor:pointer;border:none;font-family:inherit;font-size:.875rem}
+
+/* Layout */
+.sidebar{position:fixed;left:0;top:0;width:220px;height:100vh;background:var(--card);border-right:1px solid var(--border);padding:1rem 0;z-index:100;transition:transform .3s}
+.sidebar .logo{padding:0 1rem 1.5rem;font-size:1.2rem;font-weight:700;color:var(--gold);border-bottom:1px solid var(--border);margin-bottom:.5rem}
+.sidebar .logo span{color:var(--text)}
+.nav-item{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;color:var(--muted);cursor:pointer;transition:all .15s;font-size:.9rem}
+.nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(255,215,0,.06)}
+.nav-item.active{border-left:3px solid var(--gold)}
+.main{margin-left:220px;padding:1.5rem;min-height:100vh}
+
+/* Mobile */
+.menu-btn{display:none;position:fixed;top:1rem;left:1rem;z-index:200;background:var(--card);color:var(--gold);border:1px solid var(--border);padding:.5rem .75rem;border-radius:6px;font-size:1.2rem}
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0;padding:1rem}
+  .menu-btn{display:block}
+  .stat-grid{grid-template-columns:repeat(2,1fr)!important}
+  .kanban{flex-direction:column!important}
+  .kanban-col{min-width:auto!important}
+}
+
+/* Cards & Stats */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem}
+.stat-card .label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.stat-card .value{font-size:2rem;font-weight:700;color:var(--gold);margin:.25rem 0}
+.stat-card .sub{font-size:.8rem;color:var(--muted)}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem}
+.card h2{font-size:1.1rem;color:var(--gold);margin-bottom:1rem}
+
+/* Section header */
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem}
+.section-header h1{font-size:1.4rem;color:var(--text)}
+
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:.875rem}
+th{text-align:left;padding:.6rem .75rem;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);font-size:.75rem;text-transform:uppercase}
+td{padding:.6rem .75rem;border-bottom:1px solid var(--border)}
+tr:hover td{background:rgba(255,215,0,.03)}
+.clickable{cursor:pointer}
+.clickable:hover td{color:var(--gold)}
+
+/* Badges */
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:20px;font-size:.75rem;font-weight:600}
+.badge-gold{background:rgba(255,215,0,.15);color:var(--gold)}
+.badge-green{background:rgba(74,222,128,.15);color:var(--green)}
+.badge-blue{background:rgba(96,165,250,.15);color:var(--blue)}
+.badge-red{background:rgba(248,113,113,.15);color:var(--red)}
+
+/* Forms */
+input,select,textarea{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:.5rem .75rem;border-radius:6px;font-size:.875rem;font-family:inherit;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.filter-row{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.filter-row input,.filter-row select{width:auto;min-width:150px;flex:1}
+.btn{padding:.5rem 1rem;border-radius:6px;font-weight:600;transition:all .15s}
+.btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:var(--gold2)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:.35rem .75rem;font-size:.8rem}
+
+/* Kanban */
+.kanban{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem}
+.kanban-col{min-width:220px;flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.75rem}
+.kanban-col h3{font-size:.8rem;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;display:flex;justify-content:space-between}
+.kanban-col h3 span{background:rgba(255,215,0,.15);color:var(--gold);border-radius:10px;padding:.1rem .5rem;font-size:.7rem}
+.deal-card{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.75rem;margin-bottom:.5rem;cursor:pointer;transition:border-color .15s}
+.deal-card:hover{border-color:var(--gold)}
+.deal-card .deal-name{font-weight:600;font-size:.85rem;margin-bottom:.25rem}
+.deal-card .deal-company{font-size:.75rem;color:var(--muted)}
+.deal-card .deal-value{font-size:.85rem;color:var(--gold);font-weight:600;margin-top:.25rem}
+
+/* Timeline */
+.timeline{position:relative;padding-left:1.5rem}
+.timeline::before{content:'';position:absolute;left:.5rem;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:1rem;padding-left:1rem}
+.timeline-item::before{content:'';position:absolute;left:-1.15rem;top:.4rem;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg)}
+.timeline-item .time{font-size:.75rem;color:var(--muted)}
+.timeline-item .title{font-weight:600;font-size:.9rem;margin:.15rem 0}
+.timeline-item .body{font-size:.8rem;color:var(--muted)}
+
+/* Quick Actions */
+.qa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem}
+.qa-btn{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center;cursor:pointer;transition:all .15s}
+.qa-btn:hover{border-color:var(--gold);background:rgba(255,215,0,.05)}
+.qa-btn .icon{font-size:1.5rem;margin-bottom:.35rem}
+.qa-btn .label{font-size:.85rem;color:var(--text)}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;width:100%;max-width:500px;max-height:90vh;overflow-y:auto}
+.modal h2{color:var(--gold);margin-bottom:1rem;font-size:1.1rem}
+.modal .form-group{margin-bottom:.75rem}
+.modal label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.25rem}
+.modal .actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:1rem}
+.hidden{display:none!important}
+
+/* Loading */
+.loader{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:2rem;color:var(--muted)}
+
+/* Pagination */
+.pagination{display:flex;gap:.5rem;justify-content:center;margin-top:1rem}
+.pagination button{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:.4rem .75rem;border-radius:6px;font-size:.8rem}
+.pagination button:hover{border-color:var(--gold);color:var(--gold)}
+.pagination button.active{background:var(--gold);color:#000;border-color:var(--gold)}
+
+/* Back link */
+.back{display:inline-flex;align-items:center;gap:.35rem;color:var(--muted);font-size:.85rem;margin-bottom:1rem;cursor:pointer}
+.back:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<nav class="sidebar">
+  <div class="logo">Afrex<span>AI</span> CRM</div>
+  <div class="nav-item active" data-page="overview">📊 Overview</div>
+  <div class="nav-item" data-page="companies">🏢 Companies</div>
+  <div class="nav-item" data-page="contacts">👤 Contacts</div>
+  <div class="nav-item" data-page="pipeline">💰 Pipeline</div>
+  <div class="nav-item" data-page="activity">⚡ Activity Feed</div>
+  <div class="nav-item" data-page="untouched">🔴 Untouched</div>
+  <div class="nav-item" data-page="actions">🚀 Quick Actions</div>
+</nav>
+
+<main class="main" id="app"></main>
+
+<!-- Modal container -->
+<div id="modal-root"></div>
+
+<script>
+const API = '';
+const STAGES = ['prospect','contacted','discovery','proposal','negotiation','closed_won','closed_lost'];
+const STAGE_LABELS = {prospect:'Prospect',contacted:'Contacted',discovery:'Discovery',proposal:'Proposal',negotiation:'Negotiation',closed_won:'Closed Won',closed_lost:'Closed Lost'};
+
+let state = { page: 'overview', filters: {}, cache: {} };
+
+// Fetch helper
+async function api(path, opts) {
+  const r = await fetch(API + path, opts);
+  if (!r.ok) throw new Error(`API error ${r.status}`);
+  return r.json();
+}
+
+// Navigation
+document.querySelectorAll('.nav-item').forEach(el => {
+  el.addEventListener('click', () => {
+    state.page = el.dataset.page;
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelector('.sidebar').classList.remove('open');
+    render();
+  });
+});
+
+function render() {
+  const app = document.getElementById('app');
+  app.innerHTML = '<div style="text-align:center;padding:3rem"><div class="loader"></div></div>';
+  const pages = { overview: renderOverview, companies: renderCompanies, contacts: renderContacts, pipeline: renderPipeline, activity: renderActivity, untouched: renderUntouched, actions: renderActions, companyDetail: renderCompanyDetail, contactDetail: renderContactDetail };
+  (pages[state.page] || renderOverview)();
+}
+
+// --- OVERVIEW ---
+async function renderOverview() {
+  const [stats, filters] = await Promise.all([api('/api/stats'), api('/api/filters')]);
+  state.cache.filters = filters;
+  const app = document.getElementById('app');
+  const stages = stats.dealsByStage;
+  const totalDeals = stages.reduce((s,r) => s + +r.count, 0);
+  const totalValue = stages.reduce((s,r) => s + +r.total_value, 0);
+  app.innerHTML = `
+    <div class="section-header"><h1>Pipeline Overview</h1><span style="color:var(--muted);font-size:.85rem">${new Date().toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</span></div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="label">Companies</div><div class="value">${stats.companies}</div><div class="sub">Total in CRM</div></div>
+      <div class="stat-card"><div class="label">Contacts</div><div class="value">${stats.contacts}</div><div class="sub">People tracked</div></div>
+      <div class="stat-card"><div class="label">Activities</div><div class="value">${stats.activities}</div><div class="sub">${stats.recentActivities} this week</div></div>
+      <div class="stat-card"><div class="label">Deals</div><div class="value">${totalDeals}</div><div class="sub">$${totalValue.toLocaleString()} pipeline</div></div>
+    </div>
+    ${stages.length ? `<div class="card"><h2>Deals by Stage</h2><table><tr>${stages.map(s=>`<th>${STAGE_LABELS[s.stage]||s.stage}</th>`).join('')}</tr><tr>${stages.map(s=>`<td><span style="color:var(--gold);font-weight:700;font-size:1.2rem">${s.count}</span><br><span style="font-size:.8rem;color:var(--muted)">$${(+s.total_value).toLocaleString()}</span></td>`).join('')}</tr></table></div>` : ''}
+    <div class="card"><h2>Quick Stats</h2>
+      <p style="color:var(--muted);font-size:.9rem">${filters.industries.length} industries tracked · ${filters.cities.length} cities · ${filters.agents.length} agent(s) active</p>
+    </div>`;
+}
+
+// --- COMPANIES ---
+async function renderCompanies() {
+  if (!state.cache.filters) state.cache.filters = await api('/api/filters');
+  const f = state.filters;
+  const params = new URLSearchParams();
+  if (f.search) params.set('search', f.search);
+  if (f.industry) params.set('industry', f.industry);
+  if (f.city) params.set('city', f.city);
+  if (f.minEmp) params.set('minEmployees', f.minEmp);
+  if (f.maxEmp) params.set('maxEmployees', f.maxEmp);
+  params.set('limit', '30');
+  params.set('offset', (f.companyPage||0)*30);
+  const data = await api('/api/companies?' + params);
+  const flt = state.cache.filters;
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="section-header"><h1>Companies</h1><span style="color:var(--muted)">${data.total} total</span></div>
+    <div class="filter-row">
+      <input type="text" placeholder="Search name/website..." value="${f.search||''}" id="f-search">
+      <select id="f-industry"><option value="">All Industries</option>${flt.industries.map(i=>`<option ${f.industry===i?'selected':''}>${i}</option>`).join('')}</select>
+      <select id="f-city"><option value="">All Cities</option>${flt.cities.map(c=>`<option ${f.city===c?'selected':''}>${c}</option>`).join('')}</select>
+      <input type="number" placeholder="Min employees" value="${f.minEmp||''}" id="f-min" style="max-width:120px">
+      <input type="number" placeholder="Max employees" value="${f.maxEmp||''}" id="f-max" style="max-width:120px">
+      <button class="btn btn-gold" onclick="applyCompanyFilters()">Filter</button>
+      <button class="btn btn-outline" onclick="state.filters={};render()">Clear</button>
+    </div>
+    <div class="card" style="overflow-x:auto">
+      <table><thead><tr><th>Name</th><th>Industry</th><th>City</th><th>Employees</th><th>ICP</th><th>Contacts</th><th>Activities</th></tr></thead>
+      <tbody>${data.rows.map(r=>`<tr class="clickable" onclick="showCompany(${r.id})"><td style="font-weight:600">${esc(r.name)}</td><td>${esc(r.industry||'—')}</td><td>${esc(r.city||'—')}</td><td>${r.employees||'—'}</td><td>${r.icp_score!=null?`<span class="badge badge-gold">${r.icp_score}</span>`:'—'}</td><td>${r.contact_count}</td><td>${r.activity_count}</td></tr>`).join('')}
+      ${data.rows.length===0?'<tr><td colspan="7" class="empty">No companies found</td></tr>':''}</tbody></table>
+    </div>
+    ${renderPagination(data.total, 30, f.companyPage||0, 'companyPage')}`;
+}
+
+window.applyCompanyFilters = () => {
+  state.filters.search = document.getElementById('f-search').value;
+  state.filters.industry = document.getElementById('f-industry').value;
+  state.filters.city = document.getElementById('f-city').value;
+  state.filters.minEmp = document.getElementById('f-min').value;
+  state.filters.maxEmp = document.getElementById('f-max').value;
+  state.filters.companyPage = 0;
+  render();
+};
+
+window.showCompany = (id) => { state.companyId = id; state.page = 'companyDetail'; render(); };
+
+// --- COMPANY DETAIL ---
+async function renderCompanyDetail() {
+  const c = await api(`/api/companies/${state.companyId}`);
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="back" onclick="state.page='companies';render()">← Back to Companies</div>
+    <div class="section-header"><h1>${esc(c.name)}</h1>${c.icp_score!=null?`<span class="badge badge-gold">ICP: ${c.icp_score}</span>`:''}</div>
+    <div class="stat-grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+      <div class="stat-card"><div class="label">Industry</div><div class="value" style="font-size:1rem">${esc(c.industry||'—')}</div></div>
+      <div class="stat-card"><div class="label">Location</div><div class="value" style="font-size:1rem">${esc([c.city,c.state,c.country].filter(Boolean).join(', ')||'—')}</div></div>
+      <div class="stat-card"><div class="label">Employees</div><div class="value" style="font-size:1.2rem">${c.employees||'—'}</div></div>
+      <div class="stat-card"><div class="label">Revenue Est.</div><div class="value" style="font-size:1rem">${esc(c.revenue_estimate||'—')}</div></div>
+    </div>
+    ${c.tags.length?`<div style="margin-bottom:1rem">${c.tags.map(t=>`<span class="badge badge-blue" style="margin-right:.25rem">${esc(t)}</span>`).join('')}</div>`:''}
+    ${c.website?`<div style="margin-bottom:1rem"><a href="${esc(c.website)}" target="_blank">${esc(c.website)}</a></div>`:''}
+    ${c.linkedin_url?`<div style="margin-bottom:1rem"><a href="${esc(c.linkedin_url)}" target="_blank">LinkedIn →</a></div>`:''}
+    ${c.notes?`<div class="card"><h2>Notes</h2><p style="font-size:.9rem;white-space:pre-wrap">${esc(c.notes)}</p></div>`:''}
+    <div class="card"><h2>Contacts (${c.contacts.length})</h2>
+      ${c.contacts.length?`<table><thead><tr><th>Name</th><th>Title</th><th>Email</th><th>Phone</th></tr></thead><tbody>
+        ${c.contacts.map(ct=>`<tr class="clickable" onclick="showContact(${ct.id})"><td style="font-weight:600">${esc(ct.first_name||'')} ${esc(ct.last_name||'')}</td><td>${esc(ct.title||'—')}</td><td>${esc(ct.email||'—')}</td><td>${esc(ct.phone||'—')}</td></tr>`).join('')}
+      </tbody></table>`:'<p class="empty">No contacts yet</p>'}
+    </div>
+    <div class="card"><h2>Deals (${c.deals.length})</h2>
+      ${c.deals.length?`<table><thead><tr><th>Deal</th><th>Stage</th><th>Value</th><th>Probability</th></tr></thead><tbody>
+        ${c.deals.map(d=>`<tr><td>${esc(d.name||'Unnamed')}</td><td><span class="badge badge-gold">${STAGE_LABELS[d.stage]||d.stage}</span></td><td>$${(+d.value||0).toLocaleString()}</td><td>${d.probability}%</td></tr>`).join('')}
+      </tbody></table>`:'<p class="empty">No deals yet</p>'}
+    </div>
+    <div class="card"><h2>Activity Timeline (${c.activities.length})</h2>
+      ${c.activities.length?`<div class="timeline">${c.activities.map(a=>`
+        <div class="timeline-item">
+          <div class="time">${fmtDate(a.created_at)} · ${esc(a.agent||'system')} · <span class="badge badge-green">${esc(a.type||'note')}</span></div>
+          <div class="title">${esc(a.subject||'Activity')}</div>
+          ${a.body?`<div class="body">${esc(a.body).substring(0,200)}</div>`:''}
+        </div>`).join('')}</div>`:'<p class="empty">No activity yet</p>'}
+    </div>`;
+}
+
+// --- CONTACTS ---
+async function renderContacts() {
+  const f = state.filters;
+  const params = new URLSearchParams();
+  if (f.contactSearch) params.set('search', f.contactSearch);
+  params.set('limit','30'); params.set('offset',(f.contactPage||0)*30);
+  const data = await api('/api/contacts?'+params);
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="section-header"><h1>Contacts</h1></div>
+    <div class="filter-row">
+      <input type="text" placeholder="Search name/email..." value="${f.contactSearch||''}" id="fc-search">
+      <button class="btn btn-gold" onclick="state.filters.contactSearch=document.getElementById('fc-search').value;state.filters.contactPage=0;render()">Search</button>
+    </div>
+    <div class="card" style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Company</th><th>Title</th><th>Email</th><th>Phone</th></tr></thead><tbody>
+      ${data.rows.map(c=>`<tr class="clickable" onclick="showContact(${c.id})"><td style="font-weight:600">${esc(c.first_name||'')} ${esc(c.last_name||'')}</td><td>${esc(c.company_name||'—')}</td><td>${esc(c.title||'—')}</td><td>${esc(c.email||'—')}</td><td>${esc(c.phone||'—')}</td></tr>`).join('')}
+      ${data.rows.length===0?'<tr><td colspan="5" class="empty">No contacts found</td></tr>':''}
+    </tbody></table></div>`;
+}
+
+window.showContact = (id) => { state.contactId = id; state.page = 'contactDetail'; render(); };
+
+// --- CONTACT DETAIL ---
+async function renderContactDetail() {
+  const c = await api(`/api/contacts/${state.contactId}`);
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="back" onclick="state.page='contacts';render()">← Back to Contacts</div>
+    <div class="section-header"><h1>${esc(c.first_name||'')} ${esc(c.last_name||'')}</h1></div>
+    <div class="stat-grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+      <div class="stat-card"><div class="label">Company</div><div class="value" style="font-size:1rem;cursor:pointer" onclick="showCompany(${c.company_id})">${esc(c.company_name||'—')}</div></div>
+      <div class="stat-card"><div class="label">Title</div><div class="value" style="font-size:1rem">${esc(c.title||'—')}</div></div>
+      <div class="stat-card"><div class="label">Email</div><div class="value" style="font-size:.9rem">${esc(c.email||'—')} ${c.email_verified?'✅':''}</div></div>
+      <div class="stat-card"><div class="label">Phone</div><div class="value" style="font-size:1rem">${esc(c.phone||'—')}</div></div>
+    </div>
+    ${c.linkedin_url?`<div style="margin-bottom:1rem"><a href="${esc(c.linkedin_url)}" target="_blank">LinkedIn →</a></div>`:''}
+    ${c.notes?`<div class="card"><h2>Notes</h2><p style="font-size:.9rem;white-space:pre-wrap">${esc(c.notes)}</p></div>`:''}
+    <div class="card"><h2>Activity Timeline (${c.activities.length})</h2>
+      ${c.activities.length?`<div class="timeline">${c.activities.map(a=>`
+        <div class="timeline-item">
+          <div class="time">${fmtDate(a.created_at)} · ${esc(a.agent||'system')} · <span class="badge badge-green">${esc(a.type||'note')}</span></div>
+          <div class="title">${esc(a.subject||'Activity')}</div>
+          ${a.body?`<div class="body">${esc(a.body).substring(0,200)}</div>`:''}
+        </div>`).join('')}</div>`:'<p class="empty">No activity yet</p>'}
+    </div>
+    <div class="card"><h2>Deals (${c.deals.length})</h2>
+      ${c.deals.length?`<table><thead><tr><th>Deal</th><th>Stage</th><th>Value</th></tr></thead><tbody>
+        ${c.deals.map(d=>`<tr><td>${esc(d.name||'Unnamed')}</td><td><span class="badge badge-gold">${STAGE_LABELS[d.stage]||d.stage}</span></td><td>$${(+d.value||0).toLocaleString()}</td></tr>`).join('')}
+      </tbody></table>`:'<p class="empty">No deals</p>'}
+    </div>`;
+}
+
+// --- PIPELINE KANBAN ---
+async function renderPipeline() {
+  const data = await api('/api/deals');
+  const byStage = {};
+  STAGES.forEach(s => byStage[s] = []);
+  data.rows.forEach(d => { const s = d.stage || 'prospect'; if (byStage[s]) byStage[s].push(d); else byStage.prospect.push(d); });
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="section-header"><h1>Deal Pipeline</h1><button class="btn btn-gold" onclick="showNewDealModal()">+ New Deal</button></div>
+    <div class="kanban">${STAGES.map(s=>`
+      <div class="kanban-col" data-stage="${s}">
+        <h3>${STAGE_LABELS[s]} <span>${byStage[s].length}</span></h3>
+        ${byStage[s].map(d=>`
+          <div class="deal-card" data-deal-id="${d.id}">
+            <div class="deal-name">${esc(d.name||'Unnamed Deal')}</div>
+            <div class="deal-company">${esc(d.company_name||'No company')}</div>
+            ${d.value?`<div class="deal-value">$${(+d.value).toLocaleString()}</div>`:''}
+            <div style="margin-top:.35rem">
+              <select style="padding:.2rem;font-size:.75rem;width:auto" onchange="moveDeal(${d.id},this.value)">
+                ${STAGES.map(st=>`<option value="${st}" ${st===s?'selected':''}>${STAGE_LABELS[st]}</option>`).join('')}
+              </select>
+            </div>
+          </div>`).join('')}
+        ${byStage[s].length===0?'<div class="empty" style="font-size:.8rem">No deals</div>':''}
+      </div>`).join('')}
+    </div>`;
+}
+
+window.moveDeal = async (id, stage) => {
+  await api(`/api/deals/${id}/stage`, { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({stage}) });
+  render();
+};
+
+// --- ACTIVITY FEED ---
+async function renderActivity() {
+  if (!state.cache.filters) state.cache.filters = await api('/api/filters');
+  const f = state.filters;
+  const params = new URLSearchParams();
+  if (f.actAgent) params.set('agent', f.actAgent);
+  if (f.actType) params.set('type', f.actType);
+  params.set('limit','50');
+  const data = await api('/api/activities?'+params);
+  const flt = state.cache.filters;
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="section-header"><h1>Agent Activity Feed</h1></div>
+    <div class="filter-row">
+      <select id="fa-agent" onchange="state.filters.actAgent=this.value;render()"><option value="">All Agents</option>${flt.agents.map(a=>`<option ${f.actAgent===a?'selected':''}>${a}</option>`).join('')}</select>
+      <select id="fa-type" onchange="state.filters.actType=this.value;render()"><option value="">All Types</option>${flt.activityTypes.map(t=>`<option ${f.actType===t?'selected':''}>${t}</option>`).join('')}</select>
+    </div>
+    <div class="card">
+      ${data.rows.length?`<div class="timeline">${data.rows.map(a=>`
+        <div class="timeline-item">
+          <div class="time">${fmtDate(a.created_at)} · <strong>${esc(a.agent||'system')}</strong> · <span class="badge badge-green">${esc(a.type||'note')}</span> ${a.direction?`<span class="badge badge-blue">${a.direction}</span>`:''}</div>
+          <div class="title">${esc(a.subject||'Activity')} ${a.company_name?`<span style="color:var(--muted);font-weight:400">@ ${esc(a.company_name)}</span>`:''} ${a.contact_name&&a.contact_name.trim()?`<span style="color:var(--muted);font-weight:400">→ ${esc(a.contact_name)}</span>`:''}</div>
+          ${a.body?`<div class="body">${esc(a.body).substring(0,300)}</div>`:''}
+        </div>`).join('')}</div>`:'<p class="empty">No activities found</p>'}
+    </div>`;
+}
+
+// --- UNTOUCHED ---
+async function renderUntouched() {
+  const data = await api('/api/untouched?limit=50');
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="section-header"><h1>Untouched Prospects</h1><span class="badge badge-red">${data.total} companies with no activity</span></div>
+    <div class="card" style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Industry</th><th>City</th><th>Employees</th><th>ICP</th><th>Added</th></tr></thead><tbody>
+      ${data.rows.map(r=>`<tr class="clickable" onclick="showCompany(${r.id})"><td style="font-weight:600">${esc(r.name)}</td><td>${esc(r.industry||'—')}</td><td>${esc(r.city||'—')}</td><td>${r.employees||'—'}</td><td>${r.icp_score!=null?`<span class="badge badge-gold">${r.icp_score}</span>`:'—'}</td><td style="color:var(--muted)">${fmtDate(r.created_at)}</td></tr>`).join('')}
+    </tbody></table></div>`;
+}
+
+// --- QUICK ACTIONS ---
+async function renderActions() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="section-header"><h1>Quick Actions</h1></div>
+    <div class="qa-grid">
+      <div class="qa-btn" onclick="showActionModal('email')"><div class="icon">📧</div><div class="label">Log Email</div></div>
+      <div class="qa-btn" onclick="showActionModal('call')"><div class="icon">📞</div><div class="label">Log Call</div></div>
+      <div class="qa-btn" onclick="showActionModal('note')"><div class="icon">📝</div><div class="label">Add Note</div></div>
+      <div class="qa-btn" onclick="showActionModal('meeting')"><div class="icon">🤝</div><div class="label">Log Meeting</div></div>
+      <div class="qa-btn" onclick="showNewDealModal()"><div class="icon">💰</div><div class="label">New Deal</div></div>
+      <div class="qa-btn" onclick="showMoveDealModal()"><div class="icon">🔄</div><div class="label">Move Deal Stage</div></div>
+    </div>
+    <div id="action-result" style="margin-top:1rem"></div>`;
+}
+
+// --- MODALS ---
+window.showActionModal = async (type) => {
+  const labels = {email:'Log Email',call:'Log Call',note:'Add Note',meeting:'Log Meeting'};
+  const root = document.getElementById('modal-root');
+  root.innerHTML = `
+    <div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <h2>${labels[type]||type}</h2>
+        <div class="form-group"><label>Company ID</label><input type="number" id="m-company"></div>
+        <div class="form-group"><label>Contact ID (optional)</label><input type="number" id="m-contact"></div>
+        <div class="form-group"><label>Subject</label><input type="text" id="m-subject" placeholder="Brief description..."></div>
+        <div class="form-group"><label>Details</label><textarea id="m-body" rows="3" placeholder="Notes..."></textarea></div>
+        <div class="form-group"><label>Direction</label><select id="m-dir"><option value="outbound">Outbound</option><option value="inbound">Inbound</option></select></div>
+        <div class="actions">
+          <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-gold" onclick="submitAction('${type}')">Save</button>
+        </div>
+      </div>
+    </div>`;
+};
+
+window.submitAction = async (type) => {
+  try {
+    await api('/api/activities', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      type, company_id: document.getElementById('m-company').value || null,
+      contact_id: document.getElementById('m-contact').value || null,
+      subject: document.getElementById('m-subject').value,
+      body: document.getElementById('m-body').value,
+      direction: document.getElementById('m-dir').value,
+    })});
+    closeModal();
+    if (state.page === 'actions') {
+      const r = document.getElementById('action-result');
+      if (r) r.innerHTML = '<div class="card" style="border-color:var(--green)"><p style="color:var(--green)">✅ Activity logged successfully!</p></div>';
+    }
+  } catch(e) { alert('Error: ' + e.message); }
+};
+
+window.showNewDealModal = () => {
+  const root = document.getElementById('modal-root');
+  root.innerHTML = `
+    <div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <h2>New Deal</h2>
+        <div class="form-group"><label>Deal Name</label><input type="text" id="md-name" placeholder="Deal name..."></div>
+        <div class="form-group"><label>Company ID</label><input type="number" id="md-company"></div>
+        <div class="form-group"><label>Contact ID (optional)</label><input type="number" id="md-contact"></div>
+        <div class="form-group"><label>Stage</label><select id="md-stage">${STAGES.map(s=>`<option value="${s}">${STAGE_LABELS[s]}</option>`).join('')}</select></div>
+        <div class="form-group"><label>Value ($)</label><input type="number" id="md-value" placeholder="0"></div>
+        <div class="actions">
+          <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-gold" onclick="submitDeal()">Create</button>
+        </div>
+      </div>
+    </div>`;
+};
+
+window.submitDeal = async () => {
+  try {
+    await api('/api/deals', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      name: document.getElementById('md-name').value,
+      company_id: document.getElementById('md-company').value || null,
+      contact_id: document.getElementById('md-contact').value || null,
+      stage: document.getElementById('md-stage').value,
+      value: document.getElementById('md-value').value || 0,
+    })});
+    closeModal();
+    render();
+  } catch(e) { alert('Error: ' + e.message); }
+};
+
+window.showMoveDealModal = () => {
+  const root = document.getElementById('modal-root');
+  root.innerHTML = `
+    <div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <h2>Move Deal Stage</h2>
+        <div class="form-group"><label>Deal ID</label><input type="number" id="ms-deal"></div>
+        <div class="form-group"><label>New Stage</label><select id="ms-stage">${STAGES.map(s=>`<option value="${s}">${STAGE_LABELS[s]}</option>`).join('')}</select></div>
+        <div class="actions">
+          <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-gold" onclick="submitMoveStage()">Move</button>
+        </div>
+      </div>
+    </div>`;
+};
+
+window.submitMoveStage = async () => {
+  try {
+    await api(`/api/deals/${document.getElementById('ms-deal').value}/stage`, { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ stage: document.getElementById('ms-stage').value })});
+    closeModal();
+    render();
+  } catch(e) { alert('Error: ' + e.message); }
+};
+
+window.closeModal = () => { document.getElementById('modal-root').innerHTML = ''; };
+
+// --- HELPERS ---
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function fmtDate(d) { if (!d) return '—'; const dt = new Date(d); return dt.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) + ' ' + dt.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
+function renderPagination(total, perPage, current, key) {
+  const pages = Math.ceil(total/perPage);
+  if (pages <= 1) return '';
+  let html = '<div class="pagination">';
+  for (let i = 0; i < Math.min(pages, 10); i++) {
+    html += `<button class="${i===current?'active':''}" onclick="state.filters.${key}=${i};render()">${i+1}</button>`;
+  }
+  if (pages > 10) html += `<span style="color:var(--muted);padding:.4rem">...${pages} pages</span>`;
+  return html + '</div>';
+}
+
+// Init
+render();
+</script>
+</body>
+</html>

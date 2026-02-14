@@ -58,6 +58,13 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **AI funding** remains massive ($55B+ Jan 2026). Investors want revenue traction, not prototypes. Our VADIS pre-payment is strong signal.
 - **Thomson Reuters 2026 Report**: 40% org-wide AI adoption in professional services, only 18% track ROI. Our "recovered capacity" framing directly solves this gap.
 
+## Key Intelligence (Updated 2026-02-14)
+
+- **AI Scare Trade (Feb 14):** Anthropic legal AI plug-in triggered market-wide selloff. S&P Software lost ~$2T from peak. Brokerages, legal services, data analytics all hit. This creates URGENCY for our buyers — fear of disruption = budget allocation for AI transformation.
+- **Anthropic entering legal vertical directly** — elevated to 🔴 High threat on competitive tracker. Monitor weekly. Our moat remains implementation + domain expertise, not the model.
+- **Agentic AI vs RPA narrative now mainstream** — industry validating that agents automate decisions, not just tasks. Supports "recovered capacity" pricing.
+- **Riff white paper** validates our Step 1→2 thesis: domain expertise encoded into working software is the unlock.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?

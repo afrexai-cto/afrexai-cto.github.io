@@ -63,4 +63,14 @@
 
 ## Active Knowledge
 
+### Nonprofit Tech (Added 2026-02-14)
+- **Primary pain:** AI adoption gap — 92% using AI but only 7% seeing mission impact (Virtuous 2026 Report, n=346)
+- 81% ad hoc usage, no documented workflows; 47% have no AI governance policy
+- Donor communication drafting, reporting, prospect research, data hygiene = ~£38K/year waste in 30-person charity
+- Governance is the differentiator — charities handling donor PII need guardrails before automation
+- Beacon CRM (ICP 9 prospect) serves this exact market — potential partnership angle
+- UK addressable market: ~10,000 charities with >£1M income
+- Key objection: "We can't afford AI" → reframe as "you can't afford the £23K/year you're wasting without it"
+- Terminology: "donor stewardship", "gift aid", "trustee reporting", "cultivation meetings", "major gifts"
+
 - *This section updated as new verticals, use cases, and insights are developed*

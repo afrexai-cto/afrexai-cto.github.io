@@ -21,3 +21,15 @@
 **Connection to AfrexAI's 3-Step Plan:** Insurance fits under Financial Services in Step 2. We can reuse compliance-aware agent architectures from banking/finance engagements. Cross-selling from financial services to insurance is natural — same buyer persona (CTO/COO at regulated institution), same trust requirements (SOC 2), same "recovered capacity" value prop.
 
 **What it takes:** Develop 1-2 insurance-specific agent templates (claims processing, policy document review). Estimated 2-3 weeks if built on existing financial services agent framework. Target: mid-market insurance companies ($500M-$5B premium volume) who can't afford Accenture but need enterprise-grade AI.
+
+---
+
+## 2026-02-14 — AI Scare Trade = Urgency Accelerator
+
+**What:** Wall Street's AI scare trade is cratering stock prices of financial brokerages, data analytics firms, and legal services companies. Anthropic's legal AI plug-in triggered the latest wave. S&P 500 Software lost ~$2T from peak. Brokerages, insurers, and legal services all hit hard.
+
+**Why now:** When incumbents' stock prices crash on AI disruption fear, their *customers* experience urgency. Every CFO watching their service providers lose 25-40% market cap is asking "are we next?" This fear converts to budget allocation for AI transformation. The window between fear and action is where implementation partners win deals.
+
+**Connection to AfrexAI's 3-Step Plan:** Accelerates Step 2 timeline. Enterprise buyers who were "evaluating" AI 3 months ago are now in "deploy or die" mode. Our "Week I Win" (demo in 7 days) and "$40K Recovery" (90 days) promises directly address the urgency. Position AfrexAI as the fast-mover antidote to slow consultancy engagements.
+
+**What it takes:** Prepare a "Fear to Action" sales narrative for financial services and legal prospects. Lead with: "Your competitors are already deploying. Your service providers are being disrupted. Here's what you can have running in 7 days." Estimated effort: 1-2 days content creation, then fold into existing outreach.

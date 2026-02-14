@@ -64,3 +64,20 @@ Email deliverability is **NOT READY**:
 - Currency: USD ($)
 - Verticals: Financial Services, Legal, Healthcare, Construction, Real Estate, Recruitment, Insurance
 - DO NOT prospect UK/EU companies
+
+## Geographic Correction (2026-02-14)
+- IDs 001-008, 011-020 are UK-based — flagged for deprioritization
+- IDs 021-030 are the first properly US-targeted batch
+- All future prospecting must be US-only
+
+## Email Draft Progress
+- **10 Day 1 emails drafted** (Feb 14 evening) for US batch IDs 021-030
+- Drafts at: `output/draft-cold-emails/2026-02-14-evening-batch.md`
+- All personalized with company-specific hooks from research
+- Strongest angles: compliance/regulatory (legal), volume-based ROI (financial services), safety compliance (construction)
+- Subject lines kept under 6 words
+
+## Infrastructure Issues
+- Vault not accessible from isolated cron sessions — cannot check email replies
+- Need fix: either pass credentials via env or init vault in agent workspace
+- Sequence template directory (`outbound/sequences/`) is empty — drafting from tracker hooks instead

@@ -23,8 +23,18 @@
 - **Christina email:** cbeckford@afrexai.com
 - **YouTube:** https://www.youtube.com/@AfrexAI (Christina's channel, early stage)
 - **LinkedIn:** https://www.linkedin.com/in/kalin-smolichki/ (Kalin — NO AfrexAI posts, Matillion private)
+- **LinkedIn Company Page:** https://www.linkedin.com/company/105802297/ (AfrexAI)
+- **LinkedIn API:** App "AfrexAI Agent", client_id: 78xxewc0pmhw7f, token in 1Password. Scope: w_member_social, w_organization_social, r_organization_social. Company page posting LIVE. First post: urn:li:share:7428273505353412608
+
+## Email Setup
+- **Gmail Send As aliases wired up by Christina** — all 9 agent emails work as send-from addresses
+- nokafor@afrexai.com (Nia Okafor, EA), mchen@afrexai.com (Marcus Chen, PM), pnair@afrexai.com (Priya Nair, Senior Accountant), jadeyemi@afrexai.com (James Adeyemi, COO), sreyes@afrexai.com (Sofia Reyes, Marketing), abrooks@afrexai.com (Aiden Brooks, Content), dkessler@afrexai.com (Dana Kessler, Sales), emensah@afrexai.com (Elijah Mensah, Consultant), zosei@afrexai.com (Zara Osei, Strategist)
+- Sending via ksmolichki@afrexai.com SMTP with app password in 1Password (vault: AfrexAI, item: Gmail)
+- 1Password service account token at `/Users/openclaw/.openclaw/vault/op-service-account.env`
+- **First prospect email sent 2026-02-14:** Oracle (Zara Osei) → Brent Brodeski, CEO @ Savant Wealth Management, CC'd Kalin + Christina
 
 ## What's Live
+- **GitHub Pages: https://afrexai-cto.github.io/** — 22+ pages, all case studies, homepage, pricing, blog
 - ClawHub skills: afrexai-humanizer, afrexai-prospect-researcher, afrexai-email-triager (+10 publishing)
 - Storefront: https://afrexai-cto.github.io/context-packs/
 - Calculator: https://afrexai-cto.github.io/ai-revenue-calculator/
@@ -48,6 +58,17 @@ Executive Assistant, Marketing Analyst, Content Writer, Outbound Sales, Bookkeep
 - 2026-02-13: Helped Christina with pitch deck review, discovery questions, slide copy — all emailed
 - 2026-02-13: 26 real ICP prospects researched, 5 cold emails drafted in Gmail, 4/5 emails verified
 - 2026-02-13: Reddit post removed by filters (r/AI_Agents)
+
+## YouTube Video IDs (@AfrexAI)
+- Law Firm $1.6M: sET2IxH4ZAQ | 90-Day: UX-n3KBeSsA | Construction 7 Ways: xASZTrOPn2s
+- Construction 3x: rSgleVeyuXI | Win Bids: Bmsin1WW5wI | Voice AI: fk5jrc_kn2Y
+- Site Reports: C_uimFOraM8 | Visualize Data: R1bxi5rUCJQ | 95% Fail: rSyfrxLQT48
+- Cut 40%: VjL7ILo5g5Q | 5 Automations: 1HTLOtNQrXU | CRM $100K: dCBGWjCBXzI
+- AI Handles Data: xSWvwdwXc0Q | LLM Security: _kLujNA5JoY | Starting Agency: V-4pvLGyom4 | Building Agency: mxk_uROCOF4
+
+## Working Style
+- **ALWAYS delegate to sub-agents** for parallel work — Kalin hates sequential. "leverage subagents cmon"
+- Kalin asked about "3 north stars" — NOT YET CAPTURED, ask him to define next time
 
 ## Key Insights
 - "Don't sell AI agents — sell recovered capacity. Agents are just how you deliver it."
