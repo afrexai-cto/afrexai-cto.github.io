@@ -12,9 +12,9 @@
 - Not chatbots. Not dashboards. Agents that actually do the work.
 
 ## The 3-Step Plan
-1. **Skills** (CURRENT) — ClawHub skills, landing pages, tools
+1. **Skills** (CURRENT) — ClawHub skills for CMA (Customer Managed Agents). Customer buys OpenClaw, manages their own agents, buys our skills from ClawHub.
 2. **Agents** — deploy and manage AI agents for customers on their systems
-3. **AfrexAI Hosted Agents** — fully hosted agent workforce on our infrastructure, recurring revenue
+3. **AfrexAI Hosted Agents** — fully hosted agent workforce on our infrastructure, recurring revenue. Customer buys OpenClaw securely through us.
 
 ## Key Links
 - **Website:** afrexai.com
@@ -34,6 +34,7 @@
 - **First prospect email sent 2026-02-14:** Oracle (Zara Osei) → Brent Brodeski, CEO @ Savant Wealth Management, CC'd Kalin + Christina
 
 ## What's Live
+- **AaaS Platform** — Agent-as-a-Service fully wired: `aaas-platform/autopilot.sh "Company" "email" "tier"` does end-to-end onboarding (deploy agents, health check, welcome email, CRM log). Landing page at `aaas/index.html`. Scripts tested on bash 3.2. Tiers: Starter $1.5K/1 agent, Growth $4.5K/3, Enterprise $12K/9.
 - **GitHub Pages: https://afrexai-cto.github.io/** — 22+ pages, all case studies, homepage, pricing, blog
 - ClawHub skills: afrexai-humanizer, afrexai-prospect-researcher, afrexai-email-triager (+10 publishing)
 - Storefront: https://afrexai-cto.github.io/context-packs/
