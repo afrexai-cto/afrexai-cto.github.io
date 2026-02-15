@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Resources — AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6}
+a{color:#FFD700;text-decoration:none}
+.hero{text-align:center;padding:80px 24px 60px;max-width:800px;margin:0 auto}
+.hero .tag{display:inline-block;background:rgba(255,215,0,.12);color:#FFD700;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(255,215,0,.25)}
+.hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:-.5px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:18px;color:#999;max-width:600px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;max-width:1120px;margin:0 auto;padding:0 24px 100px}
+.card{background:#111;border:1px solid #1a1a1a;border-radius:16px;overflow:hidden;transition:transform .2s,border-color .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,215,0,.3)}
+.card-img{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card-img .icon{font-size:64px;position:relative;z-index:1}
+.card-img::before{content:'';position:absolute;inset:0;opacity:.15}
+.card:nth-child(1) .card-img::before{background:linear-gradient(135deg,#FFD700,#FF8C00)}
+.card:nth-child(2) .card-img::before{background:linear-gradient(135deg,#00C9FF,#0066FF)}
+.card:nth-child(3) .card-img::before{background:linear-gradient(135deg,#A855F7,#6D28D9)}
+.card-body{padding:28px 28px 32px}
+.card-body .label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.card:nth-child(1) .label{color:#FFD700}
+.card:nth-child(2) .label{color:#00C9FF}
+.card:nth-child(3) .label{color:#A855F7}
+.card-body h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+.card-body p{font-size:15px;color:#888;margin-bottom:24px;line-height:1.7}
+.btn{display:inline-block;padding:14px 32px;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;border:none;transition:all .2s}
+.btn-gold{background:#FFD700;color:#0a0a0a}.btn-gold:hover{background:#ffe44d;transform:scale(1.03)}
+.btn-blue{background:#0066FF;color:#fff}.btn-blue:hover{background:#1a7aff}
+.btn-purple{background:#A855F7;color:#fff}.btn-purple:hover{background:#b96eff}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#111;border:1px solid #222;border-radius:16px;padding:48px 40px;max-width:460px;width:90%;position:relative}
+.modal h3{font-size:24px;color:#fff;font-weight:700;margin-bottom:6px}
+.modal .sub{color:#888;font-size:14px;margin-bottom:28px}
+.modal input{width:100%;padding:14px 16px;border-radius:8px;border:1px solid #333;background:#0a0a0a;color:#fff;font-size:15px;margin-bottom:14px;outline:none;transition:border-color .2s}
+.modal input:focus{border-color:#FFD700}
+.modal .submit-btn{width:100%;padding:14px;border-radius:8px;background:#FFD700;color:#0a0a0a;font-weight:700;font-size:16px;border:none;cursor:pointer;transition:background .2s}
+.modal .submit-btn:hover{background:#ffe44d}
+.modal .close{position:absolute;top:16px;right:20px;font-size:24px;color:#666;cursor:pointer;background:none;border:none}
+.modal .close:hover{color:#fff}
+.modal .privacy{font-size:12px;color:#555;margin-top:14px;text-align:center}
+.footer{text-align:center;padding:40px 24px;border-top:1px solid #151515;color:#555;font-size:13px}
+.footer span{color:#FFD700}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="tag">Free Resources</div>
+  <h1>AI Agent Playbooks for <span>Modern Leaders</span></h1>
+  <p>Actionable frameworks, calculators, and guides used by teams deploying AI agent workforces — from readiness to ROI.</p>
+</div>
+<div class="grid">
+  <div class="card">
+    <div class="card-img"><span class="icon">✅</span></div>
+    <div class="card-body">
+      <div class="label">Checklist • 25 Questions</div>
+      <h2>AI Workforce Readiness Audit</h2>
+      <p>Score your organization across 5 dimensions — Operations, Technology, Security, Culture, and ROI — before deploying AI agents.</p>
+      <button class="btn btn-gold" onclick="openModal('ai-audit-checklist.html','AI Workforce Readiness Checklist')">Download Free →</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-img"><span class="icon">📊</span></div>
+    <div class="card-body">
+      <div class="label">Calculator • Fillable Template</div>
+      <h2>AI Agent ROI Calculator</h2>
+      <p>Plug in your numbers and see exactly what AI agents save you — with real formulas, industry benchmarks, and a 12-month projection.</p>
+      <button class="btn btn-blue" onclick="openModal('roi-template.html','AI Agent ROI Calculator')">Download Free →</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-img"><span class="icon">📘</span></div>
+    <div class="card-body">
+      <div class="label">Guide • 10 Sections</div>
+      <h2>The CIO's Guide to Buying AI Agent Services</h2>
+      <p>Everything a technical buyer needs — vendor evaluation, red flags, pricing benchmarks, security requirements, and implementation timelines.</p>
+      <button class="btn btn-purple" onclick="openModal('buyer-guide.html','CIO Buyer Guide')">Download Free →</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">&times;</button>
+    <h3 id="modal-title">Get Your Free Download</h3>
+    <p class="sub">Instant access. No spam. Unsubscribe anytime.</p>
+    <form id="lead-form" onsubmit="handleSubmit(event)">
+      <input type="text" name="name" placeholder="Full name" required>
+      <input type="email" name="email" placeholder="Work email" required>
+      <input type="text" name="company" placeholder="Company name">
+      <input type="text" name="title" placeholder="Job title">
+      <button type="submit" class="submit-btn">Send Me the Download →</button>
+    </form>
+    <p class="privacy">🔒 We respect your privacy. No spam, ever.</p>
+  </div>
+</div>
+
+<div class="footer">© 2026 <span>AfrexAI</span>. All rights reserved.</div>
+
+<script>
+let targetFile='';
+function openModal(file,title){targetFile=file;document.getElementById('modal-title').textContent='Get: '+title;document.getElementById('modal').classList.add('active')}
+function closeModal(){document.getElementById('modal').classList.remove('active')}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal()})
+function handleSubmit(e){e.preventDefault();const fd=new FormData(e.target);const data=Object.fromEntries(fd);console.log('Lead captured:',data);window.location.href=targetFile}
+</script>
+</body>
+</html>

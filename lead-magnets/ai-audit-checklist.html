@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Workforce Readiness Checklist — AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff;color:#1a1a1a;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.7;max-width:820px;margin:0 auto;padding:40px 32px}
+.cover{text-align:center;padding:60px 0 50px;border-bottom:3px solid #FFD700;margin-bottom:48px}
+.cover .logo{font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:20px}
+.cover h1{font-size:36px;font-weight:800;color:#0a0a0a;line-height:1.2;margin-bottom:12px}
+.cover .subtitle{font-size:18px;color:#666;margin-bottom:24px}
+.cover .meta{font-size:13px;color:#999}
+.intro{background:#f8f8f8;border-left:4px solid #FFD700;padding:24px 28px;border-radius:0 8px 8px 0;margin-bottom:48px;font-size:15px;color:#555}
+.section{margin-bottom:40px;page-break-inside:avoid}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.section-num{width:40px;height:40px;background:#0a0a0a;color:#FFD700;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+.section-header h2{font-size:22px;font-weight:700;color:#0a0a0a}
+.question{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid #f0f0f0}
+.question:last-child{border-bottom:none}
+.q-num{width:28px;height:28px;background:#f5f5f5;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#888;flex-shrink:0;margin-top:2px}
+.q-content{flex:1}
+.q-text{font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
+.q-helper{font-size:13px;color:#888;font-style:italic}
+.score-row{display:flex;gap:6px;margin-top:8px}
+.score-row span{width:28px;height:28px;border:2px solid #ddd;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#999;cursor:pointer}
+.scoring-guide{background:#0a0a0a;color:#fff;padding:40px 36px;border-radius:12px;margin:48px 0}
+.scoring-guide h2{font-size:24px;font-weight:700;color:#FFD700;margin-bottom:24px;text-align:center}
+.tier{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #222}
+.tier:last-child{border-bottom:none}
+.tier-range{background:rgba(255,215,0,.1);color:#FFD700;font-weight:800;padding:8px 16px;border-radius:8px;white-space:nowrap;align-self:flex-start;font-size:14px}
+.tier-body h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.tier-body p{font-size:14px;color:#999}
+.cta{text-align:center;padding:48px 32px;background:linear-gradient(135deg,#0a0a0a,#1a1a1a);border-radius:12px;margin-top:48px}
+.cta h2{font-size:28px;color:#fff;font-weight:800;margin-bottom:10px}
+.cta p{color:#999;margin-bottom:24px;font-size:16px}
+.cta a{display:inline-block;background:#FFD700;color:#0a0a0a;font-weight:700;padding:16px 40px;border-radius:8px;font-size:16px;transition:background .2s}
+.cta a:hover{background:#ffe44d;text-decoration:none}
+.footer{text-align:center;padding:32px 0;font-size:12px;color:#ccc;margin-top:40px}
+.footer span{color:#FFD700}
+@media print{
+  body{padding:20px;font-size:13px}
+  .cover{padding:30px 0 20px;margin-bottom:24px}
+  .cover h1{font-size:26px}
+  .cta{background:#f5f5f5 !important;color:#0a0a0a !important;-webkit-print-color-adjust:exact}
+  .cta h2,.cta p{color:#0a0a0a !important}
+  .scoring-guide{background:#f5f5f5 !important;-webkit-print-color-adjust:exact}
+  .scoring-guide h2{color:#0a0a0a !important}
+  .tier-body h3{color:#0a0a0a}
+  .tier-body p{color:#555}
+  .section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="logo">AfrexAI</div>
+  <h1>The AI Workforce Readiness Checklist</h1>
+  <div class="subtitle">25 Questions to Ask Before Deploying AI Agents</div>
+  <div class="meta">2026 Edition &nbsp;•&nbsp; Estimated completion: 15 minutes</div>
+</div>
+
+<div class="intro">
+  <strong>How to use this checklist:</strong> Rate each question from 1 (not at all) to 5 (fully ready). Be honest — this is for your team, not for show. Total your scores at the end to see where you stand and what to prioritize before deploying an AI agent workforce.
+</div>
+
+<div class="section">
+  <div class="section-header"><div class="section-num">A</div><h2>Operations &amp; Process Readiness</h2></div>
+  <div class="question"><div class="q-num">1</div><div class="q-content"><div class="q-text">Are your core workflows documented in writing (SOPs, runbooks, or wikis)?</div><div class="q-helper">AI agents need explicit instructions. Tribal knowledge doesn't transfer.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">2</div><div class="q-content"><div class="q-text">Can you identify 3+ repetitive tasks that consume more than 10 hours/week each?</div><div class="q-helper">High-volume, rule-based tasks are where AI agents deliver fastest ROI.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">3</div><div class="q-content"><div class="q-text">Do you have clear KPIs for the processes you want to automate?</div><div class="q-helper">Without baseline metrics, you can't measure AI agent impact.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">4</div><div class="q-content"><div class="q-text">Is there a single owner responsible for each process you'd delegate to AI?</div><div class="q-helper">Agents need a human counterpart for escalations and feedback loops.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">5</div><div class="q-content"><div class="q-text">Do your current error/exception rates fall below 5% for target workflows?</div><div class="q-helper">Chaotic processes amplify AI errors. Clean up first, then automate.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+</div>
+
+<div class="section">
+  <div class="section-header"><div class="section-num">B</div><h2>Technology &amp; Infrastructure</h2></div>
+  <div class="question"><div class="q-num">6</div><div class="q-content"><div class="q-text">Do your critical business systems offer APIs or webhook integrations?</div><div class="q-helper">AI agents work through APIs. Closed systems require workarounds or RPA bridges.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">7</div><div class="q-content"><div class="q-text">Is your data structured, clean, and accessible (not trapped in PDFs or spreadsheets)?</div><div class="q-helper">Garbage in, garbage out — this applies to AI agents even more than to people.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">8</div><div class="q-content"><div class="q-text">Do you have a staging or sandbox environment for testing new tools?</div><div class="q-helper">You should never deploy AI agents directly into production without testing.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">9</div><div class="q-content"><div class="q-text">Can your IT team provision new service accounts and API keys within 48 hours?</div><div class="q-helper">Slow provisioning is the #1 blocker for AI agent deployments.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">10</div><div class="q-content"><div class="q-text">Do you have monitoring/alerting in place for your current tech stack?</div><div class="q-helper">AI agents need observability — logs, alerts, dashboards — just like any team member.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+</div>
+
+<div class="section">
+  <div class="section-header"><div class="section-num">C</div><h2>Security &amp; Compliance</h2></div>
+  <div class="question"><div class="q-num">11</div><div class="q-content"><div class="q-text">Do you have a data classification policy (public, internal, confidential, restricted)?</div><div class="q-helper">AI agents need clear guardrails on what data they can access and process.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">12</div><div class="q-content"><div class="q-text">Can you implement role-based access control (RBAC) for AI agent service accounts?</div><div class="q-helper">Principle of least privilege applies to AI agents. They should only access what they need.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">13</div><div class="q-content"><div class="q-text">Does your organization have an AI usage policy or acceptable use framework?</div><div class="q-helper">If not, you'll need one before deployment. Regulators are watching.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">14</div><div class="q-content"><div class="q-text">Are your vendor security review and procurement processes defined?</div><div class="q-helper">SOC 2, data residency, and subprocessor agreements matter for AI vendors.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">15</div><div class="q-content"><div class="q-text">Can you maintain audit trails for all actions AI agents take in your systems?</div><div class="q-helper">Every action an agent takes should be logged, traceable, and reviewable.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+</div>
+
+<div class="section">
+  <div class="section-header"><div class="section-num">D</div><h2>Culture &amp; Change Management</h2></div>
+  <div class="question"><div class="q-num">16</div><div class="q-content"><div class="q-text">Does leadership actively sponsor AI adoption (not just tolerate it)?</div><div class="q-helper">AI initiatives without executive buy-in fail 73% of the time (McKinsey, 2025).</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">17</div><div class="q-content"><div class="q-text">Have you communicated to staff that AI agents augment (not replace) their roles?</div><div class="q-helper">Fear kills adoption. Frame AI agents as digital teammates, not replacements.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">18</div><div class="q-content"><div class="q-text">Is there a designated AI champion or change manager on your team?</div><div class="q-helper">Someone needs to own the rollout, training, and feedback collection.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">19</div><div class="q-content"><div class="q-text">Has your team used any AI tools (ChatGPT, Copilot, etc.) in the last 6 months?</div><div class="q-helper">Prior AI exposure dramatically reduces friction in agent adoption.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">20</div><div class="q-content"><div class="q-text">Do you have a feedback loop for employees to report AI agent issues without friction?</div><div class="q-helper">Agents improve through human feedback. Make reporting easy and blame-free.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+</div>
+
+<div class="section">
+  <div class="section-header"><div class="section-num">E</div><h2>ROI &amp; Business Case</h2></div>
+  <div class="question"><div class="q-num">21</div><div class="q-content"><div class="q-text">Can you estimate the fully-loaded hourly cost of the roles AI agents would support?</div><div class="q-helper">Include salary, benefits, overhead, management time. Most US roles run $45–$85/hr fully loaded.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">22</div><div class="q-content"><div class="q-text">Have you modeled the cost of inaction (doing nothing) for the next 12 months?</div><div class="q-helper">Rising labor costs + competitor automation = compounding disadvantage.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">23</div><div class="q-content"><div class="q-text">Is your budget allocated for at least a 90-day pilot program?</div><div class="q-helper">Expect 30 days setup, 30 days optimization, 30 days measurement. Plan for $3K–$12K/mo.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">24</div><div class="q-content"><div class="q-text">Have you defined what "success" looks like at 30, 60, and 90 days?</div><div class="q-helper">Vague goals lead to vague results. Set concrete milestones before day one.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+  <div class="question"><div class="q-num">25</div><div class="q-content"><div class="q-text">Can you project a breakeven point within the first 6 months?</div><div class="q-helper">Most AI agent deployments break even in 2–4 months. If you can't see a path, reassess scope.</div><div class="score-row"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>
+</div>
+
+<div class="scoring-guide">
+  <h2>📊 Your Score</h2>
+  <p style="text-align:center;color:#999;margin-bottom:28px;font-size:15px">Add up your scores across all 25 questions. Maximum: 125 points.</p>
+  <div class="tier">
+    <div class="tier-range">100 – 125</div>
+    <div class="tier-body"><h3 style="color:#4ade80">🟢 Ready to Deploy</h3><p>Your organization is well-prepared. You should see ROI within 60 days of deployment. Move fast — your competitors probably already are.</p></div>
+  </div>
+  <div class="tier">
+    <div class="tier-range">75 – 99</div>
+    <div class="tier-body"><h3 style="color:#FFD700">🟡 Almost Ready</h3><p>You're close. Focus on the categories where you scored lowest — a targeted 2–4 week preparation sprint will get you there.</p></div>
+  </div>
+  <div class="tier">
+    <div class="tier-range">50 – 74</div>
+    <div class="tier-body"><h3 style="color:#fb923c">🟠 Foundation Building Needed</h3><p>Start with a limited pilot on your strongest-scoring area. Use early wins to build the case for broader investment.</p></div>
+  </div>
+  <div class="tier">
+    <div class="tier-range">25 – 49</div>
+    <div class="tier-body"><h3 style="color:#f87171">🔴 Not Yet Ready</h3><p>Focus on documenting processes, cleaning data, and building leadership buy-in. Consider a readiness consultation to create your roadmap.</p></div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Want Us to Run This Audit For You?</h2>
+  <p>Our team will assess your readiness across all 25 dimensions, identify quick wins, and build a custom deployment roadmap — free for qualified businesses.</p>
+  <a href="https://afrexai.com/book">Book Your Free AI Readiness Audit →</a>
+</div>
+
+<div class="footer">© 2026 <span>AfrexAI</span> &nbsp;•&nbsp; afrexai.com</div>
+</body>
+</html>
