@@ -12,9 +12,9 @@
 - Not chatbots. Not dashboards. Agents that actually do the work.
 
 ## The 3-Step Plan
-1. **Skills & Workflows** (CURRENT) — ClawHub skills, landing pages, tools
-2. **Service Accounts** — agents with their own Gmails, integrations, identities
-3. **Agent as a Service** — selling fully deployed agent accounts as recurring revenue
+1. **Skills** (CURRENT) — ClawHub skills, landing pages, tools
+2. **Agents** — deploy and manage AI agents for customers on their systems
+3. **AfrexAI Hosted Agents** — fully hosted agent workforce on our infrastructure, recurring revenue
 
 ## Key Links
 - **Website:** afrexai.com

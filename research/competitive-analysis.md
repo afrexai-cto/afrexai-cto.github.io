@@ -235,3 +235,30 @@ This undercuts 11x.ai by 5-10x while offering broader functionality.
 - Various competitor websites
 
 *Note: Pricing data gathered Feb 2026. Competitors frequently change pricing — verify before using in sales materials.*
+
+---
+
+## Market Intel Update — Feb 14, 2026
+
+### Big Consulting AI Agent Race (Source: Business Insider, Feb 13)
+- **McKinsey:** 25,000 AI agents deployed in <2 years (CEO Bob Sternfels, CES Jan 2026)
+- **EY:** Global engineering chief Steve Newman says "a handful of agents" do the heavy lifting. Tracks value via KPIs for productivity, quality, cost — not agent count.
+- **PwC:** Chief AI officer Dan Priest says quantity is "probably the wrong measure" — quality matters more.
+- **Implication for AfrexAI:** Big 4 are validating the market but creating confusion (25K agents = hype). Our positioning ("3-5 agents that actually work") is the antidote. Use this contrast in sales conversations.
+
+### AI Agent Pricing Trends (Source: Chargebee, Feb 2026)
+- Per-seat pricing is dying for AI agents (agents replace seats)
+- Per-action pricing punishes multi-threaded workflows
+- Flat fees nuke margins on heavy users
+- Market moving toward **outcome-based** and **hybrid** pricing models
+- **Implication for AfrexAI:** Our tiered ACV model ($140K-$800K) aligned with outcomes is ahead of the curve. Consider adding an explicit "pay for results" guarantee tier.
+
+## Neurons Lab (Updated 2026-02-15)
+- **Position:** AI-exclusive consultancy, FSI specialist (unlike Big 4 who do broader digital transformation)
+- **Clients:** Visa, AXA, SMFG — major enterprise logos
+- **Credibility:** AWS Advanced Tier partner (GenAI + Financial Services competencies), 100+ enterprise AI projects
+- **Content play:** Heavy SEO — publishing "Top 8 AI Consulting Firms" lists where they rank #1, "Agentic AI in Financial Services" roundups, LLM comparison guides
+- **Threat level:** MEDIUM-HIGH — They're the closest analog to AfrexAI's positioning (AI-exclusive, FSI-focused) but much larger and established
+- **Differentiation vs AfrexAI:** They're a traditional consultancy (proposals, SOWs, long cycles). AfrexAI is managed agents (always-on, outcome-based). Different delivery model even if same ICP.
+- **Opportunity:** Study their content strategy — they rank for high-intent keywords. AfrexAI should target long-tail keywords they don't cover (e.g., "AI agent for KYC automation", "managed AI compliance agent")
+- **Partnership potential:** LOW — direct competitor in FSI space
