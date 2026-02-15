@@ -69,6 +69,14 @@ header h1{color:var(--gold);font-size:1.2rem;white-space:nowrap}
   header{flex-direction:column;align-items:flex-start}
 }
 </style>
+    <meta property="og:title" content="AfrexAI War Room">
+    <meta property="og:description" content="AfrexAI War Room - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/board/">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI War Room">
+    <meta name="twitter:description" content="AfrexAI War Room - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
 </head>
 <body>
 
@@ -139,7 +147,7 @@ const DEFAULT_TASKS=[
   {id:1,title:'Replace Monument Realty target',status:'triage',step:'Step 2',priority:'Low',assignee:'Kael',note:''},
   {id:2,title:'Refresh LinkedIn API token',status:'triage',step:'Step 1',priority:'Low',assignee:'Kael',note:''},
   {id:3,title:'Google Workspace Admin API for agent accounts',status:'triage',step:'Step 2',priority:'Medium',assignee:'Kalin',note:''},
-  {id:4,title:'Publish 5 ClawHub skills',status:'backlog',step:'Step 1',priority:'High',assignee:'Kael',note:''},
+  {id:4,title:'Publish 5 ClawHub skills',status:'blocked',step:'Step 1',priority:'High',assignee:'Kael',note:'Rate limited — 20/24h cap hit. 5 skills built locally, retry after reset.'},
   {id:5,title:'Build Docker containerization for OpenClaw',status:'backlog',step:'Step 3',priority:'High',assignee:'Kalin',note:''},
   {id:6,title:'Stripe billing integration',status:'backlog',step:'Step 3',priority:'Medium',assignee:'Kalin',note:''},
   {id:7,title:'Build 10 more ClawHub skills from workflows',status:'backlog',step:'Step 1',priority:'Medium',assignee:'Kael',note:''},
@@ -179,7 +187,9 @@ const DEFAULT_TASKS=[
   {id:41,title:'Set up Formspree account + wire endpoints',status:'backlog',step:'All',priority:'High',assignee:'Kalin',note:'Lead capture + newsletter forms'},
   {id:42,title:'Set up GA4 property + run analytics script',status:'backlog',step:'All',priority:'High',assignee:'Kalin',note:'Track all page visits'},
   {id:43,title:'Custom domain (afrexai.com → GitHub Pages)',status:'backlog',step:'All',priority:'High',assignee:'Kalin',note:'$12/yr, huge credibility boost'},
-  {id:44,title:'Create OG image (1200x630)',status:'backlog',step:'All',priority:'Medium',assignee:'Kael',note:'For social sharing previews'}
+  {id:44,title:'Create OG image (1200x630)',status:'backlog',step:'All',priority:'Medium',assignee:'Kael',note:'For social sharing previews'},
+  {id:45,title:'Results page — social proof aggregator',status:'done',step:'All',priority:'High',assignee:'Kael',note:'https://afrexai-cto.github.io/results/'},
+  {id:46,title:'5 new ClawHub skills built (competitor-intel, weekly-report, client-health, sow-generator, standup-bot)',status:'done',step:'Step 1',priority:'High',assignee:'Kael',note:'Built locally, awaiting rate limit reset to publish'}
 ];
 
 let tasks=[];

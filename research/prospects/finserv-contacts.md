@@ -34,3 +34,21 @@
 | Valley Bank | Compliance team (H., Amy Lubow) | Identified | Research full name of CCO, draft outreach |
 | Enova International | Sean Rahilly (GC/CCO) | Identified | Draft SB 24-205 compliance email — ML lending in scope |
 | Homebot | Charlie Pratt (CEO) | Identified | Draft SB 24-205 email — Denver fintech, directly affected |
+
+## Valley Bank — WorkFusion Customer (HIGH PRIORITY)
+- **Chief Enterprise Compliance Officer & Head of Regulatory Relations**: Name starts with H. (from LeadIQ directory)
+- **HQ**: Wayne, NJ
+- **Why target**: Confirmed WorkFusion customer, mid-market (~$60B assets), will feel UiPath pricing pressure
+- **Angle**: WorkFusion consolidation email (Version A)
+- **Next step**: Find full name + LinkedIn via deeper research
+- **Source**: LeadIQ directory, Feb 2026
+
+
+## Raymond James — Rob Patchett (NEW)
+- **Rob Patchett** — Global Chief Privacy Officer & IT Chief Compliance Officer
+- **Company**: Raymond James Financial ($12B+ revenue, Fortune 500)
+- **Background**: 20+ years privacy, security, operational risk, compliance in financial services
+- **Why target**: Confirmed WorkFusion customer, large compliance org, privacy/AI governance overlap
+- **Angle**: WorkFusion consolidation email + AI governance for privacy compliance
+- **Note**: Raymond James is larger than our ideal sweet spot — may be better as credibility target than initial close. Consider Brock Miller (previously identified) for compliance-specific outreach.
+- **Source**: Financial Planning magazine profile, Feb 2026

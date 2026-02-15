@@ -56,6 +56,24 @@ Source: Web research, Legalweek 2026 speakers, legal press
 - **Why:** Energy/infrastructure focus = regulatory-heavy, document-intensive.
 - **Angle:** Regulatory compliance automation for energy sector clients.
 
+### 9. McGuireWoods LLP
+- **Am Law Rank:** ~55 | **Revenue:** ~$1.5B
+- **Target:** Tom Trujillo, Chief Innovation and AI Officer (hired from Winston & Strawn)
+- **Why:** Created a dedicated C-suite AI role. New CIO Christopher Mackie hired Jan 2026 — both are building out tech infrastructure simultaneously. Firm is actively investing in AI transformation.
+- **Angle:** "You have the leadership. We bring the implementation. Deploy AI agents across contract review and compliance without pulling your innovation team into build mode."
+
+### 10. Husch Blackwell
+- **Am Law Rank:** ~95 | **Revenue:** ~$650M
+- **Why:** Known for innovation — launched their own legal tech incubator. 800+ attorneys, strong in healthcare, financial services, and energy — all our target verticals.
+- **Target:** Michael Yang, AI and Data Leader (recruited from Adobe, per LawFuel Jan 2026). Also: Angela Quinn, new COO (Feb 2025) — restructured leadership for growth.
+- **Angle:** "You've invested in innovation culture. Let's turn that into deployed AI agents that bill hours while your lawyers sleep."
+
+### 11. Littler Mendelson
+- **Am Law Rank:** ~45 | **Revenue:** ~$1.8B
+- **Why:** Largest employment & labor law firm globally. 1,700+ attorneys. Employment law = massive document volume (handbooks, policies, compliance filings). Highly repetitive workflows ideal for AI agents.
+- **Target:** CIO or Chief Innovation Officer (research needed)
+- **Angle:** "Employment law generates thousands of similar documents. AI agents can draft, review, and update policies across 100+ jurisdictions simultaneously."
+
 ## Tier 3 — Aspirational (Build Credibility First)
 
 ### 9. White & Case
@@ -104,3 +122,11 @@ Source: Web research, Legalweek 2026 speakers, legal press
 
 ### Key Stat for Outreach
 - **60% of enterprise companies are hiring Chief AI Officers** (Wharton study, cited by Artificial Lawyer Jan 2026). Law firms following suit in 2026. Window of opportunity: these new hires need implementation partners NOW.
+
+### 13. Littler Mendelson LLP
+- **Am Law Rank:** ~45 | **Revenue:** ~$1.8B | **Attorneys:** 1,700+
+- **Target:** Carlos Gonzalez, Chief Digital Innovation Officer (hired Jan 12, 2026)
+- **Background:** Former EVP & CIO at Excelitas Technologies (photonics). Enterprise tech executive, not legal-native.
+- **Why:** Largest employment & labor law firm in the world. Massive repetitive document workflows (employment contracts, compliance filings, workplace investigations). Brand new CDIO hire = budget allocated, mandate to transform, needs implementation partners.
+- **Angle:** "You just took on the biggest digital transformation in employment law. We deploy AI agents that handle the repetitive 80% — employment doc processing, compliance screening, investigation intake — so your 1,700 attorneys focus on the 20% that needs human judgment."
+- **Source:** Littler.com press release Jan 2026, Law360 Pulse
