@@ -41,6 +41,7 @@
 - **15 Email Templates** — 5 per step, conversational tone, no emojis/bullets.
 - **Build Cron** — 8am/8pm daily autonomous build sprints.
 - **GitHub PAT for afrexai-cto**: `op read "op://AfrexAI/GitHub/afrexai_token"` — item "GitHub" (qfo3tq5gtc2g4y2l3eg53eql3u), field "afrexai_token". Use this to push. Clean URL after.
+- **Git push method**: SSH deploy key at `~/.ssh/afrexai-deploy`. Remote: `git@github-afrexai:afrexai-cto/afrexai-cto.github.io.git`. HTTPS hangs on this machine — always use SSH. Key ID 143011347 on GitHub.
 - **GitHub Pages: https://afrexai-cto.github.io/** — 22+ pages, all case studies, homepage, pricing, blog
 - ClawHub skills: afrexai-humanizer, afrexai-prospect-researcher, afrexai-email-triager (+10 publishing)
 - Storefront: https://afrexai-cto.github.io/context-packs/
