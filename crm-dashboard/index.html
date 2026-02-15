@@ -109,7 +109,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
     <h2>🏢 Top 50 Companies</h2>
     <div class="table-wrap">
       <table id="companies-table">
-        <thead><tr><th>#</th><th>Company</th><th>City</th><th>State</th><th>Industry</th><th>Employees</th></tr></thead>
+        <thead><tr><th>#</th><th>Company</th><th>Email</th><th>City</th><th>State</th><th>Industry</th><th>Employees</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -195,7 +195,7 @@ function render(){
   // Table
   const tbody=document.querySelector('#companies-table tbody');
   tbody.innerHTML=DATA.topCompanies.map((c,i)=>`
-    <tr><td>${i+1}</td><td>${c.name}</td><td>${c.city||'—'}</td><td>${c.state||'—'}</td><td>${c.industry||'—'}</td><td>${fmt(c.employees)}</td></tr>
+    <tr><td>${i+1}</td><td>${c.name}</td><td>${c.email||'—'}</td><td>${c.city||'—'}</td><td>${c.state||'—'}</td><td>${c.industry||'—'}</td><td>${fmt(c.employees)}</td></tr>
   `).join('');
 }
 
