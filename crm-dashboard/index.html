@@ -19,7 +19,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .login-box button:hover{background:#e6c200}
 .login-error{color:#ff4444;font-size:.85rem;margin-bottom:12px;display:none}
 /* Dashboard */
-#dashboard{display:none;max-width:1200px;margin:0 auto;padding:20px}
+#dashboard{display:none;max-width:100%;margin:0 auto;padding:20px}
 header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;flex-wrap:wrap;gap:12px}
 header h1{color:var(--gold);font-size:1.6rem;font-weight:800}
 header .updated{color:var(--muted);font-size:.85rem}
@@ -37,8 +37,9 @@ section h2{color:var(--gold);font-size:1.2rem;margin-bottom:16px;padding-bottom:
 .pipeline-bar{background:linear-gradient(90deg,var(--gold),#b8960f);height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:.75rem;font-weight:700;color:#0a0a0a;min-width:fit-content;white-space:nowrap}
 .pipeline-value{width:120px;text-align:right;font-size:.85rem;color:var(--muted);flex-shrink:0}
 /* Table */
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.table-wrap{overflow-x:visible}
+table{width:100%;border-collapse:collapse;font-size:.75rem;table-layout:auto}
+table td,table th{white-space:nowrap;padding:8px 6px}
 th{text-align:left;padding:10px 12px;background:#1a1a1a;color:var(--gold);font-weight:600;white-space:nowrap;position:sticky;top:0}
 td{padding:10px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
 tr:hover td{background:#1a1a1a}
