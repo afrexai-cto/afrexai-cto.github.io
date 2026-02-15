@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started with AfrexAI Skills — Setup Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7}
+a{color:#FFD700;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+header{padding:20px 0;border-bottom:1px solid #1a1a1a}
+header .inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.4rem;font-weight:700;color:#FFD700}
+.logo span{color:#e0e0e0}
+nav a{margin-left:24px;font-size:.9rem;color:#999}
+nav a:hover{color:#FFD700}
+
+.hero{text-align:center;padding:80px 24px 60px}
+.hero h1{font-size:2.4rem;color:#fff;margin-bottom:12px}
+.hero p{color:#888;font-size:1.1rem}
+
+.step{margin-bottom:48px}
+.step-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#FFD700;color:#0a0a0a;font-weight:700;font-size:1.1rem;margin-bottom:12px}
+.step h2{color:#fff;font-size:1.3rem;margin-bottom:12px}
+.step p{color:#bbb;margin-bottom:16px}
+
+.terminal{background:#111;border:1px solid #222;border-radius:8px;padding:20px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.9rem;color:#4af;overflow-x:auto;margin:16px 0}
+.terminal .comment{color:#666}
+.terminal .cmd{color:#4af}
+.terminal .output{color:#6c6}
+
+.diagram{background:#111;border:1px solid #222;border-radius:8px;padding:24px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:.8rem;color:#888;text-align:center;margin:16px 0;overflow-x:auto;white-space:pre}
+
+.faq{margin-top:80px;margin-bottom:60px}
+.faq h2{text-align:center;color:#fff;font-size:1.8rem;margin-bottom:40px}
+.faq-item{border-bottom:1px solid #1a1a1a;padding:20px 0}
+.faq-item h3{color:#FFD700;font-size:1rem;margin-bottom:8px}
+.faq-item p{color:#999;font-size:.95rem}
+
+.cta-box{text-align:center;background:#111;border-radius:12px;padding:48px 24px;margin-bottom:60px}
+.cta-box h2{color:#fff;margin-bottom:12px}
+.cta-box p{color:#888;margin-bottom:24px}
+.btn{display:inline-block;padding:14px 32px;border-radius:6px;font-weight:600;font-size:1rem}
+.btn-gold{background:#FFD700;color:#0a0a0a}
+.btn-gold:hover{text-decoration:none;background:#e6c200}
+.btn-outline{border:1px solid #FFD700;color:#FFD700;margin-left:12px}
+.btn-outline:hover{background:#FFD700;color:#0a0a0a;text-decoration:none}
+
+footer{text-align:center;padding:40px 0;color:#444;font-size:.85rem;border-top:1px solid #1a1a1a}
+</style>
+</head>
+<body>
+
+<header>
+<div class="inner">
+<a href="index.html" class="logo">Afrex<span>AI</span> Skills</a>
+<nav>
+<a href="index.html">Skills</a>
+<a href="https://clawhub.dev">ClawHub</a>
+<a href="https://cal.com/afrexai">Book a Call</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<h1>Getting Started</h1>
+<p>From zero to running skills in under 15 minutes.</p>
+</section>
+
+<section>
+<div class="container">
+
+<div class="diagram">
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│  1. Install  │────▶│  2. Browse   │────▶│  3. Install  │────▶│ 4. Configure │────▶│   5. Run!    │
+│   OpenClaw   │     │   ClawHub    │     │    Skills    │     │    Agent     │     │              │
+└──────────────┘     └──────────────┘     └──────────────┘     └──────────────┘     └──────────────┘
+</div>
+
+<div class="step">
+<div class="step-number">1</div>
+<h2>Install OpenClaw</h2>
+<p>If you haven't already, install OpenClaw on your machine. It takes about 2 minutes.</p>
+<div class="terminal">
+<span class="comment"># Install OpenClaw via the official installer</span><br>
+<span class="cmd">curl -fsSL https://get.openclaw.dev | sh</span><br><br>
+<span class="comment"># Verify installation</span><br>
+<span class="cmd">openclaw --version</span><br>
+<span class="output">openclaw v2.x.x</span><br><br>
+<span class="comment"># Start the gateway</span><br>
+<span class="cmd">openclaw gateway start</span><br>
+<span class="output">Gateway running on localhost:3000</span>
+</div>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<h2>Browse ClawHub</h2>
+<p>Visit <a href="https://clawhub.dev">clawhub.dev</a> to explore available skills. Filter by category, sort by popularity, and read reviews from other operators.</p>
+<div class="diagram">
+┌─────────────────────────────────────────────┐
+│             ClawHub Marketplace              │
+├─────────────────────────────────────────────┤
+│                                             │
+│  🔍 Search skills...                        │
+│                                             │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐    │
+│  │  Slack   │  │ HubSpot │  │  Email  │    │
+│  │  $47     │  │  $97    │  │  $47    │    │
+│  │  ★★★★★  │  │  ★★★★☆  │  │  ★★★★★  │    │
+│  └─────────┘  └─────────┘  └─────────┘    │
+│                                             │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐    │
+│  │ Browser │  │   RAG   │  │  Audit  │    │
+│  │  $97    │  │  $147   │  │  $147   │    │
+│  │  ★★★★☆  │  │  ★★★★★  │  │  ★★★★☆  │    │
+│  └─────────┘  └─────────┘  └─────────┘    │
+│                                             │
+└─────────────────────────────────────────────┘
+</div>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<h2>Install Skills</h2>
+<p>Install skills directly from the command line. Each skill downloads and registers itself with your OpenClaw instance automatically.</p>
+<div class="terminal">
+<span class="comment"># Install a skill from ClawHub</span><br>
+<span class="cmd">openclaw skill install afrexai/slack-integration</span><br>
+<span class="output">✓ Downloaded slack-integration v1.4.2</span><br>
+<span class="output">✓ Registered with gateway</span><br>
+<span class="output">✓ Ready to use</span><br><br>
+<span class="comment"># Install multiple skills at once</span><br>
+<span class="cmd">openclaw skill install afrexai/hubspot-crm afrexai/email-composer afrexai/report-builder</span><br>
+<span class="output">✓ 3 skills installed successfully</span><br><br>
+<span class="comment"># List installed skills</span><br>
+<span class="cmd">openclaw skill list</span><br>
+<span class="output">  slack-integration    v1.4.2   active</span><br>
+<span class="output">  hubspot-crm          v2.1.0   active</span><br>
+<span class="output">  email-composer        v1.0.3   active</span><br>
+<span class="output">  report-builder        v1.2.1   active</span>
+</div>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<h2>Configure Your Agent</h2>
+<p>Each skill comes with a SKILL.md that documents its configuration. Most skills work out of the box with sensible defaults. Add API keys where needed.</p>
+<div class="terminal">
+<span class="comment"># View a skill's configuration options</span><br>
+<span class="cmd">openclaw skill config afrexai/slack-integration</span><br>
+<span class="output">  SLACK_TOKEN        required   Bot token for workspace</span><br>
+<span class="output">  SLACK_CHANNEL      optional   Default channel (general)</span><br>
+<span class="output">  SLACK_THREAD       optional   Thread replies (true)</span><br><br>
+<span class="comment"># Set configuration values</span><br>
+<span class="cmd">openclaw skill config set afrexai/slack-integration SLACK_TOKEN "xoxb-your-token"</span><br>
+<span class="output">✓ Configuration saved</span>
+</div>
+</div>
+
+<div class="step">
+<div class="step-number">5</div>
+<h2>Run Your Agents</h2>
+<p>That's it. Your agents now have access to the installed skills. They'll discover and use them automatically based on their SOUL.md and the task at hand.</p>
+<div class="terminal">
+<span class="comment"># Start your agent — skills are automatically available</span><br>
+<span class="cmd">openclaw agent start</span><br>
+<span class="output">Agent "main" started with 4 skills loaded</span><br>
+<span class="output">  ✓ slack-integration</span><br>
+<span class="output">  ✓ hubspot-crm</span><br>
+<span class="output">  ✓ email-composer</span><br>
+<span class="output">  ✓ report-builder</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="faq">
+<div class="container">
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>What version of OpenClaw do I need?</h3>
+<p>All AfrexAI skills support OpenClaw v2.0 and above. Each skill's ClawHub listing specifies exact version requirements. We test against the latest stable release and one version back.</p>
+</div>
+
+<div class="faq-item">
+<h3>How do updates work?</h3>
+<p>When we release an update, run <code style="background:#1a1a1a;padding:2px 6px;border-radius:4px">openclaw skill update afrexai/skill-name</code> to pull the latest version. We publish changelogs on ClawHub so you can review changes before updating. Breaking changes are always flagged with a major version bump.</p>
+</div>
+
+<div class="faq-item">
+<h3>What kind of support do I get?</h3>
+<p>Every skill purchase includes 90 days of email support. Bundle customers get priority support with faster response times. Enterprise customers get a dedicated Slack channel with our engineering team. We also maintain docs and a community forum on ClawHub.</p>
+</div>
+
+<div class="faq-item">
+<h3>What's the refund policy?</h3>
+<p>If a skill doesn't work as documented, we'll fix it or refund you within 30 days. No questions asked. We'd rather have happy customers than hold onto $47.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I use skills across multiple agents?</h3>
+<p>Yes. A single skill purchase covers all agents running on the same OpenClaw instance. If you need to run across multiple instances (e.g., staging and production), contact us about multi-instance licensing.</p>
+</div>
+
+<div class="faq-item">
+<h3>Do you build custom skills?</h3>
+<p>Absolutely. If you need something that doesn't exist on ClawHub, book a call and we'll scope it out. Many of our catalog skills started as custom builds for specific customers.</p>
+</div>
+
+<div class="faq-item">
+<h3>Are skills open source?</h3>
+<p>Skills are source-available — you get the full code on purchase so you can audit, modify, and extend them. You just can't redistribute them. We believe in transparency, especially for code that runs autonomously.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="cta-box">
+<h2>Ready to Get Started?</h2>
+<p>Browse the skill catalog or talk to us about what your agents need.</p>
+<a href="https://clawhub.dev" class="btn btn-gold">Browse ClawHub</a>
+<a href="https://cal.com/afrexai" class="btn btn-outline">Book a Call</a>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 AfrexAI. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Skills</a> &nbsp;|&nbsp; <a href="https://clawhub.dev">ClawHub</a></p>
+</footer>
+
+</body>
+</html>

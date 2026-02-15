@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — AI Agents on Your Infrastructure, Managed by Us</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+header{padding:24px 0;border-bottom:1px solid #1a1a1a}
+header .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.5rem;font-weight:700;color:#FFD700;letter-spacing:-0.5px}
+nav a{margin-left:28px;color:#999;font-size:.9rem}nav a:hover{color:#FFD700}
+.hero{padding:100px 0 80px;text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;color:#fff;max-width:800px;margin:0 auto 24px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.15rem;color:#999;max-width:600px;margin:0 auto 40px}
+.btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:14px 36px;border-radius:6px;font-weight:700;font-size:1rem;transition:opacity .2s}.btn:hover{opacity:.85;text-decoration:none}
+.btn-outline{background:transparent;border:2px solid #FFD700;color:#FFD700}.btn-outline:hover{background:#FFD700;color:#0a0a0a}
+section{padding:80px 0}
+.section-label{color:#FFD700;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+h2{font-size:2rem;font-weight:700;color:#fff;margin-bottom:16px}
+.section-sub{color:#999;max-width:600px;margin-bottom:48px}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;counter-reset:step}
+.step{position:relative;padding:32px 24px;background:#111;border-radius:12px;border:1px solid #1a1a1a}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:16px;right:20px;font-size:2.5rem;font-weight:800;color:#FFD70015}
+.step h3{color:#FFD700;font-size:1.05rem;margin-bottom:8px}
+.step p{color:#999;font-size:.9rem}
+
+/* Agents */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.agent-card{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:28px}
+.agent-card h3{color:#fff;margin-bottom:8px;font-size:1.05rem}
+.agent-card p{color:#999;font-size:.9rem}
+.agent-icon{font-size:1.6rem;margin-bottom:12px}
+
+/* Security */
+.security-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+.sec-card{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:32px;text-align:center}
+.sec-card h3{color:#fff;margin:16px 0 8px}
+.sec-card p{color:#999;font-size:.9rem}
+.sec-icon{font-size:2rem}
+
+/* Case study */
+.case-study{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:48px;max-width:800px;margin:0 auto}
+.case-study .company{color:#FFD700;font-weight:600;font-size:1.1rem;margin-bottom:8px}
+.case-study .quote{font-size:1.2rem;color:#fff;font-style:italic;margin:20px 0}
+.metrics{display:flex;gap:40px;flex-wrap:wrap;margin-top:28px}
+.metric{text-align:center}
+.metric .num{font-size:2.2rem;font-weight:800;color:#FFD700}
+.metric .label{color:#999;font-size:.85rem}
+
+/* Pricing */
+.pricing-box{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:48px;text-align:center;max-width:700px;margin:0 auto}
+.pricing-box h3{color:#fff;font-size:1.4rem;margin-bottom:12px}
+.pricing-box p{color:#999;margin-bottom:28px}
+.price-factors{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
+.price-factor{background:#1a1a1a;padding:12px 20px;border-radius:8px;color:#ccc;font-size:.9rem}
+
+/* CTA */
+.cta-section{text-align:center;padding:100px 0}
+.cta-section h2{font-size:2.2rem;margin-bottom:16px}
+.cta-section p{color:#999;margin-bottom:36px;font-size:1.1rem}
+
+footer{border-top:1px solid #1a1a1a;padding:32px 0;text-align:center;color:#555;font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<div class="logo">AfrexAI</div>
+<nav>
+<a href="#how">How It Works</a>
+<a href="#agents">Agents</a>
+<a href="security.html">Security</a>
+<a href="#pricing">Pricing</a>
+<a href="onboarding-guide.html">Onboarding</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<h1>AI Agents on <span>Your Infrastructure</span>, Managed by Us</h1>
+<p>We deploy, integrate, and manage intelligent agents directly on your systems. Your data never leaves your environment. You get the results — we handle everything else.</p>
+<a href="https://calendly.com/afrexai/ai-workforce-audit" class="btn">Book Your AI Workforce Audit</a>
+</div>
+</section>
+
+<section id="how">
+<div class="container">
+<div class="section-label">How It Works</div>
+<h2>From audit to optimised in 30 days</h2>
+<p class="section-sub">A structured rollout designed to deliver value fast with zero disruption to your team.</p>
+<div class="steps">
+<div class="step"><h3>Audit</h3><p>We map your workflows, identify bottlenecks, and pinpoint where agents will have the highest impact.</p></div>
+<div class="step"><h3>Deploy</h3><p>Agents are installed on your infrastructure — your cloud, your servers, your rules. Nothing leaves your environment.</p></div>
+<div class="step"><h3>Integrate</h3><p>We connect agents to your existing tools — CRM, ERP, email, databases, internal APIs — so they work within your stack.</p></div>
+<div class="step"><h3>Monitor</h3><p>Real-time dashboards track agent performance, accuracy, and throughput. You see everything we see.</p></div>
+<div class="step"><h3>Optimise</h3><p>We continuously tune prompts, workflows, and routing to improve output quality and reduce cost over time.</p></div>
+</div>
+</div>
+</section>
+
+<section id="agents" style="background:#080808">
+<div class="container">
+<div class="section-label">Agent Types</div>
+<h2>Nine agents. One managed platform.</h2>
+<p class="section-sub">Each agent is purpose-built for a specific function. Deploy one or deploy all — we handle the complexity.</p>
+<div class="agents-grid">
+<div class="agent-card"><div class="agent-icon">📧</div><h3>Email Triage Agent</h3><p>Reads, classifies, and routes inbound email. Drafts replies, flags urgency, and surfaces action items — so your team only touches what matters.</p></div>
+<div class="agent-card"><div class="agent-icon">📄</div><h3>Document Processing Agent</h3><p>Extracts data from invoices, contracts, and forms. Validates fields, flags anomalies, and pushes structured output to your systems.</p></div>
+<div class="agent-card"><div class="agent-icon">💬</div><h3>Customer Support Agent</h3><p>Handles tier-1 queries across chat, email, and ticketing systems. Escalates edge cases to humans with full context attached.</p></div>
+<div class="agent-card"><div class="agent-icon">📊</div><h3>Reporting Agent</h3><p>Pulls data from multiple sources, builds dashboards and summaries, and delivers scheduled reports — daily, weekly, or on-demand.</p></div>
+<div class="agent-card"><div class="agent-icon">🔍</div><h3>Research Agent</h3><p>Monitors markets, competitors, regulatory changes, and news. Delivers concise briefs so your team stays informed without the manual effort.</p></div>
+<div class="agent-card"><div class="agent-icon">🗓️</div><h3>Scheduling Agent</h3><p>Coordinates meetings, resolves conflicts, manages follow-ups, and syncs across calendars and time zones automatically.</p></div>
+<div class="agent-card"><div class="agent-icon">✅</div><h3>Quality Assurance Agent</h3><p>Reviews outputs against your standards — documents, code, data entries — and flags errors before they reach clients or production.</p></div>
+<div class="agent-card"><div class="agent-icon">🔄</div><h3>Workflow Orchestration Agent</h3><p>Connects multi-step processes across departments. Triggers handoffs, tracks status, and ensures nothing falls through the cracks.</p></div>
+<div class="agent-card"><div class="agent-icon">📈</div><h3>Sales Intelligence Agent</h3><p>Enriches leads, scores prospects, drafts personalised outreach, and syncs insights back to your CRM — giving your team an edge on every deal.</p></div>
+</div>
+</div>
+</section>
+
+<section id="security">
+<div class="container">
+<div class="section-label">Security</div>
+<h2>Your data stays exactly where it is</h2>
+<p class="section-sub">We manage the agents. You own the infrastructure. That's not a feature — it's the entire architecture.</p>
+<div class="security-grid">
+<div class="sec-card"><div class="sec-icon">🏢</div><h3>Runs on Your Systems</h3><p>Agents deploy to your cloud accounts or on-prem servers. We never host your data.</p></div>
+<div class="sec-card"><div class="sec-icon">🔒</div><h3>Your Data Stays With You</h3><p>All processing happens inside your environment. Nothing is transmitted to external servers.</p></div>
+<div class="sec-card"><div class="sec-icon">🛡️</div><h3>We Just Manage</h3><p>Our access is scoped, auditable, and revocable. We tune the agents — we don't touch your data.</p></div>
+</div>
+<p style="text-align:center;margin-top:32px"><a href="security.html" class="btn-outline btn">Read Our Full Security Overview →</a></p>
+</div>
+</section>
+
+<section style="background:#080808">
+<div class="container">
+<div class="section-label">Case Study</div>
+<h2>Results that speak for themselves</h2>
+<div class="case-study">
+<div class="company">Meridian Capital — Financial Services, 180 employees</div>
+<p>Meridian's operations team was buried in manual processes: invoice reconciliation, client onboarding paperwork, and weekly compliance reporting. Three full-time staff spent most of their week on tasks that added no strategic value.</p>
+<p class="quote">"We deployed three agents with AfrexAI and got 120 hours a month back. Our ops team now focuses on the work that actually moves the business forward."</p>
+<p style="color:#999;font-size:.9rem">— James Whitfield, COO, Meridian Capital</p>
+<div class="metrics">
+<div class="metric"><div class="num">3</div><div class="label">Agents Deployed</div></div>
+<div class="metric"><div class="num">120hrs</div><div class="label">Saved Per Month</div></div>
+<div class="metric"><div class="num">14 days</div><div class="label">To Full Deployment</div></div>
+<div class="metric"><div class="num">4.2×</div><div class="label">ROI in 90 Days</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="pricing">
+<div class="container">
+<div class="section-label">Pricing</div>
+<h2>Custom quotes. No surprises.</h2>
+<div class="pricing-box">
+<h3>Every deployment is different</h3>
+<p>Pricing depends on the number of agents, integration complexity, and your infrastructure setup. We'll scope it during the audit — no obligations, no hidden fees.</p>
+<div class="price-factors">
+<div class="price-factor">Number of agents</div>
+<div class="price-factor">Integration complexity</div>
+<div class="price-factor">Data volume</div>
+<div class="price-factor">Support tier</div>
+</div>
+<a href="https://calendly.com/afrexai/ai-workforce-audit" class="btn">Get a Custom Quote</a>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="container">
+<h2>Ready to put agents to work?</h2>
+<p>Book a free AI Workforce Audit. We'll identify the biggest opportunities in your operations — no commitment required.</p>
+<a href="https://calendly.com/afrexai/ai-workforce-audit" class="btn">Book Your Audit →</a>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>&copy; 2026 AfrexAI. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>

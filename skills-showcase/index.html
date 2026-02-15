@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClawHub Skills Showcase — AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#141414;--card-hover:#1a1a1a;--gold:#FFD700;--gold-dim:#b8960f;--text:#e0e0e0;--text-muted:#888;--border:#222;--radius:12px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Hero */
+.hero{text-align:center;padding:80px 20px 60px;background:linear-gradient(180deg,#111 0%,var(--bg) 100%);border-bottom:1px solid var(--border)}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:16px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.15rem;color:var(--text-muted);max-width:600px;margin:0 auto 32px}
+.hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-badge{background:#1a1a1a;border:1px solid var(--border);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--text-muted)}
+.hero-badge b{color:var(--gold)}
+
+/* Controls */
+.controls{max-width:1200px;margin:0 auto;padding:30px 20px 10px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.search-box{flex:1;min-width:220px;padding:12px 16px;border-radius:var(--radius);border:1px solid var(--border);background:#111;color:var(--text);font-size:1rem;outline:none;transition:border .2s}
+.search-box:focus{border-color:var(--gold)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;font-size:.85rem;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:600}
+
+/* Grid */
+.grid{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);font-size:1.1rem}
+
+/* Card */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column;gap:12px;transition:all .25s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--gold-dim);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,215,0,.06)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start}
+.card-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.card-badge{font-size:.7rem;padding:3px 10px;border-radius:10px;background:#1e1e1e;color:var(--gold);border:1px solid var(--gold-dim);text-transform:uppercase;letter-spacing:.5px;font-weight:600;white-space:nowrap}
+.card h3{font-size:1.1rem;font-weight:700;color:#fff}
+.card-desc{font-size:.9rem;color:var(--text-muted);flex:1}
+.card-meta{display:flex;gap:16px;font-size:.8rem;color:var(--text-muted)}
+.card-meta span{display:flex;align-items:center;gap:4px}
+.card-price{font-size:1.15rem;font-weight:700;color:var(--gold)}
+.card-actions{display:flex;gap:10px;margin-top:4px}
+.btn-install{flex:1;padding:10px;border-radius:8px;border:none;background:var(--gold);color:#000;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+.btn-install:hover{background:#fff;box-shadow:0 0 20px rgba(255,215,0,.3)}
+.btn-details{padding:10px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:.9rem;cursor:pointer;transition:all .2s}
+.btn-details:hover{border-color:var(--gold);color:var(--gold)}
+
+/* CTA */
+.cta-section{max-width:1200px;margin:60px auto 0;padding:0 20px 80px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cta-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:center}
+.cta-card h3{font-size:1.4rem;margin-bottom:10px;color:#fff}
+.cta-card p{color:var(--text-muted);margin-bottom:24px;font-size:.95rem}
+.cta-btn{display:inline-block;padding:14px 32px;border-radius:8px;font-weight:700;font-size:1rem;transition:all .2s}
+.cta-btn.primary{background:var(--gold);color:#000}
+.cta-btn.primary:hover{background:#fff;text-decoration:none}
+.cta-btn.secondary{border:1px solid var(--gold);color:var(--gold)}
+.cta-btn.secondary:hover{background:var(--gold);color:#000;text-decoration:none}
+
+/* Footer */
+footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.85rem}
+
+/* Stars */
+.stars{color:var(--gold);letter-spacing:1px}
+
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+  .cta-section{grid-template-columns:1fr}
+  .controls{flex-direction:column}
+  .hero{padding:60px 20px 40px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>Supercharge Your <span>OpenClaw</span> Agents</h1>
+  <p>Browse premium skills built by AfrexAI. Install in seconds, unlock powerful capabilities for your agents.</p>
+  <div class="hero-badges">
+    <span class="hero-badge"><b>13</b>&nbsp; Skills</span>
+    <span class="hero-badge"><b>6</b>&nbsp; Categories</span>
+    <span class="hero-badge"><b>12,400+</b>&nbsp; Installs</span>
+  </div>
+</section>
+
+<div class="controls">
+  <input type="text" class="search-box" placeholder="Search skills…" id="search">
+  <div class="filters">
+    <button class="filter-btn active" data-cat="all">All</button>
+    <button class="filter-btn" data-cat="productivity">Productivity</button>
+    <button class="filter-btn" data-cat="sales">Sales</button>
+    <button class="filter-btn" data-cat="marketing">Marketing</button>
+    <button class="filter-btn" data-cat="research">Research</button>
+    <button class="filter-btn" data-cat="security">Security</button>
+    <button class="filter-btn" data-cat="operations">Operations</button>
+  </div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<section class="cta-section">
+  <div class="cta-card">
+    <h3>🛠️ Build Your Own Skills</h3>
+    <p>Create and publish skills on ClawHub. Reach thousands of OpenClaw users and monetise your expertise.</p>
+    <a href="https://clawhub.com" target="_blank" class="cta-btn primary">Start Building</a>
+  </div>
+  <div class="cta-card">
+    <h3>🎯 Request a Custom Skill</h3>
+    <p>Need something specific? Our team will build a bespoke skill tailored to your workflow.</p>
+    <a href="https://calendly.com/afrexai/custom-skill" target="_blank" class="cta-btn secondary">Book a Call</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 AfrexAI · <a href="https://clawhub.com">ClawHub</a> · Skills Marketplace
+</footer>
+
+<script>
+const skills = [
+  {
+    name: "afrexai-humanizer",
+    title: "AI Humanizer",
+    desc: "Rewrite AI-generated text to sound naturally human. Bypasses detectors while preserving meaning and tone.",
+    category: "productivity",
+    icon: "✍️",
+    price: "$9/mo",
+    installs: 3420,
+    rating: 4.9
+  },
+  {
+    name: "afrexai-prospect-researcher",
+    title: "Prospect Researcher",
+    desc: "Deep-dive research on leads and companies. Pulls LinkedIn, Crunchbase, news, and funding data into a concise dossier.",
+    category: "sales",
+    icon: "🔍",
+    price: "$19/mo",
+    installs: 2180,
+    rating: 4.8
+  },
+  {
+    name: "afrexai-email-triager",
+    title: "Email Triager",
+    desc: "Automatically categorise, prioritise, and draft responses for incoming emails. Learns your style over time.",
+    category: "productivity",
+    icon: "📧",
+    price: "$12/mo",
+    installs: 1870,
+    rating: 4.7
+  },
+  {
+    name: "afrexai-lead-scorer",
+    title: "Lead Scorer",
+    desc: "Score and rank inbound leads using firmographic, behavioural, and engagement signals. Integrates with your CRM.",
+    category: "sales",
+    icon: "📊",
+    price: "$24/mo",
+    installs: 1340,
+    rating: 4.6
+  },
+  {
+    name: "afrexai-meeting-prep",
+    title: "Meeting Prep",
+    desc: "Generate pre-meeting briefs with attendee bios, company intel, talking points, and agenda suggestions.",
+    category: "productivity",
+    icon: "📋",
+    price: "$8/mo",
+    installs: 980,
+    rating: 4.8
+  },
+  {
+    name: "afrexai-invoice-generator",
+    title: "Invoice Generator",
+    desc: "Create, send, and track professional invoices. Supports multiple currencies, tax rules, and payment reminders.",
+    category: "operations",
+    icon: "🧾",
+    price: "$6/mo",
+    installs: 760,
+    rating: 4.5
+  },
+  {
+    name: "afrexai-social-listener",
+    title: "Social Listener",
+    desc: "Monitor brand mentions, sentiment, and trends across Twitter/X, Reddit, HN, and news. Real-time alerts.",
+    category: "marketing",
+    icon: "📡",
+    price: "$15/mo",
+    installs: 640,
+    rating: 4.7
+  },
+  {
+    name: "afrexai-competitor-tracker",
+    title: "Competitor Tracker",
+    desc: "Track competitor pricing, features, hiring, and launches. Weekly digest with strategic insights.",
+    category: "research",
+    icon: "🎯",
+    price: "$18/mo",
+    installs: 520,
+    rating: 4.6
+  },
+  {
+    name: "afrexai-report-builder",
+    title: "Report Builder",
+    desc: "Generate polished PDF and HTML reports from data. Charts, tables, and executive summaries — all automated.",
+    category: "operations",
+    icon: "📑",
+    price: "$14/mo",
+    installs: 410,
+    rating: 4.5
+  },
+  {
+    name: "afrexai-crm-sync",
+    title: "CRM Sync",
+    desc: "Bi-directional sync between OpenClaw and your CRM (HubSpot, Salesforce, Pipedrive). Auto-log interactions.",
+    category: "sales",
+    icon: "🔄",
+    price: "$22/mo",
+    installs: 380,
+    rating: 4.4
+  },
+  {
+    name: "afrexai-content-repurposer",
+    title: "Content Repurposer",
+    desc: "Turn one piece of content into 10. Blog → tweets, LinkedIn posts, email newsletters, and video scripts.",
+    category: "marketing",
+    icon: "♻️",
+    price: "$11/mo",
+    installs: 290,
+    rating: 4.7
+  },
+  {
+    name: "afrexai-threat-monitor",
+    title: "Threat Monitor",
+    desc: "Scan for exposed credentials, domain spoofing, and dark web mentions. Alerts with remediation steps.",
+    category: "security",
+    icon: "🛡️",
+    price: "$29/mo",
+    installs: 210,
+    rating: 4.8
+  },
+  {
+    name: "afrexai-seo-auditor",
+    title: "SEO Auditor",
+    desc: "Audit pages for technical SEO, content gaps, and keyword opportunities. Actionable fix-it reports.",
+    category: "marketing",
+    icon: "🔎",
+    price: "$13/mo",
+    installs: 340,
+    rating: 4.5
+  }
+];
+
+function starsHTML(r) {
+  const full = Math.floor(r);
+  let s = '★'.repeat(full);
+  if (r % 1 >= 0.5) s += '½';
+  return s;
+}
+
+function renderCards(list) {
+  const grid = document.getElementById('grid');
+  if (!list.length) {
+    grid.innerHTML = '<div class="no-results">No skills match your search.</div>';
+    return;
+  }
+  grid.innerHTML = list.map(s => `
+    <div class="card" data-cat="${s.category}">
+      <div class="card-top">
+        <div class="card-icon">${s.icon}</div>
+        <span class="card-badge">${s.category}</span>
+      </div>
+      <h3>${s.title}</h3>
+      <p class="card-desc">${s.desc}</p>
+      <div class="card-meta">
+        <span class="stars">${starsHTML(s.rating)}</span>
+        <span>${s.rating}</span>
+        <span>⬇ ${s.installs.toLocaleString()}</span>
+      </div>
+      <div class="card-price">${s.price}</div>
+      <div class="card-actions">
+        <button class="btn-install" onclick="window.open('https://clawhub.com','_blank')">Install</button>
+        <button class="btn-details" onclick="window.open('https://clawhub.com','_blank')">Details</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+let activeCat = 'all';
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = btn.dataset.cat;
+    filter();
+  });
+});
+
+document.getElementById('search').addEventListener('input', filter);
+
+function filter() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const filtered = skills.filter(s => {
+    const catMatch = activeCat === 'all' || s.category === activeCat;
+    const textMatch = !q || s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q) || s.name.includes(q) || s.category.includes(q);
+    return catMatch && textMatch;
+  });
+  renderCards(filtered);
+}
+
+renderCards(skills);
+</script>
+</body>
+</html>

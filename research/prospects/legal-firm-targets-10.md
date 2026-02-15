@@ -83,3 +83,24 @@ Source: Web research, Legalweek 2026 speakers, legal press
 - LinkedIn research to find COO/CIO names for Dorsey, Baker Donelson, Bradley Arant
 - Draft personalized email for Ilona Logvinova (highest priority)
 - Check Legalweek 2026 dates — if Christina can attend, that's 4+ warm targets in one room
+
+---
+
+## NEW PROSPECTS (Added 2026-02-15)
+
+### 11. Reed Smith LLP
+- **Am Law Rank:** ~30 | **Revenue:** ~$2B
+- **Target:** David Cunningham, Chief Innovation Officer
+- **Why:** Named in LawFuel's "15 legal tech leaders shaping AI for law in 2026." Building integrated innovation programme combining data, new products, and shared services under a single strategy and governance framework. This is exactly what AfrexAI delivers.
+- **Angle:** "You're building an innovation programme from scratch — we can deploy production AI agents that slot into your framework, not just experiments."
+- **Source:** LawFuel Jan 2026
+
+### 12. Troutman Pepper Locke
+- **Am Law Rank:** ~50 | **Revenue:** ~$1.5B
+- **Target:** Will Gaus, Chief Knowledge Management & Innovation Officer
+- **Why:** Quoted in Law360 Pulse Jan 2026 on "ensuring AI delivers" — signals frustration with AI pilots that don't reach production. Perfect AfrexAI positioning.
+- **Angle:** "Most firms experiment with AI. We deploy agents that deliver measurable ROI in 90 days — not another pilot."
+- **Source:** Law360 Pulse / Troutman.com Jan 2026
+
+### Key Stat for Outreach
+- **60% of enterprise companies are hiring Chief AI Officers** (Wharton study, cited by Artificial Lawyer Jan 2026). Law firms following suit in 2026. Window of opportunity: these new hires need implementation partners NOW.

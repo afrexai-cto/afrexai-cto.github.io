@@ -802,3 +802,17 @@
 - Draft the Wednesday blog post ("CIO's Guide to Buying AI Agents")
 - Research 5 new legal vertical prospects
 - Build compliance-checker skill for ClawHub Friday publish
+
+## 2026-02-15 02:56 GMT — Run #17
+**Actions taken:**
+1. **2 new legal prospects added** — Reed Smith (David Cunningham, CIO) and Troutman Pepper Locke (Will Gaus, CKIO). Both named in Jan 2026 legal tech press as AI leaders. Legal prospect list now at 12 firms. Key stat discovered: 60% of enterprises hiring Chief AI Officers (Wharton) — law firms following in 2026.
+2. **Blog post drafted** — "The CIO's No-BS Guide to Buying AI Agents in 2026" (~900 words). SEO targets: "how to buy AI agents", "CIO AI procurement". Includes 7 vendor evaluation questions, red flag checklist, and clear AfrexAI CTA. Saved to `content/blog-cio-guide-buying-ai-agents.md`. Follows humanizer guidelines — conversational, specific, no AI-speak.
+
+**Expected impact:**
+- 2 new Tier 1 legal prospects (both publicly signaling AI frustration/ambition in press) = potential $240K-$500K combined pipeline if reached.
+- Blog post positions AfrexAI as the "straight-talking" vendor in a market full of hype. SEO long-tail "CIO AI procurement" has low competition, high buyer intent. Can be repurposed into LinkedIn carousel, email attachment, and conference handout.
+
+**Next run priorities:**
+- Draft personalized cold email for David Cunningham (Reed Smith) — use his innovation programme angle
+- Build compliance-checker ClawHub skill for Friday publish
+- Research 3 new fintech compliance prospects

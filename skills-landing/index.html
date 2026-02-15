@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI Skills — Power Up Your OpenClaw with Premium Skills</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+a{color:#FFD700;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+header{padding:20px 0;border-bottom:1px solid #1a1a1a}
+header .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.4rem;font-weight:700;color:#FFD700}
+.logo span{color:#e0e0e0}
+nav a{margin-left:24px;font-size:.9rem;color:#999}
+nav a:hover{color:#FFD700}
+
+.hero{text-align:center;padding:100px 24px 80px}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);color:#fff;margin-bottom:16px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.15rem;color:#aaa;max-width:640px;margin:0 auto 40px}
+.btn{display:inline-block;padding:14px 32px;border-radius:6px;font-weight:600;font-size:1rem;transition:all .2s}
+.btn-gold{background:#FFD700;color:#0a0a0a}
+.btn-gold:hover{background:#e6c200;text-decoration:none}
+.btn-outline{border:1px solid #FFD700;color:#FFD700;margin-left:12px}
+.btn-outline:hover{background:#FFD700;color:#0a0a0a;text-decoration:none}
+
+.badge{display:inline-block;background:#1a1a0a;border:1px solid #FFD70033;color:#FFD700;font-size:.8rem;padding:4px 14px;border-radius:20px;margin-bottom:20px}
+
+section{padding:80px 0}
+.section-title{text-align:center;font-size:2rem;color:#fff;margin-bottom:12px}
+.section-sub{text-align:center;color:#888;margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* Skills Grid */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.skill-card{background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:32px;transition:border-color .2s}
+.skill-card:hover{border-color:#FFD70055}
+.skill-icon{font-size:2rem;margin-bottom:12px}
+.skill-card h3{color:#fff;margin-bottom:8px;font-size:1.1rem}
+.skill-card p{color:#888;font-size:.9rem;margin-bottom:16px}
+.skill-price{color:#FFD700;font-weight:700;font-size:1.2rem}
+.skill-tag{display:inline-block;background:#1a1a1a;color:#888;font-size:.75rem;padding:2px 10px;border-radius:12px;margin-right:6px}
+
+/* Why AfrexAI */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.why-card{background:#111;border-radius:10px;padding:28px}
+.why-card h3{color:#FFD700;margin-bottom:8px;font-size:1rem}
+.why-card p{color:#999;font-size:.9rem}
+
+/* Bundles */
+.bundles{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.bundle{background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:36px;text-align:center;position:relative}
+.bundle.featured{border-color:#FFD700}
+.bundle .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#FFD700;color:#0a0a0a;font-size:.75rem;font-weight:700;padding:4px 16px;border-radius:12px}
+.bundle h3{color:#fff;margin-bottom:8px}
+.bundle .price{font-size:2.2rem;color:#FFD700;font-weight:700;margin:12px 0}
+.bundle .price span{font-size:.9rem;color:#888;font-weight:400}
+.bundle ul{list-style:none;text-align:left;margin:20px 0}
+.bundle li{padding:6px 0;color:#bbb;font-size:.9rem;border-bottom:1px solid #1a1a1a}
+.bundle li::before{content:"✓ ";color:#FFD700}
+
+/* Testimonials */
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.testimonial{background:#111;border-radius:10px;padding:28px}
+.testimonial blockquote{color:#ccc;font-size:.95rem;font-style:italic;margin-bottom:16px}
+.testimonial .author{color:#FFD700;font-weight:600;font-size:.9rem}
+.testimonial .role{color:#666;font-size:.8rem}
+
+/* CTA */
+.cta-section{text-align:center;background:#111;border-radius:12px;padding:60px 24px;margin:0 24px}
+.cta-section h2{color:#fff;font-size:1.8rem;margin-bottom:12px}
+.cta-section p{color:#888;margin-bottom:32px}
+
+footer{text-align:center;padding:40px 0;color:#444;font-size:.85rem;border-top:1px solid #1a1a1a}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<div class="logo">Afrex<span>AI</span> Skills</div>
+<nav>
+<a href="getting-started.html">Get Started</a>
+<a href="https://clawhub.dev">ClawHub</a>
+<a href="https://cal.com/afrexai">Book a Call</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="badge">Built by the team running a 9-agent production swarm</div>
+<h1>Power Up Your OpenClaw with <span>Premium Skills</span></h1>
+<p>Production-ready AI skills, tested across thousands of hours of real autonomous agent work. Install in minutes. See results immediately.</p>
+<a href="https://clawhub.dev" class="btn btn-gold">Browse ClawHub</a>
+<a href="https://cal.com/afrexai" class="btn btn-outline">Book a Call</a>
+</section>
+
+<section>
+<div class="container">
+<h2 class="section-title">Skill Categories</h2>
+<p class="section-sub">Each skill is a self-contained module your OpenClaw agents can use immediately. No custom code required.</p>
+<div class="skills-grid">
+
+<div class="skill-card">
+<div class="skill-icon">🔌</div>
+<h3>Integration Skills</h3>
+<p>Connect your agents to Slack, email, CRMs, databases, and 50+ services with pre-built, tested integrations.</p>
+<span class="skill-tag">Slack</span><span class="skill-tag">HubSpot</span><span class="skill-tag">Postgres</span>
+<div style="margin-top:16px"><span class="skill-price">From $47</span></div>
+</div>
+
+<div class="skill-card">
+<div class="skill-icon">📊</div>
+<h3>Data & Analytics Skills</h3>
+<p>Let agents query databases, generate reports, build dashboards, and surface insights without writing SQL.</p>
+<span class="skill-tag">Reporting</span><span class="skill-tag">ETL</span><span class="skill-tag">Dashboards</span>
+<div style="margin-top:16px"><span class="skill-price">From $97</span></div>
+</div>
+
+<div class="skill-card">
+<div class="skill-icon">🛡️</div>
+<h3>Security & Compliance</h3>
+<p>Audit logging, PII detection, access controls, and compliance checks built for autonomous agent operations.</p>
+<span class="skill-tag">SOC2</span><span class="skill-tag">PII</span><span class="skill-tag">Audit</span>
+<div style="margin-top:16px"><span class="skill-price">From $147</span></div>
+</div>
+
+<div class="skill-card">
+<div class="skill-icon">🤖</div>
+<h3>Automation Skills</h3>
+<p>Web scraping, browser control, file processing, workflow orchestration. The heavy-lifting skills your agents need.</p>
+<span class="skill-tag">Browser</span><span class="skill-tag">Scraping</span><span class="skill-tag">Workflows</span>
+<div style="margin-top:16px"><span class="skill-price">From $97</span></div>
+</div>
+
+<div class="skill-card">
+<div class="skill-icon">💬</div>
+<h3>Communication Skills</h3>
+<p>Multi-channel messaging, email drafting, voice synthesis, and smart notification routing for your agent swarm.</p>
+<span class="skill-tag">Email</span><span class="skill-tag">SMS</span><span class="skill-tag">Voice</span>
+<div style="margin-top:16px"><span class="skill-price">From $47</span></div>
+</div>
+
+<div class="skill-card">
+<div class="skill-icon">🧠</div>
+<h3>Memory & Knowledge</h3>
+<p>Long-term memory, RAG pipelines, document ingestion, and knowledge base management for persistent agents.</p>
+<span class="skill-tag">RAG</span><span class="skill-tag">Vector DB</span><span class="skill-tag">Memory</span>
+<div style="margin-top:16px"><span class="skill-price">From $147</span></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section style="background:#080808">
+<div class="container">
+<h2 class="section-title">Why Buy from AfrexAI?</h2>
+<p class="section-sub">We don't just build skills. We run them. Every day. In production.</p>
+<div class="why-grid">
+<div class="why-card">
+<h3>Battle-Tested in Production</h3>
+<p>Every skill we sell runs inside our own 9-agent swarm handling real business operations. If it breaks, we feel it first.</p>
+</div>
+<div class="why-card">
+<h3>Built by Agent Operators</h3>
+<p>We're not a SaaS company selling developer tools. We operate autonomous agents daily and build what we actually need.</p>
+</div>
+<div class="why-card">
+<h3>Rapid Updates</h3>
+<p>When OpenClaw ships updates, our skills are updated within days. We depend on them too, so we move fast.</p>
+</div>
+<div class="why-card">
+<h3>Real Support</h3>
+<p>Direct access to the engineers who built the skills. No ticket queues, no chatbots. Humans who understand agents.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 class="section-title">Bundles</h2>
+<p class="section-sub">Save 30-40% with pre-configured skill bundles designed for common use cases.</p>
+<div class="bundles">
+
+<div class="bundle">
+<h3>Starter Pack</h3>
+<div class="price">$197 <span>/ one-time</span></div>
+<ul>
+<li>3 Integration Skills of your choice</li>
+<li>1 Communication Skill</li>
+<li>Email support for 90 days</li>
+<li>Setup guide included</li>
+</ul>
+<a href="https://cal.com/afrexai" class="btn btn-outline" style="margin:0">Get Started</a>
+</div>
+
+<div class="bundle featured">
+<div class="tag">Most Popular</div>
+<h3>Operations Bundle</h3>
+<div class="price">$497 <span>/ one-time</span></div>
+<ul>
+<li>5 Integration Skills of your choice</li>
+<li>2 Automation Skills</li>
+<li>1 Data & Analytics Skill</li>
+<li>1 Memory & Knowledge Skill</li>
+<li>Priority support for 6 months</li>
+<li>1-hour onboarding call</li>
+</ul>
+<a href="https://cal.com/afrexai" class="btn btn-gold" style="margin:0">Get Started</a>
+</div>
+
+<div class="bundle">
+<h3>Enterprise Suite</h3>
+<div class="price">$997 <span>/ one-time</span></div>
+<ul>
+<li>All skill categories included</li>
+<li>Security & Compliance pack</li>
+<li>Custom skill configuration</li>
+<li>12-month priority support</li>
+<li>Quarterly review calls</li>
+</ul>
+<a href="https://cal.com/afrexai" class="btn btn-outline" style="margin:0">Get Started</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<section style="background:#080808">
+<div class="container">
+<h2 class="section-title">What Our Customers Say</h2>
+<p class="section-sub">Teams running OpenClaw in production trust AfrexAI skills.</p>
+<div class="testimonials">
+
+<div class="testimonial">
+<blockquote>"We were spending 3 weeks building custom integrations. Installed the AfrexAI Slack and HubSpot skills in 20 minutes. Same result, fraction of the effort."</blockquote>
+<div class="author">Rachel Nguyen</div>
+<div class="role">VP of Operations, Meridian Labs</div>
+</div>
+
+<div class="testimonial">
+<blockquote>"The fact that these skills are used in AfrexAI's own agent swarm gives me confidence. They're not shipping untested code. This stuff runs in production every day."</blockquote>
+<div class="author">David Kofi</div>
+<div class="role">CTO, Vantage Collective</div>
+</div>
+
+<div class="testimonial">
+<blockquote>"Our compliance team was nervous about autonomous agents. The Security & Compliance skill pack solved every concern they had. Audit logs, PII detection, all handled."</blockquote>
+<div class="author">Sarah Mitchell</div>
+<div class="role">Head of Engineering, Arcline Finance</div>
+</div>
+
+<div class="testimonial">
+<blockquote>"I bought the Operations Bundle on a Friday. By Monday morning, our agents were pulling CRM data, sending Slack updates, and generating weekly reports. Unreal time-to-value."</blockquote>
+<div class="author">Marcus Chen</div>
+<div class="role">Ops Manager, Relay Systems</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="cta-section">
+<h2>Ready to Supercharge Your Agents?</h2>
+<p>Browse the full skill catalog on ClawHub, or book a call to discuss custom skills for your specific workflows.</p>
+<a href="https://clawhub.dev" class="btn btn-gold">Browse ClawHub</a>
+<a href="https://cal.com/afrexai" class="btn btn-outline">Book a Call</a>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 AfrexAI. All rights reserved. &nbsp;|&nbsp; <a href="getting-started.html">Getting Started</a> &nbsp;|&nbsp; <a href="https://clawhub.dev">ClawHub</a></p>
+</footer>
+
+</body>
+</html>

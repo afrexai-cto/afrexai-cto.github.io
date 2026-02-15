@@ -3,192 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AfrexAI — Your AI Workforce. Deployed.</title>
+<title>AfrexAI — Your AI Workforce, Managed</title>
+<meta name="description" content="AfrexAI builds, deploys, and manages AI agent workforces for law firms, construction companies, and SaaS businesses. Skills → Agents → Hosted.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
 a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
 .gold{color:#FFD700}
-nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100}
-nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700}
-nav .links{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.9rem}
-nav .links a{color:#aaa}nav .links a:hover{color:#FFD700}
-.hero{text-align:center;padding:6rem 2rem 3rem;max-width:900px;margin:0 auto}
-.hero h1{font-size:3.2rem;margin-bottom:1rem;line-height:1.1;color:#fff}
+
+/* NAV */
+nav{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid #1a1a1a;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:64px}
+nav .logo{font-size:1.5rem;font-weight:800;color:#FFD700;letter-spacing:-.02em}
+nav .logo span{color:#fff}
+.nav-links{display:flex;gap:.2rem;align-items:center;flex-wrap:wrap}
+.nav-links a{color:#999;font-size:.82rem;padding:.5rem .7rem;border-radius:6px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{color:#FFD700;background:#1a1a1a;text-decoration:none}
+.nav-cta{background:linear-gradient(135deg,#FFD700,#FFA500)!important;color:#000!important;font-weight:700;padding:.5rem 1rem!important;border-radius:8px!important}
+.nav-cta:hover{opacity:.9}
+.menu-btn{display:none;background:none;border:none;color:#FFD700;font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.hero{text-align:center;padding:7rem 2rem 4rem;max-width:960px;margin:0 auto}
+.hero-badge{display:inline-block;background:#1a1a0a;border:1px solid #333300;color:#FFD700;font-size:.8rem;font-weight:600;padding:.4rem 1rem;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.03em}
+.hero h1{font-size:3.6rem;margin-bottom:1.2rem;line-height:1.05;color:#fff;font-weight:800;letter-spacing:-.03em}
 .hero h1 span{color:#FFD700}
-.hero p{font-size:1.25rem;color:#999;max-width:650px;margin:0 auto 2.5rem}
-.stats-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:2rem;margin:0 auto 3rem;max-width:900px;background:#111;border:1px solid #222;border-radius:16px}
+.hero p{font-size:1.2rem;color:#888;max-width:640px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-block;padding:.95rem 2.4rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;text-align:center;transition:all .3s;letter-spacing:.01em}
+.cta-btn:hover{opacity:.9;text-decoration:none;transform:translateY(-1px)}
+.cta-ghost{background:transparent;border:1px solid #333;color:#ccc;padding:.95rem 2.4rem;border-radius:10px;font-size:1rem;font-weight:600;transition:all .3s;display:inline-block}
+.cta-ghost:hover{border-color:#FFD700;color:#FFD700;text-decoration:none}
+
+/* STATS */
+.stats-bar{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;padding:2.5rem 2rem;margin:0 auto 1rem;max-width:960px;background:#111;border:1px solid #1a1a1a;border-radius:16px}
 .stat{text-align:center}
-.stat .num{font-size:2rem;font-weight:800;color:#FFD700;display:block}
-.stat .label{font-size:.85rem;color:#888}
-.section{max-width:1100px;margin:0 auto;padding:4rem 2rem}
-.section h2{text-align:center;font-size:2.2rem;color:#fff;margin-bottom:.5rem}
-.section .sub{text-align:center;color:#888;margin-bottom:3rem;font-size:1.05rem}
-.pia-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
-.pia-step{background:#111;border:1px solid #222;border-radius:14px;padding:2rem;text-align:center;transition:border-color .3s}
-.pia-step:hover{border-color:#FFD700}
-.pia-step .icon{font-size:2.5rem;margin-bottom:1rem}
-.pia-step h3{color:#FFD700;margin-bottom:.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em}
-.pia-step p{color:#aaa;font-size:.9rem}
-.agents-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
-.agent-prev{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;text-align:center;transition:border-color .3s,transform .3s}
-.agent-prev:hover{border-color:#FFD700;transform:translateY(-3px)}
-.agent-prev .icon{font-size:2rem;margin-bottom:.5rem}
-.agent-prev h4{color:#fff;font-size:1rem;margin-bottom:.3rem}
-.agent-prev p{color:#888;font-size:.8rem}
-.cta-btn{display:inline-block;padding:.9rem 2.5rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;text-align:center;transition:opacity .3s}
-.cta-btn:hover{opacity:.9;text-decoration:none}
-.cta-center{text-align:center;margin-top:2.5rem}
-.case-preview{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-.case-card{background:#111;border:1px solid #222;border-radius:14px;padding:2rem;transition:border-color .3s}
-.case-card:hover{border-color:#FFD700}
-.case-card h4{color:#fff;margin-bottom:.5rem}
-.case-card .metric{color:#FFD700;font-size:1.4rem;font-weight:700;margin-bottom:.5rem}
-.case-card p{color:#888;font-size:.9rem}
-footer{text-align:center;padding:3rem 2rem;border-top:1px solid #222;color:#666;font-size:.85rem;margin-top:2rem}
-footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
-footer .footer-links a{color:#888;font-size:.85rem}footer .footer-links a:hover{color:#FFD700}
-@media(max-width:600px){.hero h1{font-size:2rem}.stats-bar{gap:1.5rem}.section h2{font-size:1.6rem}}
+.stat .num{font-size:2.2rem;font-weight:800;color:#FFD700;display:block;letter-spacing:-.02em}
+.stat .label{font-size:.82rem;color:#777;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+
+/* SECTIONS */
+.section{max-width:1100px;margin:0 auto;padding:5rem 2rem}
+.section h2{text-align:center;font-size:2.4rem;color:#fff;margin-bottom:.5rem;font-weight:800;letter-spacing:-.02em}
+.section .sub{text-align:center;color:#777;margin-bottom:3.5rem;font-size:1.05rem}
+.cta-center{text-align:center;margin-top:3rem}
+.divider{max-width:1100px;margin:0 auto;border:0;border-top:1px solid #1a1a1a}
+
+/* HOW WE WORK - 3 STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
+.steps-grid::before{content:'';position:absolute;top:3.5rem;left:15%;right:15%;height:2px;background:linear-gradient(90deg,#FFD700 0%,#FFD700 50%,#FFD700 100%);opacity:.2;z-index:0}
+.step-card{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:2.5rem 2rem;text-align:center;position:relative;z-index:1;transition:all .3s}
+.step-card:hover{border-color:#FFD700;transform:translateY(-4px)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:800;font-size:1.2rem;margin-bottom:1.2rem}
+.step-card h3{color:#fff;font-size:1.2rem;margin-bottom:.6rem;font-weight:700}
+.step-card .step-tag{color:#FFD700;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem;display:block}
+.step-card p{color:#888;font-size:.9rem;line-height:1.6}
+
+/* INDUSTRIES */
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.ind-card{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:2.5rem;transition:all .3s}
+.ind-card:hover{border-color:#FFD700;transform:translateY(-4px)}
+.ind-card .icon{font-size:2.5rem;margin-bottom:1rem}
+.ind-card h3{color:#fff;font-size:1.15rem;margin-bottom:.5rem;font-weight:700}
+.ind-card p{color:#888;font-size:.9rem;margin-bottom:1.2rem;line-height:1.6}
+.ind-card a{font-size:.85rem;font-weight:600}
+
+/* AGENTS */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem}
+.agent-card{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:1.8rem;text-align:center;transition:all .3s}
+.agent-card:hover{border-color:#FFD700;transform:translateY(-3px)}
+.agent-card .icon{font-size:2rem;margin-bottom:.6rem}
+.agent-card h4{color:#fff;font-size:.95rem;margin-bottom:.3rem;font-weight:700}
+.agent-card p{color:#777;font-size:.8rem}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.price-card{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:2.5rem;text-align:center;transition:all .3s}
+.price-card:hover{border-color:#FFD700}
+.price-card.featured{border-color:#FFD700;position:relative}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-size:.7rem;font-weight:800;padding:.3rem 1rem;border-radius:20px;letter-spacing:.06em}
+.price-card h3{color:#FFD700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;font-weight:700}
+.price-card .price{font-size:2.4rem;color:#fff;font-weight:800;margin-bottom:.3rem}
+.price-card .price span{font-size:.9rem;color:#777;font-weight:400}
+.price-card .price-desc{color:#777;font-size:.85rem;margin-bottom:1.5rem}
+.price-card ul{list-style:none;text-align:left;margin-bottom:1.5rem}
+.price-card ul li{color:#aaa;font-size:.85rem;padding:.4rem 0;border-bottom:1px solid #1a1a1a}
+.price-card ul li::before{content:'✓ ';color:#FFD700;font-weight:700}
+
+/* VIDEOS */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid #1a1a1a}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+.video-title{color:#ccc;font-size:.9rem;margin-top:.8rem;font-weight:600}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:6rem 2rem;background:linear-gradient(180deg,#0a0a0a 0%,#111 50%,#0a0a0a 100%)}
+.final-cta h2{font-size:2.6rem;color:#fff;margin-bottom:1rem;font-weight:800}
+.final-cta p{color:#888;font-size:1.1rem;max-width:550px;margin:0 auto 2rem}
+
+/* FOOTER */
+footer{border-top:1px solid #1a1a1a;padding:3rem 2rem;max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;margin-bottom:2.5rem}
+.footer-col h4{color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;font-weight:700}
+.footer-col a{display:block;color:#666;font-size:.85rem;padding:.25rem 0;transition:color .2s}
+.footer-col a:hover{color:#FFD700;text-decoration:none}
+.footer-bottom{text-align:center;color:#444;font-size:.8rem;padding-top:2rem;border-top:1px solid #1a1a1a}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem}
+  .hero{padding:5rem 1.5rem 3rem}
+  .stats-bar{gap:2rem;padding:2rem 1.5rem}
+  .stat .num{font-size:1.6rem}
+  .section h2{font-size:1.7rem}
+  .section{padding:3.5rem 1.5rem}
+  .steps-grid{grid-template-columns:1fr;gap:1.5rem}
+  .steps-grid::before{display:none}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:#111;border-bottom:1px solid #1a1a1a;flex-direction:column;padding:1rem;gap:.5rem}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.7rem 1rem}
+  .menu-btn{display:block}
+  .final-cta h2{font-size:1.8rem}
+  .pricing-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
-<div class="logo">AfrexAI</div>
-<div class="links">
-<a href="/aaas/">Agent as a Service</a>
-<a href="/agent-marketplace/">Marketplace</a>
-<a href="/skills/">Skills</a>
-<a href="/case-studies/">Case Studies</a>
-<a href="/pricing/">Pricing</a>
-<a href="/blog/">Blog</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-</div>
+  <div class="logo">Afrex<span>AI</span></div>
+  <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="/aaas/">Agent as a Service</a>
+    <a href="/services.html">Services</a>
+    <a href="/ai-for-law-firms.html">Law Firms</a>
+    <a href="/ai-for-construction.html">Construction</a>
+    <a href="/ai-for-saas.html">SaaS</a>
+    <a href="/leads.html">Leads</a>
+    <a href="/crm-dashboard/">CRM</a>
+    <a href="/aaas/demo.html">Demo</a>
+    <a href="https://calendly.com/cbeckford-afrexai/30min" class="nav-cta">Book a Call</a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-<h1>Your AI Workforce. <span>Deployed.</span></h1>
-<p>Not chatbots. Not dashboards. Real AI agents that do the work — billing, compliance, follow-ups, collections — running 24/7 so your team doesn't have to.</p>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call →</a>
+  <div class="hero-badge">🟡 Now Managing 9 AI Agents Internally</div>
+  <h1>Your AI Workforce, <span>Managed.</span></h1>
+  <p>We build, deploy, and host AI agents that run your operations — billing, compliance, collections, lead gen — 24/7. Not chatbots. Not consultants. A fully managed AI workforce.</p>
+  <div class="hero-btns">
+    <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call →</a>
+    <a href="/aaas/demo.html" class="cta-ghost">See a Live Demo</a>
+  </div>
 </div>
 
+<!-- TRUST STATS -->
 <div class="stats-bar">
-<div class="stat"><span class="num">9</span><span class="label">Agents Running</span></div>
-<div class="stat"><span class="num">$1.6M</span><span class="label">Recovered for Clients</span></div>
-<div class="stat"><span class="num">90%</span><span class="label">Time Savings</span></div>
+  <div class="stat"><span class="num">9</span><span class="label">AI Agents Running</span></div>
+  <div class="stat"><span class="num">368</span><span class="label">Companies in CRM</span></div>
+  <div class="stat"><span class="num">70–85%</span><span class="label">Operating Margins</span></div>
+  <div class="stat"><span class="num">$1.6M</span><span class="label">Recovered for Clients</span></div>
 </div>
 
+<!-- HOW WE WORK -->
 <div class="section">
-<h2>How It Works</h2>
-<p class="sub">The PIA Framework — Pain, Impact, Architect</p>
-<div class="pia-grid">
-<div class="pia-step">
-<div class="icon">🔍</div>
-<h3>Find the Cracks</h3>
-<p>We audit your operations to find where time and money are leaking — unbilled hours, missed follow-ups, manual data entry, compliance gaps.</p>
-</div>
-<div class="pia-step">
-<div class="icon">🔥</div>
-<h3>Calculate the Burn Rate</h3>
-<p>We quantify exactly how much those cracks cost you per month. Most businesses are shocked — the average mid-size firm leaks $200K+ annually.</p>
-</div>
-<div class="pia-step">
-<div class="icon">🏗️</div>
-<h3>Architect the Workforce</h3>
-<p>We deploy AI agents tailored to your workflows. Each agent gets its own email, integrations, and processes — like hiring an employee, but better.</p>
-</div>
-</div>
-<div class="cta-center"><a href="/roi/" class="cta-btn">Calculate Your ROI →</a></div>
+  <h2>How We Work</h2>
+  <p class="sub">Three steps from idea to a fully hosted AI workforce</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <span class="step-tag">Skills</span>
+      <h3>Define Capabilities</h3>
+      <p>We map your operations and identify where AI skills — email handling, document processing, data extraction, compliance checks — replace manual work.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <span class="step-tag">Agents</span>
+      <h3>Build Your Agents</h3>
+      <p>Skills get composed into autonomous AI agents — each with its own identity, integrations, and decision logic. Think employees, not software.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <span class="step-tag">Hosted</span>
+      <h3>We Run Everything</h3>
+      <p>Your agents are deployed, monitored, and managed on our infrastructure. We handle uptime, updates, and scaling. You get results, not maintenance.</p>
+    </div>
+  </div>
+  <div class="cta-center">
+    <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Start With a Discovery Call →</a>
+  </div>
 </div>
 
+<hr class="divider">
+
+<!-- INDUSTRIES -->
 <div class="section">
-<h2>Our Agents</h2>
-<p class="sub">Pre-built AI employees ready to deploy in 24 hours</p>
-<div class="agents-preview">
-<div class="agent-prev"><div class="icon">🗂️</div><h4>Executive Assistant</h4><p>Email, scheduling, inbox triage</p></div>
-<div class="agent-prev"><div class="icon">💰</div><h4>Billing Agent</h4><p>Invoice generation & follow-up</p></div>
-<div class="agent-prev"><div class="icon">⚖️</div><h4>Compliance Monitor</h4><p>Regulatory tracking & alerts</p></div>
-<div class="agent-prev"><div class="icon">📊</div><h4>Data Analyst</h4><p>Reports, dashboards, insights</p></div>
-<div class="agent-prev"><div class="icon">📞</div><h4>Collections Agent</h4><p>AR follow-up & recovery</p></div>
-<div class="agent-prev"><div class="icon">📝</div><h4>Content Writer</h4><p>Blog posts, social, newsletters</p></div>
-<div class="agent-prev"><div class="icon">🎯</div><h4>Lead Gen Agent</h4><p>Prospecting & outreach</p></div>
-<div class="agent-prev"><div class="icon">🛡️</div><h4>QA Auditor</h4><p>Quality checks & error catching</p></div>
-</div>
-<div class="cta-center"><a href="/agent-marketplace/" class="cta-btn">Browse All Agents →</a></div>
+  <h2>Built for Your Industry</h2>
+  <p class="sub">Specialized AI workforces for high-value sectors</p>
+  <div class="ind-grid">
+    <div class="ind-card">
+      <div class="icon">⚖️</div>
+      <h3>Law Firms</h3>
+      <p>Automate billing recovery, compliance monitoring, document review, and client intake. We've recovered $1.6M for a single firm.</p>
+      <a href="/ai-for-law-firms.html">Learn more →</a>
+    </div>
+    <div class="ind-card">
+      <div class="icon">🏗️</div>
+      <h3>Construction</h3>
+      <p>Safety compliance, project documentation, RFI tracking, subcontractor coordination — all handled by AI agents on your systems.</p>
+      <a href="/ai-for-construction.html">Learn more →</a>
+    </div>
+    <div class="ind-card">
+      <div class="icon">🚀</div>
+      <h3>SaaS Companies</h3>
+      <p>Customer onboarding, churn prediction, support ticket routing, usage analytics — scale your ops without scaling your headcount.</p>
+      <a href="/ai-for-saas.html">Learn more →</a>
+    </div>
+  </div>
 </div>
 
+<hr class="divider">
+
+<!-- AGENTS -->
 <div class="section">
-<h2>Case Studies</h2>
-<p class="sub">Real results from real businesses</p>
-<div class="case-preview">
-<div class="case-card">
-<div class="metric">$1.6M Recovered</div>
-<h4>VADIS Law Firm</h4>
-<p>A mid-size law firm discovered $1.6M in unbilled hours and revenue leaks. Our agent workforce automated billing, compliance tracking, and collections.</p>
-</div>
-<div class="case-card">
-<div class="metric">90% Time Saved</div>
-<h4>Operations Overhaul</h4>
-<p>Manual data entry consuming 40+ hours per week was replaced by an AI agent swarm — the team now focuses on strategy instead of spreadsheets.</p>
-</div>
-</div>
-<div class="cta-center"><a href="/case-studies/" class="cta-btn">View All Case Studies →</a></div>
+  <h2>Pre-Built AI Agents</h2>
+  <p class="sub">Deploy in 24 hours. Customize to your workflow.</p>
+  <div class="agents-grid">
+    <div class="agent-card"><div class="icon">🗂️</div><h4>Executive Assistant</h4><p>Email, scheduling, inbox triage</p></div>
+    <div class="agent-card"><div class="icon">💰</div><h4>Billing Agent</h4><p>Invoice generation & follow-up</p></div>
+    <div class="agent-card"><div class="icon">⚖️</div><h4>Compliance Monitor</h4><p>Regulatory tracking & alerts</p></div>
+    <div class="agent-card"><div class="icon">📊</div><h4>Data Analyst</h4><p>Reports, dashboards, insights</p></div>
+    <div class="agent-card"><div class="icon">📞</div><h4>Collections Agent</h4><p>AR follow-up & recovery</p></div>
+    <div class="agent-card"><div class="icon">📝</div><h4>Content Writer</h4><p>Blog posts, social, newsletters</p></div>
+    <div class="agent-card"><div class="icon">🎯</div><h4>Lead Gen Agent</h4><p>Prospecting & outreach</p></div>
+    <div class="agent-card"><div class="icon">🛡️</div><h4>QA Auditor</h4><p>Quality checks & error catching</p></div>
+  </div>
+  <div class="cta-center"><a href="/aaas/" class="cta-btn">Explore Agent as a Service →</a></div>
 </div>
 
+<hr class="divider">
+
+<!-- PRICING -->
 <div class="section">
-<h2>Skills & Tools</h2>
-<p class="sub">The capabilities powering your AI workforce</p>
-<div class="pia-grid">
-<div class="pia-step"><div class="icon">📧</div><h3>Email & Calendar</h3><p>Gmail, Outlook, scheduling, inbox management with full autonomy.</p></div>
-<div class="pia-step"><div class="icon">📄</div><h3>Document Processing</h3><p>PDF extraction, contract review, data entry, form filling.</p></div>
-<div class="pia-step"><div class="icon">🔗</div><h3>Integrations</h3><p>Clio, QuickBooks, Salesforce, Slack, and 50+ more via API.</p></div>
-</div>
-<div class="cta-center"><a href="/skills/" class="cta-btn">Explore All Skills →</a></div>
+  <h2>Simple, Predictable Pricing</h2>
+  <p class="sub">Managed AI agents at a fraction of the cost of hiring</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Starter</h3>
+      <div class="price">$2,500<span>/mo</span></div>
+      <div class="price-desc">1 AI agent, fully managed</div>
+      <ul>
+        <li>Single workflow automation</li>
+        <li>Dedicated agent identity</li>
+        <li>Email & calendar integrations</li>
+        <li>Weekly performance reports</li>
+        <li>Slack/Teams support channel</li>
+      </ul>
+      <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" style="width:100%;display:block">Get Started →</a>
+    </div>
+    <div class="price-card featured">
+      <h3>Growth</h3>
+      <div class="price">$6,000<span>/mo</span></div>
+      <div class="price-desc">3 AI agents, fully managed</div>
+      <ul>
+        <li>Multi-workflow automation</li>
+        <li>Custom integrations (CRM, ERP)</li>
+        <li>Agent-to-agent coordination</li>
+        <li>Real-time dashboard</li>
+        <li>Priority support & onboarding</li>
+      </ul>
+      <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" style="width:100%;display:block">Get Started →</a>
+    </div>
+    <div class="price-card">
+      <h3>Enterprise</h3>
+      <div class="price">Custom</div>
+      <div class="price-desc">Unlimited agents, full workforce</div>
+      <ul>
+        <li>Full operational AI workforce</li>
+        <li>Dedicated account manager</li>
+        <li>SLA-backed uptime guarantee</li>
+        <li>Custom model training</li>
+        <li>On-premise deployment option</li>
+      </ul>
+      <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" style="width:100%;display:block">Contact Sales →</a>
+    </div>
+  </div>
+  <div class="cta-center"><a href="/aaas/" style="color:#888;font-size:.9rem">View full pricing details on Agent as a Service →</a></div>
 </div>
 
+<hr class="divider">
+
+<!-- VIDEOS -->
 <div class="section">
-<h2>See Us In <span class="gold">Action</span></h2>
-<p class="sub">Watch how we deploy AI agent workforces for real businesses</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
-<div>
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:0 0 1rem;border-radius:8px;">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/sET2IxH4ZAQ" frameborder="0" allowfullscreen></iframe>
-</div>
-<h4 style="color:#fff;font-size:.95rem;">This Law Firm Recovered $1.6M with AI</h4>
-</div>
-<div>
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:0 0 1rem;border-radius:8px;">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/UX-n3KBeSsA" frameborder="0" allowfullscreen></iframe>
-</div>
-<h4 style="color:#fff;font-size:.95rem;">How We Implement AI in 90 Days</h4>
-</div>
-<div>
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:0 0 1rem;border-radius:8px;">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/xASZTrOPn2s" frameborder="0" allowfullscreen></iframe>
-</div>
-<h4 style="color:#fff;font-size:.95rem;">AI Agents in Construction</h4>
-</div>
-</div>
-<div class="cta-center" style="margin-top:1.5rem;"><a href="https://www.youtube.com/@AfrexAI" class="cta-btn" target="_blank">Watch More on YouTube →</a></div>
+  <h2>See Us in <span class="gold">Action</span></h2>
+  <p class="sub">Watch how we deploy AI agent workforces for real businesses</p>
+  <div class="video-grid">
+    <div>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/sET2IxH4ZAQ" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+      <p class="video-title">This Law Firm Recovered $1.6M with AI</p>
+    </div>
+    <div>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/UX-n3KBeSsA" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+      <p class="video-title">How We Implement AI in 90 Days</p>
+    </div>
+    <div>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/xASZTrOPn2s" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+      <p class="video-title">AI Agents in Construction</p>
+    </div>
+  </div>
 </div>
 
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Ready to Deploy Your <span class="gold">AI Workforce</span>?</h2>
+  <p>30-minute discovery call. No pitch decks. We'll map your operations and show you exactly where AI agents save you time and money.</p>
+  <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Discovery Call →</a>
+</div>
+
+<!-- FOOTER -->
 <footer>
-<div class="footer-links">
-<a href="/">Home</a>
-<a href="/aaas/">Agent as a Service</a>
-<a href="/agent-marketplace/">Marketplace</a>
-<a href="/skills/">Skills</a>
-<a href="/case-studies/">Case Studies</a>
-<a href="/pricing/">Pricing</a>
-<a href="/blog/">Blog</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-<a href="/roi/">ROI Calculator</a>
-<a href="/context-packs/">Context Packs</a>
-<a href="/ai-revenue-calculator/">Revenue Calculator</a>
-<a href="/agent-setup/">Setup Wizard</a>
-</div>
-<p>🖤💛 AfrexAI — Your AI Workforce, Deployed. © 2025</p>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="/aaas/">Agent as a Service</a>
+      <a href="/aaas/demo.html">Live Demo</a>
+      <a href="/services.html">Services</a>
+      <a href="/crm-dashboard/">CRM Dashboard</a>
+      <a href="/leads.html">Leads</a>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <a href="/ai-for-law-firms.html">AI for Law Firms</a>
+      <a href="/ai-for-construction.html">AI for Construction</a>
+      <a href="/ai-for-saas.html">AI for SaaS</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="https://www.youtube.com/@AfrexAI" target="_blank">YouTube</a>
+      <a href="https://calendly.com/cbeckford-afrexai/30min">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/">Home</a>
+      <a href="mailto:hello@afrexai.com">hello@afrexai.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 AfrexAI. Your AI Workforce, Managed.
+  </div>
 </footer>
+
 </body>
 </html>
