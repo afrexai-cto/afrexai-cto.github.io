@@ -12,6 +12,15 @@
 
 All pages: dark theme (#0a0a0a), gold (#FFD700), standalone HTML, inline CSS, mobile responsive, consistent nav bar, CTAs → Calendly.
 
+## 2026-02-15 (Sunday)
+1. `/verticals/manufacturing/index.html` — AI for Manufacturing vertical (production scheduling, QC, supply chain, predictive maintenance)
+2. `/verticals/recruitment/index.html` — AI for Recruitment Agencies vertical (sourcing, screening, scheduling, nurture)
+3. `/verticals/ecommerce/index.html` — AI for E-commerce vertical (support, pricing, inventory, cart recovery)
+4. `/verticals/hospitality/index.html` — AI for Hospitality & Hotels vertical (concierge, reviews, revenue management)
+5. `/seo/ai-agent-services-new-york/index.html` — City SEO page: AI Agent Services in New York City
+6. `/seo/ai-agent-services-chicago/index.html` — City SEO page: AI Agent Services in Chicago & Midwest
+7. `/blog/how-to-automate-invoicing/index.html` — SEO blog: "How to Automate Invoicing With AI Agents (2026 Guide)"
+
 ## 2026-02-14 (Saturday)
 1. `/verticals/accounting/index.html` — AI for Accounting Firms vertical landing page
 2. `/verticals/real-estate/index.html` — AI for Real Estate vertical landing page
