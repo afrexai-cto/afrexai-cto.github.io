@@ -31,10 +31,16 @@
 - nokafor@afrexai.com (Nia Okafor, EA), mchen@afrexai.com (Marcus Chen, PM), pnair@afrexai.com (Priya Nair, Senior Accountant), jadeyemi@afrexai.com (James Adeyemi, COO), sreyes@afrexai.com (Sofia Reyes, Marketing), abrooks@afrexai.com (Aiden Brooks, Content), dkessler@afrexai.com (Dana Kessler, Sales), emensah@afrexai.com (Elijah Mensah, Consultant), zosei@afrexai.com (Zara Osei, Strategist)
 - Sending via ksmolichki@afrexai.com SMTP with app password in 1Password (vault: AfrexAI, item: Gmail)
 - 1Password service account token at `/Users/openclaw/.openclaw/vault/op-service-account.env`
+- **Anthropic API key**: Uses AfrexAI key from 1Password vault for all LLM/API calls
 - **First prospect email sent 2026-02-14:** Oracle (Zara Osei) → Brent Brodeski, CEO @ Savant Wealth Management, CC'd Kalin + Christina
 
 ## What's Live
 - **AaaS Platform** — Agent-as-a-Service fully wired: `aaas-platform/autopilot.sh "Company" "email" "tier"` does end-to-end onboarding (deploy agents, health check, welcome email, CRM log). Landing page at `aaas/index.html`. Scripts tested on bash 3.2. Tiers: Starter $1.5K/1 agent, Growth $4.5K/3, Enterprise $12K/9.
+- **Full 3-Step Website** — 14+ pages on GitHub Pages covering all 3 steps: homepage, AaaS landing+demo, hosted landing+SLA+ROI calc, managed agents landing+security+onboarding, skills landing+guide, skills showcase, customer portal, blog. All dark theme #0a0a0a + gold #FFD700.
+- **18 Workflow Scripts** — automation for all 3 steps: step1-skills (4 scripts), step2-agents (5 scripts), step3-hosted (6 scripts). All bash 3.2 compatible.
+- **15 Email Templates** — 5 per step, conversational tone, no emojis/bullets.
+- **Build Cron** — 8am/8pm daily autonomous build sprints.
+- **GitHub PAT for afrexai-cto**: `op read "op://AfrexAI/GitHub/afrexai_token"` — item "GitHub" (qfo3tq5gtc2g4y2l3eg53eql3u), field "afrexai_token". Use this to push. Clean URL after.
 - **GitHub Pages: https://afrexai-cto.github.io/** — 22+ pages, all case studies, homepage, pricing, blog
 - ClawHub skills: afrexai-humanizer, afrexai-prospect-researcher, afrexai-email-triager (+10 publishing)
 - Storefront: https://afrexai-cto.github.io/context-packs/
