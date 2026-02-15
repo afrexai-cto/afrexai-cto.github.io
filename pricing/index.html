@@ -3,177 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing — AI Agent Workforce Plans | AfrexAI</title>
+<title>Pricing — AfrexAI</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
-a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
-nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100}
-nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700}
-nav .links{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.9rem}
-nav .links a{color:#aaa}nav .links a:hover{color:#FFD700}
-.hero{text-align:center;padding:5rem 2rem 3rem;max-width:800px;margin:0 auto}
-.hero h1{font-size:2.8rem;margin-bottom:1rem}.hero h1 span{color:#FFD700}
-.hero p{font-size:1.1rem;color:#999;max-width:600px;margin:0 auto}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:0 auto;padding:0 2rem 4rem}
-.plan{background:#111;border:1px solid #222;border-radius:16px;padding:2.5rem 2rem;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
-.plan:hover{border-color:#FFD700;transform:translateY(-4px)}
-.plan.featured{border:2px solid #FFD700;position:relative}
-.plan.featured::before{content:"MOST POPULAR";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#FFD700;color:#000;font-size:.7rem;font-weight:700;padding:.3rem 1rem;border-radius:1rem;letter-spacing:.05em}
-.plan .step{color:#FFD700;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
-.plan h3{color:#fff;font-size:1.5rem;margin-bottom:.5rem}
-.plan .subtitle{color:#888;font-size:.9rem;margin-bottom:1.5rem}
-.plan .ideal{background:#1a1a1a;border-radius:10px;padding:1rem;margin-bottom:1.5rem}
-.plan .ideal .label{color:#FFD700;font-size:.75rem;font-weight:600;text-transform:uppercase;margin-bottom:.5rem}
-.plan .ideal p{color:#aaa;font-size:.85rem;margin:0}
-.features{list-style:none;flex:1;margin-bottom:2rem}
-.features li{padding:.5rem 0;padding-left:1.5rem;position:relative;color:#ccc;font-size:.9rem}
-.features li::before{content:"✓";color:#FFD700;position:absolute;left:0;font-weight:700}
-.plan-cta{display:block;width:100%;padding:1rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;text-align:center;transition:opacity .3s}
-.plan-cta:hover{opacity:.9;text-decoration:none}
-.plan-cta.outline{background:transparent;border:2px solid #FFD700;color:#FFD700}
-.plan-cta.outline:hover{background:#FFD700;color:#000}
-.faq{max-width:800px;margin:0 auto;padding:0 2rem 4rem}
-.faq h2{text-align:center;font-size:2rem;color:#fff;margin-bottom:2rem}
-.faq-item{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
-.faq-item h4{color:#fff;margin-bottom:.5rem;font-size:1rem}
-.faq-item p{color:#888;font-size:.9rem}
-.bottom-cta{text-align:center;padding:4rem 2rem;max-width:700px;margin:0 auto}
-.bottom-cta h2{font-size:2rem;color:#fff;margin-bottom:1rem}
-.bottom-cta p{color:#888;margin-bottom:2rem}
-footer{text-align:center;padding:3rem 2rem;border-top:1px solid #222;color:#666;font-size:.85rem}
-@media(max-width:600px){.hero h1{font-size:1.8rem}.pricing-grid{grid-template-columns:1fr}}
+a{color:#FFD700;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+header{text-align:center;padding:80px 20px 40px}
+header h1{font-size:3rem;color:#fff;margin-bottom:12px}
+header h1 span{color:#FFD700}
+header p{font-size:1.2rem;color:#999;max-width:600px;margin:0 auto}
+.badge{display:inline-block;background:#FFD700;color:#0a0a0a;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:40px 0 80px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:36px 28px;display:flex;flex-direction:column;position:relative;transition:border-color .2s}
+.card:hover{border-color:#FFD700}
+.card.featured{border-color:#FFD700;box-shadow:0 0 30px rgba(255,215,0,.08)}
+.card-label{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:#FFD700;margin-bottom:8px;font-weight:700}
+.card h2{font-size:1.5rem;color:#fff;margin-bottom:6px}
+.card .tagline{font-size:.9rem;color:#888;margin-bottom:24px;font-style:italic}
+.price-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:.95rem}
+.price-row:last-child{border-bottom:none}
+.price-row .label{color:#ccc}
+.price-row .val{color:#FFD700;font-weight:600}
+.card ul{list-style:none;margin:20px 0;flex:1}
+.card ul li{padding:6px 0;font-size:.9rem;color:#aaa}
+.card ul li::before{content:'✓ ';color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;font-weight:700;padding:14px 28px;border-radius:8px;text-align:center;font-size:1rem;transition:background .2s;border:none;cursor:pointer;width:100%;margin-top:auto}
+.cta-btn:hover{background:#e6c200;text-decoration:none}
+.cta-btn.outline{background:transparent;border:2px solid #FFD700;color:#FFD700}
+.cta-btn.outline:hover{background:#FFD700;color:#0a0a0a}
+.includes{text-align:center;padding:0 20px 60px}
+.includes h3{color:#fff;font-size:1.3rem;margin-bottom:12px}
+.includes .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:32px}
+.includes .pill{background:#161616;border:1px solid #222;padding:8px 18px;border-radius:20px;font-size:.85rem;color:#ccc}
+.not-sure{text-align:center;padding:60px 20px;background:#111;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;margin-bottom:80px}
+.not-sure h2{color:#fff;font-size:2rem;margin-bottom:8px}
+.not-sure p{color:#999;margin-bottom:24px;font-size:1.1rem}
+/* FAQ */
+.faq-section{padding:0 20px 80px}
+.faq-section h2{text-align:center;color:#fff;font-size:2rem;margin-bottom:32px}
+.faq-item{border-bottom:1px solid #1a1a1a;max-width:800px;margin:0 auto}
+.faq-q{width:100%;background:none;border:none;color:#e0e0e0;font-size:1rem;padding:18px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.faq-q::after{content:'+';color:#FFD700;font-size:1.4rem;transition:transform .2s}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:#999;font-size:.95rem}
+.faq-a-inner{padding:0 0 18px}
+footer{text-align:center;padding:40px 20px;color:#555;font-size:.85rem;border-top:1px solid #1a1a1a}
 </style>
 </head>
 <body>
-<nav>
-<div class="logo">AfrexAI</div>
-<div class="links">
-<a href="/agent-marketplace/">Marketplace</a>
-<a href="/skills/">Skills</a>
-<a href="/case-studies/">Case Studies</a>
-<a href="/pricing/">Pricing</a>
-<a href="/context-packs/">Context Packs</a>
-<a href="/ai-revenue-calculator/">Calculator</a>
-<a href="/agent-setup/">Setup Wizard</a>
-</div>
-</nav>
+<header>
+<div class="badge">Simple, Transparent Pricing</div>
+<h1>AI Agents That <span>Work For You</span></h1>
+<p>Choose the model that fits your business. Start with a 30-day pilot — cancel anytime.</p>
+</header>
 
-<div class="hero">
-<h1>Simple <span>Pricing</span></h1>
-<p>Three paths to your AI workforce. Start with a discovery session and scale to a fully managed AI operations team.</p>
-</div>
-
-<div class="pricing-grid">
-
-<div class="plan">
-<div class="step">Step 1 — PIA Foundation</div>
-<h3>Discovery</h3>
-<div class="subtitle">See AI agents work on your real problems</div>
-<div class="ideal">
-<div class="label">Ideal For</div>
-<p>Businesses exploring AI automation for the first time. Want proof it works before committing.</p>
-</div>
-<ul class="features">
-<li>Micro Proof-of-Concept (POC) on your actual workflow</li>
-<li>One fully working AI agent deployed</li>
-<li>Process audit & automation roadmap</li>
-<li>ROI projection with real numbers</li>
-<li>2-week delivery timeline</li>
-<li>Dedicated setup support</li>
+<div class="container">
+<div class="grid">
+<!-- SKILLS -->
+<div class="card">
+<div class="card-label">Skills (CMA)</div>
+<h2>Customer Managed Agents</h2>
+<p class="tagline">"You run OpenClaw, you buy our skills"</p>
+<div class="price-row"><span class="label">Individual Skill</span><span class="val">$47 – $247</span></div>
+<div class="price-row"><span class="label">Starter Bundle (5 skills)</span><span class="val">$197</span></div>
+<div class="price-row"><span class="label">Pro Bundle (10 skills)</span><span class="val">$497</span></div>
+<div class="price-row"><span class="label">Enterprise Bundle (all)</span><span class="val">$997</span></div>
+<ul>
+<li>One-time purchase, yours forever</li>
+<li>Run on your own OpenClaw instance</li>
+<li>Full customisation control</li>
+<li>Community support included</li>
+<li>Free updates for 12 months</li>
 </ul>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="plan-cta outline">Book a Discovery Call →</a>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn outline">Get Started</a>
 </div>
 
-<div class="plan featured">
-<div class="step">Step 2 — PIA Acceleration</div>
-<h3>Build</h3>
-<div class="subtitle">Full AI workforce implementation</div>
-<div class="ideal">
-<div class="label">Ideal For</div>
-<p>Businesses ready to deploy a custom AI agent workforce across multiple departments.</p>
-</div>
-<ul class="features">
-<li>Full AI workforce design & deployment</li>
-<li>Custom agent accounts with own Gmail, Drive, CRM</li>
-<li>Multi-agent swarm configuration</li>
-<li>Integration with your existing tools</li>
-<li>Staff training & handover</li>
-<li>4-8 week implementation</li>
-<li>30-day post-launch support</li>
-<li>Context packs for your industry included</li>
+<!-- MANAGED -->
+<div class="card featured">
+<div class="card-label">Managed Agents</div>
+<h2>On Your Infrastructure</h2>
+<p class="tagline">"We deploy on YOUR systems"</p>
+<div class="price-row"><span class="label">1 Agent</span><span class="val">$2,500/mo</span></div>
+<div class="price-row"><span class="label">3 Agents</span><span class="val">$6,000/mo</span></div>
+<div class="price-row"><span class="label">Enterprise</span><span class="val">Custom</span></div>
+<ul>
+<li>Deployed in your cloud / on-prem</li>
+<li>Full data sovereignty</li>
+<li>Dedicated onboarding &amp; training</li>
+<li>Priority Slack/email support</li>
+<li>Monthly performance reviews</li>
+<li>Custom integrations included</li>
 </ul>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="plan-cta">Book a Strategy Call →</a>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Call</a>
 </div>
 
-<div class="plan">
-<div class="step">Step 3 — Ongoing</div>
-<h3>Fractional AI Team</h3>
-<div class="subtitle">Dedicated AI operations on retainer</div>
-<div class="ideal">
-<div class="label">Ideal For</div>
-<p>Businesses that want a dedicated AI team without hiring one. Ongoing optimisation and scaling.</p>
-</div>
-<ul class="features">
-<li>Dedicated AI operations manager</li>
-<li>Continuous agent monitoring & optimisation</li>
-<li>New agent deployments as needed</li>
-<li>Monthly performance reports</li>
-<li>Priority support & SLAs</li>
-<li>Quarterly strategy reviews</li>
-<li>Scaling roadmap & execution</li>
-<li>Access to all new skills & agents first</li>
+<!-- HOSTED -->
+<div class="card">
+<div class="card-label">Hosted Agents</div>
+<h2>AfrexAI Infrastructure</h2>
+<p class="tagline">"We host everything, you get results"</p>
+<div class="price-row"><span class="label">Starter — 1 agent</span><span class="val">$1,500/mo</span></div>
+<div class="price-row"><span class="label">Growth — 3 agents</span><span class="val">$4,500/mo</span></div>
+<div class="price-row"><span class="label">Enterprise — 9 agents</span><span class="val">$12,000/mo</span></div>
+<ul>
+<li>Zero infrastructure to manage</li>
+<li>We handle hosting, updates &amp; scaling</li>
+<li>99.9% uptime SLA</li>
+<li>Dedicated success manager</li>
+<li>Weekly reporting dashboard</li>
+<li>SOC 2 compliant environment</li>
 </ul>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="plan-cta outline">Book a Partnership Call →</a>
-</div>
-
-</div>
-
-<div style="max-width:800px;margin:0 auto;padding:0 2rem 4rem;text-align:center;">
-<h2 style="font-size:2rem;color:#fff;margin-bottom:.5rem;">See How We Implement AI in <span style="color:#FFD700;">90 Days</span></h2>
-<p style="color:#888;margin-bottom:2rem;">Watch how we take businesses from manual operations to a fully deployed AI workforce.</p>
-<div style="max-width:720px;margin:0 auto;">
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:0 0 1.5rem;">
-
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/UX-n3KBeSsA" frameborder="0" allowfullscreen></iframe>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn outline">Book a Call</a>
 </div>
 </div>
 </div>
 
-<div class="faq">
-<h2>Common Questions</h2>
-<div class="faq-item">
-<h4>How quickly can I see results?</h4>
-<p>Discovery clients typically have a working AI agent within 2 weeks. Full Build implementations take 4-8 weeks depending on complexity. Most clients see measurable ROI within the first month.</p>
-</div>
-<div class="faq-item">
-<h4>What does "agent account" mean?</h4>
-<p>Each AI agent gets its own service accounts — Gmail, Google Drive, CRM access, etc. It operates like a digital employee with its own login credentials, working autonomously within your business.</p>
-</div>
-<div class="faq-item">
-<h4>Do I need technical knowledge?</h4>
-<p>Not at all. We handle all the technical setup, configuration, and maintenance. You interact with your AI agents the same way you'd interact with a human employee.</p>
-</div>
-<div class="faq-item">
-<h4>Can I start with Discovery and upgrade later?</h4>
-<p>Absolutely — that's how most clients work with us. Start with a Micro-POC, see the results, then scale to a full Build when you're ready.</p>
-</div>
-<div class="faq-item">
-<h4>What industries do you work with?</h4>
-<p>We have context packs and experience across legal, construction, fintech, healthcare, real estate, e-commerce, SaaS, logistics, recruitment, and energy. <a href="/context-packs/">See our industry packs →</a></p>
+<div class="includes">
+<h3>Every Plan Includes</h3>
+<div class="pills">
+<span class="pill">🚀 30-Day Pilot</span>
+<span class="pill">🔄 Cancel Anytime</span>
+<span class="pill">🛡️ Enterprise-Grade Security</span>
+<span class="pill">📞 Onboarding Call</span>
+<span class="pill">📊 Performance Reporting</span>
+<span class="pill">🔧 Custom Configuration</span>
 </div>
 </div>
 
-<div class="bottom-cta">
-<h2>Not Sure Which Plan Is Right?</h2>
-<p>Use our AI Revenue Calculator to see how much an AI workforce could save your business, or start with a free setup assessment.</p>
-<a href="/ai-revenue-calculator/" class="plan-cta" style="display:inline-block;width:auto;padding:1rem 2.5rem;margin-right:1rem">Try the Calculator →</a>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="plan-cta outline" style="display:inline-block;width:auto;padding:1rem 2.5rem">Free Assessment →</a>
+<div class="not-sure">
+<h2>Not sure which is right?</h2>
+<p>Book a free 30-minute strategy call. We'll map the best option to your business.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" style="width:auto;display:inline-block">Book a Free Call →</a>
 </div>
+
+<section class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><button class="faq-q">What's included in the 30-day pilot?</button><div class="faq-a"><div class="faq-a-inner">Full access to your chosen plan with real agents running real tasks. We set measurable goals together — if it doesn't deliver, you walk away with zero obligation.</div></div></div>
+<div class="faq-item"><button class="faq-q">Are there any long-term contracts?</button><div class="faq-a"><div class="faq-a-inner">No. All plans are month-to-month. Skills are a one-time purchase. You can cancel managed or hosted plans at any time with 30 days' notice.</div></div></div>
+<div class="faq-item"><button class="faq-q">What's the difference between Skills and Managed/Hosted?</button><div class="faq-a"><div class="faq-a-inner">Skills are pre-built capabilities you install on your own OpenClaw setup — you're in full control. Managed means we deploy and maintain agents on your infrastructure. Hosted means we handle everything end-to-end on our infrastructure.</div></div></div>
+<div class="faq-item"><button class="faq-q">Can I switch plans later?</button><div class="faq-a"><div class="faq-a-inner">Absolutely. Start with Skills and upgrade to Managed or Hosted when you're ready to scale. We'll migrate everything seamlessly.</div></div></div>
+<div class="faq-item"><button class="faq-q">Do you offer discounts for annual billing?</button><div class="faq-a"><div class="faq-a-inner">Yes — contact us for annual pricing. Typical savings are 15-20% compared to monthly billing.</div></div></div>
+</section>
 
 <footer>
-<p>© 2026 AfrexAI — AI Agent Workforce Solutions</p>
-<p style="margin-top:.5rem"><a href="/context-packs/">Context Packs</a> · <a href="/ai-revenue-calculator/">Revenue Calculator</a> · <a href="/agent-setup/">Setup Wizard</a></p>
+<p>© 2025 AfrexAI. All rights reserved. &nbsp;|&nbsp; <a href="/faq/">FAQ</a> &nbsp;|&nbsp; <a href="https://calendly.com/cbeckford-afrexai/30min">Contact</a></p>
 </footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const ans=item.querySelector('.faq-a');
+    item.classList.toggle('open');
+    ans.style.maxHeight=item.classList.contains('open')?ans.scrollHeight+'px':'0';
+  });
+});
+</script>
 </body>
 </html>

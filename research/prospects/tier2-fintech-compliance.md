@@ -32,7 +32,21 @@ Series B-D fintechs with $50M+ raised have:
 - **Angle:** Adjacent — their customers (insurers) also need AML/compliance agents. Co-sell opportunity for European market.
 - **Contact:** Research partnerships lead
 
-### 4. NEXT RESEARCH NEEDED
+### 4. Bretton AI (fka Greenlite AI) — Financial Crime Compliance
+- **Raised:** $75M Series B (Feb 2026), led by Sapphire Ventures
+- **Focus:** AI-powered financial crime compliance automation
+- **Angle:** COMPETITOR/PARTNER — they sell compliance software. Their customers (banks, fintechs) may need managed agent implementation beyond what Bretton provides out of the box. Co-sell or implementation partner opportunity.
+- **Key insight:** UiPath just acquired WorkFusion for compliance automation — consolidation wave means mid-market firms need alternatives. AfrexAI = nimble alternative.
+- **Contact:** Research CEO/BD team on LinkedIn
+
+### 5. SEON (by Tamas Kadar) — RegTech near-unicorn
+- **Raised:** €159.91M total, Series C €68M led by Sixth Street Growth
+- **Focus:** Fraud prevention, identity verification, AML
+- **HQ:** Budapest (CEE)
+- **Angle:** Their 5,000+ customers are fintechs/neobanks who ALSO need broader compliance agents. Partnership to cross-sell compliance agent workforce to SEON's customer base.
+- **Contact:** Research partnerships team
+
+### 6. NEXT RESEARCH NEEDED
 - Pull from growthlist.co/fintech-startups and topstartups.io filtered for fintech + compliance
 - Focus on: payment processors, neobanks, lending platforms, crypto exchanges
 - All of these have BSA/AML obligations and likely outgrowing their compliance teams
