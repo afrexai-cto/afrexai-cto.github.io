@@ -1,107 +1,188 @@
 #!/usr/bin/env bash
-# generate-agents.sh — Deploy vertical-aware agents from templates
-# STUB: Template builder will flesh out template copying logic.
-# For now, creates agent entries in profile.json from roster.json + pricing.json.
+# generate-agents.sh — Generate vertical-aware agents for a customer
+# Usage: ./generate-agents.sh <customer-slug> <vertical> <tier> [--force]
 #
-# Usage: ./generate-agents.sh <customer-slug> <vertical> <tier>
+# Reads roster.json for the vertical, selects agents based on tier,
+# copies templates to the customer directory, and replaces placeholders.
+#
+# Idempotent: skips existing agents unless --force is passed.
+
 set -euo pipefail
 
-PLATFORM_DIR="$(cd "$(dirname "$0")" && pwd)"
-PRICING_FILE="${PLATFORM_DIR}/pricing.json"
-ROSTER_FILE="${PLATFORM_DIR}/templates/roster.json"
-CUSTOMERS_DIR="${PLATFORM_DIR}/customers"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+TEMPLATES_DIR="$SCRIPT_DIR/templates"
+CUSTOMERS_DIR="$SCRIPT_DIR/customers"
+PRICING_FILE="$SCRIPT_DIR/pricing.json"
 
-if [ $# -lt 3 ]; then
-    echo "Usage: $0 <customer-slug> <vertical> <tier>"
-    exit 1
+# --- Argument Parsing ---
+FORCE=false
+SLUG=""
+VERTICAL=""
+TIER=""
+
+for arg in "$@"; do
+  case "$arg" in
+    --force) FORCE=true ;;
+    *)
+      if [ -z "$SLUG" ]; then SLUG="$arg"
+      elif [ -z "$VERTICAL" ]; then VERTICAL="$arg"
+      elif [ -z "$TIER" ]; then TIER="$arg"
+      fi
+      ;;
+  esac
+done
+
+if [ -z "$SLUG" ] || [ -z "$VERTICAL" ] || [ -z "$TIER" ]; then
+  echo "Usage: $0 <customer-slug> <vertical> <tier> [--force]"
+  echo ""
+  echo "  customer-slug   e.g. hartwell-associates"
+  echo "  vertical        legal|construction|healthcare|financial-services|saas|professional-services"
+  echo "  tier            starter|growth|scale|enterprise"
+  echo "  --force         Overwrite existing agent files"
+  exit 1
 fi
 
-CUSTOMER_SLUG="$1"
-VERTICAL="$2"
-TIER="$3"
-CUSTOMER_DIR="${CUSTOMERS_DIR}/${CUSTOMER_SLUG}"
+# --- Validate inputs ---
+ROSTER_FILE="$TEMPLATES_DIR/$VERTICAL/roster.json"
+if [ ! -f "$ROSTER_FILE" ]; then
+  echo "❌ Unknown vertical: $VERTICAL"
+  echo "   Available: $(ls -d "$TEMPLATES_DIR"/*/ 2>/dev/null | xargs -I{} basename {} | tr '\n' ' ')"
+  exit 1
+fi
 
-[ -f "$PRICING_FILE" ] || { echo "❌ pricing.json not found at ${PRICING_FILE}"; exit 1; }
-[ -f "$ROSTER_FILE" ]  || { echo "❌ roster.json not found at ${ROSTER_FILE}"; exit 1; }
-[ -f "${CUSTOMER_DIR}/profile.json" ] || { echo "❌ profile.json not found — run autopilot.sh first"; exit 1; }
+CUSTOMER_DIR="$CUSTOMERS_DIR/$SLUG"
 
-# Read agent count for tier from pricing.json
-AGENT_COUNT="$(python3 -c "
+# --- Read agent count for tier ---
+AGENT_COUNT=$(python3 -c "
+import json, sys
+try:
+    pricing = json.load(open('$PRICING_FILE'))
+    tier = pricing['tiers'].get('$TIER')
+    if not tier:
+        print('ERROR', file=sys.stderr)
+        sys.exit(1)
+    print(tier['agents'])
+except Exception as e:
+    # Fallback if pricing.json doesn't exist yet
+    counts = {'starter': 1, 'growth': 3, 'scale': 10, 'enterprise': 9}
+    c = counts.get('$TIER')
+    if c is None:
+        print(f'❌ Unknown tier: $TIER', file=sys.stderr)
+        sys.exit(1)
+    print(c)
+")
+
+# --- Read roster and select agents ---
+AGENTS_JSON=$(python3 -c "
 import json
-p = json.load(open('${PRICING_FILE}'))
-print(p['tiers']['${TIER}']['agents'])
-")"
+roster = json.load(open('$ROSTER_FILE'))
+agents = roster['agents']
+count = min($AGENT_COUNT, len(agents))
+selected = agents[:count]
+for a in selected:
+    print(a['id'])
+")
 
-# Read roster for vertical from roster.json, take first N
-AGENT_LIST="$(python3 -c "
-import json
-r = json.load(open('${ROSTER_FILE}'))
-agents = r.get('${VERTICAL}', r.get('general', []))
-for a in agents[:${AGENT_COUNT}]:
-    print(a)
-")"
+# --- Read customer profile for placeholder values ---
+COMPANY_NAME="$SLUG"
+CONTACT_NAME=""
+VERTICAL_LABEL="$VERTICAL"
 
-DEPLOY_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+PROFILE_FILE="$CUSTOMER_DIR/profile.json"
+if [ -f "$PROFILE_FILE" ]; then
+  COMPANY_NAME=$(python3 -c "import json; p=json.load(open('$PROFILE_FILE')); print(p.get('company_name', '$SLUG'))")
+  CONTACT_NAME=$(python3 -c "import json; p=json.load(open('$PROFILE_FILE')); print(p.get('contact_name', '') or p.get('email', ''))")
+fi
 
-echo "  Deploying ${AGENT_COUNT} agent(s) for ${VERTICAL}/${TIER}..."
+VERTICAL_LABEL=$(python3 -c "import json; r=json.load(open('$ROSTER_FILE')); print(r.get('vertical_label', '$VERTICAL'))")
 
-# Build agents JSON array and create stub directories
-AGENTS_JSON="["
-FIRST=true
-for AGENT_ID in $AGENT_LIST; do
-    AGENT_NAME="$(echo "$AGENT_ID" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')"
-    TEMPLATE_PATH="${VERTICAL}/${AGENT_ID}"
-    AGENT_DIR="${CUSTOMER_DIR}/agents/${AGENT_ID}"
+# --- Create customer agents directory ---
+mkdir -p "$CUSTOMER_DIR/agents"
 
-    mkdir -p "$AGENT_DIR"
+# --- Generate agents ---
+GENERATED=0
+SKIPPED=0
 
-    # If template exists, copy it; otherwise create placeholder
-    TEMPLATE_DIR="${PLATFORM_DIR}/templates/${TEMPLATE_PATH}"
-    if [ -d "$TEMPLATE_DIR" ]; then
-        for f in "$TEMPLATE_DIR"/*.md; do
-            [ -f "$f" ] || continue
-            sed -e "s/{{COMPANY_NAME}}/${COMPANY_NAME:-$CUSTOMER_SLUG}/g" \
-                -e "s/{{AGENT_NAME}}/${AGENT_NAME}/g" \
-                -e "s/{{VERTICAL}}/${VERTICAL}/g" \
-                -e "s/{{TIER}}/${TIER}/g" \
-                -e "s/{{CUSTOMER_SLUG}}/${CUSTOMER_SLUG}/g" \
-                "$f" > "${AGENT_DIR}/$(basename "$f")"
-        done
-        echo "    ✓ ${AGENT_ID} (from template)"
-    else
-        cat > "${AGENT_DIR}/SOUL.md" <<EOF
-# ${AGENT_NAME}
+while IFS= read -r AGENT_ID; do
+  [ -z "$AGENT_ID" ] && continue
+  
+  TEMPLATE_DIR="$TEMPLATES_DIR/$VERTICAL/agents/$AGENT_ID"
+  DEST_DIR="$CUSTOMER_DIR/agents/$AGENT_ID"
+  
+  if [ ! -d "$TEMPLATE_DIR" ]; then
+    echo "⚠️  Template not found: $TEMPLATE_DIR — skipping"
+    continue
+  fi
+  
+  if [ -d "$DEST_DIR" ] && [ "$FORCE" = false ]; then
+    echo "⏭️  $AGENT_ID already exists (use --force to overwrite)"
+    SKIPPED=$((SKIPPED + 1))
+    continue
+  fi
+  
+  mkdir -p "$DEST_DIR"
+  
+  # Copy and replace placeholders
+  for TEMPLATE_FILE in "$TEMPLATE_DIR"/*.md; do
+    [ ! -f "$TEMPLATE_FILE" ] && continue
+    FILENAME=$(basename "$TEMPLATE_FILE")
+    
+    # Escape sed special chars in replacement strings (& and \)
+    SAFE_COMPANY=$(printf '%s' "$COMPANY_NAME" | sed 's/[&\\/]/\\&/g')
+    SAFE_CONTACT=$(printf '%s' "$CONTACT_NAME" | sed 's/[&\\/]/\\&/g')
+    SAFE_VLABEL=$(printf '%s' "$VERTICAL_LABEL" | sed 's/[&\\/]/\\&/g')
+    
+    sed \
+      -e "s|{{COMPANY}}|${SAFE_COMPANY}|g" \
+      -e "s|{{COMPANY_NAME}}|${SAFE_COMPANY}|g" \
+      -e "s|{{CONTACT}}|${SAFE_CONTACT}|g" \
+      -e "s|{{CONTACT_NAME}}|${SAFE_CONTACT}|g" \
+      -e "s|{{VERTICAL}}|${SAFE_VLABEL}|g" \
+      -e "s|{{TIER}}|${TIER}|g" \
+      -e "s|{{CUSTOMER_SLUG}}|${SLUG}|g" \
+      -e "s|{{AGENT_NAME}}|${AGENT_ID}|g" \
+      "$TEMPLATE_FILE" > "$DEST_DIR/$FILENAME"
+  done
+  
+  echo "✅ Generated: $AGENT_ID"
+  GENERATED=$((GENERATED + 1))
+  
+done <<< "$AGENTS_JSON"
 
-AI agent for ${CUSTOMER_SLUG} (${VERTICAL} vertical, ${TIER} tier).
+# --- Update profile.json agents array if profile exists ---
+if [ -f "$PROFILE_FILE" ]; then
+  python3 -c "
+import json, datetime
 
-Template: ${TEMPLATE_PATH}
-Status: Awaiting template build
-EOF
-        echo "    ✓ ${AGENT_ID} (stub — template pending)"
-    fi
+profile = json.load(open('$PROFILE_FILE'))
+existing_ids = {a['id'] for a in profile.get('agents', [])}
+roster = json.load(open('$ROSTER_FILE'))
+count = min($AGENT_COUNT, len(roster['agents']))
+selected = roster['agents'][:count]
 
-    if [ "$FIRST" = true ]; then FIRST=false; else AGENTS_JSON="${AGENTS_JSON},"; fi
-    AGENTS_JSON="${AGENTS_JSON}{\"id\":\"${AGENT_ID}\",\"name\":\"${AGENT_NAME}\",\"template\":\"${TEMPLATE_PATH}\",\"status\":\"active\",\"deployed_at\":\"${DEPLOY_TS}\"}"
-done
-AGENTS_JSON="${AGENTS_JSON}]"
+for agent in selected:
+    if agent['id'] not in existing_ids:
+        profile.setdefault('agents', []).append({
+            'id': agent['id'],
+            'name': agent['name'],
+            'template': '$VERTICAL/' + agent['id'],
+            'status': 'active',
+            'deployed_at': datetime.datetime.utcnow().isoformat() + 'Z'
+        })
 
-# Update profile.json agents array
-python3 -c "
-import json
-with open('${CUSTOMER_DIR}/profile.json', 'r') as f:
-    profile = json.load(f)
-profile['agents'] = json.loads('${AGENTS_JSON}')
-with open('${CUSTOMER_DIR}/profile.json', 'w') as f:
-    json.dump(profile, f, indent=2)
+json.dump(profile, open('$PROFILE_FILE', 'w'), indent=2)
+print('📋 Updated profile.json with agent entries')
 "
+fi
 
-# Generate agent-manifest.json
-python3 -c "
-import json
-agents = json.loads('${AGENTS_JSON}')
-manifest = {'customer': '${CUSTOMER_SLUG}', 'vertical': '${VERTICAL}', 'tier': '${TIER}', 'agents': agents}
-with open('${CUSTOMER_DIR}/agent-manifest.json', 'w') as f:
-    json.dump(manifest, f, indent=2)
-"
-
-echo "  ✅ ${AGENT_COUNT} agent(s) deployed"
+# --- Summary ---
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  Agent Generation Complete"
+echo "  Customer:  $SLUG"
+echo "  Vertical:  $VERTICAL_LABEL"
+echo "  Tier:      $TIER (up to $AGENT_COUNT agents)"
+echo "  Generated: $GENERATED"
+echo "  Skipped:   $SKIPPED"
+echo "  Location:  $CUSTOMER_DIR/agents/"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

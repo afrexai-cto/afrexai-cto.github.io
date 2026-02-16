@@ -97,6 +97,7 @@ profile = {
     'tier': '${PACKAGE}',
     'vertical': '${VERTICAL}',
     'agents': [],
+    'monthly_price': ${TOTAL_PRICE},
     'pricing': {
         'base_price': ${BASE_PRICE},
         'vertical_premium_pct': ${VPCT},
