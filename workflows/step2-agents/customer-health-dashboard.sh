@@ -116,7 +116,7 @@ for a in m.get('agents', []):
             SSH_HOST="—"
 
             # Check agent directory health
-            local agent_dir="$cdir/agents/$aslug"
+            agent_dir="$cdir/agents/$aslug"
             if [ -d "$agent_dir" ]; then
                 # Check for required files
                 for required_file in SOUL.md; do
@@ -137,7 +137,7 @@ for a in m.get('agents', []):
             fi
 
             # Also check legacy version files for SSH-deployed agents
-            local vfile="$VERSION_DIR/${CUSTOMER_SLUG}-${atype}.json"
+            vfile="$VERSION_DIR/${CUSTOMER_SLUG}-${atype}.json"
             if [ -f "$vfile" ]; then
                 SSH_HOST="$(read_json_field "$vfile" "ssh_host")"
                 VERSION="$(read_json_field "$vfile" "current_version")"

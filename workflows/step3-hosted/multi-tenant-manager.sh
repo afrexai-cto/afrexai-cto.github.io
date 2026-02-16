@@ -18,7 +18,9 @@ read_json_field() {
 count_agents() {
     local cdir="$1"
     if [ -f "$cdir/agent-manifest.json" ]; then
-        grep -c '"slug"' "$cdir/agent-manifest.json" 2>/dev/null || echo 0
+        local n
+        n=$(grep -c '"slug"' "$cdir/agent-manifest.json" 2>/dev/null) || n=0
+        echo "$n"
     else
         echo 0
     fi
@@ -41,9 +43,25 @@ dir_size_kb() {
     fi
 }
 
-# Read monthly price: prefer billing.json, fall back to pricing.json tier lookup
+# Read monthly price: prefer profile.json monthly_price, then billing.json, fall back to pricing.json with vertical premium
 get_monthly_price() {
     local cdir="$1" tier="$2"
+    # 1. Check profile.json for monthly_price (set by autopilot, includes vertical premium)
+    if [ -f "$cdir/profile.json" ]; then
+        local mp
+        mp="$(read_json_field "$cdir/profile.json" "monthly_price")"
+        if [ -n "$mp" ] && [ "$mp" != "0" ]; then
+            echo "$mp"
+            return
+        fi
+        # Also check pricing.monthly_total
+        mp="$(read_json_field "$cdir/profile.json" "monthly_total")"
+        if [ -n "$mp" ] && [ "$mp" != "0" ]; then
+            echo "$mp"
+            return
+        fi
+    fi
+    # 2. Check billing.json
     if [ -f "$cdir/billing.json" ]; then
         local price
         price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
@@ -52,13 +70,17 @@ get_monthly_price() {
             return
         fi
     fi
-    # Fall back to pricing.json
+    # 3. Fall back to pricing.json with vertical premium
     if [ -f "$PRICING_FILE" ]; then
+        local vertical
+        vertical="$(get_vertical "$cdir/profile.json" 2>/dev/null || echo "general")"
         python3 -c "
 import json, sys
 p = json.load(open('$PRICING_FILE'))
 t = p.get('tiers', {}).get('$tier', {})
-print(t.get('price', 0))
+base = t.get('price', 0)
+vpct = p.get('vertical_premiums', {}).get('$vertical', 0)
+print(base + base * vpct // 100)
 " 2>/dev/null || echo 0
     else
         echo 0

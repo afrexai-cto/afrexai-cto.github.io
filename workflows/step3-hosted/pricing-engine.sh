@@ -78,15 +78,17 @@ EOF
 }
 
 tier_base_price() {
-    local var="${1^^}_PRICE"
-    var="${var//-/_}"
-    echo "${!var:-0}"
+    local upper
+    upper="$(echo "$1" | tr 'a-z' 'A-Z' | tr '-' '_')"
+    local var="${upper}_PRICE"
+    eval "echo \"\${${var}:-0}\""
 }
 
 tier_included_agents() {
-    local var="${1^^}_AGENTS"
-    var="${var//-/_}"
-    echo "${!var:-0}"
+    local upper
+    upper="$(echo "$1" | tr 'a-z' 'A-Z' | tr '-' '_')"
+    local var="${upper}_AGENTS"
+    eval "echo \"\${${var}:-0}\""
 }
 
 best_tier_for_agents() {
@@ -110,15 +112,17 @@ else:
 }
 
 vertical_premium_pct() {
-    local var="VERTICAL_PREMIUM_${1^^}"
-    var="${var//-/_}"
-    echo "${!var:-0}"
+    local upper
+    upper="$(echo "$1" | tr 'a-z' 'A-Z' | tr '-' '_')"
+    local var="VERTICAL_PREMIUM_${upper}"
+    eval "echo \"\${${var}:-0}\""
 }
 
 support_addon() {
-    local var="SUPPORT_${1^^}"
-    var="${var//-/_}"
-    echo "${!var:-0}"
+    local upper
+    upper="$(echo "$1" | tr 'a-z' 'A-Z' | tr '-' '_')"
+    local var="SUPPORT_${upper}"
+    eval "echo \"\${${var}:-0}\""
 }
 
 # --- Quote ---
