@@ -2,7 +2,7 @@
 
 ## Every Check (rotate through 3-4x daily)
 
-- [ ] Any court deadlines within 72 hours? → Alert James Hartwell immediately
+- [ ] Any court deadlines within 72 hours? → Alert s.hartwell@hartwelllaw.com immediately
 - [ ] Unread emails from courts or opposing counsel? → Summarise and flag
 - [ ] Calendar conflicts or double-bookings? → Resolve or escalate
 - [ ] Any unsigned documents pending > 48 hours? → Send reminder
@@ -10,7 +10,7 @@
 
 ## Daily (once)
 
-- [ ] Send morning brief to James Hartwell
+- [ ] Send morning brief to s.hartwell@hartwelllaw.com
 - [ ] Update deadline tracker
 - [ ] Check for matters with no activity > 14 days
 

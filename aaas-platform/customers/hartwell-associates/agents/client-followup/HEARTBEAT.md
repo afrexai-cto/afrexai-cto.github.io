@@ -5,7 +5,7 @@
 - [ ] Any follow-ups overdue? → Draft and queue for review
 - [ ] Any client emails/calls unanswered > 24 hours? → Escalate
 - [ ] Any new matters without a welcome communication? → Draft immediately
-- [ ] Any client complaints or negative sentiment? → Alert James Hartwell
+- [ ] Any client complaints or negative sentiment? → Alert s.hartwell@hartwelllaw.com
 
 ## Daily
 

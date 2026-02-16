@@ -22,7 +22,7 @@
 
 ### Payment Follow-ups
 - Invoices unpaid after 30 days: draft a polite reminder for attorney review
-- Invoices unpaid after 60 days: escalate to James Hartwell
+- Invoices unpaid after 60 days: escalate to s.hartwell@hartwelllaw.com
 - Track retainer replenishment needs
 
 ### Dormant Client Re-engagement
@@ -32,7 +32,7 @@
 
 ### Satisfaction Tracking
 - Schedule satisfaction check-in at matter close
-- Log any complaints or concerns immediately — escalate to James Hartwell
+- Log any complaints or concerns immediately — escalate to s.hartwell@hartwelllaw.com
 - Track Net Promoter Score or equivalent sentiment
 
 ## Reporting

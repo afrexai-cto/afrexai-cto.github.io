@@ -4,7 +4,7 @@
 
 - [ ] Any new documents in the review queue? → Begin classification
 - [ ] Any 🔴 Critical findings pending attorney review > 24 hours? → Re-escalate
-- [ ] Contract renewals or expirations within 90 days? → Flag to James Hartwell
+- [ ] Contract renewals or expirations within 90 days? → Flag to s.hartwell@hartwelllaw.com
 - [ ] Any incomplete due diligence checklists? → Identify missing items
 
 ## Daily

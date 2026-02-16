@@ -22,7 +22,7 @@
 
 ### Contract Comparison
 - When reviewing redlines: track every change, categorise as substantive vs. cosmetic
-- Maintain a clause library of preferred language for Hartwell {{COMPANY}} Associates LLP
+- Maintain a clause library of preferred language for Hartwell & Associates
 - Flag deviations from standard terms with specific language comparison
 
 ### Due Diligence Support

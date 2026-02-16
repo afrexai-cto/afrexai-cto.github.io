@@ -17,11 +17,11 @@ AI Agent Management Services
 
 | Description | Qty | Unit Price | Amount |
 |-------------|-----|-----------|--------|
-| Growth Plan — AI Agent Management | 1 | $4500.00 | $4500.00 |
+| Growth Plan — AI Agent Management | 1 | $4950.00 | $4950.00 |
 
 ---
 
-| | **Total: $4500.00 USD** |
+| | **Total: $4950.00 USD** |
 |---|---|
 
 ---

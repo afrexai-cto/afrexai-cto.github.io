@@ -1,17 +1,17 @@
 {
   "customer_slug": "hartwell-associates",
-  "company_name": "Hartwell & Associates LLP",
+  "company_name": "Hartwell & Associates",
   "tier": "growth",
   "vertical": "legal",
   "status": "active",
   "onboarded_at": "",
-  "generated_at": "2026-02-16T18:21:16Z",
+  "generated_at": "2026-02-16T18:30:14Z",
   "period_days": 30,
   "billing": {
-    "monthly_price_usd": 4500,
+    "monthly_price_usd": 4950,
     "billing_cycle": "monthly",
     "next_invoice": "",
-    "annual_cost": 54000
+    "annual_cost": 59400
   },
   "summary": {
     "agent_count": 0,
@@ -25,10 +25,10 @@
     "roi_percent": -100
   },
   "roi": {
-    "monthly_investment": 4500,
+    "monthly_investment": 4950,
     "monthly_savings": 0,
-    "net_monthly_value": -4500,
-    "annual_investment": 54000,
+    "net_monthly_value": -4950,
+    "annual_investment": 59400,
     "projected_annual_savings": 0,
     "roi_percent": -100
   },

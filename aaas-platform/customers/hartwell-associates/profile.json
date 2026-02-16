@@ -1,8 +1,8 @@
 {
   "slug": "hartwell-associates",
-  "company_name": "Hartwell & Associates LLP",
-  "contact_name": "James Hartwell",
-  "email": "james@hartwell-law.com",
+  "company_name": "Hartwell & Associates",
+  "contact_name": "",
+  "email": "s.hartwell@hartwelllaw.com",
   "tier": "growth",
   "vertical": "legal",
   "agents": [
@@ -11,23 +11,24 @@
       "name": "Legal Executive Assistant",
       "template": "legal/legal-ea",
       "status": "active",
-      "deployed_at": "2026-02-16T18:20:45.111887Z"
+      "deployed_at": "2026-02-16T18:29:36.079457Z"
     },
     {
       "id": "document-analyst",
       "name": "Document Analyst",
       "template": "legal/document-analyst",
       "status": "active",
-      "deployed_at": "2026-02-16T18:20:45.112149Z"
+      "deployed_at": "2026-02-16T18:29:36.079683Z"
     },
     {
       "id": "client-followup",
       "name": "Client Follow-up Coordinator",
       "template": "legal/client-followup",
       "status": "active",
-      "deployed_at": "2026-02-16T18:20:45.112153Z"
+      "deployed_at": "2026-02-16T18:29:36.079686Z"
     }
   ],
+  "monthly_price": 4950,
   "pricing": {
     "base_price": 4500,
     "vertical_premium_pct": 10,
@@ -37,6 +38,6 @@
     "billing_cycle": "monthly"
   },
   "status": "active",
-  "created_at": "2026-02-16T18:00:00Z",
+  "created_at": "2026-02-16T18:29:35.298234Z",
   "api_key": ""
 }

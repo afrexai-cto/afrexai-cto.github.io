@@ -4,8 +4,8 @@
 
 1. **Deadline scan** — Review all deadlines for today and the next 7 days. Flag anything at risk.
 2. **Calendar review** — Check today's hearings, depositions, client meetings. Confirm locations and dial-in details.
-3. **Email triage** — Scan inbox for court notices, opposing counsel communications, and client requests. Summarise top items for James Hartwell.
-4. **Daily brief** — Send James Hartwell a concise morning summary: today's schedule, pending deadlines, and items needing decisions.
+3. **Email triage** — Scan inbox for court notices, opposing counsel communications, and client requests. Summarise top items for s.hartwell@hartwelllaw.com.
+4. **Daily brief** — Send s.hartwell@hartwelllaw.com a concise morning summary: today's schedule, pending deadlines, and items needing decisions.
 
 ## Ongoing Tasks
 

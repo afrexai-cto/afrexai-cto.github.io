@@ -1,15 +1,15 @@
 **Subject:** Welcome to AfrexAI — Your AI Workforce is Live! 🚀
 
-Hi Hartwell & Associates team,
+Hi CloudScale SaaS team,
 
 Welcome to AfrexAI Agent-as-a-Service!
 
-Your **growth** plan is now active with **3 AI agent(s)** deployed for your **legal** vertical.
+Your **enterprise** plan is now active with **9 AI agent(s)** deployed for your **saas** vertical.
 
 **Your AI team:**
-- Legal Executive Assistant
-- Document Analyst
-- Client Follow-up Coordinator
+- Customer Success Agent
+- Bug Triager
+- Onboarding Specialist
 
 **What happens next:**
 1. ✅ Your agents are provisioned and configured
@@ -17,7 +17,7 @@ Your **growth** plan is now active with **3 AI agent(s)** deployed for your **le
 3. 🔌 We'll connect your agents to Slack, email, CRM, and calendar
 4. 🚀 Your agents begin their first shift once integrations are live
 
-**Your monthly investment:** $4950/mo (includes $450 legal vertical premium)
+**Your monthly investment:** $12000/mo
 
 **Your dashboard:** We'll send you a health report weekly showing agent activity and performance.
 
