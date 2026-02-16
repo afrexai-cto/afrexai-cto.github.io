@@ -1,0 +1,183 @@
+{
+  "customer_slug": "meridian-health-partners",
+  "company_name": "Meridian Health Partners",
+  "tier": "enterprise",
+  "vertical": "healthcare",
+  "status": "active",
+  "onboarded_at": "2026-02-16T20:30:31Z",
+  "generated_at": "2026-02-16T21:00:00Z",
+  "contact_email": "dr.chen@meridianhealth.com",
+  "period_days": 30,
+  "billing": {
+    "monthly_price_usd": 13200,
+    "billing_cycle": "monthly",
+    "next_invoice": "2026-03-01",
+    "annual_cost": 158400,
+    "payment_method": "Visa ••4291",
+    "payment_status": "active",
+    "base_price": 12000,
+    "vertical_premium_pct": 10,
+    "vertical_premium_amount": 1200
+  },
+  "summary": {
+    "agent_count": 3,
+    "active_agents": 3,
+    "paused_agents": 0,
+    "error_agents": 0,
+    "total_tasks_completed": 1843,
+    "hours_saved": 127,
+    "cost_saved_usd": 38400,
+    "uptime_percent": 99.95,
+    "health_status": "healthy",
+    "roi_percent": 191
+  },
+  "roi": {
+    "monthly_investment": 13200,
+    "monthly_savings": 38400,
+    "net_monthly_value": 25200,
+    "roi_multiplier": 2.9,
+    "breakdown": [
+      { "label": "Hours saved", "quantity": 127, "unit_value": 85, "total": 10795 },
+      { "label": "Leads generated", "quantity": 89, "unit_value": 210, "total": 18690 },
+      { "label": "Emails automated", "quantity": 614, "unit_value": 14.50, "total": 8903 }
+    ]
+  },
+  "agents": [
+    {
+      "agent_slug": "patient-coordinator",
+      "agent_name": "Patient Coordinator",
+      "status": "active",
+      "icon": "🏥",
+      "role": "Patient scheduling & coordination",
+      "tasks_completed": 640,
+      "tasks_per_day": 21,
+      "avg_task_minutes": 28,
+      "success_rate": 97,
+      "hours_saved": 45,
+      "cost_saved_usd": 12800,
+      "monthly_cost": 4400,
+      "last_heartbeat": "2026-02-16T20:58:00Z"
+    },
+    {
+      "agent_slug": "compliance-officer",
+      "agent_name": "Compliance Officer",
+      "status": "active",
+      "icon": "📋",
+      "role": "HIPAA compliance monitoring & audit",
+      "tasks_completed": 589,
+      "tasks_per_day": 19,
+      "avg_task_minutes": 35,
+      "success_rate": 99,
+      "hours_saved": 42,
+      "cost_saved_usd": 13200,
+      "monthly_cost": 4400,
+      "last_heartbeat": "2026-02-16T20:55:00Z"
+    },
+    {
+      "agent_slug": "records-analyst",
+      "agent_name": "Records Analyst",
+      "status": "active",
+      "icon": "📊",
+      "role": "Medical records processing & analysis",
+      "tasks_completed": 614,
+      "tasks_per_day": 20,
+      "avg_task_minutes": 32,
+      "success_rate": 98,
+      "hours_saved": 40,
+      "cost_saved_usd": 12400,
+      "monthly_cost": 4400,
+      "last_heartbeat": "2026-02-16T20:57:00Z"
+    }
+  ],
+  "activity": [
+    {
+      "agent_slug": "patient-coordinator",
+      "agent_name": "Patient Coordinator",
+      "icon": "🏥",
+      "event": "Processed 12 appointment requests for next week",
+      "timestamp": "2026-02-16T20:56:00Z",
+      "color": "gold"
+    },
+    {
+      "agent_slug": "compliance-officer",
+      "agent_name": "Compliance Officer",
+      "icon": "📋",
+      "event": "Completed HIPAA audit scan — 0 violations found",
+      "timestamp": "2026-02-16T20:42:00Z",
+      "color": "green"
+    },
+    {
+      "agent_slug": "records-analyst",
+      "agent_name": "Records Analyst",
+      "icon": "📊",
+      "event": "Digitized 34 patient intake forms from morning clinic",
+      "timestamp": "2026-02-16T20:31:00Z",
+      "color": "blue"
+    },
+    {
+      "agent_slug": "patient-coordinator",
+      "agent_name": "Patient Coordinator",
+      "icon": "🏥",
+      "event": "Sent 8 appointment reminders via SMS and email",
+      "timestamp": "2026-02-16T19:45:00Z",
+      "color": "gold"
+    },
+    {
+      "agent_slug": "compliance-officer",
+      "agent_name": "Compliance Officer",
+      "icon": "📋",
+      "event": "Reviewed 6 vendor BAA agreements for renewal",
+      "timestamp": "2026-02-16T18:30:00Z",
+      "color": "green"
+    },
+    {
+      "agent_slug": "records-analyst",
+      "agent_name": "Records Analyst",
+      "icon": "📊",
+      "event": "Generated monthly patient volume analytics report",
+      "timestamp": "2026-02-16T17:15:00Z",
+      "color": "blue"
+    },
+    {
+      "agent_slug": "patient-coordinator",
+      "agent_name": "Patient Coordinator",
+      "icon": "🏥",
+      "event": "Rescheduled 5 cancelled appointments to open slots",
+      "timestamp": "2026-02-16T16:00:00Z",
+      "color": "gold"
+    },
+    {
+      "agent_slug": "compliance-officer",
+      "agent_name": "Compliance Officer",
+      "icon": "📋",
+      "event": "Updated staff HIPAA training compliance tracker",
+      "timestamp": "2026-02-16T14:20:00Z",
+      "color": "green"
+    },
+    {
+      "agent_slug": "records-analyst",
+      "agent_name": "Records Analyst",
+      "icon": "📊",
+      "event": "Cross-referenced 89 insurance verification requests",
+      "timestamp": "2026-02-16T12:45:00Z",
+      "color": "blue"
+    },
+    {
+      "agent_slug": "patient-coordinator",
+      "agent_name": "Patient Coordinator",
+      "icon": "🏥",
+      "event": "Processed 15 new patient registration forms",
+      "timestamp": "2026-02-16T10:30:00Z",
+      "color": "gold"
+    }
+  ],
+  "invoices": [
+    {
+      "period": "Feb 2026",
+      "amount_usd": 13200,
+      "status": "paid",
+      "paid_at": "2026-02-01T00:00:00Z",
+      "stripe_invoice_id": "inv_mhp_202602"
+    }
+  ]
+}

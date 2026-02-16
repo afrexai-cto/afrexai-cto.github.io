@@ -1,0 +1,39 @@
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"autopilot","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"autopilot","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"portal_token","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"portal_token","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"welcome_email","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"welcome_email","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"portal_data","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"auth_index","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:09Z","customer":"pacific-legal-group","step":"followup_schedule","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:10Z","customer":"pacific-legal-group","step":"followup_schedule","status":"FAILED","detail":"schedule-followups.sh failed"}
+{"ts":"2026-02-16T20:38:10Z","customer":"pacific-legal-group","step":"slack_notify","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:10Z","customer":"pacific-legal-group","step":"slack_notify","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:10Z","customer":"pacific-legal-group","company":"Pacific Legal Group","tier":"growth","vertical":"legal","email":"info@pacificlegal.com","agent_count":0,"mrr":0,"status":"complete","started":"2026-02-16T20:38:09Z"}
+{"ts":"2026-02-16T20:38:34Z","customer":"pacific-legal-group","step":"autopilot","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:34Z","customer":"pacific-legal-group","step":"autopilot","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:34Z","customer":"pacific-legal-group","step":"portal_token","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"portal_token","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"welcome_email","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"welcome_email","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"portal_data","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"auth_index","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"followup_schedule","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"followup_schedule","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"slack_notify","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","step":"slack_notify","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:35Z","customer":"pacific-legal-group","company":"Pacific Legal Group","tier":"growth","vertical":"legal","email":"info@pacificlegal.com","agent_count":0,"mrr":0,"status":"complete","started":"2026-02-16T20:38:34Z"}
+{"ts":"2026-02-16T20:38:39Z","customer":"pacific-legal-group","step":"autopilot","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:41Z","customer":"pacific-legal-group","step":"autopilot","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:41Z","customer":"pacific-legal-group","step":"portal_token","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:41Z","customer":"pacific-legal-group","step":"portal_token","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:41Z","customer":"pacific-legal-group","step":"welcome_email","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","step":"welcome_email","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","step":"portal_data","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","step":"auth_index","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","step":"followup_schedule","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","step":"followup_schedule","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","step":"slack_notify","status":"started","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","step":"slack_notify","status":"complete","detail":""}
+{"ts":"2026-02-16T20:38:42Z","customer":"pacific-legal-group","company":"Pacific Legal Group","tier":"growth","vertical":"legal","email":"info@pacificlegal.com","agent_count":3,"mrr":4950,"status":"complete","started":"2026-02-16T20:38:39Z"}

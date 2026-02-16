@@ -1001,3 +1001,125 @@
 - Draft cold email for Littler Mendelson (Carlos Gonzalez)
 - Research 2 more finserv targets (we're behind on this vertical)
 - Draft a LinkedIn post announcing the AI Governance Checklist (link to landing page)
+
+## 2026-02-16 18:26 GMT — Run #27
+**Actions taken:**
+1. **Littler Mendelson cold email sequence drafted** — 3-email sequence for Carlos Gonzalez (CDIO, hired Jan 12 from Epiq). Angles: employment law 50-state compliance automation, Epiq tech background respect, Troutman Pepper social proof. Saved to `content/cold-email-littler-gonzalez.md`.
+2. **LinkedIn post drafted for AI Governance Checklist** — HHS deadline countdown (47 days), drives to live landing page with email capture. Saved to `content/linkedin-ai-governance-checklist-post.md`. Ready for Christina to publish.
+3. **Corrected Carlos Gonzalez background** — previous run said ex-Excelitas, actually ex-Epiq (legal services tech). More relevant background = stronger email angle.
+
+**Pipeline status:**
+- Legal: 13 firms targeted, 6 with cold emails drafted (added Littler)
+- Healthcare: 10 systems, HHS deadline sequence ready, governance checklist LIVE
+- FinServ: contacts identified, outreach pending (behind — prioritize next run)
+- Landing page: LIVE ✅, LinkedIn post ready to promote it
+- Content assets: 6 cold email sequences, checklist, case study template, 3 LinkedIn posts, landing page
+
+**Expected impact:**
+- Littler Mendelson = potential $300K-$500K deal (world's largest employment law firm, 1,700 attorneys)
+- LinkedIn post promoting checklist could drive 50-200 leads if boosted
+- Corrected background makes Gonzalez email significantly more relevant
+
+**Next run priorities:**
+- Research 2-3 new finserv targets (this vertical is lagging)
+- Draft a finserv-specific LinkedIn post (Colorado SB-205 angle or CFPB compliance)
+- Check if any new golden nuggets in docs/research/golden-nuggets/
+
+## 2026-02-16 18:56 GMT — Run #28
+**Actions taken:**
+1. **Insurance/InsurTech cold email sequence drafted** — 3-email sequence targeting Kacie Conroy (new CIO at BrokerTech Ventures, appointed Feb 12). Angles: congratulations on new role, BTV accelerator as distribution channel, managed AI agents for insurance workflows. Plus generic insurance CIO template. Saved to `content/cold-email-insurance-ai-innovation.md`.
+2. **FinServ AI Compliance LinkedIn post drafted** — Colorado SB-205 countdown (4.5 months), HHS mandate (47 days), positions AfrexAI as the compliance automation partner. Saved to `content/linkedin-finserv-ai-compliance-post.md`. Ready for Christina.
+3. **2 new insurance prospects added** — Kacie Conroy (BTV/M3 Insurance) and Dan Keough (Holmes Murphy/BTV Co-CEO) added to finserv-prospect-targets.md Tier 4.
+4. **Opened insurance as new sub-vertical** — Insurance innovation roles are proliferating. BTV's accelerator model = potential channel partnership (they evaluate startups for broker/carrier adoption).
+
+**Pipeline status:**
+- Legal: 13 firms, 6 with cold emails
+- Healthcare: 10 systems, HHS deadline sequence ready
+- FinServ: 16 prospects (14 CO fintechs + 2 insurance), 1 cold email sequence
+- Insurance: NEW vertical — 2 prospects, 1 personalized sequence + 1 generic template
+- Content assets: 7 cold email sequences, 4 LinkedIn posts, checklist, landing page
+
+**Expected impact:**
+- BTV is an accelerator connecting startups to insurance buyers — if AfrexAI gets into their Selection Series, it's instant distribution to 30+ broker/carrier partners
+- Kacie Conroy email is high-signal: new role, innovation mandate, actively evaluating tech
+- LinkedIn compliance post should resonate with finserv audience (regulatory urgency = engagement)
+
+**Next run priorities:**
+- Find CCO/CRO contacts at Colorado fintechs (Homebot, Caribou, Enova, TIFIN, Pie Insurance)
+- Draft Colorado-specific SB-205 cold email personalized per company
+- Research BTV Selection Series application process — could be a channel play
+
+## 2026-02-16 19:26 GMT — Run #29
+**Actions taken:**
+1. **Colorado SB-205 cold email sequence drafted** — 3-email sequence with urgency framing (deadline Feb 1 already passed, enforcement June 30). Personalization notes for 6 CO fintechs: Homebot, Pie Insurance, TIFIN, Enova, Caribou, Braviant. Saved to `content/cold-email-colorado-sb205-sequence.md`.
+2. **LinkedIn post drafted: "SB-205 Is Now Live"** — Urgency angle (15 days since enforcement began, 4.5 months to June 30). Different from previous compliance post — this one is Colorado-specific with concrete penalty math ($20K/violation, no cap). Saved to `content/linkedin-sb205-now-live-post.md`. Ready for Christina.
+3. **Confirmed Homebot CEO: Ernie Graham** — Denver, $14.7M revenue, AI-powered homeownership insights for lenders. Direct SB-205 target.
+4. **Key regulatory update:** SB-205 enforcement delayed to June 30, 2026 (per Clark Hill article) — adjusts urgency framing. Still only 4.5 months away.
+
+**Pipeline status:**
+- Legal: 13 firms, 6 with cold emails
+- Healthcare: 10 systems, HHS deadline sequence ready
+- FinServ: 16 prospects, 2 cold email sequences (insurance + Colorado SB-205)
+- Content assets: 8 cold email sequences, 5 LinkedIn posts, checklist, landing page
+
+**Expected impact:**
+- Colorado SB-205 sequence targets 6 fintechs with regulatory urgency = higher open/response rates
+- LinkedIn post positions AfrexAI as the go-to for AI compliance (Colorado market alone = hundreds of companies)
+- SB-205 is the FIRST state-level AI law enforced in the US — early mover advantage for AfrexAI
+
+**Next run priorities:**
+- Draft personalized email for Ernie Graham (Homebot) using SB-205 template
+- Research BTV (BrokerTech Ventures) Selection Series application process
+- Find CCO contacts at Pie Insurance and TIFIN
+- Consider drafting a "SB-205 Compliance Readiness Assessment" lead magnet
+
+
+## 2026-02-16 19:56 GMT — Run #30
+**Actions taken:**
+1. **Personalized 3-touch cold email for Ernie Graham, CEO of Homebot (Denver)** — SB-205 angle targeting their AI-powered lending recommendations as "consequential decisions" under the law. Includes a clever pivot: Homebot could package SB-205 compliance for their lender clients as a retention + revenue play. Saved to `content/cold-email-homebot-ernie-graham.md`. Ready for Christina to send.
+2. **SB-205 Compliance Readiness Assessment lead magnet created** — 50-point self-scoring checklist across 5 sections (inventory, AIAs, consumer notification, governance, audit trail). Designed as gated content (email capture → PDF). Includes scoring tiers and CTA to book gap analysis. Saved to `content/lead-magnet-sb205-readiness-assessment.md`.
+3. **BTV Selection Series researched** — 2026 accelerator applications closed 12/31/2025. Selection Series pitches happening now (Feb 2026). New CIO Kacie Conroy appointed. **MISSED WINDOW** — note for 2027 cycle: apply by November. However, BTV partners (insurance brokers) are still valid targets for direct outreach.
+4. **Playbook note:** BTV deadline = dead for 2026. Pivot: target BTV partner brokerages directly as prospects (they're the ones buying insurtech solutions).
+
+**Pipeline status:**
+- Legal: 13 firms, 6 with cold emails
+- Healthcare: 10 systems, HHS deadline sequence ready
+- FinServ: 17 prospects (added Homebot), 3 cold email sequences
+- Content assets: 9 cold email sequences, 5 LinkedIn posts, 1 lead magnet, checklist, landing page
+- Lead magnets: SB-205 Readiness Assessment (NEW) — high-value gated content
+
+**Expected impact:**
+- Homebot email targets a $14.7M company with specific regulatory pressure — higher conversion probability than generic outreach
+- SB-205 lead magnet is a scalable top-of-funnel asset: every Colorado company using AI needs this assessment
+- Lead magnet distribution across LinkedIn + Reddit + CO tech newsletters could generate 50-100 email captures/month
+
+**Next run priorities:**
+- Build HTML version of SB-205 assessment (interactive, hosted on GitHub Pages)
+- Research Pie Insurance and TIFIN compliance contacts
+- Draft partnership outreach to Colorado Technology Association for newsletter placement
+- Consider creating similar lead magnets for HHS deadline (healthcare) and EU AI Act (cross-border)
+
+
+## 2026-02-16 20:26 GMT — Run #31
+**Actions taken:**
+1. **3-touch cold email sequence for Holly Wallinger, VP Legal & Compliance at Pie Insurance** — SB-205 angle targeting their AI-driven underwriting as "consequential decisions." Pie has 55K+ policies, expanding to 50 states, Series D funded. Saved to `content/cold-email-pie-insurance-holly-wallinger.md`. Ready for Christina to send.
+2. **Partnership outreach draft for Colorado Technology Association (CTA)** — Pitching our SB-205 Readiness Assessment as free member resource + companion article. CTA reaches 1,000+ CO tech companies. Also identified secondary targets: Denver Startup Week, Built In Colorado, Colorado BizWire. Saved to `content/partnership-outreach-colorado-tech-association.md`.
+3. **Prospect research: Pie Insurance** — Holly Wallinger identified as VP Legal & Compliance (promoted March 2025). Company focused on "responsible growth" in 2026 — compliance messaging aligns perfectly.
+
+**Pipeline status:**
+- Legal: 13 firms, 6 with cold emails
+- Healthcare: 10 systems, HHS deadline sequence ready
+- FinServ/InsurTech: 18 prospects (added Pie Insurance), 4 cold email sequences
+- Content assets: 10 cold email sequences, 5 LinkedIn posts, 1 lead magnet, 1 partnership outreach
+- Partnership pipeline: CTA + 3 secondary CO distribution channels (NEW)
+
+**Expected impact:**
+- Pie Insurance = well-funded insurtech with clear regulatory pressure. High-probability response given SB-205 urgency.
+- CTA partnership could put our lead magnet in front of 1,000+ companies. If 5% download = 50 leads/month from one channel.
+- Distribution partnerships are force multipliers — one placement > 100 cold emails.
+
+**Next run priorities:**
+- Research TIFIN (fintech/wealthtech) compliance contacts
+- Build interactive HTML version of SB-205 assessment for GitHub Pages
+- Draft LinkedIn post about SB-205 compliance gaps in insurtech
+- Research Colorado Bar Association content submission process

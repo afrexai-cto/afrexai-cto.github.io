@@ -3,172 +3,535 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing — AfrexAI</title>
+<title>Pricing — AfrexAI | AI Workforce Plans</title>
+<meta name="description" content="Choose your AI workforce plan. From a single agent to a full AI team — transparent pricing, no hidden fees. Start in 24 hours.">
+<meta property="og:title" content="Pricing — AfrexAI">
+<meta property="og:description" content="AI workforce plans starting at $1,500/mo. Deploy AI agents for your business today.">
+<meta property="og:url" content="https://afrexai-cto.github.io/pricing/">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.png">
+<meta property="og:type" content="website">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
-a{color:#FFD700;text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1200px;margin:0 auto;padding:0 20px}
-header{text-align:center;padding:80px 20px 40px}
-header h1{font-size:3rem;color:#fff;margin-bottom:12px}
-header h1 span{color:#FFD700}
-header p{font-size:1.2rem;color:#999;max-width:600px;margin:0 auto}
-.badge{display:inline-block;background:#FFD700;color:#0a0a0a;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:40px 0 80px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}}
-.card{background:#111;border:1px solid #222;border-radius:16px;padding:36px 28px;display:flex;flex-direction:column;position:relative;transition:border-color .2s}
-.card:hover{border-color:#FFD700}
-.card.featured{border-color:#FFD700;box-shadow:0 0 30px rgba(255,215,0,.08)}
-.card-label{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:#FFD700;margin-bottom:8px;font-weight:700}
-.card h2{font-size:1.5rem;color:#fff;margin-bottom:6px}
-.card .tagline{font-size:.9rem;color:#888;margin-bottom:24px;font-style:italic}
-.price-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:.95rem}
-.price-row:last-child{border-bottom:none}
-.price-row .label{color:#ccc}
-.price-row .val{color:#FFD700;font-weight:600}
-.card ul{list-style:none;margin:20px 0;flex:1}
-.card ul li{padding:6px 0;font-size:.9rem;color:#aaa}
-.card ul li::before{content:'✓ ';color:#FFD700}
-.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;font-weight:700;padding:14px 28px;border-radius:8px;text-align:center;font-size:1rem;transition:background .2s;border:none;cursor:pointer;width:100%;margin-top:auto}
-.cta-btn:hover{background:#e6c200;text-decoration:none}
-.cta-btn.outline{background:transparent;border:2px solid #FFD700;color:#FFD700}
-.cta-btn.outline:hover{background:#FFD700;color:#0a0a0a}
-.includes{text-align:center;padding:0 20px 60px}
-.includes h3{color:#fff;font-size:1.3rem;margin-bottom:12px}
-.includes .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:32px}
-.includes .pill{background:#161616;border:1px solid #222;padding:8px 18px;border-radius:20px;font-size:.85rem;color:#ccc}
-.not-sure{text-align:center;padding:60px 20px;background:#111;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;margin-bottom:80px}
-.not-sure h2{color:#fff;font-size:2rem;margin-bottom:8px}
-.not-sure p{color:#999;margin-bottom:24px;font-size:1.1rem}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+.gold{color:#FFD700}
+
+/* NAV */
+nav{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid #1a1a1a;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:64px}
+nav .logo{font-size:1.5rem;font-weight:800;color:#FFD700;letter-spacing:-.02em}
+nav .logo span{color:#fff}
+.nav-links{display:flex;gap:.2rem;align-items:center;flex-wrap:wrap}
+.nav-links a{color:#999;font-size:.82rem;padding:.5rem .7rem;border-radius:6px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{color:#FFD700;background:#1a1a1a;text-decoration:none}
+.nav-links a.active{color:#FFD700}
+.nav-cta{background:linear-gradient(135deg,#FFD700,#FFA500)!important;color:#000!important;font-weight:700;padding:.5rem 1rem!important;border-radius:8px!important}
+.nav-cta:hover{opacity:.9}
+.menu-btn{display:none;background:none;border:none;color:#FFD700;font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.pricing-hero{text-align:center;padding:6rem 2rem 2rem;max-width:800px;margin:0 auto}
+.pricing-hero h1{font-size:3.2rem;font-weight:800;color:#fff;margin-bottom:.8rem;letter-spacing:-.03em;line-height:1.1}
+.pricing-hero h1 em{font-style:normal;color:#FFD700}
+.pricing-hero p{font-size:1.15rem;color:#777;max-width:560px;margin:0 auto}
+
+/* VERTICAL SELECTOR */
+.vertical-section{text-align:center;padding:2.5rem 2rem 1rem;max-width:800px;margin:0 auto}
+.vertical-label{font-size:.85rem;color:#666;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;font-weight:600}
+.vertical-pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.vertical-pill{padding:.55rem 1.2rem;border-radius:20px;border:1px solid #2a2a2a;background:#111;color:#999;font-size:.85rem;cursor:pointer;transition:all .25s;font-weight:500}
+.vertical-pill:hover{border-color:#555;color:#ccc}
+.vertical-pill.active{border-color:#FFD700;background:rgba(255,215,0,.08);color:#FFD700;font-weight:600}
+.premium-badge{display:inline-block;font-size:.7rem;color:#FFD700;margin-left:.3rem;font-weight:700}
+
+/* BILLING TOGGLE */
+.billing-toggle{display:flex;align-items:center;justify-content:center;gap:1rem;padding:2rem 2rem 1rem}
+.toggle-option{font-size:.95rem;color:#666;cursor:pointer;transition:color .2s;font-weight:500}
+.toggle-option.active{color:#fff;font-weight:700}
+.toggle-switch{width:52px;height:28px;background:#2a2a2a;border-radius:14px;position:relative;cursor:pointer;transition:background .3s;flex-shrink:0}
+.toggle-switch.annual{background:linear-gradient(135deg,#FFD700,#FFA500)}
+.toggle-knob{width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .3s;box-shadow:0 2px 4px rgba(0,0,0,.3)}
+.toggle-switch.annual .toggle-knob{transform:translateX(24px)}
+.save-badge{background:rgba(255,215,0,.12);color:#FFD700;font-size:.75rem;font-weight:700;padding:.25rem .7rem;border-radius:12px;letter-spacing:.02em}
+
+/* PRICING CARDS */
+.pricing-section{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.price-card{background:#111;border:1px solid #1a1a1a;border-radius:20px;padding:2.5rem 2rem;display:flex;flex-direction:column;transition:all .35s;position:relative;overflow:hidden}
+.price-card:hover{border-color:#333;transform:translateY(-4px)}
+.price-card.featured{border-color:#FFD700;background:linear-gradient(180deg,rgba(255,215,0,.04) 0%,#111 40%)}
+.price-card.featured::before{content:'★ MOST POPULAR';position:absolute;top:16px;right:-32px;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-size:.65rem;font-weight:800;padding:.3rem 2.5rem;transform:rotate(45deg);letter-spacing:.06em}
+.tier-name{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:#FFD700;font-weight:700;margin-bottom:.8rem}
+.price-amount{font-size:2.8rem;color:#fff;font-weight:800;letter-spacing:-.02em;line-height:1}
+.price-amount .currency{font-size:1.4rem;vertical-align:super;margin-right:2px}
+.price-period{font-size:.85rem;color:#555;font-weight:400;margin-left:.2rem}
+.price-annual-note{font-size:.78rem;color:#FFD700;margin-top:.3rem;min-height:1.2rem}
+.price-agents{font-size:.9rem;color:#888;margin:.8rem 0;padding:.8rem 0;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}
+.price-agents strong{color:#fff}
+.per-agent{font-size:.78rem;color:#555;margin-top:.2rem}
+.features-list{list-style:none;flex:1;margin:1.2rem 0 1.5rem}
+.features-list li{color:#999;font-size:.85rem;padding:.45rem 0;display:flex;align-items:flex-start;gap:.5rem}
+.features-list li::before{content:'✓';color:#FFD700;font-weight:700;flex-shrink:0;margin-top:1px}
+.card-cta{display:block;width:100%;padding:.9rem;text-align:center;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s;border:none;letter-spacing:.01em}
+.card-cta.primary{background:linear-gradient(135deg,#FFD700,#FFA500);color:#000}
+.card-cta.primary:hover{opacity:.9;transform:translateY(-1px);text-decoration:none}
+.card-cta.secondary{background:transparent;border:1px solid #333;color:#ccc}
+.card-cta.secondary:hover{border-color:#FFD700;color:#FFD700;text-decoration:none}
+
+/* PREMIUM NOTICE */
+.premium-notice{text-align:center;padding:0 2rem 2rem;max-width:600px;margin:0 auto}
+.premium-notice p{font-size:.85rem;color:#555;background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:.8rem 1.2rem;display:inline-block}
+.premium-notice strong{color:#FFD700}
+
 /* FAQ */
-.faq-section{padding:0 20px 80px}
-.faq-section h2{text-align:center;color:#fff;font-size:2rem;margin-bottom:32px}
-.faq-item{border-bottom:1px solid #1a1a1a;max-width:800px;margin:0 auto}
-.faq-q{width:100%;background:none;border:none;color:#e0e0e0;font-size:1rem;padding:18px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
-.faq-q::after{content:'+';color:#FFD700;font-size:1.4rem;transition:transform .2s}
-.faq-item.open .faq-q::after{content:'−'}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:#999;font-size:.95rem}
-.faq-a-inner{padding:0 0 18px}
-footer{text-align:center;padding:40px 20px;color:#555;font-size:.85rem;border-top:1px solid #1a1a1a}
+.faq-section{max-width:760px;margin:0 auto;padding:4rem 2rem}
+.faq-section h2{text-align:center;font-size:2rem;color:#fff;margin-bottom:2.5rem;font-weight:800}
+.faq-item{border-bottom:1px solid #1a1a1a;padding:1.2rem 0}
+.faq-q{color:#fff;font-weight:600;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';color:#FFD700;font-size:1.3rem;font-weight:300;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{color:#888;font-size:.9rem;line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:200px;padding-top:.8rem}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,#0a0a0a,#111,#0a0a0a)}
+.final-cta h2{font-size:2.2rem;color:#fff;margin-bottom:.8rem;font-weight:800}
+.final-cta p{color:#777;font-size:1rem;max-width:500px;margin:0 auto 2rem}
+.final-cta .cta-btn{display:inline-block;padding:.95rem 2.4rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;transition:all .3s}
+.final-cta .cta-btn:hover{opacity:.9;text-decoration:none}
+.final-cta .cta-link{display:block;margin-top:1rem;color:#666;font-size:.85rem}
+
+/* FOOTER */
+footer{border-top:1px solid #1a1a1a;padding:3rem 2rem;max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;margin-bottom:2.5rem}
+.footer-col h4{color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;font-weight:700}
+.footer-col a{display:block;color:#666;font-size:.85rem;padding:.25rem 0;transition:color .2s}
+.footer-col a:hover{color:#FFD700;text-decoration:none}
+.footer-bottom{text-align:center;color:#444;font-size:.8rem;padding-top:2rem;border-top:1px solid #1a1a1a}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:2.5rem;max-width:480px;width:100%;position:relative;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:#666;font-size:1.5rem;cursor:pointer;transition:color .2s;line-height:1}
+.modal-close:hover{color:#fff}
+.modal h3{color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:.3rem}
+.modal .modal-sub{color:#777;font-size:.85rem;margin-bottom:1.5rem}
+.modal label{display:block;color:#999;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;margin-top:1rem}
+.modal label:first-of-type{margin-top:0}
+.modal input,.modal select{width:100%;padding:.75rem 1rem;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#fff;font-size:.95rem;transition:border-color .2s;outline:none;font-family:inherit}
+.modal input:focus,.modal select:focus{border-color:#FFD700}
+.modal select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.modal-summary{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:10px;padding:1rem 1.2rem;margin-top:1.5rem;display:flex;justify-content:space-between;align-items:center}
+.modal-summary .sel-detail{font-size:.85rem;color:#999}
+.modal-summary .sel-detail strong{color:#fff}
+.modal-summary .sel-price{font-size:1.3rem;color:#FFD700;font-weight:800}
+.modal-submit{width:100%;padding:.9rem;margin-top:1.2rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.modal-submit:hover{opacity:.9}
+.modal-submit:disabled{opacity:.5;cursor:not-allowed}
+.modal-secure{text-align:center;color:#555;font-size:.75rem;margin-top:.8rem}
+.modal-secure span{color:#888}
+.modal-error{color:#ff4444;font-size:.8rem;margin-top:.5rem;display:none}
+
+/* SPINNER */
+.spinner{display:none;width:18px;height:18px;border:2px solid rgba(0,0,0,.2);border-top-color:#000;border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .pricing-hero h1{font-size:2.2rem}
+  .pricing-hero{padding:5rem 1.5rem 1.5rem}
+  .pricing-grid{grid-template-columns:1fr}
+  .pricing-section{padding:2rem 1rem 3rem}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:#111;border-bottom:1px solid #1a1a1a;flex-direction:column;padding:1rem;gap:.5rem}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.7rem 1rem}
+  .menu-btn{display:block}
+  .modal{padding:2rem 1.5rem;margin:1rem}
+}
 </style>
-    <meta property="og:title" content="Pricing — AfrexAI">
-    <meta property="og:description" content="Pricing — AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
-    <meta property="og:url" content="https://afrexai-cto.github.io/pricing/">
-    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pricing — AfrexAI">
-    <meta name="twitter:description" content="Pricing — AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
 </head>
 <body>
-<header>
-<div class="badge">Simple, Transparent Pricing</div>
-<h1>AI Agents That <span>Work For You</span></h1>
-<p>Choose the model that fits your business. Start with a 30-day pilot — cancel anytime.</p>
-</header>
 
-<div class="container">
-<div class="grid">
-<!-- SKILLS -->
-<div class="card">
-<div class="card-label">Skills (CMA)</div>
-<h2>Customer Managed Agents</h2>
-<p class="tagline">"You run OpenClaw, you buy our skills"</p>
-<div class="price-row"><span class="label">Individual Skill</span><span class="val">$47 – $247</span></div>
-<div class="price-row"><span class="label">Starter Bundle (5 skills)</span><span class="val">$197</span></div>
-<div class="price-row"><span class="label">Pro Bundle (10 skills)</span><span class="val">$497</span></div>
-<div class="price-row"><span class="label">Enterprise Bundle (all)</span><span class="val">$997</span></div>
-<ul>
-<li>One-time purchase, yours forever</li>
-<li>Run on your own OpenClaw instance</li>
-<li>Full customisation control</li>
-<li>Community support included</li>
-<li>Free updates for 12 months</li>
-</ul>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn outline">Get Started</a>
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo" style="text-decoration:none">Afrex<span>AI</span></a>
+  <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <div class="nav-links">
+    <a href="/aaas/">Agent as a Service</a>
+    <a href="/services.html">Services</a>
+    <a href="/pricing/" class="active">Pricing</a>
+    <a href="/hosted/">Hosted</a>
+    <a href="/aaas/demo.html">Demo</a>
+    <a href="https://calendly.com/cbeckford-afrexai/30min" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="pricing-hero">
+  <h1>Your AI Workforce, <em>Your Price.</em></h1>
+  <p>Transparent pricing. No hidden fees. Deploy AI agents that run your operations — starting in 24 hours.</p>
 </div>
 
-<!-- MANAGED -->
-<div class="card featured">
-<div class="card-label">Managed Agents</div>
-<h2>On Your Infrastructure</h2>
-<p class="tagline">"We deploy on YOUR systems"</p>
-<div class="price-row"><span class="label">1 Agent</span><span class="val">$2,500/mo</span></div>
-<div class="price-row"><span class="label">3 Agents</span><span class="val">$6,000/mo</span></div>
-<div class="price-row"><span class="label">Enterprise</span><span class="val">Custom</span></div>
-<ul>
-<li>Deployed in your cloud / on-prem</li>
-<li>Full data sovereignty</li>
-<li>Dedicated onboarding &amp; training</li>
-<li>Priority Slack/email support</li>
-<li>Monthly performance reviews</li>
-<li>Custom integrations included</li>
-</ul>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Call</a>
+<!-- VERTICAL SELECTOR -->
+<div class="vertical-section">
+  <div class="vertical-label">Select your industry</div>
+  <div class="vertical-pills" id="verticalPills">
+    <div class="vertical-pill active" data-vertical="general">General</div>
+    <div class="vertical-pill" data-vertical="legal">Legal <span class="premium-badge">+10%</span></div>
+    <div class="vertical-pill" data-vertical="healthcare">Healthcare <span class="premium-badge">+10%</span></div>
+    <div class="vertical-pill" data-vertical="finance">Finance <span class="premium-badge">+5%</span></div>
+    <div class="vertical-pill" data-vertical="construction">Construction</div>
+    <div class="vertical-pill" data-vertical="saas">SaaS</div>
+    <div class="vertical-pill" data-vertical="professional-services">Professional Services</div>
+  </div>
 </div>
 
-<!-- HOSTED -->
-<div class="card">
-<div class="card-label">Hosted Agents</div>
-<h2>AfrexAI Infrastructure</h2>
-<p class="tagline">"We host everything, you get results"</p>
-<div class="price-row"><span class="label">Starter — 1 agent</span><span class="val">$1,500/mo</span></div>
-<div class="price-row"><span class="label">Growth — 3 agents</span><span class="val">$4,500/mo</span></div>
-<div class="price-row"><span class="label">Enterprise — 9 agents</span><span class="val">$12,000/mo</span></div>
-<ul>
-<li>Zero infrastructure to manage</li>
-<li>We handle hosting, updates &amp; scaling</li>
-<li>99.9% uptime SLA</li>
-<li>Dedicated success manager</li>
-<li>Weekly reporting dashboard</li>
-<li>SOC 2 compliant environment</li>
-</ul>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn outline">Book a Call</a>
-</div>
-</div>
+<!-- BILLING TOGGLE -->
+<div class="billing-toggle">
+  <span class="toggle-option active" data-billing="monthly">Monthly</span>
+  <div class="toggle-switch" id="billingToggle">
+    <div class="toggle-knob"></div>
+  </div>
+  <span class="toggle-option" data-billing="annual">Annual</span>
+  <span class="save-badge">Save 15%</span>
 </div>
 
-<div class="includes">
-<h3>Every Plan Includes</h3>
-<div class="pills">
-<span class="pill">🚀 30-Day Pilot</span>
-<span class="pill">🔄 Cancel Anytime</span>
-<span class="pill">🛡️ Enterprise-Grade Security</span>
-<span class="pill">📞 Onboarding Call</span>
-<span class="pill">📊 Performance Reporting</span>
-<span class="pill">🔧 Custom Configuration</span>
-</div>
+<!-- PREMIUM NOTICE (hidden by default, shown when premium vertical selected) -->
+<div class="premium-notice" id="premiumNotice" style="display:none">
+  <p>Prices include <strong id="premiumText">+10% legal</strong> vertical premium for specialized compliance &amp; domain expertise</p>
 </div>
 
-<div class="not-sure">
-<h2>Not sure which is right?</h2>
-<p>Book a free 30-minute strategy call. We'll map the best option to your business.</p>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" style="width:auto;display:inline-block">Book a Free Call →</a>
+<!-- PRICING CARDS -->
+<div class="pricing-section">
+  <div class="pricing-grid" id="pricingGrid">
+    <!-- Cards injected by JS -->
+  </div>
 </div>
 
-<section class="faq-section">
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><button class="faq-q">What's included in the 30-day pilot?</button><div class="faq-a"><div class="faq-a-inner">Full access to your chosen plan with real agents running real tasks. We set measurable goals together — if it doesn't deliver, you walk away with zero obligation.</div></div></div>
-<div class="faq-item"><button class="faq-q">Are there any long-term contracts?</button><div class="faq-a"><div class="faq-a-inner">No. All plans are month-to-month. Skills are a one-time purchase. You can cancel managed or hosted plans at any time with 30 days' notice.</div></div></div>
-<div class="faq-item"><button class="faq-q">What's the difference between Skills and Managed/Hosted?</button><div class="faq-a"><div class="faq-a-inner">Skills are pre-built capabilities you install on your own OpenClaw setup — you're in full control. Managed means we deploy and maintain agents on your infrastructure. Hosted means we handle everything end-to-end on our infrastructure.</div></div></div>
-<div class="faq-item"><button class="faq-q">Can I switch plans later?</button><div class="faq-a"><div class="faq-a-inner">Absolutely. Start with Skills and upgrade to Managed or Hosted when you're ready to scale. We'll migrate everything seamlessly.</div></div></div>
-<div class="faq-item"><button class="faq-q">Do you offer discounts for annual billing?</button><div class="faq-a"><div class="faq-a-inner">Yes — contact us for annual pricing. Typical savings are 15-20% compared to monthly billing.</div></div></div>
-</section>
+<!-- FAQ -->
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q">What's included in each plan?</div>
+    <div class="faq-a">Every plan includes fully managed AI agents deployed to your systems, integrations with your existing tools (email, CRM, ERP), weekly performance reports, and dedicated Slack/Teams support. Higher tiers add more agents, custom integrations, and priority support.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Why do some verticals cost more?</div>
+    <div class="faq-a">Legal and healthcare verticals require specialized compliance frameworks, domain-specific training data, and additional security measures (HIPAA, SOC 2). Finance includes enhanced audit trails. These premiums cover the real cost of building compliant AI for regulated industries.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Can I add more agents later?</div>
+    <div class="faq-a">Absolutely. Additional agents beyond your plan are $1,800/mo each. You can scale up at any time — we'll deploy new agents within 24 hours of your request.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How long does deployment take?</div>
+    <div class="faq-a">Most agents are deployed within 24 hours of payment. Complex integrations (custom ERP, legacy systems) may take up to 5 business days. You'll get a dedicated onboarding call to map your workflows.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What if it doesn't work for us?</div>
+    <div class="faq-a">We offer a 30-day satisfaction guarantee. If your agents aren't delivering measurable value within the first month, we'll work with you to reconfigure or provide a full refund. No questions asked.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is my data secure?</div>
+    <div class="faq-a">Yes. All data is encrypted in transit and at rest. We never train models on your data. Enterprise plans include dedicated infrastructure, SOC 2 compliance, and custom data residency options.</div>
+  </div>
+</div>
 
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Not sure which plan? <span class="gold">Let's talk.</span></h2>
+  <p>Book a 30-minute discovery call. We'll map your operations and recommend the right plan.</p>
+  <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call →</a>
+  <a href="mailto:hello@afrexai.com" class="cta-link">Or email us at hello@afrexai.com</a>
+</div>
+
+<!-- FOOTER -->
 <footer>
-<p>© 2025 AfrexAI. All rights reserved. &nbsp;|&nbsp; <a href="/faq/">FAQ</a> &nbsp;|&nbsp; <a href="https://calendly.com/cbeckford-afrexai/30min">Contact</a></p>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="/aaas/">Agent as a Service</a>
+      <a href="/aaas/demo.html">Live Demo</a>
+      <a href="/services.html">Services</a>
+      <a href="/pricing/">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <a href="/ai-for-law-firms.html">AI for Law Firms</a>
+      <a href="/ai-for-construction.html">AI for Construction</a>
+      <a href="/ai-for-saas.html">AI for SaaS</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="https://www.youtube.com/@AfrexAI" target="_blank">YouTube</a>
+      <a href="https://calendly.com/cbeckford-afrexai/30min">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/">Home</a>
+      <a href="mailto:hello@afrexai.com">hello@afrexai.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 AfrexAI. Your AI Workforce, Managed.</div>
 </footer>
 
+<!-- COMPANY DETAILS MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3>Almost there!</h3>
+    <p class="modal-sub">Tell us about your company so we can set up your AI workforce.</p>
+    <form id="checkoutForm" onsubmit="return handleCheckout(event)">
+      <label for="companyName">Company Name</label>
+      <input type="text" id="companyName" name="company_name" required placeholder="Acme Corp">
+
+      <label for="contactName">Your Name</label>
+      <input type="text" id="contactName" name="contact_name" required placeholder="Jane Smith">
+
+      <label for="companyEmail">Work Email</label>
+      <input type="email" id="companyEmail" name="company_email" required placeholder="jane@acme.com">
+
+      <label for="companySize">Company Size</label>
+      <select id="companySize" name="company_size" required>
+        <option value="">Select...</option>
+        <option value="1-10">1–10 employees</option>
+        <option value="11-50">11–50 employees</option>
+        <option value="51-200">51–200 employees</option>
+        <option value="201-1000">201–1,000 employees</option>
+        <option value="1000+">1,000+ employees</option>
+      </select>
+
+      <div class="modal-summary">
+        <div class="sel-detail">
+          <strong id="modalTier">Growth</strong> · <span id="modalVertical">Legal</span> · <span id="modalBilling">Monthly</span>
+        </div>
+        <div class="sel-price" id="modalPrice">$4,950/mo</div>
+      </div>
+
+      <div class="modal-error" id="modalError"></div>
+
+      <button type="submit" class="modal-submit" id="submitBtn">
+        <span id="submitText">Proceed to Payment →</span>
+        <div class="spinner" id="submitSpinner"></div>
+      </button>
+      <div class="modal-secure">🔒 <span>Secure checkout powered by Stripe</span></div>
+    </form>
+  </div>
+</div>
+
 <script>
-document.querySelectorAll('.faq-q').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const item=btn.parentElement;
-    const ans=item.querySelector('.faq-a');
-    item.classList.toggle('open');
-    ans.style.maxHeight=item.classList.contains('open')?ans.scrollHeight+'px':'0';
-  });
+// ═══════════════════════════════════════════
+// CONFIGURATION
+// ═══════════════════════════════════════════
+const API_URL = 'https://stripe-api.afrexai.com'; // Change for local dev
+
+// ═══════════════════════════════════════════
+// PRICING DATA (mirrors aaas-platform/pricing.json)
+// ═══════════════════════════════════════════
+const PRICING = {
+  currency: 'USD',
+  tiers: {
+    starter:    { price: 1500, agents: 1,  name: 'Starter',    features: ['Single workflow automation','Dedicated agent identity','Email & calendar integrations','Weekly performance reports','Slack/Teams support channel'] },
+    growth:     { price: 4500, agents: 3,  name: 'Growth',     features: ['Multi-workflow automation','Custom integrations (CRM, ERP)','Agent-to-agent coordination','Real-time dashboard','Priority support & onboarding','Quarterly strategy reviews'] },
+    scale:      { price: 7500, agents: 10, name: 'Scale',      features: ['Full department automation','Advanced analytics & reporting','Custom model fine-tuning','Dedicated success manager','API access & webhooks','SLA-backed uptime guarantee'] },
+    enterprise: { price: 12000, agents: 9, name: 'Enterprise', features: ['Full operational AI workforce','Dedicated account manager','Custom model training','On-premise deployment option','SOC 2 & HIPAA compliance','24/7 phone & email support','Quarterly business reviews'] }
+  },
+  vertical_premiums: {
+    'general': 0,
+    'legal': 10,
+    'healthcare': 10,
+    'finance': 5,
+    'construction': 0,
+    'saas': 0,
+    'professional-services': 0
+  },
+  annual_discount_pct: 15,
+  overage_per_agent: 1800
+};
+
+const VERTICAL_LABELS = {
+  'general': 'General',
+  'legal': 'Legal',
+  'healthcare': 'Healthcare',
+  'finance': 'Finance',
+  'construction': 'Construction',
+  'saas': 'SaaS',
+  'professional-services': 'Professional Services'
+};
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let selectedVertical = 'general';
+let billingAnnual = false;
+let selectedTier = null;
+
+// ═══════════════════════════════════════════
+// CALCULATIONS
+// ═══════════════════════════════════════════
+function calcPrice(tierKey) {
+  const tier = PRICING.tiers[tierKey];
+  const premium = PRICING.vertical_premiums[selectedVertical] || 0;
+  let monthly = tier.price * (1 + premium / 100);
+  if (billingAnnual) monthly = monthly * (1 - PRICING.annual_discount_pct / 100);
+  return Math.round(monthly);
+}
+
+function formatPrice(amount) {
+  return '$' + amount.toLocaleString('en-US');
+}
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+function renderCards() {
+  const grid = document.getElementById('pricingGrid');
+  const tiers = ['starter', 'growth', 'scale', 'enterprise'];
+  grid.innerHTML = tiers.map(key => {
+    const t = PRICING.tiers[key];
+    const price = calcPrice(key);
+    const perAgent = Math.round(price / t.agents);
+    const featured = key === 'growth';
+    const isEnterprise = key === 'enterprise';
+    const period = billingAnnual ? '/mo' : '/mo';
+    const annualTotal = billingAnnual ? `<div class="price-annual-note">Billed ${formatPrice(price * 12)}/year</div>` : '<div class="price-annual-note"></div>';
+    return `
+      <div class="price-card${featured ? ' featured' : ''}">
+        <div class="tier-name">${t.name}</div>
+        <div class="price-amount"><span class="currency">$</span>${price.toLocaleString('en-US')}<span class="price-period">/mo</span></div>
+        ${annualTotal}
+        <div class="price-agents"><strong>${t.agents} AI Agent${t.agents > 1 ? 's' : ''}</strong>, fully managed<div class="per-agent">${formatPrice(perAgent)} per agent/mo</div></div>
+        <ul class="features-list">${t.features.map(f => `<li>${f}</li>`).join('')}</ul>
+        <a href="${isEnterprise ? '#' : '#'}" class="card-cta ${featured ? 'primary' : 'secondary'}" onclick="openModal('${key}');return false;">
+          ${isEnterprise ? 'Get Enterprise →' : 'Get Started →'}
+        </a>
+      </div>`;
+  }).join('');
+}
+
+function updatePremiumNotice() {
+  const premium = PRICING.vertical_premiums[selectedVertical];
+  const notice = document.getElementById('premiumNotice');
+  if (premium > 0) {
+    notice.style.display = '';
+    document.getElementById('premiumText').textContent = `+${premium}% ${VERTICAL_LABELS[selectedVertical].toLowerCase()}`;
+  } else {
+    notice.style.display = 'none';
+  }
+}
+
+// ═══════════════════════════════════════════
+// EVENT HANDLERS
+// ═══════════════════════════════════════════
+
+// Vertical pills
+document.getElementById('verticalPills').addEventListener('click', e => {
+  const pill = e.target.closest('.vertical-pill');
+  if (!pill) return;
+  document.querySelectorAll('.vertical-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  selectedVertical = pill.dataset.vertical;
+  updatePremiumNotice();
+  renderCards();
 });
+
+// Billing toggle
+document.getElementById('billingToggle').addEventListener('click', () => {
+  billingAnnual = !billingAnnual;
+  document.getElementById('billingToggle').classList.toggle('annual', billingAnnual);
+  document.querySelectorAll('.toggle-option').forEach(opt => {
+    opt.classList.toggle('active', (opt.dataset.billing === 'annual') === billingAnnual);
+  });
+  renderCards();
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+
+// ═══════════════════════════════════════════
+// MODAL
+// ═══════════════════════════════════════════
+function openModal(tierKey) {
+  selectedTier = tierKey;
+  const tier = PRICING.tiers[tierKey];
+  const price = calcPrice(tierKey);
+  document.getElementById('modalTier').textContent = tier.name;
+  document.getElementById('modalVertical').textContent = VERTICAL_LABELS[selectedVertical];
+  document.getElementById('modalBilling').textContent = billingAnnual ? 'Annual' : 'Monthly';
+  document.getElementById('modalPrice').textContent = formatPrice(price) + '/mo';
+  document.getElementById('modalError').style.display = 'none';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('companyName').focus(), 100);
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ═══════════════════════════════════════════
+// CHECKOUT
+// ═══════════════════════════════════════════
+async function handleCheckout(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const spinner = document.getElementById('submitSpinner');
+  const text = document.getElementById('submitText');
+  const error = document.getElementById('modalError');
+
+  btn.disabled = true;
+  spinner.style.display = 'block';
+  text.textContent = 'Connecting to Stripe...';
+  error.style.display = 'none';
+
+  const payload = {
+    tier: selectedTier,
+    vertical: selectedVertical,
+    billing: billingAnnual ? 'annual' : 'monthly',
+    company_name: document.getElementById('companyName').value.trim(),
+    contact_name: document.getElementById('contactName').value.trim(),
+    company_email: document.getElementById('companyEmail').value.trim(),
+    company_size: document.getElementById('companySize').value
+  };
+
+  try {
+    const res = await fetch(API_URL + '/create-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Something went wrong');
+    window.location.href = data.url;
+  } catch (err) {
+    error.textContent = err.message || 'Failed to connect. Please try again.';
+    error.style.display = 'block';
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    text.textContent = 'Proceed to Payment →';
+  }
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+renderCards();
+updatePremiumNotice();
 </script>
 </body>
 </html>

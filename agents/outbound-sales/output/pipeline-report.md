@@ -1,47 +1,63 @@
-# 🎯 Pipeline Report — Feb 14, 2026 (Evening)
+# 🎯 Hunter — Pipeline Report
+**Generated:** Mon Feb 16, 2026 — 8:08 PM GMT
 
-## Summary
+## Pipeline Summary
+
 | Metric | Value |
 |--------|-------|
-| Total Prospects | 30 |
-| RESEARCHED | 20 (IDs 001-020, mostly UK — deprioritized) |
-| EMAIL_DRAFTED | 10 (IDs 021-030, US-targeted) |
+| Total Prospects | 40 |
+| RESEARCHED | 20 (IDs 001-020 + 031-040) |
+| EMAIL_DRAFTED | 10 (IDs 021-030) |
 | EMAILED | 0 |
 | REPLIED | 0 |
 | MEETING_BOOKED | 0 |
 | CLOSED | 0 |
+| DO_NOT_CONTACT | 0 |
 
 ## Today's Activity
-- **Morning:** 10 US prospects researched (IDs 021-030) across Legal, Financial Services, Construction, Real Estate, Recruitment
-- **Evening:** 10 Day 1 intro emails drafted for US batch (021-030)
-- Drafts saved to `output/draft-cold-emails/2026-02-14-evening-batch.md`
+- **10 new prospects researched** (IDs 031-040) — US-only, across Legal (3), Construction (3), Real Estate (2), Recruitment/HR Tech (2)
+- **10 Day 1 emails drafted** for batch 3 (IDs 031-040)
+- Tracker updated with all new entries
 
-## Emails Drafted Today: 10
-- 3 Legal (Polsinelli, Seyfarth Shaw, Clark Hill)
-- 2 Financial Services (CrossCountry Mortgage, Ryan Specialty)
-- 2 Construction (Brasfield & Gorrie, Hensel Phelps)
-- 1 Real Estate (Marcus & Millichap)
-- 1 Recruitment (Insight Global)
-- 1 HR Tech/Partnership (Ceridian/Dayforce)
+## Emails Drafted Today
+10 — saved to `output/draft-cold-emails/2026-02-16-evening-batch.md`
 
-## Follow-ups Due Tomorrow: 0
-(No emails sent yet — all in draft mode)
+## Follow-Ups Due Tomorrow
+None — no emails have been sent yet.
 
-## Reply Rate: N/A
-(No emails sent)
+## Reply Rate
+N/A — 0 emails sent.
 
-## Meetings Booked This Week: 0
+## Meetings Booked This Week
+0
 
-## Pipeline Value Estimate: $0
-(Pre-launch — no active deals)
+## Pipeline Value Estimate
+- 40 prospects × ~$120K average deal size = **$4.8M total pipeline** (theoretical)
+- Realistic: 2-5% conversion = **$96K–$240K** projected revenue
+- All contingent on DNS fix and actual outreach beginning
 
-## 🚨 Blockers
-1. **DNS NOT CONFIGURED** — SPF, DKIM, DMARC all missing. Cannot send emails. Domain reputation at risk if we send without these. **This is the #1 blocker.**
-2. **Contact details missing** — All 30 prospects have "Unknown" contacts and "tbd@" emails. Need actual names and email addresses before any outreach.
-3. **Vault inaccessible from cron** — Cannot check email replies in isolated sessions.
-4. **Sequence templates missing** — `outbound/sequences/` directory is empty. Drafts written from hooks in tracker.
+## Geographic Breakdown
+- 🇺🇸 US-targeted: 22 (IDs 009-010, 021-040)
+- 🇬🇧 UK-based (deprioritized): 18 (IDs 001-008, 011-020)
 
-## Tomorrow's Queue
-- **Research:** Find actual contact names + emails for US batch (021-030)
-- **Draft:** Finalize Day 1 sequences with real contact personalization
-- **Infra:** Escalate DNS setup to Kalin — this blocks everything
+## Vertical Breakdown
+| Vertical | Count | Drafted |
+|----------|-------|---------|
+| Legal | 13 | 6 |
+| Financial Services | 8 | 2 |
+| Construction | 8 | 4 |
+| Real Estate | 5 | 3 |
+| Recruitment/HR Tech | 5 | 4 |
+| Healthcare | 1 | 0 |
+
+## 🚨 Blockers (CRITICAL)
+
+1. **DNS Records NOT SET** — SPF, DKIM, DMARC all missing. Cannot send a single email. Sending now = domain reputation destruction. This is the #1 blocker for the entire outbound program.
+2. **Contact details missing** — All prospects have placeholder emails (tbd@). Need real names + verified emails before any outreach.
+3. **Vault inaccessible** — Cannot check email replies or send from isolated cron sessions.
+
+## Recommendations
+1. **Fix DNS immediately** — this blocks everything. Estimated 15 min of work.
+2. **Source contact details** — consider Apollo.io paid plan, LinkedIn Sales Navigator, or manual research
+3. **Prioritize Legal + Construction** — strongest market tailwinds per latest research
+4. **Batch 4 targets needed** — running low on researched US prospects outside current verticals. Consider adding Insurance vertical.

@@ -65,12 +65,22 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **Agentic AI vs RPA narrative now mainstream** — industry validating that agents automate decisions, not just tasks. Supports "recovered capacity" pricing.
 - **Riff white paper** validates our Step 1→2 thesis: domain expertise encoded into working software is the unlock.
 
+## Key Intelligence (Updated 2026-02-16)
+
+- **GC Client Revolt:** General Counsel publicly stating law firms deliver zero AI benefit to clients despite internal adoption. Room of 500+ GCs agreed. This is the strongest organic demand signal for our legal vertical — buyers are frustrated and looking for alternatives. "Bypass the law firm AI tax" is our messaging wedge.
+- **Harvey AI Dallas expansion (April 2026):** 6-week clock. They're moving from SF into enterprise territory. Dallas/Houston corridor = legal + insurance + energy. We must be in market before they establish local presence.
+- **Microsoft Copilot Studio enterprise push:** Accelerates commoditization of agent platform layer. Validates our Step 2 timing — platform is free, implementation is the product.
+- **Healthcare prior auth + legal revolt = two forced-buyer markets in 2026.** Sequence: legal first (VADIS proof), healthcare second (CMS mandate pressure Q3-Q4).
+- **Contrarian flag logged:** Legal may be too crowded (Harvey, Anthropic, Thomson Reuters). Healthcare prior auth has fewer competitors + regulatory forcing function. Decision gate: track conversion rate from first 10 legal conversations.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?
-- Which vertical do we lead with for US entry?
+- Which vertical do we lead with for US entry? (Legal is consensus, but healthcare contrarian case is strong)
 - Partnership vs direct sales for initial US traction?
 - How do we price the transition from project-based to AaaS?
+- Should we target Dallas/Houston as first US geography given Harvey's move there?
+- Decision gate: If legal outbound converts <15% after 10 conversations, pivot healthcare to lead?
 
 ## TARGET MARKET
 - **US ONLY** — AfrexAI is a US-based company

@@ -81,3 +81,25 @@ Email deliverability is **NOT READY**:
 - Vault not accessible from isolated cron sessions — cannot check email replies
 - Need fix: either pass credentials via env or init vault in agent workspace
 - Sequence template directory (`outbound/sequences/`) is empty — drafting from tracker hooks instead
+
+## Batch 3 — US Prospects (IDs 031-040, Researched Feb 16)
+- 031: Husch Blackwell LLP (Legal, Kansas City) — Legalweek AI finalist, hired Michael Yang from Adobe
+- 032: Kforce Inc (Recruitment, Tampa) — NYSE, tech/finance staffing, $1.5B+ rev
+- 033: Robins Kaplan LLP (Legal, Minneapolis) — litigation boutique, heavy e-discovery
+- 034: Sundt Construction (Construction, Tempe AZ) — employee-owned, 130+ years, $2B+ rev
+- 035: Whiting-Turner (Construction, Baltimore) — ENR Top 10, $8B+ rev, dedicated Tech Excellence practice
+- 036: CBRE Group (Real Estate, Dallas) — Fortune 500, world's largest CRE, $148B AUM
+- 037: Jackson Lewis PC (Legal, Reston VA) — largest US workplace law firm, 60+ offices
+- 038: Skanska USA (Construction, NYC) — Swedish parent, ENR Top 10 US, $7B+ rev
+- 039: Paylocity (HR Tech, Schaumburg IL) — NASDAQ, 36K+ clients, mid-market HCM
+- 040: Newmark Group (Real Estate, NYC) — NASDAQ, Top 5 US CRE, capital markets focus
+
+All 10 emails drafted Feb 16 evening. Total: 20 emails drafted (IDs 021-040), 0 sent.
+
+## Pipeline Totals (as of Feb 16)
+- 40 total prospects
+- 20 RESEARCHED (UK deprioritized + new batch pre-draft)
+- 20 EMAIL_DRAFTED (IDs 021-040)
+- 0 sent, 0 replies, 0 meetings
+- Theoretical pipeline value: $4.8M
+- #1 blocker: DNS (SPF/DKIM/DMARC)

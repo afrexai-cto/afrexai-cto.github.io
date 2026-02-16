@@ -1,40 +1,32 @@
-# 📌 Sprint Board — W07 CLOSED (10–14 Feb 2026)
+# 📌 Sprint Board — W08 (16–20 Feb 2026)
 
-**Sprint Goal:** Stand up core agent swarm, unblock DNS, keep content engine running
-**Status:** CLOSED — 37.5% completion
+**Sprint Goal:** Unblock DNS (hard deadline Tue), complete agent swarm 9/9, unblock downstream
+**Status:** IN PROGRESS — 0% complete (Day 1)
 
 ## Tasks
 
 | # | Task | Owner | Priority | Status | Deadline | Notes |
 |---|------|-------|----------|--------|----------|-------|
-| 1 | Build remaining agent configs | Ops 🔧 | P0 | 🔨 In Progress | 2026-02-14 | Carried → W08 |
-| 2 | Resolve DNS blocker | Ops 🔧 | P0 | 🚫 Blocked | 2026-02-14 | 4 days blocked. Carried → W08 |
-| 3 | Google Workspace setup | Ops 🔧 | P1 | 🚫 Blocked | 2026-02-14 | Depends on DNS. Carried → W08 |
-| 4 | LinkedIn admin access | Ops 🔧 | P1 | 🚫 Blocked | 2026-02-14 | Carried → W08 |
-| 5 | Content engine daily output | Content agent | P1 | 🟢 On Track | Ongoing | Continues into W08 |
-| 6 | GitHub Pages maintenance | Dev agent | P2 | ✅ Done | — | Complete |
-| 7 | US entity setup follow-up | Ops 🔧 | P2 | ✅ Done | — | Complete |
-| 8 | SOC 2 readiness next steps | Compliance | P2 | ✅ Done | — | Complete |
+| 1 | Resolve DNS blocker | Ops 🔧 | P0 | 🔴 OVERDUE | 2026-02-17 | **8 days blocked.** Hard deadline tomorrow. Fallback required. |
+| 2 | Complete remaining 4 agent configs | Ops 🔧 | P0 | 🟡 At Risk | 2026-02-19 | Unblocked. No progress reported today. |
+| 3 | Google Workspace setup | Ops 🔧 | P1 | 🚫 Blocked | 2026-02-20 | Blocked by DNS |
+| 4 | LinkedIn admin access | Ops 🔧 | P1 | 🚫 Blocked | 2026-02-20 | Needs human action |
+| 5 | Content engine daily output | Content agent | P1 | 🟢 On Track | Ongoing | Continues |
+| 6 | Agent swarm 9/9 operational | Ops 🔧 | P1 | 🔨 In Progress | 2026-02-21 | 5/9 complete |
+| 7 | DNS fallback plan | Ops 🔧 | P0 | 📋 TODO | 2026-02-17 | If DNS not resolved by EOD Tue, execute alternative |
 
 ## Sprint Summary
 
-- **Total:** 8 tasks
-- **Done:** 3 (37.5%)
-- **In Progress:** 1 (carried)
-- **Blocked:** 3 (carried)
-- **On Track:** 1 (ongoing)
-- **On-time delivery:** 37.5%
-- **Blockers resolved:** 0/3
+- **Total:** 7 tasks
+- **Done:** 0 (0%)
+- **In Progress:** 2
+- **Blocked:** 2
+- **At Risk:** 1
+- **Overdue:** 1
+- **On Track:** 1
 
-## Carryover to W08
+## Risks
 
-1. Build remaining agent configs (P0)
-2. Resolve DNS blocker (P0 — **5 days by Monday, critical**)
-3. Google Workspace setup (P1)
-4. LinkedIn admin access (P1)
-
-## W08 Planning Notes
-
-- DNS must be #1 priority — now approaching 1 week blocked
-- Consider escalating DNS beyond COO if no movement by Tuesday
-- Agent configs should be completable independently of DNS
+- 🔴 DNS at **8 days** — cascading to 3 milestones (site, email, workspace)
+- 🟡 Agent configs — no progress signal received Day 1
+- 🟡 LinkedIn — requires human action, no movement in 8 days

@@ -73,4 +73,17 @@
 - Key objection: "We can't afford AI" → reframe as "you can't afford the £23K/year you're wasting without it"
 - Terminology: "donor stewardship", "gift aid", "trustee reporting", "cultivation meetings", "major gifts"
 
+### Financial Services — AI Governance (Added 2026-02-16)
+- **Primary pain:** AI accountability crisis — FCA moving from principles to enforcement in 2026
+- SM&CR liability now explicitly extends to AI oversight — Senior Managers personally liable for algorithmic decisions
+- FCA launched formal review into long-term AI impact (Jan 2026); audit trail + human-in-the-loop guidance expected this year
+- Consumer Duty evidence compilation: 40 hrs/quarter manually, reducible to 10 hrs with automation
+- FCA issued 140+ policy docs in 2025 — small compliance teams can't track all relevant changes
+- 81% of businesses using AI have no documented workflows (BCC 2026) — for FCA firms this is an SM&CR timebomb
+- ROI model: £42K/yr labour savings + £27K/yr risk reduction = ~£69K annual value vs £120K implementation (21-month breakeven)
+- ICP: FCA-regulated SMEs 20-80 employees — IFAs, wealth managers, fintechs, boutique insurers
+- Key objection: "We're too small for AI governance" → "The FCA doesn't fine by size. SM&CR applies to every regulated firm."
+- Terminology: "Consumer Duty", "SM&CR", "SYSC 15A", "MRM principles", "file reviews", "suitability reports", "DIM permissions"
+- Content handoff created for blog post + LinkedIn + lead magnet checklist
+
 - *This section updated as new verticals, use cases, and insights are developed*

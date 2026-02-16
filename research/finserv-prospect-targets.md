@@ -58,6 +58,12 @@
 
 *Action: Find CCO/CRO/VP Compliance at each. Draft Colorado-specific outreach.*
 
+### Tier 4 — Insurance/InsurTech (New Vertical Extension)
+| # | Company | Contact | Title | Why Now | Source |
+|---|---------|---------|-------|---------|--------|
+| 15 | BrokerTech Ventures / M3 Insurance | Kacie Conroy | Chief Innovation Officer | Appointed Feb 12, 2026. Leads digital product strategy at M3, now CIO at BTV accelerator. Connects brokers + carriers + startups. | PR Newswire Feb 2026 |
+| 16 | Holmes Murphy | Dan Keough (CEO) | Chairman & CEO, BTV Co-CEO | BTV parent org, actively investing in insurtech innovation | PR Newswire Feb 2026 |
+
 ### Research Queue (Next Runs)
 - [x] Find 20 Colorado-based fintechs affected by SB 24-205 (10 found, continuing)
 - [ ] Find CCO/CRO contacts at each Colorado fintech above

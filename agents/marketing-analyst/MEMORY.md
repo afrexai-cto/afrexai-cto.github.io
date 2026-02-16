@@ -72,6 +72,11 @@
 - **Salesforce State of Sales 2026:** 87% of orgs using AI, 54% deploying AI agents across sales cycle. High-performers 1.7x more likely to use agents for prospecting. Market is mainstream.
 - **Riff white paper (Feb 13):** "Agentic AI succeeds where digital transformation stalled" — enterprise narrative officially shifting from DT to agentic automation.
 - **Aurora Mobile / GPTBots.ai** integrating GLM-5 — more enterprise AI agent platforms entering market. Competition growing but market growing faster.
+- **Microsoft $81.3B revenue, Copilot autonomous agents** (Feb 16) — M365 Copilot 2026 features autonomous agents (email, scheduling, reports). 15M+ users. Big Tech officially in the agent space.
+- **Cognizant + Google Cloud agentic AI partnership** (Feb 16) — major SI operationalizing agentic AI at enterprise scale. Raises buyer expectations for governance + scalability.
+- **Dynatrace Intelligence** (Feb 16) — deterministic + agentic AI for autonomous IT ops. Agents entering new categories beyond business process.
+- **"Treat AI like junior employee" narrative** (Feb 16) — enterprise framing shifting from tool to team member. Validates agent-as-workforce positioning.
+- **KEY INSIGHT (Week 2):** Education phase is over. Microsoft, Google, Cognizant all entering agents = mainstream. Buyer question shifted from "what is an agent?" to "which agent for my industry?" — this is AfrexAI's exact wedge.
 
 ## Top Prospects Found
 
@@ -92,6 +97,15 @@
 | 2026-02-13 | SumUp | Fintech | 7/10 |
 | 2026-02-13 | Digital Scientists | AI Services | 7/10 |
 | 2026-02-13 | Omnius | Fintech/Insurance | 6/10 |
+
+## Week 2 Status (Feb 16)
+- Total prospects: 20 (8 HOT)
+- Content briefs sent: 4 total (2 Week 1, 2 Week 2)
+- Market signals captured: 29+
+- Analytics: ❌ BLOCKED (Day 4)
+- Revenue: $0
+- Insurance emerging as 4th vertical (alongside finserv, legal, healthcare)
+- Agent governance is now table stakes for enterprise sales positioning
 
 ## Lessons & Notes
 
