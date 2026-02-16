@@ -1,2 +1,4 @@
 customer	tier	price_pence	agent_limit	agent_count	start_date	status	last_paid
 hartwell--associates	growth	99900	3	0	2026-02-16	active	none
+hartwell-associates	growth	450000	3	0	2026-02-16	active	none
+buildright-construction	starter	150000	1	0	2026-02-16	active	none

@@ -1,9 +1,0 @@
-{
-  "slug": "acme-corp",
-  "company": "Acme Corporation",
-  "contact_email": "john@acme.com",
-  "timezone": "America/New_York",
-  "package": "growth",
-  "onboarded_at": "2026-02-15T02:35:35Z",
-  "status": "active"
-}

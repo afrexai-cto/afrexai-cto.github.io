@@ -1,1 +1,3 @@
 {"timestamp":"2026-02-16T18:01:08Z","event":"customer_onboarded","customer":"hartwell--associates","company":"Hartwell & Associates","email":"s.hartwell@hartwelllaw.com","package":"growth","agents":3,"roster":"ea sales marketing","mrr":4500,"ssh_host":""}
+{"timestamp":"2026-02-16T18:20:31Z","event":"customer_onboarded","customer":"hartwell-associates","company":"Hartwell & Associates","email":"s.hartwell@hartwelllaw.com","package":"growth","vertical":"legal","agents":3,"mrr":4950,"currency":"USD"}
+{"timestamp":"2026-02-16T18:21:32Z","event":"customer_onboarded","customer":"buildright-construction","company":"BuildRight Construction","email":"mike@buildright.com","package":"starter","vertical":"construction","agents":1,"mrr":1500,"currency":"USD"}
