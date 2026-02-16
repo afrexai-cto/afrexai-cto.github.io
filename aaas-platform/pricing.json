@@ -1,0 +1,25 @@
+{
+  "currency": "USD",
+  "tiers": {
+    "starter":    { "price": 1500, "agents": 1 },
+    "growth":     { "price": 4500, "agents": 3 },
+    "scale":      { "price": 7500, "agents": 10 },
+    "enterprise": { "price": 12000, "agents": 9 }
+  },
+  "vertical_premiums": {
+    "legal": 10,
+    "healthcare": 10,
+    "finance": 5,
+    "construction": 0,
+    "saas": 0,
+    "professional-services": 0,
+    "general": 0
+  },
+  "overage_per_agent": 1800,
+  "annual_discount_pct": 15,
+  "support_addons": {
+    "standard": 0,
+    "priority": 500,
+    "dedicated": 2000
+  }
+}

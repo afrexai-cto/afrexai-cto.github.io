@@ -1,7 +1,21 @@
 #!/usr/bin/env bash
+# DEPRECATED — use aaas-platform/autopilot.sh instead
 # provision-customer.sh — Full customer provisioning for AfrexAI Hosted Agents
 # Bash 3.2 compatible
 set -euo pipefail
+
+# Check if customer already has a unified profile — redirect to autopilot
+PLATFORM_CUSTOMERS="$(cd "$(dirname "$0")/../../aaas-platform/customers" 2>/dev/null && pwd)" || true
+_check_existing() {
+    local name="$1"
+    local slug
+    slug="$(echo "$name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')"
+    if [ -n "$PLATFORM_CUSTOMERS" ] && [ -f "$PLATFORM_CUSTOMERS/$slug/profile.json" ]; then
+        echo "⚠️  Customer '$slug' already exists in unified platform. Use aaas-platform/autopilot.sh instead."
+        exit 0
+    fi
+}
+echo "⚠️  DEPRECATED: This script is deprecated. Use aaas-platform/autopilot.sh for new customers."
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DATA_DIR="${AFREX_DATA_DIR:-$SCRIPT_DIR/data}"

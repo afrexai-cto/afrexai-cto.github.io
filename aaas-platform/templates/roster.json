@@ -1,0 +1,10 @@
+{
+  "legal": ["legal-researcher", "contract-reviewer", "compliance-monitor"],
+  "construction": ["project-tracker", "safety-monitor", "bid-analyst"],
+  "healthcare": ["patient-scheduler", "claims-processor", "compliance-auditor"],
+  "financial-services": ["bookkeeper", "financial-analyst", "audit-monitor"],
+  "finance": ["bookkeeper", "financial-analyst", "audit-monitor"],
+  "saas": ["usage-analyst", "onboarding-assistant", "churn-predictor"],
+  "professional-services": ["project-manager", "client-communicator", "billing-assistant"],
+  "general": ["general-assistant", "researcher", "scheduler"]
+}

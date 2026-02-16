@@ -1,10 +1,14 @@
 #!/bin/bash
+# DEPRECATED — CRM + email now handled by aaas-platform/autopilot.sh
 # customer-onboard-cma.sh — Onboard a CMA (Customer Managed Agent) customer
 # Bash 3.2 compatible
 #
 # Usage: ./customer-onboard-cma.sh --name "John Doe" --email "john@co.com" --company "Acme" --vertical <vertical>
 
 set -euo pipefail
+
+echo "⚠️  DEPRECATED: This script is deprecated. Use aaas-platform/autopilot.sh for new customers."
+echo "   CRM records, welcome emails, and follow-up scheduling are now handled by autopilot."
 
 # ── Defaults ──
 CUSTOMER_NAME=""

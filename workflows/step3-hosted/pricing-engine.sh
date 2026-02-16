@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # pricing-engine.sh — Calculate costs, discounts, and invoices for AfrexAI Hosted Agents
+# Reads ALL pricing from aaas-platform/pricing.json — no hardcoded values.
 # Bash 3.2 compatible
 set -euo pipefail
 
@@ -8,28 +9,33 @@ DATA_DIR="${AFREX_DATA_DIR:-$SCRIPT_DIR/data}"
 CUSTOMERS_DIR="$DATA_DIR/customers"
 INVOICES_DIR="$DATA_DIR/invoices"
 
-# --- Tier pricing ---
-# Starter: $1,500/mo — 1 agent
-# Growth:  $4,500/mo — 3 agents
-# Enterprise: $12,000/mo — 9 agents
-# Per-agent overage: $1,800/mo (capped at tier upgrade cost)
+# --- Load pricing from pricing.json ---
+PRICING_FILE="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)/pricing.json"
 
-STARTER_PRICE=1500
-STARTER_AGENTS=1
-GROWTH_PRICE=4500
-GROWTH_AGENTS=3
-ENTERPRISE_PRICE=12000
-ENTERPRISE_AGENTS=9
-OVERAGE_PER_AGENT=1800
+if [ ! -f "$PRICING_FILE" ]; then
+    echo "ERROR: pricing.json not found at $PRICING_FILE" >&2
+    exit 1
+fi
 
-# Annual discount: 15%
-ANNUAL_DISCOUNT=15
-# Vertical premium (specialized agents cost more)
-VERTICAL_PREMIUM_LEGAL=10
-VERTICAL_PREMIUM_HEALTHCARE=10
-VERTICAL_PREMIUM_FINANCE=5
-VERTICAL_PREMIUM_REALESTATE=0
-VERTICAL_PREMIUM_GENERAL=0
+load_pricing() {
+    eval "$(python3 -c "
+import json
+p = json.load(open('${PRICING_FILE}'))
+for t, v in p['tiers'].items():
+    safe = t.upper().replace('-','_')
+    print(f'{safe}_PRICE={v[\"price\"]}')
+    print(f'{safe}_AGENTS={v[\"agents\"]}')
+print(f'OVERAGE_PER_AGENT={p[\"overage_per_agent\"]}')
+print(f'ANNUAL_DISCOUNT={p[\"annual_discount_pct\"]}')
+for v, pct in p['vertical_premiums'].items():
+    safe = v.upper().replace('-','_')
+    print(f'VERTICAL_PREMIUM_{safe}={pct}')
+for s, cost in p['support_addons'].items():
+    safe = s.upper().replace('-','_')
+    print(f'SUPPORT_{safe}={cost}')
+")"
+}
+load_pricing
 
 read_json_field() {
     local file="$1" field="$2"
@@ -48,15 +54,17 @@ Commands:
   revenue         Revenue report across all customers
 
 Options:
-  --tier <tier>           Tier: starter, growth, enterprise
+  --tier <tier>           Tier: starter, growth, scale, enterprise
   --agents <n>            Number of agents needed
   --vertical <v>          Industry vertical
-  --annual                Annual billing (15% discount)
+  --annual                Annual billing (${ANNUAL_DISCOUNT}% discount)
   --customer <id>         Customer ID (for invoice)
   --month <YYYY-MM>       Invoice month (default: current)
   --extra-tasks <n>       Extra task volume above base (usage-based)
   --support <level>       Support: standard, priority, dedicated
   -h, --help              Show this help
+
+All prices in USD. Pricing loaded from: $PRICING_FILE
 
 Examples:
   $0 quote --tier growth --vertical legal
@@ -70,56 +78,53 @@ EOF
 }
 
 tier_base_price() {
-    case "$1" in
-        starter)    echo "$STARTER_PRICE" ;;
-        growth)     echo "$GROWTH_PRICE" ;;
-        enterprise) echo "$ENTERPRISE_PRICE" ;;
-        *)          echo 0 ;;
-    esac
+    local var="${1^^}_PRICE"
+    var="${var//-/_}"
+    echo "${!var:-0}"
 }
 
 tier_included_agents() {
-    case "$1" in
-        starter)    echo "$STARTER_AGENTS" ;;
-        growth)     echo "$GROWTH_AGENTS" ;;
-        enterprise) echo "$ENTERPRISE_AGENTS" ;;
-        *)          echo 0 ;;
-    esac
+    local var="${1^^}_AGENTS"
+    var="${var//-/_}"
+    echo "${!var:-0}"
 }
 
 best_tier_for_agents() {
     local n="$1"
-    if [ "$n" -le 1 ]; then echo "starter"
-    elif [ "$n" -le 3 ]; then echo "growth"
-    elif [ "$n" -le 9 ]; then echo "enterprise"
-    else echo "enterprise"  # custom pricing above 9
-    fi
+    # Find cheapest tier that includes enough agents
+    python3 -c "
+import json
+p = json.load(open('${PRICING_FILE}'))
+n = $n
+best = None
+for t, v in sorted(p['tiers'].items(), key=lambda x: x[1]['price']):
+    if v['agents'] >= n:
+        best = t
+        break
+if best:
+    print(best)
+else:
+    # Largest tier
+    print(sorted(p['tiers'].items(), key=lambda x: x[1]['price'])[-1][0])
+"
 }
 
 vertical_premium_pct() {
-    case "$1" in
-        legal)       echo "$VERTICAL_PREMIUM_LEGAL" ;;
-        healthcare)  echo "$VERTICAL_PREMIUM_HEALTHCARE" ;;
-        finance)     echo "$VERTICAL_PREMIUM_FINANCE" ;;
-        realestate)  echo "$VERTICAL_PREMIUM_REALESTATE" ;;
-        *)           echo "$VERTICAL_PREMIUM_GENERAL" ;;
-    esac
+    local var="VERTICAL_PREMIUM_${1^^}"
+    var="${var//-/_}"
+    echo "${!var:-0}"
 }
 
 support_addon() {
-    case "$1" in
-        standard)  echo 0 ;;
-        priority)  echo 500 ;;
-        dedicated) echo 2000 ;;
-        *)         echo 0 ;;
-    esac
+    local var="SUPPORT_${1^^}"
+    var="${var//-/_}"
+    echo "${!var:-0}"
 }
 
 # --- Quote ---
 cmd_quote() {
     local tier="$1" agents="$2" vertical="$3" annual="$4" support="$5" extra_tasks="$6"
 
-    # Auto-select tier if agents specified but no tier
     if [ -z "$tier" ] && [ "$agents" -gt 0 ]; then
         tier="$(best_tier_for_agents "$agents")"
     fi
@@ -132,32 +137,26 @@ cmd_quote() {
     included="$(tier_included_agents "$tier")"
     if [ "$agents" -eq 0 ]; then agents="$included"; fi
 
-    # Overage agents
     local overage_agents=0 overage_cost=0
     if [ "$agents" -gt "$included" ]; then
         overage_agents=$((agents - included))
         overage_cost=$((overage_agents * OVERAGE_PER_AGENT))
     fi
 
-    # Vertical premium
     local vpct
     vpct="$(vertical_premium_pct "$vertical")"
     local vpremium=$(( (base + overage_cost) * vpct / 100 ))
 
-    # Support addon
     local support_cost
     support_cost="$(support_addon "$support")"
 
-    # Extra task volume (usage-based: $0.50 per task above 500/agent/month base)
     local task_overage_cost=0
     if [ "$extra_tasks" -gt 0 ]; then
-        task_overage_cost=$((extra_tasks / 2))  # $0.50 each, integer math
+        task_overage_cost=$((extra_tasks / 2))
     fi
 
-    # Subtotal
     local monthly_subtotal=$((base + overage_cost + vpremium + support_cost + task_overage_cost))
 
-    # Annual discount
     local discount=0 monthly_total="$monthly_subtotal" billing="monthly"
     if [ "$annual" -eq 1 ]; then
         discount=$((monthly_subtotal * ANNUAL_DISCOUNT / 100))
@@ -168,7 +167,7 @@ cmd_quote() {
     local annual_total=$((monthly_total * 12))
 
     echo "=============================================="
-    echo "  AfrexAI Hosted Agents — Price Quote"
+    echo "  AfrexAI Hosted Agents — Price Quote (USD)"
     echo "=============================================="
     echo ""
     echo "  Tier:              $(echo "$tier" | awk '{print toupper(substr($0,1,1)) substr($0,2)}')"
@@ -224,7 +223,6 @@ cmd_invoice() {
     agent_count="$(read_json_field "$m" "agent_count")"
     email="$(read_json_field "$m" "email")"
 
-    # Vertical premium
     local vpct
     vpct="$(vertical_premium_pct "$vertical")"
     local vpremium=$((price * vpct / 100))
@@ -234,7 +232,6 @@ cmd_invoice() {
     local ts
     ts="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
-    # Write invoice JSON
     mkdir -p "$INVOICES_DIR/$month"
     cat > "$INVOICES_DIR/$month/${cid}.json" <<INVOICE
 {
@@ -260,7 +257,7 @@ cmd_invoice() {
 }
 INVOICE
 
-    echo "  ✓ $invoice_id  $company  \$$total  → $INVOICES_DIR/$month/${cid}.json"
+    echo "  ✓ $invoice_id  $company  \$$total USD  → $INVOICES_DIR/$month/${cid}.json"
 }
 
 cmd_invoice_all() {
@@ -268,7 +265,7 @@ cmd_invoice_all() {
     if [ -z "$month" ]; then month="$(date -u +%Y-%m)"; fi
 
     echo "=============================================="
-    echo "  AfrexAI — Invoice Generation: $month"
+    echo "  AfrexAI — Invoice Generation: $month (USD)"
     echo "=============================================="
     echo ""
 
@@ -290,7 +287,7 @@ cmd_invoice_all() {
     done
 
     echo ""
-    echo "  ✅ $count invoice(s) generated. Total billed: \$$total_billed"
+    echo "  ✅ $count invoice(s) generated. Total billed: \$$total_billed USD"
 }
 
 # --- Compare ---
@@ -299,39 +296,46 @@ cmd_compare() {
     if [ "$agents" -eq 0 ]; then agents=1; fi
 
     echo "=============================================="
-    echo "  AfrexAI — Tier Comparison for $agents agent(s)"
+    echo "  AfrexAI — Tier Comparison for $agents agent(s) (USD)"
     echo "=============================================="
     echo ""
     printf "  %-14s %-10s %-12s %-12s %-10s\n" "TIER" "INCLUDED" "BASE" "OVERAGE" "TOTAL"
     printf "  %-14s %-10s %-12s %-12s %-10s\n" "--------------" "----------" "------------" "------------" "----------"
 
-    for tier in starter growth enterprise; do
-        local base included overage total
-        base="$(tier_base_price "$tier")"
-        included="$(tier_included_agents "$tier")"
-        overage=0
-        if [ "$agents" -gt "$included" ]; then
-            overage=$(( (agents - included) * OVERAGE_PER_AGENT ))
-        fi
-        total=$((base + overage))
-        local rec=""
-        if [ "$tier" = "$(best_tier_for_agents "$agents")" ]; then rec=" ← best value"; fi
-        printf "  %-14s %-10s \$%-11s \$%-11s \$%-9s%s\n" "$tier" "$included" "$base" "$overage" "$total" "$rec"
-    done
-    echo ""
-    printf "  Recommended tier: %s\n" "$(best_tier_for_agents "$agents")"
+    python3 -c "
+import json
+p = json.load(open('${PRICING_FILE}'))
+n = $agents
+best = None
+best_total = float('inf')
+rows = []
+for t in sorted(p['tiers'], key=lambda x: p['tiers'][x]['price']):
+    v = p['tiers'][t]
+    base = v['price']
+    included = v['agents']
+    overage = max(0, n - included) * p['overage_per_agent']
+    total = base + overage
+    if total < best_total:
+        best_total = total
+        best = t
+    rows.append((t, included, base, overage, total))
+for t, inc, base, ovg, total in rows:
+    rec = ' ← best value' if t == best else ''
+    print(f'  {t:14s} {inc:<10d} \${base:<11d} \${ovg:<11d} \${total:<9d}{rec}')
+print()
+print(f'  Recommended tier: {best}')
+"
 }
 
 # --- Revenue ---
 cmd_revenue() {
     echo "=============================================="
-    echo "  AfrexAI — Revenue Report"
+    echo "  AfrexAI — Revenue Report (USD)"
     echo "  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
     echo "=============================================="
     echo ""
 
     local total_customers=0 total_agents=0 total_mrr=0
-    local starter_count=0 growth_count=0 enterprise_count=0
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
         [ -f "$cdir/config/manifest.json" ] || continue
@@ -347,12 +351,6 @@ cmd_revenue() {
         total_customers=$((total_customers + 1))
         total_agents=$((total_agents + agents))
         total_mrr=$((total_mrr + price))
-
-        case "$tier" in
-            starter)    starter_count=$((starter_count + 1)) ;;
-            growth)     growth_count=$((growth_count + 1)) ;;
-            enterprise) enterprise_count=$((enterprise_count + 1)) ;;
-        esac
     done
 
     local arr=$((total_mrr * 12))
@@ -362,24 +360,17 @@ cmd_revenue() {
     fi
 
     echo "  Active Customers:   $total_customers"
-    echo "    Starter:          $starter_count"
-    echo "    Growth:           $growth_count"
-    echo "    Enterprise:       $enterprise_count"
-    echo ""
     echo "  Total Agents:       $total_agents"
     echo "  MRR:                \$$total_mrr"
     echo "  ARR:                \$$arr"
     echo "  Avg MRR/customer:   \$$avg_mrr"
     echo ""
 
-    # Target progress
     local target=11000000
     if [ "$arr" -gt 0 ]; then
         local pct=$((arr * 100 / target))
         echo "  🎯 \$11M ARR Target: ${pct}% (\$$arr / \$$target)"
         echo ""
-
-        # What's needed
         local gap=$((target - arr))
         local gap_monthly=$((gap / 12))
         echo "  Gap: \$$gap ARR (\$$gap_monthly MRR needed)"

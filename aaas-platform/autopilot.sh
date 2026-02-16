@@ -2,122 +2,147 @@
 set -euo pipefail
 
 # ============================================================================
-# AfrexAI AaaS Autopilot — End-to-end customer signup automation
-# Usage: ./autopilot.sh "Company Name" "contact@email.com" "starter|growth|scale|enterprise"
+# AfrexAI AaaS Autopilot — SOLE entry point for customer onboarding
+# Usage: ./autopilot.sh "Company Name" "contact@email.com" "starter|growth|scale|enterprise" "vertical"
 # Env:   DRY_RUN=true (skip destructive ops)  SSH_HOST=user@host (enable remote deploy)
 # ============================================================================
 
 PLATFORM_DIR="$(cd "$(dirname "$0")" && pwd)"
 WORKSPACE_ROOT="$(cd "$PLATFORM_DIR/.." && pwd)"
 STEP2_DIR="$WORKSPACE_ROOT/workflows/step2-agents"
+PRICING_FILE="${PLATFORM_DIR}/pricing.json"
 DRY_RUN="${DRY_RUN:-false}"
 SSH_HOST="${SSH_HOST:-}"
 
 if [ $# -lt 3 ]; then
-    echo "Usage: $0 \"Company Name\" \"contact@email.com\" \"starter|growth|scale|enterprise\""
+    echo "Usage: $0 \"Company Name\" \"contact@email.com\" \"starter|growth|scale|enterprise\" [vertical]"
+    echo ""
+    echo "Verticals: legal, healthcare, finance, construction, saas, professional-services, general"
     echo ""
     echo "Options (env vars):"
     echo "  DRY_RUN=true    — Preview without writing"
     echo "  SSH_HOST=u@host — Also deploy to remote host"
-    echo "  TIMEZONE=UTC    — Customer timezone (default: GMT)"
     exit 1
 fi
 
 COMPANY_NAME="$1"
 CONTACT_EMAIL="$2"
 PACKAGE="$(echo "$3" | tr '[:upper:]' '[:lower:]')"
-TIMEZONE="${4:-GMT}"
+VERTICAL="${4:-general}"
 
-CUSTOMER_SLUG="$(echo "$COMPANY_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')"
+# Slug: lowercase, hyphens, no special chars, no double/leading/trailing hyphens
+CUSTOMER_SLUG="$(echo "$COMPANY_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')"
 CUSTOMER_DIR="${PLATFORM_DIR}/customers/${CUSTOMER_SLUG}"
 
-# Package definitions
-pkg_price()  { case "$1" in starter) echo 1500;; growth) echo 4500;; scale) echo 7500;; enterprise) echo 12000;; *) echo 0;; esac; }
-pkg_agents() { case "$1" in starter) echo 1;; growth) echo 3;; scale) echo 10;; enterprise) echo 9;; *) echo 0;; esac; }
-pkg_roster() {
-    case "$1" in
-        starter)    echo "ea";;
-        growth)     echo "ea sales marketing";;
-        scale)      echo "ea sales marketing bookkeeper content-writer coo strategist project-manager outbound support";;
-        enterprise) echo "ea sales marketing bookkeeper content-writer coo strategist project-manager outbound";;
-    esac
-}
-pkg_tier_billing() {
-    # Map platform tiers to billing tracker tiers (£ pricing)
-    case "$1" in starter) echo "starter";; growth) echo "growth";; scale) echo "scale";; enterprise) echo "enterprise";; esac
+# ── Validate pricing.json exists ──
+[ -f "$PRICING_FILE" ] || { echo "❌ pricing.json not found at ${PRICING_FILE}"; exit 1; }
+
+# ── Read all pricing from pricing.json (NO hardcoded prices) ──
+read_pricing() {
+    python3 -c "
+import json, sys
+p = json.load(open('${PRICING_FILE}'))
+tier = '${PACKAGE}'
+vertical = '${VERTICAL}'
+if tier not in p['tiers']:
+    print('ERROR', file=sys.stderr)
+    sys.exit(1)
+base = p['tiers'][tier]['price']
+agents = p['tiers'][tier]['agents']
+vpct = p['vertical_premiums'].get(vertical, 0)
+premium = base * vpct // 100
+total = base + premium
+print(f'{base} {vpct} {premium} {total} {agents}')
+"
 }
 
-PRICE="$(pkg_price "$PACKAGE")"
-AGENT_COUNT="$(pkg_agents "$PACKAGE")"
-ROSTER="$(pkg_roster "$PACKAGE")"
+read -r BASE_PRICE VPCT VPREMIUM TOTAL_PRICE AGENT_COUNT <<< "$(read_pricing)" || { echo "❌ Invalid package: ${PACKAGE}"; exit 1; }
 
-[ "$AGENT_COUNT" = "0" ] && { echo "❌ Invalid package: ${PACKAGE}"; exit 1; }
+[ "$AGENT_COUNT" -gt 0 ] 2>/dev/null || { echo "❌ Invalid package: ${PACKAGE}"; exit 1; }
 
 echo "╔══════════════════════════════════════════════════╗"
 echo "║  🚀 AfrexAI AaaS Autopilot                      ║"
 echo "╠══════════════════════════════════════════════════╣"
-echo "║  Company:  ${COMPANY_NAME}"
-echo "║  Email:    ${CONTACT_EMAIL}"
-echo "║  Package:  ${PACKAGE} (${AGENT_COUNT} agents, \$${PRICE}/mo)"
-echo "║  Slug:     ${CUSTOMER_SLUG}"
-echo "║  Dry Run:  ${DRY_RUN}"
-[ -n "$SSH_HOST" ] && echo "║  SSH Host: ${SSH_HOST}"
+echo "║  Company:   ${COMPANY_NAME}"
+echo "║  Email:     ${CONTACT_EMAIL}"
+echo "║  Package:   ${PACKAGE} (${AGENT_COUNT} agents, \$${TOTAL_PRICE}/mo)"
+echo "║  Vertical:  ${VERTICAL}"
+if [ "$VPREMIUM" -gt 0 ]; then
+echo "║  Premium:   \$${VPREMIUM}/mo (${VPCT}% ${VERTICAL} vertical)"
+fi
+echo "║  Slug:      ${CUSTOMER_SLUG}"
+echo "║  Dry Run:   ${DRY_RUN}"
+[ -n "$SSH_HOST" ] && echo "║  SSH Host:  ${SSH_HOST}"
 echo "╚══════════════════════════════════════════════════╝"
 echo ""
 
-# ━━━ Step 1: Provision Customer Workspace ━━━
-echo "━━━ Step 1/7: Provisioning Workspace ━━━"
+# ━━━ Step 1: Create Unified Profile ━━━
+echo "━━━ Step 1/7: Creating Customer Profile ━━━"
 
-if [ -d "$CUSTOMER_DIR" ]; then
+if [ -d "$CUSTOMER_DIR" ] && [ -f "$CUSTOMER_DIR/profile.json" ]; then
     echo "⚠️  Customer '${CUSTOMER_SLUG}' already exists — updating"
-else
-    if [ "$DRY_RUN" = "true" ]; then
-        echo "[DRY RUN] Would create workspace at ${CUSTOMER_DIR}"
-    else
-        bash "${PLATFORM_DIR}/customer-onboarding.sh" "$CUSTOMER_SLUG" "$PACKAGE" "$CONTACT_EMAIL" "$COMPANY_NAME" "$TIMEZONE"
-    fi
 fi
-echo "✅ Workspace provisioned"
+
+if [ "$DRY_RUN" = "true" ]; then
+    echo "[DRY RUN] Would create profile at ${CUSTOMER_DIR}/profile.json"
+else
+    mkdir -p "$CUSTOMER_DIR"/{agents,config,monitoring}
+    python3 -c "
+import json, datetime
+profile = {
+    'slug': '${CUSTOMER_SLUG}',
+    'company_name': '${COMPANY_NAME}',
+    'contact_name': '',
+    'email': '${CONTACT_EMAIL}',
+    'tier': '${PACKAGE}',
+    'vertical': '${VERTICAL}',
+    'agents': [],
+    'pricing': {
+        'base_price': ${BASE_PRICE},
+        'vertical_premium_pct': ${VPCT},
+        'vertical_premium_amount': ${VPREMIUM},
+        'monthly_total': ${TOTAL_PRICE},
+        'currency': 'USD',
+        'billing_cycle': 'monthly'
+    },
+    'status': 'active',
+    'created_at': datetime.datetime.utcnow().isoformat() + 'Z',
+    'api_key': ''
+}
+json.dump(profile, open('${CUSTOMER_DIR}/profile.json', 'w'), indent=2)
+"
+    echo "✅ Profile created at ${CUSTOMER_DIR}/profile.json"
+fi
 echo ""
 
-# ━━━ Step 2: Set Up Billing ━━━
-echo "━━━ Step 2/7: Billing Configuration ━━━"
+# ━━━ Step 2: Generate Agents ━━━
+echo "━━━ Step 2/7: Agent Generation ━━━"
 
-if [ -f "$STEP2_DIR/billing-tracker.sh" ]; then
-    BILLING_TIER="$(pkg_tier_billing "$PACKAGE")"
-    START_DATE="$(date '+%Y-%m-%d')"
-    if [ "$DRY_RUN" = "true" ]; then
-        echo "[DRY RUN] Would register billing: $CUSTOMER_SLUG $BILLING_TIER $START_DATE"
+if [ "$DRY_RUN" = "true" ]; then
+    echo "[DRY RUN] Would generate ${AGENT_COUNT} agents for ${VERTICAL} vertical"
+else
+    if [ -f "${PLATFORM_DIR}/generate-agents.sh" ]; then
+        COMPANY_NAME="$COMPANY_NAME" bash "${PLATFORM_DIR}/generate-agents.sh" "$CUSTOMER_SLUG" "$VERTICAL" "$PACKAGE"
     else
-        bash "$STEP2_DIR/billing-tracker.sh" add "$CUSTOMER_SLUG" "$BILLING_TIER" "$START_DATE" 2>/dev/null || \
+        echo "⚠️  generate-agents.sh not found — skipping agent generation"
+    fi
+fi
+echo ""
+
+# ━━━ Step 3: Register Billing ━━━
+echo "━━━ Step 3/7: Billing Configuration ━━━"
+
+START_DATE="$(date '+%Y-%m-%d')"
+if [ -f "$STEP2_DIR/billing-tracker.sh" ]; then
+    if [ "$DRY_RUN" = "true" ]; then
+        echo "[DRY RUN] Would register billing: $CUSTOMER_SLUG $PACKAGE $START_DATE"
+    else
+        bash "$STEP2_DIR/billing-tracker.sh" add "$CUSTOMER_SLUG" "$PACKAGE" "$START_DATE" 2>/dev/null || \
             echo "  (billing already configured or tracker unavailable)"
     fi
-    echo "✅ Billing configured: ${BILLING_TIER} tier"
+    echo "✅ Billing configured: ${PACKAGE} tier, \$${TOTAL_PRICE}/mo"
 else
     echo "⚠️  Billing tracker not found — skipping"
-fi
-echo ""
-
-# ━━━ Step 3: Deploy Agents to Remote (if SSH_HOST set) ━━━
-echo "━━━ Step 3/7: Agent Deployment ━━━"
-
-if [ -n "$SSH_HOST" ] && [ -f "$STEP2_DIR/agent-deploy-remote.sh" ]; then
-    for AGENT_TYPE in $ROSTER; do
-        echo "  → Deploying ${AGENT_TYPE} to ${SSH_HOST}..."
-        if [ "$DRY_RUN" = "true" ]; then
-            DRY_RUN=true bash "$STEP2_DIR/agent-deploy-remote.sh" "$CUSTOMER_SLUG" "$AGENT_TYPE" "$SSH_HOST" 2>/dev/null || true
-        else
-            bash "$STEP2_DIR/agent-deploy-remote.sh" "$CUSTOMER_SLUG" "$AGENT_TYPE" "$SSH_HOST" 2>/dev/null || \
-                echo "    ⚠️  Remote deploy failed for ${AGENT_TYPE} — local bundle still available"
-        fi
-    done
-    echo "✅ Remote deployment complete"
-else
-    echo "ℹ️  No SSH_HOST set — agents provisioned locally only"
-    echo "   To deploy remotely later:"
-    for AGENT_TYPE in $ROSTER; do
-        echo "   ./workflows/step2-agents/agent-deploy-remote.sh ${CUSTOMER_SLUG} ${AGENT_TYPE} user@host"
-    done
 fi
 echo ""
 
@@ -127,7 +152,11 @@ echo "━━━ Step 4/7: Initial Health Check ━━━"
 if [ "$DRY_RUN" = "true" ]; then
     echo "[DRY RUN] Would run health check"
 else
-    bash "${PLATFORM_DIR}/agent-health-monitor.sh" "$CUSTOMER_SLUG" 2>/dev/null || echo "  (health monitor completed)"
+    if [ -f "${PLATFORM_DIR}/agent-health-monitor.sh" ]; then
+        bash "${PLATFORM_DIR}/agent-health-monitor.sh" "$CUSTOMER_SLUG" 2>/dev/null || echo "  (health monitor completed)"
+    else
+        echo "ℹ️  Health monitor not available — skipping"
+    fi
 fi
 echo ""
 
@@ -135,9 +164,15 @@ echo ""
 echo "━━━ Step 5/7: Configuration Generation ━━━"
 
 if [ "$DRY_RUN" != "true" ] && [ -d "$CUSTOMER_DIR" ]; then
-    # Generate OpenClaw gateway config for this customer's agents
-    mkdir -p "${CUSTOMER_DIR}/config"
+    # Read agent list from profile.json
+    AGENT_IDS="$(python3 -c "
+import json
+p = json.load(open('${CUSTOMER_DIR}/profile.json'))
+for a in p.get('agents', []):
+    print(a['id'])
+" 2>/dev/null || true)"
 
+    mkdir -p "${CUSTOMER_DIR}/config"
     cat > "${CUSTOMER_DIR}/config/openclaw-gateway.yaml" << EOF
 # OpenClaw Gateway Config for ${COMPANY_NAME}
 # Auto-generated by AfrexAI Autopilot on $(date -u '+%Y-%m-%dT%H:%M:%SZ')
@@ -145,39 +180,27 @@ if [ "$DRY_RUN" != "true" ] && [ -d "$CUSTOMER_DIR" ]; then
 gateway:
   customer: "${CUSTOMER_SLUG}"
   company: "${COMPANY_NAME}"
+  vertical: "${VERTICAL}"
+  tier: "${PACKAGE}"
 
 agents:
 EOF
-    for AGENT_TYPE in $ROSTER; do
+    for AGENT_ID in $AGENT_IDS; do
         cat >> "${CUSTOMER_DIR}/config/openclaw-gateway.yaml" << EOF
-  - type: "${AGENT_TYPE}"
+  - id: "${AGENT_ID}"
     schedule:
       morning: "0 8 * * *"
       evening: "0 20 * * *"
     heartbeat: "*/30 * * * *"
-    timezone: "${TIMEZONE}"
 EOF
     done
-
-    # Generate agent manifest if not already done by onboarding
-    if [ ! -f "${CUSTOMER_DIR}/agent-manifest.json" ]; then
-        python3 -c "
-import json, datetime
-agents = []
-for t in '${ROSTER}'.split():
-    agents.append({'type': t, 'status': 'active', 'deployed': datetime.datetime.utcnow().isoformat()+'Z'})
-with open('${CUSTOMER_DIR}/agent-manifest.json', 'w') as f:
-    json.dump({'customer': '${CUSTOMER_SLUG}', 'agents': agents}, f, indent=2)
-" 2>/dev/null || true
-    fi
-
     echo "✅ Configs generated at ${CUSTOMER_DIR}/config/"
 else
     echo "[DRY RUN] Would generate gateway and agent configs"
 fi
 echo ""
 
-# ━━━ Step 6: Welcome Email Template ━━━
+# ━━━ Step 6: Welcome Email ━━━
 echo "━━━ Step 6/7: Welcome Email ━━━"
 
 WELCOME_FILE="${CUSTOMER_DIR}/welcome-email.md"
@@ -185,6 +208,20 @@ if [ "$DRY_RUN" = "true" ]; then
     echo "[DRY RUN] Would generate welcome email"
 else
     mkdir -p "${CUSTOMER_DIR}"
+
+    # Build agent list for email
+    AGENT_LIST="$(python3 -c "
+import json
+p = json.load(open('${CUSTOMER_DIR}/profile.json'))
+for a in p.get('agents', []):
+    print(f\"- {a['name']}\")
+" 2>/dev/null || echo "- (agents pending setup)")"
+
+    PREMIUM_LINE=""
+    if [ "$VPREMIUM" -gt 0 ]; then
+        PREMIUM_LINE=" (includes \$${VPREMIUM} ${VERTICAL} vertical premium)"
+    fi
+
     cat > "$WELCOME_FILE" << EOF
 **Subject:** Welcome to AfrexAI — Your AI Workforce is Live! 🚀
 
@@ -192,10 +229,10 @@ Hi ${COMPANY_NAME} team,
 
 Welcome to AfrexAI Agent-as-a-Service!
 
-Your **${PACKAGE}** plan is now active with **${AGENT_COUNT} AI agent(s)** deployed and ready to work.
+Your **${PACKAGE}** plan is now active with **${AGENT_COUNT} AI agent(s)** deployed for your **${VERTICAL}** vertical.
 
 **Your AI team:**
-$(for a in $ROSTER; do echo "- $(echo "$a" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')"; done)
+${AGENT_LIST}
 
 **What happens next:**
 1. ✅ Your agents are provisioned and configured
@@ -203,7 +240,7 @@ $(for a in $ROSTER; do echo "- $(echo "$a" | tr '-' ' ' | awk '{for(i=1;i<=NF;i+
 3. 🔌 We'll connect your agents to Slack, email, CRM, and calendar
 4. 🚀 Your agents begin their first shift once integrations are live
 
-**Your monthly investment:** \$${PRICE}/mo
+**Your monthly investment:** \$${TOTAL_PRICE}/mo${PREMIUM_LINE}
 
 **Your dashboard:** We'll send you a health report weekly showing agent activity and performance.
 
@@ -212,10 +249,28 @@ Questions? Reply to this email or reach us at support@afrexai.com.
 Best,
 The AfrexAI Team
 —
-AfrexAI Ltd | AI Agent-as-a-Service
+AfrexAI | AI Agent-as-a-Service
 https://afrexai.com
 EOF
     echo "✅ Welcome email → ${WELCOME_FILE}"
+
+    # Queue email for sending
+    PENDING_DIR="${PLATFORM_DIR}/pending-emails"
+    mkdir -p "$PENDING_DIR"
+    cp "$WELCOME_FILE" "${PENDING_DIR}/${CUSTOMER_SLUG}-welcome.md"
+
+    # Schedule 7-day and 30-day follow-ups
+    FOLLOWUP_DIR="${PLATFORM_DIR}/scheduled-followups"
+    mkdir -p "$FOLLOWUP_DIR"
+    FOLLOWUP_7D=$(date -u -v+7d +"%Y-%m-%d" 2>/dev/null || date -u -d "+7 days" +"%Y-%m-%d" 2>/dev/null || echo "7d-from-$(date +%Y-%m-%d)")
+    FOLLOWUP_30D=$(date -u -v+30d +"%Y-%m-%d" 2>/dev/null || date -u -d "+30 days" +"%Y-%m-%d" 2>/dev/null || echo "30d-from-$(date +%Y-%m-%d)")
+
+    cat > "${FOLLOWUP_DIR}/${CUSTOMER_SLUG}-7day.json" << EOF
+{"customer":"${CUSTOMER_SLUG}","email":"${CONTACT_EMAIL}","type":"7day_followup","scheduled":"${FOLLOWUP_7D}","status":"pending"}
+EOF
+    cat > "${FOLLOWUP_DIR}/${CUSTOMER_SLUG}-30day.json" << EOF
+{"customer":"${CUSTOMER_SLUG}","email":"${CONTACT_EMAIL}","type":"30day_checkin","scheduled":"${FOLLOWUP_30D}","status":"pending"}
+EOF
 fi
 echo ""
 
@@ -224,7 +279,7 @@ echo "━━━ Step 7/7: CRM & Summary ━━━"
 
 CRM_LOG="${PLATFORM_DIR}/crm-log.jsonl"
 if [ "$DRY_RUN" != "true" ]; then
-    CRM_ENTRY="{\"timestamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"event\":\"customer_onboarded\",\"customer\":\"${CUSTOMER_SLUG}\",\"company\":\"${COMPANY_NAME}\",\"email\":\"${CONTACT_EMAIL}\",\"package\":\"${PACKAGE}\",\"agents\":${AGENT_COUNT},\"roster\":\"${ROSTER}\",\"mrr\":${PRICE},\"ssh_host\":\"${SSH_HOST}\"}"
+    CRM_ENTRY="{\"timestamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"event\":\"customer_onboarded\",\"customer\":\"${CUSTOMER_SLUG}\",\"company\":\"${COMPANY_NAME}\",\"email\":\"${CONTACT_EMAIL}\",\"package\":\"${PACKAGE}\",\"vertical\":\"${VERTICAL}\",\"agents\":${AGENT_COUNT},\"mrr\":${TOTAL_PRICE},\"currency\":\"USD\"}"
     echo "$CRM_ENTRY" >> "$CRM_LOG"
     echo "✅ Logged to CRM"
 fi
@@ -234,8 +289,8 @@ echo "╔═══════════════════════�
 echo "║  ✅ Autopilot Complete                           ║"
 echo "╠══════════════════════════════════════════════════╣"
 echo "║  Customer:  ${COMPANY_NAME}"
-echo "║  Package:   ${PACKAGE} (${AGENT_COUNT} agents, \$${PRICE}/mo)"
-echo "║  Agents:    ${ROSTER}"
+echo "║  Package:   ${PACKAGE} (${AGENT_COUNT} agents, \$${TOTAL_PRICE}/mo)"
+echo "║  Vertical:  ${VERTICAL}"
 echo "║  Path:      ${CUSTOMER_DIR}"
 echo "║  Welcome:   ${CUSTOMER_DIR}/welcome-email.md"
 echo "║  Config:    ${CUSTOMER_DIR}/config/"

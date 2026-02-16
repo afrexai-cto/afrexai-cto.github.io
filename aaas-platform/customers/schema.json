@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AfrexAI Unified Customer Profile",
+  "description": "Single source of truth for customer records. Lives at aaas-platform/customers/<slug>/profile.json",
+  "type": "object",
+  "required": ["slug", "company_name", "email", "tier", "vertical", "agents", "pricing", "status", "created_at"],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "description": "URL-safe company identifier (lowercase, hyphens, no special chars)",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "company_name": {
+      "type": "string",
+      "description": "Full legal company name"
+    },
+    "contact_name": {
+      "type": "string",
+      "description": "Primary contact person name",
+      "default": ""
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Primary contact email"
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["starter", "growth", "scale", "enterprise"],
+      "description": "Subscription tier — must match a key in pricing.json tiers"
+    },
+    "vertical": {
+      "type": "string",
+      "enum": ["legal", "healthcare", "finance", "construction", "saas", "professional-services", "general"],
+      "description": "Industry vertical — must match a key in pricing.json vertical_premiums"
+    },
+    "agents": {
+      "type": "array",
+      "description": "Deployed AI agents for this customer",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "template", "status", "deployed_at"],
+        "properties": {
+          "id": { "type": "string", "description": "Agent slug identifier" },
+          "name": { "type": "string", "description": "Human-friendly agent name" },
+          "template": { "type": "string", "description": "Template path: <vertical>/<agent-id>" },
+          "status": { "type": "string", "enum": ["active", "paused", "retired"] },
+          "deployed_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "required": ["base_price", "vertical_premium_pct", "vertical_premium_amount", "monthly_total", "currency", "billing_cycle"],
+      "properties": {
+        "base_price": { "type": "integer", "description": "Tier base price in USD" },
+        "vertical_premium_pct": { "type": "integer", "description": "Vertical premium percentage" },
+        "vertical_premium_amount": { "type": "integer", "description": "Vertical premium in USD" },
+        "monthly_total": { "type": "integer", "description": "Total monthly price in USD" },
+        "currency": { "type": "string", "const": "USD" },
+        "billing_cycle": { "type": "string", "enum": ["monthly", "annual"] }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "onboarding", "paused", "churned"],
+      "description": "Customer lifecycle status"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of customer creation"
+    },
+    "api_key": {
+      "type": "string",
+      "description": "Customer API key (afxk_...)",
+      "default": ""
+    }
+  },
+  "additionalProperties": false
+}

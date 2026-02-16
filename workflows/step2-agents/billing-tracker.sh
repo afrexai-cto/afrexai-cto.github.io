@@ -1,5 +1,6 @@
 #!/bin/bash
-# billing-tracker.sh — Track usage and generate invoices
+# billing-tracker.sh — Track usage and generate invoices (USD only)
+# Reads all pricing from aaas-platform/pricing.json — no hardcoded prices.
 # Usage: ./billing-tracker.sh <command> [args]
 # Bash 3.2 compatible
 
@@ -13,9 +14,64 @@ LOG_FILE="$SCRIPT_DIR/deploy.log"
 
 BILLING_DB="$BILLING_DIR/customers.tsv"
 
+# Pricing source of truth
+PRICING_FILE="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)/pricing.json"
+
 mkdir -p "$BILLING_DIR" "$REPORT_DIR"
 
+# ── Read pricing from pricing.json ──
+if [ ! -f "$PRICING_FILE" ]; then
+    echo "ERROR: pricing.json not found at $PRICING_FILE" >&2
+    exit 1
+fi
+
+tier_price_cents() {
+    python3 -c "
+import json
+p = json.load(open('${PRICING_FILE}'))
+tier = '$1'
+if tier == 'custom':
+    print(${2:-0})
+elif tier in p['tiers']:
+    print(int(p['tiers'][tier]['price'] * 100))
+else:
+    print(0)
+"
+}
+
+tier_agent_limit() {
+    python3 -c "
+import json
+p = json.load(open('${PRICING_FILE}'))
+tier = '$1'
+if tier == 'custom':
+    print(${2:-1})
+elif tier in p['tiers']:
+    print(p['tiers'][tier]['agents'])
+else:
+    print(0)
+"
+}
+
+overage_per_agent_cents() {
+    python3 -c "
+import json
+p = json.load(open('${PRICING_FILE}'))
+print(int(p['overage_per_agent'] * 100))
+"
+}
+
+OVERAGE_CENTS="$(overage_per_agent_cents)"
+
 usage() {
+    # Read tier info dynamically
+    TIER_INFO="$(python3 -c "
+import json
+p = json.load(open('${PRICING_FILE}'))
+for t, v in p['tiers'].items():
+    print(f'  {t:12s} — {v[\"agents\"]} agent(s), \${v[\"price\"]}/mo')
+")"
+
     echo "Usage: $0 <command> [args]"
     echo ""
     echo "Commands:"
@@ -28,12 +84,9 @@ usage() {
     echo "  summary [month YYYY-MM]                      Revenue summary"
     echo "  pay <customer> <month YYYY-MM> [amount]      Record payment"
     echo ""
-    echo "Tiers:"
-    echo "  starter    — 1 agent,  £499/mo"
-    echo "  growth     — 3 agents, £999/mo"
-    echo "  scale      — 10 agents, £2499/mo"
-    echo "  enterprise — unlimited, £4999/mo"
-    echo "  custom     — custom pricing (set via add)"
+    echo "Tiers (from pricing.json):"
+    echo "$TIER_INFO"
+    echo "  custom       — custom pricing (set via add)"
     exit 1
 }
 
@@ -43,40 +96,17 @@ log() {
 
 die() { echo "ERROR: $*" >&2; exit 1; }
 
-# Tier pricing (in pence for integer arithmetic)
-tier_price_pence() {
-    case "$1" in
-        starter)    echo 49900 ;;
-        growth)     echo 99900 ;;
-        scale)      echo 249900 ;;
-        enterprise) echo 499900 ;;
-        custom)     echo "${2:-0}" ;;
-        *) echo 0 ;;
-    esac
-}
-
-tier_agent_limit() {
-    case "$1" in
-        starter)    echo 1 ;;
-        growth)     echo 3 ;;
-        scale)      echo 10 ;;
-        enterprise) echo 999 ;;
-        custom)     echo "${2:-1}" ;;
-        *) echo 0 ;;
-    esac
-}
-
 format_price() {
-    local pence="$1"
-    local pounds=$((pence / 100))
-    local remainder=$((pence % 100))
-    printf "£%d.%02d" "$pounds" "$remainder"
+    local cents="$1"
+    local dollars=$((cents / 100))
+    local remainder=$((cents % 100))
+    printf "\$%d.%02d" "$dollars" "$remainder"
 }
 
 # Initialize DB if needed
 init_db() {
     if [ ! -f "$BILLING_DB" ]; then
-        echo "customer	tier	price_pence	agent_limit	agent_count	start_date	status	last_paid" > "$BILLING_DB"
+        echo "customer	tier	price_cents	agent_limit	agent_count	start_date	status	last_paid" > "$BILLING_DB"
     fi
 }
 
@@ -108,14 +138,14 @@ init_db
 
 case "$COMMAND" in
     add)
-        [ $# -lt 3 ] && die "Usage: $0 add <customer> <tier> <start_date> [custom_price_pence] [agent_limit]"
+        [ $# -lt 3 ] && die "Usage: $0 add <customer> <tier> <start_date> [custom_price_cents] [agent_limit]"
         CUSTOMER="$1"
         TIER="$2"
         START_DATE="$3"
         CUSTOM_PRICE="${4:-0}"
         CUSTOM_LIMIT="${5:-0}"
 
-        PRICE="$(tier_price_pence "$TIER" "$CUSTOM_PRICE")"
+        PRICE="$(tier_price_cents "$TIER" "$CUSTOM_PRICE")"
         LIMIT="$(tier_agent_limit "$TIER" "$CUSTOM_LIMIT")"
         AGENTS="$(count_deployed_agents "$CUSTOMER")"
 
@@ -142,7 +172,7 @@ case "$COMMAND" in
 
     list)
         echo ""
-        echo "=== Customer Billing ==="
+        echo "=== Customer Billing (USD) ==="
         echo ""
         printf "%-20s %-12s %-12s %-10s %-12s %-10s %-12s\n" \
             "Customer" "Tier" "Monthly" "Agents" "Start" "Status" "Last Paid"
@@ -166,31 +196,31 @@ case "$COMMAND" in
         [ -z "$LINE" ] && die "Customer not found: $CUSTOMER"
 
         TIER="$(get_field "$LINE" 2)"
-        PRICE_PENCE="$(get_field "$LINE" 3)"
+        PRICE_CENTS="$(get_field "$LINE" 3)"
         LIMIT="$(get_field "$LINE" 4)"
         START="$(get_field "$LINE" 6)"
         STATUS="$(get_field "$LINE" 7)"
 
         AGENTS="$(count_deployed_agents "$CUSTOMER")"
-        PRICE_FMT="$(format_price "$PRICE_PENCE")"
+        PRICE_FMT="$(format_price "$PRICE_CENTS")"
 
-        # Overage calculation (£99/agent/mo over limit for non-enterprise)
+        # Overage calculation
         OVERAGE=0
         OVERAGE_AGENTS=0
         if [ "$TIER" != "enterprise" ] && [ "$AGENTS" -gt "$LIMIT" ]; then
             OVERAGE_AGENTS=$((AGENTS - LIMIT))
-            OVERAGE=$((OVERAGE_AGENTS * 9900))
+            OVERAGE=$((OVERAGE_AGENTS * OVERAGE_CENTS))
         fi
 
-        TOTAL_PENCE=$((PRICE_PENCE + OVERAGE))
-        TOTAL_FMT="$(format_price "$TOTAL_PENCE")"
+        TOTAL_CENTS=$((PRICE_CENTS + OVERAGE))
+        TOTAL_FMT="$(format_price "$TOTAL_CENTS")"
 
         INVOICE_FILE="$BILLING_DIR/invoice-${CUSTOMER}-${MONTH}.md"
 
         cat > "$INVOICE_FILE" << EOF
 # Invoice
 
-**AfrexAI Ltd**
+**AfrexAI**
 AI Agent Management Services
 
 ---
@@ -199,6 +229,7 @@ AI Agent Management Services
 **Invoice Date:** $(date '+%Y-%m-%d')
 **Period:** ${MONTH}
 **Invoice #:** INV-${CUSTOMER}-${MONTH}
+**Currency:** USD
 
 ---
 
@@ -210,14 +241,14 @@ AI Agent Management Services
 EOF
 
         if [ "$OVERAGE" -gt 0 ]; then
-            echo "| Additional Agents (over ${LIMIT} limit) | ${OVERAGE_AGENTS} | £99.00 | $(format_price "$OVERAGE") |" >> "$INVOICE_FILE"
+            echo "| Additional Agents (over ${LIMIT} limit) | ${OVERAGE_AGENTS} | $(format_price "$OVERAGE_CENTS") | $(format_price "$OVERAGE") |" >> "$INVOICE_FILE"
         fi
 
         cat >> "$INVOICE_FILE" << EOF
 
 ---
 
-| | **Total: ${TOTAL_FMT}** |
+| | **Total: ${TOTAL_FMT} USD** |
 |---|---|
 
 ---
@@ -231,10 +262,9 @@ EOF
 
 ## Payment
 
-Please remit payment within 30 days to:
+Please remit payment within 30 days.
 
-**AfrexAI Ltd**
-Bank: (configured per customer)
+**AfrexAI**
 Reference: INV-${CUSTOMER}-${MONTH}
 
 ---
@@ -242,7 +272,7 @@ Reference: INV-${CUSTOMER}-${MONTH}
 EOF
 
         echo "Invoice generated: $INVOICE_FILE"
-        echo "Amount: $TOTAL_FMT"
+        echo "Amount: $TOTAL_FMT USD"
         log "Billing: invoice $CUSTOMER $MONTH $TOTAL_FMT"
         ;;
 
@@ -305,7 +335,7 @@ EOF
     summary)
         MONTH="${1:-$(date '+%Y-%m')}"
         echo ""
-        echo "=== Revenue Summary: $MONTH ==="
+        echo "=== Revenue Summary: $MONTH (USD) ==="
         echo ""
 
         TOTAL_REV=0
@@ -316,7 +346,7 @@ EOF
                 AGENTS="$(count_deployed_agents "$c")"
                 OVERAGE=0
                 if [ "$t" != "enterprise" ] && [ "$AGENTS" -gt "$l" ]; then
-                    OVERAGE=$(( (AGENTS - l) * 9900 ))
+                    OVERAGE=$(( (AGENTS - l) * OVERAGE_CENTS ))
                 fi
                 CUST_TOTAL=$((p + OVERAGE))
                 echo "  $c: $(format_price "$CUST_TOTAL") ($t, ${AGENTS} agents)"
