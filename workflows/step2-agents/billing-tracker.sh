@@ -25,15 +25,43 @@ if [ ! -f "$PRICING_FILE" ]; then
     exit 1
 fi
 
+CUSTOMERS_PROFILE_DIR="$(cd "$SCRIPT_DIR/../../aaas-platform/customers" 2>/dev/null && pwd || echo "")"
+
+# Get price in cents for a customer, including vertical premium
+# Usage: tier_price_cents <tier> [custom_price_cents] [customer_slug]
 tier_price_cents() {
     python3 -c "
-import json
+import json, os
 p = json.load(open('${PRICING_FILE}'))
 tier = '$1'
+custom = ${2:-0}
+customer = '${3:-}'
+customers_dir = '${CUSTOMERS_PROFILE_DIR}'
+
+# If customer slug given, try profile.json monthly_price first
+if customer and customers_dir:
+    profile = os.path.join(customers_dir, customer, 'profile.json')
+    if os.path.exists(profile):
+        prof = json.load(open(profile))
+        mp = prof.get('monthly_price') or prof.get('pricing', {}).get('monthly_total')
+        if mp and int(mp) > 0:
+            print(int(mp) * 100)
+            exit()
+
 if tier == 'custom':
-    print(${2:-0})
+    print(custom)
 elif tier in p['tiers']:
-    print(int(p['tiers'][tier]['price'] * 100))
+    base = p['tiers'][tier]['price']
+    # Try to find vertical from profile
+    vertical = 'general'
+    if customer and customers_dir:
+        profile = os.path.join(customers_dir, customer, 'profile.json')
+        if os.path.exists(profile):
+            prof = json.load(open(profile))
+            vertical = prof.get('vertical', 'general')
+    vpct = p.get('vertical_premiums', {}).get(vertical, 0)
+    total = base + (base * vpct // 100)
+    print(int(total * 100))
 else:
     print(0)
 "
@@ -145,7 +173,7 @@ case "$COMMAND" in
         CUSTOM_PRICE="${4:-0}"
         CUSTOM_LIMIT="${5:-0}"
 
-        PRICE="$(tier_price_cents "$TIER" "$CUSTOM_PRICE")"
+        PRICE="$(tier_price_cents "$TIER" "$CUSTOM_PRICE" "$CUSTOMER")"
         LIMIT="$(tier_agent_limit "$TIER" "$CUSTOM_LIMIT")"
         AGENTS="$(count_deployed_agents "$CUSTOMER")"
 

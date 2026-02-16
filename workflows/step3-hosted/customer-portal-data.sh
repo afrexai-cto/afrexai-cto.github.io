@@ -92,17 +92,30 @@ generate_portal_data() {
     status="$(read_json_field "$p" "status")"
     onboarded="$(read_json_field "$p" "onboarded_at")"
 
-    # Read billing data
+    # Read billing data — prefer profile.json monthly_price (includes vertical premium)
     local price=0 billing_cycle="monthly" next_invoice=""
+    # 1. Check profile.json monthly_price (set by autopilot, includes vertical premium)
+    price="$(read_json_field "$p" "monthly_price")"
+    if [ -z "$price" ] || [ "$price" = "0" ]; then
+        price="$(read_json_field "$p" "monthly_total")"
+    fi
     if [ -f "$cdir/billing.json" ]; then
-        price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
         billing_cycle="$(read_json_field "$cdir/billing.json" "billing_cycle")"
         next_invoice="$(read_json_field "$cdir/billing.json" "next_invoice")"
+        if [ -z "$price" ] || [ "$price" = "0" ]; then
+            price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
+        fi
     fi
     if [ -z "$price" ] || [ "$price" = "0" ]; then
-        # Fall back to pricing.json
+        # Fall back to pricing.json with vertical premium
         if [ -f "$PRICING_FILE" ]; then
-            price="$(python3 -c "import json; print(json.load(open('$PRICING_FILE'))['tiers'].get('$tier',{}).get('price',0))" 2>/dev/null || echo 0)"
+            price="$(python3 -c "
+import json
+pp = json.load(open('$PRICING_FILE'))
+base = pp['tiers'].get('$tier',{}).get('price',0)
+vpct = pp.get('vertical_premiums',{}).get('$vertical',0)
+print(base + base * vpct // 100)
+" 2>/dev/null || echo 0)"
         fi
     fi
 
@@ -275,12 +288,28 @@ cmd_summary() {
         local tier
         tier="$(get_tier "$p")"
         local price=0
-        if [ -f "$cdir/billing.json" ]; then
-            price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
+        # Prefer profile.json monthly_price (includes vertical premium)
+        price="$(read_json_field "$p" "monthly_price")"
+        if [ -z "$price" ] || [ "$price" = "0" ]; then
+            price="$(read_json_field "$p" "monthly_total")"
+        fi
+        if [ -z "$price" ] || [ "$price" = "0" ]; then
+            if [ -f "$cdir/billing.json" ]; then
+                price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
+            fi
         fi
         if [ -z "$price" ] || [ "$price" = "0" ]; then
             if [ -f "$PRICING_FILE" ]; then
-                price="$(python3 -c "import json; print(json.load(open('$PRICING_FILE'))['tiers'].get('$tier',{}).get('price',0))" 2>/dev/null || echo 0)"
+                local vertical
+                vertical="$(read_json_field "$p" "vertical")"
+                vertical="${vertical:-general}"
+                price="$(python3 -c "
+import json
+pp = json.load(open('$PRICING_FILE'))
+base = pp['tiers'].get('$tier',{}).get('price',0)
+vpct = pp.get('vertical_premiums',{}).get('$vertical',0)
+print(base + base * vpct // 100)
+" 2>/dev/null || echo 0)"
             fi
         fi
 
