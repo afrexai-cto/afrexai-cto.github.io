@@ -17,7 +17,7 @@ Your **growth** plan is now active with **3 AI agent(s)** deployed for your **fi
 3. 🔌 We'll connect your agents to Slack, email, CRM, and calendar
 4. 🚀 Your agents begin their first shift once integrations are live
 
-**Your monthly investment:** $4500/mo
+**Your monthly investment:** $4725/mo (includes $225 financial-services vertical premium)
 
 **Your dashboard:** We'll send you a health report weekly showing agent activity and performance.
 

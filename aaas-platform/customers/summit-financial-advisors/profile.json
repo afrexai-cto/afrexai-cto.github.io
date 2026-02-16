@@ -11,33 +11,33 @@
       "name": "Portfolio Analyst",
       "template": "financial-services/portfolio-analyst",
       "status": "active",
-      "deployed_at": "2026-02-16T20:46:21.684476Z"
+      "deployed_at": "2026-02-16T20:48:52.717434Z"
     },
     {
       "id": "compliance-monitor",
       "name": "Compliance Monitor",
       "template": "financial-services/compliance-monitor",
       "status": "active",
-      "deployed_at": "2026-02-16T20:46:21.684755Z"
+      "deployed_at": "2026-02-16T20:48:52.717907Z"
     },
     {
       "id": "client-advisor",
       "name": "Client Advisor Assistant",
       "template": "financial-services/client-advisor",
       "status": "active",
-      "deployed_at": "2026-02-16T20:46:21.684758Z"
+      "deployed_at": "2026-02-16T20:48:52.717912Z"
     }
   ],
-  "monthly_price": 4500,
+  "monthly_price": 4725,
   "pricing": {
     "base_price": 4500,
-    "vertical_premium_pct": 0,
-    "vertical_premium_amount": 0,
-    "monthly_total": 4500,
+    "vertical_premium_pct": 5,
+    "vertical_premium_amount": 225,
+    "monthly_total": 4725,
     "currency": "USD",
     "billing_cycle": "monthly"
   },
   "status": "active",
-  "created_at": "2026-02-16T20:46:20.821245Z",
+  "created_at": "2026-02-16T20:48:50.925735Z",
   "api_key": ""
 }

@@ -50,3 +50,16 @@
 {"ts":"2026-02-16T20:46:23Z","customer":"summit-financial-advisors","step":"slack_notify","status":"started","detail":""}
 {"ts":"2026-02-16T20:46:23Z","customer":"summit-financial-advisors","step":"slack_notify","status":"complete","detail":""}
 {"ts":"2026-02-16T20:46:23Z","customer":"summit-financial-advisors","company":"Summit Financial Advisors","tier":"growth","vertical":"financial-services","email":"cfo@summitfa.com","agent_count":3,"mrr":4500,"status":"complete","started":"2026-02-16T20:46:20Z"}
+{"ts":"2026-02-16T20:48:50Z","customer":"summit-financial-advisors","step":"autopilot","status":"started","detail":""}
+{"ts":"2026-02-16T20:48:54Z","customer":"summit-financial-advisors","step":"autopilot","status":"complete","detail":""}
+{"ts":"2026-02-16T20:48:54Z","customer":"summit-financial-advisors","step":"portal_token","status":"started","detail":""}
+{"ts":"2026-02-16T20:48:54Z","customer":"summit-financial-advisors","step":"portal_token","status":"complete","detail":""}
+{"ts":"2026-02-16T20:48:54Z","customer":"summit-financial-advisors","step":"welcome_email","status":"started","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","step":"welcome_email","status":"complete","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","step":"portal_data","status":"complete","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","step":"auth_index","status":"complete","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","step":"followup_schedule","status":"started","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","step":"followup_schedule","status":"complete","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","step":"slack_notify","status":"started","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","step":"slack_notify","status":"complete","detail":""}
+{"ts":"2026-02-16T20:48:55Z","customer":"summit-financial-advisors","company":"Summit Financial Advisors","tier":"growth","vertical":"financial-services","email":"cfo@summitfa.com","agent_count":3,"mrr":4725,"status":"complete","started":"2026-02-16T20:48:50Z"}
