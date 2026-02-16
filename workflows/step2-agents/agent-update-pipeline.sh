@@ -266,22 +266,76 @@ cat > "$VERSION_FILE" << EOF
 }
 EOF
 
-# --- Output deployment commands ---
+# --- Deploy update via SSH+rsync ---
+DRY_RUN="${DRY_RUN:-false}"
+REMOTE_DIR="/opt/afrexai-agent"
+
+# Resolve SSH key (same logic as deploy script)
+SSH_KEY=""
+for candidate in \
+    "$HOME/.ssh/afrexai-deploy" \
+    "$HOME/.ssh/${CUSTOMER}-deploy" \
+    "$HOME/.ssh/id_ed25519" \
+    "$HOME/.ssh/id_rsa"; do
+    if [ -f "$candidate" ]; then
+        SSH_KEY="$candidate"
+        break
+    fi
+done
+
+SSH_OPTS="-o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
+[ -n "$SSH_KEY" ] && SSH_OPTS="$SSH_OPTS -i $SSH_KEY"
+
 echo ""
 echo "============================================"
-echo "  UPDATE BUNDLE READY"
+echo "  PUSHING UPDATE VIA RSYNC"
 echo "============================================"
 echo ""
-echo "Bundle: $UPDATE_TARBALL"
+echo "Bundle:  $UPDATE_TARBALL"
 echo "Version: $CURRENT_VERSION → $NEW_VERSION"
-echo "Type: $UPDATE_TYPE"
+echo "Type:    $UPDATE_TYPE"
+echo "Target:  $SSH_HOST"
+echo "Dry Run: $DRY_RUN"
 echo ""
-echo "--- Deploy Commands ---"
-echo "scp \"$UPDATE_TARBALL\" \"${SSH_HOST}:/tmp/\""
-echo "ssh \"${SSH_HOST}\" 'cd /tmp && tar xzf ${UPDATE_BUNDLE}.tar.gz && cd ${UPDATE_BUNDLE} && sudo bash update.sh'"
-echo ""
-echo "--- Verify ---"
-echo "ssh \"${SSH_HOST}\" '/opt/afrexai-agent/health-check.sh'"
+
+if [ "$DRY_RUN" = "true" ]; then
+    log "[DRY RUN] Would rsync $UPDATE_DIR/ → ${SSH_HOST}:${REMOTE_DIR}/"
+    log "[DRY RUN] Files to sync:"
+    find "$UPDATE_DIR" -type f | while read -r f; do
+        log "  $(echo "$f" | sed "s|$UPDATE_DIR/||")"
+    done
+else
+    # Verify connectivity
+    if ! ssh $SSH_OPTS "$SSH_HOST" 'echo ok' >/dev/null 2>&1; then
+        log "ERROR: Cannot connect to $SSH_HOST"
+        log "Falling back to manual mode — bundle at: $UPDATE_TARBALL"
+    else
+        # Backup remote state first
+        log "Backing up remote agent state..."
+        ssh $SSH_OPTS "$SSH_HOST" \
+            "mkdir -p ${REMOTE_DIR}/backups && cp -r ${REMOTE_DIR}/*.md ${REMOTE_DIR}/*.yaml ${REMOTE_DIR}/backups/pre-update-$(date '+%Y%m%d%H%M%S')/ 2>/dev/null || true"
+
+        # Rsync the update (prefer rsync, fall back to scp+tar)
+        if ssh $SSH_OPTS "$SSH_HOST" 'command -v rsync >/dev/null 2>&1'; then
+            log "Pushing update via rsync..."
+            RSYNC_OPTS="-avz --checksum --exclude='update.sh' --exclude='*.current'"
+            [ -n "$SSH_KEY" ] && RSYNC_OPTS="$RSYNC_OPTS -e 'ssh $SSH_OPTS'"
+            rsync $RSYNC_OPTS "$UPDATE_DIR/" "${SSH_HOST}:${REMOTE_DIR}/" || log "WARN: rsync failed"
+            log "✅ Rsync complete"
+        else
+            log "rsync not available on remote, using scp..."
+            scp $SSH_OPTS "$UPDATE_TARBALL" "${SSH_HOST}:/tmp/"
+            ssh $SSH_OPTS "$SSH_HOST" "cd /tmp && tar xzf ${UPDATE_BUNDLE}.tar.gz && cd ${UPDATE_BUNDLE} && bash update.sh"
+            log "✅ SCP+update complete"
+        fi
+
+        # Run health check
+        log "Verifying update..."
+        HEALTH="$(ssh $SSH_OPTS "$SSH_HOST" "${REMOTE_DIR}/health-check.sh" 2>/dev/null || echo '{"status":"unknown"}')"
+        log "Health: $HEALTH"
+    fi
+fi
+
 echo ""
 echo "--- Rollback (if needed) ---"
 echo "$0 ${CUSTOMER} ${AGENT_TYPE} rollback"

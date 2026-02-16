@@ -56,7 +56,7 @@ trap 'rm -f "$RESULTS_FILE"' EXIT
 get_json_val() {
     local key="$1"
     local data="$2"
-    echo "$data" | tr ',' '\n' | tr '{' '\n' | tr '}' '\n' | grep "\"$key\"" | head -1 | sed 's/.*: *"\{0,1\}\([^",}]*\)"\{0,1\}.*/\1/'
+    echo "$data" | tr ',' '\n' | tr '{' '\n' | tr '}' '\n' | grep "\"$key\"" | head -1 | sed 's/.*: *"\{0,1\}\([^",}]*\)"\{0,1\}.*/\1/' || echo ""
 }
 
 log "=== Health Dashboard Scan ==="

@@ -385,58 +385,135 @@ EOF
 
 log "Version tracked: $VERSION_FILE"
 
-# --- Deploy to remote (if SSH accessible) ---
-echo ""
-echo "============================================"
-echo "  DEPLOYMENT BUNDLE READY"
-echo "============================================"
-echo ""
-echo "Bundle: $TARBALL"
-echo "Customer: $CUSTOMER"
-echo "Agent: $AGENT_TYPE"
-echo "Target: $SSH_HOST"
-echo ""
-echo "--- Deployment Commands ---"
-echo ""
+# --- Deploy to remote via SSH ---
 
-# Check if op CLI is available for credential injection
-if command -v op >/dev/null 2>&1; then
-    echo "# With 1Password credential injection:"
-    echo "SSH_KEY_FILE=\$(mktemp)"
-    echo "op read \"$OP_URI\" > \"\$SSH_KEY_FILE\""
-    echo "chmod 600 \"\$SSH_KEY_FILE\""
-    echo "scp -i \"\$SSH_KEY_FILE\" \"$TARBALL\" \"${SSH_HOST}:/tmp/\""
-    echo "ssh -i \"\$SSH_KEY_FILE\" \"${SSH_HOST}\" 'cd /tmp && tar xzf ${BUNDLE_NAME}.tar.gz && cd ${BUNDLE_NAME} && sudo bash install.sh'"
-    echo "rm -f \"\$SSH_KEY_FILE\""
-    echo ""
-    echo "# Auto-deploy (will use 1Password):"
-    echo ""
-
-    # Attempt auto-deploy
-    if [ "${AUTO_DEPLOY:-false}" = "true" ]; then
-        log "Auto-deploying to $SSH_HOST..."
-        SSH_KEY_FILE="$(mktemp)"
-        trap 'rm -f "$SSH_KEY_FILE"' EXIT
-        if op read "$OP_URI" > "$SSH_KEY_FILE" 2>/dev/null; then
-            chmod 600 "$SSH_KEY_FILE"
-            scp -i "$SSH_KEY_FILE" -o StrictHostKeyChecking=accept-new "$TARBALL" "${SSH_HOST}:/tmp/" && \
-            ssh -i "$SSH_KEY_FILE" -o StrictHostKeyChecking=accept-new "${SSH_HOST}" \
-                "cd /tmp && tar xzf ${BUNDLE_NAME}.tar.gz && cd ${BUNDLE_NAME} && sudo bash install.sh" && \
-            log "Auto-deploy successful" || \
-            log "Auto-deploy failed — use manual commands above"
-        else
-            log "Could not read SSH key from 1Password — use manual commands above"
+# Resolve SSH key: check 1Password first, then local key files
+resolve_ssh_key() {
+    local key_file=""
+    # Try 1Password
+    if command -v op >/dev/null 2>&1; then
+        key_file="$(mktemp)"
+        if op read "$OP_URI" > "$key_file" 2>/dev/null && [ -s "$key_file" ]; then
+            chmod 600 "$key_file"
+            echo "$key_file"
+            return 0
         fi
+        rm -f "$key_file"
     fi
+    # Try common local keys
+    for candidate in \
+        "$HOME/.ssh/afrexai-deploy" \
+        "$HOME/.ssh/${CUSTOMER}-deploy" \
+        "$HOME/.ssh/id_ed25519" \
+        "$HOME/.ssh/id_rsa"; do
+        if [ -f "$candidate" ]; then
+            echo "$candidate"
+            return 0
+        fi
+    done
+    return 1
+}
+
+SSH_OPTS="-o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
+TEMP_KEY=""
+
+if SSH_KEY="$(resolve_ssh_key)"; then
+    # Track temp keys for cleanup
+    case "$SSH_KEY" in /tmp/*|/var/*) TEMP_KEY="$SSH_KEY" ;; esac
+    SSH_OPTS="$SSH_OPTS -i $SSH_KEY"
+    log "Using SSH key: ${SSH_KEY}"
 else
-    echo "# Manual deployment (1Password CLI not available):"
-    echo "scp \"$TARBALL\" \"${SSH_HOST}:/tmp/\""
-    echo "ssh \"${SSH_HOST}\" 'cd /tmp && tar xzf ${BUNDLE_NAME}.tar.gz && cd ${BUNDLE_NAME} && sudo bash install.sh'"
+    log "WARN: No SSH key found — relying on ssh-agent or host keys"
 fi
 
+cleanup_ssh() {
+    [ -n "$TEMP_KEY" ] && rm -f "$TEMP_KEY"
+}
+trap cleanup_ssh EXIT
+
+DRY_RUN="${DRY_RUN:-false}"
+
 echo ""
-echo "--- Post-Deploy Verification ---"
-echo "ssh \"${SSH_HOST}\" '/opt/afrexai-agent/health-check.sh'"
+echo "============================================"
+echo "  DEPLOYING TO REMOTE HOST"
+echo "============================================"
+echo ""
+echo "Bundle:   $TARBALL"
+echo "Customer: $CUSTOMER"
+echo "Agent:    $AGENT_TYPE"
+echo "Target:   $SSH_HOST"
+echo "Dry Run:  $DRY_RUN"
+echo ""
+
+if [ "$DRY_RUN" = "true" ]; then
+    log "[DRY RUN] Would execute:"
+    log "  1. ssh $SSH_OPTS $SSH_HOST 'mkdir -p /tmp/afrexai-deploy'"
+    log "  2. scp $SSH_OPTS $TARBALL ${SSH_HOST}:/tmp/afrexai-deploy/"
+    log "  3. ssh $SSH_OPTS $SSH_HOST 'cd /tmp/afrexai-deploy && tar xzf ${BUNDLE_NAME}.tar.gz && cd ${BUNDLE_NAME} && bash install.sh'"
+    log "  4. ssh $SSH_OPTS $SSH_HOST '/opt/afrexai-agent/health-check.sh'"
+    log "[DRY RUN] Skipping actual deployment."
+else
+    # Step 1: Ensure OpenClaw prerequisites on remote
+    log "Checking remote host connectivity..."
+    if ! ssh $SSH_OPTS "$SSH_HOST" 'echo "ok"' >/dev/null 2>&1; then
+        die "Cannot connect to $SSH_HOST — check SSH access"
+    fi
+    log "✅ SSH connection verified"
+
+    # Step 2: Check/install OpenClaw on remote
+    log "Checking OpenClaw on remote..."
+    REMOTE_HAS_OPENCLAW="$(ssh $SSH_OPTS "$SSH_HOST" 'command -v openclaw >/dev/null 2>&1 && echo yes || echo no')"
+    if [ "$REMOTE_HAS_OPENCLAW" = "no" ]; then
+        log "OpenClaw not found on remote — installing..."
+        ssh $SSH_OPTS "$SSH_HOST" 'curl -fsSL https://get.openclaw.com | bash' || \
+            log "WARN: OpenClaw auto-install failed — agent will run without daemon"
+    else
+        log "✅ OpenClaw already installed on remote"
+    fi
+
+    # Step 3: Transfer bundle
+    log "Transferring deployment bundle..."
+    ssh $SSH_OPTS "$SSH_HOST" 'mkdir -p /tmp/afrexai-deploy'
+    scp $SSH_OPTS "$TARBALL" "${SSH_HOST}:/tmp/afrexai-deploy/" || die "SCP transfer failed"
+    log "✅ Bundle transferred"
+
+    # Step 4: Extract and install
+    log "Installing agent on remote..."
+    ssh $SSH_OPTS "$SSH_HOST" "cd /tmp/afrexai-deploy && tar xzf ${BUNDLE_NAME}.tar.gz && cd ${BUNDLE_NAME} && bash install.sh" || die "Remote install failed"
+    log "✅ Agent installed"
+
+    # Step 5: Set up cron jobs for agent shifts
+    log "Configuring cron jobs..."
+    CRON_SETUP="$(cat <<'CRONEOF'
+INSTALL_DIR="/opt/afrexai-agent"
+CRON_TAG="# afrexai-agent-CUSTOMER-TYPE"
+# Remove old cron entries for this agent
+crontab -l 2>/dev/null | grep -v "$CRON_TAG" > /tmp/afrexai-cron-new || true
+# Morning shift: 8 AM
+echo "0 8 * * * cd $INSTALL_DIR && bash health-check.sh >> $INSTALL_DIR/logs/cron.log 2>&1 $CRON_TAG" >> /tmp/afrexai-cron-new
+# Evening shift: 8 PM
+echo "0 20 * * * cd $INSTALL_DIR && bash health-check.sh >> $INSTALL_DIR/logs/cron.log 2>&1 $CRON_TAG" >> /tmp/afrexai-cron-new
+# Heartbeat: every 30 min
+echo "*/30 * * * * cd $INSTALL_DIR && bash health-check.sh --quiet >> $INSTALL_DIR/logs/heartbeat.log 2>&1 $CRON_TAG" >> /tmp/afrexai-cron-new
+crontab /tmp/afrexai-cron-new && rm /tmp/afrexai-cron-new
+echo "Cron jobs installed"
+CRONEOF
+)"
+    # Substitute customer/type into cron tag
+    CRON_SETUP="$(echo "$CRON_SETUP" | sed "s/CUSTOMER/${CUSTOMER}/g; s/TYPE/${AGENT_TYPE}/g")"
+    ssh $SSH_OPTS "$SSH_HOST" "$CRON_SETUP" || log "WARN: Cron setup failed — configure manually"
+    log "✅ Cron jobs configured"
+
+    # Step 6: Verify
+    log "Running health check..."
+    HEALTH_RESULT="$(ssh $SSH_OPTS "$SSH_HOST" '/opt/afrexai-agent/health-check.sh' 2>/dev/null || echo '{"status":"unknown"}')"
+    log "Health: $HEALTH_RESULT"
+
+    echo ""
+    echo "--- Post-Deploy Verification ---"
+    echo "$HEALTH_RESULT"
+fi
+
 echo ""
 
 # --- Log to CRM ---

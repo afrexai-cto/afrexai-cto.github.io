@@ -206,7 +206,7 @@ AI Agent Management Services
 
 | Description | Qty | Unit Price | Amount |
 |-------------|-----|-----------|--------|
-| ${TIER^} Plan — AI Agent Management | 1 | ${PRICE_FMT} | ${PRICE_FMT} |
+| $(echo "$TIER" | awk "{print toupper(substr(\$0,1,1)) substr(\$0,2)}") Plan — AI Agent Management | 1 | ${PRICE_FMT} | ${PRICE_FMT} |
 EOF
 
         if [ "$OVERAGE" -gt 0 ]; then
@@ -224,7 +224,7 @@ EOF
 
 ## Details
 
-- **Plan:** ${TIER^}
+- **Plan:** $(echo "$TIER" | awk "{print toupper(substr(\$0,1,1)) substr(\$0,2)}")
 - **Agents Deployed:** ${AGENTS} / ${LIMIT} included
 - **Service Start:** ${START}
 - **Status:** ${STATUS}
