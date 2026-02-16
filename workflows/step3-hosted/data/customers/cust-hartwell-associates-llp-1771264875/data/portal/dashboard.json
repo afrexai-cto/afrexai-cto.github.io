@@ -1,0 +1,68 @@
+{
+  "customer_id": "cust-hartwell-associates-llp-1771264875",
+  "company_name": "Hartwell & Associates LLP",
+  "tier": "growth",
+  "vertical": "legal",
+  "monthly_price": 4500,
+  "agent_count": 3,
+  "provisioned_at": "2026-02-16T18:01:15Z",
+  "generated_at": "2026-02-16T18:02:33Z",
+  "period_days": 30,
+  "summary": {
+    "total_tasks_completed": 930,
+    "total_hours_worked": 669,
+    "human_equivalent_hours": 2007,
+    "hours_saved": 1338,
+    "cost_saved_usd": 46830,
+    "uptime_percent": 100.0,
+    "health_status": "healthy",
+    "roi_percent": 940
+  },
+  "roi": {
+    "monthly_investment": 4500,
+    "monthly_savings": 46830,
+    "net_monthly_value": 42330,
+    "annual_investment": 54000,
+    "projected_annual_savings": 561960,
+    "roi_percent": 940
+  },
+  "agents": [
+    {
+      "agent_name": "compliance-monitor",
+      "status": "running",
+      "period_days": 30,
+      "tasks_completed": 150,
+      "tasks_per_day": 5,
+      "avg_task_minutes": 30,
+      "success_rate": 95,
+      "total_hours_worked": 75,
+      "human_equivalent_hours": 225,
+      "hours_saved": 150,
+      "cost_saved_usd": 5250
+    },    {
+      "agent_name": "contract-reviewer",
+      "status": "running",
+      "period_days": 30,
+      "tasks_completed": 540,
+      "tasks_per_day": 18,
+      "avg_task_minutes": 58,
+      "success_rate": 92,
+      "total_hours_worked": 522,
+      "human_equivalent_hours": 1566,
+      "hours_saved": 1044,
+      "cost_saved_usd": 36540
+    },    {
+      "agent_name": "legal-researcher",
+      "status": "running",
+      "period_days": 30,
+      "tasks_completed": 240,
+      "tasks_per_day": 8,
+      "avg_task_minutes": 18,
+      "success_rate": 92,
+      "total_hours_worked": 72,
+      "human_equivalent_hours": 216,
+      "hours_saved": 144,
+      "cost_saved_usd": 5040
+    }
+  ]
+}

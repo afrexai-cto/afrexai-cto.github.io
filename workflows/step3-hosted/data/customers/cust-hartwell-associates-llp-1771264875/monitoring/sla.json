@@ -1,0 +1,9 @@
+{
+  "customer_id": "cust-hartwell-associates-llp-1771264875",
+  "tier": "growth",
+  "sla_target_uptime": 99.9,
+  "current_uptime": 100.0,
+  "breaches_this_month": 0,
+  "last_incident": null,
+  "monitoring_since": "2026-02-16T18:01:15Z"
+}

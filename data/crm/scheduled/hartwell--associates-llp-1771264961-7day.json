@@ -1,0 +1,9 @@
+{
+  "type": "followup_email",
+  "customer_id": "hartwell--associates-llp-1771264961",
+  "email": "s.hartwell@hartwelllaw.com",
+  "scheduled_date": "2026-02-23",
+  "subject": "How's OpenClaw going? — 7-day check-in",
+  "body_file": "hartwell--associates-llp-1771264961-7day-body.txt",
+  "status": "pending"
+}

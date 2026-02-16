@@ -1,0 +1,11 @@
+{
+  "customer_id": "cust-hartwell-associates-llp-1771264875",
+  "last_check": "2026-02-16T18:02:32Z",
+  "overall_status": "healthy",
+  "uptime_percent": 100.0,
+  "agents_healthy": 3,
+  "agents_degraded": 0,
+  "agents_down": 0,
+  "error_rate_24h": 0.0,
+  "avg_response_ms": 133
+}
