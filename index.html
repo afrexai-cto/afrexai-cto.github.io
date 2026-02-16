@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI CRM Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+:root{--gold:#FFD700;--bg:#0a0a0a;--card:#141414;--border:#222;--text:#e0e0e0;--muted:#888}
+/* Login */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px 40px;max-width:400px;width:100%;text-align:center}
+.login-box h1{color:var(--gold);font-size:1.5rem;margin-bottom:8px}
+.login-box p{color:var(--muted);margin-bottom:24px;font-size:.9rem}
+.login-box input{width:100%;padding:12px 16px;border-radius:8px;border:1px solid var(--border);background:#1a1a1a;color:#fff;font-size:1rem;margin-bottom:16px;outline:none}
+.login-box input:focus{border-color:var(--gold)}
+.login-box button{width:100%;padding:12px;border-radius:8px;border:none;background:var(--gold);color:#0a0a0a;font-weight:700;font-size:1rem;cursor:pointer}
+.login-box button:hover{background:#e6c200}
+.login-error{color:#ff4444;font-size:.85rem;margin-bottom:12px;display:none}
+/* Dashboard */
+#dashboard{display:none;max-width:100%;margin:0 auto;padding:20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;flex-wrap:wrap;gap:12px}
+header h1{color:var(--gold);font-size:1.6rem;font-weight:800}
+header .updated{color:var(--muted);font-size:.85rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card .label{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.card .value{color:var(--gold);font-size:2rem;font-weight:800}
+.card .sub{color:var(--muted);font-size:.75rem;margin-top:4px}
+section{margin-bottom:36px}
+section h2{color:var(--gold);font-size:1.2rem;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+/* Pipeline */
+.pipeline-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.pipeline-stage{width:120px;font-weight:600;text-transform:capitalize;font-size:.9rem;flex-shrink:0}
+.pipeline-bar-wrap{flex:1;min-width:100px;background:#1a1a1a;border-radius:6px;height:28px;position:relative;overflow:hidden}
+.pipeline-bar{background:linear-gradient(90deg,var(--gold),#b8960f);height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:.75rem;font-weight:700;color:#0a0a0a;min-width:fit-content;white-space:nowrap}
+.pipeline-value{width:120px;text-align:right;font-size:.85rem;color:var(--muted);flex-shrink:0}
+/* Table */
+.table-wrap{overflow-x:visible}
+table{width:100%;border-collapse:collapse;font-size:.75rem;table-layout:auto}
+table td,table th{white-space:nowrap;padding:8px 6px}
+th{text-align:left;padding:10px 12px;background:#1a1a1a;color:var(--gold);font-weight:600;white-space:nowrap;position:sticky;top:0}
+td{padding:10px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+tr:hover td{background:#1a1a1a}
+/* Charts */
+.chart{margin-bottom:24px}
+.chart-title{font-weight:600;margin-bottom:12px;font-size:.95rem}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.bar-label{width:160px;font-size:.8rem;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-track{flex:1;background:#1a1a1a;border-radius:4px;height:22px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),#b8960f);border-radius:4px;display:flex;align-items:center;padding:0 8px}
+.bar-count{font-size:.75rem;font-weight:700;color:#0a0a0a;white-space:nowrap}
+.bar-ext{width:40px;font-size:.8rem;color:var(--muted);text-align:right;flex-shrink:0}
+footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border)}
+@media(max-width:600px){
+  header h1{font-size:1.2rem}
+  .card .value{font-size:1.5rem}
+  .pipeline-stage{width:80px;font-size:.8rem}
+  .pipeline-value{width:80px;font-size:.75rem}
+  .bar-label{width:100px;font-size:.7rem}
+  td,th{padding:8px 6px;font-size:.75rem}
+}
+</style>
+    <meta property="og:title" content="AfrexAI CRM Dashboard">
+    <meta property="og:description" content="AfrexAI CRM Dashboard - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/crm-dashboard/">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI CRM Dashboard">
+    <meta name="twitter:description" content="AfrexAI CRM Dashboard - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <h1>🔒 AfrexAI CRM</h1>
+    <p>Enter password to access the dashboard</p>
+    <div class="login-error" id="login-error">Incorrect password</div>
+    <input type="password" id="pwd-input" placeholder="Password" autocomplete="off">
+    <button onclick="tryLogin()">Access Dashboard</button>
+  </div>
+</div>
+
+<div id="dashboard">
+  <header>
+    <h1>📊 AfrexAI CRM Dashboard</h1>
+    <span class="updated">Last updated: Feb 16, 2026 at 09:10 GMT</span>
+  </header>
+
+  <div class="cards" id="cards"></div>
+
+  <section>
+    <h2>📈 Deal Pipeline</h2>
+    <div id="pipeline"></div>
+  </section>
+
+  <section>
+    <h2>📊 Companies by Industry</h2>
+    <div id="chart-industry" class="chart"></div>
+  </section>
+
+  <section>
+    <h2>🏙️ Companies by Metro</h2>
+    <div id="chart-metro" class="chart"></div>
+  </section>
+
+  <section>
+    <h2>🏢 Top 50 Companies</h2>
+    <div class="table-wrap">
+      <table id="companies-table">
+        <thead><tr><th>#</th><th>Company</th><th>Email</th><th>Website</th><th>City</th><th>State</th><th>Industry</th><th>Employees</th><th>Source</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Updated every 12 hours. Next update at ~Feb 16, 2026 21:10 GMT.<br>
+    &copy; 2026 AfrexAI &middot; Internal Use Only
+  </footer>
+</div>
+
+<script>
+const HASH = '1c05f9a1d0bdde3fdd0b8896808cb1bfcd3821166830d5de6866f621ed8b7f66';
+const DATA = {
+  "totalCompanies": 367,
+  "totalContacts": 200,
+  "totalActivities": 98,
+  "activities7d": 98,
+  "deals": [],
+  "topCompanies": [
+    {
+      "name": "Hazlewoods",
+      "city": null,
+      "state": null,
+      "industry": "Accounting - UK Firm",
+      "employees": 550,
+      "email": "info@hazlewoods.co.uk",
+      "website": null,
+      "source": null
+    },
+    {
+      "name": "Hazlewoods",
+      "city": null,
+      "state": null,
+      "industry": "Accounting - UK Firm",
+      "employees": 550,
+      "email": null,
+      "website": null,
+      "source": null
+    },
+    {
+      "name": "Armanino",
+      "city": "San Ramon",
+      "state": "CA",
+      "industry": "Accounting",
+      "employees": 500,
+      "email": "matt.armanino@armanino.com",
+      "website": "armanino.com",
+      "source": null
+    },
+    {
+      "name": "DECA Dental Group",
+      "city": null,
+      "state": null,
+      "industry": "Healthcare - Dental Group",
+      "employees": 500,
+      "email": "info@decadental.com",
+      "website": null,
+      "source": null
+    },
+    {
+      "name": "Plaid",
+      "city": "San Francisco",
+      "state": "CA",
+      "industry": "Fintech",
+      "employees": 450,
+      "email": "zach.perret@plaid.com",
+      "website": "plaid.com",
+      "source": null
+    },
+    {
+      "name": "Mariner Wealth Advisors",
+      "city": "Overland Park",
+      "state": "KS",
+      "industry": "Wealth Management",
+      "employees": 450,
+      "email": "marty.bicknell@marinerwealthadvisors.com",
+      "website": "marinerwealthadvisors.com",
+      "source": null
+    },
+    {
+      "name": "Leavitt Group",
+      "city": "Cedar City",
+      "state": "UT",
+      "industry": "Insurance Agency",
+      "employees": 450,
+      "email": "dane.leavitt@leavitt.com",
+      "website": "leavitt.com",
+      "source": null
+    },
+    {
+      "name": "Addepar",
+      "city": "Mountain View",
+      "state": "CA",
+      "industry": "Fintech",
+      "employees": 450,
+      "email": "eric.poirier@addepar.com",
+      "website": "addepar.com",
+      "source": null
+    },
+    {
+      "name": "Moss Adams",
+      "city": "Seattle",
+      "state": "WA",
+      "industry": "Accounting",
+      "employees": 450,
+      "email": "eric.miles@mossadams.com",
+      "website": "mossadams.com",
+      "source": null
+    },
+    {
+      "name": "AssuredPartners",
+      "city": "Lake Mary",
+      "state": "FL",
+      "industry": "Insurance Agency",
+      "employees": 450,
+      "email": "tom.riley@assuredpartners.com",
+      "website": "assuredpartners.com",
+      "source": null
+    },
+    {
+      "name": "Marcum",
+      "city": "New York",
+      "state": "NY",
+      "industry": "Accounting",
+      "employees": 450,
+      "email": "jeffrey.weiner@marcumllp.com",
+      "website": "marcumllp.com",
+      "source": null
+    },
+    {
+      "name": "Q2 Holdings",
+      "city": "Austin",
+      "state": "TX",
+      "industry": "Fintech",
+      "employees": 450,
+      "email": "jonathan.price@q2.com",
+      "website": "q2.com",
+      "source": null
+    },
+    {
+      "name": "Whitley Penn",
+      "city": "Fort Worth",
+      "state": "TX",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "larry.autrey@whitleypenn.com",
+      "website": "whitleypenn.com",
+      "source": null
+    },
+    {
+      "name": "Orion Advisor Solutions",
+      "city": "Omaha",
+      "state": "NE",
+      "industry": "Fintech",
+      "employees": 400,
+      "email": "eric.clarke@orion.com",
+      "website": "orion.com",
+      "source": null
+    },
+    {
+      "name": "Carson Group",
+      "city": "Omaha",
+      "state": "NE",
+      "industry": "Wealth Management",
+      "employees": 400,
+      "email": "ron.carson@carsongroup.com",
+      "website": "carsongroup.com",
+      "source": null
+    },
+    {
+      "name": "BRP Group (Baldwin Insurance)",
+      "city": "Tampa",
+      "state": "FL",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "trevor.baldwin@baldwinriskpartners.com",
+      "website": "baldwinriskpartners.com",
+      "source": null
+    },
+    {
+      "name": "EP Wealth Advisors",
+      "city": "Torrance",
+      "state": "CA",
+      "industry": "Wealth Management",
+      "employees": 400,
+      "email": "patrick.goshtigian@epwealth.com",
+      "website": "epwealth.com",
+      "source": null
+    },
+    {
+      "name": "Glacier Bancorp",
+      "city": "Kalispell",
+      "state": "MT",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "randall.chesler@glacierbancorp.com",
+      "website": "glacierbancorp.com",
+      "source": null
+    },
+    {
+      "name": "The Hilb Group",
+      "city": "Richmond",
+      "state": "VA",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "ricky.spiro@hilbgroup.com",
+      "website": "hilbgroup.com",
+      "source": null
+    },
+    {
+      "name": "Pacific Premier Bancorp",
+      "city": "Irvine",
+      "state": "CA",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "steven.gardner@ppbi.com",
+      "website": "ppbi.com",
+      "source": null
+    },
+    {
+      "name": "IMA Financial Group",
+      "city": "Denver",
+      "state": "CO",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "rob.cohen@imacorp.com",
+      "website": "imacorp.com",
+      "source": null
+    },
+    {
+      "name": "Enterprise Bancorp",
+      "city": "Lowell",
+      "state": "MA",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "jack.clancy@enterprisebanking.com",
+      "website": "enterprisebanking.com",
+      "source": null
+    },
+    {
+      "name": "nCino",
+      "city": "Wilmington",
+      "state": "NC",
+      "industry": "Fintech",
+      "employees": 400,
+      "email": "pierre.naude@ncino.com",
+      "website": "ncino.com",
+      "source": null
+    },
+    {
+      "name": "Risk Strategies",
+      "city": "Boston",
+      "state": "MA",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "john.mina@risk-strategies.com",
+      "website": "risk-strategies.com",
+      "source": null
+    },
+    {
+      "name": "Katz Sapper & Miller",
+      "city": "Indianapolis",
+      "state": "IN",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "tim.cook@ksmcpa.com",
+      "website": "ksmcpa.com",
+      "source": null
+    },
+    {
+      "name": "Blend Labs",
+      "city": "San Francisco",
+      "state": "CA",
+      "industry": "Fintech",
+      "employees": 400,
+      "email": "nima.ghamsari@blend.com",
+      "website": "blend.com",
+      "source": null
+    },
+    {
+      "name": "Triumph Financial",
+      "city": "Dallas",
+      "state": "TX",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "aaron.graft@tfin.com",
+      "website": "tfin.com",
+      "source": null
+    },
+    {
+      "name": "Carr Riggs & Ingram",
+      "city": "Enterprise",
+      "state": "AL",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "bill.carr@cricpa.com",
+      "website": "cricpa.com",
+      "source": null
+    },
+    {
+      "name": "Origin Bancorp",
+      "city": "Ruston",
+      "state": "LA",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "drake.mills@origin.bank",
+      "website": "origin.bank",
+      "source": null
+    },
+    {
+      "name": "Citrin Cooperman",
+      "city": "New York",
+      "state": "NY",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "alan.goldenberg@citrincooperman.com",
+      "website": "citrincooperman.com",
+      "source": null
+    },
+    {
+      "name": "Withum",
+      "city": "Princeton",
+      "state": "NJ",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "pat.walsh@withum.com",
+      "website": "withum.com",
+      "source": null
+    },
+    {
+      "name": "Patriot Growth Insurance Services",
+      "city": "Fort Lauderdale",
+      "state": "FL",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "matt.simon@patriotgis.com",
+      "website": "patriotgis.com",
+      "source": null
+    },
+    {
+      "name": "Expensify",
+      "city": "Portland",
+      "state": "OR",
+      "industry": "Fintech",
+      "employees": 400,
+      "email": "david.barrett@expensify.com",
+      "website": "expensify.com",
+      "source": null
+    },
+    {
+      "name": "World Insurance Associates",
+      "city": "Tinton Falls",
+      "state": "NJ",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "giancarlo.campise@worldinsurance.com",
+      "website": "worldinsurance.com",
+      "source": null
+    },
+    {
+      "name": "Eide Bailly",
+      "city": "Fargo",
+      "state": "ND",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "jeremy.hauk@eidebailly.com",
+      "website": "eidebailly.com",
+      "source": null
+    },
+    {
+      "name": "Holmes Murphy",
+      "city": "Waukee",
+      "state": "IA",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "dan.keough@holmesmurphy.com",
+      "website": "holmesmurphy.com",
+      "source": null
+    },
+    {
+      "name": "Renasant Bank",
+      "city": "Tupelo",
+      "state": "MS",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "mitch.waycaster@renasantbank.com",
+      "website": "renasantbank.com",
+      "source": null
+    },
+    {
+      "name": "Berkshire Hills Bancorp",
+      "city": "Boston",
+      "state": "MA",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "nitin.mhatre@berkshirebank.com",
+      "website": "berkshirebank.com",
+      "source": null
+    },
+    {
+      "name": "Sikich",
+      "city": "Naperville",
+      "state": "IL",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "chris.geier@sikich.com",
+      "website": "sikich.com",
+      "source": null
+    },
+    {
+      "name": "Cerity Partners",
+      "city": "New York",
+      "state": "NY",
+      "industry": "Wealth Management",
+      "employees": 400,
+      "email": "kurt.miscinski@ceritypartners.com",
+      "website": "ceritypartners.com",
+      "source": null
+    },
+    {
+      "name": "Plante Moran",
+      "city": "Southfield",
+      "state": "MI",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "jim.proppe@plantemoran.com",
+      "website": "plantemoran.com",
+      "source": null
+    },
+    {
+      "name": "Aldrich CPAs",
+      "city": "Portland",
+      "state": "OR",
+      "industry": "Accounting",
+      "employees": 350,
+      "email": "jeff.lewis@aldrichadvisors.com",
+      "website": "aldrichadvisors.com",
+      "source": null
+    },
+    {
+      "name": "The Bonadio Group",
+      "city": "Rochester",
+      "state": "NY",
+      "industry": "Accounting",
+      "employees": 350,
+      "email": "bruce.zicari@bonadio.com",
+      "website": "bonadio.com",
+      "source": null
+    },
+    {
+      "name": "Moneta Group",
+      "city": "St. Louis",
+      "state": "MO",
+      "industry": "Wealth Management",
+      "employees": 350,
+      "email": "eric.kittner@monetagroup.com",
+      "website": "monetagroup.com",
+      "source": null
+    },
+    {
+      "name": "Relation Insurance Services",
+      "city": "Walnut Creek",
+      "state": "CA",
+      "industry": "Insurance Agency",
+      "employees": 350,
+      "email": "joe.tatum@relationinsurance.com",
+      "website": "relationinsurance.com",
+      "source": null
+    },
+    {
+      "name": "Anchin",
+      "city": "New York",
+      "state": "NY",
+      "industry": "Accounting",
+      "employees": 350,
+      "email": "russell.shinsky@anchin.com",
+      "website": "anchin.com",
+      "source": null
+    },
+    {
+      "name": "Higginbotham",
+      "city": "Fort Worth",
+      "state": "TX",
+      "industry": "Insurance Agency",
+      "employees": 350,
+      "email": "rusty.reid@higginbotham.com",
+      "website": "higginbotham.com",
+      "source": null
+    },
+    {
+      "name": "Hylant",
+      "city": "Toledo",
+      "state": "OH",
+      "industry": "Insurance Agency",
+      "employees": 350,
+      "email": "eric.mcloughlin@hylant.com",
+      "website": "hylant.com",
+      "source": null
+    },
+    {
+      "name": "Wipfli",
+      "city": "Milwaukee",
+      "state": "WI",
+      "industry": "Accounting",
+      "employees": 350,
+      "email": "kevin.latz@wipfli.com",
+      "website": "wipfli.com",
+      "source": null
+    },
+    {
+      "name": "Keystone Agency Partners",
+      "city": "Bethlehem",
+      "state": "PA",
+      "industry": "Insurance Agency",
+      "employees": 350,
+      "email": "josh.denberg@keystoneagencypartners.com",
+      "website": "keystoneagencypartners.com",
+      "source": null
+    }
+  ],
+  "byIndustry": [
+    {
+      "industry": "Real Estate",
+      "cnt": 100
+    },
+    {
+      "industry": "Fintech",
+      "cnt": 21
+    },
+    {
+      "industry": "Wealth Management",
+      "cnt": 20
+    },
+    {
+      "industry": "Insurance Agency",
+      "cnt": 20
+    },
+    {
+      "industry": "Regional Bank",
+      "cnt": 20
+    },
+    {
+      "industry": "Accounting",
+      "cnt": 20
+    },
+    {
+      "industry": "Healthcare - Dental Group",
+      "cnt": 10
+    },
+    {
+      "industry": "Accounting - CPA Firm",
+      "cnt": 4
+    },
+    {
+      "industry": "B2B Marketing Agency",
+      "cnt": 4
+    },
+    {
+      "industry": "Recruitment - Staffing",
+      "cnt": 4
+    }
+  ],
+  "byMetro": [
+    {
+      "city": "Miami",
+      "state": "FL",
+      "cnt": 16
+    },
+    {
+      "city": "Houston",
+      "state": "TX",
+      "cnt": 13
+    },
+    {
+      "city": "Dallas",
+      "state": "TX",
+      "cnt": 13
+    },
+    {
+      "city": "Austin",
+      "state": "TX",
+      "cnt": 13
+    },
+    {
+      "city": "Tampa",
+      "state": "FL",
+      "cnt": 11
+    },
+    {
+      "city": "Jacksonville",
+      "state": "FL",
+      "cnt": 10
+    },
+    {
+      "city": "Orlando",
+      "state": "FL",
+      "cnt": 9
+    },
+    {
+      "city": "New York",
+      "state": "NY",
+      "cnt": 8
+    },
+    {
+      "city": "San Antonio",
+      "state": "TX",
+      "cnt": 8
+    },
+    {
+      "city": "Fort Worth",
+      "state": "TX",
+      "cnt": 5
+    }
+  ]
+};
+async function sha256(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function tryLogin(){
+  const pwd = document.getElementById('pwd-input').value;
+  const hash = await sha256(pwd);
+  if(hash === HASH){
+    sessionStorage.setItem('crm_auth','1');
+    showDashboard();
+  } else {
+    document.getElementById('login-error').style.display='block';
+  }
+}
+
+document.getElementById('pwd-input').addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin()});
+
+function showDashboard(){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  render();
+}
+
+function fmt(n){return n!=null?n.toLocaleString():'—'}
+function money(n){return '$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0})}
+
+function render(){
+  // Cards
+  const cards=[
+    {label:'Total Companies',value:DATA.totalCompanies,icon:'🏢'},
+    {label:'Total Contacts',value:DATA.totalContacts,icon:'👤'},
+    {label:'Total Activities',value:DATA.totalActivities,icon:'📋'},
+    {label:'Activity (7d)',value:DATA.activities7d,icon:'⚡'}
+  ];
+  document.getElementById('cards').innerHTML=cards.map(c=>`
+    <div class="card"><div class="label">${c.icon} ${c.label}</div><div class="value">${fmt(c.value)}</div></div>
+  `).join('');
+
+  // Pipeline
+  const pipe=document.getElementById('pipeline');
+  if(DATA.deals.length===0){
+    pipe.innerHTML='<p style="color:var(--muted);font-size:.9rem">No deals in pipeline yet. Start adding deals to see the pipeline view.</p>';
+  } else {
+    const maxCount=Math.max(...DATA.deals.map(d=>d.count));
+    pipe.innerHTML=DATA.deals.map(d=>`
+      <div class="pipeline-row">
+        <span class="pipeline-stage">${d.stage}</span>
+        <div class="pipeline-bar-wrap"><div class="pipeline-bar" style="width:${Math.max(d.count/maxCount*100,8)}%">${d.count} deals</div></div>
+        <span class="pipeline-value">${money(d.total_value)}</span>
+      </div>
+    `).join('');
+  }
+
+  // Charts
+  renderBarChart('chart-industry', DATA.byIndustry, 'industry', 'cnt');
+  renderBarChart('chart-metro', DATA.byMetro, r=>(r.city||'Unknown')+(r.state&&r.state!=='—'?', '+r.state:''), 'cnt');
+
+  // Table
+  const tbody=document.querySelector('#companies-table tbody');
+  tbody.innerHTML=DATA.topCompanies.map((c,i)=>`
+    <tr><td>${i+1}</td><td>${c.name}</td><td>${c.email||'—'}</td><td>${c.website?'<a href="'+c.website+'" target="_blank" style="color:var(--gold)">'+new URL(c.website).hostname+'</a>':'—'}</td><td>${c.city||'—'}</td><td>${c.state||'—'}</td><td>${c.industry||'—'}</td><td>${fmt(c.employees)}</td><td>${c.source?'<a href="'+c.source+'" target="_blank" style="color:var(--gold)">Source</a>':'—'}</td></tr>
+  `).join('');
+}
+
+function renderBarChart(id, data, labelFn, countKey){
+  const el=document.getElementById(id);
+  const max=Math.max(...data.map(d=>d[countKey]));
+  const getLabel=typeof labelFn==='function'?labelFn:d=>d[labelFn]||'Unknown';
+  el.innerHTML=data.map(d=>{
+    const pct=Math.max(d[countKey]/max*100,4);
+    return `<div class="bar-row">
+      <span class="bar-label">${getLabel(d)}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"><span class="bar-count">${d[countKey]}</span></div></div>
+    </div>`;
+  }).join('');
+}
+
+// Auto-login if session valid
+if(sessionStorage.getItem('crm_auth')==='1') showDashboard();
+</script>
+</body>
+</html>
