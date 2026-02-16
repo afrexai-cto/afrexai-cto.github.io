@@ -1,32 +1,36 @@
 #!/bin/bash
 # customer-health-dashboard.sh — Monitor all customer agents
-# Usage: ./customer-health-dashboard.sh [--json] [--customer <name>]
+# Iterates over aaas-platform/customers/ and reports health per customer
+# Usage: ./customer-health-dashboard.sh [--json] [--customer <slug>]
 # Bash 3.2 compatible
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-VERSION_DIR="$SCRIPT_DIR/versions"
+PLATFORM_DIR="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)"
+CUSTOMERS_DIR="$PLATFORM_DIR/customers"
 REPORT_DIR="$SCRIPT_DIR/reports"
 LOG_FILE="$SCRIPT_DIR/deploy.log"
+
+# Also check legacy version dir for backwards compat
+VERSION_DIR="$SCRIPT_DIR/versions"
 
 OUTPUT_FORMAT="markdown"
 FILTER_CUSTOMER=""
 SSH_TIMEOUT=10
 
-# Parse args
 while [ $# -gt 0 ]; do
     case "$1" in
         --json) OUTPUT_FORMAT="json"; shift ;;
         --customer) FILTER_CUSTOMER="$2"; shift 2 ;;
         --help|-h)
-            echo "Usage: $0 [--json] [--customer <name>]"
+            echo "Usage: $0 [--json] [--customer <slug>]"
             echo ""
-            echo "Polls all deployed customer agents and generates a health report."
+            echo "Iterates over all customers in aaas-platform/customers/ and reports health."
             echo ""
             echo "Options:"
-            echo "  --json           Output as JSON"
-            echo "  --customer NAME  Check only one customer"
+            echo "  --json              Output as JSON"
+            echo "  --customer SLUG     Check only one customer"
             exit 0
             ;;
         *) shift ;;
@@ -42,82 +46,138 @@ mkdir -p "$REPORT_DIR"
 TIMESTAMP="$(date '+%Y%m%d-%H%M%S')"
 REPORT_FILE="$REPORT_DIR/health-${TIMESTAMP}"
 
-# --- Collect agent data ---
+# Counters
 TOTAL=0
 HEALTHY=0
 DEGRADED=0
 UNHEALTHY=0
 UNREACHABLE=0
 
-# Arrays (bash 3.2 compatible — use temp files)
 RESULTS_FILE="$(mktemp)"
 trap 'rm -f "$RESULTS_FILE"' EXIT
 
-get_json_val() {
-    local key="$1"
-    local data="$2"
-    echo "$data" | tr ',' '\n' | tr '{' '\n' | tr '}' '\n' | grep "\"$key\"" | head -1 | sed 's/.*: *"\{0,1\}\([^",}]*\)"\{0,1\}.*/\1/' || echo ""
+read_json_field() {
+    local file="$1" field="$2"
+    sed -n "s/.*\"${field}\"[[:space:]]*:[[:space:]]*\"\{0,1\}\([^,\"}]*\)\"\{0,1\}.*/\1/p" "$file" | head -1
 }
 
 log "=== Health Dashboard Scan ==="
 
-# Iterate version files (each = one deployed agent)
-for vfile in "$VERSION_DIR"/*.json; do
-    [ -f "$vfile" ] || continue
+# Iterate over all customers in aaas-platform/customers/
+for cdir in "$CUSTOMERS_DIR"/*/; do
+    [ -d "$cdir" ] || continue
 
-    CUSTOMER="$(get_json_val 'customer' "$(cat "$vfile")")"
-    AGENT_TYPE="$(get_json_val 'agent_type' "$(cat "$vfile")")"
-    SSH_HOST="$(get_json_val 'ssh_host' "$(cat "$vfile")")"
-    VERSION="$(get_json_val 'current_version' "$(cat "$vfile")")"
-    DEPLOYED="$(get_json_val 'deployed_at' "$(cat "$vfile")")"
+    CUSTOMER_SLUG="$(basename "$cdir")"
 
-    # Filter if specified
-    if [ -n "$FILTER_CUSTOMER" ] && [ "$CUSTOMER" != "$FILTER_CUSTOMER" ]; then
+    # Skip if filtering and not matching
+    if [ -n "$FILTER_CUSTOMER" ] && [ "$CUSTOMER_SLUG" != "$FILTER_CUSTOMER" ]; then
         continue
     fi
 
-    TOTAL=$((TOTAL + 1))
-
-    # Poll health via SSH
-    HEALTH_STATUS="unreachable"
-    HEALTH_VERSION="unknown"
-    HEALTH_ERRORS=""
-    HEALTH_RAW=""
-
-    if [ -n "$SSH_HOST" ]; then
-        HEALTH_RAW="$(ssh -o ConnectTimeout=$SSH_TIMEOUT -o StrictHostKeyChecking=no -o BatchMode=yes \
-            "$SSH_HOST" '/opt/afrexai-agent/health-check.sh' 2>/dev/null || echo '{"status":"unreachable","errors":"ssh_failed"}')"
-
-        HEALTH_STATUS="$(get_json_val 'status' "$HEALTH_RAW")"
-        HEALTH_VERSION="$(get_json_val 'version' "$HEALTH_RAW")"
-        HEALTH_ERRORS="$(get_json_val 'errors' "$HEALTH_RAW")"
+    # Must have profile.json
+    if [ ! -f "$cdir/profile.json" ]; then
+        log "WARN: $CUSTOMER_SLUG has no profile.json, skipping"
+        continue
     fi
 
-    case "$HEALTH_STATUS" in
-        healthy) HEALTHY=$((HEALTHY + 1)) ;;
-        degraded) DEGRADED=$((DEGRADED + 1)) ;;
-        unhealthy) UNHEALTHY=$((UNHEALTHY + 1)) ;;
-        *) UNREACHABLE=$((UNREACHABLE + 1)); HEALTH_STATUS="unreachable" ;;
-    esac
+    local_profile="$cdir/profile.json"
+    COMPANY="$(read_json_field "$local_profile" "company")"
+    [ -z "$COMPANY" ] && COMPANY="$(read_json_field "$local_profile" "company_name")"
+    TIER="$(read_json_field "$local_profile" "package")"
+    [ -z "$TIER" ] && TIER="$(read_json_field "$local_profile" "tier")"
+    STATUS="$(read_json_field "$local_profile" "status")"
 
-    # Status emoji
-    case "$HEALTH_STATUS" in
-        healthy) EMOJI="✅" ;;
-        degraded) EMOJI="⚠️" ;;
-        unhealthy) EMOJI="❌" ;;
-        *) EMOJI="🔌" ;;
-    esac
+    # Read agents from agent-manifest.json
+    if [ -f "$cdir/agent-manifest.json" ]; then
+        agent_data="$(python3 -c "
+import json
+m = json.load(open('$cdir/agent-manifest.json'))
+for a in m.get('agents', []):
+    print(f\"{a['slug']}|{a.get('name', a['slug'])}|{a.get('type','unknown')}|{a.get('status','unknown')}\")
+" 2>/dev/null || true)"
 
-    echo "${CUSTOMER}|${AGENT_TYPE}|${SSH_HOST}|${VERSION}|${HEALTH_VERSION}|${HEALTH_STATUS}|${HEALTH_ERRORS}|${EMOJI}|${DEPLOYED}" >> "$RESULTS_FILE"
+        if [ -z "$agent_data" ]; then
+            # No agents found
+            TOTAL=$((TOTAL + 1))
+            HEALTH_STATUS="healthy"
+            HEALTHY=$((HEALTHY + 1))
+            echo "${CUSTOMER_SLUG}|${COMPANY}|(no agents)||${TIER}|${HEALTH_STATUS}||✅|" >> "$RESULTS_FILE"
+            log "Checked ${CUSTOMER_SLUG}: no agents"
+            continue
+        fi
 
-    log "Checked ${CUSTOMER}/${AGENT_TYPE}: ${HEALTH_STATUS}"
+        while IFS='|' read -r aslug aname atype astatus; do
+            [ -z "$aslug" ] && continue
+            TOTAL=$((TOTAL + 1))
+
+            HEALTH_STATUS="healthy"
+            HEALTH_ERRORS=""
+            VERSION="—"
+            SSH_HOST="—"
+
+            # Check agent directory health
+            local agent_dir="$cdir/agents/$aslug"
+            if [ -d "$agent_dir" ]; then
+                # Check for required files
+                for required_file in SOUL.md; do
+                    if [ ! -f "$agent_dir/$required_file" ]; then
+                        HEALTH_STATUS="degraded"
+                        HEALTH_ERRORS="${HEALTH_ERRORS}missing:$required_file "
+                    fi
+                done
+            else
+                HEALTH_STATUS="degraded"
+                HEALTH_ERRORS="agent_dir_missing "
+            fi
+
+            # If agent status from manifest is not active, flag it
+            if [ "$astatus" != "active" ] && [ "$astatus" != "running" ]; then
+                HEALTH_STATUS="unhealthy"
+                HEALTH_ERRORS="${HEALTH_ERRORS}status:$astatus "
+            fi
+
+            # Also check legacy version files for SSH-deployed agents
+            local vfile="$VERSION_DIR/${CUSTOMER_SLUG}-${atype}.json"
+            if [ -f "$vfile" ]; then
+                SSH_HOST="$(read_json_field "$vfile" "ssh_host")"
+                VERSION="$(read_json_field "$vfile" "current_version")"
+
+                # If SSH host exists, try remote health check
+                if [ -n "$SSH_HOST" ] && [ "$SSH_HOST" != "—" ]; then
+                    REMOTE_HEALTH="$(ssh -o ConnectTimeout=$SSH_TIMEOUT -o StrictHostKeyChecking=no -o BatchMode=yes \
+                        "$SSH_HOST" '/opt/afrexai-agent/health-check.sh' 2>/dev/null || echo '{"status":"unreachable","errors":"ssh_failed"}')"
+                    REMOTE_STATUS="$(echo "$REMOTE_HEALTH" | sed -n 's/.*"status":"\([^"]*\)".*/\1/p')"
+                    REMOTE_ERRORS="$(echo "$REMOTE_HEALTH" | sed -n 's/.*"errors":"\([^"]*\)".*/\1/p')"
+                    if [ -n "$REMOTE_STATUS" ]; then
+                        HEALTH_STATUS="$REMOTE_STATUS"
+                        HEALTH_ERRORS="$REMOTE_ERRORS"
+                    fi
+                fi
+            fi
+
+            case "$HEALTH_STATUS" in
+                healthy) HEALTHY=$((HEALTHY + 1)); EMOJI="✅" ;;
+                degraded) DEGRADED=$((DEGRADED + 1)); EMOJI="⚠️" ;;
+                unhealthy) UNHEALTHY=$((UNHEALTHY + 1)); EMOJI="❌" ;;
+                *) UNREACHABLE=$((UNREACHABLE + 1)); HEALTH_STATUS="unreachable"; EMOJI="🔌" ;;
+            esac
+
+            echo "${CUSTOMER_SLUG}|${aname}|${atype}|${SSH_HOST}|${TIER}|${HEALTH_STATUS}|${HEALTH_ERRORS}|${EMOJI}|${VERSION}" >> "$RESULTS_FILE"
+            log "Checked ${CUSTOMER_SLUG}/${aslug}: ${HEALTH_STATUS}"
+        done <<< "$agent_data"
+    else
+        # No agent-manifest.json
+        TOTAL=$((TOTAL + 1))
+        HEALTHY=$((HEALTHY + 1))
+        echo "${CUSTOMER_SLUG}|${COMPANY}|(no manifest)||${TIER}|healthy||✅|" >> "$RESULTS_FILE"
+        log "Checked ${CUSTOMER_SLUG}: no agent-manifest.json"
+    fi
 done
 
 # --- Generate report ---
 SCAN_TIME="$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
 
 if [ "$OUTPUT_FORMAT" = "json" ]; then
-    # JSON output
     REPORT_FILE="${REPORT_FILE}.json"
     echo "{" > "$REPORT_FILE"
     echo "  \"scan_time\": \"$SCAN_TIME\"," >> "$REPORT_FILE"
@@ -131,18 +191,15 @@ if [ "$OUTPUT_FORMAT" = "json" ]; then
     echo "  \"agents\": [" >> "$REPORT_FILE"
 
     FIRST=true
-    while IFS='|' read -r c a h v hv s e em d; do
+    while IFS='|' read -r c a t h tier s e em v; do
         if [ "$FIRST" = "true" ]; then FIRST=false; else echo "    ," >> "$REPORT_FILE"; fi
-        echo "    {\"customer\":\"$c\",\"agent\":\"$a\",\"host\":\"$h\",\"deployed_version\":\"$v\",\"running_version\":\"$hv\",\"status\":\"$s\",\"errors\":\"$e\",\"deployed_at\":\"$d\"}" >> "$REPORT_FILE"
+        echo "    {\"customer\":\"$c\",\"agent\":\"$a\",\"type\":\"$t\",\"host\":\"$h\",\"tier\":\"$tier\",\"status\":\"$s\",\"errors\":\"$e\",\"version\":\"$v\"}" >> "$REPORT_FILE"
     done < "$RESULTS_FILE"
 
     echo "  ]" >> "$REPORT_FILE"
     echo "}" >> "$REPORT_FILE"
-
 else
-    # Markdown output
     REPORT_FILE="${REPORT_FILE}.md"
-
     cat > "$REPORT_FILE" << EOF
 # 🏥 Customer Agent Health Dashboard
 
@@ -160,20 +217,19 @@ else
 
 ## Agent Status
 
-| Status | Customer | Agent | Host | Version (deployed) | Version (running) | Errors |
-|--------|----------|-------|------|--------------------|--------------------|--------|
+| Status | Customer | Agent | Type | Tier | Host | Errors |
+|--------|----------|-------|------|------|------|--------|
 EOF
 
-    while IFS='|' read -r c a h v hv s e em d; do
-        echo "| ${em} ${s} | ${c} | ${a} | ${h} | ${v} | ${hv} | ${e:-—} |" >> "$REPORT_FILE"
+    while IFS='|' read -r c a t h tier s e em v; do
+        echo "| ${em} ${s} | ${c} | ${a} | ${t} | ${tier} | ${h} | ${e:-—} |" >> "$REPORT_FILE"
     done < "$RESULTS_FILE"
 
-    # Flag issues
     if [ $UNHEALTHY -gt 0 ] || [ $UNREACHABLE -gt 0 ]; then
         echo "" >> "$REPORT_FILE"
         echo "## ⚠️ Issues Requiring Attention" >> "$REPORT_FILE"
         echo "" >> "$REPORT_FILE"
-        while IFS='|' read -r c a h v hv s e em d; do
+        while IFS='|' read -r c a t h tier s e em v; do
             if [ "$s" = "unhealthy" ] || [ "$s" = "unreachable" ]; then
                 echo "- **${c}/${a}** (${h}): ${s} — ${e:-no details}" >> "$REPORT_FILE"
             fi
@@ -184,25 +240,11 @@ EOF
         echo "" >> "$REPORT_FILE"
         echo "## ⚡ Degraded Agents" >> "$REPORT_FILE"
         echo "" >> "$REPORT_FILE"
-        while IFS='|' read -r c a h v hv s e em d; do
+        while IFS='|' read -r c a t h tier s e em v; do
             if [ "$s" = "degraded" ]; then
                 echo "- **${c}/${a}** (${h}): ${e:-no details}" >> "$REPORT_FILE"
             fi
         done < "$RESULTS_FILE"
-    fi
-
-    # Version mismatch check
-    MISMATCHES=""
-    while IFS='|' read -r c a h v hv s e em d; do
-        if [ "$v" != "$hv" ] && [ "$hv" != "unknown" ] && [ "$s" != "unreachable" ]; then
-            MISMATCHES="${MISMATCHES}\n- **${c}/${a}**: deployed=${v}, running=${hv}"
-        fi
-    done < "$RESULTS_FILE"
-
-    if [ -n "$MISMATCHES" ]; then
-        echo "" >> "$REPORT_FILE"
-        echo "## 🔄 Version Mismatches" >> "$REPORT_FILE"
-        printf "%b\n" "$MISMATCHES" >> "$REPORT_FILE"
     fi
 
     echo "" >> "$REPORT_FILE"
@@ -216,7 +258,7 @@ echo "============================================"
 echo "  HEALTH DASHBOARD"
 echo "============================================"
 echo ""
-echo "Scanned: $TOTAL agents"
+echo "Scanned: $TOTAL agents across $(ls -1d "$CUSTOMERS_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ') customers"
 echo "✅ Healthy: $HEALTHY  ⚠️ Degraded: $DEGRADED  ❌ Unhealthy: $UNHEALTHY  🔌 Unreachable: $UNREACHABLE"
 echo ""
 echo "Report: $REPORT_FILE"

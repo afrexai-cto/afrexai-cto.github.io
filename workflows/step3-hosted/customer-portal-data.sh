@@ -1,15 +1,25 @@
 #!/usr/bin/env bash
 # customer-portal-data.sh — Generate data for customer-facing portal
+# Reads from aaas-platform/customers/*/profile.json as single source of truth
 # Bash 3.2 compatible
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-DATA_DIR="${AFREX_DATA_DIR:-$SCRIPT_DIR/data}"
-CUSTOMERS_DIR="$DATA_DIR/customers"
+PLATFORM_DIR="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)"
+CUSTOMERS_DIR="$PLATFORM_DIR/customers"
+PRICING_FILE="$PLATFORM_DIR/pricing.json"
 
 read_json_field() {
     local file="$1" field="$2"
     sed -n "s/.*\"${field}\"[[:space:]]*:[[:space:]]*\"\{0,1\}\([^,\"}]*\)\"\{0,1\}.*/\1/p" "$file" | head -1
+}
+
+get_tier() {
+    local profile="$1"
+    local tier
+    tier="$(read_json_field "$profile" "package")"
+    [ -z "$tier" ] && tier="$(read_json_field "$profile" "tier")"
+    echo "${tier:-starter}"
 }
 
 usage() {
@@ -22,49 +32,33 @@ Commands:
   summary         Quick summary across all customers
 
 Options:
-  --customer <id>     Target customer (required for generate)
+  --customer <slug>   Target customer (required for generate)
   --output <path>     Output directory (default: customer's data/portal/)
   --period <days>     Reporting period in days (default: 30)
   -h, --help          Show this help
-
-Examples:
-  $0 generate --customer cust-acme-123
-  $0 all --output /tmp/portal-data
-  $0 summary
 EOF
     exit "${1:-0}"
 }
 
-# --- Simulate metrics (in production, pulled from real telemetry) ---
+# --- Simulate metrics ---
 generate_agent_metrics() {
-    local agent_dir="$1" period_days="$2"
-    local agent_name
-    agent_name="$(basename "$agent_dir")"
-
-    # Deterministic simulation based on agent name
+    local agent_slug="$1" agent_name="$2" agent_status="$3" period_days="$4"
     local hash_val
-    hash_val="$(echo "$agent_name" | cksum | awk '{print $1}')"
-
-    local tasks_per_day=$(( (hash_val % 15) + 5 ))        # 5-20 tasks/day
-    local avg_task_min=$(( (hash_val % 45) + 15 ))         # 15-60 min/task
-    local success_rate=$(( 92 + (hash_val % 8) ))          # 92-99%
+    hash_val="$(echo "$agent_slug" | cksum | awk '{print $1}')"
+    local tasks_per_day=$(( (hash_val % 15) + 5 ))
+    local avg_task_min=$(( (hash_val % 45) + 15 ))
+    local success_rate=$(( 92 + (hash_val % 8) ))
     local total_tasks=$((tasks_per_day * period_days))
-    local total_hours=$(( (total_tasks * avg_task_min) / 60 ))
-    local human_equiv_hours=$((total_hours * 3))           # Agents 3x faster than humans
+    local total_hours=$((total_tasks * avg_task_min / 60))
+    local human_equiv_hours=$((total_hours * 3))
     local hours_saved=$((human_equiv_hours - total_hours))
-
-    # Hourly cost savings (assume $35/hr human cost)
     local cost_saved=$((hours_saved * 35))
-
-    local status="running"
-    if [ -f "$agent_dir/config/agent.json" ]; then
-        status="$(read_json_field "$agent_dir/config/agent.json" "status")"
-    fi
 
     cat <<JSON
     {
+      "agent_slug": "$agent_slug",
       "agent_name": "$agent_name",
-      "status": "$status",
+      "status": "$agent_status",
       "period_days": $period_days,
       "tasks_completed": $total_tasks,
       "tasks_per_day": $tasks_per_day,
@@ -79,32 +73,59 @@ JSON
 }
 
 generate_portal_data() {
-    local cid="$1" output_dir="$2" period="$3"
-    local cdir="$CUSTOMERS_DIR/$cid"
+    local slug="$1" output_dir="$2" period="$3"
+    local cdir="$CUSTOMERS_DIR/$slug"
 
-    [ -d "$cdir" ] || { echo "Error: Customer $cid not found." >&2; return 1; }
+    [ -d "$cdir" ] || { echo "Error: Customer $slug not found." >&2; return 1; }
+    if [ ! -f "$cdir/profile.json" ]; then
+        echo "Error: profile.json missing for customer '$slug'." >&2
+        return 1
+    fi
 
-    local m="$cdir/config/manifest.json"
-    local company tier price vertical agent_count provisioned
-    company="$(read_json_field "$m" "company_name")"
-    tier="$(read_json_field "$m" "tier")"
-    price="$(read_json_field "$m" "monthly_price")"
-    vertical="$(read_json_field "$m" "vertical")"
-    agent_count="$(read_json_field "$m" "agent_count")"
-    provisioned="$(read_json_field "$m" "provisioned_at")"
+    local p="$cdir/profile.json"
+    local company tier vertical status onboarded
+    company="$(read_json_field "$p" "company")"
+    [ -z "$company" ] && company="$(read_json_field "$p" "company_name")"
+    tier="$(get_tier "$p")"
+    vertical="$(read_json_field "$p" "vertical")"
+    vertical="${vertical:-general}"
+    status="$(read_json_field "$p" "status")"
+    onboarded="$(read_json_field "$p" "onboarded_at")"
 
-    # Aggregate metrics
+    # Read billing data
+    local price=0 billing_cycle="monthly" next_invoice=""
+    if [ -f "$cdir/billing.json" ]; then
+        price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
+        billing_cycle="$(read_json_field "$cdir/billing.json" "billing_cycle")"
+        next_invoice="$(read_json_field "$cdir/billing.json" "next_invoice")"
+    fi
+    if [ -z "$price" ] || [ "$price" = "0" ]; then
+        # Fall back to pricing.json
+        if [ -f "$PRICING_FILE" ]; then
+            price="$(python3 -c "import json; print(json.load(open('$PRICING_FILE'))['tiers'].get('$tier',{}).get('price',0))" 2>/dev/null || echo 0)"
+        fi
+    fi
+
+    # Read agents from agent-manifest.json
     local total_tasks=0 total_hours=0 total_human_hours=0 total_saved_hours=0 total_cost_saved=0
-    local agents_json=""
-    local agent_index=0
+    local agents_json="" agent_index=0 agent_count=0
 
-    if [ -d "$cdir/agents" ]; then
-        for adir in "$cdir/agents"/*/; do
-            [ -d "$adir" ] || continue
+    if [ -f "$cdir/agent-manifest.json" ]; then
+        # Use python to iterate agents
+        local agent_data
+        agent_data="$(python3 -c "
+import json
+m = json.load(open('$cdir/agent-manifest.json'))
+for a in m.get('agents', []):
+    print(f\"{a['slug']}|{a.get('name',a['slug'])}|{a.get('status','unknown')}\")
+" 2>/dev/null || true)"
+
+        while IFS='|' read -r aslug aname astatus; do
+            [ -z "$aslug" ] && continue
+            agent_count=$((agent_count + 1))
             local metrics
-            metrics="$(generate_agent_metrics "$adir" "$period")"
+            metrics="$(generate_agent_metrics "$aslug" "$aname" "$astatus" "$period")"
 
-            # Extract values for aggregation
             local tasks hours human_hours saved cost
             tasks="$(echo "$metrics" | sed -n 's/.*"tasks_completed": \([0-9]*\).*/\1/p')"
             hours="$(echo "$metrics" | sed -n 's/.*"total_hours_worked": \([0-9]*\).*/\1/p')"
@@ -121,25 +142,25 @@ generate_portal_data() {
             if [ "$agent_index" -gt 0 ]; then agents_json="${agents_json},"; fi
             agents_json="${agents_json}${metrics}"
             agent_index=$((agent_index + 1))
-        done
+        done <<< "$agent_data"
     fi
 
     # ROI calculation
     local annual_cost=$((price * 12))
-    local annual_savings=$((total_cost_saved * 12 / period * 30))  # Annualize
+    local annual_savings=0
+    if [ "$period" -gt 0 ]; then
+        annual_savings=$((total_cost_saved * 12 / period * 30))
+    fi
     local roi=0
     if [ "$annual_cost" -gt 0 ]; then
         roi=$(( (annual_savings - annual_cost) * 100 / annual_cost ))
     fi
 
-    # Uptime
-    local uptime="100.0"
+    # Uptime & health
+    local uptime="100.0" health="healthy"
     if [ -f "$cdir/monitoring/sla.json" ]; then
         uptime="$(read_json_field "$cdir/monitoring/sla.json" "current_uptime")"
     fi
-
-    # Health
-    local health="healthy"
     if [ -f "$cdir/monitoring/health.json" ]; then
         health="$(read_json_field "$cdir/monitoring/health.json" "overall_status")"
     fi
@@ -147,32 +168,37 @@ generate_portal_data() {
     local generated_at
     generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
-    # Build portal JSON
     local portal_json
     portal_json=$(cat <<PORTAL
 {
-  "customer_id": "$cid",
+  "customer_slug": "$slug",
   "company_name": "$company",
   "tier": "$tier",
   "vertical": "$vertical",
-  "monthly_price": $price,
-  "agent_count": $agent_count,
-  "provisioned_at": "$provisioned",
+  "status": "$status",
+  "onboarded_at": "$onboarded",
   "generated_at": "$generated_at",
   "period_days": $period,
+  "billing": {
+    "monthly_price_usd": $price,
+    "billing_cycle": "$billing_cycle",
+    "next_invoice": "$next_invoice",
+    "annual_cost": $annual_cost
+  },
   "summary": {
+    "agent_count": $agent_count,
     "total_tasks_completed": $total_tasks,
     "total_hours_worked": $total_hours,
     "human_equivalent_hours": $total_human_hours,
     "hours_saved": $total_saved_hours,
     "cost_saved_usd": $total_cost_saved,
-    "uptime_percent": $uptime,
-    "health_status": "$health",
+    "uptime_percent": ${uptime:-100.0},
+    "health_status": "${health:-healthy}",
     "roi_percent": $roi
   },
   "roi": {
     "monthly_investment": $price,
-    "monthly_savings": $((total_cost_saved)),
+    "monthly_savings": $total_cost_saved,
     "net_monthly_value": $((total_cost_saved - price)),
     "annual_investment": $annual_cost,
     "projected_annual_savings": $annual_savings,
@@ -185,16 +211,15 @@ $agents_json
 PORTAL
 )
 
-    # Write output
     if [ -n "$output_dir" ]; then
         mkdir -p "$output_dir"
-        echo "$portal_json" > "$output_dir/${cid}-portal.json"
-        echo "  ✓ $cid → $output_dir/${cid}-portal.json"
+        echo "$portal_json" > "$output_dir/${slug}-portal.json"
+        echo "  ✓ $slug → $output_dir/${slug}-portal.json"
     else
         local default_out="$cdir/data/portal"
         mkdir -p "$default_out"
         echo "$portal_json" > "$default_out/dashboard.json"
-        echo "  ✓ $cid → $default_out/dashboard.json"
+        echo "  ✓ $slug → $default_out/dashboard.json"
     fi
 }
 
@@ -222,10 +247,10 @@ cmd_all() {
 
     local count=0
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local cid
-        cid="$(basename "$cdir")"
-        generate_portal_data "$cid" "$output" "$period"
+        [ -f "$cdir/profile.json" ] || continue
+        local slug
+        slug="$(basename "$cdir")"
+        generate_portal_data "$slug" "$output" "$period"
         count=$((count + 1))
     done
     echo ""
@@ -245,24 +270,38 @@ cmd_summary() {
     local total_tasks=0 total_hours_saved=0 total_cost_saved=0
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local m="$cdir/config/manifest.json"
-        local agents price
-        agents="$(read_json_field "$m" "agent_count")"
-        price="$(read_json_field "$m" "monthly_price")"
+        [ -f "$cdir/profile.json" ] || continue
+        local p="$cdir/profile.json"
+        local tier
+        tier="$(get_tier "$p")"
+        local price=0
+        if [ -f "$cdir/billing.json" ]; then
+            price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
+        fi
+        if [ -z "$price" ] || [ "$price" = "0" ]; then
+            if [ -f "$PRICING_FILE" ]; then
+                price="$(python3 -c "import json; print(json.load(open('$PRICING_FILE'))['tiers'].get('$tier',{}).get('price',0))" 2>/dev/null || echo 0)"
+            fi
+        fi
 
         total_customers=$((total_customers + 1))
-        total_agents=$((total_agents + agents))
         total_mrr=$((total_mrr + price))
 
-        # Quick agent metrics
-        if [ -d "$cdir/agents" ]; then
-            for adir in "$cdir/agents"/*/; do
-                [ -d "$adir" ] || continue
-                local aname
-                aname="$(basename "$adir")"
+        if [ -f "$cdir/agent-manifest.json" ]; then
+            local ac
+            ac="$(grep -c '"slug"' "$cdir/agent-manifest.json" 2>/dev/null || echo 0)"
+            total_agents=$((total_agents + ac))
+
+            # Quick agent metrics
+            local agent_slugs
+            agent_slugs="$(python3 -c "
+import json
+m = json.load(open('$cdir/agent-manifest.json'))
+for a in m.get('agents', []): print(a['slug'])
+" 2>/dev/null || true)"
+            for aslug in $agent_slugs; do
                 local hash_val
-                hash_val="$(echo "$aname" | cksum | awk '{print $1}')"
+                hash_val="$(echo "$aslug" | cksum | awk '{print $1}')"
                 local tasks_per_day=$(( (hash_val % 15) + 5 ))
                 local avg_min=$(( (hash_val % 45) + 15 ))
                 local tasks=$((tasks_per_day * period))
@@ -288,7 +327,6 @@ cmd_summary() {
     echo "    Cost Saved:       \$$total_cost_saved"
     echo ""
 
-    # ARR progress toward $11M
     if [ "$arr" -gt 0 ]; then
         local progress=$((arr * 100 / 11000000))
         echo "  🎯 \$11M ARR Progress: ${progress}% (\$$arr / \$11,000,000)"

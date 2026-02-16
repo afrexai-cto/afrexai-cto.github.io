@@ -1,17 +1,27 @@
 #!/usr/bin/env bash
 # multi-tenant-manager.sh — Manage all hosted customers
+# Reads from aaas-platform/customers/*/profile.json as single source of truth
 # Bash 3.2 compatible
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-DATA_DIR="${AFREX_DATA_DIR:-$SCRIPT_DIR/data}"
-CUSTOMERS_DIR="$DATA_DIR/customers"
+PLATFORM_DIR="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)"
+CUSTOMERS_DIR="$PLATFORM_DIR/customers"
+PRICING_FILE="$PLATFORM_DIR/pricing.json"
 
 # --- Helpers ---
 read_json_field() {
-    # Minimal JSON field reader (no jq dependency). Handles simple string/number fields.
     local file="$1" field="$2"
     sed -n "s/.*\"${field}\"[[:space:]]*:[[:space:]]*\"\{0,1\}\([^,\"}]*\)\"\{0,1\}.*/\1/p" "$file" | head -1
+}
+
+count_agents() {
+    local cdir="$1"
+    if [ -f "$cdir/agent-manifest.json" ]; then
+        grep -c '"slug"' "$cdir/agent-manifest.json" 2>/dev/null || echo 0
+    else
+        echo 0
+    fi
 }
 
 count_files() {
@@ -29,6 +39,38 @@ dir_size_kb() {
     else
         echo 0
     fi
+}
+
+# Read monthly price: prefer billing.json, fall back to pricing.json tier lookup
+get_monthly_price() {
+    local cdir="$1" tier="$2"
+    if [ -f "$cdir/billing.json" ]; then
+        local price
+        price="$(read_json_field "$cdir/billing.json" "monthly_price_usd")"
+        if [ -n "$price" ] && [ "$price" != "0" ]; then
+            echo "$price"
+            return
+        fi
+    fi
+    # Fall back to pricing.json
+    if [ -f "$PRICING_FILE" ]; then
+        python3 -c "
+import json, sys
+p = json.load(open('$PRICING_FILE'))
+t = p.get('tiers', {}).get('$tier', {})
+print(t.get('price', 0))
+" 2>/dev/null || echo 0
+    else
+        echo 0
+    fi
+}
+
+# Read vertical from profile.json (may not exist in older profiles)
+get_vertical() {
+    local file="$1"
+    local v
+    v="$(read_json_field "$file" "vertical")"
+    echo "${v:-general}"
 }
 
 usage() {
@@ -63,31 +105,35 @@ cmd_list() {
         echo "["
         local first=1
         for cdir in "$CUSTOMERS_DIR"/*/; do
-            [ -f "$cdir/config/manifest.json" ] || continue
-            local m="$cdir/config/manifest.json"
+            [ -f "$cdir/profile.json" ] || continue
             if [ "$first" -eq 0 ]; then echo ","; fi
             first=0
-            cat "$m"
+            cat "$cdir/profile.json"
         done
         echo "]"
         return
     fi
 
-    printf "%-30s %-12s %-10s %-6s %-10s %-8s\n" "CUSTOMER ID" "COMPANY" "TIER" "AGENTS" "MRR" "STATUS"
-    printf "%-30s %-12s %-10s %-6s %-10s %-8s\n" "------------------------------" "------------" "----------" "------" "----------" "--------"
+    printf "%-25s %-20s %-12s %-10s %-6s %-10s %-8s\n" "SLUG" "COMPANY" "VERTICAL" "TIER" "AGENTS" "MRR" "STATUS"
+    printf "%-25s %-20s %-12s %-10s %-6s %-10s %-8s\n" "-------------------------" "--------------------" "------------" "----------" "------" "----------" "--------"
 
     local total_customers=0 total_agents=0 total_mrr=0
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local m="$cdir/config/manifest.json"
-        local cid company tier agents price status
-        cid="$(read_json_field "$m" "customer_id")"
-        company="$(read_json_field "$m" "company_name")"
-        tier="$(read_json_field "$m" "tier")"
-        agents="$(read_json_field "$m" "agent_count")"
-        price="$(read_json_field "$m" "monthly_price")"
-        status="$(read_json_field "$m" "status")"
-        printf "%-30s %-12s %-10s %-6s \$%-9s %-8s\n" "$cid" "${company:0:12}" "$tier" "$agents" "$price" "$status"
+        [ -f "$cdir/profile.json" ] || continue
+        local p="$cdir/profile.json"
+        local slug company tier vertical agents price status
+        slug="$(read_json_field "$p" "slug")"
+        company="$(read_json_field "$p" "company")"
+        # Try company_name if company is empty (spec format)
+        [ -z "$company" ] && company="$(read_json_field "$p" "company_name")"
+        tier="$(read_json_field "$p" "package")"
+        # Try tier field if package is empty (spec format)
+        [ -z "$tier" ] && tier="$(read_json_field "$p" "tier")"
+        vertical="$(get_vertical "$p")"
+        agents="$(count_agents "$cdir")"
+        price="$(get_monthly_price "$cdir" "$tier")"
+        status="$(read_json_field "$p" "status")"
+        printf "%-25s %-20s %-12s %-10s %-6s \$%-9s %-8s\n" "$slug" "${company:0:20}" "${vertical:0:12}" "$tier" "$agents" "$price" "$status"
         total_customers=$((total_customers + 1))
         total_agents=$((total_agents + agents))
         total_mrr=$((total_mrr + price))
@@ -101,15 +147,21 @@ cmd_status() {
     local total=0 healthy=0 degraded=0 down=0
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
+        [ -f "$cdir/profile.json" ] || continue
         local hf="$cdir/monitoring/health.json"
-        [ -f "$hf" ] || continue
         total=$((total + 1))
+        if [ ! -f "$hf" ]; then
+            # No health data — assume healthy
+            healthy=$((healthy + 1))
+            continue
+        fi
         local s
         s="$(read_json_field "$hf" "overall_status")"
         case "$s" in
             healthy)  healthy=$((healthy + 1)) ;;
             degraded) degraded=$((degraded + 1)) ;;
             down)     down=$((down + 1)) ;;
+            *)        healthy=$((healthy + 1)) ;;
         esac
     done
 
@@ -142,19 +194,18 @@ JSON
 
 cmd_usage() {
     local format="$1"
-    printf "%-30s %-8s %-10s %-10s %-10s\n" "CUSTOMER ID" "AGENTS" "DISK (KB)" "LOG FILES" "MEM FILES"
-    printf "%-30s %-8s %-10s %-10s %-10s\n" "------------------------------" "--------" "----------" "----------" "----------"
+    printf "%-25s %-8s %-10s %-10s %-10s\n" "SLUG" "AGENTS" "DISK (KB)" "LOG FILES" "JSON FILES"
+    printf "%-25s %-8s %-10s %-10s %-10s\n" "-------------------------" "--------" "----------" "----------" "----------"
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local m="$cdir/config/manifest.json"
-        local cid agents disk logs mems
-        cid="$(read_json_field "$m" "customer_id")"
-        agents="$(read_json_field "$m" "agent_count")"
+        [ -f "$cdir/profile.json" ] || continue
+        local slug agents disk logs jsons
+        slug="$(read_json_field "$cdir/profile.json" "slug")"
+        agents="$(count_agents "$cdir")"
         disk="$(dir_size_kb "$cdir")"
         logs="$(count_files "$cdir" "*.log")"
-        mems="$(count_files "$cdir" "*.json")"
-        printf "%-30s %-8s %-10s %-10s %-10s\n" "$cid" "$agents" "$disk" "$logs" "$mems"
+        jsons="$(count_files "$cdir" "*.json")"
+        printf "%-25s %-8s %-10s %-10s %-10s\n" "$slug" "$agents" "$disk" "$logs" "$jsons"
     done
 }
 
@@ -167,19 +218,16 @@ cmd_issues() {
     echo ""
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local m="$cdir/config/manifest.json"
-        local cid status
-        cid="$(read_json_field "$m" "customer_id")"
-        status="$(read_json_field "$m" "status")"
+        [ -f "$cdir/profile.json" ] || continue
+        local slug status
+        slug="$(read_json_field "$cdir/profile.json" "slug")"
+        status="$(read_json_field "$cdir/profile.json" "status")"
 
-        # Check customer status
         if [ "$status" != "active" ]; then
-            echo "  ❌ $cid — status: $status (not active)"
+            echo "  ❌ $slug — status: $status (not active)"
             found=$((found + 1))
         fi
 
-        # Check agent health
         if [ -f "$cdir/monitoring/health.json" ]; then
             local hf="$cdir/monitoring/health.json"
             local agents_down error_rate
@@ -187,34 +235,31 @@ cmd_issues() {
             error_rate="$(read_json_field "$hf" "error_rate_24h")"
 
             if [ "${agents_down:-0}" -gt 0 ]; then
-                echo "  ❌ $cid — $agents_down agent(s) DOWN"
+                echo "  ❌ $slug — $agents_down agent(s) DOWN"
                 found=$((found + 1))
             fi
 
-            # Check error rate > 5%
             local err_int
-            err_int="$(echo "$error_rate" | cut -d. -f1)"
+            err_int="$(echo "${error_rate:-0}" | cut -d. -f1)"
             if [ "${err_int:-0}" -ge 5 ]; then
-                echo "  ⚠️  $cid — error rate ${error_rate}% (threshold: 5%)"
+                echo "  ⚠️  $slug — error rate ${error_rate}% (threshold: 5%)"
                 found=$((found + 1))
             fi
         fi
 
-        # Check SLA breaches
         if [ -f "$cdir/monitoring/sla.json" ]; then
             local breaches
             breaches="$(read_json_field "$cdir/monitoring/sla.json" "breaches_this_month")"
             if [ "${breaches:-0}" -gt 0 ]; then
-                echo "  ⚠️  $cid — $breaches SLA breach(es) this month"
+                echo "  ⚠️  $slug — $breaches SLA breach(es) this month"
                 found=$((found + 1))
             fi
         fi
 
-        # Check disk usage > 1GB (1048576 KB)
         local disk
         disk="$(dir_size_kb "$cdir")"
         if [ "$disk" -gt 1048576 ]; then
-            echo "  ⚠️  $cid — disk usage ${disk}KB (approaching limit)"
+            echo "  ⚠️  $slug — disk usage ${disk}KB (approaching limit)"
             found=$((found + 1))
         fi
     done
@@ -228,37 +273,51 @@ cmd_issues() {
 }
 
 cmd_customer() {
-    local cid="$1"
-    local cdir="$CUSTOMERS_DIR/$cid"
+    local slug="$1"
+    local cdir="$CUSTOMERS_DIR/$slug"
     if [ ! -d "$cdir" ]; then
-        echo "Error: Customer '$cid' not found." >&2
+        echo "Error: Customer '$slug' not found." >&2
         exit 1
     fi
-    local m="$cdir/config/manifest.json"
+    if [ ! -f "$cdir/profile.json" ]; then
+        echo "Error: profile.json missing for customer '$slug'." >&2
+        exit 1
+    fi
+    local p="$cdir/profile.json"
+    local company tier vertical
+    company="$(read_json_field "$p" "company")"
+    [ -z "$company" ] && company="$(read_json_field "$p" "company_name")"
+    tier="$(read_json_field "$p" "package")"
+    [ -z "$tier" ] && tier="$(read_json_field "$p" "tier")"
+    vertical="$(get_vertical "$p")"
+    local price
+    price="$(get_monthly_price "$cdir" "$tier")"
+
     echo "=============================================="
-    echo "  Customer Detail: $cid"
+    echo "  Customer Detail: $slug"
     echo "=============================================="
     echo ""
-    echo "  Company:     $(read_json_field "$m" "company_name")"
-    echo "  Email:       $(read_json_field "$m" "email")"
-    echo "  Tier:        $(read_json_field "$m" "tier")"
-    echo "  Vertical:    $(read_json_field "$m" "vertical")"
-    echo "  Agents:      $(read_json_field "$m" "agent_count")"
-    echo "  MRR:         \$$(read_json_field "$m" "monthly_price")"
-    echo "  Status:      $(read_json_field "$m" "status")"
-    echo "  Provisioned: $(read_json_field "$m" "provisioned_at")"
+    echo "  Company:     $company"
+    echo "  Email:       $(read_json_field "$p" "contact_email")"
+    echo "  Tier:        $tier"
+    echo "  Vertical:    $vertical"
+    echo "  Agents:      $(count_agents "$cdir")"
+    echo "  MRR:         \$$price"
+    echo "  Status:      $(read_json_field "$p" "status")"
+    echo "  Onboarded:   $(read_json_field "$p" "onboarded_at")"
     echo ""
     echo "  Agents:"
-    if [ -d "$cdir/agents" ]; then
-        for adir in "$cdir/agents"/*/; do
-            local aname
-            aname="$(basename "$adir")"
-            local astatus="unknown"
-            if [ -f "$adir/config/agent.json" ]; then
-                astatus="$(read_json_field "$adir/config/agent.json" "status")"
-            fi
-            echo "    • $aname ($astatus)"
-        done
+    if [ -f "$cdir/agent-manifest.json" ]; then
+        python3 -c "
+import json, sys
+try:
+    m = json.load(open('$cdir/agent-manifest.json'))
+    for a in m.get('agents', []):
+        print(f\"    • {a['name']} ({a.get('title','')}) — {a.get('status','unknown')}\")
+except: pass
+" 2>/dev/null
+    else
+        echo "    (no agent manifest)"
     fi
     echo ""
     echo "  Disk Usage:  $(dir_size_kb "$cdir") KB"

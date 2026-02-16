@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # backup-restore.sh — Customer data management for AfrexAI Hosted Agents
+# Reads from aaas-platform/customers/*/profile.json as single source of truth
 # Bash 3.2 compatible
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-DATA_DIR="${AFREX_DATA_DIR:-$SCRIPT_DIR/data}"
-CUSTOMERS_DIR="$DATA_DIR/customers"
-GLOBAL_BACKUPS="$DATA_DIR/backups"
+PLATFORM_DIR="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)"
+CUSTOMERS_DIR="$PLATFORM_DIR/customers"
+GLOBAL_BACKUPS="${AFREX_DATA_DIR:-$SCRIPT_DIR/data}/backups"
 RETENTION_DAYS="${AFREX_RETENTION_DAYS:-90}"
 
 read_json_field() {
@@ -26,40 +27,50 @@ Commands:
   list            List available backups
 
 Options:
-  --customer <id>     Target customer (omit for all)
+  --customer <slug>   Target customer (omit for all)
   --backup-id <id>    Backup ID for restore
   --output <path>     Export output path
   --retention <days>  Override retention period (default: $RETENTION_DAYS days)
   --dry-run           Show what would happen
   -h, --help          Show this help
-
-Examples:
-  $0 backup --customer cust-acme-123
-  $0 backup                              # backup all
-  $0 restore --customer cust-acme-123 --backup-id 20260215-120000
-  $0 export --customer cust-acme-123 --output /tmp/acme-export
-  $0 retention --dry-run
 EOF
     exit "${1:-0}"
 }
 
 # --- Backup ---
 do_backup() {
-    local cid="$1"
-    local cdir="$CUSTOMERS_DIR/$cid"
-    [ -d "$cdir" ] || { echo "Error: Customer $cid not found." >&2; return 1; }
+    local slug="$1"
+    local cdir="$CUSTOMERS_DIR/$slug"
+    [ -d "$cdir" ] || { echo "Error: Customer $slug not found." >&2; return 1; }
+    if [ ! -f "$cdir/profile.json" ]; then
+        echo "Error: profile.json missing for customer '$slug'. Skipping." >&2
+        return 1
+    fi
+
+    local company
+    company="$(read_json_field "$cdir/profile.json" "company")"
+    [ -z "$company" ] && company="$(read_json_field "$cdir/profile.json" "company_name")"
 
     local ts
     ts="$(date -u +%Y%m%d-%H%M%S)"
     local backup_dir="$cdir/backups/$ts"
     mkdir -p "$backup_dir"
 
-    echo "  ▸ Backing up $cid..."
+    echo "  ▸ Backing up $slug ($company)..."
 
-    # Backup config
-    cp -R "$cdir/config" "$backup_dir/config" 2>/dev/null || true
+    # Backup profile.json (the source of truth)
+    cp "$cdir/profile.json" "$backup_dir/profile.json"
 
-    # Backup all agent data (memories, configs, logs)
+    # Backup billing data
+    [ -f "$cdir/billing.json" ] && cp "$cdir/billing.json" "$backup_dir/billing.json"
+
+    # Backup agent manifest
+    [ -f "$cdir/agent-manifest.json" ] && cp "$cdir/agent-manifest.json" "$backup_dir/agent-manifest.json"
+
+    # Backup config dir
+    [ -d "$cdir/config" ] && cp -R "$cdir/config" "$backup_dir/config" 2>/dev/null || true
+
+    # Backup all agent data
     if [ -d "$cdir/agents" ]; then
         mkdir -p "$backup_dir/agents"
         for adir in "$cdir/agents"/*/; do
@@ -71,14 +82,12 @@ do_backup() {
     fi
 
     # Backup monitoring
-    cp -R "$cdir/monitoring" "$backup_dir/monitoring" 2>/dev/null || true
+    [ -d "$cdir/monitoring" ] && cp -R "$cdir/monitoring" "$backup_dir/monitoring" 2>/dev/null || true
 
     # Backup customer data dir
-    if [ -d "$cdir/data" ]; then
-        cp -R "$cdir/data" "$backup_dir/data" 2>/dev/null || true
-    fi
+    [ -d "$cdir/data" ] && cp -R "$cdir/data" "$backup_dir/data" 2>/dev/null || true
 
-    # Create manifest
+    # Create manifest using slug from profile.json
     local size
     size="$(du -sk "$backup_dir" 2>/dev/null | awk '{print $1}')"
     local agent_count
@@ -86,7 +95,8 @@ do_backup() {
     cat > "$backup_dir/backup-manifest.json" <<BMAN
 {
   "backup_id": "$ts",
-  "customer_id": "$cid",
+  "customer_slug": "$slug",
+  "company_name": "$company",
   "created_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
   "size_kb": $size,
   "agents_backed_up": $agent_count,
@@ -94,7 +104,7 @@ do_backup() {
 }
 BMAN
 
-    echo "  ✓ $cid backed up → $ts (${size}KB, $agent_count agents)"
+    echo "  ✓ $slug backed up → $ts (${size}KB, $agent_count agents)"
 }
 
 cmd_backup() {
@@ -114,13 +124,13 @@ cmd_backup() {
     else
         local count=0
         for cdir in "$CUSTOMERS_DIR"/*/; do
-            [ -f "$cdir/config/manifest.json" ] || continue
-            local cid
-            cid="$(basename "$cdir")"
+            [ -f "$cdir/profile.json" ] || continue
+            local slug
+            slug="$(basename "$cdir")"
             if [ "$dry_run" -eq 1 ]; then
-                echo "[DRY RUN] Would backup: $cid"
+                echo "[DRY RUN] Would backup: $slug"
             else
-                do_backup "$cid"
+                do_backup "$slug"
             fi
             count=$((count + 1))
         done
@@ -154,9 +164,28 @@ cmd_restore() {
     fi
     echo ""
 
+    # Restore profile.json
+    if [ -f "$backup_dir/profile.json" ]; then
+        echo "  ▸ Restoring profile.json..."
+        cp "$backup_dir/profile.json" "$cdir/profile.json"
+    fi
+
+    # Restore billing
+    if [ -f "$backup_dir/billing.json" ]; then
+        echo "  ▸ Restoring billing.json..."
+        cp "$backup_dir/billing.json" "$cdir/billing.json"
+    fi
+
+    # Restore agent manifest
+    if [ -f "$backup_dir/agent-manifest.json" ]; then
+        echo "  ▸ Restoring agent-manifest.json..."
+        cp "$backup_dir/agent-manifest.json" "$cdir/agent-manifest.json"
+    fi
+
     # Restore config
     if [ -d "$backup_dir/config" ]; then
         echo "  ▸ Restoring config..."
+        mkdir -p "$cdir/config"
         cp -R "$backup_dir/config/"* "$cdir/config/" 2>/dev/null || true
     fi
 
@@ -176,12 +205,14 @@ cmd_restore() {
     # Restore monitoring
     if [ -d "$backup_dir/monitoring" ]; then
         echo "  ▸ Restoring monitoring..."
+        mkdir -p "$cdir/monitoring"
         cp -R "$backup_dir/monitoring/"* "$cdir/monitoring/" 2>/dev/null || true
     fi
 
     # Restore data
     if [ -d "$backup_dir/data" ]; then
         echo "  ▸ Restoring data..."
+        mkdir -p "$cdir/data"
         cp -R "$backup_dir/data/"* "$cdir/data/" 2>/dev/null || true
     fi
 
@@ -197,6 +228,10 @@ cmd_export() {
 
     local cdir="$CUSTOMERS_DIR/$customer"
     [ -d "$cdir" ] || { echo "Error: Customer $customer not found." >&2; exit 1; }
+    if [ ! -f "$cdir/profile.json" ]; then
+        echo "Error: profile.json missing for customer '$customer'." >&2
+        exit 1
+    fi
 
     local export_dir="${output:-$GLOBAL_BACKUPS/exports/${customer}-$(date -u +%Y%m%d-%H%M%S)}"
     mkdir -p "$export_dir"
@@ -209,31 +244,32 @@ cmd_export() {
     echo "  Output:    $export_dir"
     echo ""
 
-    # Copy everything
+    echo "  ▸ Exporting profile..."
+    cp "$cdir/profile.json" "$export_dir/profile.json"
+    [ -f "$cdir/billing.json" ] && cp "$cdir/billing.json" "$export_dir/billing.json"
+    [ -f "$cdir/agent-manifest.json" ] && cp "$cdir/agent-manifest.json" "$export_dir/agent-manifest.json"
+
     echo "  ▸ Exporting config..."
-    cp -R "$cdir/config" "$export_dir/config" 2>/dev/null || true
+    [ -d "$cdir/config" ] && cp -R "$cdir/config" "$export_dir/config" 2>/dev/null || true
 
     echo "  ▸ Exporting agent data..."
-    if [ -d "$cdir/agents" ]; then
-        cp -R "$cdir/agents" "$export_dir/agents" 2>/dev/null || true
-    fi
+    [ -d "$cdir/agents" ] && cp -R "$cdir/agents" "$export_dir/agents" 2>/dev/null || true
 
     echo "  ▸ Exporting monitoring data..."
-    cp -R "$cdir/monitoring" "$export_dir/monitoring" 2>/dev/null || true
+    [ -d "$cdir/monitoring" ] && cp -R "$cdir/monitoring" "$export_dir/monitoring" 2>/dev/null || true
 
     echo "  ▸ Exporting logs..."
-    cp -R "$cdir/logs" "$export_dir/logs" 2>/dev/null || true
+    [ -d "$cdir/logs" ] && cp -R "$cdir/logs" "$export_dir/logs" 2>/dev/null || true
 
-    # Create export manifest
     local size
     size="$(du -sk "$export_dir" 2>/dev/null | awk '{print $1}')"
     cat > "$export_dir/export-manifest.json" <<EMAN
 {
-  "customer_id": "$customer",
+  "customer_slug": "$customer",
   "exported_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
   "size_kb": $size,
   "reason": "customer_export",
-  "includes": ["config", "agents", "monitoring", "logs"]
+  "includes": ["profile", "billing", "agents", "config", "monitoring", "logs"]
 }
 EMAN
 
@@ -257,8 +293,6 @@ cmd_retention() {
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
         [ -d "$cdir/backups" ] || continue
-        local cid
-        cid="$(basename "$cdir")"
 
         for bdir in "$cdir/backups"/*/; do
             [ -d "$bdir" ] || continue
@@ -268,9 +302,7 @@ cmd_retention() {
             created="$(read_json_field "$bdir/backup-manifest.json" "created_at")"
             [ -n "$created" ] || continue
 
-            # Parse date and check age
             local created_ts now_ts age_days
-            # macOS date vs GNU date
             if date -j -f "%Y-%m-%dT%H:%M:%SZ" "$created" +%s >/dev/null 2>&1; then
                 created_ts="$(date -j -f "%Y-%m-%dT%H:%M:%SZ" "$created" +%s 2>/dev/null)"
             else
@@ -281,15 +313,16 @@ cmd_retention() {
             age_days=$(( (now_ts - created_ts) / 86400 ))
 
             if [ "$age_days" -gt "$days" ]; then
-                local bsize
+                local bsize bid
                 bsize="$(du -sk "$bdir" 2>/dev/null | awk '{print $1}')"
-                local bid
                 bid="$(basename "$bdir")"
+                local slug
+                slug="$(basename "$(dirname "$(dirname "$bdir")")")"
                 if [ "$dry_run" -eq 1 ]; then
-                    echo "  [DRY RUN] Would delete: $cid/$bid (${age_days}d old, ${bsize}KB)"
+                    echo "  [DRY RUN] Would delete: $slug/$bid (${age_days}d old, ${bsize}KB)"
                 else
                     rm -rf "$bdir"
-                    echo "  🗑  Deleted: $cid/$bid (${age_days}d old, ${bsize}KB)"
+                    echo "  🗑  Deleted: $slug/$bid (${age_days}d old, ${bsize}KB)"
                 fi
                 deleted=$((deleted + 1))
                 freed=$((freed + bsize))
@@ -319,15 +352,15 @@ cmd_list() {
     local found=0
     for cdir in "$CUSTOMERS_DIR"/*/; do
         [ -d "$cdir/backups" ] || continue
-        local cid
-        cid="$(basename "$cdir")"
-        if [ -n "$customer" ] && [ "$cid" != "$customer" ]; then continue; fi
+        local slug
+        slug="$(basename "$cdir")"
+        if [ -n "$customer" ] && [ "$slug" != "$customer" ]; then continue; fi
 
         local has_backups=0
         for bdir in "$cdir/backups"/*/; do
             [ -f "$bdir/backup-manifest.json" ] || continue
             if [ "$has_backups" -eq 0 ]; then
-                echo "  $cid:"
+                echo "  $slug:"
                 has_backups=1
             fi
             local bid created size

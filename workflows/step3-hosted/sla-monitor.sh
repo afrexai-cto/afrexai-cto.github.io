@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
 # sla-monitor.sh — SLA tracking for AfrexAI Hosted Agents
+# Reads customer tier from aaas-platform/customers/*/profile.json
 # Bash 3.2 compatible
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PLATFORM_DIR="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)"
+CUSTOMERS_DIR="$PLATFORM_DIR/customers"
+PRICING_FILE="$PLATFORM_DIR/pricing.json"
 DATA_DIR="${AFREX_DATA_DIR:-$SCRIPT_DIR/data}"
-CUSTOMERS_DIR="$DATA_DIR/customers"
 ALERTS_LOG="$DATA_DIR/sla-alerts.log"
 
-# SLA targets by tier
+# SLA targets by tier — read from pricing.json if available, else defaults
 sla_target() {
-    case "$1" in
+    local tier="$1"
+    # Default SLA targets per tier
+    case "$tier" in
         starter)    echo "99.5" ;;
         growth)     echo "99.9" ;;
-        enterprise) echo "99.95" ;;
+        scale)      echo "99.95" ;;
+        enterprise) echo "99.99" ;;
         *)          echo "99.0" ;;
     esac
 }
@@ -21,6 +27,15 @@ sla_target() {
 read_json_field() {
     local file="$1" field="$2"
     sed -n "s/.*\"${field}\"[[:space:]]*:[[:space:]]*\"\{0,1\}\([^,\"}]*\)\"\{0,1\}.*/\1/p" "$file" | head -1
+}
+
+# Read tier from profile.json (supports both "package" and "tier" field names)
+get_tier() {
+    local profile="$1"
+    local tier
+    tier="$(read_json_field "$profile" "package")"
+    [ -z "$tier" ] && tier="$(read_json_field "$profile" "tier")"
+    echo "${tier:-starter}"
 }
 
 update_json_field() {
@@ -46,31 +61,22 @@ Commands:
   dashboard       Quick SLA dashboard view
 
 Options:
-  --customer <id>     Target specific customer
-  --month <YYYY-MM>   Report month (default: current)
-  --format json       Output as JSON
-  -h, --help          Show this help
+  --customer <slug>     Target specific customer
+  --month <YYYY-MM>     Report month (default: current)
+  --format json         Output as JSON
+  -h, --help            Show this help
 EOF
     exit "${1:-0}"
 }
 
 # --- Simulate a health check (in production, this would ping actual services) ---
 simulate_agent_check() {
-    local agent_dir="$1"
-    local agent_name
-    agent_name="$(basename "$agent_dir")"
+    local agent_name="$1"
     local status="running"
-    local response_ms=0
-
-    if [ -f "$agent_dir/config/agent.json" ]; then
-        status="$(read_json_field "$agent_dir/config/agent.json" "status")"
-    fi
-
     # Simulate response time (deterministic based on agent name hash)
     local hash_val
     hash_val="$(echo "$agent_name" | cksum | awk '{print $1}')"
-    response_ms=$((hash_val % 200 + 50))  # 50-250ms
-
+    local response_ms=$((hash_val % 200 + 50))  # 50-250ms
     echo "${status}:${response_ms}"
 }
 
@@ -82,21 +88,21 @@ cmd_check() {
 
     echo "=============================================="
     echo "  AfrexAI — SLA Health Check"
-    echo "  $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    echo "  $ts"
     echo "=============================================="
     echo ""
 
     local total_customers=0 total_healthy=0 total_breaches=0
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local cid
-        cid="$(basename "$cdir")"
-        if [ -n "$target_customer" ] && [ "$cid" != "$target_customer" ]; then continue; fi
+        [ -f "$cdir/profile.json" ] || continue
+        local slug
+        slug="$(basename "$cdir")"
+        if [ -n "$target_customer" ] && [ "$slug" != "$target_customer" ]; then continue; fi
 
-        local m="$cdir/config/manifest.json"
+        local profile="$cdir/profile.json"
         local tier
-        tier="$(read_json_field "$m" "tier")"
+        tier="$(get_tier "$profile")"
         local target
         target="$(sla_target "$tier")"
         local sla_file="$cdir/monitoring/sla.json"
@@ -104,19 +110,25 @@ cmd_check() {
 
         total_customers=$((total_customers + 1))
 
-        # Check each agent
+        # Check each agent from agent-manifest.json
         local agents_total=0 agents_healthy=0 agents_down=0 total_response=0
 
-        if [ -d "$cdir/agents" ]; then
-            for adir in "$cdir/agents"/*/; do
-                [ -d "$adir" ] || continue
+        if [ -f "$cdir/agent-manifest.json" ]; then
+            # Extract agent slugs
+            local agent_slugs
+            agent_slugs="$(python3 -c "
+import json
+m = json.load(open('$cdir/agent-manifest.json'))
+for a in m.get('agents', []):
+    print(a['slug'])
+" 2>/dev/null || true)"
+            for aslug in $agent_slugs; do
                 agents_total=$((agents_total + 1))
                 local result
-                result="$(simulate_agent_check "$adir")"
+                result="$(simulate_agent_check "$aslug")"
                 local astatus="${result%%:*}"
                 local ams="${result##*:}"
                 total_response=$((total_response + ams))
-
                 if [ "$astatus" = "running" ]; then
                     agents_healthy=$((agents_healthy + 1))
                 else
@@ -125,14 +137,11 @@ cmd_check() {
             done
         fi
 
-        # Calculate uptime (simulated — based on healthy/total ratio)
+        # Calculate uptime
         local uptime="100.0"
-        if [ "$agents_total" -gt 0 ]; then
-            # Simple: if any agent down, reduce uptime proportionally
-            if [ "$agents_down" -gt 0 ]; then
-                local healthy_pct=$((agents_healthy * 100 / agents_total))
-                uptime="${healthy_pct}.0"
-            fi
+        if [ "$agents_total" -gt 0 ] && [ "$agents_down" -gt 0 ]; then
+            local healthy_pct=$((agents_healthy * 100 / agents_total))
+            uptime="${healthy_pct}.0"
         fi
 
         local avg_response=0
@@ -140,7 +149,6 @@ cmd_check() {
             avg_response=$((total_response / agents_total))
         fi
 
-        # Determine overall status
         local overall="healthy"
         if [ "$agents_down" -gt 0 ] && [ "$agents_healthy" -gt 0 ]; then
             overall="degraded"
@@ -149,23 +157,21 @@ cmd_check() {
         fi
 
         # Check SLA breach
-        local target_int
+        local target_int uptime_int breached=0
         target_int="$(echo "$target" | cut -d. -f1)"
-        local uptime_int
         uptime_int="$(echo "$uptime" | cut -d. -f1)"
-        local breached=0
         if [ "$uptime_int" -lt "$target_int" ]; then
             breached=1
             total_breaches=$((total_breaches + 1))
             mkdir -p "$(dirname "$ALERTS_LOG")"
-            echo "{\"type\":\"sla_breach\",\"customer_id\":\"$cid\",\"tier\":\"$tier\",\"target\":$target,\"actual\":$uptime,\"timestamp\":\"$ts\"}" >> "$ALERTS_LOG"
+            echo "{\"type\":\"sla_breach\",\"customer\":\"$slug\",\"tier\":\"$tier\",\"target\":$target,\"actual\":$uptime,\"timestamp\":\"$ts\"}" >> "$ALERTS_LOG"
         fi
 
         if [ "$overall" = "healthy" ]; then
             total_healthy=$((total_healthy + 1))
         fi
 
-        # Update monitoring files
+        # Update monitoring files if they exist
         if [ -f "$health_file" ]; then
             update_json_field "$health_file" "last_check" "$ts"
             update_json_field "$health_file" "overall_status" "$overall"
@@ -179,14 +185,13 @@ cmd_check() {
             update_json_field "$sla_file" "current_uptime" "$uptime" "no"
         fi
 
-        # Output
         local status_icon="✅"
         if [ "$overall" = "degraded" ]; then status_icon="⚠️"; fi
         if [ "$overall" = "down" ]; then status_icon="❌"; fi
         if [ "$breached" -eq 1 ]; then status_icon="🚨"; fi
 
         printf "  %s %-28s %s  uptime: %s%% (target: %s%%)  agents: %d/%d  avg: %dms\n" \
-            "$status_icon" "$cid" "$tier" "$uptime" "$target" "$agents_healthy" "$agents_total" "$avg_response"
+            "$status_icon" "$slug" "$tier" "$uptime" "$target" "$agents_healthy" "$agents_total" "$avg_response"
 
         if [ "$breached" -eq 1 ]; then
             echo "     └─ 🚨 SLA BREACH: $uptime% < $target% target"
@@ -216,14 +221,13 @@ cmd_report() {
     local total_customers=0 total_breaches=0
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local cid
-        cid="$(basename "$cdir")"
-        if [ -n "$target_customer" ] && [ "$cid" != "$target_customer" ]; then continue; fi
+        [ -f "$cdir/profile.json" ] || continue
+        local slug
+        slug="$(basename "$cdir")"
+        if [ -n "$target_customer" ] && [ "$slug" != "$target_customer" ]; then continue; fi
 
-        local m="$cdir/config/manifest.json"
         local tier
-        tier="$(read_json_field "$m" "tier")"
+        tier="$(get_tier "$cdir/profile.json")"
         local target
         target="$(sla_target "$tier")"
 
@@ -236,12 +240,12 @@ cmd_report() {
         local status="✅ Met"
         local target_int actual_int
         target_int="$(echo "$target" | cut -d. -f1)"
-        actual_int="$(echo "$actual" | cut -d. -f1)"
+        actual_int="$(echo "${actual:-100}" | cut -d. -f1)"
         if [ "$actual_int" -lt "$target_int" ]; then
             status="❌ Breach"
         fi
 
-        printf "  %-28s %-10s %-8s %-8s %-10s %-8s\n" "$cid" "$tier" "${target}%" "${actual}%" "$status" "${breaches:-0}"
+        printf "  %-28s %-10s %-8s %-8s %-10s %-8s\n" "$slug" "$tier" "${target}%" "${actual}%" "$status" "${breaches:-0}"
 
         total_customers=$((total_customers + 1))
         total_breaches=$((total_breaches + ${breaches:-0}))
@@ -268,10 +272,9 @@ cmd_breaches() {
         echo "  $count breach event(s) recorded:"
         echo ""
         while IFS= read -r line; do
-            local cid ts
-            cid="$(echo "$line" | sed -n 's/.*"customer_id":"\([^"]*\)".*/\1/p')"
+            local cid ts actual target
+            cid="$(echo "$line" | sed -n 's/.*"customer":"\([^"]*\)".*/\1/p')"
             ts="$(echo "$line" | sed -n 's/.*"timestamp":"\([^"]*\)".*/\1/p')"
-            local actual target
             actual="$(echo "$line" | sed -n 's/.*"actual":\([0-9.]*\).*/\1/p')"
             target="$(echo "$line" | sed -n 's/.*"target":\([0-9.]*\).*/\1/p')"
             echo "  🚨 $ts  $cid  actual: ${actual}% < target: ${target}%"
@@ -292,12 +295,11 @@ cmd_dashboard() {
     local total=0 meeting=0 breaching=0
 
     for cdir in "$CUSTOMERS_DIR"/*/; do
-        [ -f "$cdir/config/manifest.json" ] || continue
-        local cid
-        cid="$(basename "$cdir")"
-        local m="$cdir/config/manifest.json"
+        [ -f "$cdir/profile.json" ] || continue
+        local slug
+        slug="$(basename "$cdir")"
         local tier
-        tier="$(read_json_field "$m" "tier")"
+        tier="$(get_tier "$cdir/profile.json")"
         local target
         target="$(sla_target "$tier")"
 
@@ -309,10 +311,10 @@ cmd_dashboard() {
         total=$((total + 1))
         local target_int actual_int
         target_int="$(echo "$target" | cut -d. -f1)"
-        actual_int="$(echo "$actual" | cut -d. -f1)"
+        actual_int="$(echo "${actual:-100}" | cut -d. -f1)"
 
         local bar="" i=0 fill
-        fill="$(echo "$actual" | cut -d. -f1)"
+        fill="$(echo "${actual:-100}" | cut -d. -f1)"
         fill=$((fill / 5))  # 20 char bar
         while [ "$i" -lt 20 ]; do
             if [ "$i" -lt "$fill" ]; then bar="${bar}█"; else bar="${bar}░"; fi
@@ -327,7 +329,7 @@ cmd_dashboard() {
             meeting=$((meeting + 1))
         fi
 
-        printf "  %s %-24s %s %s%%  (target: %s%%)\n" "$icon" "$cid" "$bar" "$actual" "$target"
+        printf "  %s %-24s %s %s%%  (target: %s%%)\n" "$icon" "$slug" "$bar" "$actual" "$target"
     done
 
     echo ""

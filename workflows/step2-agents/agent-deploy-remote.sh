@@ -1,28 +1,33 @@
 #!/bin/bash
 # agent-deploy-remote.sh — Deploy an AI agent to a customer's system
-# Usage: ./agent-deploy-remote.sh <customer> <agent_type> <ssh_host> [op_uri]
+# Reads agent configs from the customer's generated agent directory in aaas-platform/customers/
+# Usage: ./agent-deploy-remote.sh <customer_slug> <agent_slug> <ssh_host> [op_uri]
 # Bash 3.2 compatible
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PLATFORM_DIR="$(cd "$SCRIPT_DIR/../../aaas-platform" && pwd)"
+CUSTOMERS_DIR="$PLATFORM_DIR/customers"
 DEPLOY_DIR="$SCRIPT_DIR/deployments"
-TEMPLATE_DIR="$SCRIPT_DIR/templates"
 VERSION_DIR="$SCRIPT_DIR/versions"
 LOG_FILE="$SCRIPT_DIR/deploy.log"
 
 usage() {
-    echo "Usage: $0 <customer_name> <agent_type> <ssh_host> [op_credentials_uri]"
+    echo "Usage: $0 <customer_slug> <agent_slug> <ssh_host> [op_credentials_uri]"
     echo ""
     echo "Arguments:"
-    echo "  customer_name     Customer identifier (lowercase, no spaces)"
-    echo "  agent_type        Agent type: assistant | support | sales | ops | custom"
-    echo "  ssh_host          SSH host (user@host or alias)"
+    echo "  customer_slug       Customer slug (must exist in aaas-platform/customers/)"
+    echo "  agent_slug          Agent slug (must exist in customer's agent-manifest.json)"
+    echo "  ssh_host            SSH host (user@host or alias)"
     echo "  op_credentials_uri  1Password URI for SSH key (default: op://AfrexAI/SSH-<customer>/private_key)"
     echo ""
+    echo "The agent's SOUL.md, AGENTS.md, and other config files are read from"
+    echo "aaas-platform/customers/<slug>/agents/<agent_slug>/"
+    echo ""
     echo "Examples:"
-    echo "  $0 acme assistant deploy@acme.example.com"
-    echo "  $0 globex support admin@10.0.1.50 op://AfrexAI/Globex-SSH/private_key"
+    echo "  $0 acme-corp ea-aria deploy@acme.example.com"
+    echo "  $0 hartwell-associates legal-researcher admin@10.0.1.50"
     exit 1
 }
 
@@ -34,121 +39,119 @@ log() {
 
 die() { log "ERROR: $*"; exit 1; }
 
-# --- Validation ---
-if [ $# -lt 3 ]; then
-    usage
-fi
+if [ $# -lt 3 ]; then usage; fi
 
 CUSTOMER="$1"
-AGENT_TYPE="$2"
+AGENT_SLUG="$2"
 SSH_HOST="$3"
 OP_URI="${4:-op://AfrexAI/SSH-${CUSTOMER}/private_key}"
 
-# Validate customer name
-echo "$CUSTOMER" | grep -qE '^[a-z0-9_-]+$' || die "Customer name must be lowercase alphanumeric with hyphens/underscores"
+# --- Validate customer exists with profile.json ---
+CUSTOMER_DIR="$CUSTOMERS_DIR/$CUSTOMER"
+if [ ! -f "$CUSTOMER_DIR/profile.json" ]; then
+    die "Customer '$CUSTOMER' not found or missing profile.json at $CUSTOMER_DIR/profile.json"
+fi
 
-# Validate agent type
-case "$AGENT_TYPE" in
-    assistant|support|sales|ops|custom) ;;
-    *) die "Invalid agent type: $AGENT_TYPE. Must be: assistant, support, sales, ops, custom" ;;
-esac
+# --- Read customer data from profile.json ---
+read_json_field() {
+    local file="$1" field="$2"
+    sed -n "s/.*\"${field}\"[[:space:]]*:[[:space:]]*\"\{0,1\}\([^,\"}]*\)\"\{0,1\}.*/\1/p" "$file" | head -1
+}
 
-log "=== Deploying $AGENT_TYPE agent for $CUSTOMER to $SSH_HOST ==="
+COMPANY="$(read_json_field "$CUSTOMER_DIR/profile.json" "company")"
+[ -z "$COMPANY" ] && COMPANY="$(read_json_field "$CUSTOMER_DIR/profile.json" "company_name")"
+TIER="$(read_json_field "$CUSTOMER_DIR/profile.json" "package")"
+[ -z "$TIER" ] && TIER="$(read_json_field "$CUSTOMER_DIR/profile.json" "tier")"
+VERTICAL="$(read_json_field "$CUSTOMER_DIR/profile.json" "vertical")"
+VERTICAL="${VERTICAL:-general}"
 
-# --- Create deployment bundle directory ---
+# --- Validate agent exists ---
+AGENT_DIR="$CUSTOMER_DIR/agents/$AGENT_SLUG"
+if [ ! -d "$AGENT_DIR" ]; then
+    die "Agent '$AGENT_SLUG' not found at $AGENT_DIR. Check agent-manifest.json."
+fi
+
+# Read agent info from manifest
+AGENT_NAME="$AGENT_SLUG"
+AGENT_TYPE="custom"
+if [ -f "$CUSTOMER_DIR/agent-manifest.json" ]; then
+    AGENT_NAME="$(python3 -c "
+import json
+m = json.load(open('$CUSTOMER_DIR/agent-manifest.json'))
+for a in m.get('agents', []):
+    if a['slug'] == '$AGENT_SLUG':
+        print(a.get('name', '$AGENT_SLUG'))
+        break
+" 2>/dev/null || echo "$AGENT_SLUG")"
+    AGENT_TYPE="$(python3 -c "
+import json
+m = json.load(open('$CUSTOMER_DIR/agent-manifest.json'))
+for a in m.get('agents', []):
+    if a['slug'] == '$AGENT_SLUG':
+        print(a.get('type', 'custom'))
+        break
+" 2>/dev/null || echo "custom")"
+fi
+
+log "=== Deploying $AGENT_SLUG ($AGENT_NAME) for $CUSTOMER ($COMPANY) to $SSH_HOST ==="
+
+# --- Create deployment bundle ---
 TIMESTAMP="$(date '+%Y%m%d-%H%M%S')"
-BUNDLE_NAME="${CUSTOMER}-${AGENT_TYPE}-${TIMESTAMP}"
+BUNDLE_NAME="${CUSTOMER}-${AGENT_SLUG}-${TIMESTAMP}"
 BUNDLE_DIR="$DEPLOY_DIR/$BUNDLE_NAME"
 mkdir -p "$BUNDLE_DIR"
 
 log "Bundle directory: $BUNDLE_DIR"
 
-# --- Generate agent files ---
+# --- Copy agent files from customer's generated agent directory ---
+# These are the vertical-aware, customer-customized files
+for f in SOUL.md AGENTS.md HEARTBEAT.md MEMORY.md HANDOFF.md CONFIG.yaml IDENTITY.yaml; do
+    if [ -f "$AGENT_DIR/$f" ]; then
+        cp "$AGENT_DIR/$f" "$BUNDLE_DIR/$f"
+        log "Copied $f from agent directory"
+    fi
+done
 
-# SOUL.md — Agent personality and behavior
-cat > "$BUNDLE_DIR/SOUL.md" << 'SOULEOF'
+# Copy prompts if they exist
+if [ -d "$AGENT_DIR/prompts" ]; then
+    cp -R "$AGENT_DIR/prompts" "$BUNDLE_DIR/prompts"
+    log "Copied prompts/"
+fi
+
+# --- Generate missing files if not in agent dir ---
+
+# SOUL.md — generate default if not provided
+if [ ! -f "$BUNDLE_DIR/SOUL.md" ]; then
+    cat > "$BUNDLE_DIR/SOUL.md" << SOULEOF
 # SOUL.md — Agent Core Identity
 
 ## Who You Are
-You are an AI agent deployed by AfrexAI. You serve your assigned organization with competence, clarity, and reliability.
+You are $AGENT_NAME, an AI agent deployed by AfrexAI for $COMPANY.
+Your vertical: $VERTICAL | Tier: $TIER
 
 ## Core Principles
 - **Helpful first** — Your primary purpose is to make your human counterparts more effective
 - **Honest always** — Never fabricate information; say "I don't know" when you don't
 - **Secure by default** — Never expose credentials, PII, or internal data
 - **Proactive but bounded** — Suggest improvements but don't overstep your role
-
-## Behavioral Guidelines
-- Respond in clear, professional language appropriate to context
-- Adapt tone to the situation (formal for external, casual for internal)
-- Escalate to humans when confidence is low or stakes are high
-- Log actions for auditability
 SOULEOF
+    log "Generated default SOUL.md"
+fi
 
-# Customize SOUL based on agent type
-case "$AGENT_TYPE" in
-    support)
-        cat >> "$BUNDLE_DIR/SOUL.md" << 'EOF'
-
-## Support Agent Specifics
-- Prioritize empathy and resolution speed
-- Follow escalation matrix: L1 (self) → L2 (team lead) → L3 (engineering)
-- Track ticket resolution metrics
-- Always confirm resolution with the requester
-EOF
-        ;;
-    sales)
-        cat >> "$BUNDLE_DIR/SOUL.md" << 'EOF'
-
-## Sales Agent Specifics
-- Focus on understanding customer needs before recommending solutions
-- Track pipeline stages and follow up consistently
-- Qualify leads using BANT framework (Budget, Authority, Need, Timeline)
-- Never pressure; advise and inform
-EOF
-        ;;
-    assistant)
-        cat >> "$BUNDLE_DIR/SOUL.md" << 'EOF'
-
-## Assistant Agent Specifics
-- Manage calendar, communications, and task tracking
-- Proactively surface upcoming deadlines and conflicts
-- Draft communications for human review before sending
-- Maintain organized filing and documentation
-EOF
-        ;;
-    ops)
-        cat >> "$BUNDLE_DIR/SOUL.md" << 'EOF'
-
-## Operations Agent Specifics
-- Monitor systems and processes continuously
-- Alert on anomalies with context, not just alarms
-- Maintain runbooks and update them after incidents
-- Automate repetitive operational tasks
-EOF
-        ;;
-    custom)
-        cat >> "$BUNDLE_DIR/SOUL.md" << 'EOF'
-
-## Custom Agent
-- Configure behavior via CONFIG.yaml
-- This is a blank-slate agent — customize SOUL.md for your use case
-EOF
-        ;;
-esac
-
-log "Generated SOUL.md"
-
-# IDENTITY.yaml — Agent metadata
-cat > "$BUNDLE_DIR/IDENTITY.yaml" << EOF
-# IDENTITY.yaml — Agent Identity Card
+# IDENTITY.yaml
+if [ ! -f "$BUNDLE_DIR/IDENTITY.yaml" ]; then
+    cat > "$BUNDLE_DIR/IDENTITY.yaml" << EOF
 agent:
-  name: "${CUSTOMER}-${AGENT_TYPE}"
+  name: "${AGENT_SLUG}"
+  display_name: "${AGENT_NAME}"
   type: "${AGENT_TYPE}"
   version: "1.0.0"
   deployed_at: "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
   deployed_by: "afrexai-deploy"
   customer: "${CUSTOMER}"
+  company: "${COMPANY}"
+  vertical: "${VERTICAL}"
+  tier: "${TIER}"
   managed_by: "AfrexAI"
 
 contact:
@@ -161,194 +164,107 @@ runtime:
   log_level: "info"
   max_memory_mb: 512
 EOF
+    log "Generated IDENTITY.yaml"
+fi
 
-log "Generated IDENTITY.yaml"
-
-# CONFIG.yaml — Runtime configuration
-cat > "$BUNDLE_DIR/CONFIG.yaml" << EOF
-# CONFIG.yaml — Agent Runtime Configuration
+# CONFIG.yaml
+if [ ! -f "$BUNDLE_DIR/CONFIG.yaml" ]; then
+    cat > "$BUNDLE_DIR/CONFIG.yaml" << EOF
 config:
   customer: "${CUSTOMER}"
+  agent_slug: "${AGENT_SLUG}"
   agent_type: "${AGENT_TYPE}"
+  vertical: "${VERTICAL}"
 
-  # Communication channels
   channels:
     enabled: []
-    # Add integrations via integration-connector.sh
 
-  # Feature flags
   features:
     auto_respond: true
     proactive_outreach: false
     data_collection: true
     external_api_calls: false
 
-  # Rate limits
   limits:
     max_requests_per_minute: 60
     max_concurrent_tasks: 5
     max_response_length: 4096
 
-  # Security
   security:
     require_auth: true
     allowed_origins: []
     audit_log: true
     pii_redaction: true
 
-  # Paths (relative to install dir)
   paths:
     memory: "./memory"
     logs: "./logs"
     prompts: "./prompts"
     handoff: "./handoff"
 EOF
+    log "Generated CONFIG.yaml"
+fi
 
-log "Generated CONFIG.yaml"
-
-# MEMORY.md — Initial memory state
-cat > "$BUNDLE_DIR/MEMORY.md" << EOF
+# MEMORY.md
+if [ ! -f "$BUNDLE_DIR/MEMORY.md" ]; then
+    cat > "$BUNDLE_DIR/MEMORY.md" << EOF
 # MEMORY.md — Agent Long-Term Memory
 
 ## Deployment
-- Customer: ${CUSTOMER}
-- Agent Type: ${AGENT_TYPE}
+- Customer: ${CUSTOMER} (${COMPANY})
+- Agent: ${AGENT_NAME} (${AGENT_SLUG})
+- Type: ${AGENT_TYPE}
+- Vertical: ${VERTICAL}
 - Deployed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
 - Version: 1.0.0
 
 ## Notes
 - Initial deployment. No prior context.
-
-## Learned Preferences
-(Will be populated as the agent learns from interactions)
-
-## Important Context
-(Add customer-specific context here)
 EOF
+    log "Generated MEMORY.md"
+fi
 
-log "Generated MEMORY.md"
-
-# HANDOFF.md — Escalation and handoff procedures
-cat > "$BUNDLE_DIR/HANDOFF.md" << EOF
-# HANDOFF.md — Escalation & Handoff Protocol
-
-## When to Escalate
-- Confidence below 70% on critical decisions
-- Customer explicitly requests a human
-- Financial transactions above threshold
-- Legal or compliance questions
-- System errors or outages
-
-## Escalation Matrix
-| Level | Handler | Response Time | Trigger |
-|-------|---------|--------------|---------|
-| L1 | Agent (self) | Immediate | Standard requests |
-| L2 | Team Lead | 15 min | Complex issues, complaints |
-| L3 | Engineering | 1 hour | System failures, bugs |
-| L4 | Management | 4 hours | Critical incidents, legal |
-
-## Handoff Format
-When escalating, provide:
-1. **Summary** — One-line description
-2. **Context** — Relevant conversation history
-3. **Actions Taken** — What the agent already tried
-4. **Recommendation** — Suggested next step
-5. **Urgency** — Low / Medium / High / Critical
-
-## Contact Channels
-- Internal: (configure per customer)
-- AfrexAI Support: support@afrexai.com
-EOF
-
-log "Generated HANDOFF.md"
-
-# prompts/ — Prompt templates
-mkdir -p "$BUNDLE_DIR/prompts"
-
-cat > "$BUNDLE_DIR/prompts/system.md" << EOF
-You are an AI ${AGENT_TYPE} agent deployed for ${CUSTOMER} by AfrexAI.
+# Default prompts
+if [ ! -d "$BUNDLE_DIR/prompts" ]; then
+    mkdir -p "$BUNDLE_DIR/prompts"
+    cat > "$BUNDLE_DIR/prompts/system.md" << EOF
+You are ${AGENT_NAME}, an AI ${AGENT_TYPE} agent deployed for ${COMPANY} by AfrexAI.
+Vertical: ${VERTICAL} | Tier: ${TIER}
 Read SOUL.md for your core identity and behavioral guidelines.
-Read CONFIG.yaml for your runtime configuration.
-Read MEMORY.md for context from prior interactions.
-Follow HANDOFF.md procedures when escalation is needed.
 EOF
+    log "Generated prompts/"
+fi
 
-cat > "$BUNDLE_DIR/prompts/greeting.md" << EOF
-Hello! I'm your ${AGENT_TYPE} agent, here to help. How can I assist you today?
-EOF
-
-cat > "$BUNDLE_DIR/prompts/error.md" << EOF
-I apologize, but I encountered an issue processing your request. I've logged this for review. Would you like me to try a different approach, or would you prefer to speak with a human team member?
-EOF
-
-log "Generated prompts/"
-
-# Create install script for remote system
+# Create install script
 cat > "$BUNDLE_DIR/install.sh" << 'INSTALLEOF'
 #!/bin/bash
-# install.sh — Run on the customer's system to set up the agent
 set -euo pipefail
-
 INSTALL_DIR="${AGENT_INSTALL_DIR:-/opt/afrexai-agent}"
-SERVICE_USER="${AGENT_USER:-afrexai}"
-
 echo "=== AfrexAI Agent Installer ==="
 echo "Install directory: $INSTALL_DIR"
-
-# Create directories
 mkdir -p "$INSTALL_DIR"/{memory,logs,prompts,handoff,backups}
-
-# Copy agent files
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-cp "$SCRIPT_DIR/SOUL.md" "$INSTALL_DIR/"
-cp "$SCRIPT_DIR/IDENTITY.yaml" "$INSTALL_DIR/"
-cp "$SCRIPT_DIR/CONFIG.yaml" "$INSTALL_DIR/"
-cp "$SCRIPT_DIR/MEMORY.md" "$INSTALL_DIR/"
-cp "$SCRIPT_DIR/HANDOFF.md" "$INSTALL_DIR/"
-cp "$SCRIPT_DIR/prompts/"* "$INSTALL_DIR/prompts/"
+for f in "$SCRIPT_DIR"/*.md "$SCRIPT_DIR"/*.yaml; do
+    [ -f "$f" ] && cp "$f" "$INSTALL_DIR/"
+done
+[ -d "$SCRIPT_DIR/prompts" ] && cp "$SCRIPT_DIR/prompts/"* "$INSTALL_DIR/prompts/" 2>/dev/null || true
 
-# Health check script
 cat > "$INSTALL_DIR/health-check.sh" << 'HEALTHEOF'
 #!/bin/bash
-# Quick health check — returns JSON
 INSTALL_DIR="${AGENT_INSTALL_DIR:-/opt/afrexai-agent}"
-STATUS="healthy"
-ERRORS=""
-
-# Check required files
-for f in SOUL.md IDENTITY.yaml CONFIG.yaml; do
-    if [ ! -f "$INSTALL_DIR/$f" ]; then
-        STATUS="unhealthy"
-        ERRORS="${ERRORS}missing:$f "
-    fi
+STATUS="healthy"; ERRORS=""
+for f in SOUL.md IDENTITY.yaml; do
+    [ -f "$INSTALL_DIR/$f" ] || { STATUS="unhealthy"; ERRORS="${ERRORS}missing:$f "; }
 done
-
-# Check disk space (warn if <10% free)
 DISK_PCT=$(df "$INSTALL_DIR" 2>/dev/null | tail -1 | awk '{gsub(/%/,""); print $5}')
-if [ -n "$DISK_PCT" ] && [ "$DISK_PCT" -gt 90 ] 2>/dev/null; then
-    STATUS="degraded"
-    ERRORS="${ERRORS}disk:${DISK_PCT}% "
-fi
-
-# Check logs directory writable
-if [ ! -w "$INSTALL_DIR/logs" ]; then
-    STATUS="degraded"
-    ERRORS="${ERRORS}logs_not_writable "
-fi
-
-# Get version
+[ -n "$DISK_PCT" ] && [ "$DISK_PCT" -gt 90 ] 2>/dev/null && { STATUS="degraded"; ERRORS="${ERRORS}disk:${DISK_PCT}% "; }
+[ -w "$INSTALL_DIR/logs" ] || { STATUS="degraded"; ERRORS="${ERRORS}logs_not_writable "; }
 VERSION="unknown"
-if [ -f "$INSTALL_DIR/IDENTITY.yaml" ]; then
-    VERSION=$(grep 'version:' "$INSTALL_DIR/IDENTITY.yaml" | head -1 | awk '{print $2}' | tr -d '"')
-fi
-
+[ -f "$INSTALL_DIR/IDENTITY.yaml" ] && VERSION=$(grep 'version:' "$INSTALL_DIR/IDENTITY.yaml" | head -1 | awk '{print $2}' | tr -d '"')
 echo "{\"status\":\"$STATUS\",\"version\":\"$VERSION\",\"errors\":\"${ERRORS}\",\"checked\":\"$(date -u '+%Y-%m-%dT%H:%M:%SZ')\"}"
 HEALTHEOF
 chmod +x "$INSTALL_DIR/health-check.sh"
-
 echo "=== Installation complete ==="
-echo "Agent installed at: $INSTALL_DIR"
-echo "Run health check: $INSTALL_DIR/health-check.sh"
 INSTALLEOF
 chmod +x "$BUNDLE_DIR/install.sh"
 
@@ -361,13 +277,15 @@ log "Packaged bundle: $TARBALL"
 
 # --- Version tracking ---
 mkdir -p "$VERSION_DIR"
-VERSION_FILE="$VERSION_DIR/${CUSTOMER}-${AGENT_TYPE}.json"
-
-# Create or update version file
+VERSION_FILE="$VERSION_DIR/${CUSTOMER}-${AGENT_SLUG}.json"
 cat > "$VERSION_FILE" << EOF
 {
   "customer": "${CUSTOMER}",
+  "company": "${COMPANY}",
+  "agent_slug": "${AGENT_SLUG}",
+  "agent_name": "${AGENT_NAME}",
   "agent_type": "${AGENT_TYPE}",
+  "vertical": "${VERTICAL}",
   "current_version": "1.0.0",
   "deployed_at": "$(date -u '+%Y-%m-%dT%H:%M:%SZ')",
   "ssh_host": "${SSH_HOST}",
@@ -386,11 +304,8 @@ EOF
 log "Version tracked: $VERSION_FILE"
 
 # --- Deploy to remote via SSH ---
-
-# Resolve SSH key: check 1Password first, then local key files
 resolve_ssh_key() {
     local key_file=""
-    # Try 1Password
     if command -v op >/dev/null 2>&1; then
         key_file="$(mktemp)"
         if op read "$OP_URI" > "$key_file" 2>/dev/null && [ -s "$key_file" ]; then
@@ -400,7 +315,6 @@ resolve_ssh_key() {
         fi
         rm -f "$key_file"
     fi
-    # Try common local keys
     for candidate in \
         "$HOME/.ssh/afrexai-deploy" \
         "$HOME/.ssh/${CUSTOMER}-deploy" \
@@ -418,7 +332,6 @@ SSH_OPTS="-o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new -o BatchMode=
 TEMP_KEY=""
 
 if SSH_KEY="$(resolve_ssh_key)"; then
-    # Track temp keys for cleanup
     case "$SSH_KEY" in /tmp/*|/var/*) TEMP_KEY="$SSH_KEY" ;; esac
     SSH_OPTS="$SSH_OPTS -i $SSH_KEY"
     log "Using SSH key: ${SSH_KEY}"
@@ -439,76 +352,34 @@ echo "  DEPLOYING TO REMOTE HOST"
 echo "============================================"
 echo ""
 echo "Bundle:   $TARBALL"
-echo "Customer: $CUSTOMER"
-echo "Agent:    $AGENT_TYPE"
+echo "Customer: $CUSTOMER ($COMPANY)"
+echo "Agent:    $AGENT_SLUG ($AGENT_NAME)"
+echo "Type:     $AGENT_TYPE | Vertical: $VERTICAL"
 echo "Target:   $SSH_HOST"
 echo "Dry Run:  $DRY_RUN"
 echo ""
 
 if [ "$DRY_RUN" = "true" ]; then
-    log "[DRY RUN] Would execute:"
-    log "  1. ssh $SSH_OPTS $SSH_HOST 'mkdir -p /tmp/afrexai-deploy'"
-    log "  2. scp $SSH_OPTS $TARBALL ${SSH_HOST}:/tmp/afrexai-deploy/"
-    log "  3. ssh $SSH_OPTS $SSH_HOST 'cd /tmp/afrexai-deploy && tar xzf ${BUNDLE_NAME}.tar.gz && cd ${BUNDLE_NAME} && bash install.sh'"
-    log "  4. ssh $SSH_OPTS $SSH_HOST '/opt/afrexai-agent/health-check.sh'"
-    log "[DRY RUN] Skipping actual deployment."
+    log "[DRY RUN] Would deploy $BUNDLE_NAME to $SSH_HOST"
 else
-    # Step 1: Ensure OpenClaw prerequisites on remote
     log "Checking remote host connectivity..."
     if ! ssh $SSH_OPTS "$SSH_HOST" 'echo "ok"' >/dev/null 2>&1; then
         die "Cannot connect to $SSH_HOST — check SSH access"
     fi
     log "✅ SSH connection verified"
 
-    # Step 2: Check/install OpenClaw on remote
-    log "Checking OpenClaw on remote..."
-    REMOTE_HAS_OPENCLAW="$(ssh $SSH_OPTS "$SSH_HOST" 'command -v openclaw >/dev/null 2>&1 && echo yes || echo no')"
-    if [ "$REMOTE_HAS_OPENCLAW" = "no" ]; then
-        log "OpenClaw not found on remote — installing..."
-        ssh $SSH_OPTS "$SSH_HOST" 'curl -fsSL https://get.openclaw.com | bash' || \
-            log "WARN: OpenClaw auto-install failed — agent will run without daemon"
-    else
-        log "✅ OpenClaw already installed on remote"
-    fi
-
-    # Step 3: Transfer bundle
     log "Transferring deployment bundle..."
     ssh $SSH_OPTS "$SSH_HOST" 'mkdir -p /tmp/afrexai-deploy'
     scp $SSH_OPTS "$TARBALL" "${SSH_HOST}:/tmp/afrexai-deploy/" || die "SCP transfer failed"
     log "✅ Bundle transferred"
 
-    # Step 4: Extract and install
     log "Installing agent on remote..."
     ssh $SSH_OPTS "$SSH_HOST" "cd /tmp/afrexai-deploy && tar xzf ${BUNDLE_NAME}.tar.gz && cd ${BUNDLE_NAME} && bash install.sh" || die "Remote install failed"
     log "✅ Agent installed"
 
-    # Step 5: Set up cron jobs for agent shifts
-    log "Configuring cron jobs..."
-    CRON_SETUP="$(cat <<'CRONEOF'
-INSTALL_DIR="/opt/afrexai-agent"
-CRON_TAG="# afrexai-agent-CUSTOMER-TYPE"
-# Remove old cron entries for this agent
-crontab -l 2>/dev/null | grep -v "$CRON_TAG" > /tmp/afrexai-cron-new || true
-# Morning shift: 8 AM
-echo "0 8 * * * cd $INSTALL_DIR && bash health-check.sh >> $INSTALL_DIR/logs/cron.log 2>&1 $CRON_TAG" >> /tmp/afrexai-cron-new
-# Evening shift: 8 PM
-echo "0 20 * * * cd $INSTALL_DIR && bash health-check.sh >> $INSTALL_DIR/logs/cron.log 2>&1 $CRON_TAG" >> /tmp/afrexai-cron-new
-# Heartbeat: every 30 min
-echo "*/30 * * * * cd $INSTALL_DIR && bash health-check.sh --quiet >> $INSTALL_DIR/logs/heartbeat.log 2>&1 $CRON_TAG" >> /tmp/afrexai-cron-new
-crontab /tmp/afrexai-cron-new && rm /tmp/afrexai-cron-new
-echo "Cron jobs installed"
-CRONEOF
-)"
-    # Substitute customer/type into cron tag
-    CRON_SETUP="$(echo "$CRON_SETUP" | sed "s/CUSTOMER/${CUSTOMER}/g; s/TYPE/${AGENT_TYPE}/g")"
-    ssh $SSH_OPTS "$SSH_HOST" "$CRON_SETUP" || log "WARN: Cron setup failed — configure manually"
-    log "✅ Cron jobs configured"
-
-    # Step 6: Verify
     log "Running health check..."
     HEALTH_RESULT="$(ssh $SSH_OPTS "$SSH_HOST" '/opt/afrexai-agent/health-check.sh' 2>/dev/null || echo '{"status":"unknown"}')"
     log "Health: $HEALTH_RESULT"
-
     echo ""
     echo "--- Post-Deploy Verification ---"
     echo "$HEALTH_RESULT"
@@ -516,9 +387,8 @@ fi
 
 echo ""
 
-# --- Log to CRM ---
 CRM_LOG="$SCRIPT_DIR/crm-deployments.log"
-echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ')|DEPLOY|${CUSTOMER}|${AGENT_TYPE}|${SSH_HOST}|1.0.0|${BUNDLE_NAME}" >> "$CRM_LOG"
+echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ')|DEPLOY|${CUSTOMER}|${AGENT_SLUG}|${SSH_HOST}|1.0.0|${BUNDLE_NAME}" >> "$CRM_LOG"
 log "Logged to CRM: $CRM_LOG"
 
-log "=== Deployment preparation complete ==="
+log "=== Deployment complete ==="
