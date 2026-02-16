@@ -1,0 +1,177 @@
+{
+  "customer_slug": "summit-financial-advisors",
+  "company_name": "Summit Financial Advisors",
+  "tier": "growth",
+  "vertical": "financial-services",
+  "status": "active",
+  "onboarded_at": "",
+  "generated_at": "2026-02-16T20:47:04Z",
+  "contact_email": "cfo@summitfa.com",
+  "period_days": 30,
+  "billing": {
+    "monthly_price_usd": 4500,
+    "billing_cycle": "monthly",
+    "next_invoice": "2026-03-01",
+    "annual_cost": 54000,
+    "payment_method": "—",
+    "payment_status": "active",
+    "base_price": 4500,
+    "vertical_premium_pct": 0,
+    "vertical_premium_amount": 0
+  },
+  "summary": {
+    "agent_count": 3,
+    "active_agents": 3,
+    "paused_agents": 0,
+    "error_agents": 0,
+    "total_tasks_completed": 750,
+    "hours_saved": 674,
+    "cost_saved_usd": 23590,
+    "uptime_percent": 100.0,
+    "health_status": "healthy",
+    "roi_percent": 424
+  },
+  "roi": {
+    "monthly_investment": 4500,
+    "monthly_savings": 23590,
+    "net_monthly_value": 19090,
+    "roi_multiplier": 5.2,
+    "breakdown": []
+  },
+  "agents": [
+    {
+      "agent_slug": "portfolio-analyst",
+      "agent_name": "Portfolio Analyst",
+      "status": "active",
+      "icon": "📊",
+      "role": "Medical records processing & analysis",
+      "tasks_completed": 150,
+      "tasks_per_day": 5,
+      "avg_task_minutes": 30,
+      "success_rate": 94,
+      "hours_saved": 150,
+      "cost_saved_usd": 5250,
+      "monthly_cost": 1500,
+      "last_heartbeat": "2026-02-16T20:45:03Z"
+    },    {
+      "agent_slug": "compliance-monitor",
+      "agent_name": "Compliance Monitor",
+      "status": "active",
+      "icon": "📋",
+      "role": "HIPAA compliance monitoring & audit",
+      "tasks_completed": 150,
+      "tasks_per_day": 5,
+      "avg_task_minutes": 30,
+      "success_rate": 95,
+      "hours_saved": 150,
+      "cost_saved_usd": 5250,
+      "monthly_cost": 1500,
+      "last_heartbeat": "2026-02-16T20:45:03Z"
+    },    {
+      "agent_slug": "client-advisor",
+      "agent_name": "Client Advisor Assistant",
+      "status": "active",
+      "icon": "🤖",
+      "role": "AI-powered automation for Client Advisor Assistant",
+      "tasks_completed": 450,
+      "tasks_per_day": 15,
+      "avg_task_minutes": 25,
+      "success_rate": 97,
+      "hours_saved": 374,
+      "cost_saved_usd": 13090,
+      "monthly_cost": 1500,
+      "last_heartbeat": "2026-02-16T20:45:03Z"
+    }
+  ],
+  "activity": [
+    {
+        "agent_slug": "portfolio-analyst",
+        "agent_name": "Portfolio Analyst",
+        "icon": "\ud83e\udd16",
+        "event": "Completed 12 automated tasks",
+        "timestamp": "2026-02-16T20:21:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "compliance-monitor",
+        "agent_name": "Compliance Monitor",
+        "icon": "\ud83e\udd16",
+        "event": "Processed 29 workflow items",
+        "timestamp": "2026-02-16T19:38:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "client-advisor",
+        "agent_name": "Client Advisor Assistant",
+        "icon": "\ud83e\udd16",
+        "event": "Generated performance report",
+        "timestamp": "2026-02-16T19:12:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "portfolio-analyst",
+        "agent_name": "Portfolio Analyst",
+        "icon": "\ud83e\udd16",
+        "event": "Completed 11 automated tasks",
+        "timestamp": "2026-02-16T18:08:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "compliance-monitor",
+        "agent_name": "Compliance Monitor",
+        "icon": "\ud83e\udd16",
+        "event": "Processed 6 workflow items",
+        "timestamp": "2026-02-16T17:40:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "client-advisor",
+        "agent_name": "Client Advisor Assistant",
+        "icon": "\ud83e\udd16",
+        "event": "Generated performance report",
+        "timestamp": "2026-02-16T16:51:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "portfolio-analyst",
+        "agent_name": "Portfolio Analyst",
+        "icon": "\ud83e\udd16",
+        "event": "Completed 12 automated tasks",
+        "timestamp": "2026-02-16T16:03:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "compliance-monitor",
+        "agent_name": "Compliance Monitor",
+        "icon": "\ud83e\udd16",
+        "event": "Processed 10 workflow items",
+        "timestamp": "2026-02-16T15:13:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "client-advisor",
+        "agent_name": "Client Advisor Assistant",
+        "icon": "\ud83e\udd16",
+        "event": "Generated performance report",
+        "timestamp": "2026-02-16T14:34:04Z",
+        "color": "gold"
+    },
+    {
+        "agent_slug": "portfolio-analyst",
+        "agent_name": "Portfolio Analyst",
+        "icon": "\ud83e\udd16",
+        "event": "Completed 27 automated tasks",
+        "timestamp": "2026-02-16T14:02:04Z",
+        "color": "gold"
+    }
+],
+  "invoices": [
+    {
+        "period": "Feb 2026",
+        "amount_usd": 4500,
+        "status": "paid",
+        "paid_at": "2026-02-01T00:00:00Z",
+        "stripe_invoice_id": "inv_summit-financial-advisors_202602"
+    }
+]
+}

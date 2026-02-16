@@ -4,3 +4,6 @@
 {"slug":"pacific-legal-group","email":"info@pacificlegal.com","template":"day3-checkin","subject":"How's it going with your AI team?","send_date":"2026-02-19","status":"pending","scheduled_at":"2026-02-16T20:38:42Z"}
 {"slug":"pacific-legal-group","email":"info@pacificlegal.com","template":"day7-weekly-report","subject":"Your First Week — Agent Activity Report","send_date":"2026-02-23","status":"pending","scheduled_at":"2026-02-16T20:38:42Z"}
 {"slug":"pacific-legal-group","email":"info@pacificlegal.com","template":"day30-roi-report","subject":"Your First Month — ROI Report","send_date":"2026-03-18","status":"pending","scheduled_at":"2026-02-16T20:38:42Z"}
+{"slug":"summit-financial-advisors","email":"cfo@summitfa.com","template":"day3-checkin","subject":"How's it going with your AI team?","send_date":"2026-02-19","status":"pending","scheduled_at":"2026-02-16T20:46:23Z"}
+{"slug":"summit-financial-advisors","email":"cfo@summitfa.com","template":"day7-weekly-report","subject":"Your First Week — Agent Activity Report","send_date":"2026-02-23","status":"pending","scheduled_at":"2026-02-16T20:46:23Z"}
+{"slug":"summit-financial-advisors","email":"cfo@summitfa.com","template":"day30-roi-report","subject":"Your First Month — ROI Report","send_date":"2026-03-18","status":"pending","scheduled_at":"2026-02-16T20:46:23Z"}

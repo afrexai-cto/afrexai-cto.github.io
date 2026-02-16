@@ -1,0 +1,43 @@
+{
+  "slug": "summit-financial-advisors",
+  "company_name": "Summit Financial Advisors",
+  "contact_name": "",
+  "email": "cfo@summitfa.com",
+  "tier": "growth",
+  "vertical": "financial-services",
+  "agents": [
+    {
+      "id": "portfolio-analyst",
+      "name": "Portfolio Analyst",
+      "template": "financial-services/portfolio-analyst",
+      "status": "active",
+      "deployed_at": "2026-02-16T20:46:21.684476Z"
+    },
+    {
+      "id": "compliance-monitor",
+      "name": "Compliance Monitor",
+      "template": "financial-services/compliance-monitor",
+      "status": "active",
+      "deployed_at": "2026-02-16T20:46:21.684755Z"
+    },
+    {
+      "id": "client-advisor",
+      "name": "Client Advisor Assistant",
+      "template": "financial-services/client-advisor",
+      "status": "active",
+      "deployed_at": "2026-02-16T20:46:21.684758Z"
+    }
+  ],
+  "monthly_price": 4500,
+  "pricing": {
+    "base_price": 4500,
+    "vertical_premium_pct": 0,
+    "vertical_premium_amount": 0,
+    "monthly_total": 4500,
+    "currency": "USD",
+    "billing_cycle": "monthly"
+  },
+  "status": "active",
+  "created_at": "2026-02-16T20:46:20.821245Z",
+  "api_key": ""
+}

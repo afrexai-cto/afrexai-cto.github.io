@@ -5,5 +5,12 @@
     "token": "a02129b86c411ded5d1494ffd8740d753fba2b3ee5b0b6e0294e8001e44c82ee",
     "portal_url": "https://portal.afrexai.com/login?token=a02129b86c411ded5d1494ffd8740d753fba2b3ee5b0b6e0294e8001e44c82ee",
     "created": "2026-02-16T20:38:39Z"
+  },
+  {
+    "slug": "summit-financial-advisors",
+    "email": "cfo@summitfa.com",
+    "token": "f490ceaa0b73f3893aa669bf6fe9d94b9d661a7dd06d897cc3c1bcb340b00788",
+    "portal_url": "https://portal.afrexai.com/login?token=f490ceaa0b73f3893aa669bf6fe9d94b9d661a7dd06d897cc3c1bcb340b00788",
+    "created": "2026-02-16T20:46:20Z"
   }
 ]
