@@ -41,8 +41,40 @@ EOF
 }
 
 # --- Simulate metrics ---
+get_agent_icon() {
+    local template="$1"
+    case "$template" in
+        *patient*coordinator*) echo "🏥" ;;
+        *compliance*) echo "📋" ;;
+        *records*|*analyst*) echo "📊" ;;
+        *email*|*outbound*) echo "✉️" ;;
+        *lead*|*sales*) echo "🎯" ;;
+        *report*) echo "📈" ;;
+        *support*|*customer*) echo "💬" ;;
+        *finance*|*billing*) echo "💰" ;;
+        *hr*|*recruit*) echo "👥" ;;
+        *legal*) echo "⚖️" ;;
+        *) echo "🤖" ;;
+    esac
+}
+
+get_agent_role() {
+    local template="$1" name="$2"
+    case "$template" in
+        *patient*coordinator*) echo "Patient scheduling & coordination" ;;
+        *compliance*) echo "HIPAA compliance monitoring & audit" ;;
+        *records*|*analyst*) echo "Medical records processing & analysis" ;;
+        *email*|*outbound*) echo "Outbound email campaigns & follow-ups" ;;
+        *lead*|*sales*) echo "Lead qualification & scoring" ;;
+        *report*) echo "Reporting & analytics" ;;
+        *support*|*customer*) echo "Customer support automation" ;;
+        *finance*|*billing*) echo "Financial operations & invoicing" ;;
+        *) echo "AI-powered automation for $name" ;;
+    esac
+}
+
 generate_agent_metrics() {
-    local agent_slug="$1" agent_name="$2" agent_status="$3" period_days="$4"
+    local agent_slug="$1" agent_name="$2" agent_status="$3" period_days="$4" agent_template="$5" monthly_cost="$6"
     local hash_val
     hash_val="$(echo "$agent_slug" | cksum | awk '{print $1}')"
     local tasks_per_day=$(( (hash_val % 15) + 5 ))
@@ -53,21 +85,32 @@ generate_agent_metrics() {
     local human_equiv_hours=$((total_hours * 3))
     local hours_saved=$((human_equiv_hours - total_hours))
     local cost_saved=$((hours_saved * 35))
+    local icon role
+    icon="$(get_agent_icon "$agent_template")"
+    role="$(get_agent_role "$agent_template" "$agent_name")"
+
+    # Simulate last heartbeat (recent for active, older for paused/error)
+    local hb_offset=120  # 2 min ago
+    if [ "$agent_status" = "paused" ]; then hb_offset=10800; fi
+    if [ "$agent_status" = "error" ]; then hb_offset=86400; fi
+    local hb_ts
+    hb_ts="$(date -u -v-${hb_offset}S +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d "-${hb_offset} seconds" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u +%Y-%m-%dT%H:%M:%SZ)"
 
     cat <<JSON
     {
       "agent_slug": "$agent_slug",
       "agent_name": "$agent_name",
       "status": "$agent_status",
-      "period_days": $period_days,
+      "icon": "$icon",
+      "role": "$role",
       "tasks_completed": $total_tasks,
       "tasks_per_day": $tasks_per_day,
       "avg_task_minutes": $avg_task_min,
       "success_rate": $success_rate,
-      "total_hours_worked": $total_hours,
-      "human_equivalent_hours": $human_equiv_hours,
       "hours_saved": $hours_saved,
-      "cost_saved_usd": $cost_saved
+      "cost_saved_usd": $cost_saved,
+      "monthly_cost": ${monthly_cost:-0},
+      "last_heartbeat": "$hb_ts"
     }
 JSON
 }
@@ -119,44 +162,63 @@ print(base + base * vpct // 100)
         fi
     fi
 
-    # Read agents from agent-manifest.json
+    # Read agents from profile.json or agent-manifest.json
     local total_tasks=0 total_hours=0 total_human_hours=0 total_saved_hours=0 total_cost_saved=0
     local agents_json="" agent_index=0 agent_count=0
+    local active_agents=0 paused_agents=0 error_agents=0
+    local contact_email=""
+    contact_email="$(read_json_field "$p" "email")"
 
+    local agent_data=""
     if [ -f "$cdir/agent-manifest.json" ]; then
-        # Use python to iterate agents
-        local agent_data
         agent_data="$(python3 -c "
 import json
 m = json.load(open('$cdir/agent-manifest.json'))
 for a in m.get('agents', []):
-    print(f\"{a['slug']}|{a.get('name',a['slug'])}|{a.get('status','unknown')}\")
+    print(f\"{a['slug']}|{a.get('name',a['slug'])}|{a.get('status','unknown')}|{a.get('template','')}\")
 " 2>/dev/null || true)"
-
-        while IFS='|' read -r aslug aname astatus; do
-            [ -z "$aslug" ] && continue
-            agent_count=$((agent_count + 1))
-            local metrics
-            metrics="$(generate_agent_metrics "$aslug" "$aname" "$astatus" "$period")"
-
-            local tasks hours human_hours saved cost
-            tasks="$(echo "$metrics" | sed -n 's/.*"tasks_completed": \([0-9]*\).*/\1/p')"
-            hours="$(echo "$metrics" | sed -n 's/.*"total_hours_worked": \([0-9]*\).*/\1/p')"
-            human_hours="$(echo "$metrics" | sed -n 's/.*"human_equivalent_hours": \([0-9]*\).*/\1/p')"
-            saved="$(echo "$metrics" | sed -n 's/.*"hours_saved": \([0-9]*\).*/\1/p')"
-            cost="$(echo "$metrics" | sed -n 's/.*"cost_saved_usd": \([0-9]*\).*/\1/p')"
-
-            total_tasks=$((total_tasks + ${tasks:-0}))
-            total_hours=$((total_hours + ${hours:-0}))
-            total_human_hours=$((total_human_hours + ${human_hours:-0}))
-            total_saved_hours=$((total_saved_hours + ${saved:-0}))
-            total_cost_saved=$((total_cost_saved + ${cost:-0}))
-
-            if [ "$agent_index" -gt 0 ]; then agents_json="${agents_json},"; fi
-            agents_json="${agents_json}${metrics}"
-            agent_index=$((agent_index + 1))
-        done <<< "$agent_data"
+    else
+        # Fall back to profile.json agents array
+        agent_data="$(python3 -c "
+import json
+p = json.load(open('$p'))
+for a in p.get('agents', []):
+    print(f\"{a['id']}|{a.get('name',a['id'])}|{a.get('status','unknown')}|{a.get('template','')}\")
+" 2>/dev/null || true)"
     fi
+
+    # Calculate per-agent cost
+    local per_agent_cost=0
+    local agent_total
+    agent_total="$(echo "$agent_data" | grep -c '|' 2>/dev/null || echo 0)"
+    if [ "$agent_total" -gt 0 ] && [ "$price" -gt 0 ]; then
+        per_agent_cost=$((price / agent_total))
+    fi
+
+    while IFS='|' read -r aslug aname astatus atemplate; do
+        [ -z "$aslug" ] && continue
+        agent_count=$((agent_count + 1))
+        case "$astatus" in
+            active) active_agents=$((active_agents + 1)) ;;
+            paused) paused_agents=$((paused_agents + 1)) ;;
+            *) error_agents=$((error_agents + 1)) ;;
+        esac
+        local metrics
+        metrics="$(generate_agent_metrics "$aslug" "$aname" "$astatus" "$period" "$atemplate" "$per_agent_cost")"
+
+        local tasks saved cost
+        tasks="$(echo "$metrics" | sed -n 's/.*"tasks_completed": \([0-9]*\).*/\1/p')"
+        saved="$(echo "$metrics" | sed -n 's/.*"hours_saved": \([0-9]*\).*/\1/p')"
+        cost="$(echo "$metrics" | sed -n 's/.*"cost_saved_usd": \([0-9]*\).*/\1/p')"
+
+        total_tasks=$((total_tasks + ${tasks:-0}))
+        total_saved_hours=$((total_saved_hours + ${saved:-0}))
+        total_cost_saved=$((total_cost_saved + ${cost:-0}))
+
+        if [ "$agent_index" -gt 0 ]; then agents_json="${agents_json},"; fi
+        agents_json="${agents_json}${metrics}"
+        agent_index=$((agent_index + 1))
+    done <<< "$agent_data"
 
     # ROI calculation
     local annual_cost=$((price * 12))
@@ -164,9 +226,12 @@ for a in m.get('agents', []):
     if [ "$period" -gt 0 ]; then
         annual_savings=$((total_cost_saved * 12 / period * 30))
     fi
-    local roi=0
+    local roi=0 roi_multiplier="0.0"
     if [ "$annual_cost" -gt 0 ]; then
         roi=$(( (annual_savings - annual_cost) * 100 / annual_cost ))
+    fi
+    if [ "$price" -gt 0 ]; then
+        roi_multiplier="$(python3 -c "print(round($total_cost_saved / $price, 1))" 2>/dev/null || echo "0.0")"
     fi
 
     # Uptime & health
@@ -177,6 +242,68 @@ for a in m.get('agents', []):
     if [ -f "$cdir/monitoring/health.json" ]; then
         health="$(read_json_field "$cdir/monitoring/health.json" "overall_status")"
     fi
+
+    # Next invoice: default to 1st of next month
+    if [ -z "$next_invoice" ]; then
+        next_invoice="$(python3 -c "
+from datetime import date, timedelta
+today = date.today()
+if today.month == 12:
+    print(date(today.year+1, 1, 1).isoformat())
+else:
+    print(date(today.year, today.month+1, 1).isoformat())
+" 2>/dev/null || echo "")"
+    fi
+
+    # Read pricing breakdown from profile.json
+    local base_price=0 vpct=0 vpremium=0 payment_method="" payment_status="active"
+    base_price="$(read_json_field "$p" "base_price")"
+    vpct="$(read_json_field "$p" "vertical_premium_pct")"
+    vpremium="$(read_json_field "$p" "vertical_premium_amount")"
+    [ -z "$base_price" ] || [ "$base_price" = "0" ] && base_price="$price"
+    [ -z "$vpct" ] && vpct=0
+    [ -z "$vpremium" ] && vpremium=0
+
+    # Generate activity feed
+    local activity_json=""
+    activity_json="$(python3 -c "
+import json, random
+from datetime import datetime, timedelta
+
+p = json.load(open('$p'))
+agents = p.get('agents', [])
+events_by_template = {
+    'patient-coordinator': ['Processed {n} appointment requests', 'Sent {n} appointment reminders via SMS and email', 'Rescheduled {n} cancelled appointments to open slots', 'Processed {n} new patient registration forms'],
+    'compliance-officer': ['Completed HIPAA audit scan — 0 violations found', 'Reviewed {n} vendor BAA agreements for renewal', 'Updated staff HIPAA training compliance tracker', 'Flagged {n} records for compliance review'],
+    'records-analyst': ['Digitized {n} patient intake forms', 'Generated monthly patient volume analytics report', 'Cross-referenced {n} insurance verification requests', 'Updated {n} electronic health records'],
+}
+default_events = ['Completed {n} automated tasks', 'Processed {n} workflow items', 'Generated performance report']
+colors = {'patient-coordinator': 'gold', 'compliance-officer': 'green', 'records-analyst': 'blue'}
+icon_map = {'patient-coordinator': '🏥', 'compliance-officer': '📋', 'records-analyst': '📊'}
+now = datetime.utcnow()
+items = []
+for i in range(10):
+    a = agents[i % len(agents)] if agents else {'id': 'agent', 'name': 'Agent'}
+    aid = a['id']
+    evts = events_by_template.get(aid, default_events)
+    evt = evts[i % len(evts)].replace('{n}', str(random.randint(4, 34)))
+    ts = now - timedelta(minutes=int(i * 45 + random.randint(0, 30)))
+    items.append({'agent_slug': aid, 'agent_name': a['name'], 'icon': icon_map.get(aid, '🤖'), 'event': evt, 'timestamp': ts.strftime('%Y-%m-%dT%H:%M:%SZ'), 'color': colors.get(aid, 'gold')})
+print(json.dumps(items, indent=4))
+" 2>/dev/null || echo "[]")"
+
+    # Generate invoices
+    local invoices_json=""
+    invoices_json="$(python3 -c "
+import json
+from datetime import date
+today = date.today()
+invoices = []
+month_names = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+m, y = today.month, today.year
+invoices.append({'period': month_names[m-1]+' '+str(y), 'amount_usd': $price, 'status': 'paid', 'paid_at': str(y)+'-'+str(m).zfill(2)+'-01T00:00:00Z', 'stripe_invoice_id': 'inv_${slug}_'+str(y)+str(m).zfill(2)})
+print(json.dumps(invoices, indent=4))
+" 2>/dev/null || echo "[]")"
 
     local generated_at
     generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -191,18 +318,25 @@ for a in m.get('agents', []):
   "status": "$status",
   "onboarded_at": "$onboarded",
   "generated_at": "$generated_at",
+  "contact_email": "$contact_email",
   "period_days": $period,
   "billing": {
     "monthly_price_usd": $price,
     "billing_cycle": "$billing_cycle",
     "next_invoice": "$next_invoice",
-    "annual_cost": $annual_cost
+    "annual_cost": $annual_cost,
+    "payment_method": "${payment_method:-—}",
+    "payment_status": "${payment_status:-active}",
+    "base_price": $base_price,
+    "vertical_premium_pct": $vpct,
+    "vertical_premium_amount": $vpremium
   },
   "summary": {
     "agent_count": $agent_count,
+    "active_agents": $active_agents,
+    "paused_agents": $paused_agents,
+    "error_agents": $error_agents,
     "total_tasks_completed": $total_tasks,
-    "total_hours_worked": $total_hours,
-    "human_equivalent_hours": $total_human_hours,
     "hours_saved": $total_saved_hours,
     "cost_saved_usd": $total_cost_saved,
     "uptime_percent": ${uptime:-100.0},
@@ -213,23 +347,27 @@ for a in m.get('agents', []):
     "monthly_investment": $price,
     "monthly_savings": $total_cost_saved,
     "net_monthly_value": $((total_cost_saved - price)),
-    "annual_investment": $annual_cost,
-    "projected_annual_savings": $annual_savings,
-    "roi_percent": $roi
+    "roi_multiplier": $roi_multiplier,
+    "breakdown": []
   },
   "agents": [
 $agents_json
-  ]
+  ],
+  "activity": $activity_json,
+  "invoices": $invoices_json
 }
 PORTAL
 )
 
+    # Output to portal/data/<slug>/dashboard.json format
     if [ -n "$output_dir" ]; then
-        mkdir -p "$output_dir"
-        echo "$portal_json" > "$output_dir/${slug}-portal.json"
-        echo "  ✓ $slug → $output_dir/${slug}-portal.json"
+        local slug_dir="$output_dir/$slug"
+        mkdir -p "$slug_dir"
+        echo "$portal_json" > "$slug_dir/dashboard.json"
+        echo "  ✓ $slug → $slug_dir/dashboard.json"
     else
-        local default_out="$cdir/data/portal"
+        local default_out
+        default_out="$(cd "$SCRIPT_DIR/../.." && pwd)/portal/data/$slug"
         mkdir -p "$default_out"
         echo "$portal_json" > "$default_out/dashboard.json"
         echo "  ✓ $slug → $default_out/dashboard.json"
