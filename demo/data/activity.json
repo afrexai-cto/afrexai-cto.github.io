@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T03:15:37.166Z",
+  "lastUpdated": "2026-02-17T04:22:13.324Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2864,
-        "hoursSaved": 318.14,
+        "tasksCompleted": 2869,
+        "hoursSaved": 319.41,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,8 +16,8 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T03:08:53.541Z",
-          "taskCount": 957
+          "lastActive": "2026-02-17T04:12:53.574Z",
+          "taskCount": 959
         },
         {
           "id": "compliance-officer",
@@ -30,11 +30,41 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T02:00:00.536Z",
-          "taskCount": 954
+          "lastActive": "2026-02-17T04:12:17.552Z",
+          "taskCount": 957
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T04:12:53.574Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Peter Schneider",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-17T04:18:01.523Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from Dr. Brooks → Gastroenterology",
+          "type": "referral"
+        },
+        {
+          "ts": "2026-02-17T04:12:17.552Z",
+          "agent": "records-analyst",
+          "action": "Completed chart review — Oncology",
+          "type": "quality"
+        },
+        {
+          "ts": "2026-02-17T04:15:20.063Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from Portland Cardiology Associates for Fatima Al-Rashid",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-17T04:18:15.721Z",
+          "agent": "records-analyst",
+          "action": "Flagged incomplete chart for Dr. Pham",
+          "type": "quality"
+        },
         {
           "ts": "2026-02-16T14:20:00Z",
           "agent": "patient-coordinator",
@@ -314,36 +344,6 @@
           "agent": "records-analyst",
           "action": "Processed records request from Metro General for Linda Zhao",
           "type": "records"
-        },
-        {
-          "ts": "2026-02-11T07:38:50.512Z",
-          "agent": "compliance-officer",
-          "action": "Reviewed Tech Davis's access to imaging report — authorized",
-          "type": "audit"
-        },
-        {
-          "ts": "2026-02-11T06:06:06.413Z",
-          "agent": "compliance-officer",
-          "action": "Generated monthly compliance report",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-11T01:47:04.631Z",
-          "agent": "patient-coordinator",
-          "action": "Scheduled annual physical appointment for Yuki Watanabe — Dermatology",
-          "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-11T01:03:37.801Z",
-          "agent": "patient-coordinator",
-          "action": "Processed referral from Dr. Patel → Orthopedics",
-          "type": "referral"
-        },
-        {
-          "ts": "2026-02-10T22:33:01.093Z",
-          "agent": "patient-coordinator",
-          "action": "Processed referral from Dr. Brooks → Internal Medicine",
-          "type": "referral"
         }
       ]
     },
@@ -352,8 +352,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2052,
-        "hoursSaved": 241.5,
+        "tasksCompleted": 2058,
+        "hoursSaved": 243.33,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -362,25 +362,61 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-17T03:10:53.223Z",
-          "taskCount": 686
+          "lastActive": "2026-02-17T04:15:20.530Z",
+          "taskCount": 687
         },
         {
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T03:08:51.145Z",
-          "taskCount": 684
+          "lastActive": "2026-02-17T04:10:42.689Z",
+          "taskCount": 687
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-17T03:02:26.618Z",
-          "taskCount": 682
+          "lastActive": "2026-02-17T04:14:24.397Z",
+          "taskCount": 684
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T04:15:20.530Z",
+          "agent": "legal-ea",
+          "action": "Sent court appearance reminder — Multnomah County Circuit Court",
+          "type": "notification"
+        },
+        {
+          "ts": "2026-02-17T04:14:24.397Z",
+          "agent": "client-followup",
+          "action": "Followed up on outstanding invoice — Daniela Ramirez",
+          "type": "billing"
+        },
+        {
+          "ts": "2026-02-17T04:10:42.689Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in Lease Amendment",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T04:14:15.012Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Rosa Martinez",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T04:13:05.392Z",
+          "agent": "client-followup",
+          "action": "Followed up on outstanding invoice — Rosa Martinez",
+          "type": "billing"
+        },
+        {
+          "ts": "2026-02-17T04:21:27.118Z",
+          "agent": "document-analyst",
+          "action": "Reviewed contract for Marcus Johnson (5 pages)",
+          "type": "review"
+        },
         {
           "ts": "2026-02-16T16:45:00Z",
           "agent": "document-analyst",
@@ -652,42 +688,6 @@
           "agent": "document-analyst",
           "action": "Summarised deposition transcript — Phoenix v. City Council",
           "type": "analysis"
-        },
-        {
-          "ts": "2026-02-12T19:20:00.644Z",
-          "agent": "client-followup",
-          "action": "Sent high reminder: approve zoning brief for Phoenix Properties",
-          "type": "follow-up"
-        },
-        {
-          "ts": "2026-02-12T14:27:18.522Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in licensing agreement",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-12T11:48:06.787Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in employment contract",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-12T03:28:10.024Z",
-          "agent": "client-followup",
-          "action": "Followed up on outstanding invoice — Greenfield Industries",
-          "type": "billing"
-        },
-        {
-          "ts": "2026-02-12T02:19:32.179Z",
-          "agent": "legal-ea",
-          "action": "Filed motion in TechNova v. DataSoft",
-          "type": "filing"
-        },
-        {
-          "ts": "2026-02-12T00:02:57.734Z",
-          "agent": "legal-ea",
-          "action": "Calendared deadline: Client meeting — Rivera on Mar 10",
-          "type": "scheduling"
         }
       ]
     },
@@ -696,8 +696,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 435,
-        "hoursSaved": 72.34,
+        "tasksCompleted": 441,
+        "hoursSaved": 74.18,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -706,11 +706,47 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T03:04:35.383Z",
-          "taskCount": 435
+          "lastActive": "2026-02-17T04:08:09.826Z",
+          "taskCount": 441
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T04:08:09.826Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Hillsboro Medical Office Building",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T04:20:14.875Z",
+          "agent": "site-reporter",
+          "action": "Updated milestone: Permit approvals and site prep at Summit Ridge Residential Phase 2",
+          "type": "milestone"
+        },
+        {
+          "ts": "2026-02-17T04:12:39.397Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Hillsboro Medical Office Building (delayed)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T04:08:05.026Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Riverfront Mixed-Use: clear — none",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-17T04:20:37.018Z",
+          "agent": "site-reporter",
+          "action": "Updated milestone: Foundation work units 20-40 at Cascade Elementary School Renovation",
+          "type": "milestone"
+        },
+        {
+          "ts": "2026-02-17T04:09:30.485Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Hillsboro Medical Office Building (delayed)",
+          "type": "alert"
+        },
         {
           "ts": "2026-02-16T15:00:00Z",
           "agent": "site-reporter",
@@ -977,12 +1013,6 @@
         },
         {
           "ts": "2026-02-10T06:14:27.592Z",
-          "agent": "site-reporter",
-          "action": "Generated daily report — Harbor View Tower",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-10T02:24:16.428Z",
           "agent": "site-reporter",
           "action": "Generated daily report — Harbor View Tower",
           "type": "reporting"

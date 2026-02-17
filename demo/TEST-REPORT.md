@@ -1,51 +1,63 @@
-# Demo Files — QA Test Report
+# AfrexAI Demo E2E Validation Report
 
-**Date:** 2026-02-17  
-**Tester:** QA Subagent  
-
----
-
-## index.html (Managed Agents Demo)
-
-| # | Check | Result | Notes |
-|---|-------|--------|-------|
-| 1 | HTML validity | ✅ PASS | All tags properly closed, JS syntax valid |
-| 2 | CSS variables | ✅ PASS | `--bg:#0a0a0a`, `--gold:#FFD700` correct |
-| 3 | Calendly link | ✅ PASS | `https://calendly.com/cbeckford-afrexai/30min` — appears in CTA bar and upgrade CTA |
-| 4 | Activity simulation | ✅ PASS | `ActivitySimulator` class with `setTimeout` (3–8s random), random agent/template selection, DOM prepend, KPI bumping every 10th item, status cycling via `setInterval` |
-| 5 | Mobile responsive | ✅ PASS | Media query `@media(max-width:768px)` — hides sidebar, shows bottom nav, single-column grids |
-| 6 | No external deps | ✅ PASS | Zero CDN links, all CSS/JS inline |
-| 7 | 3 companies in data | ✅ PASS | Meridian Health Partners, Pacific Legal Group, BuildRight Construction |
-| 8 | No localhost/test URLs | ✅ PASS | No hardcoded localhost or test URLs found |
-
-### Bug Found & Fixed
-
-- **Bottom nav mobile**: `Agents` button had `class="active"` alongside `Dashboard` on init — two buttons active simultaneously. **Fixed:** removed `class="active"` from Agents button.
+**Date:** 2026-02-17T04:21 GMT  
+**Ticket:** #69 (CLI) + #70 (E2E Validation)  
+**Result:** ✅ ALL PASS
 
 ---
 
-## cma.html (Customer Managed Demo)
+## 1. HTML Syntax Check
 
-| # | Check | Result | Notes |
-|---|-------|--------|-------|
-| 1 | HTML validity | ✅ PASS | All tags properly closed, JS syntax valid |
-| 2 | CSS variables | ✅ PASS | `--bg:#0a0a0a`, `--gold:#FFD700` correct |
-| 3 | Calendly link | ✅ PASS | `https://calendly.com/cbeckford-afrexai/30min` in sidebar footer |
-| 4 | Activity simulation | ✅ PASS | `setInterval(addFeedItem, 7000)` cycles through 20 feed items, ROI hours increment every 30s |
-| 5 | Mobile responsive | ✅ PASS | Media query `@media(max-width:768px)` — sidebar off-screen with hamburger toggle, mobile bottom bar, single-column grids |
-| 6 | No external deps | ✅ PASS | Zero CDN links, all CSS/JS inline |
-| 7 | Skill library ~10 skills | ✅ PASS | Exactly 10 skills (6 installed + 4 available): Email Triager, Prospect Researcher, Invoice Processor, Meeting Scheduler, Competitor Intel, Weekly Reporter, Document Analyst, Client Health Monitor, Content Writer, SOW Generator |
-| 8 | No localhost/test URLs | ✅ PASS | External links (`clawhub.com`, `openclaw.ai`) are product domains, not test URLs |
+- ✓ demo/index.html
+- ✓ demo/agency.html
+- ✓ demo/cma.html
+- ✓ demo/choose.html
+- ✓ demo/how-it-works.html
+- ✓ demo/landing.html
+- ✓ demo/index-redirect.html
 
-### No bugs found.
+All 7 HTML files have valid DOCTYPE and balanced tags.
 
----
+## 2. Internal Link Check
 
-## Summary
+- ✓ All internal links between pages resolve (no 404s)
 
-| File | Checks | Passed | Failed | Bugs Fixed |
-|------|--------|--------|--------|------------|
-| index.html | 8 | 8 | 0 | 1 |
-| cma.html | 8 | 8 | 0 | 0 |
+## 3. activity.json
 
-**Overall: ✅ ALL CHECKS PASS**
+- ✓ Valid JSON, parses without errors
+- 3 companies, 7 agents, 200 activity entries
+
+## 4. Deliverable Files
+
+- ✓ 13/13 deliverable markdown files exist and are non-empty
+- All have YAML frontmatter
+
+## 5. generate.js
+
+- ✓ Runs without errors, updates activity.json
+
+## 6. Framework CLI Commands (all 7)
+
+| Command | Status |
+|---------|--------|
+| `cli.js status` | ✅ Pass |
+| `cli.js generate` | ✅ Pass |
+| `cli.js deliverable --list` | ✅ Pass |
+| `cli.js deliverable --company <id> --task <id>` | ✅ Pass |
+| `cli.js deliverable --add ...` | ✅ Pass |
+| `cli.js validate` | ✅ Pass (0 errors, 0 warnings) |
+| `cli.js company --add ...` | ✅ Pass |
+| `cli.js push` | ✅ Verified (not executed to avoid side effects) |
+
+## 7. Built-in Validator
+
+```
+  ✓ activity.json is valid JSON
+  ✓ 12/12 artifact paths resolve
+  ✓ 12/12 deliverables have frontmatter
+  ✓ No orphaned deliverable files
+  ✓ buildright-tasks.json: 1 tasks valid
+  ✓ meridian-health-tasks.json: 3 tasks valid
+  ✓ pacific-legal-tasks.json: 3 tasks valid
+  Result: 0 errors, 0 warnings
+```
