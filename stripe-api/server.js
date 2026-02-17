@@ -12,6 +12,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const Stripe = require('stripe');
+const { execFile } = require('child_process');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -193,8 +195,8 @@ async function handleWebhook(req, res) {
       console.log(`  Email: ${session.customer_email}`);
       console.log(`  Stripe Customer: ${session.customer}`);
 
-      // TODO: Trigger autopilot.sh onboarding
-      // await triggerOnboarding(meta, session.customer_email);
+      // Trigger autopilot onboarding flow
+      triggerOnboarding(meta, session.customer_email, session.customer);
       break;
     }
     case 'customer.subscription.deleted': {
@@ -207,6 +209,34 @@ async function handleWebhook(req, res) {
   }
 
   res.json({ received: true });
+}
+
+// ─── Onboarding trigger ───────────────────────────────
+function triggerOnboarding(meta, email, stripeCustomerId) {
+  const autopilotPath = process.env.AUTOPILOT_SCRIPT
+    || path.resolve(__dirname, '..', 'aaas-platform', 'autopilot.sh');
+
+  const args = [
+    meta.company_name || 'Unknown',
+    email || '',
+    meta.tier || 'starter',
+    meta.vertical || 'general'
+  ];
+
+  console.log(`[onboarding] Triggering autopilot: ${args.join(' ')}`);
+
+  execFile('bash', [autopilotPath, ...args], {
+    env: { ...process.env, STRIPE_CUSTOMER_ID: stripeCustomerId || '' },
+    timeout: 120000
+  }, (err, stdout, stderr) => {
+    if (err) {
+      console.error(`[onboarding] ❌ Autopilot failed:`, err.message);
+      if (stderr) console.error(`[onboarding] stderr:`, stderr);
+      return;
+    }
+    console.log(`[onboarding] ✅ Autopilot completed for ${meta.company_name}`);
+    if (stdout) console.log(stdout);
+  });
 }
 
 // ─── GET /prices ──────────────────────────────────────
