@@ -1,11 +1,31 @@
-condition
-heavy rain — concrete pour delayed
-high winds (45 mph) — crane ops suspended
-thunderstorm warning — site evacuated 2hrs
-frost advisory — masonry work postponed
-clear skies — full operations
-overcast — no impact
-light rain — exterior paint delayed
-heatwave (105°F) — reduced afternoon shift
-fog advisory — crane ops delayed 1hr
-snow forecast — site prep for cover
+date,site_name,condition,high_temp,low_temp,work_impact
+2026-02-01,Riverfront Mixed-Use,rain,48,39,reduced
+2026-02-01,Cascade Elementary,rain,48,39,none
+2026-02-02,Riverfront Mixed-Use,rain,46,37,reduced
+2026-02-02,Summit Ridge Residential,rain,44,35,suspended
+2026-02-03,Riverfront Mixed-Use,clear,50,38,none
+2026-02-03,Pearl District Parking,clear,50,38,none
+2026-02-04,Riverfront Mixed-Use,clear,52,40,none
+2026-02-04,Hillsboro Medical Office,clear,51,39,none
+2026-02-05,Summit Ridge Residential,wind,47,36,reduced
+2026-02-05,Pearl District Parking,wind,48,37,none
+2026-02-06,Riverfront Mixed-Use,clear,53,41,none
+2026-02-06,Cascade Elementary,clear,53,41,none
+2026-02-09,Riverfront Mixed-Use,rain,45,35,reduced
+2026-02-09,Summit Ridge Residential,rain,43,33,suspended
+2026-02-10,Riverfront Mixed-Use,fog,47,36,reduced
+2026-02-10,Pearl District Parking,fog,48,37,none
+2026-02-11,Cascade Elementary,clear,51,39,none
+2026-02-11,Hillsboro Medical Office,clear,50,38,none
+2026-02-12,Riverfront Mixed-Use,rain,44,34,reduced
+2026-02-12,Summit Ridge Residential,snow,38,28,suspended
+2026-02-13,Riverfront Mixed-Use,snow,36,26,suspended
+2026-02-13,Pearl District Parking,snow,37,27,reduced
+2026-02-16,Riverfront Mixed-Use,clear,45,33,none
+2026-02-16,Cascade Elementary,clear,46,34,none
+2026-02-17,Riverfront Mixed-Use,clear,49,37,none
+2026-02-17,Summit Ridge Residential,clear,47,35,none
+2026-02-18,Pearl District Parking,wind,50,38,none
+2026-02-18,Hillsboro Medical Office,wind,49,37,reduced
+2026-02-19,Riverfront Mixed-Use,rain,46,36,reduced
+2026-02-19,Cascade Elementary,rain,47,37,none

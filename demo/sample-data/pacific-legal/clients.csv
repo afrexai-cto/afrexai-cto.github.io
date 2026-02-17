@@ -1,11 +1,26 @@
-name,matter,case,attorney,priority
-Greenfield Industries,IP licensing dispute,Greenfield v. TechCo,Sarah Chen,high
-Apex Development Corp,Commercial lease review,Apex v. Metro Holdings,David Park,medium
-Rivera Family Trust,Estate planning update,Rivera Trust Admin,Maria Lopez,low
-TechNova Inc,Patent infringement,TechNova v. DataSoft,James Wright,high
-Coastal Ventures LLC,Partnership dissolution,Coastal v. Harbor Group,Sarah Chen,medium
-Dr. Elena Vasquez,Medical malpractice defense,Vasquez v. State Board,David Park,high
-Bright Future Foundation,501c3 compliance,BFF Tax Review,Maria Lopez,low
-Sterling Manufacturing,Employment dispute,Sterling v. NLRB,James Wright,medium
-Phoenix Properties,Zoning appeal,Phoenix v. City Council,Sarah Chen,high
-Yamamoto & Sons,Contract renegotiation,Yamamoto Supply Agreement,David Park,medium
+client_id,name,matter_type,attorney_assigned,status,last_contact,billing_rate
+CL-001,Rosa Martinez,litigation,Sarah Langford,active,2026-02-14,375
+CL-002,Chen Industries LLC,corporate,David Ashworth,active,2026-02-12,425
+CL-003,Estate of Harold Williams,estate,Michael Tanaka,active,2026-02-10,350
+CL-004,Daniela Ramirez,litigation,Sarah Langford,active,2026-02-13,375
+CL-005,Marcus Johnson,litigation,Rachel Abrams,active,2026-02-11,395
+CL-006,Nakamura Family Trust,estate,Michael Tanaka,active,2026-02-04,350
+CL-007,Grace Okafor,litigation,Rachel Abrams,active,2026-02-09,395
+CL-008,Miguel Torres,litigation,Sarah Langford,active,2026-02-05,375
+CL-009,Patel Family Trust,estate,David Ashworth,active,2026-02-10,425
+CL-010,Carlos Rivera,employment,Sarah Langford,active,2026-02-11,375
+CL-011,Greenfield Acquisitions LLC,real_estate,David Ashworth,active,2026-02-06,425
+CL-012,State v. Delgado (Defense),litigation,Rachel Abrams,active,2026-02-09,395
+CL-013,Jin-Ho Park,litigation,Michael Tanaka,active,2026-02-13,350
+CL-014,Estate of Ingrid Bergstrom,estate,Michael Tanaka,pending,2026-02-10,350
+CL-015,Washington Real Estate Holdings,real_estate,David Ashworth,active,2026-02-16,425
+CL-016,Kimura Commercial Properties,real_estate,David Ashworth,active,2026-02-19,425
+CL-017,Omar Hassan,corporate,David Ashworth,pending,2026-02-23,425
+CL-018,Westbrook Manufacturing Inc,corporate,David Ashworth,closed,2025-12-15,425
+CL-019,Thompson v. Legacy Health,litigation,Sarah Langford,closed,2025-11-30,375
+CL-020,Estate of Robert Magnusson,estate,Michael Tanaka,closed,2026-01-08,350
+CL-021,Cascade Ventures LLC,corporate,David Ashworth,closed,2025-10-22,425
+CL-022,Svetlana Kozlov,employment,Rachel Abrams,closed,2025-12-20,395
+CL-023,Diallo Family Trust,estate,Michael Tanaka,pending,2026-02-17,350
+CL-024,Pacific Rim Imports LLC,corporate,David Ashworth,active,2026-02-15,425
+CL-025,Bergman & Associates,employment,Rachel Abrams,active,2026-02-08,395

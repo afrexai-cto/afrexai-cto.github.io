@@ -1,11 +1,21 @@
-client,action_needed,priority
-Greenfield Industries,sign retainer amendment,high
-Apex Development Corp,return signed lease,medium
-Rivera Family Trust,provide updated beneficiary list,low
-TechNova Inc,approve discovery responses,high
-Coastal Ventures LLC,schedule mediation prep call,medium
-Dr. Elena Vasquez,submit medical records,high
-Bright Future Foundation,file annual report,low
-Sterling Manufacturing,review settlement terms,medium
-Phoenix Properties,approve zoning brief,high
-Yamamoto & Sons,confirm delivery schedule,medium
+client_name,matter,action_needed,due_date,priority,assigned_to
+Rosa Martinez,Martinez v. State Farm,Prepare mediation brief and settlement demand,2026-02-20,high,Sarah Langford
+Chen Industries LLC,LLC Formation,File articles of incorporation with Secretary of State,2026-02-18,medium,David Ashworth
+Estate of Harold Williams,Probate Administration,Distribute assets per final accounting,2026-02-25,high,Michael Tanaka
+Daniela Ramirez,Ramirez v. PNW Electric,Subpoena additional safety inspection records,2026-02-19,medium,Sarah Langford
+Marcus Johnson,Johnson v. TriMet,File opposition to motion to dismiss,2026-02-16,high,Rachel Abrams
+Grace Okafor,Okafor v. Northwest Mutual,Prepare for oral argument appellate brief review,2026-02-12,high,Rachel Abrams
+Miguel Torres,Torres v. Apex Construction,Disclose expert witnesses per court deadline,2026-02-16,high,Sarah Langford
+Carlos Rivera,Employment Dispute,Review and respond to employer settlement offer,2026-02-17,medium,Sarah Langford
+Patel Family Trust,Tax Court Matter,Draft post-hearing brief,2026-02-18,high,David Ashworth
+Greenfield Acquisitions LLC,Commercial Property Purchase,Complete due diligence title search,2026-02-20,medium,David Ashworth
+State v. Delgado,Criminal Defense,File motion in limine to exclude evidence,2026-02-20,high,Rachel Abrams
+Jin-Ho Park,Park v. Cascade Health,Follow up on mediation outcome and next steps,2026-02-17,medium,Michael Tanaka
+Estate of Ingrid Bergstrom,Probate Filing,File petition for probate with court,2026-02-24,medium,Michael Tanaka
+Washington Real Estate Holdings,Lease Negotiation,Draft commercial lease counteroffer terms,2026-02-23,low,David Ashworth
+Kimura Commercial Properties,Lease Amendment,Send revised lease amendment to opposing counsel,2026-02-21,low,David Ashworth
+Omar Hassan,LLC Formation,Prepare operating agreement and EIN application,2026-02-27,medium,David Ashworth
+Nakamura Family Trust,Trust Amendment,Finalize trust funding schedule with client,2026-02-26,low,Michael Tanaka
+Bergman & Associates,Employment Compliance,Complete employee handbook review and markup,2026-02-28,low,Rachel Abrams
+Diallo Family Trust,Trust Formation,Draft trust instrument for client review,2026-03-02,medium,Michael Tanaka
+Pacific Rim Imports LLC,Corporate Compliance,File annual report with Oregon Secretary of State,2026-02-25,low,David Ashworth

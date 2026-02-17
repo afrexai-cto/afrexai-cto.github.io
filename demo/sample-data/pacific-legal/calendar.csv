@@ -1,11 +1,41 @@
-event,date,court,document_type,pages
-Motion hearing,Mar 3,Superior Court — Dept 7,services agreement,24
-Deposition — Greenfield,Mar 5,N/A,NDA,8
-Filing deadline — TechNova,Mar 7,Federal District Court,employment contract,31
-Client meeting — Rivera,Mar 10,N/A,licensing agreement,18
-Mediation — Coastal,Mar 12,ADR Center,partnership agreement,42
-Trial prep — Vasquez,Mar 15,Superior Court — Dept 12,lease agreement,15
-Board meeting — BFF,Mar 18,N/A,operating agreement,27
-Settlement conference — Sterling,Mar 20,NLRB Regional Office,vendor contract,11
-Zoning hearing — Phoenix,Mar 22,City Hall — Room 4B,purchase agreement,36
-Contract review — Yamamoto,Mar 25,N/A,supply agreement,19
+date,time,event_type,case_name,attorney,court_or_location,notes
+2026-02-02,09:00,hearing,Martinez v. State Farm,Sarah Langford,Multnomah County Circuit Court,Motion for summary judgment oral argument
+2026-02-02,14:00,client_meeting,Chen Industries LLC Formation,David Ashworth,Office - Conference Room A,Review articles of incorporation
+2026-02-03,10:00,deposition,Ramirez v. Pacific Northwest Electric,Sarah Langford,Opposing counsel office - Davis Wright,Deposition of plaintiff expert witness
+2026-02-03,15:00,filing_deadline,Estate of Williams,Michael Tanaka,Multnomah County Probate Court,Final accounting due
+2026-02-04,09:30,hearing,Johnson v. TriMet,Rachel Abrams,US District Court Portland,Rule 12(b)(6) motion to dismiss
+2026-02-04,13:00,client_meeting,Nakamura Property Trust,Michael Tanaka,Office - Conference Room B,Trust amendment discussion
+2026-02-05,10:00,mediation,Torres v. Apex Construction LLC,Sarah Langford,AAA Portland Office,Full-day mediation session with Judge Retired Henderson
+2026-02-06,09:00,filing_deadline,Okafor v. Northwest Mutual,Rachel Abrams,Oregon Court of Appeals,Appellant brief due
+2026-02-06,14:00,client_meeting,Greenfield Acquisitions LLC,David Ashworth,Office - Conference Room A,Due diligence review commercial property
+2026-02-09,09:30,hearing,State v. Delgado,Rachel Abrams,Clackamas County Circuit Court,Pretrial conference
+2026-02-09,11:00,deposition,Martinez v. State Farm,Sarah Langford,Our office - Deposition Suite,Deposition of claims adjuster K. Barnes
+2026-02-10,09:00,client_meeting,Estate of Bergstrom,Michael Tanaka,Office - Conference Room B,Will execution and witness coordination
+2026-02-10,14:00,hearing,Patel Family Trust v. IRS,David Ashworth,US Tax Court Portland,Tax exempt status hearing
+2026-02-11,10:00,filing_deadline,Johnson v. TriMet,Rachel Abrams,US District Court Portland,Discovery responses due
+2026-02-11,15:00,client_meeting,Rivera Employment Dispute,Sarah Langford,Office - Conference Room A,Review settlement offer from employer
+2026-02-12,09:00,deposition,Ramirez v. Pacific Northwest Electric,Sarah Langford,Our office - Deposition Suite,Deposition of defendant site supervisor
+2026-02-12,13:30,client_meeting,Chen Industries LLC Formation,David Ashworth,Client office - Pearl District,Operating agreement final review
+2026-02-13,09:30,hearing,Okafor v. Northwest Mutual,Rachel Abrams,Oregon Court of Appeals,Oral argument
+2026-02-13,14:00,mediation,Park v. Cascade Health Systems,Michael Tanaka,Stoll Berne Mediation Center,Medical malpractice mediation half-day
+2026-02-16,09:00,filing_deadline,Torres v. Apex Construction LLC,Sarah Langford,Multnomah County Circuit Court,Expert witness disclosures due
+2026-02-16,11:00,client_meeting,Washington Real Estate Holdings,David Ashworth,Office - Conference Room A,Commercial lease negotiation strategy
+2026-02-17,09:30,hearing,State v. Delgado,Rachel Abrams,Clackamas County Circuit Court,Suppression hearing
+2026-02-17,14:00,deposition,Martinez v. State Farm,Sarah Langford,Opposing counsel office - Stoel Rives,Deposition of accident reconstructionist
+2026-02-18,10:00,client_meeting,Estate of Williams,Michael Tanaka,Office - Conference Room B,Beneficiary distribution meeting
+2026-02-18,15:00,filing_deadline,Patel Family Trust v. IRS,David Ashworth,US Tax Court Portland,Post-hearing brief due
+2026-02-19,09:00,hearing,Rivera Employment Dispute,Sarah Langford,BOLI Hearing Room Portland,Discrimination claim hearing
+2026-02-19,13:00,client_meeting,Kimura Commercial Lease,David Ashworth,Client office - Lloyd District,Lease amendment review
+2026-02-20,09:30,deposition,Johnson v. TriMet,Rachel Abrams,TriMet Legal Department,Deposition of operations manager
+2026-02-20,14:00,filing_deadline,State v. Delgado,Rachel Abrams,Clackamas County Circuit Court,Motion in limine due
+2026-02-23,09:00,hearing,Ramirez v. Pacific Northwest Electric,Sarah Langford,Multnomah County Circuit Court,Daubert hearing on expert testimony
+2026-02-23,11:00,client_meeting,Hassan Import Export LLC,David Ashworth,Office - Conference Room A,Entity formation and compliance review
+2026-02-24,10:00,mediation,Martinez v. State Farm,Sarah Langford,US Arbitration & Mediation Portland,Settlement conference full day
+2026-02-24,14:00,filing_deadline,Park v. Cascade Health Systems,Michael Tanaka,Multnomah County Circuit Court,Amended complaint due
+2026-02-25,09:00,hearing,Okafor v. Northwest Mutual,Rachel Abrams,Oregon Court of Appeals,Decision expected published
+2026-02-25,13:00,client_meeting,Greenfield Acquisitions LLC,David Ashworth,Office - Conference Room B,Closing document review
+2026-02-26,09:30,deposition,Rivera Employment Dispute,Sarah Langford,Our office - Deposition Suite,Deposition of HR director
+2026-02-26,14:00,client_meeting,Nakamura Property Trust,Michael Tanaka,Client residence - Lake Oswego,Trust funding status review
+2026-02-27,09:00,filing_deadline,Ramirez v. Pacific Northwest Electric,Sarah Langford,Multnomah County Circuit Court,Pretrial memorandum due
+2026-02-27,11:00,hearing,Hassan Import Export LLC,David Ashworth,Oregon Secretary of State,Entity registration hearing
+2026-03-02,09:30,client_meeting,Estate of Bergstrom,Michael Tanaka,Office - Conference Room B,Probate status update with family
