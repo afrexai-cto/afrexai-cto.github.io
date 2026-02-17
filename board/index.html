@@ -96,6 +96,7 @@ header h1{color:var(--gold);font-size:1.2rem;white-space:nowrap}
   <header>
     <h1>🏴 AfrexAI War Room</h1>
     <div class="header-controls">
+      <select id="filter-project"><option value="">All Projects</option><option>Demo Portal</option><option>Platform</option><option>Skills</option><option>Outbound</option><option>Website</option><option>Infrastructure</option><option>Trading</option></select>
       <select id="filter-step"><option value="">All Steps</option><option>Step 1</option><option>Step 2</option><option>Step 3</option><option>All</option></select>
       <select id="filter-priority"><option value="">All Priorities</option><option>High</option><option>Medium</option><option>Low</option></select>
       <select id="filter-assignee"><option value="">All Assignees</option><option>Kael</option><option>Kalin</option><option>Christina</option></select>
@@ -117,6 +118,8 @@ header h1{color:var(--gold);font-size:1.2rem;white-space:nowrap}
     <select id="m-status">
       <option>triage</option><option>backlog</option><option>blocked</option><option>progress</option><option>test</option><option>demo</option><option>done</option>
     </select>
+    <label>Project</label>
+    <select id="m-project"><option>Demo Portal</option><option>Platform</option><option>Skills</option><option>Outbound</option><option>Website</option><option>Infrastructure</option><option>Trading</option></select>
     <label>Step</label>
     <select id="m-step"><option>Step 1</option><option>Step 2</option><option>Step 3</option><option>All</option></select>
     <label>Priority</label>
@@ -201,8 +204,36 @@ const DEFAULT_TASKS=[
   {id:55,title:'Insurance ROI Calculator',status:'done',step:'Step 2',priority:'Medium',assignee:'Kael',note:'https://afrexai-cto.github.io/verticals/insurance/roi-calculator.html'},
   {id:56,title:'Recruitment ROI Calculator',status:'done',step:'Step 2',priority:'Medium',assignee:'Kael',note:'https://afrexai-cto.github.io/verticals/recruitment/roi-calculator.html'},
   {id:57,title:'Blog: AI Agents for Insurance Claims 2026',status:'done',step:'All',priority:'High',assignee:'Kael',note:'SEO play — insurance AI keyword targeting'},
-  {id:58,title:'Logistics ROI Calculator',status:'backlog',step:'Step 2',priority:'Medium',assignee:'Kael',note:'Next vertical calculator to build'},
-  {id:59,title:'Hospitality ROI Calculator',status:'backlog',step:'Step 2',priority:'Medium',assignee:'Kael',note:''}
+  {id:58,title:'Logistics ROI Calculator',status:'backlog',step:'Step 2',priority:'Medium',assignee:'Kael',note:'Next vertical calculator to build',project:'Website'},
+  {id:59,title:'Hospitality ROI Calculator',status:'backlog',step:'Step 2',priority:'Medium',assignee:'Kael',note:'',project:'Website'},
+  // Demo Portal project
+  {id:60,title:'Demo landing page (CMA vs Managed)',status:'done',step:'All',priority:'High',assignee:'Kael',note:'https://afrexai-cto.github.io/demo/landing.html',project:'Demo Portal'},
+  {id:61,title:'Managed agents interactive demo',status:'done',step:'Step 3',priority:'High',assignee:'Kael',note:'3 companies, live activity feeds, ROI',project:'Demo Portal'},
+  {id:62,title:'CMA interactive demo',status:'done',step:'Step 1',priority:'High',assignee:'Kael',note:'Skill library, 3 self-managed agents',project:'Demo Portal'},
+  {id:63,title:'Activity generator (Node.js + sample data)',status:'done',step:'All',priority:'High',assignee:'Kael',note:'generate.js on 30min cron',project:'Demo Portal'},
+  {id:64,title:'16 sample data files (3 verticals)',status:'done',step:'All',priority:'Medium',assignee:'Kael',note:'CSVs, legal docs, HIPAA policies',project:'Demo Portal'},
+  {id:65,title:'Frontend live data integration',status:'done',step:'All',priority:'High',assignee:'Kael',note:'Fetch activity.json with fallback to simulation',project:'Demo Portal'},
+  {id:66,title:'6 real AI deliverables — batch 1',status:'done',step:'All',priority:'High',assignee:'Kael',note:'Contract review, compliance audit, site report, scheduling, records, client email',project:'Demo Portal'},
+  {id:67,title:'Artifact viewer modal + markdown renderer',status:'done',step:'All',priority:'High',assignee:'Kael',note:'Click View Output to read real agent work',project:'Demo Portal'},
+  {id:68,title:'6 more deliverables — batch 2',status:'progress',step:'All',priority:'High',assignee:'Kael',note:'BAA review, brief summary, deadline report, weekly progress, safety report, batch reminders',project:'Demo Portal'},
+  {id:69,title:'Demo framework CLI',status:'progress',step:'All',priority:'Medium',assignee:'Kael',note:'status, generate, validate, push, add company commands',project:'Demo Portal'},
+  {id:70,title:'E2E validation swarm',status:'progress',step:'All',priority:'High',assignee:'Kael',note:'Code audit + browser testing in parallel',project:'Demo Portal'},
+  {id:71,title:'Real agent deliverable cron (3x/day)',status:'done',step:'All',priority:'High',assignee:'Kael',note:'8am/2pm/8pm generates new AI deliverables',project:'Demo Portal'},
+  {id:72,title:'Git auto-push cron (every 10min)',status:'done',step:'All',priority:'Medium',assignee:'Kael',note:'Pushes activity.json changes to GitHub Pages',project:'Demo Portal'},
+  {id:73,title:'Add more demo companies (SaaS, Finance)',status:'backlog',step:'All',priority:'Medium',assignee:'Kael',note:'Expand from 3 to 5-6 verticals',project:'Demo Portal'},
+  {id:74,title:'Video walkthrough of demo',status:'backlog',step:'All',priority:'High',assignee:'Christina',note:'3-5 min screen recording for prospects',project:'Demo Portal'},
+  {id:75,title:'Sandbox mode — 24hr prospect trial',status:'backlog',step:'All',priority:'Low',assignee:'Kalin',note:'Prospect gets real agents on sample data for 24hrs',project:'Demo Portal'},
+  // Platform project
+  {id:76,title:'Deploy stripe-api to Railway',status:'blocked',step:'Step 3',priority:'High',assignee:'Kalin',note:'Needs env vars: STRIPE_SECRET_KEY, WEBHOOK_SECRET, FRONTEND_URL',project:'Platform'},
+  {id:77,title:'Wire Stripe webhook to orchestrator',status:'blocked',step:'Step 3',priority:'High',assignee:'Kalin',note:'Blocked on Railway deploy',project:'Platform'},
+  {id:78,title:'Fix DNS: afrexai.com → GitHub Pages',status:'blocked',step:'All',priority:'High',assignee:'Christina',note:'Christina to update in Squarespace',project:'Infrastructure'},
+  {id:79,title:'Configure Gmail SMTP in 1Password',status:'blocked',step:'All',priority:'High',assignee:'Kalin',note:'Needed for send-email.sh',project:'Infrastructure'},
+  {id:80,title:'LinkedIn auto-posting cron (Mon/Wed/Fri)',status:'done',step:'Step 2',priority:'High',assignee:'Kael',note:'Research-driven thought leadership',project:'Outbound'},
+  {id:81,title:'Goldman Sachs LinkedIn post',status:'done',step:'Step 2',priority:'High',assignee:'Kael',note:'First org post published',project:'Outbound'},
+  {id:82,title:'Builder skills (planner/developer/tester)',status:'done',step:'Step 1',priority:'High',assignee:'Kael',note:'Converted from Christina PIV framework',project:'Skills'},
+  {id:83,title:'Capital Engine v133 trader merge',status:'done',step:'All',priority:'High',assignee:'Kael',note:'Merged into trader workspace',project:'Trading'},
+  {id:84,title:'Hyperliquid API key',status:'blocked',step:'All',priority:'High',assignee:'Kalin',note:'Kalin needs to generate',project:'Trading'},
+  {id:85,title:'CoinGecko API key',status:'blocked',step:'All',priority:'Medium',assignee:'Kalin',note:'Free tier, needs signup',project:'Trading'}
 ];
 
 let tasks=[];
@@ -241,15 +272,17 @@ function nextId(){return tasks.length?Math.max(...tasks.map(t=>t.id))+1:1}
 
 // Filters
 function getFilters(){
-  return{step:document.getElementById('filter-step').value,priority:document.getElementById('filter-priority').value,assignee:document.getElementById('filter-assignee').value};
+  return{project:document.getElementById('filter-project').value,step:document.getElementById('filter-step').value,priority:document.getElementById('filter-priority').value,assignee:document.getElementById('filter-assignee').value};
 }
 function matchFilter(t){
   const f=getFilters();
+  if(f.project&&(t.project||'')!==f.project)return false;
   if(f.step&&t.step!==f.step)return false;
   if(f.priority&&t.priority!==f.priority)return false;
   if(f.assignee&&t.assignee!==f.assignee)return false;
   return true;
 }
+document.getElementById('filter-project').onchange=render;
 document.getElementById('filter-step').onchange=render;
 document.getElementById('filter-priority').onchange=render;
 document.getElementById('filter-assignee').onchange=render;
@@ -271,7 +304,7 @@ function render(){
       c.draggable=true;
       c.dataset.id=t.id;
       const pc=t.priority==='High'?'priority-high':t.priority==='Medium'?'priority-medium':'priority-low';
-      c.innerHTML=`<div class="card-title">${esc(t.title)}</div><div class="card-meta"><span class="card-tag">${esc(t.step)}</span><span class="card-tag ${pc}">${t.priority}</span><span class="card-tag">${esc(t.assignee)}</span></div>${t.note?`<div class="card-blocked-note">${esc(t.note)}</div>`:''}`;
+      c.innerHTML=`<div class="card-title">${esc(t.title)}</div><div class="card-meta">${t.project?`<span class="card-tag" style="color:var(--gold);border-color:#78350f">${esc(t.project)}</span>`:''}<span class="card-tag">${esc(t.step)}</span><span class="card-tag ${pc}">${t.priority}</span><span class="card-tag">${esc(t.assignee)}</span></div>${t.note?`<div class="card-blocked-note">${esc(t.note)}</div>`:''}`;
       c.addEventListener('dragstart',e=>{dragId=t.id;c.classList.add('dragging');e.dataTransfer.effectAllowed='move'});
       c.addEventListener('dragend',()=>{dragId=null;c.classList.remove('dragging');document.querySelectorAll('.column').forEach(x=>x.classList.remove('drag-over'))});
       cards.appendChild(c);
@@ -292,7 +325,7 @@ function closeModal(){document.getElementById('modal').classList.remove('active'
 function saveTask(){
   const title=document.getElementById('m-title').value.trim();
   if(!title)return;
-  tasks.push({id:nextId(),title,status:document.getElementById('m-status').value,step:document.getElementById('m-step').value,priority:document.getElementById('m-priority').value,assignee:document.getElementById('m-assignee').value,note:document.getElementById('m-note').value.trim()});
+  tasks.push({id:nextId(),title,status:document.getElementById('m-status').value,project:document.getElementById('m-project').value,step:document.getElementById('m-step').value,priority:document.getElementById('m-priority').value,assignee:document.getElementById('m-assignee').value,note:document.getElementById('m-note').value.trim()});
   saveTasks();closeModal();render();
 }
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
