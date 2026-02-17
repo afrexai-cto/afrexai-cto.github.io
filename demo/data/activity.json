@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T04:26:53.678Z",
+  "lastUpdated": "2026-02-17T06:02:38.186Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2851,
-        "hoursSaved": 314.37,
+        "tasksCompleted": 2853,
+        "hoursSaved": 315.33,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -30,11 +30,23 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T04:26:30.185Z",
-          "taskCount": 950
+          "lastActive": "2026-02-17T05:49:05.091Z",
+          "taskCount": 952
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T05:49:05.091Z",
+          "agent": "records-analyst",
+          "action": "Completed chart review — Gastroenterology",
+          "type": "quality"
+        },
+        {
+          "ts": "2026-02-17T05:51:09.411Z",
+          "agent": "records-analyst",
+          "action": "Archived 24 inactive patient records",
+          "type": "maintenance"
+        },
         {
           "ts": "2026-02-17T04:23:07.810Z",
           "agent": "patient-coordinator",
@@ -246,8 +258,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2035,
-        "hoursSaved": 236.2,
+        "tasksCompleted": 2037,
+        "hoursSaved": 236.5,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -270,11 +282,23 @@
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-17T04:22:11.837Z",
-          "taskCount": 678
+          "lastActive": "2026-02-17T05:50:03.140Z",
+          "taskCount": 680
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T05:50:03.140Z",
+          "agent": "client-followup",
+          "action": "Sent high reminder: Prepare mediation brief and settlement demand for Rosa Martinez",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-17T05:56:24.302Z",
+          "agent": "client-followup",
+          "action": "Scheduled consultation with Patel Family Trust",
+          "type": "scheduling"
+        },
         {
           "ts": "2026-02-17T04:22:11.837Z",
           "agent": "client-followup",
@@ -486,8 +510,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 427,
-        "hoursSaved": 69.66,
+        "tasksCompleted": 429,
+        "hoursSaved": 70.54,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -496,11 +520,23 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T04:16:26.921Z",
-          "taskCount": 427
+          "lastActive": "2026-02-17T05:54:00.993Z",
+          "taskCount": 429
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T05:54:00.993Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Riverfront Mixed-Use Development",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T05:56:17.217Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Riverfront Mixed-Use Development",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-17T04:16:26.921Z",
           "agent": "site-reporter",
@@ -712,8 +748,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 1879,
-        "hoursSaved": 199.48,
+        "tasksCompleted": 1883,
+        "hoursSaved": 200.57,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -729,18 +765,42 @@
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-17T04:24:50.452Z",
-          "taskCount": 627
+          "lastActive": "2026-02-17T06:02:16.609Z",
+          "taskCount": 629
         },
         {
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-17T04:26:30.594Z",
-          "taskCount": 626
+          "lastActive": "2026-02-17T05:48:35.991Z",
+          "taskCount": 628
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T05:48:35.991Z",
+          "agent": "support-triage",
+          "action": "Escalated low priority ticket for Starline Media",
+          "type": "escalation"
+        },
+        {
+          "ts": "2026-02-17T06:02:05.658Z",
+          "agent": "support-triage",
+          "action": "Categorised 4 new tickets — 4 auto-resolved",
+          "type": "triage"
+        },
+        {
+          "ts": "2026-02-17T06:02:16.609Z",
+          "agent": "onboarding-specialist",
+          "action": "Scheduled kickoff call with Horizon Pharma — Sarah Chen",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T06:01:36.704Z",
+          "agent": "onboarding-specialist",
+          "action": "Completed data import for Oaktree Consulting — 1731 records migrated",
+          "type": "onboarding"
+        },
         {
           "ts": "2026-02-17T02:30:00Z",
           "agent": "support-triage",
@@ -970,8 +1030,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2238,
-        "hoursSaved": 268.49,
+        "tasksCompleted": 2241,
+        "hoursSaved": 269.18,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -980,25 +1040,43 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-17T04:26:53.635Z",
-          "taskCount": 744
+          "lastActive": "2026-02-17T05:52:31.688Z",
+          "taskCount": 745
         },
         {
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-17T04:14:29.679Z",
-          "taskCount": 747
+          "lastActive": "2026-02-17T05:54:17.867Z",
+          "taskCount": 748
         },
         {
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T04:18:59.553Z",
-          "taskCount": 745
+          "lastActive": "2026-02-17T05:56:22.077Z",
+          "taskCount": 746
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T05:54:17.867Z",
+          "agent": "portfolio-reviewer",
+          "action": "Calculated RMD for Greenfield Pension Fund — distribution schedule updated",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-17T05:56:22.077Z",
+          "agent": "filing-coordinator",
+          "action": "Submitted Form 13F to SEC EDGAR — Atlas Wealth Advisors",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-17T05:52:31.688Z",
+          "agent": "compliance-monitor",
+          "action": "Completed privacy_notice_distribution check — Reg S-P — compliant",
+          "type": "compliance"
+        },
         {
           "ts": "2026-02-17T02:00:00Z",
           "agent": "portfolio-reviewer",
