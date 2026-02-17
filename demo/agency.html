@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Agency Partner Program</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--gold:#FFD700;--gold-dim:#b8960f;--text:#e0e0e0;--muted:#888;--card:#141414;--border:#222}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:14px 32px;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s;border:none}
+.btn-gold{background:var(--gold);color:#0a0a0a}.btn-gold:hover{background:#fff;color:#0a0a0a}
+.btn-outline{border:2px solid var(--gold);color:var(--gold);background:transparent}.btn-outline:hover{background:var(--gold);color:#0a0a0a}
+section{padding:80px 0}
+h2{font-size:2rem;color:#fff;margin-bottom:16px}
+.gold{color:var(--gold)}
+
+/* Hero */
+.hero{padding:120px 0 80px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#1a1400 0%,var(--bg) 70%)}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);color:#fff;max-width:800px;margin:0 auto 20px}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:600px;margin:0 auto 36px}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* Business Model */
+.model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:40px 0}
+.model-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center}
+.model-card .label{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.model-card .value{font-size:1.8rem;font-weight:800;color:var(--gold)}
+.model-card.profit .value{color:#4ade80}
+
+/* Calculator */
+.calc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;margin-top:48px;max-width:700px;margin-left:auto;margin-right:auto}
+.calc h3{color:#fff;font-size:1.4rem;margin-bottom:24px;text-align:center}
+.slider-wrap{margin-bottom:32px;text-align:center}
+.slider-wrap label{font-size:1rem;color:var(--muted)}
+.slider-wrap .num{font-size:2.4rem;font-weight:800;color:var(--gold);display:block;margin:8px 0}
+input[type=range]{-webkit-appearance:none;width:100%;max-width:500px;height:6px;background:#333;border-radius:3px;outline:none;margin-top:8px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;background:var(--gold);border-radius:50%;cursor:pointer}
+.calc-results{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.calc-results .cr{padding:20px;border-radius:10px;background:#1a1a1a}
+.calc-results .cr .cl{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
+.calc-results .cr .cv{font-size:1.6rem;font-weight:800}
+.cr.rev .cv{color:var(--gold)}.cr.cost .cv{color:var(--text)}.cr.prof .cv{color:#4ade80}
+
+/* What You Get */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;gap:16px;align-items:flex-start}
+.feat .icon{font-size:1.6rem;flex-shrink:0;width:40px;height:40px;background:#1a1700;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.feat h4{color:#fff;margin-bottom:4px}
+.feat p{color:var(--muted);font-size:.9rem}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin-top:40px;counter-reset:step}
+.step{text-align:center;position:relative;counter-increment:step}
+.step::before{content:counter(step);display:block;width:48px;height:48px;margin:0 auto 16px;border-radius:50%;background:var(--gold);color:#0a0a0a;font-weight:800;font-size:1.2rem;line-height:48px}
+.step h4{color:#fff;margin-bottom:6px}
+.step p{color:var(--muted);font-size:.85rem}
+
+/* Proof */
+.previews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:36px 0}
+.preview{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.preview .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:8px}
+.preview h4{color:#fff;font-size:1rem;margin-bottom:6px}
+.preview p{color:var(--muted);font-size:.85rem}
+.proof-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px}
+
+/* FAQ */
+.faq{max-width:700px;margin:40px auto 0}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0;cursor:pointer}
+.faq-q{display:flex;justify-content:space-between;align-items:center;color:#fff;font-weight:600;font-size:1.05rem}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--gold);transition:transform .2s}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--muted);font-size:.95rem}
+.faq-item.open .faq-a{max-height:200px;padding-top:12px}
+
+/* Final CTA */
+.final-cta{text-align:center;padding:100px 0;background:radial-gradient(ellipse at 50% 100%,#1a1400 0%,var(--bg) 70%)}
+.final-cta h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:12px}
+.final-cta p{color:var(--muted);margin-bottom:36px;font-size:1.1rem}
+
+@media(max-width:600px){
+  section{padding:60px 0}
+  .calc-results{grid-template-columns:1fr}
+  .hero{padding:80px 0 60px}
+  .model-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+<div class="container">
+  <h1>Deploy AI Agent Workforces <span class="gold">for Your Clients</span></h1>
+  <p>You sell. We build. They win. Recurring revenue on autopilot.</p>
+  <div class="hero-ctas">
+    <a href="landing.html" class="btn btn-gold">See the Demo</a>
+    <a href="https://calendly.com/cbeckford-afrexai/30min" class="btn btn-outline">Book a Call</a>
+  </div>
+</div>
+</section>
+
+<!-- Business Model -->
+<section>
+<div class="container">
+  <h2 style="text-align:center">The Business Model</h2>
+  <p style="text-align:center;color:var(--muted)">Simple math. Serious margins.</p>
+  <div class="model-grid">
+    <div class="model-card"><div class="label">You charge your client</div><div class="value">$5K–15K/mo</div></div>
+    <div class="model-card"><div class="label">You pay AfrexAI wholesale</div><div class="value">30–40%</div></div>
+    <div class="model-card profit"><div class="label">Your margin</div><div class="value">60–70%</div></div>
+  </div>
+
+  <div class="calc">
+    <h3>Revenue Calculator</h3>
+    <div class="slider-wrap">
+      <label>Number of clients</label>
+      <span class="num" id="clientNum">5</span>
+      <input type="range" id="slider" min="1" max="20" value="5">
+    </div>
+    <div class="calc-results">
+      <div class="cr rev"><div class="cl">Monthly Revenue</div><div class="cv" id="rev">$37,500</div></div>
+      <div class="cr cost"><div class="cl">Your Cost</div><div class="cv" id="cost">$13,125</div></div>
+      <div class="cr prof"><div class="cl">Your Profit</div><div class="cv" id="prof">$24,375</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- What You Get -->
+<section>
+<div class="container">
+  <h2 style="text-align:center">What You Get</h2>
+  <div class="features">
+    <div class="feat"><div class="icon">🏷️</div><div><h4>White-Label Deployment</h4><p>Your brand, your relationship. Clients never see AfrexAI.</p></div></div>
+    <div class="feat"><div class="icon">📦</div><div><h4>6 Vertical Templates</h4><p>Healthcare, Legal, Construction, Financial, SaaS, Professional Services — ready to go.</p></div></div>
+    <div class="feat"><div class="icon">📊</div><div><h4>Branded Dashboard</h4><p>Customer-facing dashboard with your logo and colours.</p></div></div>
+    <div class="feat"><div class="icon">📄</div><div><h4>Real AI Deliverables</h4><p>Contracts, reports, audits — tangible output your clients can see. <a href="landing.html">View examples →</a></p></div></div>
+    <div class="feat"><div class="icon">☁️</div><div><h4>Zero Infrastructure</h4><p>No servers, no DevOps, no headaches. We run everything.</p></div></div>
+    <div class="feat"><div class="icon">⚡</div><div><h4>48-Hour Onboarding</h4><p>From signed deal to live agents in under two days per client.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- How It Works -->
+<section style="background:#0f0f0f">
+<div class="container">
+  <h2 style="text-align:center">How It Works for Agencies</h2>
+  <div class="steps">
+    <div class="step"><h4>Close the Deal</h4><p>We give you sales materials, decks, and scripts.</p></div>
+    <div class="step"><h4>Send Us Details</h4><p>Company name, vertical, tier. That's it.</p></div>
+    <div class="step"><h4>We Deploy</h4><p>Agents go live automatically under your brand.</p></div>
+    <div class="step"><h4>Client Sees Results</h4><p>Deliverables appear in their branded dashboard.</p></div>
+    <div class="step"><h4>You Collect MRR</h4><p>Monthly recurring revenue, every month.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- Proof -->
+<section>
+<div class="container">
+  <h2 style="text-align:center">See What Your Clients Will See</h2>
+  <div class="proof-ctas" style="justify-content:center;margin-bottom:12px">
+    <a href="landing.html" class="btn btn-outline">View Managed Demo</a>
+    <a href="landing.html#artifacts" class="btn btn-outline">Browse Deliverables</a>
+  </div>
+  <div class="previews">
+    <div class="preview"><div class="tag">Legal</div><h4>Contract Risk Analysis — NDA Review</h4><p>AI agent identified 3 high-risk clauses and generated a redlined version in 4 minutes.</p></div>
+    <div class="preview"><div class="tag">Financial</div><h4>Q4 Compliance Audit Report</h4><p>Automated SOX compliance check across 12 control areas. 94% pass rate, 2 remediation items flagged.</p></div>
+    <div class="preview"><div class="tag">Construction</div><h4>Site Safety Inspection — Phase 2</h4><p>Agent processed 48 inspection photos and generated a punch list with priority rankings.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#0f0f0f">
+<div class="container">
+  <h2 style="text-align:center">Agency FAQ</h2>
+  <div class="faq">
+    <div class="faq-item"><div class="faq-q">Do I need technical skills?</div><div class="faq-a">No. We handle all the technology — deployment, infrastructure, updates, and support. You focus on selling and client relationships.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I white-label it?</div><div class="faq-a">Yes. Your brand on every dashboard, report, and email. Your clients will never see AfrexAI mentioned anywhere.</div></div>
+    <div class="faq-item"><div class="faq-q">What if a client churns?</div><div class="faq-a">No lock-in contracts. Cancel anytime. You only pay for active client deployments.</div></div>
+    <div class="faq-item"><div class="faq-q">How fast can I onboard a client?</div><div class="faq-a">48 hours from the moment you send us the details. Most deployments go live same day.</div></div>
+    <div class="faq-item"><div class="faq-q">What verticals do you support?</div><div class="faq-a">Six ready today — Healthcare, Legal, Construction, Financial, SaaS, and Professional Services. More verticals coming quarterly.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+<div class="container">
+  <h2>Start your agency today.<br><span class="gold">First client deployment is on us.</span></h2>
+  <p>No risk. No setup fees. Just results.</p>
+  <a href="https://calendly.com/cbeckford-afrexai/30min" class="btn btn-gold">Book a Strategy Call</a>
+</div>
+</section>
+
+<script>
+const slider=document.getElementById('slider'),numEl=document.getElementById('clientNum'),revEl=document.getElementById('rev'),costEl=document.getElementById('cost'),profEl=document.getElementById('prof');
+const fmt=n=>'$'+n.toLocaleString();
+function update(){const c=+slider.value,rev=c*7500,cost=Math.round(rev*.35),profit=rev-cost;numEl.textContent=c;revEl.textContent=fmt(rev);costEl.textContent=fmt(cost);profEl.textContent=fmt(profit)}
+slider.addEventListener('input',update);
+
+document.querySelectorAll('.faq-item').forEach(item=>{item.addEventListener('click',()=>{item.classList.toggle('open')})});
+</script>
+</body>
+</html>

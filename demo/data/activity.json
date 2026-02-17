@@ -36,6 +36,22 @@
       ],
       "recentActivity": [
         {
+          "ts": "2026-02-16T14:20:00Z",
+          "agent": "patient-coordinator",
+          "action": "Processed batch appointment reminders for 23 patients — 20 confirmed, 3 flagged for follow-up",
+          "type": "scheduling",
+          "artifact": "deliverables/meridian-health/scheduling-confirmation-2026-02-16T14-20-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-16T09:00:00Z",
+          "agent": "compliance-officer",
+          "action": "Completed vendor BAA review — scanned 15 agreements, flagged 2 expired (LabCorp, Quest Diagnostics)",
+          "type": "compliance",
+          "artifact": "deliverables/meridian-health/compliance-report-2026-02-16T09-00-00.md",
+          "real": true
+        },
+        {
           "ts": "2026-02-17T03:08:53.541Z",
           "agent": "patient-coordinator",
           "action": "Updated intake forms for Layla Ibrahim",
@@ -328,18 +344,6 @@
           "agent": "patient-coordinator",
           "action": "Processed referral from Dr. Brooks → Internal Medicine",
           "type": "referral"
-        },
-        {
-          "ts": "2026-02-10T20:21:44.310Z",
-          "agent": "patient-coordinator",
-          "action": "Updated intake forms for Samantha Cruz",
-          "type": "documentation"
-        },
-        {
-          "ts": "2026-02-10T04:19:06.478Z",
-          "agent": "compliance-officer",
-          "action": "Generated monthly compliance report",
-          "type": "reporting"
         }
       ]
     },
@@ -377,6 +381,22 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-16T16:45:00Z",
+          "agent": "document-analyst",
+          "action": "Summarized motion to dismiss in Martinez v. State Farm — recommended opposing on bad faith, conceding §790.03 count",
+          "type": "analysis",
+          "artifact": "deliverables/pacific-legal/brief-summary-2026-02-16T16-45-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-16T08:30:00Z",
+          "agent": "legal-ea",
+          "action": "Generated weekly deadline report — 12 items tracked, 3 critical within 48 hours",
+          "type": "reporting",
+          "artifact": "deliverables/pacific-legal/deadline-report-2026-02-16T08-30-00.md",
+          "real": true
+        },
         {
           "ts": "2026-02-17T03:10:53.223Z",
           "agent": "legal-ea",
@@ -668,18 +688,6 @@
           "agent": "legal-ea",
           "action": "Calendared deadline: Client meeting — Rivera on Mar 10",
           "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-11T16:54:23.045Z",
-          "agent": "legal-ea",
-          "action": "Sent court appearance reminder — N/A",
-          "type": "notification"
-        },
-        {
-          "ts": "2026-02-11T04:06:50.529Z",
-          "agent": "client-followup",
-          "action": "Sent medium reminder: return signed lease for Apex Development Corp",
-          "type": "follow-up"
         }
       ]
     },
@@ -703,6 +711,22 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-16T15:00:00Z",
+          "agent": "site-reporter",
+          "action": "Generated weekly progress summary across all 4 active sites — 3 on track, 1 watch (Marina Heights -2 days)",
+          "type": "reporting",
+          "artifact": "deliverables/buildright/site-report-2026-02-16T15-00-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-16T11:00:00Z",
+          "agent": "site-reporter",
+          "action": "Generated January 2026 safety summary — zero LTI, 2 near-misses resolved, 100% toolbox talk attendance",
+          "type": "safety",
+          "artifact": "deliverables/buildright/safety-report-2026-02-16T11-00-00.md",
+          "real": true
+        },
         {
           "ts": "2026-02-17T03:04:35.383Z",
           "agent": "site-reporter",

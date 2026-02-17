@@ -6,7 +6,29 @@
 <title>AfrexAI — See AI Agents in Action</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+  /* ── Nav Bar ── */
+  .topnav{position:fixed;top:0;left:0;right:0;height:44px;background:rgba(17,17,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+  .topnav .nav-brand{color:#FFD700;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:.5px}
+  .topnav .nav-links{display:flex;gap:4px;align-items:center}
+  .topnav .nav-links a{color:#999;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px;transition:all .15s;white-space:nowrap}
+  .topnav .nav-links a:hover{color:#FFD700;background:rgba(255,215,0,.08)}
+  .topnav .nav-links a.active{color:#FFD700;font-weight:600}
+  .topnav .nav-links a.nav-cta{color:#0a0a0a;background:#FFD700;font-weight:600;border-radius:6px;padding:5px 12px}
+  .topnav .nav-links a.nav-cta:hover{background:#e6c200}
+  .topnav .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:4px}
+  .topnav .hamburger span{display:block;width:20px;height:2px;background:#999;border-radius:2px;transition:all .2s}
+  #nav-toggle{display:none}
+  @media(max-width:700px){
+    .topnav .hamburger{display:flex}
+    .topnav .nav-links{position:absolute;top:44px;left:0;right:0;background:rgba(17,17,17,.97);flex-direction:column;padding:8px 0;display:none;border-bottom:1px solid #222}
+    #nav-toggle:checked ~ .nav-links{display:flex}
+    #nav-toggle:checked ~ .hamburger span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+    #nav-toggle:checked ~ .hamburger span:nth-child(2){opacity:0}
+    #nav-toggle:checked ~ .hamburger span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+    .topnav .nav-links a{padding:10px 1.5rem;font-size:13px}
+  }
+
+  body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem;padding-top:60px}
   .logo{font-size:2rem;font-weight:800;color:#FFD700;letter-spacing:2px;margin-top:2rem}
   .logo span{color:#fff}
   h1{font-size:2.4rem;margin-top:2rem;text-align:center}
@@ -28,6 +50,8 @@
   .btn-outline:hover{background:#FFD700;color:#0a0a0a;transform:scale(1.03)}
   .btn-gold{background:#FFD700;color:#0a0a0a;border:none}
   .btn-gold:hover{background:#e6c200;transform:scale(1.03)}
+  .btn-dim{border:1px solid #333;color:#999;background:transparent}
+  .btn-dim:hover{border-color:#FFD700;color:#FFD700;transform:scale(1.03)}
   .footer{margin-top:3.5rem;text-align:center;max-width:500px}
   .footer p{color:#666;font-size:.95rem;margin-bottom:1rem}
   .footer a{color:#FFD700;text-decoration:none;font-weight:600;font-size:1rem}
@@ -35,11 +59,25 @@
   @media(max-width:680px){
     .cards{grid-template-columns:1fr}
     h1{font-size:1.7rem}
-    body{padding:1.5rem .75rem}
+    body{padding:1.5rem .75rem;padding-top:56px}
   }
 </style>
 </head>
 <body>
+  <!-- Nav Bar -->
+  <nav class="topnav">
+    <a href="landing.html" class="nav-brand">AfrexAI Demo</a>
+    <input type="checkbox" id="nav-toggle">
+    <label for="nav-toggle" class="hamburger"><span></span><span></span><span></span></label>
+    <div class="nav-links">
+      <a href="index.html">Managed</a>
+      <a href="cma.html">Self-Managed</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="agency.html">For Agencies</a>
+      <a href="https://calendly.com/cbeckford-afrexai/30min" class="nav-cta">Book a Call</a>
+    </div>
+  </nav>
+
   <div class="logo">Afrex<span>AI</span></div>
   <h1>See <span>AI Agents</span> in Action</h1>
   <p class="sub">Choose how you want to explore AfrexAI</p>
@@ -69,6 +107,32 @@
         <li>Zero setup, zero maintenance</li>
       </ul>
       <a href="index.html" class="btn btn-gold">Explore Managed Demo →</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">📋</div>
+      <span class="badge">Walkthrough</span>
+      <h2>How It Works</h2>
+      <p>See the 5-step deployment process from signup to results. Understand exactly what happens when you onboard.</p>
+      <ul>
+        <li>5-step deployment process</li>
+        <li>Timeline &amp; milestones</li>
+        <li>What to expect at each stage</li>
+      </ul>
+      <a href="how-it-works.html" class="btn btn-dim">See How It Works →</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏢</div>
+      <span class="badge gold">Reseller</span>
+      <h2>For Agencies</h2>
+      <p>Deploy agent workforces for your clients. 60-70% margins. White-label AI workforce solutions.</p>
+      <ul>
+        <li>White-label deployment</li>
+        <li>60-70% profit margins</li>
+        <li>Dedicated partner support</li>
+      </ul>
+      <a href="agency.html" class="btn btn-dim">Agency Program →</a>
     </div>
   </div>
 

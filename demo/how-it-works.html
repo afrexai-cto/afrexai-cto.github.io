@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--gold:#FFD700;--gold2:#FFA500;--text:#e0e0e0;--muted:#888;--card:#111;--border:#222}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}
+
+/* Progress dots */
+.progress{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:16px}
+.progress .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--muted);background:transparent;cursor:pointer;transition:.3s}
+.progress .dot.active{background:var(--gold);border-color:var(--gold);box-shadow:0 0 8px var(--gold)}
+
+/* Sections */
+.step{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 24px;position:relative}
+.step-inner{max-width:720px;width:100%;opacity:0;transform:translateY(40px);transition:opacity .7s,transform .7s}
+.step-inner.visible{opacity:1;transform:translateY(0)}
+.step-number{color:var(--gold);font-size:14px;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px}
+.step h2{font-size:clamp(28px,5vw,48px);margin-bottom:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.step p.subtitle{color:var(--muted);font-size:18px;margin-bottom:32px;line-height:1.6}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+.hero h1{font-size:clamp(32px,6vw,60px);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hero p{color:var(--muted);font-size:20px;max-width:500px;margin-bottom:32px}
+.scroll-hint{animation:bounce 2s infinite;color:var(--muted);font-size:28px}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+/* Mockup card */
+.mock-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;width:100%}
+.mock-card .field{margin-bottom:16px}
+.mock-card label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.mock-card .input-mock{background:#1a1a1a;border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--gold);font-size:15px;min-height:40px;overflow:hidden;white-space:nowrap}
+.tier-row{display:flex;gap:12px;margin-top:8px}
+.tier-btn{flex:1;padding:12px 8px;border-radius:8px;border:1px solid var(--border);background:#1a1a1a;color:var(--muted);text-align:center;font-size:13px;transition:.3s}
+.tier-btn.selected{border-color:var(--gold);color:var(--gold);background:#1a1a0a;box-shadow:0 0 12px rgba(255,215,0,.15)}
+
+/* Terminal */
+.terminal{background:#0d0d0d;border:1px solid var(--border);border-radius:12px;padding:20px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:14px;line-height:2}
+.terminal .line{opacity:0;transform:translateX(-10px);transition:opacity .4s,transform .4s}
+.terminal .line.show{opacity:1;transform:translateX(0)}
+.terminal .check{color:#4ade80}
+.terminal .highlight{color:var(--gold);font-weight:700}
+
+/* Activity feed */
+.feed{display:flex;flex-direction:column;gap:10px}
+.feed-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:12px;opacity:0;transform:translateY(16px);transition:.5s}
+.feed-item.show{opacity:1;transform:translateY(0)}
+.feed-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.feed-dot.green{background:#4ade80}.feed-dot.blue{background:#60a5fa}.feed-dot.gold{background:var(--gold)}
+.feed-time{color:var(--muted);font-size:12px;margin-left:auto;white-space:nowrap}
+.feed-callout{text-align:center;color:var(--gold);font-size:18px;font-weight:600;margin-top:20px;opacity:0;transition:opacity .6s .8s}
+.feed-callout.show{opacity:1}
+
+/* KPI grid */
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center}
+.kpi .value{font-size:clamp(24px,4vw,36px);font-weight:800;color:var(--gold)}
+.kpi .label{font-size:12px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.deliverable{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;font-size:13px;line-height:1.8;color:var(--muted);margin-top:16px;border-left:3px solid var(--gold)}
+.deliverable strong{color:var(--text)}
+
+/* Monitor dashboard */
+.monitor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.monitor-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.monitor-card .big{font-size:28px;font-weight:800;color:#4ade80}
+.monitor-card .big.gold{color:var(--gold)}
+.monitor-card .lbl{font-size:11px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* CTA */
+.cta-section{text-align:center;margin-top:32px}
+.cta-btn{display:inline-block;padding:16px 40px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0a0a;font-weight:700;font-size:18px;border-radius:50px;transition:transform .2s,box-shadow .2s}
+.cta-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(255,215,0,.3)}
+
+@media(max-width:600px){
+  .progress{right:12px;gap:12px}
+  .progress .dot{width:9px;height:9px}
+  .kpi-grid,.monitor-grid{grid-template-columns:1fr}
+  .tier-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress -->
+<nav class="progress" id="progress"></nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>How It Works</h1>
+  <p>From signup to AI agents working for you — in under a minute.</p>
+  <div class="scroll-hint">↓</div>
+</section>
+
+<!-- Step 1 -->
+<section class="step" data-step="0">
+  <div class="step-inner">
+    <div class="step-number">Step 1</div>
+    <h2>You Sign Up</h2>
+    <p class="subtitle">Pick your plan, tell us your industry. That's it.</p>
+    <div class="mock-card">
+      <div class="field"><label>Company Name</label><div class="input-mock" id="companyType"></div></div>
+      <div class="field"><label>Vertical</label><div class="input-mock" id="verticalType"></div></div>
+      <div class="field"><label>Select Tier</label>
+        <div class="tier-row">
+          <div class="tier-btn" id="t1">Starter<br><small>1 Agent</small></div>
+          <div class="tier-btn" id="t2">Growth<br><small>3 Agents</small></div>
+          <div class="tier-btn" id="t3">Enterprise<br><small>Unlimited</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 2 -->
+<section class="step" data-step="1">
+  <div class="step-inner">
+    <div class="step-number">Step 2</div>
+    <h2>We Deploy Your Agents</h2>
+    <p class="subtitle">Your AI workforce spins up in seconds, pre-configured for your vertical.</p>
+    <div class="terminal" id="terminal">
+      <div class="line"><span class="check">✓</span> Deploying Patient Coordinator...</div>
+      <div class="line"><span class="check">✓</span> Deploying Compliance Officer...</div>
+      <div class="line"><span class="check">✓</span> Deploying Records Analyst...</div>
+      <div class="line"><span class="check">✓</span> Configuring healthcare vertical templates...</div>
+      <div class="line"><span class="check">✓</span> Running health checks... <span class="highlight">all green</span></div>
+      <div class="line"><span class="highlight">✓ 3 agents active in 47 seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 3 -->
+<section class="step" data-step="2">
+  <div class="step-inner">
+    <div class="step-number">Step 3</div>
+    <h2>Agents Start Working Immediately</h2>
+    <p class="subtitle">No training. No setup. They know your industry.</p>
+    <div class="feed" id="feed">
+      <div class="feed-item"><span class="feed-dot green"></span>Patient Coordinator scheduled 12 appointments<span class="feed-time">just now</span></div>
+      <div class="feed-item"><span class="feed-dot blue"></span>Compliance Officer flagged 3 policy gaps<span class="feed-time">2s ago</span></div>
+      <div class="feed-item"><span class="feed-dot gold"></span>Records Analyst indexed 847 documents<span class="feed-time">5s ago</span></div>
+      <div class="feed-item"><span class="feed-dot green"></span>Auto-generated HIPAA compliance report<span class="feed-time">8s ago</span></div>
+      <div class="feed-item"><span class="feed-dot blue"></span>Sent appointment reminders to 43 patients<span class="feed-time">12s ago</span></div>
+      <div class="feed-item"><span class="feed-dot gold"></span>Drafted insurance pre-auth for 6 claims<span class="feed-time">15s ago</span></div>
+    </div>
+    <div class="feed-callout" id="feedCallout">No training. No setup. They know your industry.</div>
+  </div>
+</section>
+
+<!-- Step 4 -->
+<section class="step" data-step="3">
+  <div class="step-inner">
+    <div class="step-number">Step 4</div>
+    <h2>You See Real Results</h2>
+    <p class="subtitle">Watch the impact grow — live metrics from your first month.</p>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="value" data-target="312" data-prefix="">0</div><div class="label">Hours Saved</div></div>
+      <div class="kpi"><div class="value" data-target="2847" data-prefix="">0</div><div class="label">Tasks Completed</div></div>
+      <div class="kpi"><div class="value" data-target="18720" data-prefix="$">$0</div><div class="label">Cost Savings</div></div>
+    </div>
+    <div class="deliverable">
+      <strong>📄 Contract Review — Vendor Agreement #2847</strong><br>
+      <span style="color:#4ade80">✓ No liability concerns</span> · <span style="color:var(--gold)">⚠ Clause 4.2 — auto-renewal locked at 3 years (flag for renegotiation)</span><br>
+      Recommended action: Request 1-year cap with 60-day opt-out window.
+    </div>
+  </div>
+</section>
+
+<!-- Step 5 -->
+<section class="step" data-step="4">
+  <div class="step-inner">
+    <div class="step-number">Step 5</div>
+    <h2>We Handle Everything</h2>
+    <p class="subtitle">24/7 monitoring. Automatic updates. Zero maintenance from you.</p>
+    <div class="monitor-grid">
+      <div class="monitor-card"><div class="big">99.98%</div><div class="lbl">Uptime</div></div>
+      <div class="monitor-card"><div class="big gold">&lt;2min</div><div class="lbl">Avg Response</div></div>
+      <div class="monitor-card"><div class="big">100%</div><div class="lbl">SLA Met</div></div>
+    </div>
+    <div class="monitor-grid">
+      <div class="monitor-card"><div class="big" style="color:#4ade80">●</div><div class="lbl">Patient Coordinator — Healthy</div></div>
+      <div class="monitor-card"><div class="big" style="color:#4ade80">●</div><div class="lbl">Compliance Officer — Healthy</div></div>
+      <div class="monitor-card"><div class="big" style="color:#4ade80">●</div><div class="lbl">Records Analyst — Healthy</div></div>
+    </div>
+    <div class="cta-section">
+      <p style="color:var(--muted);margin-bottom:20px;font-size:16px">You focus on your business. We keep the AI running.</p>
+      <a href="https://calendly.com/cbeckford-afrexai/30min" target="_blank" class="cta-btn">Ready? Book a Call →</a>
+    </div>
+  </div>
+</section>
+
+<div style="height:80px"></div>
+
+<script>
+// Progress dots
+const steps = document.querySelectorAll('.step');
+const progressEl = document.getElementById('progress');
+steps.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot';
+  d.onclick = () => steps[i].scrollIntoView({ behavior: 'smooth' });
+  progressEl.appendChild(d);
+});
+const dots = progressEl.querySelectorAll('.dot');
+
+// Track which steps have animated
+const animated = new Set();
+
+// Intersection Observer
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const inner = e.target.querySelector('.step-inner');
+    if (inner) inner.classList.add('visible');
+    const idx = +e.target.dataset.step;
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    if (!animated.has(idx)) { animated.add(idx); runAnimation(idx); }
+  });
+}, { threshold: 0.4 });
+steps.forEach(s => obs.observe(s));
+
+// Animations per step
+function runAnimation(idx) {
+  if (idx === 0) animateSignup();
+  if (idx === 1) animateTerminal();
+  if (idx === 2) animateFeed();
+  if (idx === 3) animateKPIs();
+}
+
+function typeText(el, text, speed = 60) {
+  let i = 0;
+  return new Promise(r => {
+    const iv = setInterval(() => { el.textContent = text.slice(0, ++i); if (i >= text.length) { clearInterval(iv); r(); } }, speed);
+  });
+}
+
+async function animateSignup() {
+  await new Promise(r => setTimeout(r, 400));
+  await typeText(document.getElementById('companyType'), 'Meridian Health Group');
+  await new Promise(r => setTimeout(r, 300));
+  await typeText(document.getElementById('verticalType'), 'Healthcare');
+  await new Promise(r => setTimeout(r, 400));
+  document.getElementById('t2').classList.add('selected');
+}
+
+function animateTerminal() {
+  const lines = document.querySelectorAll('#terminal .line');
+  lines.forEach((l, i) => setTimeout(() => l.classList.add('show'), 500 + i * 600));
+}
+
+function animateFeed() {
+  const items = document.querySelectorAll('#feed .feed-item');
+  items.forEach((el, i) => setTimeout(() => el.classList.add('show'), 300 + i * 400));
+  setTimeout(() => document.getElementById('feedCallout').classList.add('show'), 300 + items.length * 400);
+}
+
+function animateKPIs() {
+  document.querySelectorAll('.kpi .value').forEach(el => {
+    const target = +el.dataset.target, prefix = el.dataset.prefix || '';
+    const duration = 2000, start = performance.now();
+    (function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const v = Math.round(target * ease);
+      el.textContent = prefix + v.toLocaleString();
+      if (p < 1) requestAnimationFrame(tick);
+    })(start);
+  });
+}
+</script>
+</body>
+</html>
