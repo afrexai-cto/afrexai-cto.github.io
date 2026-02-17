@@ -55,9 +55,9 @@ function meridianActivity(agent) {
 
   const templates = {
     'patient-coordinator': [
-      () => ({ action: `Scheduled ${a.type} appointment for ${p.name} — ${p.specialty}`, type: 'scheduling' }),
+      () => ({ action: `Scheduled ${a.type} appointment for ${p.name} — ${a.specialty}`, type: 'scheduling' }),
       () => ({ action: `Sent appointment reminder to ${p.name}`, type: 'notification' }),
-      () => ({ action: `Processed referral from ${p.physician} → ${a.specialty}`, type: 'referral' }),
+      () => ({ action: `Processed referral from ${p.primary_physician} → ${a.specialty}`, type: 'referral' }),
       () => ({ action: `Updated intake forms for ${p.name}`, type: 'documentation' }),
       () => ({ action: `Confirmed insurance eligibility for ${p.name} (${p.insurance})`, type: 'verification' }),
       () => ({ action: `Rescheduled ${p.name} to ${a.time}`, type: 'scheduling' }),
@@ -70,11 +70,11 @@ function meridianActivity(agent) {
       () => ({ action: `Reviewed ${c.staff}'s access to ${c.record_type} — authorized`, type: 'audit' }),
     ],
     'records-analyst': [
-      () => ({ action: `Processed records request from ${r.facility} for ${p.name}`, type: 'records' }),
-      () => ({ action: `Flagged incomplete chart for ${p.physician}`, type: 'quality' }),
-      () => ({ action: `Archived ${r.count} inactive patient records`, type: 'maintenance' }),
-      () => ({ action: `Sent records to ${r.facility} via secure transfer`, type: 'records' }),
-      () => ({ action: `Completed chart review — ${r.department}`, type: 'quality' }),
+      () => ({ action: `Processed records request from ${r.requesting_facility} for ${r.patient_name}`, type: 'records' }),
+      () => ({ action: `Flagged incomplete chart for ${p.primary_physician}`, type: 'quality' }),
+      () => ({ action: `Archived ${5 + randomInt(20)} inactive patient records`, type: 'maintenance' }),
+      () => ({ action: `Sent records to ${r.requesting_facility} via secure transfer`, type: 'records' }),
+      () => ({ action: `Completed chart review — ${c.department}`, type: 'quality' }),
     ],
   };
 
@@ -93,23 +93,23 @@ function pacificActivity(agent) {
 
   const templates = {
     'legal-ea': [
-      () => ({ action: `Filed motion in ${cl.case}`, type: 'filing' }),
-      () => ({ action: `Calendared deadline: ${ev.event} on ${ev.date}`, type: 'scheduling' }),
-      () => ({ action: `Prepared conference agenda for ${cl.attorney}`, type: 'preparation' }),
-      () => ({ action: `Sent court appearance reminder — ${ev.court}`, type: 'notification' }),
-      () => ({ action: `Scheduled client meeting: ${cl.name} re: ${cl.matter}`, type: 'scheduling' }),
+      () => ({ action: `Filed motion in ${ev.case_name}`, type: 'filing' }),
+      () => ({ action: `Calendared deadline: ${ev.event_type} — ${ev.case_name} on ${ev.date}`, type: 'scheduling' }),
+      () => ({ action: `Prepared conference agenda for ${cl.attorney_assigned}`, type: 'preparation' }),
+      () => ({ action: `Sent court appearance reminder — ${ev.court_or_location}`, type: 'notification' }),
+      () => ({ action: `Scheduled client meeting: ${cl.name} re: ${cl.matter_type}`, type: 'scheduling' }),
     ],
     'document-analyst': [
-      () => ({ action: `Reviewed contract for ${cl.name} (${ev.pages} pages)`, type: 'review' }),
-      () => ({ action: `Flagged non-standard clause in ${ev.document_type}`, type: 'review' }),
-      () => ({ action: `Summarised deposition transcript — ${cl.case}`, type: 'analysis' }),
+      () => ({ action: `Reviewed contract for ${cl.name} (${4 + randomInt(20)} pages)`, type: 'review' }),
+      () => ({ action: `Flagged non-standard clause in ${fu.matter}`, type: 'review' }),
+      () => ({ action: `Summarised deposition transcript — ${ev.case_name}`, type: 'analysis' }),
       () => ({ action: `Completed due diligence review for ${cl.name}`, type: 'review' }),
     ],
     'client-followup': [
       () => ({ action: `Sent case status update to ${cl.name}`, type: 'communication' }),
       () => ({ action: `Scheduled consultation with ${cl.name}`, type: 'scheduling' }),
       () => ({ action: `Followed up on outstanding invoice — ${cl.name}`, type: 'billing' }),
-      () => ({ action: `Sent ${fu.priority} reminder: ${fu.action_needed} for ${fu.client}`, type: 'follow-up' }),
+      () => ({ action: `Sent ${fu.priority} reminder: ${fu.action_needed} for ${fu.client_name}`, type: 'follow-up' }),
     ],
   };
 
@@ -120,17 +120,19 @@ function pacificActivity(agent) {
 function buildrightActivity(agent) {
   const projects = loadCSV('buildright', 'projects.csv');
   const weather = loadCSV('buildright', 'weather.csv');
+  const milestones = loadCSV('buildright', 'milestones.csv');
 
   const pr = pick(projects);
   const w = pick(weather);
+  const ms = pick(milestones);
 
   const templates = {
     'site-reporter': [
-      () => ({ action: `Generated daily report — ${pr.site}`, type: 'reporting' }),
-      () => ({ action: `Logged weather delay at ${pr.site}: ${w.condition}`, type: 'delay' }),
-      () => ({ action: `Updated milestone: ${pr.milestone} at ${pr.site}`, type: 'milestone' }),
-      () => ({ action: `Compiled weekly progress summary for ${pr.site}`, type: 'reporting' }),
-      () => ({ action: `Flagged schedule variance — ${pr.site} (${pr.status})`, type: 'alert' }),
+      () => ({ action: `Generated daily report — ${pr.name}`, type: 'reporting' }),
+      () => ({ action: `Logged weather delay at ${w.site_name}: ${w.condition} — ${w.work_impact}`, type: 'delay' }),
+      () => ({ action: `Updated milestone: ${ms.milestone} at ${pr.name}`, type: 'milestone' }),
+      () => ({ action: `Compiled weekly progress summary for ${pr.name}`, type: 'reporting' }),
+      () => ({ action: `Flagged schedule variance — ${pr.name} (${pr.status})`, type: 'alert' }),
     ],
   };
 

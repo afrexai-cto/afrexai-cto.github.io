@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T03:11:56.413Z",
+  "lastUpdated": "2026-02-17T03:15:37.166Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2862,
-        "hoursSaved": 317.64,
+        "tasksCompleted": 2864,
+        "hoursSaved": 318.14,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,8 +16,8 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T03:02:52.957Z",
-          "taskCount": 955
+          "lastActive": "2026-02-17T03:08:53.541Z",
+          "taskCount": 957
         },
         {
           "id": "compliance-officer",
@@ -35,6 +35,18 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T03:08:53.541Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Layla Ibrahim",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-17T03:09:18.558Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Christine Hoffman",
+          "type": "documentation"
+        },
         {
           "ts": "2026-02-17T02:30:00Z",
           "agent": "patient-coordinator",
@@ -92,13 +104,13 @@
         {
           "ts": "2026-02-17T02:00:00.536Z",
           "agent": "records-analyst",
-          "action": "Processed records request from undefined for Amina Mohamed",
+          "action": "Processed records request from N/A for Amina Mohamed",
           "type": "records"
         },
         {
           "ts": "2026-02-17T01:55:44.235Z",
           "agent": "records-analyst",
-          "action": "Sent records to undefined via secure transfer",
+          "action": "Sent records to N/A via secure transfer",
           "type": "records"
         },
         {
@@ -110,13 +122,13 @@
         {
           "ts": "2026-02-17T01:54:48.536Z",
           "agent": "records-analyst",
-          "action": "Processed records request from undefined for Hiroshi Watanabe",
+          "action": "Processed records request from N/A for Hiroshi Watanabe",
           "type": "records"
         },
         {
           "ts": "2026-02-17T01:52:07.473Z",
           "agent": "patient-coordinator",
-          "action": "Processed referral from undefined → Gastroenterology",
+          "action": "Processed referral from N/A → Gastroenterology",
           "type": "referral"
         },
         {
@@ -336,8 +348,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2044,
-        "hoursSaved": 238.51,
+        "tasksCompleted": 2052,
+        "hoursSaved": 241.5,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -346,25 +358,73 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-17T02:58:12.485Z",
-          "taskCount": 682
+          "lastActive": "2026-02-17T03:10:53.223Z",
+          "taskCount": 686
         },
         {
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T02:53:58.733Z",
-          "taskCount": 681
+          "lastActive": "2026-02-17T03:08:51.145Z",
+          "taskCount": 684
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-17T02:01:13.642Z",
-          "taskCount": 681
+          "lastActive": "2026-02-17T03:02:26.618Z",
+          "taskCount": 682
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T03:10:53.223Z",
+          "agent": "legal-ea",
+          "action": "Filed motion in Patel Family Trust v. IRS",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-17T03:07:40.689Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for Rachel Abrams",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-17T03:13:32.506Z",
+          "agent": "legal-ea",
+          "action": "Calendared deadline: client_meeting — Hassan Import Export LLC on 2026-02-23",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T03:08:51.145Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Svetlana Kozlov",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T03:07:13.945Z",
+          "agent": "legal-ea",
+          "action": "Filed motion in N/A",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-17T03:12:07.295Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Daniela Ramirez",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T03:02:26.618Z",
+          "agent": "client-followup",
+          "action": "Sent low reminder: File annual report with Oregon Secretary of State for N/A",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-17T03:02:50.226Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in N/A",
+          "type": "review"
+        },
         {
           "ts": "2026-02-17T02:00:00Z",
           "agent": "document-analyst",
@@ -384,25 +444,25 @@
         {
           "ts": "2026-02-17T02:53:58.733Z",
           "agent": "document-analyst",
-          "action": "Flagged non-standard clause in undefined",
+          "action": "Flagged non-standard clause in N/A",
           "type": "review"
         },
         {
           "ts": "2026-02-17T02:55:52.653Z",
           "agent": "document-analyst",
-          "action": "Flagged non-standard clause in undefined",
+          "action": "Flagged non-standard clause in N/A",
           "type": "review"
         },
         {
           "ts": "2026-02-17T02:58:12.485Z",
           "agent": "legal-ea",
-          "action": "Scheduled client meeting: Marcus Johnson re: undefined",
+          "action": "Scheduled client meeting: Marcus Johnson re: N/A",
           "type": "scheduling"
         },
         {
           "ts": "2026-02-17T03:01:50.205Z",
           "agent": "legal-ea",
-          "action": "Prepared conference agenda for undefined",
+          "action": "Prepared conference agenda for N/A",
           "type": "preparation"
         },
         {
@@ -620,24 +680,6 @@
           "agent": "client-followup",
           "action": "Sent medium reminder: return signed lease for Apex Development Corp",
           "type": "follow-up"
-        },
-        {
-          "ts": "2026-02-11T03:26:07.565Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in employment contract",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-10T23:41:31.334Z",
-          "agent": "client-followup",
-          "action": "Scheduled consultation with Apex Development Corp",
-          "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-10T09:05:16.200Z",
-          "agent": "client-followup",
-          "action": "Sent high reminder: submit medical records for Dr. Elena Vasquez",
-          "type": "follow-up"
         }
       ]
     },
@@ -646,8 +688,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 432,
-        "hoursSaved": 71.66,
+        "tasksCompleted": 435,
+        "hoursSaved": 72.34,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -656,11 +698,29 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T02:55:01.177Z",
-          "taskCount": 432
+          "lastActive": "2026-02-17T03:04:35.383Z",
+          "taskCount": 435
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T03:04:35.383Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Pearl District Parking Structure",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T03:11:01.990Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — N/A (delayed)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T03:01:36.990Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — N/A (delayed)",
+          "type": "alert"
+        },
         {
           "ts": "2026-02-17T02:15:00Z",
           "agent": "site-reporter",
@@ -672,13 +732,13 @@
         {
           "ts": "2026-02-17T02:55:01.177Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — undefined (on_track)",
+          "action": "Flagged schedule variance — N/A (on_track)",
           "type": "alert"
         },
         {
           "ts": "2026-02-17T02:55:52.903Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — undefined (on_track)",
+          "action": "Flagged schedule variance — N/A (on_track)",
           "type": "alert"
         },
         {
@@ -906,14 +966,5 @@
       ]
     }
   },
-  "recentActivity": [
-    {
-      "ts": "2026-02-17T03:09:00.288Z",
-      "agent": "compliance-officer",
-      "action": "Generated compliance audit report",
-      "type": "documentation",
-      "artifact": "deliverables/meridian-health/compliance-report-2026-02-17T03-09-00-288.md",
-      "real": true
-    }
-  ]
+  "recentActivity": []
 }
