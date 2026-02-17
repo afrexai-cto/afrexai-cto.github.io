@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T04:22:13.324Z",
+  "lastUpdated": "2026-02-17T04:25:43.601Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
@@ -35,6 +35,22 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T04:00:00Z",
+          "agent": "compliance-officer",
+          "action": "Completed vendor BAA follow-up review — LabCorp renewal escalated to CCO, flagged PharmaCorp breach notification clause non-compliant with 2025 HIPAA Final Rule",
+          "type": "compliance",
+          "artifact": "deliverables/meridian-health/baa-review-2026-02-17T04-00-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T04:00:00Z",
+          "agent": "patient-coordinator",
+          "action": "Processed batch appointment reminders for 19 patients (Feb 18–19) — 14 confirmed, 3 pending, 1 rescheduling, 1 flagged",
+          "type": "scheduling",
+          "artifact": "deliverables/meridian-health/batch-reminders-2026-02-17T04-00-00.md",
+          "real": true
+        },
         {
           "ts": "2026-02-17T04:12:53.574Z",
           "agent": "patient-coordinator",
@@ -382,6 +398,22 @@
       ],
       "recentActivity": [
         {
+          "ts": "2026-02-17T04:00:00Z",
+          "agent": "legal-ea",
+          "action": "Generated weekly deadline report — 15 items tracked, 3 critical within 48 hours (Martinez discovery, Patel petition, TechNova expert)",
+          "type": "reporting",
+          "artifact": "deliverables/pacific-legal/deadline-report-2026-02-17T04-00-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T03:30:00Z",
+          "agent": "document-analyst",
+          "action": "Summarized opposition to summary judgment in Greenfield v. TechCo — recommended opposing on use element, filing Daubert motion",
+          "type": "analysis",
+          "artifact": "deliverables/pacific-legal/brief-summary-2026-02-17T03-30-00.md",
+          "real": true
+        },
+        {
           "ts": "2026-02-17T04:15:20.530Z",
           "agent": "legal-ea",
           "action": "Sent court appearance reminder — Multnomah County Circuit Court",
@@ -711,6 +743,22 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T04:00:00Z",
+          "agent": "site-reporter",
+          "action": "Generated weekly progress summary across all 4 active sites — 3 on track, 1 watch (Harbor View Tower -2 days)",
+          "type": "reporting",
+          "artifact": "deliverables/buildright/weekly-progress-2026-02-17T04-00-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T04:00:00Z",
+          "agent": "site-reporter",
+          "action": "Generated weekly safety report — zero LTI (10 consecutive months), 1 near-miss (ice on steel at Harbor View), 100% inspection pass rate",
+          "type": "safety",
+          "artifact": "deliverables/buildright/safety-report-2026-02-17T04-00-00.md",
+          "real": true
+        },
         {
           "ts": "2026-02-17T04:08:09.826Z",
           "agent": "site-reporter",
