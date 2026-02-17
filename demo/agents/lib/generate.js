@@ -1,0 +1,279 @@
+#!/usr/bin/env node
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const { randomInt } = require('crypto');
+
+// ---------------------------------------------------------------------------
+// Paths (relative to repo root = process.cwd())
+// ---------------------------------------------------------------------------
+const ROOT = process.cwd();
+const DATA_FILE = path.join(ROOT, 'demo/data/activity.json');
+const SAMPLE_DIR = path.join(ROOT, 'demo/sample-data');
+
+// ---------------------------------------------------------------------------
+// CSV parser — no deps
+// ---------------------------------------------------------------------------
+function parseCSV(filePath) {
+  if (!fs.existsSync(filePath)) return [];
+  const lines = fs.readFileSync(filePath, 'utf-8').trim().split('\n');
+  if (lines.length < 2) return [];
+  const headers = lines[0].split(',').map(h => h.trim());
+  return lines.slice(1).map(line => {
+    const vals = line.split(',').map(v => v.trim());
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = vals[i] || ''; });
+    return obj;
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+function pick(arr) { return arr[randomInt(arr.length)]; }
+function randFloat(min, max) { return Math.round((min + Math.random() * (max - min)) * 100) / 100; }
+
+function loadCSV(company, file) {
+  return parseCSV(path.join(SAMPLE_DIR, company, file));
+}
+
+// ---------------------------------------------------------------------------
+// Activity generators per company/agent
+// ---------------------------------------------------------------------------
+
+function meridianActivity(agent) {
+  const patients = loadCSV('meridian-health', 'patients.csv');
+  const appts = loadCSV('meridian-health', 'appointments.csv');
+  const compliance = loadCSV('meridian-health', 'compliance.csv');
+  const records = loadCSV('meridian-health', 'records-requests.csv');
+
+  const p = pick(patients);
+  const a = pick(appts);
+  const c = pick(compliance);
+  const r = pick(records);
+
+  const templates = {
+    'patient-coordinator': [
+      () => ({ action: `Scheduled ${a.type} appointment for ${p.name} — ${p.specialty}`, type: 'scheduling' }),
+      () => ({ action: `Sent appointment reminder to ${p.name}`, type: 'notification' }),
+      () => ({ action: `Processed referral from ${p.physician} → ${a.specialty}`, type: 'referral' }),
+      () => ({ action: `Updated intake forms for ${p.name}`, type: 'documentation' }),
+      () => ({ action: `Confirmed insurance eligibility for ${p.name} (${p.insurance})`, type: 'verification' }),
+      () => ({ action: `Rescheduled ${p.name} to ${a.time}`, type: 'scheduling' }),
+    ],
+    'compliance-officer': [
+      () => ({ action: `Completed HIPAA training verification — ${c.staff}`, type: 'compliance' }),
+      () => ({ action: `Flagged expired BAA with ${c.vendor}`, type: 'compliance' }),
+      () => ({ action: `Generated monthly compliance report`, type: 'reporting' }),
+      () => ({ action: `Verified access log audit — ${c.department}`, type: 'audit' }),
+      () => ({ action: `Reviewed ${c.staff}'s access to ${c.record_type} — authorized`, type: 'audit' }),
+    ],
+    'records-analyst': [
+      () => ({ action: `Processed records request from ${r.facility} for ${p.name}`, type: 'records' }),
+      () => ({ action: `Flagged incomplete chart for ${p.physician}`, type: 'quality' }),
+      () => ({ action: `Archived ${r.count} inactive patient records`, type: 'maintenance' }),
+      () => ({ action: `Sent records to ${r.facility} via secure transfer`, type: 'records' }),
+      () => ({ action: `Completed chart review — ${r.department}`, type: 'quality' }),
+    ],
+  };
+
+  const t = templates[agent];
+  return t ? pick(t)() : { action: 'Processed task', type: 'general' };
+}
+
+function pacificActivity(agent) {
+  const clients = loadCSV('pacific-legal', 'clients.csv');
+  const cal = loadCSV('pacific-legal', 'calendar.csv');
+  const followups = loadCSV('pacific-legal', 'follow-ups.csv');
+
+  const cl = pick(clients);
+  const ev = pick(cal);
+  const fu = pick(followups);
+
+  const templates = {
+    'legal-ea': [
+      () => ({ action: `Filed motion in ${cl.case}`, type: 'filing' }),
+      () => ({ action: `Calendared deadline: ${ev.event} on ${ev.date}`, type: 'scheduling' }),
+      () => ({ action: `Prepared conference agenda for ${cl.attorney}`, type: 'preparation' }),
+      () => ({ action: `Sent court appearance reminder — ${ev.court}`, type: 'notification' }),
+      () => ({ action: `Scheduled client meeting: ${cl.name} re: ${cl.matter}`, type: 'scheduling' }),
+    ],
+    'document-analyst': [
+      () => ({ action: `Reviewed contract for ${cl.name} (${ev.pages} pages)`, type: 'review' }),
+      () => ({ action: `Flagged non-standard clause in ${ev.document_type}`, type: 'review' }),
+      () => ({ action: `Summarised deposition transcript — ${cl.case}`, type: 'analysis' }),
+      () => ({ action: `Completed due diligence review for ${cl.name}`, type: 'review' }),
+    ],
+    'client-followup': [
+      () => ({ action: `Sent case status update to ${cl.name}`, type: 'communication' }),
+      () => ({ action: `Scheduled consultation with ${cl.name}`, type: 'scheduling' }),
+      () => ({ action: `Followed up on outstanding invoice — ${cl.name}`, type: 'billing' }),
+      () => ({ action: `Sent ${fu.priority} reminder: ${fu.action_needed} for ${fu.client}`, type: 'follow-up' }),
+    ],
+  };
+
+  const t = templates[agent];
+  return t ? pick(t)() : { action: 'Processed task', type: 'general' };
+}
+
+function buildrightActivity(agent) {
+  const projects = loadCSV('buildright', 'projects.csv');
+  const weather = loadCSV('buildright', 'weather.csv');
+
+  const pr = pick(projects);
+  const w = pick(weather);
+
+  const templates = {
+    'site-reporter': [
+      () => ({ action: `Generated daily report — ${pr.site}`, type: 'reporting' }),
+      () => ({ action: `Logged weather delay at ${pr.site}: ${w.condition}`, type: 'delay' }),
+      () => ({ action: `Updated milestone: ${pr.milestone} at ${pr.site}`, type: 'milestone' }),
+      () => ({ action: `Compiled weekly progress summary for ${pr.site}`, type: 'reporting' }),
+      () => ({ action: `Flagged schedule variance — ${pr.site} (${pr.status})`, type: 'alert' }),
+    ],
+  };
+
+  const t = templates[agent];
+  return t ? pick(t)() : { action: 'Processed task', type: 'general' };
+}
+
+// ---------------------------------------------------------------------------
+// Company configs
+// ---------------------------------------------------------------------------
+const COMPANIES = {
+  'meridian-health': {
+    name: 'Meridian Health Partners',
+    tier: 'enterprise',
+    vertical: 'healthcare',
+    agents: [
+      { id: 'patient-coordinator', name: 'Patient Coordinator' },
+      { id: 'compliance-officer', name: 'Compliance Officer' },
+      { id: 'records-analyst', name: 'Records Analyst' },
+    ],
+    generator: meridianActivity,
+    seedKPIs: { tasksCompleted: 2847, hoursSaved: 312.5, accuracyRate: 99.2, activeSince: '2026-01-15' },
+  },
+  'pacific-legal': {
+    name: 'Pacific Legal Group',
+    tier: 'professional',
+    vertical: 'legal',
+    agents: [
+      { id: 'legal-ea', name: 'Legal EA' },
+      { id: 'document-analyst', name: 'Document Analyst' },
+      { id: 'client-followup', name: 'Client Follow-up' },
+    ],
+    generator: pacificActivity,
+    seedKPIs: { tasksCompleted: 2031, hoursSaved: 234.8, accuracyRate: 98.7, activeSince: '2026-01-20' },
+  },
+  'buildright': {
+    name: 'BuildRight Construction',
+    tier: 'starter',
+    vertical: 'construction',
+    agents: [
+      { id: 'site-reporter', name: 'Site Reporter' },
+    ],
+    generator: buildrightActivity,
+    seedKPIs: { tasksCompleted: 423, hoursSaved: 68.3, accuracyRate: 97.5, activeSince: '2026-02-01' },
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Seed initial data
+// ---------------------------------------------------------------------------
+function createSeedData() {
+  const now = Date.now();
+  const data = { lastUpdated: new Date(now).toISOString(), companies: {} };
+
+  for (const [slug, cfg] of Object.entries(COMPANIES)) {
+    const agents = cfg.agents.map(a => ({
+      id: a.id,
+      name: a.name,
+      status: 'active',
+      lastActive: new Date(now).toISOString(),
+      taskCount: Math.floor(cfg.seedKPIs.tasksCompleted / cfg.agents.length),
+    }));
+
+    // Generate 30 historical activities spanning last 7 days
+    const activities = [];
+    for (let i = 0; i < 30; i++) {
+      const agentDef = agents[randomInt(agents.length)];
+      const offsetMs = randomInt(7 * 24 * 60 * 60 * 1000);
+      const ts = new Date(now - offsetMs);
+      const entry = cfg.generator(agentDef.id);
+      activities.push({ ts: ts.toISOString(), agent: agentDef.id, action: entry.action, type: entry.type });
+    }
+    activities.sort((a, b) => b.ts.localeCompare(a.ts));
+
+    data.companies[slug] = {
+      name: cfg.name,
+      tier: cfg.tier,
+      vertical: cfg.vertical,
+      kpis: { ...cfg.seedKPIs },
+      agents,
+      recentActivity: activities,
+    };
+  }
+  return data;
+}
+
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
+function main() {
+  // Load or create
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
+  } catch {
+    console.log('No existing activity.json — creating seed data');
+    data = createSeedData();
+  }
+
+  const now = new Date();
+
+  for (const [slug, cfg] of Object.entries(COMPANIES)) {
+    const company = data.companies[slug];
+    if (!company) continue;
+
+    const numTasks = randomInt(1, 5); // 1-4 tasks
+    for (let i = 0; i < numTasks; i++) {
+      // Pick random agent
+      const agentDef = pick(cfg.agents);
+      const entry = cfg.generator(agentDef.id);
+
+      // Stagger timestamps slightly so they're not all identical
+      const ts = new Date(now.getTime() - randomInt(0, 15 * 60 * 1000));
+
+      company.recentActivity.unshift({
+        ts: ts.toISOString(),
+        agent: agentDef.id,
+        action: entry.action,
+        type: entry.type,
+      });
+
+      // Update KPIs
+      company.kpis.tasksCompleted++;
+      company.kpis.hoursSaved = Math.round((company.kpis.hoursSaved + randFloat(0.1, 0.5)) * 100) / 100;
+
+      // Update agent
+      const agentObj = company.agents.find(a => a.id === agentDef.id);
+      if (agentObj) {
+        agentObj.lastActive = ts.toISOString();
+        agentObj.taskCount++;
+      }
+    }
+
+    // Trim to 50
+    company.recentActivity = company.recentActivity.slice(0, 50);
+  }
+
+  data.lastUpdated = now.toISOString();
+
+  // Ensure directory exists
+  fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true });
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2) + '\n');
+  console.log(`Updated activity.json — ${now.toISOString()}`);
+}
+
+main();

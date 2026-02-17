@@ -233,6 +233,31 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 </div>
 
 <script>
+// ── Live Data ──
+let liveData = null;
+async function fetchLiveData() {
+  try {
+    const r = await fetch('data/activity.json?_=' + Date.now());
+    if (r.ok) {
+      const d = await r.json();
+      const age = Date.now() - new Date(d.lastUpdated).getTime();
+      if (age < 7200000) { liveData = d; return true; }
+    }
+  } catch(e) {}
+  liveData = null;
+  return false;
+}
+function applyLiveROI() {
+  if (!liveData?.companies) return;
+  let totalTasks = 0, totalHours = 0;
+  for (const cid of Object.keys(liveData.companies)) {
+    const k = liveData.companies[cid].kpis;
+    if (k) { totalTasks += (k.tasksCompleted || 0); totalHours += (k.hoursSaved || 0); }
+  }
+  if (totalTasks > 0) { const el = document.getElementById('roiTasks'); if (el) el.textContent = totalTasks.toLocaleString(); }
+  if (totalHours > 0) { const el = document.getElementById('roiHours'); if (el) el.textContent = totalHours.toFixed(1); }
+}
+
 // ── Skills Data ──
 const skills = [
   { name:'Email Triager', icon:'📧', desc:'Auto-categorise, prioritise, and route incoming emails. Flags urgent items for immediate attention.', cat:'Communication', stars:4.8, downloads:'2.1k', installed:true },
@@ -485,6 +510,10 @@ renderSkills();
 renderAgents();
 renderFeed();
 setInterval(addFeedItem, 7000);
+
+// Fetch live data on load and poll
+fetchLiveData().then(()=>applyLiveROI());
+setInterval(async()=>{await fetchLiveData();applyLiveROI();},60000);
 
 // Increment ROI hours slowly
 setInterval(()=>{

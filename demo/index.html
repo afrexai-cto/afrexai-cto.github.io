@@ -205,6 +205,7 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
     <span class="co-name" id="hdr-company"></span>
     <span class="co-pills" id="hdr-pills"></span>
     <span class="managed-tag">🔧 Managed</span>
+    <span id="live-badge" style="font-size:11px;padding:4px 10px;border-radius:12px;background:var(--surface2);border:1px solid var(--surface3);color:var(--text-muted)">🔴 Simulated</span>
     <button class="switch-btn" id="switch-btn">← Switch Company</button>
   </div>
   <div class="app-body">
@@ -344,6 +345,78 @@ after:[{task:"Daily site reports",time:"Auto-generated",savings:"95% time saved"
 }
 ]};
 
+// ── Live Data ──
+let liveData = null;
+async function fetchLiveData() {
+  try {
+    const r = await fetch('data/activity.json?_=' + Date.now());
+    if (r.ok) {
+      const d = await r.json();
+      const age = Date.now() - new Date(d.lastUpdated).getTime();
+      if (age < 7200000) { liveData = d; updateLiveBadge(true, d.lastUpdated); return true; }
+    }
+  } catch(e) {}
+  liveData = null;
+  updateLiveBadge(false);
+  return false;
+}
+function updateLiveBadge(isLive, lastUpdated) {
+  let badge = document.getElementById('live-badge');
+  if (!badge) return;
+  if (isLive) {
+    const ago = Math.round((Date.now() - new Date(lastUpdated).getTime()) / 60000);
+    badge.innerHTML = '🟢 Live Data' + (ago > 0 ? ' <span style="font-size:10px;color:var(--text-muted)">(' + ago + 'm ago)</span>' : '');
+    badge.style.color = 'var(--green)';
+  } else {
+    badge.textContent = '🔴 Simulated';
+    badge.style.color = 'var(--text-muted)';
+  }
+}
+function applyLiveData() {
+  if (!currentCompany) return;
+  const companyId = currentCompany.id;
+  const live = liveData?.companies?.[companyId];
+  if (!live) return;
+  // Apply KPIs
+  if (live.kpis) {
+    const k = live.kpis;
+    if (k.tasksCompleted != null) { currentCompany.kpis.tasksThisMonth = k.tasksCompleted; const el = document.getElementById('kpi-tasks'); if (el) el.textContent = fmtNum(k.tasksCompleted); }
+    if (k.hoursSaved != null) { currentCompany.kpis.hoursSaved = k.hoursSaved; const el = document.getElementById('kpi-hours'); if (el) el.textContent = fmtNum(Math.round(k.hoursSaved * 10) / 10); }
+    if (k.accuracyRate != null) { /* uptime-like */ }
+  }
+  // Apply agent statuses
+  if (live.agents) {
+    live.agents.forEach(la => {
+      const agent = currentCompany.agents.find(a => a.id === la.id);
+      if (!agent) return;
+      if (la.status) agent.status = la.status;
+      if (la.taskCount != null) { agent.tasksCompleted = la.taskCount; }
+      const stEl = document.getElementById('status-text-' + la.id);
+      if (stEl && la.status) stEl.textContent = la.status === 'active' ? 'Processing tasks' : la.status;
+    });
+  }
+  // Prepend live activity to feed
+  if (live.recentActivity && live.recentActivity.length > 0) {
+    const feedEl = document.getElementById('activity-feed');
+    if (!feedEl) return;
+    const existingLive = feedEl.querySelectorAll('.feed-item-live');
+    existingLive.forEach(el => el.remove());
+    const liveItems = live.recentActivity.slice(0, 20);
+    const frag = document.createDocumentFragment();
+    liveItems.forEach(act => {
+      const agent = currentCompany.agents.find(a => a.id === act.agent);
+      const div = document.createElement('div');
+      div.className = 'feed-item feed-item-live';
+      div.style.animation = 'none';
+      const t = new Date(act.ts);
+      div.innerHTML = '<span class="feed-icon">' + (agent ? agent.icon : '🤖') + '</span><div style="flex:1;min-width:0"><div><span class="feed-agent">' + (agent ? agent.name : act.agent) + '</span> <span class="feed-text">' + act.action + '</span></div><div class="feed-time">' + timeStr(t) + ' <span style="color:var(--green);font-size:9px">● LIVE</span></div></div>';
+      frag.appendChild(div);
+    });
+    feedEl.insertBefore(frag, feedEl.firstChild);
+    while (feedEl.children.length > 50) feedEl.removeChild(feedEl.lastChild);
+  }
+}
+
 // ── State ──
 let currentCompany=null;
 let simulator=null;
@@ -367,25 +440,31 @@ function renderSelector(){
 }
 
 // ── Select Company ──
-function selectCompany(id){
+let livePoller = null;
+async function selectCompany(id){
   currentCompany=DEMO_DATA.companies.find(c=>c.id===id);
   if(!currentCompany)return;
   if(simulator)simulator.stop();
+  if(livePoller){clearInterval(livePoller);livePoller=null;}
   document.getElementById('selector').style.display='none';
   document.getElementById('app').classList.add('visible');
   document.getElementById('hdr-company').textContent=currentCompany.name;
   document.getElementById('hdr-pills').innerHTML=`<span class="pill pill-vertical">${currentCompany.vertical}</span><span class="pill pill-tier">${currentCompany.tier}</span>`;
+  await fetchLiveData();
   renderDashboard();
   renderAgentsList();
   renderROI();
   navigateView('dashboard');
+  applyLiveData();
   simulator=new ActivitySimulator(currentCompany);
   simulator.start();
+  livePoller=setInterval(async()=>{await fetchLiveData();applyLiveData();},60000);
 }
 
 // ── Switch back ──
 document.getElementById('switch-btn').addEventListener('click',()=>{
   if(simulator)simulator.stop();
+  if(livePoller){clearInterval(livePoller);livePoller=null;}
   document.getElementById('app').classList.remove('visible');
   document.getElementById('selector').style.display='flex';
   closeDetail();
@@ -552,7 +631,7 @@ class ActivitySimulator{
     });
   }
   scheduleNext(){
-    const delay=3000+Math.random()*5000;
+    const delay=liveData?(15000+Math.random()*5000):(3000+Math.random()*5000);
     this.timeout=setTimeout(()=>{
       const item=this.generateItem(new Date());
       this.feed.unshift(item);

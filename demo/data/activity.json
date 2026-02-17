@@ -1,0 +1,801 @@
+{
+  "lastUpdated": "2026-02-17T02:07:09.686Z",
+  "companies": {
+    "meridian-health": {
+      "name": "Meridian Health Partners",
+      "tier": "enterprise",
+      "vertical": "healthcare",
+      "kpis": {
+        "tasksCompleted": 2858,
+        "hoursSaved": 316.39,
+        "accuracyRate": 99.2,
+        "activeSince": "2026-01-15"
+      },
+      "agents": [
+        {
+          "id": "patient-coordinator",
+          "name": "Patient Coordinator",
+          "status": "active",
+          "lastActive": "2026-02-17T01:52:07.473Z",
+          "taskCount": 952
+        },
+        {
+          "id": "compliance-officer",
+          "name": "Compliance Officer",
+          "status": "active",
+          "lastActive": "2026-02-17T01:57:04.988Z",
+          "taskCount": 952
+        },
+        {
+          "id": "records-analyst",
+          "name": "Records Analyst",
+          "status": "active",
+          "lastActive": "2026-02-17T02:00:00.536Z",
+          "taskCount": 954
+        }
+      ],
+      "recentActivity": [
+        {
+          "ts": "2026-02-17T01:57:04.988Z",
+          "agent": "compliance-officer",
+          "action": "Generated monthly compliance report",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T02:00:00.536Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from undefined for Amina Mohamed",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-17T01:55:44.235Z",
+          "agent": "records-analyst",
+          "action": "Sent records to undefined via secure transfer",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-17T02:01:44.991Z",
+          "agent": "compliance-officer",
+          "action": "Completed HIPAA training verification — Tech Davis",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-17T01:54:48.536Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from undefined for Hiroshi Watanabe",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-17T01:52:07.473Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from undefined → Gastroenterology",
+          "type": "referral"
+        },
+        {
+          "ts": "2026-02-17T01:57:18.634Z",
+          "agent": "compliance-officer",
+          "action": "Completed HIPAA training verification — Nurse Patel",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-17T01:54:25.317Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from Coastal Health System for Vikram Singh",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-17T01:51:46.116Z",
+          "agent": "patient-coordinator",
+          "action": "Scheduled urgent visit appointment for Robert Chen — Dermatology",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T02:05:13.792Z",
+          "agent": "patient-coordinator",
+          "action": "Scheduled initial consultation appointment for Grace Okonkwo — Endocrinology",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T02:05:59.783Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from University Hospital for Priya Sharma",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-17T01:04:39.600Z",
+          "agent": "compliance-officer",
+          "action": "Flagged expired BAA with PharmaCorp",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-16T07:17:25.999Z",
+          "agent": "compliance-officer",
+          "action": "Flagged expired BAA with BioWaste Mgmt",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-16T01:36:00.428Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from Dr. Foster → Internal Medicine",
+          "type": "referral"
+        },
+        {
+          "ts": "2026-02-16T00:22:17.093Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Winston Clarke",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-15T22:49:15.111Z",
+          "agent": "records-analyst",
+          "action": "Flagged incomplete chart for Dr. Kim",
+          "type": "quality"
+        },
+        {
+          "ts": "2026-02-15T12:44:20.950Z",
+          "agent": "patient-coordinator",
+          "action": "Rescheduled David Okafor to 2:30 PM",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-15T00:47:07.388Z",
+          "agent": "patient-coordinator",
+          "action": "Rescheduled Sarah Mitchell to 4:00 PM",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-15T00:14:06.336Z",
+          "agent": "compliance-officer",
+          "action": "Generated monthly compliance report",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-14T23:36:21.704Z",
+          "agent": "compliance-officer",
+          "action": "Completed HIPAA training verification — Dr. Hernandez",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-14T04:58:30.554Z",
+          "agent": "compliance-officer",
+          "action": "Flagged expired BAA with BioWaste Mgmt",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-14T01:26:56.165Z",
+          "agent": "compliance-officer",
+          "action": "Reviewed Nurse Patel's access to intake form — authorized",
+          "type": "audit"
+        },
+        {
+          "ts": "2026-02-13T22:53:09.257Z",
+          "agent": "compliance-officer",
+          "action": "Flagged expired BAA with SecureShred LLC",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-13T22:18:22.523Z",
+          "agent": "records-analyst",
+          "action": "Flagged incomplete chart for Dr. Reeves",
+          "type": "quality"
+        },
+        {
+          "ts": "2026-02-13T21:03:04.280Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from Dr. Murphy → Gastroenterology",
+          "type": "referral"
+        },
+        {
+          "ts": "2026-02-13T19:37:55.007Z",
+          "agent": "compliance-officer",
+          "action": "Completed HIPAA training verification — Nurse Williams",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-13T05:00:51.684Z",
+          "agent": "records-analyst",
+          "action": "Sent records to Regional Medical via secure transfer",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-12T20:59:04.433Z",
+          "agent": "compliance-officer",
+          "action": "Flagged expired BAA with SecureShred LLC",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-12T17:23:54.100Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Maria Santos",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-12T12:30:48.411Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Yuki Watanabe",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-12T06:21:10.217Z",
+          "agent": "records-analyst",
+          "action": "Flagged incomplete chart for Dr. Reeves",
+          "type": "quality"
+        },
+        {
+          "ts": "2026-02-12T02:43:10.001Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from Metro General for Fatima Al-Rashid",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-11T18:32:50.412Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from St. Mary's Hospital for Brian Kowalski",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-11T08:19:35.676Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from Metro General for Linda Zhao",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-11T07:38:50.512Z",
+          "agent": "compliance-officer",
+          "action": "Reviewed Tech Davis's access to imaging report — authorized",
+          "type": "audit"
+        },
+        {
+          "ts": "2026-02-11T06:06:06.413Z",
+          "agent": "compliance-officer",
+          "action": "Generated monthly compliance report",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-11T01:47:04.631Z",
+          "agent": "patient-coordinator",
+          "action": "Scheduled annual physical appointment for Yuki Watanabe — Dermatology",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-11T01:03:37.801Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from Dr. Patel → Orthopedics",
+          "type": "referral"
+        },
+        {
+          "ts": "2026-02-10T22:33:01.093Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from Dr. Brooks → Internal Medicine",
+          "type": "referral"
+        },
+        {
+          "ts": "2026-02-10T20:21:44.310Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Samantha Cruz",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-10T04:19:06.478Z",
+          "agent": "compliance-officer",
+          "action": "Generated monthly compliance report",
+          "type": "reporting"
+        }
+      ]
+    },
+    "pacific-legal": {
+      "name": "Pacific Legal Group",
+      "tier": "professional",
+      "vertical": "legal",
+      "kpis": {
+        "tasksCompleted": 2040,
+        "hoursSaved": 237.61,
+        "accuracyRate": 98.7,
+        "activeSince": "2026-01-20"
+      },
+      "agents": [
+        {
+          "id": "legal-ea",
+          "name": "Legal EA",
+          "status": "active",
+          "lastActive": "2026-02-17T01:57:55.399Z",
+          "taskCount": 680
+        },
+        {
+          "id": "document-analyst",
+          "name": "Document Analyst",
+          "status": "active",
+          "lastActive": "2026-02-17T01:57:03.068Z",
+          "taskCount": 679
+        },
+        {
+          "id": "client-followup",
+          "name": "Client Follow-up",
+          "status": "active",
+          "lastActive": "2026-02-17T02:01:13.642Z",
+          "taskCount": 681
+        }
+      ],
+      "recentActivity": [
+        {
+          "ts": "2026-02-17T02:01:13.642Z",
+          "agent": "client-followup",
+          "action": "Followed up on outstanding invoice — Greenfield Industries",
+          "type": "billing"
+        },
+        {
+          "ts": "2026-02-17T02:02:55.228Z",
+          "agent": "client-followup",
+          "action": "Sent medium reminder: return signed lease for Apex Development Corp",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-17T01:57:55.399Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for David Park",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-17T01:57:03.068Z",
+          "agent": "document-analyst",
+          "action": "Reviewed contract for Rivera Family Trust (8 pages)",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T02:02:09.448Z",
+          "agent": "legal-ea",
+          "action": "Calendared deadline: Board meeting — BFF on Mar 18",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T01:58:44.111Z",
+          "agent": "legal-ea",
+          "action": "Scheduled client meeting: TechNova Inc re: Patent infringement",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T02:02:38.079Z",
+          "agent": "client-followup",
+          "action": "Sent low reminder: provide updated beneficiary list for Rivera Family Trust",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-17T01:57:42.376Z",
+          "agent": "client-followup",
+          "action": "Sent case status update to Phoenix Properties",
+          "type": "communication"
+        },
+        {
+          "ts": "2026-02-17T01:58:52.808Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in purchase agreement",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T01:29:42.865Z",
+          "agent": "legal-ea",
+          "action": "Sent court appearance reminder — City Hall — Room 4B",
+          "type": "notification"
+        },
+        {
+          "ts": "2026-02-16T21:19:39.267Z",
+          "agent": "legal-ea",
+          "action": "Sent court appearance reminder — Superior Court — Dept 7",
+          "type": "notification"
+        },
+        {
+          "ts": "2026-02-16T14:51:50.971Z",
+          "agent": "client-followup",
+          "action": "Sent case status update to Coastal Ventures LLC",
+          "type": "communication"
+        },
+        {
+          "ts": "2026-02-16T13:37:06.723Z",
+          "agent": "legal-ea",
+          "action": "Scheduled client meeting: Coastal Ventures LLC re: Partnership dissolution",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-15T13:34:46.722Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Apex Development Corp",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-15T13:29:01.000Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in licensing agreement",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-14T19:25:15.908Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for Sarah Chen",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-14T17:34:27.639Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for David Park",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-14T11:35:51.412Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Sterling Manufacturing",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-14T09:51:14.136Z",
+          "agent": "document-analyst",
+          "action": "Summarised deposition transcript — Greenfield v. TechCo",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-14T05:00:41.556Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Sterling Manufacturing",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-14T04:57:34.315Z",
+          "agent": "client-followup",
+          "action": "Scheduled consultation with Apex Development Corp",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-14T03:13:46.986Z",
+          "agent": "document-analyst",
+          "action": "Summarised deposition transcript — Rivera Trust Admin",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-14T02:29:07.338Z",
+          "agent": "legal-ea",
+          "action": "Sent court appearance reminder — Superior Court — Dept 7",
+          "type": "notification"
+        },
+        {
+          "ts": "2026-02-13T22:31:16.642Z",
+          "agent": "document-analyst",
+          "action": "Summarised deposition transcript — Vasquez v. State Board",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-13T15:45:44.382Z",
+          "agent": "document-analyst",
+          "action": "Summarised deposition transcript — Rivera Trust Admin",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-13T11:49:42.363Z",
+          "agent": "legal-ea",
+          "action": "Filed motion in Coastal v. Harbor Group",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-12T23:31:29.062Z",
+          "agent": "legal-ea",
+          "action": "Filed motion in TechNova v. DataSoft",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-12T19:20:01.292Z",
+          "agent": "document-analyst",
+          "action": "Summarised deposition transcript — Phoenix v. City Council",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-12T19:20:00.644Z",
+          "agent": "client-followup",
+          "action": "Sent high reminder: approve zoning brief for Phoenix Properties",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-12T14:27:18.522Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in licensing agreement",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-12T11:48:06.787Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in employment contract",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-12T03:28:10.024Z",
+          "agent": "client-followup",
+          "action": "Followed up on outstanding invoice — Greenfield Industries",
+          "type": "billing"
+        },
+        {
+          "ts": "2026-02-12T02:19:32.179Z",
+          "agent": "legal-ea",
+          "action": "Filed motion in TechNova v. DataSoft",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-12T00:02:57.734Z",
+          "agent": "legal-ea",
+          "action": "Calendared deadline: Client meeting — Rivera on Mar 10",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-11T16:54:23.045Z",
+          "agent": "legal-ea",
+          "action": "Sent court appearance reminder — N/A",
+          "type": "notification"
+        },
+        {
+          "ts": "2026-02-11T04:06:50.529Z",
+          "agent": "client-followup",
+          "action": "Sent medium reminder: return signed lease for Apex Development Corp",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-11T03:26:07.565Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in employment contract",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-10T23:41:31.334Z",
+          "agent": "client-followup",
+          "action": "Scheduled consultation with Apex Development Corp",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-10T09:05:16.200Z",
+          "agent": "client-followup",
+          "action": "Sent high reminder: submit medical records for Dr. Elena Vasquez",
+          "type": "follow-up"
+        }
+      ]
+    },
+    "buildright": {
+      "name": "BuildRight Construction",
+      "tier": "starter",
+      "vertical": "construction",
+      "kpis": {
+        "tasksCompleted": 430,
+        "hoursSaved": 70.8,
+        "accuracyRate": 97.5,
+        "activeSince": "2026-02-01"
+      },
+      "agents": [
+        {
+          "id": "site-reporter",
+          "name": "Site Reporter",
+          "status": "active",
+          "lastActive": "2026-02-17T01:57:53.039Z",
+          "taskCount": 430
+        }
+      ],
+      "recentActivity": [
+        {
+          "ts": "2026-02-17T01:57:53.039Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Harbor View Tower (2 days behind)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T01:55:38.312Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Harbor View Tower",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T01:55:35.654Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Oakwood Elementary Renovation",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T02:03:24.571Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Harbor View Tower",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T02:01:17.205Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Riverside Commons Phase 2 (on track)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T01:57:02.280Z",
+          "agent": "site-reporter",
+          "action": "Updated milestone: Interior demo complete at Oakwood Elementary Renovation",
+          "type": "milestone"
+        },
+        {
+          "ts": "2026-02-17T01:53:27.622Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Greenfield Business Park: clear skies — full operations",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-16T20:29:36.530Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Metro Transit Hub",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-16T09:46:50.840Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Greenfield Business Park",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-16T04:41:22.632Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Metro Transit Hub",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-15T18:53:19.696Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Metro Transit Hub: high winds (45 mph) — crane ops suspended",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-15T13:05:30.330Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Greenfield Business Park",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-15T11:45:42.775Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Greenfield Business Park",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-15T10:44:58.500Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Greenfield Business Park: light rain — exterior paint delayed",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-15T02:48:32.425Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Metro Transit Hub: heatwave (105°F) — reduced afternoon shift",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-15T02:32:57.414Z",
+          "agent": "site-reporter",
+          "action": "Updated milestone: Platform canopy install at Metro Transit Hub",
+          "type": "milestone"
+        },
+        {
+          "ts": "2026-02-14T21:23:03.504Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Riverside Commons Phase 2: overcast — no impact",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-14T15:45:47.402Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Metro Transit Hub",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-14T13:06:08.063Z",
+          "agent": "site-reporter",
+          "action": "Updated milestone: Steel frame Level 12 at Harbor View Tower",
+          "type": "milestone"
+        },
+        {
+          "ts": "2026-02-14T06:49:41.509Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Riverside Commons Phase 2",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-13T20:53:25.603Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Oakwood Elementary Renovation",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-13T20:44:24.856Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Metro Transit Hub",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-13T19:43:34.334Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Greenfield Business Park: heavy rain — concrete pour delayed",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-13T18:47:54.295Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Oakwood Elementary Renovation: heatwave (105°F) — reduced afternoon shift",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-13T15:12:57.955Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Harbor View Tower: frost advisory — masonry work postponed",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-13T09:34:55.458Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Riverside Commons Phase 2 (on track)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-13T03:18:41.209Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Oakwood Elementary Renovation (on track)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-12T14:20:02.899Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Greenfield Business Park",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-12T04:59:54.948Z",
+          "agent": "site-reporter",
+          "action": "Updated milestone: Parking structure framing at Greenfield Business Park",
+          "type": "milestone"
+        },
+        {
+          "ts": "2026-02-11T19:53:04.343Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Metro Transit Hub: clear skies — full operations",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-11T13:51:32.819Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Greenfield Business Park",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-11T11:23:03.770Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Greenfield Business Park (on track)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-11T02:44:28.784Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Harbor View Tower: thunderstorm warning — site evacuated 2hrs",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-11T01:00:56.354Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Oakwood Elementary Renovation",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-10T18:36:19.704Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Harbor View Tower",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-10T06:14:27.592Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Harbor View Tower",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-10T02:24:16.428Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Harbor View Tower",
+          "type": "reporting"
+        }
+      ]
+    }
+  }
+}

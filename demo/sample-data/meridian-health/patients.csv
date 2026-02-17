@@ -1,0 +1,101 @@
+patient_id,name,dob,phone,email,insurance,primary_physician,last_visit
+P001,Maria Santos,1978-04-12,503-555-0142,maria.santos@gmail.com,Blue Cross PPO,Dr. Nguyen,2026-01-15
+P002,James Chen,1965-11-03,503-555-0198,jchen65@outlook.com,Aetna HMO,Dr. Pham,2026-01-22
+P003,Aisha Patel,1990-07-28,971-555-0234,aisha.patel@yahoo.com,Kaiser Permanente,Dr. Brooks,2026-02-01
+P004,Robert Kim,1982-01-19,503-555-0317,rkim82@gmail.com,UnitedHealth Choice Plus,Dr. Nguyen,2025-11-30
+P005,Diana Moss,1971-09-06,971-555-0445,diana.moss@comcast.net,Blue Cross PPO,Dr. Okafor,2026-01-08
+P006,Carlos Rivera,1988-03-22,503-555-0523,carlos.r@hotmail.com,Medicaid,Dr. Pham,2025-12-15
+P007,Priya Sharma,1995-12-14,971-555-0601,priya.sharma@gmail.com,Cigna Open Access,Dr. Brooks,2026-01-28
+P008,Thomas Walker,1958-06-30,503-555-0789,twalker58@aol.com,Medicare Part B,Dr. Okafor,2026-02-03
+P009,Fatima Al-Rashid,1973-08-17,503-555-0856,fatima.ar@gmail.com,Aetna HMO,Dr. Nguyen,2026-01-20
+P010,Liam O'Brien,1980-02-05,971-555-0912,liam.obrien@outlook.com,Blue Cross PPO,Dr. Pham,2025-12-10
+P011,Yuki Tanaka,1987-10-23,503-555-1045,yuki.tanaka@gmail.com,Kaiser Permanente,Dr. Brooks,2026-01-18
+P012,Grace Okafor,1992-05-11,971-555-1123,grace.okafor@yahoo.com,UnitedHealth Choice Plus,Dr. Nguyen,2025-10-22
+P013,Marcus Johnson,1969-12-01,503-555-1201,marcus.j@gmail.com,Cigna Open Access,Dr. Okafor,2026-02-05
+P014,Elena Petrov,1985-03-15,503-555-1334,elena.petrov@outlook.com,Blue Cross PPO,Dr. Pham,2026-01-30
+P015,David Nakamura,1976-07-09,971-555-1402,dnakamura@gmail.com,Aetna HMO,Dr. Brooks,2025-11-15
+P016,Sofia Reyes,1983-11-28,503-555-1589,sofia.reyes@hotmail.com,Medicaid,Dr. Nguyen,2026-01-25
+P017,William Osei,1962-04-18,971-555-1645,wosei@aol.com,Medicare Part B,Dr. Okafor,2026-02-08
+P018,Nadia Kowalski,1991-08-07,503-555-1723,nadia.k@gmail.com,Kaiser Permanente,Dr. Pham,2026-01-12
+P019,Raj Gupta,1974-01-30,503-555-1856,raj.gupta@outlook.com,Cigna Open Access,Dr. Brooks,2025-12-20
+P020,Catherine Dubois,1968-06-14,971-555-1934,cdubois@comcast.net,UnitedHealth Choice Plus,Dr. Nguyen,2026-01-05
+P021,Samuel Achebe,1986-09-22,503-555-2012,sachebe@gmail.com,Blue Cross PPO,Dr. Okafor,2025-11-28
+P022,Hannah Bergstrom,1993-02-10,971-555-2145,hannah.b@yahoo.com,Aetna HMO,Dr. Pham,2026-02-10
+P023,Jin-Ho Park,1979-05-26,503-555-2201,jinhop@gmail.com,Kaiser Permanente,Dr. Brooks,2026-01-14
+P024,Amara Diallo,1970-12-08,503-555-2334,amara.diallo@outlook.com,Medicare Part B,Dr. Nguyen,2026-02-02
+P025,Olivia Morgan,1996-04-03,971-555-2412,olivia.morgan@gmail.com,Blue Cross PPO,Dr. Okafor,2025-12-05
+P026,Miguel Torres,1984-08-19,503-555-2589,mtorres84@hotmail.com,Medicaid,Dr. Pham,2026-01-22
+P027,Rebecca Strauss,1977-11-12,971-555-2645,rstrauss@gmail.com,Cigna Open Access,Dr. Brooks,2026-01-28
+P028,Anthony Washington,1989-03-07,503-555-2723,a.washington@outlook.com,UnitedHealth Choice Plus,Dr. Nguyen,2025-10-15
+P029,Mei-Lin Wu,1981-07-21,503-555-2856,meilin.wu@gmail.com,Aetna HMO,Dr. Okafor,2026-02-06
+P030,Isaac Okonkwo,1994-10-16,971-555-2934,isaac.o@yahoo.com,Blue Cross PPO,Dr. Pham,2025-12-18
+P031,Lisa Johansson,1966-01-25,503-555-3012,ljohansson@comcast.net,Kaiser Permanente,Dr. Brooks,2026-01-10
+P032,Omar Hassan,1975-06-09,971-555-3145,omar.hassan@gmail.com,Medicare Part B,Dr. Nguyen,2025-11-20
+P033,Patricia Navarro,1960-09-03,503-555-3201,pnavarro@aol.com,Blue Cross PPO,Dr. Okafor,2026-02-12
+P034,Kwame Mensah,1988-12-17,503-555-3334,kwame.m@outlook.com,UnitedHealth Choice Plus,Dr. Pham,2025-12-28
+P035,Sarah Mitchell,1972-04-28,971-555-3412,sarah.mitchell@gmail.com,Cigna Open Access,Dr. Brooks,2026-01-16
+P036,Victor Popov,1963-08-14,503-555-3589,vpopov@hotmail.com,Aetna HMO,Dr. Nguyen,2026-01-30
+P037,Angela Baptiste,1985-02-22,971-555-3645,abaptiste@gmail.com,Blue Cross PPO,Dr. Okafor,2025-11-05
+P038,Derek Yamamoto,1991-06-06,503-555-3723,derek.y@yahoo.com,Kaiser Permanente,Dr. Pham,2026-02-14
+P039,Zainab Hussain,1978-10-30,503-555-3856,zainab.h@gmail.com,Medicaid,Dr. Brooks,2026-01-20
+P040,Evelyn Larsen,1967-03-18,971-555-3934,elarsen@outlook.com,Medicare Part B,Dr. Nguyen,2026-02-01
+P041,Andre Williams,1983-07-04,503-555-4012,andre.w@gmail.com,UnitedHealth Choice Plus,Dr. Okafor,2025-12-12
+P042,Ingrid Svensson,1976-11-21,971-555-4145,isvensson@comcast.net,Blue Cross PPO,Dr. Pham,2026-01-07
+P043,Darnell Thompson,1990-01-15,503-555-4201,dthompson@hotmail.com,Aetna HMO,Dr. Brooks,2025-10-30
+P044,Lucia Fernandez,1986-05-09,503-555-4334,lucia.f@gmail.com,Cigna Open Access,Dr. Nguyen,2026-02-09
+P045,Nathan Goldberg,1971-09-27,971-555-4412,ngoldberg@outlook.com,Kaiser Permanente,Dr. Okafor,2025-11-18
+P046,Aaliyah Brown,1997-12-03,503-555-4589,aaliyah.b@yahoo.com,Blue Cross PPO,Dr. Pham,2026-01-24
+P047,Sergei Volkov,1964-04-16,971-555-4645,svolkov@gmail.com,Medicare Part B,Dr. Brooks,2025-12-22
+P048,Jasmine Tran,1993-08-08,503-555-4723,jasmine.tran@gmail.com,UnitedHealth Choice Plus,Dr. Nguyen,2026-02-04
+P049,Brendan Murphy,1980-02-14,503-555-4856,bmurphy@aol.com,Aetna HMO,Dr. Okafor,2026-01-13
+P050,Rosa Castillo,1974-06-22,971-555-4934,rosa.castillo@outlook.com,Medicaid,Dr. Pham,2025-11-25
+P051,Daniel Abrams,1987-10-10,503-555-5012,dabrams@gmail.com,Cigna Open Access,Dr. Brooks,2026-01-19
+P052,Sun-Hee Kwon,1969-03-05,971-555-5145,sunhee.k@yahoo.com,Blue Cross PPO,Dr. Nguyen,2025-12-08
+P053,Trevor Campbell,1982-07-19,503-555-5201,trevor.c@hotmail.com,Kaiser Permanente,Dr. Okafor,2026-02-11
+P054,Amina Mohamed,1995-11-13,503-555-5334,amina.m@gmail.com,UnitedHealth Choice Plus,Dr. Pham,2026-01-26
+P055,Gerald Foster,1961-01-28,971-555-5412,gfoster@comcast.net,Medicare Part B,Dr. Brooks,2025-10-20
+P056,Bianca Romano,1984-05-17,503-555-5589,bianca.r@outlook.com,Aetna HMO,Dr. Nguyen,2026-01-31
+P057,Kofi Asante,1977-09-04,971-555-5645,kofi.a@gmail.com,Blue Cross PPO,Dr. Okafor,2025-12-15
+P058,Heather Sullivan,1992-12-29,503-555-5723,hsullivan@yahoo.com,Cigna Open Access,Dr. Pham,2026-02-07
+P059,Andrei Sokolov,1973-04-11,503-555-5856,asokolov@gmail.com,Kaiser Permanente,Dr. Brooks,2026-01-09
+P060,Tamika Jackson,1989-08-23,971-555-5934,tamika.j@hotmail.com,Medicaid,Dr. Nguyen,2025-11-12
+P061,Erik Lindqvist,1966-02-07,503-555-6012,elindqvist@outlook.com,UnitedHealth Choice Plus,Dr. Okafor,2026-01-21
+P062,Deepa Krishnamurthy,1981-06-16,971-555-6145,deepa.k@gmail.com,Blue Cross PPO,Dr. Pham,2025-12-30
+P063,Malcolm Reed,1975-10-02,503-555-6201,mreed75@aol.com,Aetna HMO,Dr. Brooks,2026-02-13
+P064,Francesca Moretti,1994-01-20,503-555-6334,fmoretti@gmail.com,Medicare Part B,Dr. Nguyen,2026-01-17
+P065,Rashid Khan,1970-05-14,971-555-6412,rashid.khan@yahoo.com,Kaiser Permanente,Dr. Okafor,2025-11-08
+P066,Stephanie Bauer,1986-09-08,503-555-6589,sbauer@outlook.com,Cigna Open Access,Dr. Pham,2026-01-29
+P067,Emeka Nwosu,1979-12-25,971-555-6645,emeka.n@gmail.com,UnitedHealth Choice Plus,Dr. Brooks,2026-02-03
+P068,Laura Fitzgerald,1993-04-07,503-555-6723,lfitzgerald@comcast.net,Blue Cross PPO,Dr. Nguyen,2025-12-19
+P069,Hiroshi Watanabe,1968-08-19,503-555-6856,hwatanabe@gmail.com,Aetna HMO,Dr. Okafor,2026-01-11
+P070,Crystal Adams,1991-11-30,971-555-6934,crystal.a@hotmail.com,Medicaid,Dr. Pham,2025-10-28
+P071,Philippe Moreau,1976-03-13,503-555-7012,pmoreau@outlook.com,Kaiser Permanente,Dr. Brooks,2026-02-06
+P072,Thandiwe Mabaso,1984-07-27,971-555-7145,thandiwe.m@gmail.com,Blue Cross PPO,Dr. Nguyen,2026-01-23
+P073,Bradley Cooper,1972-11-09,503-555-7201,bcooper72@yahoo.com,UnitedHealth Choice Plus,Dr. Okafor,2025-12-04
+P074,Ananya Reddy,1997-02-18,503-555-7334,ananya.r@gmail.com,Cigna Open Access,Dr. Pham,2026-01-27
+P075,George Papadopoulos,1963-06-05,971-555-7412,gpapadop@aol.com,Medicare Part B,Dr. Brooks,2025-11-22
+P076,Monica Delgado,1988-10-21,503-555-7589,mdelgado@outlook.com,Aetna HMO,Dr. Nguyen,2026-02-10
+P077,Tariq Abdullah,1981-01-14,971-555-7645,tariq.a@gmail.com,Blue Cross PPO,Dr. Okafor,2026-01-15
+P078,Kendra Phillips,1990-05-28,503-555-7723,kphillips@yahoo.com,Kaiser Permanente,Dr. Pham,2025-12-26
+P079,Ivan Petrov,1974-09-12,503-555-7856,ivan.petrov@gmail.com,Medicaid,Dr. Brooks,2026-02-08
+P080,Carmen Vega,1967-12-06,971-555-7934,cvega@comcast.net,UnitedHealth Choice Plus,Dr. Nguyen,2026-01-06
+P081,Obinna Eze,1985-04-24,503-555-8012,obinna.e@hotmail.com,Cigna Open Access,Dr. Okafor,2025-11-30
+P082,Christine Hoffman,1978-08-10,971-555-8145,choffman@gmail.com,Aetna HMO,Dr. Pham,2026-01-20
+P083,Javier Morales,1992-12-15,503-555-8201,jmorales@outlook.com,Blue Cross PPO,Dr. Brooks,2026-02-15
+P084,Nkechi Obi,1971-03-29,503-555-8334,nkechi.o@gmail.com,Kaiser Permanente,Dr. Nguyen,2025-12-11
+P085,Robert Magnusson,1964-07-17,971-555-8412,rmagnusson@yahoo.com,Medicare Part B,Dr. Okafor,2026-01-08
+P086,Layla Ibrahim,1996-11-03,503-555-8589,layla.i@gmail.com,UnitedHealth Choice Plus,Dr. Pham,2026-02-12
+P087,Duncan MacLeod,1979-02-21,971-555-8645,dmacleod@aol.com,Cigna Open Access,Dr. Brooks,2025-10-16
+P088,Valentina Cruz,1987-06-08,503-555-8723,vcruz@outlook.com,Blue Cross PPO,Dr. Nguyen,2026-01-25
+P089,Akira Fujimoto,1973-10-26,503-555-8856,akira.f@gmail.com,Aetna HMO,Dr. Okafor,2025-12-02
+P090,Natasha Williams,1983-01-12,971-555-8934,natasha.w@hotmail.com,Medicaid,Dr. Pham,2026-02-04
+P091,Henrik Dahl,1968-05-19,503-555-9012,hdahl@comcast.net,Kaiser Permanente,Dr. Brooks,2026-01-18
+P092,Chinwe Adeyemi,1994-09-07,971-555-9145,chinwe.a@gmail.com,UnitedHealth Choice Plus,Dr. Nguyen,2025-11-14
+P093,Peter Schneider,1976-12-23,503-555-9201,pschneider@outlook.com,Blue Cross PPO,Dr. Okafor,2026-01-30
+P094,Mariana Costa,1989-04-15,503-555-9334,mcosta@yahoo.com,Cigna Open Access,Dr. Pham,2026-02-09
+P095,Kwesi Boateng,1982-08-01,971-555-9412,kwesi.b@gmail.com,Aetna HMO,Dr. Brooks,2025-12-20
+P096,Jennifer O'Connor,1970-11-18,503-555-9589,joconnor@gmail.com,Medicare Part B,Dr. Nguyen,2026-01-14
+P097,Vikram Singh,1986-03-06,971-555-9645,vikram.s@outlook.com,Kaiser Permanente,Dr. Okafor,2026-02-11
+P098,Destiny Harris,1998-07-24,503-555-9723,destiny.h@hotmail.com,Blue Cross PPO,Dr. Pham,2026-01-22
+P099,Aleksandr Kozlov,1975-10-09,503-555-9856,akozlov@gmail.com,UnitedHealth Choice Plus,Dr. Brooks,2025-11-26
+P100,Esmeralda Ruiz,1991-02-13,971-555-9934,eruiz@yahoo.com,Medicaid,Dr. Nguyen,2026-02-14
