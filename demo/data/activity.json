@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T06:33:13.136Z",
+  "lastUpdated": "2026-02-17T07:01:38.214Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2855,
-        "hoursSaved": 315.83,
+        "tasksCompleted": 2856,
+        "hoursSaved": 316.31,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -30,11 +30,17 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T05:49:05.091Z",
-          "taskCount": 952
+          "lastActive": "2026-02-17T07:01:04.289Z",
+          "taskCount": 953
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:01:04.289Z",
+          "agent": "records-analyst",
+          "action": "Completed chart review — Neurology",
+          "type": "quality"
+        },
         {
           "ts": "2026-02-17T06:23:45.877Z",
           "agent": "compliance-officer",
@@ -270,8 +276,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2041,
-        "hoursSaved": 237.14,
+        "tasksCompleted": 2043,
+        "hoursSaved": 237.59,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -280,8 +286,8 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-17T06:23:57.105Z",
-          "taskCount": 678
+          "lastActive": "2026-02-17T06:53:54.613Z",
+          "taskCount": 680
         },
         {
           "id": "document-analyst",
@@ -299,6 +305,18 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:53:54.613Z",
+          "agent": "legal-ea",
+          "action": "Filed motion in Ramirez v. Pacific Northwest Electric",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-17T06:55:32.369Z",
+          "agent": "legal-ea",
+          "action": "Calendared deadline: client_meeting — Estate of Williams on 2026-02-18",
+          "type": "scheduling"
+        },
         {
           "ts": "2026-02-17T06:28:42.108Z",
           "agent": "client-followup",
@@ -546,8 +564,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 430,
-        "hoursSaved": 70.94,
+        "tasksCompleted": 431,
+        "hoursSaved": 71.27,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -556,11 +574,17 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T06:22:02.353Z",
-          "taskCount": 430
+          "lastActive": "2026-02-17T06:56:22.030Z",
+          "taskCount": 431
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:56:22.030Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Cascade Elementary School Renovation",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-17T06:22:02.353Z",
           "agent": "site-reporter",
@@ -790,8 +814,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 1886,
-        "hoursSaved": 201.6,
+        "tasksCompleted": 1890,
+        "hoursSaved": 202.79,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -800,8 +824,8 @@
           "id": "churn-analyst",
           "name": "Churn Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T06:25:52.928Z",
-          "taskCount": 626
+          "lastActive": "2026-02-17T06:52:59.577Z",
+          "taskCount": 628
         },
         {
           "id": "onboarding-specialist",
@@ -814,11 +838,35 @@
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-17T06:26:16.927Z",
-          "taskCount": 629
+          "lastActive": "2026-02-17T06:50:44.965Z",
+          "taskCount": 631
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:50:44.965Z",
+          "agent": "support-triage",
+          "action": "Categorised 3 new tickets — 2 auto-resolved",
+          "type": "triage"
+        },
+        {
+          "ts": "2026-02-17T06:52:59.577Z",
+          "agent": "churn-analyst",
+          "action": "Calculated health score for SummitView Analytics — 90/100",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-17T06:58:52.192Z",
+          "agent": "support-triage",
+          "action": "Categorised 4 new tickets — 3 auto-resolved",
+          "type": "triage"
+        },
+        {
+          "ts": "2026-02-17T06:51:33.966Z",
+          "agent": "churn-analyst",
+          "action": "Calculated health score for Cobalt Security — 63/100",
+          "type": "analysis"
+        },
         {
           "ts": "2026-02-17T06:28:37.331Z",
           "agent": "onboarding-specialist",
@@ -1090,8 +1138,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2243,
-        "hoursSaved": 269.8,
+        "tasksCompleted": 2246,
+        "hoursSaved": 270.85,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1100,8 +1148,8 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-17T06:24:47.442Z",
-          "taskCount": 746
+          "lastActive": "2026-02-17T06:56:13.479Z",
+          "taskCount": 748
         },
         {
           "id": "portfolio-reviewer",
@@ -1114,11 +1162,29 @@
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T05:56:22.077Z",
-          "taskCount": 746
+          "lastActive": "2026-02-17T06:56:48.660Z",
+          "taskCount": 747
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:56:13.479Z",
+          "agent": "compliance-monitor",
+          "action": "Reviewed personal trading pre-clearance — 4 requests, no violations",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-17T06:56:48.660Z",
+          "agent": "filing-coordinator",
+          "action": "Generated regulatory filing status report — 2 filings due this month",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T06:50:44.100Z",
+          "agent": "compliance-monitor",
+          "action": "Generated weekly compliance review — 1 action items",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-17T06:24:47.442Z",
           "agent": "compliance-monitor",
