@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T06:02:38.186Z",
+  "lastUpdated": "2026-02-17T06:33:13.136Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2853,
-        "hoursSaved": 315.33,
+        "tasksCompleted": 2855,
+        "hoursSaved": 315.83,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,15 +16,15 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T04:23:07.810Z",
-          "taskCount": 951
+          "lastActive": "2026-02-17T06:23:53.309Z",
+          "taskCount": 952
         },
         {
           "id": "compliance-officer",
           "name": "Compliance Officer",
           "status": "active",
-          "lastActive": "2026-02-17T04:19:31.749Z",
-          "taskCount": 950
+          "lastActive": "2026-02-17T06:23:45.877Z",
+          "taskCount": 951
         },
         {
           "id": "records-analyst",
@@ -35,6 +35,18 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:23:45.877Z",
+          "agent": "compliance-officer",
+          "action": "Verified access log audit — Endocrinology",
+          "type": "audit"
+        },
+        {
+          "ts": "2026-02-17T06:23:53.309Z",
+          "agent": "patient-coordinator",
+          "action": "Sent appointment reminder to Omar Hassan",
+          "type": "notification"
+        },
         {
           "ts": "2026-02-17T05:49:05.091Z",
           "agent": "records-analyst",
@@ -258,8 +270,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2037,
-        "hoursSaved": 236.5,
+        "tasksCompleted": 2041,
+        "hoursSaved": 237.14,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -268,25 +280,49 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-17T04:26:53.635Z",
-          "taskCount": 677
+          "lastActive": "2026-02-17T06:23:57.105Z",
+          "taskCount": 678
         },
         {
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T04:26:48.017Z",
-          "taskCount": 680
+          "lastActive": "2026-02-17T06:25:35.622Z",
+          "taskCount": 682
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-17T05:50:03.140Z",
-          "taskCount": 680
+          "lastActive": "2026-02-17T06:28:42.108Z",
+          "taskCount": 681
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:28:42.108Z",
+          "agent": "client-followup",
+          "action": "Scheduled consultation with Washington Real Estate Holdings",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T06:23:57.105Z",
+          "agent": "legal-ea",
+          "action": "Calendared deadline: filing_deadline — Patel Family Trust v. IRS on 2026-02-18",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T06:25:35.622Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Bergman & Associates",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T06:18:19.636Z",
+          "agent": "document-analyst",
+          "action": "Reviewed contract for Carlos Rivera (7 pages)",
+          "type": "review"
+        },
         {
           "ts": "2026-02-17T05:50:03.140Z",
           "agent": "client-followup",
@@ -510,8 +546,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 429,
-        "hoursSaved": 70.54,
+        "tasksCompleted": 430,
+        "hoursSaved": 70.94,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -520,11 +556,17 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T05:54:00.993Z",
-          "taskCount": 429
+          "lastActive": "2026-02-17T06:22:02.353Z",
+          "taskCount": 430
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:22:02.353Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Riverfront Mixed-Use: fog — reduced",
+          "type": "delay"
+        },
         {
           "ts": "2026-02-17T05:54:00.993Z",
           "agent": "site-reporter",
@@ -748,8 +790,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 1883,
-        "hoursSaved": 200.57,
+        "tasksCompleted": 1886,
+        "hoursSaved": 201.6,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -758,25 +800,43 @@
           "id": "churn-analyst",
           "name": "Churn Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T04:26:53.635Z",
-          "taskCount": 625
+          "lastActive": "2026-02-17T06:25:52.928Z",
+          "taskCount": 626
         },
         {
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-17T06:02:16.609Z",
-          "taskCount": 629
+          "lastActive": "2026-02-17T06:28:37.331Z",
+          "taskCount": 630
         },
         {
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-17T05:48:35.991Z",
-          "taskCount": 628
+          "lastActive": "2026-02-17T06:26:16.927Z",
+          "taskCount": 629
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:28:37.331Z",
+          "agent": "onboarding-specialist",
+          "action": "Generated onboarding pipeline status report",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T06:25:52.928Z",
+          "agent": "churn-analyst",
+          "action": "Flagged churn risk: Polaris Shipping (Growth, $$3200/mo) — score dropped below 50",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T06:26:16.927Z",
+          "agent": "support-triage",
+          "action": "Auto-triaged ticket TK-4206: API rate limit exceeded — routed to integration",
+          "type": "triage"
+        },
         {
           "ts": "2026-02-17T05:48:35.991Z",
           "agent": "support-triage",
@@ -1030,8 +1090,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2241,
-        "hoursSaved": 269.18,
+        "tasksCompleted": 2243,
+        "hoursSaved": 269.8,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1040,15 +1100,15 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-17T05:52:31.688Z",
-          "taskCount": 745
+          "lastActive": "2026-02-17T06:24:47.442Z",
+          "taskCount": 746
         },
         {
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-17T05:54:17.867Z",
-          "taskCount": 748
+          "lastActive": "2026-02-17T06:21:22.704Z",
+          "taskCount": 749
         },
         {
           "id": "filing-coordinator",
@@ -1059,6 +1119,18 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T06:24:47.442Z",
+          "agent": "compliance-monitor",
+          "action": "Generated weekly compliance review — 3 action items",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T06:21:22.704Z",
+          "agent": "portfolio-reviewer",
+          "action": "Generated performance attribution report for Morrison Charitable Foundation",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-17T05:54:17.867Z",
           "agent": "portfolio-reviewer",
