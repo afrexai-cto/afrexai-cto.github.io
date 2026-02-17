@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Workspace — AfrexAI Skills</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#111;--surface2:#1a1a1a;--surface3:#222;--gold:#FFD700;--gold-dim:#b89b00;--text:#e8e8e8;--text-dim:#888;--text-muted:#555;--green:#00e676;--red:#ff5252;--orange:#ffab40;--blue:#448aff;--purple:#b388ff;--radius:12px;--sidebar-w:220px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+
+/* Sidebar */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--surface3);position:fixed;top:0;left:0;bottom:0;z-index:20;display:flex;flex-direction:column}
+.sidebar-brand{padding:20px 16px 16px;border-bottom:1px solid var(--surface3)}
+.sidebar-brand .logo{font-size:18px;font-weight:700;color:var(--gold);letter-spacing:.5px}
+.sidebar-brand .logo span{color:var(--text)}
+.sidebar-brand .workspace{font-size:11px;color:var(--text-dim);margin-top:4px}
+.sidebar-nav{flex:1;padding:12px 8px;display:flex;flex-direction:column;gap:2px}
+.nav-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:13px;color:var(--text-dim);cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:inherit;transition:all .15s}
+.nav-link:hover{background:var(--surface2);color:var(--text)}
+.nav-link.active{background:var(--surface2);color:var(--gold);font-weight:600}
+.nav-link .icon{font-size:16px;width:22px;text-align:center;flex-shrink:0}
+.sidebar-footer{padding:12px 8px;border-top:1px solid var(--surface3);display:flex;flex-direction:column;gap:4px}
+.sidebar-footer .cta-link{display:block;padding:8px 12px;font-size:11px;color:var(--text-muted);text-decoration:none;border-radius:6px;transition:all .15s}
+.sidebar-footer .cta-link:hover{background:var(--surface2);color:var(--gold);text-decoration:none}
+.sidebar-footer .cta-managed{background:linear-gradient(135deg,#1a1400,#111);border:1px solid #333;color:var(--gold-dim);font-weight:600;font-size:12px;text-align:center;padding:10px 12px;border-radius:8px;margin:4px}
+.sidebar-footer .cta-managed:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Main */
+.main{margin-left:var(--sidebar-w);min-height:100vh}
+.page-header{padding:20px 28px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.page-header h1{font-size:22px;font-weight:700}
+.page-header .meta{font-size:11px;color:var(--text-muted)}
+.container{max-width:1100px;padding:20px 28px 60px}
+
+/* Shared */
+.section{margin-bottom:28px}
+.section-title{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:12px;font-weight:600}
+.card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:20px;transition:border .2s}
+.card:hover{border-color:#333}
+
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.metric-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:18px;text-align:center}
+.metric-card .value{font-size:28px;font-weight:700;color:var(--gold);line-height:1}
+.metric-card .label{font-size:10px;color:var(--text-dim);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+
+/* Badges */
+.badge{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;display:inline-block}
+.badge-installed{background:#00e67618;color:var(--green);border:1px solid #00e67633}
+.badge-available{background:#448aff18;color:var(--blue);border:1px solid #448aff33}
+.badge-active{background:#00e67618;color:var(--green);border:1px solid #00e67633}
+.badge-cat{background:var(--surface2);color:var(--text-dim);border:1px solid var(--surface3)}
+
+/* Skills Grid */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.skill-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:10px;transition:all .2s}
+.skill-card:hover{border-color:#444;transform:translateY(-1px)}
+.skill-card .skill-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.skill-card .skill-icon{font-size:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--surface2);border-radius:10px;flex-shrink:0}
+.skill-card .skill-info{flex:1}
+.skill-card .skill-name{font-size:14px;font-weight:600;margin-bottom:2px}
+.skill-card .skill-desc{font-size:12px;color:var(--text-dim);line-height:1.4}
+.skill-card .skill-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.skill-card .stars{color:var(--gold);font-size:11px;letter-spacing:1px}
+.skill-card .downloads{font-size:10px;color:var(--text-muted)}
+.skill-card .install-btn{padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
+.install-btn.installed{background:#00e67618;color:var(--green);border:1px solid #00e67633;cursor:default}
+.install-btn.available{background:var(--gold);color:#000}
+.install-btn.available:hover{background:#e6c200;transform:scale(1.02)}
+
+/* Agents Grid */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.agent-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:20px}
+.agent-card .agent-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.agent-card .agent-avatar{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--surface2)}
+.agent-card .agent-name{font-size:15px;font-weight:600}
+.agent-card .agent-status{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--green)}
+.agent-card .agent-status .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.agent-card .agent-skills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.agent-card .agent-skills .skill-tag{font-size:10px;padding:3px 8px;background:var(--surface2);border:1px solid var(--surface3);border-radius:12px;color:var(--text-dim)}
+.agent-card .activity-log{border-top:1px solid var(--surface3);padding-top:12px}
+.agent-card .log-entry{font-size:11px;color:var(--text-dim);padding:4px 0;display:flex;gap:8px;align-items:flex-start}
+.agent-card .log-entry .log-time{color:var(--text-muted);flex-shrink:0;font-family:'SF Mono',Monaco,monospace;font-size:10px}
+.agent-card .log-entry .log-msg{line-height:1.3}
+
+/* Activity Feed */
+.feed{display:flex;flex-direction:column;gap:6px}
+.feed-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:var(--surface);border:1px solid var(--surface3);border-radius:10px;animation:fadeIn .4s ease}
+.feed-item.new{border-color:var(--gold-dim);background:linear-gradient(135deg,#1a1400,var(--surface))}
+.feed-item .feed-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.feed-item .feed-body{flex:1}
+.feed-item .feed-skill{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.feed-item .feed-msg{font-size:13px;color:var(--text);margin-top:2px}
+.feed-item .feed-time{font-size:10px;color:var(--text-muted);flex-shrink:0;font-family:'SF Mono',Monaco,monospace}
+
+/* ROI */
+.roi-highlight{background:linear-gradient(135deg,#1a1400 0%,var(--surface) 100%);border:1px solid var(--gold-dim);border-radius:var(--radius);padding:24px;text-align:center;margin-bottom:20px}
+.roi-highlight .big-number{font-size:48px;font-weight:700;color:var(--gold)}
+.roi-highlight .big-label{font-size:13px;color:var(--text-dim);margin-top:4px}
+.roi-bar{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--surface3)}
+.roi-bar:last-child{border-bottom:none}
+.roi-bar .roi-label{font-size:13px;flex:1}
+.roi-bar .roi-val{font-size:14px;font-weight:600;color:var(--gold)}
+.roi-bar .bar-track{flex:2;height:6px;background:var(--surface3);border-radius:3px;overflow:hidden}
+.roi-bar .bar-fill{height:100%;background:var(--gold);border-radius:3px;transition:width 1s ease}
+
+/* Animations */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+/* View toggle */
+.view{display:none}.view.active{display:block}
+
+/* Mobile */
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);transition:transform .3s}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .page-header{padding:16px 16px 0}
+  .container{padding:16px 16px 80px}
+  .mobile-bar{display:flex !important}
+  .skills-grid,.agents-grid{grid-template-columns:1fr}
+}
+.mobile-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--surface3);z-index:30;justify-content:space-around;padding:6px 0}
+.mobile-bar button{background:none;border:none;color:var(--text-muted);font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 12px;cursor:pointer;font-family:inherit}
+.mobile-bar button.active{color:var(--gold)}
+.mobile-bar button .mb-icon{font-size:18px}
+.hamburger{display:none;background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer}
+@media(max-width:768px){.hamburger{display:block}}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo">Open<span style="color:var(--text)">Claw</span> ⚡</div>
+    <div class="workspace">workspace: acme-corp</div>
+  </div>
+  <div class="sidebar-nav">
+    <button class="nav-link active" onclick="showView('skills')"><span class="icon">🧩</span> Skill Library</button>
+    <button class="nav-link" onclick="showView('agents')"><span class="icon">🤖</span> My Agents</button>
+    <button class="nav-link" onclick="showView('activity')"><span class="icon">📡</span> Activity Feed</button>
+    <button class="nav-link" onclick="showView('roi')"><span class="icon">📊</span> ROI Dashboard</button>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://clawhub.com" target="_blank" class="cta-link">🔍 Browse ClawHub</a>
+    <a href="https://openclaw.ai" target="_blank" class="cta-link">⚡ Get OpenClaw</a>
+    <a href="https://calendly.com/cbeckford-afrexai/30min" target="_blank" class="cta-managed">Need fully managed? Talk to us →</a>
+  </div>
+</nav>
+
+<!-- Mobile Bottom Bar -->
+<div class="mobile-bar" id="mobileBar">
+  <button class="active" onclick="showView('skills')"><span class="mb-icon">🧩</span>Skills</button>
+  <button onclick="showView('agents')"><span class="mb-icon">🤖</span>Agents</button>
+  <button onclick="showView('activity')"><span class="mb-icon">📡</span>Activity</button>
+  <button onclick="showView('roi')"><span class="mb-icon">📊</span>ROI</button>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+  <div class="page-header">
+    <div>
+      <button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+      <h1 id="pageTitle">Skill Library</h1>
+    </div>
+    <div class="meta">AfrexAI Skills · <span style="color:var(--green)">● Connected</span></div>
+  </div>
+  <div class="container">
+
+    <!-- SKILL LIBRARY -->
+    <div class="view active" id="view-skills">
+      <div class="section">
+        <div class="section-title">Installed Skills (6)</div>
+        <div class="skills-grid" id="installedGrid"></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Available on ClawHub</div>
+        <div class="skills-grid" id="availableGrid"></div>
+      </div>
+    </div>
+
+    <!-- MY AGENTS -->
+    <div class="view" id="view-agents">
+      <div class="section">
+        <div class="section-title">Your Agents (3)</div>
+        <div class="agents-grid" id="agentsGrid"></div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY FEED -->
+    <div class="view" id="view-activity">
+      <div class="section">
+        <div class="section-title">Live Skill Activity</div>
+        <div class="feed" id="activityFeed"></div>
+      </div>
+    </div>
+
+    <!-- ROI DASHBOARD -->
+    <div class="view" id="view-roi">
+      <div class="section">
+        <div class="roi-highlight">
+          <div class="big-number" id="roiHours">47.2</div>
+          <div class="big-label">Hours Saved This Month</div>
+        </div>
+        <div class="metrics">
+          <div class="metric-card"><div class="value" id="roiSkills">6</div><div class="label">Skills Installed</div></div>
+          <div class="metric-card"><div class="value" id="roiTasks">1,284</div><div class="label">Tasks Automated</div></div>
+          <div class="metric-card"><div class="value" id="roiAgents">3</div><div class="label">Active Agents</div></div>
+          <div class="metric-card"><div class="value" id="roiAccuracy">98.6%</div><div class="label">Accuracy Rate</div></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Skill Performance</div>
+        <div class="card">
+          <div id="roiBars"></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Cost Savings</div>
+        <div class="card" style="text-align:center;padding:28px">
+          <div style="font-size:13px;color:var(--text-dim);margin-bottom:8px">Estimated monthly savings vs manual work</div>
+          <div style="font-size:36px;font-weight:700;color:var(--green)">$4,720</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Based on $100/hr blended rate × 47.2 hours saved</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Skills Data ──
+const skills = [
+  { name:'Email Triager', icon:'📧', desc:'Auto-categorise, prioritise, and route incoming emails. Flags urgent items for immediate attention.', cat:'Communication', stars:4.8, downloads:'2.1k', installed:true },
+  { name:'Prospect Researcher', icon:'🔍', desc:'Deep-dive into prospects — LinkedIn, funding rounds, tech stack, org chart. Outputs structured ICP match reports.', cat:'Sales', stars:4.7, downloads:'1.8k', installed:true },
+  { name:'Invoice Processor', icon:'🧾', desc:'Extract line items, match POs, flag discrepancies. Supports PDF, image, and email-forwarded invoices.', cat:'Finance', stars:4.9, downloads:'3.2k', installed:true },
+  { name:'Meeting Scheduler', icon:'📅', desc:'Smart calendar coordination across time zones. Proposes slots, sends invites, handles reschedules.', cat:'Productivity', stars:4.6, downloads:'2.5k', installed:true },
+  { name:'Competitor Intel', icon:'🕵️', desc:'Monitors competitor websites, job posts, press releases, and product changes. Weekly digest reports.', cat:'Strategy', stars:4.5, downloads:'1.2k', installed:true },
+  { name:'Weekly Reporter', icon:'📋', desc:'Aggregates agent activity, KPIs, and highlights into a formatted weekly summary sent to stakeholders.', cat:'Reporting', stars:4.7, downloads:'1.9k', installed:true },
+  { name:'Document Analyst', icon:'📄', desc:'Parse contracts, proposals, and legal docs. Extracts key clauses, deadlines, and obligations.', cat:'Legal', stars:4.8, downloads:'1.4k', installed:false },
+  { name:'Client Health Monitor', icon:'💚', desc:'Tracks engagement signals, support tickets, and usage patterns to flag at-risk accounts.', cat:'Success', stars:4.6, downloads:'980', installed:false },
+  { name:'Content Writer', icon:'✍️', desc:'Generate blog posts, social copy, and email sequences in your brand voice. Supports review workflows.', cat:'Marketing', stars:4.4, downloads:'2.8k', installed:false },
+  { name:'SOW Generator', icon:'📝', desc:'Create Statements of Work from meeting notes and requirements. Auto-formats with your templates.', cat:'Sales', stars:4.3, downloads:'760', installed:false },
+];
+
+// ── Agents Data ──
+const agents = [
+  { name:'Office Manager', emoji:'🏢', skills:['Email Triager','Meeting Scheduler'], status:'active',
+    log:[
+      {time:'14:32',msg:'Triaged 12 emails — 3 flagged urgent, 4 filed to projects'},
+      {time:'14:28',msg:'Scheduled sync with Acme Partners for Thu 2pm GMT'},
+      {time:'14:15',msg:'Auto-replied to vendor inquiry with pricing template'},
+      {time:'13:50',msg:'Moved 6 newsletters to digest folder'},
+    ]},
+  { name:'Research Assistant', emoji:'🔬', skills:['Prospect Researcher','Competitor Intel'], status:'active',
+    log:[
+      {time:'14:30',msg:'Found 5 new leads matching ICP in SaaS vertical'},
+      {time:'14:22',msg:'Competitor "Bolt.io" raised Series B — $18M, added to tracker'},
+      {time:'14:10',msg:'Enriched 8 prospect profiles with LinkedIn data'},
+      {time:'13:45',msg:'Generated weekly competitor digest — 3 product changes detected'},
+    ]},
+  { name:'Finance Bot', emoji:'💰', skills:['Invoice Processor','Weekly Reporter'], status:'active',
+    log:[
+      {time:'14:29',msg:'Extracted data from invoice #4521 — matched to PO-892'},
+      {time:'14:18',msg:'Flagged invoice #4519 — amount mismatch ($240 over PO)'},
+      {time:'14:05',msg:'Compiled weekly expense report — sent to CFO'},
+      {time:'13:40',msg:'Processed 3 vendor invoices from email attachments'},
+    ]},
+];
+
+// ── Activity Feed Items ──
+const feedItems = [
+  {icon:'📧',skill:'Email Triager',msg:'Processed 12 emails — 3 flagged urgent, 4 auto-filed'},
+  {icon:'🔍',skill:'Prospect Researcher',msg:'Found 5 new leads matching ICP in healthcare vertical'},
+  {icon:'🧾',skill:'Invoice Processor',msg:'Extracted data from invoice #4521 — matched PO-892'},
+  {icon:'📅',skill:'Meeting Scheduler',msg:'Booked demo call with Nexus Corp for Friday 10am'},
+  {icon:'🕵️',skill:'Competitor Intel',msg:'Detected pricing change on competitor "Bolt.io" website'},
+  {icon:'📋',skill:'Weekly Reporter',msg:'Generated weekly summary — sent to 4 stakeholders'},
+  {icon:'📧',skill:'Email Triager',msg:'Auto-replied to support@ with KB article link'},
+  {icon:'🔍',skill:'Prospect Researcher',msg:'Enriched 8 prospect profiles — 3 matched ICP criteria'},
+  {icon:'🧾',skill:'Invoice Processor',msg:'Flagged invoice #4519 — $240 discrepancy vs PO'},
+  {icon:'📅',skill:'Meeting Scheduler',msg:'Rescheduled standup to avoid conflict with board meeting'},
+  {icon:'🕵️',skill:'Competitor Intel',msg:'Competitor "Aura Labs" posted 3 new engineering roles'},
+  {icon:'📋',skill:'Weekly Reporter',msg:'Compiled ROI metrics — 47.2 hours saved this month'},
+  {icon:'📧',skill:'Email Triager',msg:'Sorted 8 vendor emails — 2 flagged for procurement review'},
+  {icon:'🔍',skill:'Prospect Researcher',msg:'Mapped org chart for target account "Meridian Health"'},
+  {icon:'🧾',skill:'Invoice Processor',msg:'Batch-processed 6 invoices from accounts@ inbox'},
+  {icon:'📅',skill:'Meeting Scheduler',msg:'Proposed 3 time slots to external stakeholder across timezones'},
+  {icon:'🕵️',skill:'Competitor Intel',msg:'New blog post from "Zenith AI" analysed — positioning shift detected'},
+  {icon:'📧',skill:'Email Triager',msg:'Forwarded contract renewal reminder to legal team'},
+  {icon:'🔍',skill:'Prospect Researcher',msg:'Identified funding round: "CloudBase" raised $12M Series A'},
+  {icon:'🧾',skill:'Invoice Processor',msg:'Reconciled 4 invoices against monthly budget — all within threshold'},
+];
+
+// ── ROI Bars ──
+const roiData = [
+  {label:'Email Triager',val:92},
+  {label:'Invoice Processor',val:88},
+  {label:'Prospect Researcher',val:76},
+  {label:'Meeting Scheduler',val:71},
+  {label:'Competitor Intel',val:64},
+  {label:'Weekly Reporter',val:58},
+];
+
+// ── Render Skills ──
+function renderSkills(){
+  const installed = skills.filter(s=>s.installed);
+  const available = skills.filter(s=>!s.installed);
+  document.getElementById('installedGrid').innerHTML = installed.map(s=>`
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon">${s.icon}</div>
+        <div class="skill-info">
+          <div class="skill-name">${s.name}</div>
+          <div class="skill-desc">${s.desc}</div>
+        </div>
+      </div>
+      <div class="skill-meta">
+        <span class="badge badge-cat">${s.cat}</span>
+        <span class="stars">${'★'.repeat(Math.floor(s.stars))}${s.stars%1?'☆':''}</span>
+        <span class="downloads">${s.downloads} installs</span>
+        <button class="install-btn installed" style="margin-left:auto">Installed ✓</button>
+      </div>
+    </div>`).join('');
+  document.getElementById('availableGrid').innerHTML = available.map(s=>`
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon">${s.icon}</div>
+        <div class="skill-info">
+          <div class="skill-name">${s.name}</div>
+          <div class="skill-desc">${s.desc}</div>
+        </div>
+      </div>
+      <div class="skill-meta">
+        <span class="badge badge-cat">${s.cat}</span>
+        <span class="stars">${'★'.repeat(Math.floor(s.stars))}${s.stars%1?'☆':''}</span>
+        <span class="downloads">${s.downloads} installs</span>
+        <button class="install-btn available" style="margin-left:auto" onclick="installSkill(this,'${s.name}')">Install</button>
+      </div>
+    </div>`).join('');
+}
+
+function installSkill(btn, name){
+  btn.textContent = 'Installing…';
+  btn.classList.remove('available');
+  btn.style.background='var(--surface2)';btn.style.color='var(--text-dim)';
+  setTimeout(()=>{
+    btn.textContent = 'Installed ✓';
+    btn.classList.add('installed');
+    btn.style.background='';btn.style.color='';
+    btn.onclick=null;
+    const s=skills.find(x=>x.name===name);if(s)s.installed=true;
+    const ct=document.querySelector('#view-skills .section-title');
+    ct.textContent=`Installed Skills (${skills.filter(x=>x.installed).length})`;
+    document.getElementById('roiSkills').textContent=skills.filter(x=>x.installed).length;
+  },1200);
+}
+
+// ── Render Agents ──
+function renderAgents(){
+  document.getElementById('agentsGrid').innerHTML = agents.map(a=>`
+    <div class="agent-card">
+      <div class="agent-header">
+        <div class="agent-avatar">${a.emoji}</div>
+        <div>
+          <div class="agent-name">${a.name}</div>
+          <div class="agent-status"><span class="dot"></span> Running</div>
+        </div>
+      </div>
+      <div class="agent-skills">
+        ${a.skills.map(s=>`<span class="skill-tag">${s}</span>`).join('')}
+      </div>
+      <div class="activity-log">
+        ${a.log.map(l=>`<div class="log-entry"><span class="log-time">${l.time}</span><span class="log-msg">${l.msg}</span></div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ── Render Activity Feed ──
+let feedIndex = 0;
+function renderFeed(){
+  const feed = document.getElementById('activityFeed');
+  const initial = feedItems.slice(0,6);
+  feed.innerHTML = initial.map((f,i)=>`
+    <div class="feed-item">
+      <div class="feed-icon">${f.icon}</div>
+      <div class="feed-body">
+        <div class="feed-skill">${f.skill}</div>
+        <div class="feed-msg">${f.msg}</div>
+      </div>
+      <div class="feed-time">${timeAgo(i*12)}</div>
+    </div>`).join('');
+  feedIndex = 6;
+}
+
+function timeAgo(secs){
+  if(secs<60)return `${secs}s ago`;
+  if(secs<3600)return `${Math.floor(secs/60)}m ago`;
+  return `${Math.floor(secs/3600)}h ago`;
+}
+
+function addFeedItem(){
+  const feed = document.getElementById('activityFeed');
+  const f = feedItems[feedIndex % feedItems.length];
+  feedIndex++;
+  const el = document.createElement('div');
+  el.className='feed-item new';
+  el.innerHTML=`
+    <div class="feed-icon">${f.icon}</div>
+    <div class="feed-body">
+      <div class="feed-skill">${f.skill}</div>
+      <div class="feed-msg">${f.msg}</div>
+    </div>
+    <div class="feed-time">just now</div>`;
+  feed.prepend(el);
+  setTimeout(()=>el.classList.remove('new'),3000);
+  if(feed.children.length>15)feed.lastElementChild.remove();
+  // Update times
+  Array.from(feed.children).forEach((c,i)=>{
+    if(i>0){const t=c.querySelector('.feed-time');if(t&&t.textContent!=='just now')t.textContent=timeAgo(i*8);}
+  });
+}
+
+// ── Render ROI Bars ──
+function renderROI(){
+  document.getElementById('roiBars').innerHTML = roiData.map(r=>`
+    <div class="roi-bar">
+      <div class="roi-label">${r.label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0%" data-target="${r.val}"></div></div>
+      <div class="roi-val">${r.val}%</div>
+    </div>`).join('');
+  setTimeout(()=>{
+    document.querySelectorAll('.bar-fill').forEach(b=>{
+      b.style.width=b.dataset.target+'%';
+    });
+  },200);
+}
+
+// ── Animate ROI numbers ──
+function animateValue(el,end,duration){
+  const start=0;const startTime=performance.now();
+  const isPercent=String(end).includes('.');
+  function update(now){
+    const elapsed=now-startTime;
+    const progress=Math.min(elapsed/duration,1);
+    const val=start+(parseFloat(end)-start)*progress;
+    if(isPercent)el.textContent=val.toFixed(1);
+    else el.textContent=Math.floor(val).toLocaleString();
+    if(progress<1)requestAnimationFrame(update);
+    else el.textContent=String(end).includes('%')?end:isPercent?parseFloat(end).toFixed(1):parseInt(end).toLocaleString();
+  }
+  requestAnimationFrame(update);
+}
+
+// ── View Switching ──
+const titles={skills:'Skill Library',agents:'My Agents',activity:'Activity Feed',roi:'ROI Dashboard'};
+function showView(view){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+view).classList.add('active');
+  document.getElementById('pageTitle').textContent=titles[view];
+  document.querySelectorAll('.sidebar-nav .nav-link').forEach((n,i)=>{
+    n.classList.toggle('active',n.textContent.trim().startsWith(titles[view].split(' ')[0]));
+  });
+  document.querySelectorAll('.mobile-bar button').forEach((b,i)=>{
+    const views=['skills','agents','activity','roi'];
+    b.classList.toggle('active',views[i]===view);
+  });
+  // Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+  // Animate ROI on first show
+  if(view==='roi'&&!window._roiAnimated){
+    window._roiAnimated=true;
+    animateValue(document.getElementById('roiHours'),47.2,1200);
+    animateValue(document.getElementById('roiTasks'),1284,1400);
+    renderROI();
+  }
+}
+
+// ── Init ──
+renderSkills();
+renderAgents();
+renderFeed();
+setInterval(addFeedItem, 7000);
+
+// Increment ROI hours slowly
+setInterval(()=>{
+  const el=document.getElementById('roiHours');
+  const v=parseFloat(el.textContent);
+  if(!isNaN(v))el.textContent=(v+0.1).toFixed(1);
+},30000);
+</script>
+</body>
+</html>

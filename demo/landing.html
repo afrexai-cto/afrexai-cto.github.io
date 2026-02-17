@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — See AI Agents in Action</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+  .logo{font-size:2rem;font-weight:800;color:#FFD700;letter-spacing:2px;margin-top:2rem}
+  .logo span{color:#fff}
+  h1{font-size:2.4rem;margin-top:2rem;text-align:center}
+  h1 span{color:#FFD700}
+  .sub{color:#999;font-size:1.15rem;margin-top:.75rem;text-align:center}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;max-width:900px;width:100%}
+  .card{background:#141414;border:1px solid #222;border-radius:16px;padding:2.5rem 2rem;display:flex;flex-direction:column;transition:box-shadow .3s,border-color .3s,transform .3s}
+  .card:hover{border-color:#FFD700;box-shadow:0 0 30px rgba(255,215,0,.15);transform:translateY(-4px)}
+  .icon{font-size:2.5rem;margin-bottom:1rem}
+  .card h2{font-size:1.35rem;color:#fff;margin-bottom:.75rem}
+  .badge{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;padding:.3rem .7rem;border-radius:20px;background:#1a1a1a;color:#999;border:1px solid #333;margin-bottom:1rem;width:fit-content}
+  .badge.gold{color:#FFD700;border-color:#FFD700}
+  .card p{color:#aaa;font-size:.95rem;line-height:1.6;margin-bottom:1.25rem}
+  .card ul{list-style:none;margin-bottom:1.5rem;flex:1}
+  .card ul li{padding:.35rem 0;color:#ccc;font-size:.9rem}
+  .card ul li::before{content:'✦';color:#FFD700;margin-right:.5rem;font-size:.7rem}
+  .btn{display:inline-block;text-align:center;padding:.85rem 1.5rem;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:background .2s,transform .2s}
+  .btn-outline{border:1px solid #FFD700;color:#FFD700;background:transparent}
+  .btn-outline:hover{background:#FFD700;color:#0a0a0a;transform:scale(1.03)}
+  .btn-gold{background:#FFD700;color:#0a0a0a;border:none}
+  .btn-gold:hover{background:#e6c200;transform:scale(1.03)}
+  .footer{margin-top:3.5rem;text-align:center;max-width:500px}
+  .footer p{color:#666;font-size:.95rem;margin-bottom:1rem}
+  .footer a{color:#FFD700;text-decoration:none;font-weight:600;font-size:1rem}
+  .footer a:hover{text-decoration:underline}
+  @media(max-width:680px){
+    .cards{grid-template-columns:1fr}
+    h1{font-size:1.7rem}
+    body{padding:1.5rem .75rem}
+  }
+</style>
+</head>
+<body>
+  <div class="logo">Afrex<span>AI</span></div>
+  <h1>See <span>AI Agents</span> in Action</h1>
+  <p class="sub">Choose how you want to explore AfrexAI</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🛠️</div>
+      <span class="badge">Customer Managed</span>
+      <h2>Manage Your Own Agents</h2>
+      <p>Install AfrexAI skills on your own OpenClaw setup. You control the agents, we provide the intelligence.</p>
+      <ul>
+        <li>Browse 10+ ready-made skills</li>
+        <li>Configure your own agent team</li>
+        <li>Self-service, full control</li>
+      </ul>
+      <a href="cma.html" class="btn btn-outline">Explore CMA Demo →</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚀</div>
+      <span class="badge gold">Fully Managed</span>
+      <h2>Let AfrexAI Manage Everything</h2>
+      <p>We deploy, monitor, and optimize a full AI agent workforce for your business. You just see results.</p>
+      <ul>
+        <li>Up to 9 specialized agents</li>
+        <li>24/7 monitoring &amp; SLA</li>
+        <li>Zero setup, zero maintenance</li>
+      </ul>
+      <a href="index.html" class="btn btn-gold">Explore Managed Demo →</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Not sure which is right? Book a call and we'll help you decide.</p>
+    <a href="https://calendly.com/cbeckford-afrexai/30min">Book a Call →</a>
+  </div>
+</body>
+</html>
