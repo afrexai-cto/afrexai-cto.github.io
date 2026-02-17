@@ -144,6 +144,61 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 .upgrade-cta h3{color:var(--gold);margin-bottom:8px}
 .upgrade-cta p{font-size:14px;color:var(--text-dim);margin-bottom:16px}
 
+/* ── Real Artifact Feed Items ── */
+.feed-item.feed-item-real{border-left:3px solid var(--gold);background:#FFD70006}
+.ai-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;background:#FFD70018;color:var(--gold);border:1px solid #FFD70033;font-weight:600;letter-spacing:.3px;margin-left:6px;vertical-align:middle}
+.view-output-link{font-size:12px;color:var(--gold);cursor:pointer;margin-left:8px;font-weight:600;transition:color .15s}
+.view-output-link:hover{color:#fff;text-decoration:underline}
+
+/* ── Artifact Modal ── */
+.artifact-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:60;display:none;opacity:0;transition:opacity .3s;justify-content:center;align-items:center}
+.artifact-overlay.visible{display:flex;opacity:1}
+.artifact-modal{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);max-width:720px;width:92%;max-height:85vh;display:flex;flex-direction:column;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.artifact-modal-header{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--surface3);flex-wrap:wrap}
+.artifact-modal-header .amh-icon{font-size:24px}
+.artifact-modal-header .amh-info{flex:1;min-width:0}
+.artifact-modal-header .amh-agent{font-weight:700;font-size:15px}
+.artifact-modal-header .amh-meta{font-size:12px;color:var(--text-dim);margin-top:2px}
+.artifact-modal-close{background:none;border:none;color:var(--text-dim);font-size:24px;cursor:pointer;padding:4px 8px;line-height:1}
+.artifact-modal-close:hover{color:var(--text)}
+.artifact-modal-body{padding:24px;overflow-y:auto;flex:1;font-size:14px;line-height:1.7;color:var(--text)}
+.artifact-modal-body h1{font-size:22px;color:var(--gold);margin:20px 0 10px;font-weight:700}
+.artifact-modal-body h2{font-size:18px;color:var(--gold);margin:18px 0 8px;font-weight:700}
+.artifact-modal-body h3{font-size:15px;color:var(--text);margin:14px 0 6px;font-weight:700}
+.artifact-modal-body p{margin:8px 0}
+.artifact-modal-body ul,.artifact-modal-body ol{margin:8px 0 8px 20px}
+.artifact-modal-body li{margin:4px 0}
+.artifact-modal-body strong{color:var(--gold)}
+.artifact-modal-body em{color:var(--text-dim);font-style:italic}
+.artifact-modal-body hr{border:none;border-top:1px solid var(--surface3);margin:16px 0}
+.artifact-modal-footer{padding:12px 24px;border-top:1px solid var(--surface3);font-size:11px;color:var(--text-muted);text-align:center}
+.artifact-spinner{text-align:center;padding:40px;color:var(--text-dim);font-size:14px}
+
+/* ── Deliverables Banner ── */
+.deliverables-banner{margin-bottom:28px}
+.deliverables-banner .section-title{margin-bottom:14px}
+.deliv-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.deliv-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:18px;border-left:3px solid var(--gold);cursor:pointer;transition:border-color .2s}
+.deliv-card:hover{border-color:var(--gold)}
+.deliv-card .dc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.deliv-card .dc-icon{font-size:20px}
+.deliv-card .dc-agent{font-size:13px;font-weight:600;color:var(--gold)}
+.deliv-card .dc-title{font-size:13px;color:var(--text);line-height:1.4;margin-bottom:6px}
+.deliv-card .dc-time{font-size:11px;color:var(--text-muted)}
+.deliv-card .dc-link{font-size:12px;color:var(--gold);font-weight:600;margin-top:8px;display:inline-block}
+
+/* ── Detail Panel Deliverables ── */
+.detail-deliverables{margin-top:20px}
+.detail-deliverables .dd-title{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:10px;font-weight:600}
+.dd-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--surface2);font-size:13px}
+.dd-item:last-child{border-bottom:none}
+.dd-item .dd-text{flex:1;color:var(--text-dim)}
+.dd-item .dd-time{font-size:11px;color:var(--text-muted);font-family:monospace}
+.dd-item .dd-view{font-size:12px;color:var(--gold);cursor:pointer;font-weight:600;background:none;border:none;font-family:inherit}
+.dd-item .dd-view:hover{color:#fff}
+.dd-empty{font-size:13px;color:var(--text-muted);font-style:italic;padding:10px 0}
+
 /* ── CTA Bar ── */
 .cta-bar{position:fixed;bottom:0;left:0;right:0;z-index:50;padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:16px;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-top:1px solid #FFD70033}
 .cta-bar .cta-text{font-size:14px;color:var(--text-dim)}
@@ -218,6 +273,7 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
       <!-- Dashboard -->
       <div class="view active" id="view-dashboard">
         <div class="section"><div class="section-title">Key Metrics</div><div class="metrics" id="kpi-grid"></div></div>
+        <div class="deliverables-banner" id="deliverables-banner" style="display:none"><div class="section-title">📋 Latest Agent Deliverables</div><div class="deliv-cards" id="deliv-cards"></div></div>
         <div class="section"><div class="section-title">Agent Status</div><div class="agents-grid" id="agent-grid"></div></div>
         <div class="section"><div class="section-title">Live Activity Feed</div><div class="card" style="padding:0"><div class="feed" id="activity-feed" aria-live="polite"></div></div></div>
       </div>
@@ -246,6 +302,25 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 <div class="detail-panel" id="detail-panel">
   <button class="detail-close" id="detail-close">×</button>
   <div id="detail-body"></div>
+</div>
+
+<!-- Artifact Viewer Modal -->
+<div class="artifact-overlay" id="artifact-overlay">
+  <div class="artifact-modal">
+    <div class="artifact-modal-header">
+      <span class="amh-icon" id="artifact-icon"></span>
+      <div class="amh-info">
+        <div class="amh-agent" id="artifact-agent"></div>
+        <div class="amh-meta" id="artifact-meta"></div>
+      </div>
+      <span class="ai-badge">✦ Generated by AI Agent</span>
+      <button class="artifact-modal-close" id="artifact-close">×</button>
+    </div>
+    <div class="artifact-modal-body" id="artifact-body">
+      <div class="artifact-spinner">⏳ Loading deliverable...</div>
+    </div>
+    <div class="artifact-modal-footer">This is a real deliverable produced by an AI agent processing actual data</div>
+  </div>
 </div>
 
 <!-- CTA Bar -->
@@ -406,15 +481,25 @@ function applyLiveData() {
     liveItems.forEach(act => {
       const agent = currentCompany.agents.find(a => a.id === act.agent);
       const div = document.createElement('div');
-      div.className = 'feed-item feed-item-live';
+      const isReal = act.real && act.artifact;
+      div.className = 'feed-item feed-item-live' + (isReal ? ' feed-item-real' : '');
       div.style.animation = 'none';
       const t = new Date(act.ts);
-      div.innerHTML = '<span class="feed-icon">' + (agent ? agent.icon : '🤖') + '</span><div style="flex:1;min-width:0"><div><span class="feed-agent">' + (agent ? agent.name : act.agent) + '</span> <span class="feed-text">' + act.action + '</span></div><div class="feed-time">' + timeStr(t) + ' <span style="color:var(--green);font-size:9px">● LIVE</span></div></div>';
+      const agentIcon = agent ? agent.icon : '🤖';
+      const agentName = agent ? agent.name : act.agent;
+      const badge = isReal
+        ? '<span class="ai-badge">✦ AI Generated</span>'
+        : '<span style="color:var(--green);font-size:9px">● LIVE</span>';
+      const viewLink = isReal
+        ? ' <span class="view-output-link" onclick="event.stopPropagation();openArtifactModal(\x27' + agentIcon + '\x27,\x27' + agentName.replace(/'/g,"\\'") + '\x27,\x27' + currentCompany.name.replace(/'/g,"\\'") + '\x27,\x27' + t.toLocaleString().replace(/'/g,"\\'") + '\x27,\x27' + act.artifact + '\x27)">View Output →</span>'
+        : '';
+      div.innerHTML = '<span class="feed-icon">' + agentIcon + '</span><div style="flex:1;min-width:0"><div><span class="feed-agent">' + agentName + '</span> <span class="feed-text">' + act.action + '</span>' + viewLink + '</div><div class="feed-time">' + timeStr(t) + ' ' + badge + '</div></div>';
       frag.appendChild(div);
     });
     feedEl.insertBefore(frag, feedEl.firstChild);
     while (feedEl.children.length > 50) feedEl.removeChild(feedEl.lastChild);
   }
+  renderDeliverablesBanner();
 }
 
 // ── State ──
@@ -456,6 +541,7 @@ async function selectCompany(id){
   renderROI();
   navigateView('dashboard');
   applyLiveData();
+  renderDeliverablesBanner();
   simulator=new ActivitySimulator(currentCompany);
   simulator.start();
   livePoller=setInterval(async()=>{await fetchLiveData();applyLiveData();},60000);
@@ -603,6 +689,17 @@ function openDetail(agentId){
     <div style="font-size:11px;color:var(--text-muted);margin-top:4px;text-align:right">${a.capacity}%</div>
     <div style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-top:20px;margin-bottom:10px;font-weight:600">Recent Tasks</div>
     <div class="detail-log" id="detail-log-${a.id}">${a.taskLog.map(t=>`<div class="dl-item"><span class="dl-time">${t.time}</span>${t.task}</div>`).join('')}</div>
+    <div class="detail-deliverables">
+      <div class="dd-title">Deliverables</div>
+      ${(()=>{
+        const delivs = getAgentDeliverables(a.id);
+        if (delivs.length === 0) return '<div class="dd-empty">Agent deliverables will appear here as tasks are completed</div>';
+        return delivs.map(d => {
+          const ts = d.ts ? new Date(d.ts).toLocaleString() : '';
+          return '<div class="dd-item"><span class="dd-text">' + d.action + '</span><span class="dd-time">' + ts + '</span><button class="dd-view" onclick="openArtifactModal(\'' + a.icon + '\',\'' + a.name.replace(/'/g,"\\'") + '\',\'' + currentCompany.name.replace(/'/g,"\\'") + '\',\'' + ts.replace(/'/g,"\\'") + '\',\'' + d.artifact + '\')">View</button></div>';
+        }).join('');
+      })()}
+    </div>
   `;
   document.getElementById('detail-overlay').classList.add('visible');
   document.getElementById('detail-panel').classList.add('visible');
@@ -711,6 +808,102 @@ function animateCounter(el,from,to,duration=600){
     if(p<1)requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
+}
+
+// ── Markdown Renderer ──
+function renderMarkdown(md) {
+  if (!md) return '';
+  let html = md
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>');
+  // Wrap consecutive <li> in <ul>
+  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+  // Paragraphs: split by double newlines, wrap non-tag lines
+  html = html.split(/\n{2,}/).map(block => {
+    block = block.trim();
+    if (!block) return '';
+    if (/^<(h[1-3]|ul|ol|hr|li)/.test(block)) return block;
+    return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
+  }).join('\n');
+  return html;
+}
+
+// ── Artifact Cache & Fetch ──
+const artifactCache = {};
+async function fetchArtifact(path) {
+  if (artifactCache[path]) return artifactCache[path];
+  try {
+    const r = await fetch('data/deliverables/' + path + '?_=' + Date.now());
+    if (!r.ok) throw new Error('Not found');
+    const text = await r.text();
+    artifactCache[path] = text;
+    return text;
+  } catch(e) {
+    return null;
+  }
+}
+
+// ── Artifact Modal ──
+function openArtifactModal(agentIcon, agentName, company, timestamp, artifactPath) {
+  const overlay = document.getElementById('artifact-overlay');
+  document.getElementById('artifact-icon').textContent = agentIcon || '🤖';
+  document.getElementById('artifact-agent').textContent = agentName;
+  document.getElementById('artifact-meta').textContent = (company || '') + (timestamp ? ' · ' + timestamp : '');
+  document.getElementById('artifact-body').innerHTML = '<div class="artifact-spinner">⏳ Loading deliverable...</div>';
+  overlay.classList.add('visible');
+  fetchArtifact(artifactPath).then(md => {
+    const body = document.getElementById('artifact-body');
+    if (md) {
+      body.innerHTML = renderMarkdown(md);
+    } else {
+      body.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px">Deliverable not available yet.</p>';
+    }
+  });
+}
+function closeArtifactModal() {
+  document.getElementById('artifact-overlay').classList.remove('visible');
+}
+document.getElementById('artifact-close').addEventListener('click', closeArtifactModal);
+document.getElementById('artifact-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeArtifactModal();
+});
+
+// ── Deliverables Banner (Dashboard) ──
+function renderDeliverablesBanner() {
+  if (!liveData || !currentCompany) { document.getElementById('deliverables-banner').style.display = 'none'; return; }
+  const companyId = currentCompany.id;
+  const live = liveData.companies?.[companyId];
+  if (!live || !live.recentActivity) { document.getElementById('deliverables-banner').style.display = 'none'; return; }
+  const realItems = live.recentActivity.filter(a => a.real && a.artifact);
+  if (realItems.length === 0) { document.getElementById('deliverables-banner').style.display = 'none'; return; }
+  const top3 = realItems.slice(0, 3);
+  document.getElementById('deliverables-banner').style.display = 'block';
+  document.getElementById('deliv-cards').innerHTML = top3.map(item => {
+    const agent = currentCompany.agents.find(a => a.id === item.agent);
+    const icon = agent ? agent.icon : '🤖';
+    const name = agent ? agent.name : item.agent;
+    const ts = item.ts ? new Date(item.ts).toLocaleString() : '';
+    return `<div class="deliv-card" onclick="openArtifactModal('${icon}','${name}','${currentCompany.name}','${ts}','${item.artifact}')">
+      <div class="dc-top"><span class="dc-icon">${icon}</span><span class="dc-agent">${name}</span></div>
+      <div class="dc-title">${item.action}</div>
+      <div class="dc-time">${ts}</div>
+      <div class="dc-link">Read Full Output →</div>
+    </div>`;
+  }).join('');
+}
+
+// ── Get deliverables for a specific agent ──
+function getAgentDeliverables(agentId) {
+  if (!liveData || !currentCompany) return [];
+  const live = liveData.companies?.[currentCompany.id];
+  if (!live || !live.recentActivity) return [];
+  return live.recentActivity.filter(a => a.real && a.artifact && a.agent === agentId).slice(0, 5);
 }
 
 // ── Init ──

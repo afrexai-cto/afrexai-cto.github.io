@@ -1,0 +1,47 @@
+[
+  {
+    "id": "schedule-patient",
+    "company": "meridian-health",
+    "companyName": "Meridian Health Partners",
+    "agent": "patient-coordinator",
+    "agentName": "Patient Coordinator",
+    "prompt": "You are a Patient Coordinator AI agent at Meridian Health Partners. Process this appointment request and produce a scheduling confirmation.\n\nPatient: {patient_name}\nRequested: {specialty} - {type}\nPreferred: {date} {time}\nNotes: {notes}\n\nProduce a professional scheduling confirmation email to the patient, including:\n1. Confirmed date/time (or suggested alternative)\n2. Pre-visit instructions\n3. What to bring\n4. Contact info for changes",
+    "data_sources": {
+      "patients": "sample-data/meridian-health/patients.csv",
+      "appointments": "sample-data/meridian-health/appointments.csv"
+    },
+    "prepare": "merge-patient-appointment",
+    "output_type": "scheduling-confirmation",
+    "output_format": "markdown",
+    "actionTemplate": "Generated scheduling confirmation for {patient_name} — {specialty}",
+    "activityType": "scheduling"
+  },
+  {
+    "id": "compliance-audit",
+    "company": "meridian-health",
+    "companyName": "Meridian Health Partners",
+    "agent": "compliance-officer",
+    "agentName": "Compliance Officer",
+    "prompt": "You are a HIPAA Compliance Officer AI agent at Meridian Health Partners. Review this access log and produce a compliance audit summary.\n\n{access_log_entries}\n\nProduce a professional compliance audit report including:\n1. Summary of access patterns\n2. Any anomalies or concerns flagged\n3. Policy compliance status\n4. Recommendations\n5. Risk rating (Low/Medium/High)",
+    "data_source": "sample-data/meridian-health/policy-docs/access-log-sample.csv",
+    "prepare": "full-file",
+    "output_type": "compliance-report",
+    "output_format": "markdown",
+    "actionTemplate": "Generated HIPAA compliance audit report",
+    "activityType": "compliance"
+  },
+  {
+    "id": "records-request",
+    "company": "meridian-health",
+    "companyName": "Meridian Health Partners",
+    "agent": "records-analyst",
+    "agentName": "Records Analyst",
+    "prompt": "You are a Records Analyst AI agent at Meridian Health Partners. Process this medical records request and produce a tracking summary.\n\nRequest ID: {request_id}\nPatient: {patient_name}\nRequesting Facility: {requesting_facility}\nRecord Type: {record_type}\nUrgency: {urgency}\n\nProduce a professional records request processing summary including:\n1. Request acknowledgment\n2. Records identified and status\n3. Estimated completion time\n4. Secure transfer method\n5. Compliance checklist",
+    "data_source": "sample-data/meridian-health/records-requests.csv",
+    "prepare": "random-row",
+    "output_type": "records-summary",
+    "output_format": "markdown",
+    "actionTemplate": "Processed records request {request_id} for {patient_name}",
+    "activityType": "records"
+  }
+]

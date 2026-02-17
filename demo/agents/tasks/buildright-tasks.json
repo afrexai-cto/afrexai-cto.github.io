@@ -1,0 +1,19 @@
+[
+  {
+    "id": "daily-site-report",
+    "company": "buildright",
+    "companyName": "BuildRight Construction",
+    "agent": "site-reporter",
+    "agentName": "Site Reporter",
+    "prompt": "You are a Site Reporter AI agent at BuildRight Construction. Generate a professional daily site report.\n\nProject: {name}\nLocation: {location}\nDate: {date}\nWeather: {condition}, High {high_temp}°F / Low {low_temp}°F\nWork Impact: {work_impact}\nProject Status: {percent_complete}% complete, {status}\n\nProduce a professional daily site report including:\n1. Weather conditions and impact\n2. Work completed today (make up 3-5 realistic items)\n3. Crew and equipment on site\n4. Safety observations\n5. Issues or delays\n6. Tomorrow's planned activities\n7. Photos needed (list 3-4 photo descriptions)",
+    "data_sources": {
+      "projects": "sample-data/buildright/projects.csv",
+      "weather": "sample-data/buildright/weather.csv"
+    },
+    "prepare": "merge-project-weather",
+    "output_type": "site-report",
+    "output_format": "markdown",
+    "actionTemplate": "Generated daily site report for {name}",
+    "activityType": "site-report"
+  }
+]

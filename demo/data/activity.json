@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T02:07:09.686Z",
+  "lastUpdated": "2026-02-17T03:11:56.413Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2858,
-        "hoursSaved": 316.39,
+        "tasksCompleted": 2862,
+        "hoursSaved": 317.64,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,15 +16,15 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T01:52:07.473Z",
-          "taskCount": 952
+          "lastActive": "2026-02-17T03:02:52.957Z",
+          "taskCount": 955
         },
         {
           "id": "compliance-officer",
           "name": "Compliance Officer",
           "status": "active",
-          "lastActive": "2026-02-17T01:57:04.988Z",
-          "taskCount": 952
+          "lastActive": "2026-02-17T02:59:43.906Z",
+          "taskCount": 953
         },
         {
           "id": "records-analyst",
@@ -35,6 +35,54 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T02:30:00Z",
+          "agent": "patient-coordinator",
+          "action": "Generated scheduling confirmation for Maria Santos — Cardiology follow-up with Dr. Chen",
+          "type": "scheduling",
+          "artifact": "deliverables/meridian-health/scheduling-confirmation-2026-02-17T02-30-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T01:45:00Z",
+          "agent": "compliance-officer",
+          "action": "Completed HIPAA compliance audit — flagged 2 anomalies, risk rating: MEDIUM",
+          "type": "compliance",
+          "artifact": "deliverables/meridian-health/compliance-report-2026-02-17T01-45-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T00:15:00Z",
+          "agent": "records-analyst",
+          "action": "Processed medical records request for Robert Kim — 76 pages compiled for St. Mary\"s Hospital",
+          "type": "records",
+          "artifact": "deliverables/meridian-health/records-summary-2026-02-17T00-15-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T03:02:52.957Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Laura Fitzgerald",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-17T03:05:04.354Z",
+          "agent": "patient-coordinator",
+          "action": "Confirmed insurance eligibility for William Osei (Medicare Part B)",
+          "type": "verification"
+        },
+        {
+          "ts": "2026-02-17T02:59:43.906Z",
+          "agent": "compliance-officer",
+          "action": "Completed HIPAA training verification — Nurse Patel",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-17T02:56:23.016Z",
+          "agent": "patient-coordinator",
+          "action": "Sent appointment reminder to Henrik Dahl",
+          "type": "notification"
+        },
         {
           "ts": "2026-02-17T01:57:04.988Z",
           "agent": "compliance-officer",
@@ -288,8 +336,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2040,
-        "hoursSaved": 237.61,
+        "tasksCompleted": 2044,
+        "hoursSaved": 238.51,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -298,15 +346,15 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-17T01:57:55.399Z",
-          "taskCount": 680
+          "lastActive": "2026-02-17T02:58:12.485Z",
+          "taskCount": 682
         },
         {
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T01:57:03.068Z",
-          "taskCount": 679
+          "lastActive": "2026-02-17T02:53:58.733Z",
+          "taskCount": 681
         },
         {
           "id": "client-followup",
@@ -317,6 +365,46 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T02:00:00Z",
+          "agent": "document-analyst",
+          "action": "Completed contract review for Chen Industries LLC — flagged 3 non-standard clauses, recommend Approve with Changes",
+          "type": "review",
+          "artifact": "deliverables/pacific-legal/contract-review-2026-02-17T02-00-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T01:20:00Z",
+          "agent": "client-followup",
+          "action": "Sent status update to Nakamura Holdings re: corporate restructuring — Board resolution deadline Feb 28",
+          "type": "communication",
+          "artifact": "deliverables/pacific-legal/client-email-2026-02-17T01-20-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T02:53:58.733Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in undefined",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T02:55:52.653Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in undefined",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-17T02:58:12.485Z",
+          "agent": "legal-ea",
+          "action": "Scheduled client meeting: Marcus Johnson re: undefined",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T03:01:50.205Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for undefined",
+          "type": "preparation"
+        },
         {
           "ts": "2026-02-17T02:01:13.642Z",
           "agent": "client-followup",
@@ -558,8 +646,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 430,
-        "hoursSaved": 70.8,
+        "tasksCompleted": 432,
+        "hoursSaved": 71.66,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -568,11 +656,31 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T01:57:53.039Z",
-          "taskCount": 430
+          "lastActive": "2026-02-17T02:55:01.177Z",
+          "taskCount": 432
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T02:15:00Z",
+          "agent": "site-reporter",
+          "action": "Generated daily site report — Riverside Office Complex, Level 4 slab pour completed, 32 crew, zero incidents",
+          "type": "reporting",
+          "artifact": "deliverables/buildright/site-report-2026-02-17T02-15-00.md",
+          "real": true
+        },
+        {
+          "ts": "2026-02-17T02:55:01.177Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — undefined (on_track)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T02:55:52.903Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — undefined (on_track)",
+          "type": "alert"
+        },
         {
           "ts": "2026-02-17T01:57:53.039Z",
           "agent": "site-reporter",
@@ -797,5 +905,15 @@
         }
       ]
     }
-  }
+  },
+  "recentActivity": [
+    {
+      "ts": "2026-02-17T03:09:00.288Z",
+      "agent": "compliance-officer",
+      "action": "Generated compliance audit report",
+      "type": "documentation",
+      "artifact": "deliverables/meridian-health/compliance-report-2026-02-17T03-09-00-288.md",
+      "real": true
+    }
+  ]
 }
