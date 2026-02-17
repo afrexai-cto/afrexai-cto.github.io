@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T07:33:18.117Z",
+  "lastUpdated": "2026-02-17T08:09:26.461Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2860,
-        "hoursSaved": 317.7,
+        "tasksCompleted": 2862,
+        "hoursSaved": 318.19,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,15 +16,15 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T07:21:21.686Z",
-          "taskCount": 953
+          "lastActive": "2026-02-17T07:55:21.615Z",
+          "taskCount": 954
         },
         {
           "id": "compliance-officer",
           "name": "Compliance Officer",
           "status": "active",
-          "lastActive": "2026-02-17T06:23:45.877Z",
-          "taskCount": 951
+          "lastActive": "2026-02-17T08:00:23.709Z",
+          "taskCount": 952
         },
         {
           "id": "records-analyst",
@@ -35,6 +35,18 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T08:00:23.709Z",
+          "agent": "compliance-officer",
+          "action": "Reviewed Nurse Chen's access to procedure notes — authorized",
+          "type": "audit"
+        },
+        {
+          "ts": "2026-02-17T07:55:21.615Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from Dr. Okafor → Internal Medicine",
+          "type": "referral"
+        },
         {
           "ts": "2026-02-17T07:21:21.686Z",
           "agent": "patient-coordinator",
@@ -300,8 +312,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2044,
-        "hoursSaved": 238.01,
+        "tasksCompleted": 2045,
+        "hoursSaved": 238.43,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -324,11 +336,17 @@
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-17T07:22:37.738Z",
-          "taskCount": 682
+          "lastActive": "2026-02-17T07:55:45.485Z",
+          "taskCount": 683
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:55:45.485Z",
+          "agent": "client-followup",
+          "action": "Followed up on outstanding invoice — Patel Family Trust",
+          "type": "billing"
+        },
         {
           "ts": "2026-02-17T07:22:37.738Z",
           "agent": "client-followup",
@@ -594,8 +612,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 434,
-        "hoursSaved": 72.18,
+        "tasksCompleted": 438,
+        "hoursSaved": 73.37,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -604,11 +622,35 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T07:22:29.692Z",
-          "taskCount": 434
+          "lastActive": "2026-02-17T07:58:03.065Z",
+          "taskCount": 438
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:58:03.065Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Riverfront Mixed-Use: clear — none",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-17T08:01:38.992Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Summit Ridge Residential Phase 2 (on_track)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T08:03:10.116Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Hillsboro Medical Office Building",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T08:01:37.358Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Pearl District Parking Structure",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-17T07:22:29.692Z",
           "agent": "site-reporter",
@@ -862,8 +904,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 1893,
-        "hoursSaved": 203.55,
+        "tasksCompleted": 1895,
+        "hoursSaved": 204.01,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -886,11 +928,23 @@
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-17T07:27:52.101Z",
-          "taskCount": 633
+          "lastActive": "2026-02-17T07:54:41.057Z",
+          "taskCount": 635
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:54:41.057Z",
+          "agent": "support-triage",
+          "action": "Resolved ticket TK-4205 — billing issue for Titanium Fitness",
+          "type": "resolution"
+        },
+        {
+          "ts": "2026-02-17T08:02:02.599Z",
+          "agent": "support-triage",
+          "action": "Auto-triaged ticket TK-4202: Dashboard loading slowly — routed to performance",
+          "type": "triage"
+        },
         {
           "ts": "2026-02-17T07:27:58.418Z",
           "agent": "onboarding-specialist",
@@ -1184,18 +1238,6 @@
           "agent": "support-triage",
           "action": "Auto-triaged ticket TK-4206: API rate limit exceeded — routed to integration",
           "type": "triage"
-        },
-        {
-          "ts": "2026-02-10T17:46:28.730Z",
-          "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4202: Dashboard loading slowly — routed to performance",
-          "type": "triage"
-        },
-        {
-          "ts": "2026-02-10T06:30:38.250Z",
-          "agent": "onboarding-specialist",
-          "action": "Completed data import for Starline Media — 1229 records migrated",
-          "type": "onboarding"
         }
       ]
     },
@@ -1204,8 +1246,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2250,
-        "hoursSaved": 272.57,
+        "tasksCompleted": 2254,
+        "hoursSaved": 273.94,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1214,25 +1256,49 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-17T07:21:36.525Z",
-          "taskCount": 749
+          "lastActive": "2026-02-17T07:57:21.229Z",
+          "taskCount": 751
         },
         {
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-17T07:28:18.547Z",
-          "taskCount": 750
+          "lastActive": "2026-02-17T08:02:47.587Z",
+          "taskCount": 751
         },
         {
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T07:21:10.779Z",
-          "taskCount": 749
+          "lastActive": "2026-02-17T07:54:56.069Z",
+          "taskCount": 750
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:57:21.229Z",
+          "agent": "compliance-monitor",
+          "action": "Flagged overdue surprise_examination for Atlas Wealth Advisors",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T08:02:47.587Z",
+          "agent": "portfolio-reviewer",
+          "action": "Prepared client review materials for Richardson Family Trust — meeting 2026-04-15",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-17T08:01:30.940Z",
+          "agent": "compliance-monitor",
+          "action": "Flagged overdue surprise_examination for Atlas Wealth Advisors",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-17T07:54:56.069Z",
+          "agent": "filing-coordinator",
+          "action": "Updated Schedule 13D filing progress — in_progress",
+          "type": "filing"
+        },
         {
           "ts": "2026-02-17T07:28:18.547Z",
           "agent": "portfolio-reviewer",
@@ -1516,30 +1582,6 @@
           "agent": "filing-coordinator",
           "action": "Generated regulatory filing status report — 1 filings due this month",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-10T12:07:05.592Z",
-          "agent": "portfolio-reviewer",
-          "action": "Flagged rebalancing needed — Greenfield Pension Fund (moderate profile)",
-          "type": "alert"
-        },
-        {
-          "ts": "2026-02-10T10:33:07.860Z",
-          "agent": "portfolio-reviewer",
-          "action": "Completed quarterly portfolio review for Richardson Family Trust ($$4200000 AUM)",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-10T09:02:42.171Z",
-          "agent": "portfolio-reviewer",
-          "action": "Prepared client review materials for Chen Family Office — meeting 2026-05-10",
-          "type": "preparation"
-        },
-        {
-          "ts": "2026-02-10T08:15:30.740Z",
-          "agent": "compliance-monitor",
-          "action": "Reviewed personal trading pre-clearance — 6 requests, no violations",
-          "type": "compliance"
         }
       ]
     }
