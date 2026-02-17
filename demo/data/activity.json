@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T07:01:38.214Z",
+  "lastUpdated": "2026-02-17T07:33:18.117Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2856,
-        "hoursSaved": 316.31,
+        "tasksCompleted": 2860,
+        "hoursSaved": 317.7,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,8 +16,8 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T06:23:53.309Z",
-          "taskCount": 952
+          "lastActive": "2026-02-17T07:21:21.686Z",
+          "taskCount": 953
         },
         {
           "id": "compliance-officer",
@@ -30,11 +30,35 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-17T07:01:04.289Z",
-          "taskCount": 953
+          "lastActive": "2026-02-17T07:25:26.205Z",
+          "taskCount": 956
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:21:21.686Z",
+          "agent": "patient-coordinator",
+          "action": "Rescheduled Lisa Johansson to 8:45 AM",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T07:25:26.205Z",
+          "agent": "records-analyst",
+          "action": "Archived 9 inactive patient records",
+          "type": "maintenance"
+        },
+        {
+          "ts": "2026-02-17T07:27:04.012Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from Compass Oncology for Sofia Reyes",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-17T07:29:06.769Z",
+          "agent": "records-analyst",
+          "action": "Archived 11 inactive patient records",
+          "type": "maintenance"
+        },
         {
           "ts": "2026-02-17T07:01:04.289Z",
           "agent": "records-analyst",
@@ -276,8 +300,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2043,
-        "hoursSaved": 237.59,
+        "tasksCompleted": 2044,
+        "hoursSaved": 238.01,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -300,11 +324,17 @@
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-17T06:28:42.108Z",
-          "taskCount": 681
+          "lastActive": "2026-02-17T07:22:37.738Z",
+          "taskCount": 682
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:22:37.738Z",
+          "agent": "client-followup",
+          "action": "Scheduled consultation with Rosa Martinez",
+          "type": "scheduling"
+        },
         {
           "ts": "2026-02-17T06:53:54.613Z",
           "agent": "legal-ea",
@@ -564,8 +594,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 431,
-        "hoursSaved": 71.27,
+        "tasksCompleted": 434,
+        "hoursSaved": 72.18,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -574,11 +604,29 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-17T06:56:22.030Z",
-          "taskCount": 431
+          "lastActive": "2026-02-17T07:22:29.692Z",
+          "taskCount": 434
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:22:29.692Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Cascade Elementary School Renovation",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T07:20:00.723Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Cascade Elementary School Renovation",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-17T07:23:57.865Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Hillsboro Medical Office Building",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-17T06:56:22.030Z",
           "agent": "site-reporter",
@@ -814,8 +862,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 1890,
-        "hoursSaved": 202.79,
+        "tasksCompleted": 1893,
+        "hoursSaved": 203.55,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -831,18 +879,36 @@
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-17T06:28:37.331Z",
-          "taskCount": 630
+          "lastActive": "2026-02-17T07:27:58.418Z",
+          "taskCount": 631
         },
         {
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-17T06:50:44.965Z",
-          "taskCount": 631
+          "lastActive": "2026-02-17T07:27:52.101Z",
+          "taskCount": 633
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:27:58.418Z",
+          "agent": "onboarding-specialist",
+          "action": "Scheduled kickoff call with Redwood Healthcare — Sarah Chen",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-17T07:27:52.101Z",
+          "agent": "support-triage",
+          "action": "Auto-triaged ticket TK-4203: Cannot export CSV reports — routed to bug",
+          "type": "triage"
+        },
+        {
+          "ts": "2026-02-17T07:23:02.646Z",
+          "agent": "support-triage",
+          "action": "Escalated medium priority ticket for Veloce Motors",
+          "type": "escalation"
+        },
         {
           "ts": "2026-02-17T06:50:44.965Z",
           "agent": "support-triage",
@@ -1138,8 +1204,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2246,
-        "hoursSaved": 270.85,
+        "tasksCompleted": 2250,
+        "hoursSaved": 272.57,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1148,25 +1214,49 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-17T06:56:13.479Z",
-          "taskCount": 748
+          "lastActive": "2026-02-17T07:21:36.525Z",
+          "taskCount": 749
         },
         {
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-17T06:21:22.704Z",
-          "taskCount": 749
+          "lastActive": "2026-02-17T07:28:18.547Z",
+          "taskCount": 750
         },
         {
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-17T06:56:48.660Z",
-          "taskCount": 747
+          "lastActive": "2026-02-17T07:21:10.779Z",
+          "taskCount": 749
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-17T07:28:18.547Z",
+          "agent": "portfolio-reviewer",
+          "action": "Prepared client review materials for Richardson Family Trust — meeting 2026-04-15",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-17T07:21:10.779Z",
+          "agent": "filing-coordinator",
+          "action": "Submitted Form 13F to SEC EDGAR — Atlas Wealth Advisors",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-17T07:24:48.026Z",
+          "agent": "filing-coordinator",
+          "action": "Updated Schedule 13D filing progress — in_progress",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-17T07:21:36.525Z",
+          "agent": "compliance-monitor",
+          "action": "Generated weekly compliance review — 3 action items",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-17T06:56:13.479Z",
           "agent": "compliance-monitor",
