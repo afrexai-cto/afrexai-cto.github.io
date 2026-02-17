@@ -1,0 +1,11 @@
+ticket_id,customer,subject,priority,category,status,created,sla_hours
+TK-4201,Brightpath Education,SSO integration failing on Safari,high,integration,open,2026-02-16T14:30:00Z,4
+TK-4202,Veloce Motors,Dashboard loading slowly,medium,performance,open,2026-02-16T10:15:00Z,8
+TK-4203,Cloudnine Studios,Cannot export CSV reports,high,bug,in_progress,2026-02-15T16:00:00Z,4
+TK-4204,Apex Retail Group,Request for custom webhook endpoint,low,feature_request,open,2026-02-16T09:00:00Z,24
+TK-4205,Titanium Fitness,Billing discrepancy on February invoice,high,billing,escalated,2026-02-14T11:30:00Z,2
+TK-4206,Polaris Shipping,API rate limit exceeded,medium,integration,open,2026-02-16T13:45:00Z,8
+TK-4207,Urban Harvest Co,Onboarding checklist not loading,high,onboarding,in_progress,2026-02-16T08:00:00Z,4
+TK-4208,Starline Media,Need help with email template builder,low,how_to,open,2026-02-15T15:20:00Z,24
+TK-4209,Horizon Pharma,SAML certificate renewal required,medium,security,open,2026-02-16T11:00:00Z,8
+TK-4210,Oaktree Consulting,Account access locked after password reset,high,access,open,2026-02-16T07:45:00Z,2

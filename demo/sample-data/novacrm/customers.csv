@@ -1,0 +1,21 @@
+customer_id,company_name,plan,mrr,health_score,csm_assigned,onboarded_date,last_activity
+C001,Brightpath Education,Enterprise,$4200,92,Sarah Chen,2025-08-15,2026-02-16
+C002,Meridian Logistics,Growth,$1800,67,Jake Torres,2025-10-02,2026-02-14
+C003,Apex Retail Group,Enterprise,$6500,88,Sarah Chen,2025-06-20,2026-02-17
+C004,Cloudnine Studios,Starter,$450,34,Priya Desai,2025-12-01,2026-01-28
+C005,Horizon Pharma,Enterprise,$8200,95,Sarah Chen,2025-04-10,2026-02-17
+C006,Pinecrest Hotels,Growth,$2400,71,Jake Torres,2025-09-18,2026-02-15
+C007,Veloce Motors,Growth,$1950,45,Priya Desai,2025-11-05,2026-02-10
+C008,SummitView Analytics,Enterprise,$5100,90,Sarah Chen,2025-07-22,2026-02-16
+C009,GreenLeaf Foods,Starter,$600,78,Jake Torres,2025-12-14,2026-02-13
+C010,Titanium Fitness,Growth,$2100,52,Priya Desai,2025-10-30,2026-02-08
+C011,Nexus Financial,Enterprise,$7800,86,Sarah Chen,2025-05-15,2026-02-17
+C012,Urban Harvest Co,Starter,$380,29,Jake Torres,2026-01-05,2026-01-20
+C013,Polaris Shipping,Growth,$3200,74,Priya Desai,2025-08-28,2026-02-16
+C014,Redwood Healthcare,Enterprise,$9100,91,Sarah Chen,2025-03-12,2026-02-17
+C015,Cobalt Security,Growth,$1650,63,Jake Torres,2025-11-20,2026-02-12
+C016,Starline Media,Starter,$520,41,Priya Desai,2025-12-22,2026-02-05
+C017,Atlas Construction,Growth,$2800,82,Sarah Chen,2025-09-05,2026-02-15
+C018,Cascade Energy,Enterprise,$6200,93,Jake Torres,2025-06-01,2026-02-17
+C019,Frostbyte Gaming,Starter,$700,55,Priya Desai,2025-11-15,2026-02-11
+C020,Oaktree Consulting,Growth,$1900,38,Jake Torres,2025-10-10,2026-01-30

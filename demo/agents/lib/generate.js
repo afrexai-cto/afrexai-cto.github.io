@@ -141,6 +141,86 @@ function buildrightActivity(agent) {
 }
 
 // ---------------------------------------------------------------------------
+// NovaCRM (SaaS)
+// ---------------------------------------------------------------------------
+function novacrmActivity(agent) {
+  const customers = loadCSV('novacrm', 'customers.csv');
+  const tickets = loadCSV('novacrm', 'tickets.csv');
+  const onboarding = loadCSV('novacrm', 'onboarding.csv');
+
+  const cu = pick(customers);
+  const tk = pick(tickets);
+  const ob = pick(onboarding);
+
+  const templates = {
+    'churn-analyst': [
+      () => ({ action: `Calculated health score for ${cu.company_name} — ${cu.health_score}/100`, type: 'analysis' }),
+      () => ({ action: `Flagged churn risk: ${cu.company_name} (${cu.plan}, $${cu.mrr}/mo) — score dropped below 50`, type: 'alert' }),
+      () => ({ action: `Generated weekly churn risk report — ${2 + randomInt(4)} accounts at risk`, type: 'reporting' }),
+      () => ({ action: `Detected usage decline at ${cu.company_name} — active users down ${10 + randomInt(40)}%`, type: 'analysis' }),
+      () => ({ action: `Triggered re-engagement sequence for ${cu.company_name}`, type: 'automation' }),
+    ],
+    'onboarding-specialist': [
+      () => ({ action: `Advanced ${ob.customer} to ${ob.stage} stage (${ob.progress_pct}% complete)`, type: 'onboarding' }),
+      () => ({ action: `Sent onboarding checklist to ${cu.company_name}`, type: 'communication' }),
+      () => ({ action: `Scheduled kickoff call with ${cu.company_name} — ${cu.csm_assigned}`, type: 'scheduling' }),
+      () => ({ action: `Completed data import for ${ob.customer} — ${1000 + randomInt(5000)} records migrated`, type: 'onboarding' }),
+      () => ({ action: `Generated onboarding pipeline status report`, type: 'reporting' }),
+    ],
+    'support-triage': [
+      () => ({ action: `Auto-triaged ticket ${tk.ticket_id}: ${tk.subject} — routed to ${tk.category}`, type: 'triage' }),
+      () => ({ action: `Escalated ${tk.priority} priority ticket for ${tk.customer}`, type: 'escalation' }),
+      () => ({ action: `Resolved ticket ${tk.ticket_id} — ${tk.category} issue for ${tk.customer}`, type: 'resolution' }),
+      () => ({ action: `SLA check: ${tk.ticket_id} — ${tk.sla_hours}h SLA, on track`, type: 'monitoring' }),
+      () => ({ action: `Categorised ${3 + randomInt(8)} new tickets — ${2 + randomInt(3)} auto-resolved`, type: 'triage' }),
+    ],
+  };
+
+  const t = templates[agent];
+  return t ? pick(t)() : { action: 'Processed task', type: 'general' };
+}
+
+// ---------------------------------------------------------------------------
+// Atlas Wealth Advisors (Financial Services)
+// ---------------------------------------------------------------------------
+function atlasActivity(agent) {
+  const clients = loadCSV('atlas-wealth', 'clients.csv');
+  const compliance = loadCSV('atlas-wealth', 'compliance.csv');
+  const filings = loadCSV('atlas-wealth', 'filings.csv');
+
+  const cl = pick(clients);
+  const cm = pick(compliance);
+  const fl = pick(filings);
+
+  const templates = {
+    'compliance-monitor': [
+      () => ({ action: `Completed ${cm.check_type} check — ${cm.regulation} — ${cm.status}`, type: 'compliance' }),
+      () => ({ action: `Flagged overdue ${cm.check_type} for ${cm.entity}`, type: 'alert' }),
+      () => ({ action: `Reviewed personal trading pre-clearance — ${3 + randomInt(10)} requests, no violations`, type: 'compliance' }),
+      () => ({ action: `Generated weekly compliance review — ${1 + randomInt(3)} action items`, type: 'reporting' }),
+      () => ({ action: `Verified Reg BI best interest documentation for ${cl.name}`, type: 'compliance' }),
+    ],
+    'portfolio-reviewer': [
+      () => ({ action: `Completed quarterly portfolio review for ${cl.name} ($${cl.aum} AUM)`, type: 'review' }),
+      () => ({ action: `Flagged rebalancing needed — ${cl.name} (${cl.risk_profile} profile)`, type: 'alert' }),
+      () => ({ action: `Prepared client review materials for ${cl.name} — meeting ${cl.next_review}`, type: 'preparation' }),
+      () => ({ action: `Calculated RMD for ${cl.name} — distribution schedule updated`, type: 'analysis' }),
+      () => ({ action: `Generated performance attribution report for ${cl.name}`, type: 'reporting' }),
+    ],
+    'filing-coordinator': [
+      () => ({ action: `Updated ${fl.form} filing progress — ${fl.status}`, type: 'filing' }),
+      () => ({ action: `Deadline alert: ${fl.form} (${fl.description}) due ${fl.deadline}`, type: 'alert' }),
+      () => ({ action: `Submitted ${fl.form} to SEC EDGAR — ${fl.entity}`, type: 'filing' }),
+      () => ({ action: `Generated regulatory filing status report — ${1 + randomInt(3)} filings due this month`, type: 'reporting' }),
+      () => ({ action: `Prepared ${fl.form} draft for CCO review`, type: 'preparation' }),
+    ],
+  };
+
+  const t = templates[agent];
+  return t ? pick(t)() : { action: 'Processed task', type: 'general' };
+}
+
+// ---------------------------------------------------------------------------
 // Company configs
 // ---------------------------------------------------------------------------
 const COMPANIES = {
@@ -177,6 +257,30 @@ const COMPANIES = {
     ],
     generator: buildrightActivity,
     seedKPIs: { tasksCompleted: 423, hoursSaved: 68.3, accuracyRate: 97.5, activeSince: '2026-02-01' },
+  },
+  'novacrm': {
+    name: 'NovaCRM',
+    tier: 'professional',
+    vertical: 'saas',
+    agents: [
+      { id: 'churn-analyst', name: 'Churn Analyst' },
+      { id: 'onboarding-specialist', name: 'Onboarding Specialist' },
+      { id: 'support-triage', name: 'Support Triage' },
+    ],
+    generator: novacrmActivity,
+    seedKPIs: { tasksCompleted: 1876, hoursSaved: 198.4, accuracyRate: 98.9, activeSince: '2026-01-10' },
+  },
+  'atlas-wealth': {
+    name: 'Atlas Wealth Advisors',
+    tier: 'enterprise',
+    vertical: 'financial-services',
+    agents: [
+      { id: 'compliance-monitor', name: 'Compliance Monitor' },
+      { id: 'portfolio-reviewer', name: 'Portfolio Reviewer' },
+      { id: 'filing-coordinator', name: 'Filing Coordinator' },
+    ],
+    generator: atlasActivity,
+    seedKPIs: { tasksCompleted: 2234, hoursSaved: 267.2, accuracyRate: 99.4, activeSince: '2026-01-05' },
   },
 };
 

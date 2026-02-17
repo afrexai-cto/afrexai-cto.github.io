@@ -1,0 +1,11 @@
+compliance_id,regulation,check_type,entity,status,last_checked,next_due,risk_level
+CMP-101,SEC Rule 206(4)-7,annual_review,Atlas Wealth Advisors,compliant,2026-01-15,2027-01-15,low
+CMP-102,Form ADV Part 2,annual_amendment,Atlas Wealth Advisors,due,2026-02-28,2026-03-31,medium
+CMP-103,Reg BI,best_interest_documentation,Dr. Samuel Okonkwo,compliant,2026-01-28,2026-04-28,low
+CMP-104,AML/KYC,customer_verification,Viktor & Olena Kovalenko,review_needed,2025-12-28,2026-02-28,high
+CMP-105,Form 13F,quarterly_filing,Atlas Wealth Advisors,filed,2026-01-14,2026-04-14,low
+CMP-106,Custody Rule,surprise_examination,Atlas Wealth Advisors,scheduled,2026-03-01,2026-03-31,medium
+CMP-107,Books & Records,record_retention_audit,Atlas Wealth Advisors,compliant,2026-02-01,2026-08-01,low
+CMP-108,Code of Ethics,personal_trading_review,All Advisors,compliant,2026-02-10,2026-03-10,low
+CMP-109,Reg S-P,privacy_notice_distribution,All Clients,compliant,2026-01-02,2027-01-02,low
+CMP-110,FINRA 4512,customer_account_records,Greenfield Pension Fund,review_needed,2025-11-15,2026-02-15,high

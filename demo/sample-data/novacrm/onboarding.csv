@@ -1,0 +1,6 @@
+onboarding_id,customer,stage,progress_pct,started,target_completion,csm_assigned,blockers
+OB-301,Urban Harvest Co,data_import,25,2026-01-05,2026-02-20,Jake Torres,Legacy CSV format issues
+OB-302,Frostbyte Gaming,integration_setup,60,2025-11-15,2026-02-28,Priya Desai,Waiting on API keys from client
+OB-303,Starline Media,training,80,2025-12-22,2026-02-18,Priya Desai,None
+OB-304,Cobalt Security,go_live_prep,90,2025-11-20,2026-02-17,Jake Torres,Final UAT sign-off pending
+OB-305,Oaktree Consulting,kickoff,10,2026-01-10,2026-03-15,Jake Torres,Stakeholder alignment needed
