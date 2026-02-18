@@ -103,3 +103,6 @@ All 10 emails drafted Feb 16 evening. Total: 20 emails drafted (IDs 021-040), 0 
 - 0 sent, 0 replies, 0 meetings
 - Theoretical pipeline value: $4.8M
 - #1 blocker: DNS (SPF/DKIM/DMARC)
+
+## Shared Reference
+- **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.

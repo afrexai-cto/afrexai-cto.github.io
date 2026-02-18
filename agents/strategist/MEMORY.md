@@ -86,3 +86,6 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **US ONLY** — AfrexAI is a US-based company
 - Focus on US competitive landscape and US market opportunities
 - Currency: USD ($)
+
+## Shared Reference
+- **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.

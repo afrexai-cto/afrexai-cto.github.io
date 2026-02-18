@@ -41,3 +41,6 @@
 - **2026-02-14 (PM):** Sprint W07 CLOSED at 37.5% (3/8). Archived to sprints/sprint-2026-W07.md. 4 tasks carry to W08. DNS blocker at 4 days — set Tue Feb 17 hard deadline with fallback. W08 planning Monday.
 - **2026-02-16 (AM):** W08 sprint opened. 7 tasks, 2x P0. DNS at 7 days, hard deadline Tue Feb 17.
 - **2026-02-16 (PM):** Evening close-out. No input received all day. Sprint W08 still at 0%. DNS now 8 days — tomorrow is do-or-die. No progress signals on agent configs either. Zero-output Monday. Escalation repeated.
+
+## Shared Reference
+- **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.

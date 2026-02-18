@@ -2,12 +2,12 @@
 
 ## Integrations
 
-- **QuickBooks Online**: Sandbox connected — Realm ID `9341456225186016`
+- **QuickBooks Online**: NOT USED — use PostgreSQL CRM + local CSVs
 - **Stripe**: Connected with live keys
 
 ## Financial State
 
-- **Current state**: PARTIAL — Stripe accessible, QBO still blocked
+- **Current state**: PARTIAL — Stripe accessible, QBO not used — PostgreSQL CRM is the source of truth
 - **Last reconciliation**: 2026-02-16 20:10 GMT (Stripe-only)
 - **Stripe balance**: -$36.93 available, $114.42 pending
 - **Total paid out to bank (all-time)**: $111,227.91
@@ -40,8 +40,8 @@
 ## Run Log
 - **2026-02-13 21:07 GMT**: First morning routine executed. All 3 integrations inaccessible (vault uninitialized, Stripe key missing, QBO tokens missing). Output written to `output/daily-2026-02-13-am.md`. Escalated as CRITICAL to Kael.
 - **2026-02-13 21:38 GMT**: Second run. Status unchanged — all integrations still blocked. No items in input queue. Output written to `output/daily-2026-02-13-pm-am2.md`.
-- **2026-02-14 20:10 GMT**: Evening reconciliation. **Stripe now accessible** via 1Password (UUID: cfpvk6eywbaoopfd5gqnbaglgu). Pulled full charge history (54 charges, 27 successful). QBO still blocked. Flagged failing $120/mo subscription. Output: `output/daily-2026-02-14-pm.md`.
-- **2026-02-16 20:10 GMT**: Evening reconciliation. $120 subscription recovered (cus_SPppGJ1w440VFC). Balance: -$36.93 avail / $114.42 pending. 7 open invoices, 5 overdue ($15,853). QBO still blocked (Day 4). Output: `output/daily-2026-02-16-pm.md`.
+- **2026-02-14 20:10 GMT**: Evening reconciliation. **Stripe now accessible** via 1Password (UUID: cfpvk6eywbaoopfd5gqnbaglgu). Pulled full charge history (54 charges, 27 successful). QBO not used — PostgreSQL CRM is the source of truth. Flagged failing $120/mo subscription. Output: `output/daily-2026-02-14-pm.md`.
+- **2026-02-16 20:10 GMT**: Evening reconciliation. $120 subscription recovered (cus_SPppGJ1w440VFC). Balance: -$36.93 avail / $114.42 pending. 7 open invoices, 5 overdue ($15,853). QBO not used — PostgreSQL CRM is the source of truth (Day 4). Output: `output/daily-2026-02-16-pm.md`.
 
 ## Lessons Learned
 - Vault at `scripts/vault.sh` must be initialized before any API access works. This is a blocker for all financial operations.

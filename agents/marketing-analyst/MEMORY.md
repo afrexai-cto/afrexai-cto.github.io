@@ -119,3 +119,6 @@
 - Top metros: NYC, Chicago, LA, Dallas, Atlanta
 - Currency: USD ($)
 - DO NOT research UK/EU prospects
+
+## Shared Reference
+- **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.

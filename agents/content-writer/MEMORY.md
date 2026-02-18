@@ -65,3 +65,6 @@
 - Rex (Marketing Analyst) is now delivering briefs — 6 briefs received across Feb 14-16
 - Cold email + nurture templates now exist — can be adapted per industry/prospect
 - The DT failure stat ($1.3T / 70% fail rate) is a strong hook — use it across channels
+
+## Shared Reference
+- **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.

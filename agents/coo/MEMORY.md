@@ -42,3 +42,6 @@
 - Most agents were built with handoff *protocols* but never given a first directive or HANDOFF.md. Protocol ≠ operational.
 - Revenue infrastructure exists (Stripe, products, CRM) but no agent owns the monitoring loop. Critical gap.
 - Three founder-level blockers (DNS, Google Workspace, LinkedIn) have been sitting unresolved — need escalation.
+
+## Shared Reference
+- **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.

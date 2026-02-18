@@ -74,6 +74,26 @@ Executive Assistant, Marketing Analyst, Content Writer, Outbound Sales, Bookkeep
 - Cut 40%: VjL7ILo5g5Q | 5 Automations: 1HTLOtNQrXU | CRM $100K: dCBGWjCBXzI
 - AI Handles Data: xSWvwdwXc0Q | LLM Security: _kLujNA5JoY | Starting Agency: V-4pvLGyom4 | Building Agency: mxk_uROCOF4
 
+## Stripe Customers (Real Revenue)
+- **All-time gross**: $84,621.66 | **Implied ARR**: $166,803 (1.52% of $11M)
+- **Total paid out to bank**: $111,227.91
+- **Albert Thombs** (2 accounts) — ~$12,143/mo recurring (VADIS-style). $12,143 pending confirmation.
+- **Jacob Johnson** (PremGrp) — $4,400 + $2,200 paid, $10K pending confirmation
+- **Brett McCroary** (BuddyBuilder/BuildGrid) — $1,166 + $500 + $120/mo subscription. Overdue: $120 (34d), $120 (65d)
+- **Lisa Kingham** (Hansford Road AI) — $1,166 + $120/mo subscription
+- **Al Bryant** (RapidShift) — $300 one-off
+- **George Davidson** — $150 one-off
+- **VADA** (Albert & Shawnda) — $1,250 overdue 259 days
+- **StoryLab** — NOT in Stripe. Deal not invoiced or handled elsewhere.
+- **Stripe API key**: item "Stripe API" (cfpvk6eywbaoopfd5gqnbaglgu) in 1Password vault AfrexAI, field "secret key"
+
+## Cron Agent Fixes (2026-02-18)
+- **Gmail is LIVE** — Hunter can send emails now, draft mode removed
+- **QuickBooks NOT used** — Ledger pointed to PostgreSQL CRM + local CSVs instead
+- **Oracle** — told to act on research (draft emails, update CRM), not just write reports
+- **Timeout bumped to 900s**: Hunter morning, Ledger morning, Ledger evening, Oracle morning
+- **No StoryLab payment exists in Stripe** — needs follow-up
+
 ## Working Style
 - **ALWAYS delegate to sub-agents** for parallel work — Kalin hates sequential. "leverage subagents cmon"
 - Kalin asked about "3 north stars" — NOT YET CAPTURED, ask him to define next time

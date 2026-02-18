@@ -87,3 +87,6 @@
 - Content handoff created for blog post + LinkedIn + lead magnet checklist
 
 - *This section updated as new verticals, use cases, and insights are developed*
+
+## Shared Reference
+- **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.
