@@ -17,6 +17,20 @@
    - Recently appointed, transitioning to cloud + AI
    - Hook: New leader = new initiatives, AI governance from scratch
    - Source: CIO.com Feb 2026
+   - **Cold email drafted 2026-02-18** → `content/cold-email-oncology-institute-cio.md`
+
+4. **Arpit Davé** — CDIO, BioMarin Pharmaceutical ($2B+ revenue)
+   - Just appointed Feb 2026, previously Amgen (AI/digital transformation)
+   - Rare disease biotech = high regulatory scrutiny, small patient populations
+   - Hook: HHS AI mandate April 3 deadline + new exec quick win
+   - **Cold email drafted 2026-02-18** → `content/cold-email-arpit-dave-biomarin.md`
+   - Source: CIO.com Feb 2026
+
+5. **Alexander Khalessi, MD, MBA** — Chief Innovation Officer, UC San Diego Health
+   - Appointed December 2025, also interim asst vice chancellor for health
+   - Academic medical center = innovation budget + research grants
+   - Hook: New role, building from scratch, HHS compliance
+   - Source: Becker's Feb 2026
 
 4. **Southern Health System** — New CIO (just appointed Feb 2026)
    - Hook: Brand new in role, setting IT strategy now
