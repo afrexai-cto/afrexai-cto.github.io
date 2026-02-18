@@ -1,0 +1,18 @@
+{
+  "id": "hartwell--associates-llp-1771264961",
+  "name": "Sarah Hartwell",
+  "email": "s.hartwell@hartwelllaw.com",
+  "company": "Hartwell & Associates LLP",
+  "vertical": "legal",
+  "plan": "cma",
+  "status": "onboarding",
+  "signup_date": "2026-02-16",
+  "created_at": "2026-02-16T18:02:41Z",
+  "recommended_skills": "document-reviewer contract-tracker deadline-monitor billing-tracker",
+  "lifecycle": {
+    "welcome_email": "pending",
+    "7day_followup": "scheduled",
+    "30day_checkin": "scheduled"
+  },
+  "notes": []
+}

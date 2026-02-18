@@ -1,0 +1,13 @@
+{
+  "customer_id": "cust-hartwell-associates-llp-1771264875",
+  "company_name": "Hartwell & Associates LLP",
+  "email": "s.hartwell@hartwelllaw.com",
+  "tier": "growth",
+  "vertical": "legal",
+  "agent_count": 3,
+  "monthly_price": 4500,
+  "api_key": "afxk_30d447caf8374d27b2b7dd7f4896c68e35eb2ad8",
+  "provisioned_at": "2026-02-16T18:01:15Z",
+  "status": "active",
+  "agents": ["legal-researcher","contract-reviewer","compliance-monitor"]
+}

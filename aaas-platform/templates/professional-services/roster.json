@@ -1,0 +1,24 @@
+{
+  "vertical": "professional-services",
+  "vertical_label": "Professional Services",
+  "agents": [
+    {
+      "id": "project-manager",
+      "name": "Project Manager",
+      "description": "Tracks deliverables, timelines, resource allocation, and sends status updates to stakeholders",
+      "tier_minimum": "starter"
+    },
+    {
+      "id": "proposal-writer",
+      "name": "Proposal Writer",
+      "description": "Drafts proposals, assembles case studies, tracks RFP deadlines, and manages the bid pipeline",
+      "tier_minimum": "growth"
+    },
+    {
+      "id": "client-liaison",
+      "name": "Client Liaison",
+      "description": "Manages client communications, meeting notes, action items, and satisfaction tracking",
+      "tier_minimum": "growth"
+    }
+  ]
+}

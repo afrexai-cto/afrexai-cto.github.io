@@ -1,0 +1,10 @@
+{
+  "agent_id": "cust-hartwell-associates-llp-1771264875-contract-reviewer",
+  "agent_name": "contract-reviewer",
+  "customer_id": "cust-hartwell-associates-llp-1771264875",
+  "status": "running",
+  "deployed_at": "2026-02-16T18:01:15Z",
+  "vertical": "legal",
+  "memory_path": "memory/",
+  "log_path": "logs/"
+}

@@ -1,0 +1,63 @@
+---METADATA---
+{
+  "company": "meridian-health",
+  "companyName": "Meridian Health Partners",
+  "agent": "compliance-officer",
+  "agentName": "Compliance Officer",
+  "outputType": "compliance-report",
+  "activityType": "compliance",
+  "action": "Generated HIPAA compliance audit report",
+  "createdAt": "2026-02-17T03:08:55.683Z"
+}
+---PROMPT---
+You are a HIPAA Compliance Officer AI agent at Meridian Health Partners. Review this access log and produce a compliance audit summary.
+
+timestamp,user,department,record_accessed,action
+2026-02-10 08:12:34,jnguyen,Primary Care,P001 - Maria Santos,view
+2026-02-10 08:15:02,jnguyen,Primary Care,P009 - Fatima Al-Rashid,view
+2026-02-10 08:22:18,kpham,Primary Care,P002 - James Chen,edit
+2026-02-10 08:45:11,mbrooks,Primary Care,P003 - Aisha Patel,view
+2026-02-10 09:01:33,lchen,Cardiology,P017 - William Osei,view
+2026-02-10 09:14:55,lchen,Cardiology,P017 - William Osei,edit
+2026-02-10 09:30:22,swright,Billing,P008 - Thomas Walker,view
+2026-02-10 09:42:08,swright,Billing,P024 - Amara Diallo,view
+2026-02-10 09:55:47,jnguyen,Primary Care,P020 - Catherine Dubois,view
+2026-02-10 10:03:19,tramos,Radiology,P005 - Diana Moss,view
+2026-02-10 10:18:44,tramos,Radiology,P005 - Diana Moss,export
+2026-02-10 10:30:12,mbrooks,Primary Care,P007 - Priya Sharma,edit
+2026-02-10 10:45:33,aokafor,Primary Care,P013 - Marcus Johnson,view
+2026-02-10 11:02:17,kpham,Primary Care,P014 - Elena Petrov,view
+2026-02-10 11:15:45,swright,Billing,P016 - Sofia Reyes,export
+2026-02-10 11:28:09,lchen,Cardiology,P033 - Patricia Navarro,view
+2026-02-10 11:40:33,jnguyen,Primary Care,P004 - Robert Kim,view
+2026-02-10 13:01:22,aokafor,Primary Care,P008 - Thomas Walker,view
+2026-02-10 13:15:48,mbrooks,Primary Care,P011 - Yuki Tanaka,edit
+2026-02-10 13:30:05,tramos,Radiology,P029 - Mei-Lin Wu,view
+2026-02-10 13:42:19,kpham,Primary Care,P018 - Nadia Kowalski,view
+2026-02-10 13:55:44,swright,Billing,P006 - Carlos Rivera,view
+2026-02-10 14:10:33,lchen,Cardiology,P001 - Maria Santos,view
+2026-02-10 14:22:07,jnguyen,Primary Care,P019 - Raj Gupta,edit
+2026-02-10 14:35:51,aokafor,Primary Care,P021 - Samuel Achebe,view
+2026-02-11 08:05:12,mbrooks,Primary Care,P015 - David Nakamura,view
+2026-02-11 08:18:44,kpham,Primary Care,P010 - Liam O'Brien,view
+2026-02-11 08:32:09,swright,Billing,P040 - Evelyn Larsen,export
+2026-02-11 08:45:33,tramos,Radiology,P032 - Omar Hassan,view
+2026-02-11 09:00:17,lchen,Cardiology,P009 - Fatima Al-Rashid,edit
+2026-02-11 09:15:42,jnguyen,Primary Care,P027 - Rebecca Strauss,view
+2026-02-11 09:30:08,aokafor,Primary Care,P037 - Angela Baptiste,view
+2026-02-11 09:45:55,mbrooks,Primary Care,P039 - Zainab Hussain,view
+2026-02-11 10:01:23,kpham,Primary Care,P026 - Miguel Torres,edit
+2026-02-11 10:15:47,swright,Billing,P012 - Grace Okafor,view
+2026-02-11 10:30:11,tramos,Radiology,P023 - Jin-Ho Park,view
+2026-02-11 10:45:39,lchen,Cardiology,P025 - Olivia Morgan,view
+2026-02-11 11:00:22,jnguyen,Primary Care,P028 - Anthony Washington,view
+2026-02-11 11:15:08,aokafor,Primary Care,P030 - Isaac Okonkwo,edit
+2026-02-11 11:30:44,mbrooks,Primary Care,P022 - Hannah Bergstrom,view
+
+
+Produce a professional compliance audit report including:
+1. Summary of access patterns
+2. Any anomalies or concerns flagged
+3. Policy compliance status
+4. Recommendations
+5. Risk rating (Low/Medium/High)

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">n    <meta property="og:title" content="AfrexAI — AI Agent Workforce">n    <meta property="og:description" content="Deploy AI agents that actually do the work. Not chatbots. Real agents.">n    <meta property="og:type" content="website">n    <meta name="twitter:card" content="summary_large_image">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workforce Insights Newsletter | AfrexAI</title>
+    <meta name="description" content="Get weekly AI workforce insights. Learn how businesses are using AI agents to cut costs and grow revenue.">
+    <meta property="og:title" content="AI Workforce Insights Newsletter | AfrexAI">
+    <meta property="og:description" content="Weekly insights on AI agents, automation, and revenue growth.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/newsletter/">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .container { max-width: 520px; width: 90%; padding: 3rem 2rem; text-align: center; }
+        .badge { display: inline-block; background: rgba(212,175,55,0.15); color: #d4af37; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+        h1 { font-size: 2rem; color: #fff; margin-bottom: 0.5rem; }
+        h1 span { color: #d4af37; }
+        .subtitle { color: #999; margin-bottom: 2rem; }
+        .benefits { text-align: left; margin-bottom: 2rem; list-style: none; }
+        .benefits li { padding: 0.6rem 0; color: #ccc; font-size: 1.05rem; }
+        .benefits li::before { content: '✓ '; color: #d4af37; font-weight: 700; }
+        form { display: flex; gap: 0.75rem; }
+        input[type="email"] { flex: 1; background: #1a1a1a; border: 1px solid #333; color: #e0e0e0; padding: 0.9rem 1rem; border-radius: 8px; font-size: 1rem; }
+        input[type="email"]:focus { outline: none; border-color: #d4af37; }
+        button { background: #d4af37; color: #0a0a0a; border: none; padding: 0.9rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+        button:hover { background: #e6c44a; }
+        .trust { margin-top: 1rem; color: #666; font-size: 0.8rem; }
+        .thank-you { display: none; }
+        .thank-you h2 { color: #d4af37; font-size: 1.6rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="form-section">
+            <div class="badge">📬 Weekly Newsletter</div>
+            <h1>Get Weekly <span>AI Workforce</span> Insights</h1>
+            <p class="subtitle">Join business leaders who are replacing busywork with AI agents.</p>
+            <ul class="benefits">
+                <li>Real case studies: how companies save 20+ hours/week with AI agents</li>
+                <li>Actionable automation playbooks you can implement immediately</li>
+                <li>Early access to new AI workforce tools and frameworks</li>
+            </ul>
+            <form id="newsletter-form" action="https://formspree.io/f/xplaceholder" method="POST">
+                <input type="email" name="email" placeholder="you@company.com" required>
+                <input type="hidden" name="_subject" value="New Newsletter Subscriber">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="trust">🔒 No spam. Unsubscribe anytime.</p>
+        </div>
+        <div class="thank-you" id="thank-you">
+            <h2>✅ You're subscribed!</h2>
+            <p>Check your inbox for a welcome email.</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            try {
+                await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+            } catch(err) {}
+            document.getElementById('form-section').style.display = 'none';
+            document.getElementById('thank-you').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

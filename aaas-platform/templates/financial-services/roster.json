@@ -1,0 +1,24 @@
+{
+  "vertical": "financial-services",
+  "vertical_label": "Financial Services",
+  "agents": [
+    {
+      "id": "portfolio-analyst",
+      "name": "Portfolio Analyst",
+      "description": "Monitors portfolio performance, generates reports, flags rebalancing triggers and market alerts",
+      "tier_minimum": "starter"
+    },
+    {
+      "id": "compliance-monitor",
+      "name": "Compliance Monitor",
+      "description": "Tracks regulatory changes, filing deadlines, KYC/AML checks, and audit trail completeness",
+      "tier_minimum": "growth"
+    },
+    {
+      "id": "client-advisor",
+      "name": "Client Advisor Assistant",
+      "description": "Prepares meeting briefs, tracks client life events, and drafts personalised outreach",
+      "tier_minimum": "growth"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "pacific-legal-group",
+  "company_name": "Pacific Legal Group",
+  "contact_name": "",
+  "email": "info@pacificlegal.com",
+  "tier": "growth",
+  "vertical": "legal",
+  "agents": [
+    {
+      "id": "legal-ea",
+      "name": "Legal Executive Assistant",
+      "template": "legal/legal-ea",
+      "status": "active",
+      "deployed_at": "2026-02-16T20:38:40.608983Z"
+    },
+    {
+      "id": "document-analyst",
+      "name": "Document Analyst",
+      "template": "legal/document-analyst",
+      "status": "active",
+      "deployed_at": "2026-02-16T20:38:40.609596Z"
+    },
+    {
+      "id": "client-followup",
+      "name": "Client Follow-up Coordinator",
+      "template": "legal/client-followup",
+      "status": "active",
+      "deployed_at": "2026-02-16T20:38:40.609602Z"
+    }
+  ],
+  "monthly_price": 4950,
+  "pricing": {
+    "base_price": 4500,
+    "vertical_premium_pct": 10,
+    "vertical_premium_amount": 450,
+    "monthly_total": 4950,
+    "currency": "USD",
+    "billing_cycle": "monthly"
+  },
+  "status": "active",
+  "created_at": "2026-02-16T20:38:39.521052Z",
+  "api_key": ""
+}

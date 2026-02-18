@@ -1,0 +1,9 @@
+{
+  "type": "checkin_email",
+  "customer_id": "hartwell--associates-llp-1771264961",
+  "email": "s.hartwell@hartwelllaw.com",
+  "scheduled_date": "2026-03-18",
+  "subject": "30-day check-in — Let's optimize your setup",
+  "body_file": "hartwell--associates-llp-1771264961-30day-body.txt",
+  "status": "pending"
+}

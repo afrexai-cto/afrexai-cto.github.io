@@ -1,0 +1,64 @@
+{
+  "domain": "afrexai.com",
+  "orgUnitPath": "/Agents",
+  "adminEmail": "kalin@afrexai.com",
+  "credentialsFile": "./credentials.json",
+  "defaultPassword": null,
+  "changePasswordAtNextLogin": true,
+  "agents": [
+    {
+      "email": "ea@afrexai.com",
+      "firstName": "Executive",
+      "lastName": "Assistant",
+      "role": "Executive Assistant"
+    },
+    {
+      "email": "marketing@afrexai.com",
+      "firstName": "Marketing",
+      "lastName": "Analyst",
+      "role": "Marketing Analyst"
+    },
+    {
+      "email": "content@afrexai.com",
+      "firstName": "Content",
+      "lastName": "Writer",
+      "role": "Content Writer"
+    },
+    {
+      "email": "sales@afrexai.com",
+      "firstName": "Outbound",
+      "lastName": "Sales",
+      "role": "Outbound Sales"
+    },
+    {
+      "email": "bookkeeper@afrexai.com",
+      "firstName": "AI",
+      "lastName": "Bookkeeper",
+      "role": "Bookkeeper"
+    },
+    {
+      "email": "coo@afrexai.com",
+      "firstName": "AI",
+      "lastName": "COO",
+      "role": "COO"
+    },
+    {
+      "email": "strategist@afrexai.com",
+      "firstName": "AI",
+      "lastName": "Strategist",
+      "role": "Strategist"
+    },
+    {
+      "email": "consultant@afrexai.com",
+      "firstName": "AI",
+      "lastName": "Consultant",
+      "role": "Consultant"
+    },
+    {
+      "email": "pm@afrexai.com",
+      "firstName": "Project",
+      "lastName": "Manager",
+      "role": "Project Manager"
+    }
+  ]
+}

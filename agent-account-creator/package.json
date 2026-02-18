@@ -1,0 +1,17 @@
+{
+  "name": "agent-account-creator",
+  "version": "1.0.0",
+  "description": "Google Workspace automation for creating AfrexAI agent email accounts",
+  "main": "create-agent.js",
+  "scripts": {
+    "create": "node create-agent.js",
+    "create-all": "node create-agents.js --all",
+    "list": "node list-users.js",
+    "test-auth": "node test-auth.js"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0",
+    "commander": "^12.1.0",
+    "chalk": "^4.1.2"
+  }
+}

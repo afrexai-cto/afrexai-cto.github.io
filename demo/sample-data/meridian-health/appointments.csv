@@ -1,0 +1,11 @@
+type,specialty,time
+follow-up,Cardiology,10:30 AM
+initial consultation,Neurology,2:00 PM
+annual physical,Internal Medicine,9:00 AM
+lab review,Endocrinology,11:15 AM
+post-op check,Orthopedics,3:30 PM
+urgent visit,Pulmonology,8:45 AM
+telehealth,Dermatology,1:00 PM
+screening,Oncology,10:00 AM
+follow-up,Gastroenterology,4:00 PM
+routine check,Rheumatology,2:30 PM

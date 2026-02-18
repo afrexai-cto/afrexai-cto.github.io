@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI ROI Calculator</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.6;min-height:100vh}
+a{color:#FFD700;text-decoration:none}
+.back{display:inline-block;margin:24px 24px 0;font-size:.9rem}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;color:#fff;text-align:center;margin-bottom:8px}
+.sub{text-align:center;color:#888;margin-bottom:48px;font-size:1rem}
+
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:700px){.calc{grid-template-columns:1fr;gap:32px}}
+
+.inputs{background:#111;border:1px solid #222;border-radius:16px;padding:32px 28px}
+.field{margin-bottom:24px}
+.field label{display:block;font-size:.85rem;color:#888;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.field input[type=range]{width:100%;accent-color:#FFD700;cursor:pointer}
+.field .val{font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:4px}
+.field .range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:#555}
+
+.results{background:#111;border:1px solid #FFD700;border-radius:16px;padding:32px 28px;position:sticky;top:24px}
+.results h3{font-size:.85rem;color:#FFD700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:24px;text-align:center}
+.result-item{text-align:center;padding:16px 0;border-bottom:1px solid #1a1a1a}
+.result-item:last-child{border-bottom:none}
+.result-item .number{font-size:2rem;font-weight:800;color:#FFD700}
+.result-item .number.green{color:#22c55e}
+.result-item .number.white{color:#fff}
+.result-item .label{font-size:.8rem;color:#888;margin-top:4px}
+
+.comparison{margin-top:48px;background:#111;border:1px solid #222;border-radius:16px;padding:32px 28px}
+.comparison h3{font-size:1.1rem;color:#fff;margin-bottom:20px;text-align:center}
+.bar-group{margin-bottom:20px}
+.bar-label{font-size:.8rem;color:#888;margin-bottom:6px;display:flex;justify-content:space-between}
+.bar{height:32px;border-radius:6px;transition:width .5s ease}
+.bar.current{background:linear-gradient(90deg,#ef4444,#dc2626)}
+.bar.afrex{background:linear-gradient(90deg,#FFD700,#b8960f)}
+
+.cta-box{text-align:center;margin-top:48px;padding:40px 24px;border:1px solid #222;border-radius:16px;background:#0f0d00}
+.cta-box h3{color:#fff;font-size:1.3rem;margin-bottom:8px}
+.cta-box p{color:#888;margin-bottom:24px;font-size:.95rem}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;font-weight:700;font-size:1rem;padding:14px 36px;border-radius:8px;transition:transform .2s}
+.cta-btn:hover{transform:translateY(-2px)}
+</style>
+    <meta property="og:title" content="AfrexAI ROI Calculator">
+    <meta property="og:description" content="AfrexAI ROI Calculator - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/hosted/roi-calculator.html">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI ROI Calculator">
+    <meta name="twitter:description" content="AfrexAI ROI Calculator - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+
+<a href="index.html" class="back">← Back to Hosted Agents</a>
+
+<div class="wrap">
+<h1>ROI Calculator</h1>
+<p class="sub">See exactly how much you'd save with an AfrexAI-managed AI workforce.</p>
+
+<div class="calc">
+ <div class="inputs">
+  <div class="field">
+   <label>Employees on Repetitive Tasks</label>
+   <div class="val" id="empVal">5</div>
+   <input type="range" id="employees" min="1" max="50" value="5">
+   <div class="range-labels"><span>1</span><span>50</span></div>
+  </div>
+  <div class="field">
+   <label>Average Annual Salary (Fully Loaded)</label>
+   <div class="val" id="salVal">$60,000</div>
+   <input type="range" id="salary" min="30000" max="150000" value="60000" step="5000">
+   <div class="range-labels"><span>$30K</span><span>$150K</span></div>
+  </div>
+  <div class="field">
+   <label>% of Time on Repetitive Tasks</label>
+   <div class="val" id="pctVal">60%</div>
+   <input type="range" id="pct" min="10" max="100" value="60" step="5">
+   <div class="range-labels"><span>10%</span><span>100%</span></div>
+  </div>
+ </div>
+
+ <div class="results">
+  <h3>Your Savings</h3>
+  <div class="result-item"><div class="number green" id="rSavings">$0</div><div class="label">Annual Savings</div></div>
+  <div class="result-item"><div class="number" id="rROI">0%</div><div class="label">First-Year ROI</div></div>
+  <div class="result-item"><div class="number white" id="rPayback">0</div><div class="label">Payback Period (Days)</div></div>
+  <div class="result-item"><div class="number white" id="rAgents">0</div><div class="label">AI Agents Needed</div></div>
+  <div class="result-item"><div class="number" id="rCost">$0</div><div class="label">AfrexAI Annual Cost</div></div>
+ </div>
+</div>
+
+<div class="comparison">
+ <h3>Annual Cost Comparison</h3>
+ <div class="bar-group">
+  <div class="bar-label"><span>Current Cost (Repetitive Work)</span><span id="barCurrentLabel">$0</span></div>
+  <div class="bar current" id="barCurrent" style="width:100%"></div>
+ </div>
+ <div class="bar-group">
+  <div class="bar-label"><span>AfrexAI Hosted Agents</span><span id="barAfrexLabel">$0</span></div>
+  <div class="bar afrex" id="barAfrex" style="width:20%"></div>
+ </div>
+</div>
+
+<div class="cta-box">
+ <h3 id="ctaTitle">Ready to save?</h3>
+ <p id="ctaSub">Let's walk through these numbers together and build your AI workforce plan.</p>
+ <a href="https://calendly.com/afrexai/ai-workforce-audit" class="cta-btn">Book Your AI Workforce Audit</a>
+</div>
+</div>
+
+<script>
+const emp=document.getElementById('employees'),sal=document.getElementById('salary'),pct=document.getElementById('pct');
+const fmt=n=>'$'+n.toLocaleString('en-US');
+
+function calc(){
+ const e=+emp.value,s=+sal.value,p=+pct.value/100;
+ document.getElementById('empVal').textContent=e;
+ document.getElementById('salVal').textContent=fmt(s);
+ document.getElementById('pctVal').textContent=Math.round(p*100)+'%';
+
+ const currentCost=e*s*p;
+ // Agents needed: roughly 1 agent per 2 employees' repetitive work, min 1
+ const agents=Math.max(1,Math.ceil(e*p/1.5));
+ // Pricing tiers
+ let monthly;
+ if(agents<=1) monthly=1500;
+ else if(agents<=3) monthly=4500;
+ else if(agents<=9) monthly=12000;
+ else monthly=12000+((agents-9)*1200);
+ const annual=monthly*12;
+ const savings=currentCost-annual;
+ const roi=annual>0?((savings/annual)*100):0;
+ const payback=savings>0?Math.round((annual/savings)*365):999;
+
+ document.getElementById('rSavings').textContent=savings>0?fmt(Math.round(savings)):'-'+fmt(Math.abs(Math.round(savings)));
+ document.getElementById('rROI').textContent=Math.round(roi)+'%';
+ document.getElementById('rPayback').textContent=savings>0?payback+' days':'N/A';
+ document.getElementById('rAgents').textContent=agents;
+ document.getElementById('rCost').textContent=fmt(annual)+'/yr';
+
+ document.getElementById('barCurrentLabel').textContent=fmt(Math.round(currentCost))+'/yr';
+ document.getElementById('barAfrexLabel').textContent=fmt(annual)+'/yr';
+ const maxBar=Math.max(currentCost,annual);
+ document.getElementById('barCurrent').style.width=Math.round((currentCost/maxBar)*100)+'%';
+ document.getElementById('barAfrex').style.width=Math.round((annual/maxBar)*100)+'%';
+
+ if(savings>100000){
+  document.getElementById('ctaTitle').textContent='You could save '+fmt(Math.round(savings))+' per year.';
+  document.getElementById('ctaSub').textContent="That's real money. Let's make it happen.";
+ }else if(savings>0){
+  document.getElementById('ctaTitle').textContent='Annual savings: '+fmt(Math.round(savings));
+  document.getElementById('ctaSub').textContent="Let's walk through these numbers together.";
+ }else{
+  document.getElementById('ctaTitle').textContent='Let\'s find the right fit.';
+  document.getElementById('ctaSub').textContent='Our team can identify the highest-impact roles for AI agents at your company.';
+ }
+}
+
+emp.addEventListener('input',calc);
+sal.addEventListener('input',calc);
+pct.addEventListener('input',calc);
+calc();
+</script>
+</body>
+</html>

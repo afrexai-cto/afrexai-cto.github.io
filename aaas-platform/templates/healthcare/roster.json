@@ -1,0 +1,24 @@
+{
+  "vertical": "healthcare",
+  "vertical_label": "Healthcare",
+  "agents": [
+    {
+      "id": "patient-coordinator",
+      "name": "Patient Coordinator",
+      "description": "Manages appointment scheduling, referrals, patient communications, and intake workflows",
+      "tier_minimum": "starter"
+    },
+    {
+      "id": "compliance-officer",
+      "name": "Compliance Officer",
+      "description": "Monitors HIPAA compliance, audit readiness, policy updates, and staff training schedules",
+      "tier_minimum": "growth"
+    },
+    {
+      "id": "records-analyst",
+      "name": "Records Analyst",
+      "description": "Manages medical record requests, ensures documentation completeness, and tracks chart deficiencies",
+      "tier_minimum": "growth"
+    }
+  ]
+}

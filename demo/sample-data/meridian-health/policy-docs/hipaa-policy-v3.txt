@@ -1,0 +1,64 @@
+MERIDIAN HEALTH GROUP — HIPAA PRIVACY & SECURITY POLICY
+Version 3.0 | Effective Date: January 1, 2026
+Approved by: Dr. Susan Whitfield, Chief Compliance Officer
+
+1. PURPOSE
+This policy establishes the standards and procedures for protecting
+Protected Health Information (PHI) in compliance with the Health
+Insurance Portability and Accountability Act of 1996 (HIPAA),
+the HITECH Act, and all applicable state privacy regulations.
+
+2. SCOPE
+This policy applies to all Meridian Health Group workforce members,
+including employees, contractors, volunteers, trainees, and any
+person whose conduct is under the direct control of Meridian Health.
+
+3. DEFINITIONS
+PHI: Individually identifiable health information transmitted or
+maintained in any form (electronic, paper, or oral).
+ePHI: PHI that is created, stored, transmitted, or received electronically.
+Covered Entity: Meridian Health Group and all affiliated clinics.
+Business Associate: Any entity that creates, receives, maintains,
+or transmits PHI on behalf of Meridian Health Group.
+
+4. MINIMUM NECESSARY STANDARD
+Workforce members shall access only the minimum PHI necessary
+to perform their assigned job functions. Access requests beyond
+standard role-based permissions require supervisor approval and
+must be documented in the access control log.
+
+5. PATIENT RIGHTS
+Patients have the right to: (a) access their medical records,
+(b) request amendments to their records, (c) receive an accounting
+of disclosures, (d) request restrictions on certain uses, and
+(e) request confidential communications.
+
+6. ELECTRONIC SAFEGUARDS
+All workstations accessing ePHI must use encrypted connections.
+Multi-factor authentication is required for remote access.
+Automatic session timeout is set to 15 minutes of inactivity.
+USB storage devices are prohibited on systems containing ePHI.
+
+7. BREACH NOTIFICATION
+Any suspected breach must be reported to the Privacy Officer within
+24 hours of discovery. The Privacy Officer will conduct a risk
+assessment and, if necessary, notify affected individuals within
+60 days as required by federal regulation.
+
+8. BUSINESS ASSOCIATE AGREEMENTS
+All vendors with access to PHI must execute a Business Associate
+Agreement (BAA) prior to receiving any PHI. BAAs must be reviewed
+annually and renewed before expiration. The vendor BAA registry
+is maintained by the Compliance Department.
+
+9. TRAINING REQUIREMENTS
+All workforce members must complete HIPAA training within 30 days
+of hire and annually thereafter. Training records are maintained
+by Human Resources for a minimum of six years.
+
+10. SANCTIONS
+Violations of this policy may result in disciplinary action up to
+and including termination, and may also result in civil or criminal
+penalties under federal and state law.
+
+For questions, contact: compliance@meridianhealth.example.com

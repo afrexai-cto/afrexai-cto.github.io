@@ -1,0 +1,16 @@
+client_id,name,account_type,aum,risk_profile,advisor,last_review,next_review
+AW-001,Richardson Family Trust,trust,$4200000,moderate,Margaret Liu,2026-01-15,2026-04-15
+AW-002,James & Patricia Holloway,joint,$1850000,conservative,David Nakamura,2026-02-01,2026-05-01
+AW-003,Greenfield Pension Fund,institutional,$28500000,moderate,Margaret Liu,2025-12-20,2026-03-20
+AW-004,Dr. Samuel Okonkwo,individual,$920000,aggressive,David Nakamura,2026-01-28,2026-04-28
+AW-005,Chen Family Office,family_office,$12400000,moderate,Margaret Liu,2026-02-10,2026-05-10
+AW-006,Barbara Steinfeld,individual,$680000,conservative,David Nakamura,2025-11-30,2026-02-28
+AW-007,Westbrook Endowment,institutional,$18700000,moderate,Margaret Liu,2026-01-05,2026-04-05
+AW-008,Raj & Meera Kapoor,joint,$2100000,growth,David Nakamura,2026-02-12,2026-05-12
+AW-009,Morrison Charitable Foundation,nonprofit,$8900000,conservative,Margaret Liu,2025-12-15,2026-03-15
+AW-010,Angela DiMartino,individual,$1350000,moderate,David Nakamura,2026-01-20,2026-04-20
+AW-011,Thornton Industries 401k,retirement,$15200000,balanced,Margaret Liu,2026-02-05,2026-05-05
+AW-012,Viktor & Olena Kovalenko,joint,$3400000,growth,David Nakamura,2025-12-28,2026-03-28
+AW-013,Pacific Northwest Teachers Union,institutional,$42000000,conservative,Margaret Liu,2026-01-10,2026-04-10
+AW-014,Danielle Moreau,individual,$780000,aggressive,David Nakamura,2026-02-08,2026-05-08
+AW-015,Hartwell Family LP,family_office,$7600000,moderate,Margaret Liu,2026-01-22,2026-04-22

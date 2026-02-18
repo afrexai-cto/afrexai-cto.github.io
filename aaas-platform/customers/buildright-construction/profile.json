@@ -1,0 +1,29 @@
+{
+  "slug": "buildright-construction",
+  "company_name": "BuildRight Construction",
+  "contact_name": "",
+  "email": "mike@buildright.com",
+  "tier": "starter",
+  "vertical": "construction",
+  "agents": [
+    {
+      "id": "site-reporter",
+      "name": "Site Reporter",
+      "template": "construction/site-reporter",
+      "status": "active",
+      "deployed_at": "2026-02-16T18:29:51.275551Z"
+    }
+  ],
+  "monthly_price": 1500,
+  "pricing": {
+    "base_price": 1500,
+    "vertical_premium_pct": 0,
+    "vertical_premium_amount": 0,
+    "monthly_total": 1500,
+    "currency": "USD",
+    "billing_cycle": "monthly"
+  },
+  "status": "active",
+  "created_at": "2026-02-16T18:29:50.717931Z",
+  "api_key": ""
+}

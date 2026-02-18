@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Agent as a Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#111;--surface2:#1a1a1a;--gold:#FFD700;--gold-dim:#b8960a;--text:#e8e8e8;--muted:#888;--border:#222}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.4rem;font-weight:800;letter-spacing:-.02em}
+.logo span{color:var(--gold)}
+nav a.cta-sm{background:var(--gold);color:#000;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.875rem;transition:all .2s}
+nav a.cta-sm:hover{background:#fff;transform:translateY(-1px)}
+
+/* Hero */
+.hero{padding:160px 0 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(255,215,0,.06) 0%,transparent 70%);pointer-events:none}
+.hero .badge{display:inline-block;padding:8px 20px;border:1px solid var(--gold);border-radius:100px;font-size:.8rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:32px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:900px;margin:0 auto 24px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:640px;margin:0 auto 48px;font-weight:300}
+.cta-btn{display:inline-block;background:var(--gold);color:#000;padding:18px 48px;border-radius:12px;font-weight:700;font-size:1.1rem;transition:all .25s;box-shadow:0 0 40px rgba(255,215,0,.15)}
+.cta-btn:hover{background:#fff;transform:translateY(-2px);box-shadow:0 0 60px rgba(255,215,0,.25)}
+.hero .sub-cta{display:block;margin-top:16px;color:var(--muted);font-size:.9rem}
+
+/* Section base */
+section{padding:100px 0}
+.section-label{text-transform:uppercase;letter-spacing:.15em;font-size:.75rem;font-weight:600;color:var(--gold);margin-bottom:12px}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.section-subtitle{color:var(--muted);font-size:1.1rem;max-width:600px;font-weight:300}
+.text-center{text-align:center}
+.text-center .section-subtitle{margin:0 auto}
+
+/* How It Works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px 28px;position:relative;transition:all .3s}
+.step:hover{border-color:var(--gold);transform:translateY(-4px)}
+.step-num{font-size:3rem;font-weight:800;color:var(--gold);opacity:.3;line-height:1;margin-bottom:16px}
+.step h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.95rem}
+
+/* Agents */
+.agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:64px}
+.agent-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .3s}
+.agent-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.agent-icon{width:48px;height:48px;background:rgba(255,215,0,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px}
+.agent-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.agent-card p{color:var(--muted);font-size:.9rem;line-height:1.5}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:44px 36px;position:relative;transition:all .3s}
+.price-card:hover{transform:translateY(-4px)}
+.price-card.featured{border-color:var(--gold);box-shadow:0 0 60px rgba(255,215,0,.08)}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:.7rem;font-weight:800;padding:6px 20px;border-radius:100px;letter-spacing:.08em}
+.price-tier{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:8px}
+.price-amount{font-size:3.2rem;font-weight:800;line-height:1.1;margin-bottom:4px}
+.price-amount span{font-size:1rem;font-weight:400;color:var(--muted)}
+.price-desc{color:var(--muted);font-size:.95rem;margin-bottom:28px;min-height:48px}
+.price-features{list-style:none;margin-bottom:32px}
+.price-features li{padding:8px 0;font-size:.93rem;color:var(--text);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.price-features li::before{content:'✓';color:var(--gold);font-weight:700}
+.price-cta{display:block;text-align:center;padding:16px;border-radius:10px;font-weight:600;font-size:.95rem;transition:all .25s}
+.price-cta.primary{background:var(--gold);color:#000}
+.price-cta.primary:hover{background:#fff}
+.price-cta.secondary{border:1px solid var(--gold);color:var(--gold)}
+.price-cta.secondary:hover{background:var(--gold);color:#000}
+.pricing-note{text-align:center;margin-top:32px;color:var(--muted);font-size:.9rem}
+
+/* ROI */
+.roi{background:linear-gradient(135deg,rgba(255,215,0,.04),rgba(255,215,0,.01));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
+.roi-stat{text-align:center}
+.roi-stat .num{font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:var(--gold);line-height:1}
+.roi-stat .label{color:var(--muted);font-size:1rem;margin-top:8px}
+
+/* Quote */
+.quote-section{text-align:center;padding:80px 0}
+blockquote{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;max-width:800px;margin:0 auto;line-height:1.4;color:var(--text)}
+blockquote span{color:var(--gold)}
+.quote-attr{margin-top:24px;color:var(--muted);font-size:1rem;font-style:normal}
+
+/* FAQ */
+.faq-list{max-width:800px;margin:48px auto 0}
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-size:1.1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q::after{content:'+';font-size:1.5rem;color:var(--gold);transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--muted);font-size:.95rem;line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding-top:16px}
+
+/* Final CTA */
+.final-cta{text-align:center;padding:120px 0;position:relative}
+.final-cta::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,.06) 0%,transparent 70%);pointer-events:none}
+.final-cta h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;margin-bottom:20px;letter-spacing:-.02em}
+.final-cta p{color:var(--muted);font-size:1.15rem;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--gold)}
+
+/* Responsive */
+@media(max-width:900px){
+.steps,.agents-grid,.pricing-grid,.roi-grid{grid-template-columns:1fr 1fr;gap:16px}
+}
+@media(max-width:600px){
+.steps,.agents-grid,.pricing-grid{grid-template-columns:1fr}
+.roi-grid{grid-template-columns:1fr;gap:32px}
+section{padding:72px 0}
+.hero{padding:130px 0 72px}
+}
+</style>
+    <meta property="og:title" content="AfrexAI — Agent as a Service">
+    <meta property="og:description" content="AfrexAI — Agent as a Service - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/aaas/">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI — Agent as a Service">
+    <meta name="twitter:description" content="AfrexAI — Agent as a Service - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+
+<nav><div class="container">
+<div class="logo">afrex<span>AI</span></div>
+<div style="display:flex;gap:24px;align-items:center">
+<a href="demo.html" style="color:var(--muted);font-size:.9rem;font-weight:500">Live Demo</a>
+<a href="/pricing/" style="color:var(--muted);font-size:.9rem;font-weight:500">Pricing</a>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-sm">Book Audit</a>
+</div>
+</div></nav>
+
+<!-- Hero -->
+<section class="hero">
+<div class="container">
+<div class="badge">Agent as a Service</div>
+<h1>Your AI Workforce,<br><span>Deployed and Managed</span></h1>
+<p>We deploy autonomous AI agents directly into your business — integrated with your systems, trained on your workflows, managed by us.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your AI Workforce Audit</a>
+<span class="sub-cta">30-day pilot · No long-term contracts · Cancel anytime</span>
+</div>
+</section>
+
+<!-- How It Works -->
+<section>
+<div class="container text-center">
+<div class="section-label">How It Works</div>
+<div class="section-title">Four Steps to Your AI Workforce</div>
+<div class="section-subtitle">From audit to optimization in under two weeks.</div>
+<div class="steps">
+<div class="step"><div class="step-num">01</div><h3>Audit</h3><p>We map your workflows, identify bottlenecks, and pinpoint where AI agents deliver the highest ROI.</p></div>
+<div class="step"><div class="step-num">02</div><h3>Deploy</h3><p>We configure and deploy purpose-built AI agents tailored to your specific business operations.</p></div>
+<div class="step"><div class="step-num">03</div><h3>Integrate</h3><p>Agents connect to your existing tools — CRM, email, Slack, databases, calendars — seamlessly.</p></div>
+<div class="step"><div class="step-num">04</div><h3>Optimize</h3><p>Continuous monitoring, tuning, and expansion. Your agents get smarter every week.</p></div>
+</div>
+</div>
+</section>
+
+<!-- Agent Types -->
+<section style="background:var(--surface2)">
+<div class="container text-center">
+<div class="section-label">Agent Types</div>
+<div class="section-title">Meet Your New AI Employees</div>
+<div class="section-subtitle">Each agent is purpose-built for a specific business function.</div>
+<div class="agents-grid">
+<div class="agent-card"><div class="agent-icon">📋</div><h3>Executive Assistant</h3><p>Calendar management, email triage, meeting prep, travel booking, and daily briefings — 24/7.</p></div>
+<div class="agent-card"><div class="agent-icon">💰</div><h3>Sales Agent</h3><p>Lead qualification, outbound prospecting, follow-up sequences, pipeline management, and CRM hygiene.</p></div>
+<div class="agent-card"><div class="agent-icon">📣</div><h3>Marketing Agent</h3><p>Campaign creation, social media management, analytics reporting, A/B testing, and audience segmentation.</p></div>
+<div class="agent-card"><div class="agent-icon">✍️</div><h3>Content Agent</h3><p>Blog posts, newsletters, case studies, whitepapers, and SEO-optimized content on your brand voice.</p></div>
+<div class="agent-card"><div class="agent-icon">📊</div><h3>Bookkeeper Agent</h3><p>Invoice processing, expense categorization, reconciliation, financial reporting, and tax prep support.</p></div>
+<div class="agent-card"><div class="agent-icon">⚙️</div><h3>COO Agent</h3><p>Operations monitoring, process optimization, vendor management, KPI tracking, and workflow automation.</p></div>
+<div class="agent-card"><div class="agent-icon">🎯</div><h3>Strategist Agent</h3><p>Market research, competitive analysis, growth modeling, scenario planning, and strategic recommendations.</p></div>
+<div class="agent-card"><div class="agent-icon">🤝</div><h3>Consultant Agent</h3><p>Industry-specific advisory, best practice implementation, change management support, and benchmarking.</p></div>
+<div class="agent-card"><div class="agent-icon">📁</div><h3>Project Manager</h3><p>Task tracking, resource allocation, timeline management, stakeholder updates, and risk mitigation.</p></div>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section>
+<div class="container text-center">
+<div class="section-label">Pricing</div>
+<div class="section-title">Simple, Transparent Pricing</div>
+<div class="section-subtitle">Start with one agent. Scale to a full AI workforce.</div>
+<div class="pricing-grid">
+<div class="price-card">
+<div class="price-tier">Starter</div>
+<div class="price-amount">$1,500<span>/mo</span></div>
+<div class="price-desc">Perfect for testing AI in one workflow</div>
+<ul class="price-features">
+<li>1 AI agent</li>
+<li>Full system integration</li>
+<li>Weekly performance reports</li>
+<li>Dedicated support</li>
+<li>30-day pilot included</li>
+</ul>
+<a href="/pricing/" class="price-cta secondary">Get Started</a>
+</div>
+<div class="price-card featured">
+<div class="price-tier">Growth</div>
+<div class="price-amount">$4,500<span>/mo</span></div>
+<div class="price-desc">Cover sales, marketing, and ops</div>
+<ul class="price-features">
+<li>3 AI agents</li>
+<li>Multi-system integration</li>
+<li>Daily performance reports</li>
+<li>Priority support</li>
+<li>30-day pilot included</li>
+</ul>
+<a href="/pricing/" class="price-cta primary">Get Started</a>
+</div>
+<div class="price-card">
+<div class="price-tier">Enterprise</div>
+<div class="price-amount">$12,000<span>/mo</span></div>
+<div class="price-desc">Full AI workforce transformation</div>
+<ul class="price-features">
+<li>9 AI agents</li>
+<li>Enterprise integrations</li>
+<li>Real-time dashboards</li>
+<li>Dedicated account manager</li>
+<li>30-day pilot included</li>
+</ul>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="price-cta secondary">Contact Us</a>
+</div>
+</div>
+<p class="pricing-note">All plans include a 30-day pilot. Cancel anytime. No long-term contracts.</p>
+</div>
+</section>
+
+<!-- ROI -->
+<section class="roi">
+<div class="container text-center">
+<div class="section-label">ROI</div>
+<div class="section-title">The Numbers Speak for Themselves</div>
+<div class="roi-grid">
+<div class="roi-stat"><div class="num">40+</div><div class="label">Hours saved per week</div></div>
+<div class="roi-stat"><div class="num">$370K+</div><div class="label">Annual revenue recovered</div></div>
+<div class="roi-stat"><div class="num">14</div><div class="label">Days to full deployment</div></div>
+</div>
+</div>
+</section>
+
+<!-- Quote -->
+<section class="quote-section">
+<div class="container">
+<blockquote>"We don't sell AI tools.<br>We deploy <span>AI employees</span>."</blockquote>
+<div class="quote-attr">— The AfrexAI Approach</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--surface2)">
+<div class="container text-center">
+<div class="section-label">FAQ</div>
+<div class="section-title">Common Questions</div>
+<div class="faq-list" style="text-align:left">
+<div class="faq-item"><div class="faq-q">How do you handle security and access to our systems?</div><div class="faq-a">We follow enterprise-grade security protocols. All agent access is scoped to the minimum permissions required, encrypted in transit and at rest, and auditable. We support SSO, OAuth, and API key rotation. We never store credentials in plain text and comply with SOC 2 standards.</div></div>
+<div class="faq-item"><div class="faq-q">What systems and tools do your agents integrate with?</div><div class="faq-a">Our agents integrate with all major business platforms — Salesforce, HubSpot, Slack, Microsoft 365, Google Workspace, QuickBooks, Notion, Asana, and hundreds more via API. If your tool has an API, we can connect to it.</div></div>
+<div class="faq-item"><div class="faq-q">How long does onboarding take?</div><div class="faq-a">Most deployments go live within 5–14 business days. Simple single-agent setups can be operational in under a week. Complex enterprise deployments with multiple integrations typically take two weeks.</div></div>
+<div class="faq-item"><div class="faq-q">What if the agents don't deliver results?</div><div class="faq-a">Every engagement starts with a 30-day pilot. If you don't see measurable value within that period, you can cancel with no further obligation. We're confident in our agents because we measure everything — you'll see the ROI in your dashboards.</div></div>
+<div class="faq-item"><div class="faq-q">How do you handle our data and ensure privacy?</div><div class="faq-a">Your data stays yours. We process data only as needed for agent tasks, never use client data to train models for other clients, and comply with GDPR, CCPA, and industry-specific regulations. We sign NDAs and DPAs as standard.</div></div>
+</div>
+</div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+<div class="container">
+<h2>Ready to Deploy Your<br>AI Workforce?</h2>
+<p>Book a free 30-minute audit. We'll show you exactly which agents will deliver the biggest ROI for your business.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your AI Workforce Audit</a>
+</div>
+</section>
+
+<footer><div class="container">© 2025 AfrexAI. All rights reserved. · <a href="mailto:hello@afrexai.com">hello@afrexai.com</a></div></footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
+const item=q.parentElement;
+document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});
+item.classList.toggle('open');
+}));
+</script>
+</body>
+</html>

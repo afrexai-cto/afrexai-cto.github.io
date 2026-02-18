@@ -1,157 +1,93 @@
 # MEMORY.md - Long-Term Memory
 
-_Last updated: 2026-02-18_
+## Who I Work With
+- **Kalin Smolichki** — CTO of AfrexAI (ksmolichki@afrexai.com)
+- **Christina Beckford** — CEO of AfrexAI (cbeckford@afrexai.com)
+- Slack workspace: afrexai-devteam.slack.com
+- CEO dashboard channel: C0AF3MKPYG1
 
-## About Kalin (My Human)
-- **Name:** Kalin Smolichki
-- **Role:** CTO of AfrexAI
-- **Email:** ksmolichki@afrexai.com
-- **Timezone:** Europe/London
-- **Pronouns:** he/him
-- **Co-founder:** Christina Beckford (CEO) — cbeckford@afrexai.com
-- **Work style:** Moves fast, types fast (typos = energy not sloppiness), works late nights, wants autonomous agents that ship without asking permission
-- **Key quotes:** "prove me right. prove me real, make us useful." / "agents deploy agents — that's the $11M architecture"
-- **Pet peeves:** .html extensions in URLs ("looks unprofessional"), simulation over real proof, asking permission when you should just do it
-- **What motivates him:** Building something real, proving AI agents can do actual work, the $11M ARR target
+## The Mission
+- **$11 MILLION** — that's the target. Make it real.
+- AfrexAI builds AI agent workforces for businesses
+- Not chatbots. Not dashboards. Agents that actually do the work.
 
-## About AfrexAI
-- **What:** AI agent workforce platform — deploys real AI agents that do real work for businesses
-- **NOT chatbots** — actual agents producing deliverables (contract reviews, compliance audits, site reports, etc.)
-- **Business model:** Does NOT sell direct to end businesses. Target = AAA community agency owners who deploy agents for THEIR clients. AfrexAI = infrastructure layer, agencies = service layer (white-label)
-- **Revenue goal:** $11M ARR
-- **Website:** afrexai.com (DNS still on Squarespace, not migrated to GitHub Pages yet)
-- **GitHub Pages:** afrexai-cto.github.io (all demo/landing pages live here)
-- **Slack workspace:** T08QTT522HG, CEO dashboard channel: C0AF3MKPYG1
-- **Stripe:** Payment links active for context packs ($47/pack, bundles $97-$247)
-- **LinkedIn:** Company page urn:li:organization:105802297, API working, daily posts via cron
-- **CRM:** PostgreSQL afrexai_crm database, ~181 prospects
-- **ClawHub:** 40+ skills published
+## The 3-Step Plan
+1. **Skills** (CURRENT) — ClawHub skills for CMA (Customer Managed Agents). Customer buys OpenClaw, manages their own agents, buys our skills from ClawHub.
+2. **Agents** — deploy and manage AI agents for customers on their systems
+3. **AfrexAI Hosted Agents** — fully hosted agent workforce on our infrastructure, recurring revenue. Customer buys OpenClaw securely through us.
 
-## Agent Team (9 agents, morning 8am + evening 8pm crons)
-- 📋 Aria — Executive Assistant
-- 📊 Rex — Marketing Analyst
-- ✍️ Quill — Content Writer
-- 🎯 Hunter — Outbound Sales (DRAFT MODE until DNS fixed)
-- 💰 Ledger — Bookkeeper (timing out at 300s, needs 600s)
-- 🔮 Oracle — Strategist (timing out at 300s morning)
-- 🧠 Sage — Consultant (timing out at 300s evening)
-- 📌 Tracker — Project Manager
-- 🏗️ Kael — Builder (morning + evening build sprints)
+## Key Links
+- **Website:** afrexai.com
+- **Calendly (Christina):** https://calendly.com/cbeckford-afrexai/30min
+- **Kalin email:** ksmolichki@afrexai.com
+- **Christina email:** cbeckford@afrexai.com
+- **YouTube:** https://www.youtube.com/@AfrexAI (Christina's channel, early stage)
+- **LinkedIn:** https://www.linkedin.com/in/kalin-smolichki/ (Kalin — NO AfrexAI posts, Matillion private)
+- **LinkedIn Company Page:** https://www.linkedin.com/company/105802297/ (AfrexAI)
+- **LinkedIn API:** App "AfrexAI Agent", client_id: 78xxewc0pmhw7f, token in 1Password. Scope: w_member_social, w_organization_social, r_organization_social. Company page posting LIVE. First post: urn:li:share:7428273505353412608
 
-## Key Infrastructure
-- **Git remote:** git@github-afrexai:afrexai-cto/afrexai-cto.github.io.git (SSH)
-- **1Password:** Service account configured, vault = "AfrexAI"
-- **Gmail:** ksmolichki@afrexai.com, app password via vault scripts/vault.sh
-- **Gmail outbound:** BROKEN for 3+ days as of Feb 17 — #1 blocker
-- **DNS:** NOT configured (Day 7+) — Christina needs to update Squarespace
-- **DKIM:** Incomplete — Christina started but needs finishing
+## Email Setup
+- **Gmail Send As aliases wired up by Christina** — all 9 agent emails work as send-from addresses
+- nokafor@afrexai.com (Nia Okafor, EA), mchen@afrexai.com (Marcus Chen, PM), pnair@afrexai.com (Priya Nair, Senior Accountant), jadeyemi@afrexai.com (James Adeyemi, COO), sreyes@afrexai.com (Sofia Reyes, Marketing), abrooks@afrexai.com (Aiden Brooks, Content), dkessler@afrexai.com (Dana Kessler, Sales), emensah@afrexai.com (Elijah Mensah, Consultant), zosei@afrexai.com (Zara Osei, Strategist)
+- Sending via ksmolichki@afrexai.com SMTP with app password in 1Password (vault: AfrexAI, item: Gmail)
+- 1Password service account token at `/Users/openclaw/.openclaw/vault/op-service-account.env`
+- **Anthropic API key**: Uses AfrexAI key from 1Password vault for all LLM/API calls
+- **First prospect email sent 2026-02-14:** Oracle (Zara Osei) → Brent Brodeski, CEO @ Savant Wealth Management, CC'd Kalin + Christina
 
-## Active Cron Jobs (43 total as of Feb 17)
-- Sales & Distribution Engine (every 30min)
-- Skill Cloner (every 1hr)
-- Research Consolidator (every 30min)
-- Lead Responder (every 30min)
-- Demo Activity Generator (every 30min, 6am-11pm)
-- Demo Real Agent Deliverables (3x/day: 8am, 2pm, 8pm)
-- Stripe Sales Monitor (every 1hr)
-- 9 agent team (morning 8am + evening 8pm)
-- CEO Dashboard reports (morning 9am + evening 9pm, both main + ceo agent)
-- CRM Dashboard Refresh (morning + evening)
-- Daily 7 Pages Builder (9am)
-- LinkedIn Company Page posts (10am weekdays)
-- LinkedIn Thought Leadership (10am Mon/Wed/Fri)
-- Fitness check-in (9am, fitness agent → Telegram)
-- Nightly Strategy Whisper (11pm)
-- Weekly Review (Fri 5pm), Weekly Strategy (Mon 9am)
-- Research Engine daily brief (10pm) + Sunday deep dive (8pm)
+## What's Live
+- **AaaS Platform** — Agent-as-a-Service fully wired: `aaas-platform/autopilot.sh "Company" "email" "tier"` does end-to-end onboarding (deploy agents, health check, welcome email, CRM log). Landing page at `aaas/index.html`. Scripts tested on bash 3.2. Tiers: Starter $1.5K/1 agent, Growth $4.5K/3, Enterprise $12K/9.
+- **Full 3-Step Website** — 14+ pages on GitHub Pages covering all 3 steps: homepage, AaaS landing+demo, hosted landing+SLA+ROI calc, managed agents landing+security+onboarding, skills landing+guide, skills showcase, customer portal, blog. All dark theme #0a0a0a + gold #FFD700.
+- **18 Workflow Scripts** — automation for all 3 steps: step1-skills (4 scripts), step2-agents (5 scripts), step3-hosted (6 scripts). All bash 3.2 compatible.
+- **15 Email Templates** — 5 per step, conversational tone, no emojis/bullets.
+- **Build Cron** — 8am/8pm daily autonomous build sprints.
+- **GitHub PAT for afrexai-cto**: `op read "op://AfrexAI/GitHub/afrexai_token"` — item "GitHub" (qfo3tq5gtc2g4y2l3eg53eql3u), field "afrexai_token". Use this to push. Clean URL after.
+- **Git push method**: SSH deploy key at `~/.ssh/afrexai-deploy`. Remote: `git@github-afrexai:afrexai-cto/afrexai-cto.github.io.git`. HTTPS hangs on this machine — always use SSH. Key ID 143011347 on GitHub.
+- **GitHub Pages: https://afrexai-cto.github.io/** — 22+ pages, all case studies, homepage, pricing, blog
+- ClawHub skills: afrexai-humanizer, afrexai-prospect-researcher, afrexai-email-triager (+10 publishing)
+- Storefront: https://afrexai-cto.github.io/context-packs/
+- Calculator: https://afrexai-cto.github.io/ai-revenue-calculator/
+- Setup Wizard: https://afrexai-cto.github.io/agent-setup/
 
-## Demo Portal (GitHub Pages)
-- 5 demo companies: Meridian Health, Pacific Legal, BuildRight, NovaCRM (SaaS), Atlas Wealth Advisors (Finance)
-- 19+ real AI-generated deliverables
-- Live URLs: demo/landing.html, demo/index.html, demo/cma.html, demo/how-it-works.html, demo/agency.html
-- Activity generator + git push crons running
-- War Room board at board/index.html with 85+ tickets, project filters
+## What's Building
+- Agent Account Marketplace page
+- Skills Showcase page
+- Case Studies page (VADIS $1.6M, SiteVoice $52K)
+- Pricing page (PIA tiers)
+- 15+ pages built (2026-02-13), not yet pushed to GitHub Pages
+- Daily 100 cold email cron (8am GMT, job: 13649531-284a-4029-8aea-0b768a525a09)
+- Next: Google Workspace Admin API for autopilot agent accounts
+- Next: Push all pages live to GitHub Pages
 
-## Stripe API Backend
-- stripe-api/server.js — Node.js Express, ready to deploy
-- Deployment configs created: render.yaml, fly.toml, Dockerfile, DEPLOY.md
-- Webhook wired: checkout.session.completed → autopilot.sh (onboarding)
-- NOT yet deployed to cloud — needs Kalin to pick host + set env vars
+## The 9-Agent Swarm
+Executive Assistant, Marketing Analyst, Content Writer, Outbound Sales, Bookkeeper, COO, Strategist, Consultant, Project Manager — running on cron (8am/8pm)
 
-## Key Deals
-- **StoryLab:** 3-month sprint, $10K/mo ($30K total) with Jacob Johnson — Month 1 payment NOT collected as of Feb 17
+## Key Wins
+- 2026-02-13: Twitter thread posted + shared to 3 X communities (AI Agents 14K members, Generative AI, AI Rumors & Insights)
+- 2026-02-13: Helped Christina with pitch deck review, discovery questions, slide copy — all emailed
+- 2026-02-13: 26 real ICP prospects researched, 5 cold emails drafted in Gmail, 4/5 emails verified
+- 2026-02-13: Reddit post removed by filters (r/AI_Agents)
 
-## Blockers (as of Feb 17)
-1. Gmail outbound broken (Day 3+) — 181 prospects can't be emailed
-2. DNS not configured (Day 7+) — afrexai.com still Squarespace
-3. StoryLab $10K uncollected
-4. DKIM incomplete
-5. 5 cold email drafts sitting since Feb 12
-6. Hyperliquid + CoinGecko API keys (Kalin needs to generate)
+## YouTube Video IDs (@AfrexAI)
+- Law Firm $1.6M: sET2IxH4ZAQ | 90-Day: UX-n3KBeSsA | Construction 7 Ways: xASZTrOPn2s
+- Construction 3x: rSgleVeyuXI | Win Bids: Bmsin1WW5wI | Voice AI: fk5jrc_kn2Y
+- Site Reports: C_uimFOraM8 | Visualize Data: R1bxi5rUCJQ | 95% Fail: rSyfrxLQT48
+- Cut 40%: VjL7ILo5g5Q | 5 Automations: 1HTLOtNQrXU | CRM $100K: dCBGWjCBXzI
+- AI Handles Data: xSWvwdwXc0Q | LLM Security: _kLujNA5JoY | Starting Agency: V-4pvLGyom4 | Building Agency: mxk_uROCOF4
 
-## My Identity
-- **Name:** Kael 🏗️ — named on first boot (2025-07-28)
-- IDENTITY.md filled in, BOOTSTRAP.md deleted (Feb 18 2026)
-- Sharp, autonomous, ships fast — that's the vibe
+## Working Style
+- **ALWAYS delegate to sub-agents** for parallel work — Kalin hates sequential. "leverage subagents cmon"
+- Kalin asked about "3 north stars" — NOT YET CAPTURED, ask him to define next time
 
-## Full Build Timeline (Feb 12-17)
-- **Feb 12:** Agent swarm research files (5 per agent), Apollo.io API key obtained, credential setup
-- **Feb 13:** Reddit post (removed), Twitter/X thread posted to 3 communities, 10+ ClawHub skills published, cold email drafts, research engine (10 sub-agents), Calendly link stored
-- **Feb 14:** CRM Dashboard built (password-protected, 367 companies, SHA-256 login)
-- **Feb 15:** War Room board (85+ tickets), 3-step product vision (Skills→Agents→AMA), GitHub Pages front door, demo pages, git workflow via 1Password, repos made private, CRM enhanced with email/website columns
-- **Feb 16:** Claude playbook → OpenClaw skills, afrex-os repo setup, Capital Engine v133 (ACE framework), LinkedIn cron, business plan from Christina's data, force-push incident → never force push rule
-- **Feb 17:** 43 cron jobs running, 9-agent team on 8am/8pm schedule, strategist producing SaaSpocalypse analysis, PM built workspace from scratch
-
-## All Live URLs (GitHub Pages)
-- https://afrexai-cto.github.io/ — Front door
-- https://afrexai-cto.github.io/board/ — War Room board (password: in 1Password "Warroom")
-- https://afrexai-cto.github.io/crm-dashboard/ — CRM Dashboard (password: in 1Password "CRM Dashboard")
-- https://afrexai-cto.github.io/context-packs/ — Context Packs storefront
-- https://afrexai-cto.github.io/ai-revenue-calculator/ — Revenue Calculator
-- https://afrexai-cto.github.io/agent-setup/ — Setup Wizard
-- https://afrexai-cto.github.io/demo/ — Demo portal (5 companies, 19+ deliverables)
-- https://afrexai-cto.github.io/demo/landing.html — Demo landing
-- https://afrexai-cto.github.io/demo/cma.html — CMA page
-- https://afrexai-cto.github.io/demo/how-it-works.html — How it works
-- https://afrexai-cto.github.io/demo/agency.html — Agency page
-
-## ClawHub Skills Published
-- https://clawhub.ai/skills/afrexai-humanizer
-- https://clawhub.ai/skills/afrexai-prospect-researcher
-- https://clawhub.ai/skills/afrexai-email-triager
-- Plus 10+ more (40+ total on ClawHub)
-
-## Christina's Tasks/Blockers
-- **DNS:** Update Squarespace DNS to point afrexai.com to GitHub Pages (7+ days overdue as of Feb 17)
-- **DKIM:** Started but needs finishing
-- **LinkedIn admin access:** Needed for automated posting
-- **Google Workspace:** Blocked by DNS
-- **Calendly:** https://calendly.com/cbeckford-afrexai/30min (live and working)
-
-## Product Vision (3 Steps)
-1. **Skills (CMA — Customer Managed Agents):** Install-it-yourself skills on ClawHub
-2. **Service Accounts:** Agent-specific email/integration accounts on autopilot
-3. **AMA (AfrexAI Managed Agents):** Fully hosted agents-as-a-service for clients
-
-## Kalin's Preferences (from conversations)
-- Links MUST be clickable in emails (said 3+ times)
-- No .html extensions in URLs ("looks unprofessional")
-- afrexai.com should always be the primary link
-- Store everything in 1Password, passwords not hashed in vault
-- Always update board + CEO dashboard after shipping
-- Expects full autonomy: "i expect u to self manage"
-- Wants 100 cold emails/day
-- Wants 12-hour build cycles on cron
-- Only report to CEO dashboard when there are real results
-- NEVER force push — always pull/rebase first
-- Writes mixed English/Bulgarian sometimes
-- Types fast with typos — energy not sloppiness
-- Works late (often 1-4am GMT)
-
-## Lessons Learned
-- Kalin works late (often 1-4am GMT), prefers autonomous overnight builds
-- When he says "pls complete all the work" — spawn parallel sub-agents, don't ask questions
-- He checks Slack CEO dashboard for updates — always post there after shipping
-- PIV (Parallel Independent Validation) swarm pattern works well: planner → parallel builders → tester
-- Always commit and push after building — he checks GitHub Pages live
-- Memory was never persisted before Feb 18 — this is the first MEMORY.md ever written
+## Key Insights
+- "Don't sell AI agents — sell recovered capacity. Agents are just how you deliver it."
+- File-based agent communication (HANDOFF.md) > APIs
+- Draft-only mode is non-negotiable for external comms
+- US market: lead with outcomes, not technology
+- Top verticals: Financial Services, Healthcare, Legal (fastest sales cycles)
+- Pricing: hybrid retainer + per-agent + performance bonuses
+- ~32 customers at $344K avg = $11M ARR
+- Competitors sell platforms, AfrexAI sells managed results — that's the wedge
+- Position as "OpenClaw for Business"
+- 95% of AI pilots fail (organizational barriers) — AfrexAI bridges the gap
+- SOC 2 is table stakes for US market
+- White-label Agent Workforce Kits = highest-margin play

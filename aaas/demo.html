@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Agent Deployment Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#111;--gold:#FFD700;--text:#e8e8e8;--muted:#888;--border:#222;--green:#22c55e;--blue:#3b82f6}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+nav{background:rgba(10,10,10,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0;position:fixed;top:0;left:0;right:0;z-index:100}
+nav .inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.4rem;font-weight:800;letter-spacing:-.02em}.logo span{color:var(--gold)}
+nav a.back{color:var(--muted);font-size:.9rem}
+
+.demo-container{max-width:720px;margin:0 auto;padding:120px 24px 80px}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+h1 span{color:var(--gold)}
+.subtitle{text-align:center;color:var(--muted);font-size:1.05rem;margin-bottom:48px}
+
+/* Form */
+.form-group{margin-bottom:24px}
+label{display:block;font-size:.85rem;font-weight:600;margin-bottom:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+select,input[type=text]{width:100%;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:1rem;font-family:inherit;outline:none;transition:border .2s}
+select:focus,input:focus{border-color:var(--gold)}
+select option{background:var(--surface);color:var(--text)}
+.deploy-btn{width:100%;padding:18px;background:var(--gold);color:#000;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all .25s;margin-top:8px}
+.deploy-btn:hover{background:#fff;transform:translateY(-2px)}
+.deploy-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* Terminal */
+.terminal{background:#0c0c0c;border:1px solid var(--border);border-radius:16px;margin-top:40px;overflow:hidden;display:none}
+.terminal.active{display:block}
+.term-header{background:#161616;padding:12px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.term-dot{width:12px;height:12px;border-radius:50%}
+.term-dot.r{background:#ff5f57}.term-dot.y{background:#febc2e}.term-dot.g{background:#28c840}
+.term-title{margin-left:12px;font-size:.8rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.term-body{padding:24px;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.8;min-height:300px;max-height:500px;overflow-y:auto}
+.term-line{opacity:0;transform:translateY(4px);transition:all .3s}
+.term-line.visible{opacity:1;transform:translateY(0)}
+.term-line .prompt{color:var(--green)}
+.term-line .cmd{color:var(--text)}
+.term-line .info{color:var(--blue)}
+.term-line .gold{color:var(--gold)}
+.term-line .success{color:var(--green)}
+.term-line .muted{color:var(--muted)}
+
+/* Progress bar */
+.progress-wrap{margin:8px 0;background:#1a1a1a;border-radius:4px;height:6px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--green));width:0;transition:width 1.5s ease-in-out;border-radius:4px}
+
+/* Result CTA */
+.result-cta{text-align:center;margin-top:40px;display:none}
+.result-cta.active{display:block}
+.result-cta h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.result-cta p{color:var(--muted);margin-bottom:28px}
+.result-cta a{display:inline-block;background:var(--gold);color:#000;padding:16px 40px;border-radius:12px;font-weight:700;font-size:1rem;transition:all .25s}
+.result-cta a:hover{background:#fff;transform:translateY(-2px)}
+
+footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;color:var(--muted);font-size:.85rem}
+</style>
+    <meta property="og:title" content="AfrexAI — Agent Deployment Demo">
+    <meta property="og:description" content="AfrexAI — Agent Deployment Demo - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/aaas/demo.html">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI — Agent Deployment Demo">
+    <meta name="twitter:description" content="AfrexAI — Agent Deployment Demo - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+
+<nav><div class="inner">
+<a href="index.html" class="logo">afrex<span>AI</span></a>
+<a href="index.html" class="back">← Back to Home</a>
+</div></nav>
+
+<div class="demo-container">
+<h1>See Your <span>AI Agent</span> Deploy</h1>
+<p class="subtitle">Select an agent type and watch it configure in real time.</p>
+
+<div class="form-group">
+<label>Agent Type</label>
+<select id="agentType">
+<option value="">Select an agent…</option>
+<option value="Executive Assistant">Executive Assistant</option>
+<option value="Sales Agent">Sales Agent</option>
+<option value="Marketing Agent">Marketing Agent</option>
+<option value="Content Agent">Content Agent</option>
+<option value="Bookkeeper Agent">Bookkeeper Agent</option>
+<option value="COO Agent">COO Agent</option>
+<option value="Strategist Agent">Strategist Agent</option>
+<option value="Consultant Agent">Consultant Agent</option>
+<option value="Project Manager">Project Manager</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Your Company Name</label>
+<input type="text" id="companyName" placeholder="e.g. Acme Corp">
+</div>
+
+<button class="deploy-btn" id="deployBtn" disabled>Deploy Agent</button>
+
+<div class="terminal" id="terminal">
+<div class="term-header">
+<div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+<div class="term-title">afrexai-deploy v3.2.1</div>
+</div>
+<div class="term-body" id="termBody"></div>
+</div>
+
+<div class="result-cta" id="resultCta">
+<h3>🎉 Agent Ready for Deployment</h3>
+<p>This is a preview of what deployment looks like. Ready to make it real?</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min">Book Your AI Workforce Audit →</a>
+</div>
+</div>
+
+<footer>© 2025 AfrexAI. All rights reserved.</footer>
+
+<script>
+const agentSelect=document.getElementById('agentType');
+const companyInput=document.getElementById('companyName');
+const deployBtn=document.getElementById('deployBtn');
+const terminal=document.getElementById('terminal');
+const termBody=document.getElementById('termBody');
+const resultCta=document.getElementById('resultCta');
+
+function checkReady(){deployBtn.disabled=!(agentSelect.value&&companyInput.value.trim())}
+agentSelect.addEventListener('change',checkReady);
+companyInput.addEventListener('input',checkReady);
+
+const agentConfig={
+'Executive Assistant':{tools:['Google Calendar API','Gmail API','Slack SDK','Notion API','Zoom API'],tasks:['email triage','calendar optimization','meeting prep','travel booking','daily briefings']},
+'Sales Agent':{tools:['Salesforce API','HubSpot CRM','LinkedIn Sales Nav','Outreach.io','Gong API'],tasks:['lead scoring','outbound sequences','pipeline management','CRM hygiene','deal forecasting']},
+'Marketing Agent':{tools:['Meta Ads API','Google Ads API','Mailchimp','Buffer','Google Analytics'],tasks:['campaign management','audience segmentation','A/B testing','performance reporting','content scheduling']},
+'Content Agent':{tools:['WordPress API','SEMrush API','Grammarly API','Canva API','Medium API'],tasks:['blog creation','SEO optimization','newsletter writing','case study drafting','brand voice calibration']},
+'Bookkeeper Agent':{tools:['QuickBooks API','Stripe API','Plaid','Expensify API','Xero API'],tasks:['invoice processing','expense categorization','bank reconciliation','financial reporting','tax prep']},
+'COO Agent':{tools:['Asana API','Monday.com API','Datadog','PagerDuty','Zapier'],tasks:['operations monitoring','process mapping','vendor management','KPI tracking','workflow automation']},
+'Strategist Agent':{tools:['Bloomberg API','Crunchbase API','Statista','Google Trends','Tableau'],tasks:['market analysis','competitive intelligence','growth modeling','scenario planning','strategic briefs']},
+'Consultant Agent':{tools:['McKinsey Frameworks','Industry Databases','Benchmark APIs','Survey Tools','Report Generators'],tasks:['best practice analysis','change management','benchmarking','advisory reports','implementation planning']},
+'Project Manager':{tools:['Jira API','Confluence API','GitHub API','Harvest API','Linear API'],tasks:['sprint planning','resource allocation','timeline management','stakeholder updates','risk tracking']}
+};
+
+let running=false;
+
+deployBtn.addEventListener('click',async()=>{
+if(running)return;running=true;
+deployBtn.disabled=true;
+terminal.classList.add('active');
+resultCta.classList.remove('active');
+termBody.innerHTML='';
+const agent=agentSelect.value;
+const company=companyInput.value.trim();
+const cfg=agentConfig[agent];
+const slug=company.toLowerCase().replace(/[^a-z0-9]/g,'-');
+
+const lines=[
+{text:`<span class="prompt">$</span> <span class="cmd">afrexai deploy --agent="${agent}" --client="${company}"</span>`},
+{text:`<span class="muted">[init]</span> Authenticating with AfrexAI Cloud...`,delay:400},
+{text:`<span class="success">✓</span> Authenticated as <span class="gold">enterprise@afrexai.com</span>`,delay:300},
+{text:`<span class="muted">[init]</span> Provisioning secure workspace: <span class="info">${slug}-${agent.toLowerCase().replace(/ /g,'-')}</span>`,delay:500},
+{text:`<span class="success">✓</span> Workspace created`,delay:300},
+{text:'',delay:200},
+{text:`<span class="muted">[config]</span> Loading ${agent} configuration...`,delay:400},
+...cfg.tools.map((t,i)=>({text:`<span class="muted">[${i+1}/${cfg.tools.length}]</span> Connecting <span class="info">${t}</span>...`,delay:350})),
+{text:`<span class="success">✓</span> All integrations connected`,delay:400},
+{text:'',delay:100},
+{text:`<span class="muted">[train]</span> Calibrating agent for ${company} workflows...`,delay:500},
+{text:'PROGRESS',delay:100},
+{text:`<span class="success">✓</span> Agent trained on ${company} context`,delay:400},
+{text:'',delay:100},
+{text:`<span class="muted">[tasks]</span> Configuring task modules:`,delay:300},
+...cfg.tasks.map(t=>({text:`  <span class="gold">→</span> ${t}`,delay:250})),
+{text:'',delay:100},
+{text:`<span class="muted">[deploy]</span> Running pre-flight checks...`,delay:500},
+{text:`<span class="success">✓</span> Security audit passed`,delay:300},
+{text:`<span class="success">✓</span> Data encryption verified (AES-256)`,delay:250},
+{text:`<span class="success">✓</span> Access permissions scoped`,delay:250},
+{text:'',delay:200},
+{text:`<span class="prompt">$</span> <span class="cmd">afrexai activate --confirm</span>`,delay:500},
+{text:`<span class="success">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>`,delay:300},
+{text:`<span class="success">✓ ${agent} for ${company} is LIVE</span>`,delay:100},
+{text:`<span class="success">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>`,delay:300},
+{text:`<span class="muted">Agent ID: afx-${Math.random().toString(36).slice(2,10)}</span>`,delay:200},
+{text:`<span class="muted">Status: <span class="success">● Active</span> | Uptime: 99.99% SLA</span>`,delay:200},
+];
+
+for(const line of lines){
+await new Promise(r=>setTimeout(r,line.delay||300));
+if(line.text==='PROGRESS'){
+const wrap=document.createElement('div');
+wrap.innerHTML='<div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>';
+termBody.appendChild(wrap);
+await new Promise(r=>setTimeout(r,50));
+document.getElementById('pbar').style.width='100%';
+await new Promise(r=>setTimeout(r,1600));
+continue;
+}
+const div=document.createElement('div');
+div.className='term-line';
+div.innerHTML=line.text;
+termBody.appendChild(div);
+await new Promise(r=>setTimeout(r,30));
+div.classList.add('visible');
+termBody.scrollTop=termBody.scrollHeight;
+}
+
+await new Promise(r=>setTimeout(r,800));
+resultCta.classList.add('active');
+resultCta.scrollIntoView({behavior:'smooth',block:'center'});
+running=false;
+deployBtn.disabled=false;
+});
+</script>
+</body>
+</html>

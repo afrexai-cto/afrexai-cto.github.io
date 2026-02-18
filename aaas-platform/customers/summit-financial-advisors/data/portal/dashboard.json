@@ -1,0 +1,11 @@
+{
+  "customer": "summit-financial-advisors",
+  "company": "Summit Financial Advisors",
+  "tier": "growth",
+  "vertical": "financial-services",
+  "agent_count": 3,
+  "mrr": 4725,
+  "portal_url": "https://portal.afrexai.com/login?token=ee08417ce995e347ec7a9a50fbdbf949e25a54eebcb52b7426f2f32f6dd6a835",
+  "onboarded_at": "2026-02-16T20:48:50Z",
+  "status": "active"
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "test-starter",
+  "company_name": "Test Co",
+  "contact_name": "",
+  "email": "",
+  "tier": "starter",
+  "vertical": "legal",
+  "agents": [
+    {
+      "id": "legal-ea",
+      "name": "Legal Executive Assistant",
+      "template": "legal/legal-ea",
+      "status": "active",
+      "deployed_at": "2026-02-16T18:20:52.792504Z"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "vertical": "saas",
+  "vertical_label": "SaaS",
+  "agents": [
+    {
+      "id": "customer-success",
+      "name": "Customer Success Agent",
+      "description": "Monitors account health scores, usage trends, and proactively flags churn risks",
+      "tier_minimum": "starter"
+    },
+    {
+      "id": "bug-triager",
+      "name": "Bug Triager",
+      "description": "Categorises incoming bug reports, assigns severity, identifies duplicates, and tracks resolution SLAs",
+      "tier_minimum": "growth"
+    },
+    {
+      "id": "onboarding-specialist",
+      "name": "Onboarding Specialist",
+      "description": "Guides new users through setup, tracks activation milestones, and escalates stalled onboardings",
+      "tier_minimum": "growth"
+    }
+  ]
+}

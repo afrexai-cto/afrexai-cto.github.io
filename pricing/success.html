@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">n    <meta property="og:title" content="AfrexAI — AI Agent Workforce">n    <meta property="og:description" content="Deploy AI agents that actually do the work. Not chatbots. Real agents.">n    <meta property="og:type" content="website">n    <meta name="twitter:card" content="summary_large_image">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to AfrexAI!</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid #1a1a1a;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .logo{font-size:1.5rem;font-weight:800;color:#FFD700;letter-spacing:-.02em}
+nav .logo span{color:#fff}
+.content{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem}
+.card{max-width:600px;width:100%;text-align:center;padding:3rem 2.5rem}
+.celebration{font-size:4rem;margin-bottom:1.5rem;animation:bounce 1s ease}
+@keyframes bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-20px)}60%{transform:translateY(-10px)}}
+.card h1{font-size:2.4rem;color:#fff;font-weight:800;margin-bottom:.5rem}
+.card h1 em{font-style:normal;color:#FFD700}
+.card .subtitle{color:#777;font-size:1.05rem;margin-bottom:2.5rem}
+.purchase-summary{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.5rem;margin-bottom:2.5rem;text-align:left}
+.purchase-summary h3{color:#FFD700;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem;font-weight:700}
+.purchase-row{display:flex;justify-content:space-between;padding:.4rem 0;font-size:.9rem}
+.purchase-row .label{color:#777}
+.purchase-row .value{color:#fff;font-weight:600}
+.steps{text-align:left;margin-bottom:2.5rem}
+.steps h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:1rem}
+.step{display:flex;gap:1rem;padding:.8rem 0;border-bottom:1px solid #1a1a1a}
+.step:last-child{border:none}
+.step-icon{font-size:1.3rem;flex-shrink:0;width:32px;text-align:center}
+.step-text{font-size:.9rem}
+.step-text strong{color:#fff;display:block;margin-bottom:.1rem}
+.step-text span{color:#777}
+.cta-btn{display:inline-block;padding:.9rem 2.2rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border-radius:10px;transition:all .3s;margin-bottom:.8rem}
+.cta-btn:hover{opacity:.9;text-decoration:none}
+.help-link{display:block;color:#666;font-size:.85rem}
+footer{border-top:1px solid #1a1a1a;padding:2rem;text-align:center;color:#444;font-size:.8rem}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo" style="text-decoration:none">Afrex<span>AI</span></a>
+</nav>
+<div class="content">
+  <div class="card">
+    <div class="celebration">🎉</div>
+    <h1>Welcome to <em>AfrexAI!</em></h1>
+    <p class="subtitle">Your AI workforce is being deployed right now.</p>
+
+    <div class="purchase-summary" id="purchaseSummary" style="display:none">
+      <h3>Your Order</h3>
+      <div class="purchase-row"><span class="label">Plan</span><span class="value" id="sumTier">—</span></div>
+      <div class="purchase-row"><span class="label">Agents</span><span class="value" id="sumAgents">—</span></div>
+      <div class="purchase-row"><span class="label">Industry</span><span class="value" id="sumVertical">—</span></div>
+      <div class="purchase-row"><span class="label">Billing</span><span class="value" id="sumBilling">—</span></div>
+    </div>
+
+    <div class="steps">
+      <h3>What happens next</h3>
+      <div class="step">
+        <div class="step-icon">⚡</div>
+        <div class="step-text"><strong>Agents deploying now</strong><span>Your AI agents are being configured and deployed. This usually takes less than 5 minutes.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-icon">📧</div>
+        <div class="step-text"><strong>Welcome email incoming</strong><span>Check your inbox for login credentials and your onboarding guide.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-icon">📊</div>
+        <div class="step-text"><strong>Dashboard access within 1 hour</strong><span>Your real-time dashboard will be ready with agent status and performance metrics.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-icon">📞</div>
+        <div class="step-text"><strong>Onboarding call scheduled</strong><span>We'll reach out to schedule a call to map your workflows and customize your agents.</span></div>
+      </div>
+    </div>
+
+    <a href="/" class="cta-btn">Go to Homepage →</a>
+    <a href="mailto:hello@afrexai.com" class="help-link">Questions? hello@afrexai.com</a>
+  </div>
+</div>
+<footer>© 2025 AfrexAI. Your AI Workforce, Managed.</footer>
+
+<script>
+// Parse session params from URL if available
+const params = new URLSearchParams(window.location.search);
+const tier = params.get('tier');
+const agents = params.get('agents');
+const vertical = params.get('vertical');
+const billing = params.get('billing');
+if (tier) {
+  document.getElementById('purchaseSummary').style.display = '';
+  document.getElementById('sumTier').textContent = tier.charAt(0).toUpperCase() + tier.slice(1);
+  document.getElementById('sumAgents').textContent = agents || '—';
+  document.getElementById('sumVertical').textContent = vertical ? vertical.charAt(0).toUpperCase() + vertical.slice(1) : '—';
+  document.getElementById('sumBilling').textContent = billing ? billing.charAt(0).toUpperCase() + billing.slice(1) : '—';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="gold-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="accent-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#FFD700;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="0" y2="630" stroke="#FFD700" stroke-width="1" repeat="40"/>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFD700" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Corner glow -->
+  <circle cx="200" cy="315" r="400" fill="url(#gold-glow)"/>
+  
+  <!-- Gold accent bar top -->
+  <rect x="0" y="0" width="1200" height="4" fill="#FFD700"/>
+  
+  <!-- Gold accent bar bottom -->
+  <rect x="0" y="626" width="1200" height="4" fill="#FFD700"/>
+  
+  <!-- Decorative dots -->
+  <g opacity="0.2">
+    <circle cx="950" cy="150" r="3" fill="#FFD700"/>
+    <circle cx="980" cy="150" r="3" fill="#FFD700"/>
+    <circle cx="1010" cy="150" r="3" fill="#FFD700"/>
+    <circle cx="950" cy="180" r="3" fill="#FFD700"/>
+    <circle cx="980" cy="180" r="3" fill="#FFD700"/>
+    <circle cx="1010" cy="180" r="3" fill="#FFD700"/>
+    <circle cx="950" cy="210" r="3" fill="#FFD700"/>
+    <circle cx="980" cy="210" r="3" fill="#FFD700"/>
+    <circle cx="1010" cy="210" r="3" fill="#FFD700"/>
+  </g>
+  
+  <!-- Logo text -->
+  <text x="100" y="280" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="96" font-weight="800" fill="#FFFFFF" letter-spacing="-2">
+    Afrex<tspan fill="#FFD700">AI</tspan>
+  </text>
+  
+  <!-- Accent line -->
+  <rect x="100" y="305" width="200" height="3" fill="#FFD700" rx="1.5"/>
+  
+  <!-- Tagline -->
+  <text x="100" y="370" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="36" font-weight="400" fill="#cccccc" letter-spacing="0.5">
+    AI Agent Workforce for Your Business
+  </text>
+  
+  <!-- Subtext -->
+  <text x="100" y="420" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="300" fill="#888888">
+    Not chatbots. Real agents that do the work.
+  </text>
+  
+  <!-- URL -->
+  <text x="100" y="560" font-family="monospace, 'Courier New'" font-size="18" fill="#666666" letter-spacing="2">
+    afrexai.com
+  </text>
+  
+  <!-- Decorative circuit lines -->
+  <g stroke="#FFD700" stroke-width="1" opacity="0.1" fill="none">
+    <path d="M 800 400 L 900 400 L 900 350 L 1000 350"/>
+    <path d="M 800 450 L 950 450 L 950 500 L 1050 500"/>
+    <path d="M 850 350 L 850 300 L 1000 300"/>
+    <circle cx="1000" cy="350" r="4"/>
+    <circle cx="1050" cy="500" r="4"/>
+    <circle cx="1000" cy="300" r="4"/>
+  </g>
+</svg>

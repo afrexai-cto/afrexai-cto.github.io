@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Security</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+header{padding:24px 0;border-bottom:1px solid #1a1a1a}
+header .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.5rem;font-weight:700;color:#FFD700}
+nav a{margin-left:28px;color:#999;font-size:.9rem}nav a:hover{color:#FFD700}
+.hero{padding:80px 0 60px;text-align:center}
+.hero h1{font-size:2.6rem;font-weight:800;color:#fff;margin-bottom:16px}
+.hero h1 span{color:#FFD700}
+.hero p{color:#999;font-size:1.1rem;max-width:600px;margin:0 auto}
+section{padding:60px 0}
+h2{font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:24px}
+.card{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:36px;margin-bottom:28px}
+.card h3{color:#FFD700;font-size:1.1rem;margin-bottom:10px}
+.card p,.card li{color:#bbb;font-size:.95rem}
+.card ul{list-style:none;padding:0;margin-top:12px}
+.card li{padding:6px 0;padding-left:20px;position:relative}
+.card li::before{content:"→";position:absolute;left:0;color:#FFD700}
+.principle{display:grid;grid-template-columns:60px 1fr;gap:20px;align-items:start;margin-bottom:32px}
+.principle .num{font-size:2rem;font-weight:800;color:#FFD70025;text-align:center;padding-top:4px}
+.principle h3{color:#fff;margin-bottom:6px}
+.principle p{color:#999;font-size:.95rem}
+.badge{display:inline-block;background:#1a1a1a;border:1px solid #333;padding:8px 16px;border-radius:6px;font-size:.85rem;color:#ccc;margin:4px}
+.cta{text-align:center;padding:80px 0}
+.cta h2{margin-bottom:12px}
+.cta p{color:#999;margin-bottom:32px}
+.btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:14px 36px;border-radius:6px;font-weight:700;font-size:1rem}.btn:hover{opacity:.85;text-decoration:none}
+footer{border-top:1px solid #1a1a1a;padding:32px 0;text-align:center;color:#555;font-size:.85rem}
+</style>
+    <meta property="og:title" content="AfrexAI — Security">
+    <meta property="og:description" content="AfrexAI — Security - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/managed-agents/security.html">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI — Security">
+    <meta name="twitter:description" content="AfrexAI — Security - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+
+<header>
+<div class="container">
+<a href="index.html" class="logo">AfrexAI</a>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#agents">Agents</a>
+<a href="security.html" style="color:#FFD700">Security</a>
+<a href="onboarding-guide.html">Onboarding</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<h1>Your Data <span>Never Leaves</span> Your Infrastructure</h1>
+<p>We manage AI agents. You own the environment they run in. That separation is by design — and it's non-negotiable.</p>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2>Core Principles</h2>
+<div class="principle"><div class="num">01</div><div><h3>Your infrastructure, your control</h3><p>Every agent runs inside your cloud accounts or on-premises servers. We deploy to your environment — we never ask you to send data to ours.</p></div></div>
+<div class="principle"><div class="num">02</div><div><h3>Zero data exfiltration</h3><p>Agent processing happens locally. Inputs, outputs, logs, and intermediate states all remain within your network boundary.</p></div></div>
+<div class="principle"><div class="num">03</div><div><h3>Scoped, auditable access</h3><p>Our management access is limited to agent configuration and performance monitoring. Every action is logged. Access can be revoked at any time.</p></div></div>
+<div class="principle"><div class="num">04</div><div><h3>You can verify everything</h3><p>We provide full deployment manifests, network diagrams, and access logs. If you want to audit us, we'll hand you the keys.</p></div></div>
+</div>
+</section>
+
+<section style="background:#080808">
+<div class="container">
+<h2>Data Isolation</h2>
+<div class="card">
+<h3>Network-Level Separation</h3>
+<p>Agents operate within your VPC or private network. No inbound or outbound connections to AfrexAI infrastructure are required for agent operation.</p>
+<ul>
+<li>Agents deployed inside your VPC / private subnets</li>
+<li>No data transmitted to AfrexAI servers</li>
+<li>Management channel uses encrypted, authenticated tunnel with your approval</li>
+<li>All agent-to-agent communication stays within your network</li>
+</ul>
+</div>
+<div class="card">
+<h3>Tenant Isolation</h3>
+<p>Each customer deployment is completely independent. There is no shared infrastructure, no shared databases, and no cross-tenant access of any kind.</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2>Encryption</h2>
+<div class="card">
+<h3>Data at Rest</h3>
+<p>All agent data — configuration, logs, cached outputs — is encrypted using your cloud provider's native encryption (AWS KMS, Azure Key Vault, GCP KMS) or your own key management system.</p>
+</div>
+<div class="card">
+<h3>Data in Transit</h3>
+<p>All communication between agents and integrated systems uses TLS 1.3. The management tunnel between your environment and our monitoring dashboard uses mutual TLS with certificate pinning.</p>
+</div>
+<div class="card">
+<h3>Key Management</h3>
+<p>You control all encryption keys. We never have access to your master keys. Agent credentials are stored in your secrets manager — not ours.</p>
+</div>
+</div>
+</section>
+
+<section style="background:#080808">
+<div class="container">
+<h2>Access Controls</h2>
+<div class="card">
+<h3>Least-Privilege Access</h3>
+<p>Our management access follows the principle of least privilege. We can update agent configurations and view performance metrics — nothing more.</p>
+<ul>
+<li>Role-based access with time-bound sessions</li>
+<li>No access to your business data, databases, or file systems</li>
+<li>All access logged with immutable audit trail</li>
+<li>Break-glass procedures require dual approval</li>
+<li>Access revocable by you at any time — instantly</li>
+</ul>
+</div>
+<div class="card">
+<h3>Authentication</h3>
+<p>Management access requires SSO integration with your identity provider, multi-factor authentication, and IP allowlisting. We work within your existing IAM policies.</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2>Compliance</h2>
+<div class="card">
+<h3>SOC 2 Type II — In Progress</h3>
+<p>We are actively pursuing SOC 2 Type II certification. Our target completion date is Q3 2026. In the meantime, we provide detailed security questionnaire responses and are happy to work with your security team directly.</p>
+</div>
+<div class="card">
+<h3>Frameworks We Support</h3>
+<p>Our deployment practices are designed to be compatible with your existing compliance requirements:</p>
+<div style="margin-top:16px">
+<span class="badge">GDPR</span>
+<span class="badge">HIPAA</span>
+<span class="badge">SOX</span>
+<span class="badge">ISO 27001</span>
+<span class="badge">PCI DSS</span>
+<span class="badge">CCPA</span>
+<span class="badge">FCA</span>
+<span class="badge">NIST CSF</span>
+</div>
+</div>
+<div class="card">
+<h3>Data Processing Agreements</h3>
+<p>We sign DPAs that reflect the reality of our architecture: we manage agents, we don't process your data. Our legal framework is built around this distinction.</p>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="container">
+<h2>Questions about security?</h2>
+<p>We're happy to walk through our architecture with your security and compliance teams.</p>
+<a href="https://calendly.com/afrexai/ai-workforce-audit" class="btn">Book a Security Review</a>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>&copy; 2026 AfrexAI. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>

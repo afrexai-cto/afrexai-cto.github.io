@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Real Estate ROI Calculator</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:960px;margin:0 auto;padding:24px 16px}
+h1{color:#FFD700;font-size:clamp(1.6rem,4vw,2.4rem);text-align:center;margin-bottom:8px}
+.subtitle{text-align:center;color:#999;margin-bottom:40px;font-size:0.95rem}
+.gold{color:#FFD700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.card{background:#141414;border:1px solid #222;border-radius:12px;padding:24px}
+.card h2{color:#FFD700;font-size:1.1rem;margin-bottom:20px;border-bottom:1px solid #222;padding-bottom:10px}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:0.85rem;color:#aaa;margin-bottom:6px}
+.field .val{font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:4px}
+input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:#333;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#FFD700;cursor:pointer}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#FFD700;cursor:pointer;border:none}
+.results{margin-top:40px}
+.results .card{border-color:#FFD700;border-width:1px}
+.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1a1a1a}
+.row:last-child{border:none}
+.row .label{color:#aaa;font-size:0.9rem}
+.row .value{font-weight:700;font-size:1rem}
+.row .value.up{color:#4ade80}
+.row .value.gold{color:#FFD700}
+.highlight{background:#1a1700;border:1px solid #FFD700;border-radius:12px;padding:24px;text-align:center;margin-top:32px}
+.highlight .big{font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#FFD700}
+.highlight .sub{color:#aaa;margin-top:4px;font-size:0.9rem}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+@media(max-width:700px){.comparison{grid-template-columns:1fr}}
+.comp-card{border-radius:12px;padding:24px;text-align:center}
+.comp-before{background:#1a0a0a;border:1px solid #6b2121}
+.comp-after{background:#0a1a0a;border:1px solid #216b21}
+.comp-card .comp-label{font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:8px}
+.comp-card .comp-val{font-size:clamp(1.4rem,3vw,2rem);font-weight:800}
+.comp-before .comp-val{color:#f87171}
+.comp-after .comp-val{color:#4ade80}
+footer{text-align:center;color:#444;font-size:0.75rem;margin-top:48px;padding-bottom:24px}
+</style>
+    <meta property="og:title" content="AfrexAI — Real Estate ROI Calculator">
+    <meta property="og:description" content="AfrexAI — Real Estate ROI Calculator - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/real-estate-engine/roi-calculator.html">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI — Real Estate ROI Calculator">
+    <meta name="twitter:description" content="AfrexAI — Real Estate ROI Calculator - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+<div class="container">
+<h1>⚡ AfrexAI ROI Calculator</h1>
+<p class="subtitle">See what AI-powered lead conversion means for your brokerage's bottom line.</p>
+
+<div class="grid">
+<div class="card">
+<h2>Your Brokerage</h2>
+<div class="field">
+<label>Number of Agents</label>
+<div class="val" id="v_agents">10</div>
+<input type="range" min="1" max="200" value="10" id="agents" oninput="calc()">
+</div>
+<div class="field">
+<label>Avg Commission per Deal</label>
+<div class="val" id="v_commission">$8,500</div>
+<input type="range" min="2000" max="25000" step="500" value="8500" id="commission" oninput="calc()">
+</div>
+<div class="field">
+<label>Avg Deals per Agent / Month</label>
+<div class="val" id="v_deals">1.5</div>
+<input type="range" min="0.5" max="5" step="0.1" value="1.5" id="deals" oninput="calc()">
+</div>
+</div>
+<div class="card">
+<h2>Lead Performance</h2>
+<div class="field">
+<label>Monthly Lead Volume</label>
+<div class="val" id="v_leads">200</div>
+<input type="range" min="50" max="2000" step="10" value="200" id="leads" oninput="calc()">
+</div>
+<div class="field">
+<label>Current Conversion Rate</label>
+<div class="val" id="v_conv">2.5%</div>
+<input type="range" min="1" max="8" step="0.1" value="2.5" id="conv" oninput="calc()">
+</div>
+<div class="field">
+<label>AI-Improved Conversion Rate</label>
+<div class="val" id="v_aiconv">4.5%</div>
+<input type="range" min="2" max="12" step="0.1" value="4.5" id="aiconv" oninput="calc()">
+</div>
+<div class="field">
+<label>AfrexAI Revenue Share %</label>
+<div class="val" id="v_share">17.5%</div>
+<input type="range" min="15" max="20" step="0.5" value="17.5" id="share" oninput="calc()">
+</div>
+</div>
+</div>
+
+<div class="comparison">
+<div class="comp-card comp-before">
+<div class="comp-label">Current Monthly Revenue</div>
+<div class="comp-val" id="r_current">—</div>
+</div>
+<div class="comp-card comp-after">
+<div class="comp-label">Projected with AI</div>
+<div class="comp-val" id="r_projected">—</div>
+</div>
+</div>
+
+<div class="results">
+<div class="card">
+<h2>Financial Breakdown</h2>
+<div class="row"><span class="label">Monthly Incremental Uplift</span><span class="value up" id="r_uplift">—</span></div>
+<div class="row"><span class="label">Annual Incremental Uplift</span><span class="value up" id="r_annual">—</span></div>
+<div class="row"><span class="label">AfrexAI Revenue Share (monthly)</span><span class="value gold" id="r_share">—</span></div>
+<div class="row"><span class="label">Net Monthly Gain for Brokerage</span><span class="value up" id="r_net">—</span></div>
+<div class="row"><span class="label">Net Annual Gain for Brokerage</span><span class="value up" id="r_netannual">—</span></div>
+</div>
+</div>
+
+<div class="highlight">
+<div class="big" id="r_roi">—</div>
+<div class="sub">Return on Investment — you only pay from the <em>new</em> revenue we generate</div>
+</div>
+
+<footer>© 2026 AfrexAI Inc. — This calculator provides estimates for illustration purposes.</footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+function calc(){
+  const agents=+$('agents').value;
+  const commission=+$('commission').value;
+  const deals=+$('deals').value;
+  const leads=+$('leads').value;
+  const conv=+$('conv').value;
+  const aiconv=+$('aiconv').value;
+  const share=+$('share').value;
+
+  $('v_agents').textContent=agents;
+  $('v_commission').textContent=money(commission);
+  $('v_deals').textContent=deals.toFixed(1);
+  $('v_leads').textContent=leads;
+  $('v_conv').textContent=conv.toFixed(1)+'%';
+  $('v_aiconv').textContent=aiconv.toFixed(1)+'%';
+  $('v_share').textContent=share.toFixed(1)+'%';
+
+  const currentDeals=leads*(conv/100);
+  const aiDeals=leads*(aiconv/100);
+  const currentRev=currentDeals*commission;
+  const projectedRev=aiDeals*commission;
+  const uplift=projectedRev-currentRev;
+  const annualUplift=uplift*12;
+  const revShare=uplift*(share/100);
+  const netGain=uplift-revShare;
+
+  $('r_current').textContent=money(currentRev);
+  $('r_projected').textContent=money(projectedRev);
+  $('r_uplift').textContent='+'+money(uplift);
+  $('r_annual').textContent='+'+money(annualUplift);
+  $('r_share').textContent=money(revShare);
+  $('r_net').textContent='+'+money(netGain);
+  $('r_netannual').textContent='+'+money(netGain*12);
+
+  const roi=revShare>0?((netGain/revShare)*100).toFixed(0):'∞';
+  $('r_roi').textContent=roi+'% ROI';
+}
+calc();
+</script>
+</body>
+</html>

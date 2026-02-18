@@ -1,0 +1,24 @@
+{
+  "vertical": "legal",
+  "vertical_label": "Legal Services",
+  "agents": [
+    {
+      "id": "legal-ea",
+      "name": "Legal Executive Assistant",
+      "description": "Manages calendars, deadlines, court filings, and daily administrative workflow for attorneys",
+      "tier_minimum": "starter"
+    },
+    {
+      "id": "document-analyst",
+      "name": "Document Analyst",
+      "description": "Reviews, summarises, and flags issues in contracts, briefs, and legal documents",
+      "tier_minimum": "growth"
+    },
+    {
+      "id": "client-followup",
+      "name": "Client Follow-up Coordinator",
+      "description": "Tracks client communications, sends follow-ups, and ensures nothing falls through the cracks",
+      "tier_minimum": "growth"
+    }
+  ]
+}

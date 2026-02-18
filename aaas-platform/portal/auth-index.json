@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "pacific-legal-group",
+    "email": "info@pacificlegal.com",
+    "token": "a02129b86c411ded5d1494ffd8740d753fba2b3ee5b0b6e0294e8001e44c82ee",
+    "portal_url": "https://portal.afrexai.com/login?token=a02129b86c411ded5d1494ffd8740d753fba2b3ee5b0b6e0294e8001e44c82ee",
+    "created": "2026-02-16T20:38:39Z"
+  },
+  {
+    "slug": "summit-financial-advisors",
+    "email": "cfo@summitfa.com",
+    "token": "ee08417ce995e347ec7a9a50fbdbf949e25a54eebcb52b7426f2f32f6dd6a835",
+    "portal_url": "https://portal.afrexai.com/login?token=ee08417ce995e347ec7a9a50fbdbf949e25a54eebcb52b7426f2f32f6dd6a835",
+    "created": "2026-02-16T20:48:50Z"
+  }
+]

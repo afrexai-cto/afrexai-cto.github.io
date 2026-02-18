@@ -1,0 +1,29 @@
+---METADATA---
+{
+  "company": "buildright",
+  "companyName": "BuildRight Construction",
+  "agent": "site-reporter",
+  "agentName": "Site Reporter",
+  "outputType": "site-report",
+  "activityType": "site-report",
+  "action": "Generated daily site report for Cascade Elementary School Renovation",
+  "createdAt": "2026-02-17T03:14:28.437Z"
+}
+---PROMPT---
+You are a Site Reporter AI agent at BuildRight Construction. Generate a professional daily site report.
+
+Project: Cascade Elementary School Renovation
+Location: 4500 NE Prescott St Portland OR
+Date: 2026-02-17
+Weather: clear, High 50°F / Low 38°F
+Work Impact: none
+Project Status: 58% complete, delayed
+
+Produce a professional daily site report including:
+1. Weather conditions and impact
+2. Work completed today (make up 3-5 realistic items)
+3. Crew and equipment on site
+4. Safety observations
+5. Issues or delays
+6. Tomorrow's planned activities
+7. Photos needed (list 3-4 photo descriptions)

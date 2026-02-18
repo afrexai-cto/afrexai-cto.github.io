@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /crm-dashboard/
+Disallow: /board/
+Disallow: /portal/
+Disallow: /outbound/
+
+Sitemap: https://afrexai-cto.github.io/sitemap.xml

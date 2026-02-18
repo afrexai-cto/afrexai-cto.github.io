@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Customer Portal</title>
+<meta property="og:title" content="AfrexAI — Customer Portal">
+<meta property="og:description" content="AI-powered workforce solutions. Monitor your agents, billing, and health in real-time.">
+<meta property="og:url" content="https://afrexai-cto.github.io/portal/">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#111;--surface2:#1a1a1a;--surface3:#222;--gold:#FFD700;--gold-dim:#b89b00;--text:#e8e8e8;--text-dim:#888;--text-muted:#555;--green:#00e676;--red:#ff5252;--orange:#ffab40;--blue:#448aff;--radius:12px;--sidebar-w:240px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+
+/* ── Login ── */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#1a1400 0%,var(--bg) 70%)}
+.login-box{background:var(--surface);border:1px solid #333;border-radius:var(--radius);padding:48px 40px;width:100%;max-width:400px;text-align:center}
+.login-box .logo{font-size:28px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:1px}
+.login-box .subtitle{color:var(--text-dim);font-size:13px;margin-bottom:32px}
+.login-box input{width:100%;padding:14px 16px;border:1px solid #333;border-radius:8px;background:var(--surface2);color:var(--text);font-size:15px;outline:none;transition:border .2s}
+.login-box input:focus{border-color:var(--gold)}
+.login-box button{width:100%;padding:14px;border:none;border-radius:8px;background:var(--gold);color:#000;font-size:15px;font-weight:600;cursor:pointer;margin-top:16px;transition:background .2s}
+.login-box button:hover{background:#e6c200}
+.login-box button:active{transform:scale(.98)}
+#login-error{color:var(--red);font-size:13px;margin-top:12px;display:none}
+.login-footer{margin-top:24px;font-size:12px;color:var(--text-muted)}
+
+/* ── App Shell ── */
+#app{display:none;min-height:100vh}
+#app.visible{display:flex}
+
+/* ── Sidebar ── */
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--surface3);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:20;transition:transform .3s}
+.sidebar-brand{padding:24px 20px 20px;border-bottom:1px solid var(--surface3)}
+.sidebar-brand .logo{font-size:22px;font-weight:700;color:var(--gold);letter-spacing:1px}
+.sidebar-brand .company{font-size:12px;color:var(--text-dim);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar-nav{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px}
+.nav-link{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:8px;font-size:14px;color:var(--text-dim);cursor:pointer;transition:all .15s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+.nav-link:hover{background:var(--surface2);color:var(--text)}
+.nav-link.active{background:var(--surface2);color:var(--gold);font-weight:600}
+.nav-link .nav-icon{font-size:18px;width:24px;text-align:center;flex-shrink:0}
+.sidebar-footer{padding:16px 12px;border-top:1px solid var(--surface3)}
+.sidebar-footer .nav-link{color:var(--text-muted)}
+.sidebar-footer .nav-link:hover{color:var(--red)}
+
+/* ── Main Content ── */
+.main{margin-left:var(--sidebar-w);flex:1;min-height:100vh}
+.page-header{padding:24px 32px 0;display:flex;align-items:center;justify-content:space-between}
+.page-header h1{font-size:24px;font-weight:700}
+.page-header .refresh-note{font-size:12px;color:var(--text-muted)}
+.container{max-width:1100px;padding:24px 32px 60px}
+
+/* ── Shared ── */
+.section{margin-bottom:32px}
+.section-title{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:14px;font-weight:600}
+.card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:24px;transition:border .2s}
+.card:hover{border-color:#333}
+
+/* ── Metrics ── */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.metric-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--radius);padding:20px;text-align:center}
+.metric-card .value{font-size:28px;font-weight:700;color:var(--gold);line-height:1}
+.metric-card .label{font-size:11px;color:var(--text-dim);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+
+/* ── Status Badges ── */
+.badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;display:inline-block}
+.badge-active{background:#00e67618;color:var(--green);border:1px solid #00e67633}
+.badge-paused{background:#ffab4018;color:var(--orange);border:1px solid #ffab4033}
+.badge-error{background:#ff525218;color:var(--red);border:1px solid #ff525233}
+.badge-healthy{background:#00e67618;color:var(--green);border:1px solid #00e67633}
+.badge-compliant{background:#00e67618;color:var(--green);border:1px solid #00e67633}
+.badge-warning{background:#ffab4018;color:var(--orange);border:1px solid #ffab4033}
+.badge-breach{background:#ff525218;color:var(--red);border:1px solid #ff525233}
+
+/* ── Agent Cards ── */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.agent-card{display:flex;gap:14px;align-items:flex-start}
+.agent-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:var(--surface2)}
+.agent-info{flex:1;min-width:0}
+.agent-name{font-weight:600;font-size:15px}
+.agent-role{font-size:12px;color:var(--text-dim);margin-top:1px}
+.agent-meta{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
+.agent-meta span{font-size:12px;color:var(--text-dim)}
+.agent-meta strong{color:var(--text)}
+
+/* ── Activity Feed ── */
+.feed-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--surface2);align-items:flex-start}
+.feed-item:last-child{border-bottom:none}
+.feed-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0}
+.feed-text{font-size:14px;line-height:1.5}
+.feed-time{font-size:12px;color:var(--text-dim);margin-top:2px}
+
+/* ── ROI Box ── */
+.roi-box{background:linear-gradient(135deg,#1a1400,var(--surface));border:1px solid #333;border-radius:var(--radius);padding:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.roi-value{font-size:42px;font-weight:700;color:var(--gold);line-height:1}
+.roi-label{font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.roi-sub{font-size:14px;color:var(--text-dim);margin-top:4px}
+.roi-breakdown{display:flex;flex-direction:column;gap:6px}
+.roi-line{font-size:13px;color:var(--text-dim)}
+.roi-line strong{color:var(--text)}
+
+/* ── Billing ── */
+.billing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.billing-card h3{font-size:15px;font-weight:600;margin-bottom:12px}
+.plan-name{font-size:22px;font-weight:700;color:var(--gold)}
+.plan-price{font-size:14px;color:var(--text-dim);margin-top:4px}
+.billing-list{list-style:none;margin-top:12px}
+.billing-list li{font-size:13px;color:var(--text-dim);padding:7px 0;border-bottom:1px solid var(--surface2);display:flex;justify-content:space-between}
+.billing-list li:last-child{border-bottom:none}
+.billing-list li span:last-child{color:var(--text);font-weight:500}
+.invoice-table{width:100%;border-collapse:collapse;font-size:13px}
+.invoice-table th{text-align:left;padding:10px 12px;border-bottom:1px solid var(--surface3);color:var(--text-dim);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.invoice-table td{padding:10px 12px;border-bottom:1px solid var(--surface2)}
+.invoice-status-paid{color:var(--green)}
+.invoice-status-pending{color:var(--orange)}
+
+/* ── Health ── */
+.health-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.health-stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--surface2);font-size:13px}
+.health-stat:last-child{border-bottom:none}
+.health-stat .hl{color:var(--text-dim)}
+.health-stat .hv{font-weight:600}
+.uptime-bar{display:flex;gap:2px;margin-top:12px;height:20px;border-radius:4px;overflow:hidden}
+.uptime-day{flex:1;border-radius:2px;position:relative;cursor:default}
+.uptime-day[title]:hover{opacity:.8}
+.sla-banner{display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:var(--radius);margin-bottom:14px}
+.sla-banner.compliant{background:#00e67610;border:1px solid #00e67633}
+.sla-banner.breach{background:#ff525210;border:1px solid #ff525233}
+.sla-banner .sla-icon{font-size:20px}
+.sla-banner .sla-text{font-size:14px}
+.sla-banner .sla-pct{font-weight:700;color:var(--gold);margin-left:auto;font-size:18px}
+
+/* ── Settings ── */
+.settings-section{margin-bottom:24px}
+.settings-section h3{font-size:15px;font-weight:600;margin-bottom:12px}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--surface2);font-size:14px}
+.info-row:last-child{border-bottom:none}
+.info-row .il{color:var(--text-dim)}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--surface2)}
+.toggle-row:last-child{border-bottom:none}
+.toggle-row .tl{font-size:14px}
+.toggle-row .td{font-size:12px;color:var(--text-dim)}
+.toggle{width:42px;height:24px;border-radius:12px;background:#333;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.toggle.on{background:var(--gold)}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s}
+.toggle.on::after{transform:translateX(18px)}
+
+/* ── Support CTA ── */
+.support-box{text-align:center;padding:32px}
+.support-box h3{font-size:18px;margin-bottom:8px}
+.support-box p{color:var(--text-dim);font-size:14px;margin-bottom:20px;max-width:500px;margin-inline:auto}
+.cta-btn{display:inline-block;padding:14px 32px;background:var(--gold);color:#000;font-weight:600;border-radius:8px;font-size:15px;transition:background .2s;border:none;cursor:pointer}
+.cta-btn:hover{background:#e6c200;text-decoration:none}
+
+/* ── Page Transitions ── */
+.page{opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s}
+.page.active{opacity:1;transform:translateY(0)}
+
+/* ── Loading ── */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--surface3);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-screen{display:flex;align-items:center;justify-content:center;min-height:60vh;flex-direction:column;gap:16px;color:var(--text-dim);font-size:14px}
+
+/* ── Mobile ── */
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);position:fixed}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .mobile-header{display:flex!important}
+  .container{padding:16px 14px 100px}
+  .page-header{padding:16px 14px 0}
+  .page-header h1{font-size:20px}
+  .metric-card .value{font-size:22px}
+  .roi-value{font-size:32px}
+  .agents-grid,.health-grid{grid-template-columns:1fr}
+  .bottom-nav{display:flex!important}
+}
+@media(min-width:769px){
+  .mobile-header{display:none!important}
+  .bottom-nav{display:none!important}
+  .mobile-overlay{display:none!important}
+}
+
+/* ── Mobile Header ── */
+.mobile-header{display:none;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--surface3);position:sticky;top:0;z-index:15}
+.mobile-header .logo{font-size:18px;font-weight:700;color:var(--gold)}
+.hamburger{background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:4px 8px}
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:19}
+.mobile-overlay.visible{display:block}
+
+/* ── Bottom Nav ── */
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--surface3);z-index:15;justify-content:space-around;padding:8px 0 max(8px,env(safe-area-inset-bottom))}
+.bottom-nav button{background:none;border:none;color:var(--text-dim);font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:4px 8px;font-family:inherit}
+.bottom-nav button .bnav-icon{font-size:20px}
+.bottom-nav button.active{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- ═══════ Login Screen ═══════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="logo">AfrexAI</div>
+    <div class="subtitle">Customer Portal</div>
+    <input type="password" id="token-input" placeholder="Enter access token" autofocus>
+    <button id="login-btn">Access Dashboard</button>
+    <div id="login-error">Invalid access token. Please check and try again.</div>
+    <div class="login-footer">Secure client portal · AfrexAI &copy; 2026</div>
+  </div>
+</div>
+
+<!-- ═══════ App Shell ═══════ -->
+<div id="app">
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <span class="logo">AfrexAI</span>
+    <button class="hamburger" id="menu-toggle">☰</button>
+  </div>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">AfrexAI</div>
+      <div class="company" id="sidebar-company">—</div>
+    </div>
+    <div class="sidebar-nav">
+      <button class="nav-link active" data-page="dashboard"><span class="nav-icon">📊</span>Dashboard</button>
+      <button class="nav-link" data-page="billing"><span class="nav-icon">💳</span>Billing</button>
+      <button class="nav-link" data-page="health"><span class="nav-icon">🩺</span>Health</button>
+      <button class="nav-link" data-page="settings"><span class="nav-icon">⚙️</span>Settings</button>
+    </div>
+    <div class="sidebar-footer">
+      <button class="nav-link" id="logout-btn"><span class="nav-icon">🚪</span>Sign Out</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Loading -->
+    <div id="page-loading" class="loading-screen"><div class="spinner"></div>Loading portal data…</div>
+
+    <!-- ═══ Dashboard Page ═══ -->
+    <div id="page-dashboard" class="page" style="display:none">
+      <div class="page-header">
+        <h1>Dashboard</h1>
+        <span class="refresh-note" id="refresh-note"></span>
+      </div>
+      <div class="container">
+        <div class="section">
+          <div class="section-title" id="period-label">Performance</div>
+          <div class="metrics" id="dash-metrics"></div>
+        </div>
+        <div class="section">
+          <div class="section-title">Agent Fleet</div>
+          <div class="agents-grid" id="dash-agents"></div>
+        </div>
+        <div class="section">
+          <div class="section-title">ROI This Month</div>
+          <div id="dash-roi"></div>
+        </div>
+        <div class="section">
+          <div class="section-title">Activity Feed</div>
+          <div class="card" id="dash-activity" style="padding:8px 20px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Billing Page ═══ -->
+    <div id="page-billing" class="page" style="display:none">
+      <div class="page-header"><h1>Billing</h1></div>
+      <div class="container">
+        <div class="section">
+          <div class="section-title">Plan &amp; Usage</div>
+          <div class="billing-grid" id="billing-grid"></div>
+        </div>
+        <div class="section">
+          <div class="section-title">Invoice History</div>
+          <div class="card" id="billing-invoices" style="padding:0;overflow-x:auto"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Health Page ═══ -->
+    <div id="page-health" class="page" style="display:none">
+      <div class="page-header"><h1>Health &amp; Uptime</h1></div>
+      <div class="container">
+        <div id="health-sla"></div>
+        <div class="section">
+          <div class="section-title">Per-Agent Health</div>
+          <div class="health-grid" id="health-agents"></div>
+        </div>
+        <div class="section">
+          <div class="section-title">Incident Log</div>
+          <div class="card" id="health-incidents"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Settings Page ═══ -->
+    <div id="page-settings" class="page" style="display:none">
+      <div class="page-header"><h1>Settings</h1></div>
+      <div class="container">
+        <div class="settings-section card" id="settings-info"></div>
+        <div class="settings-section card" id="settings-notifs">
+          <h3>Notification Preferences</h3>
+          <div class="toggle-row"><div><div class="tl">Email alerts on agent errors</div><div class="td">Get notified immediately when an agent encounters an issue</div></div><div class="toggle on" data-pref="error-alerts"></div></div>
+          <div class="toggle-row"><div><div class="tl">Weekly summary digest</div><div class="td">Receive a weekly performance summary every Monday</div></div><div class="toggle on" data-pref="weekly-digest"></div></div>
+          <div class="toggle-row"><div><div class="tl">Invoice notifications</div><div class="td">Get notified when a new invoice is generated</div></div><div class="toggle" data-pref="invoice-notifs"></div></div>
+        </div>
+        <div class="settings-section card support-box">
+          <h3>Need help with your agents?</h3>
+          <p>Your dedicated AfrexAI team is available for strategy calls, agent tuning, and onboarding new workflows.</p>
+          <a href="https://calendly.com/afrexai" target="_blank" class="cta-btn">Book a Call →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Nav (mobile) -->
+  <div class="bottom-nav">
+    <button data-page="dashboard" class="active"><span class="bnav-icon">📊</span>Dashboard</button>
+    <button data-page="billing"><span class="bnav-icon">💳</span>Billing</button>
+    <button data-page="health"><span class="bnav-icon">🩺</span>Health</button>
+    <button data-page="settings"><span class="bnav-icon">⚙️</span>Settings</button>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   AfrexAI Customer Portal — SPA
+   ═══════════════════════════════════════════ */
+
+const BASE = (location.pathname.endsWith('/') ? location.pathname : location.pathname + '/').replace(/index\.html\/$/, '');
+const DATA_BASE = BASE + 'data/';
+
+let customerSlug = null;
+let dashData = null;
+let healthData = null;
+
+// ── Utilities ──
+async function sha256(msg) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function fmt$(n) {
+  return '$' + Number(n).toLocaleString('en-US');
+}
+
+function fmtNum(n) {
+  return Number(n).toLocaleString('en-US');
+}
+
+function timeAgo(iso) {
+  const diff = Date.now() - new Date(iso).getTime();
+  const m = Math.floor(diff / 60000);
+  if (m < 1) return 'Just now';
+  if (m < 60) return m + 'm ago';
+  const h = Math.floor(m / 60);
+  if (h < 24) return h + 'h ago';
+  const d = Math.floor(h / 24);
+  return d + 'd ago';
+}
+
+function tierLabel(t) {
+  return t ? t.charAt(0).toUpperCase() + t.slice(1) : '—';
+}
+
+function statusBadge(s) {
+  const cls = s === 'active' ? 'badge-active' : s === 'paused' ? 'badge-paused' : 'badge-error';
+  return `<span class="badge ${cls}">${s}</span>`;
+}
+
+// ── Auth ──
+async function attemptLogin() {
+  const token = document.getElementById('token-input').value.trim();
+  if (!token) return;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+
+  try {
+    const hash = await sha256(token);
+    const resp = await fetch(DATA_BASE + 'auth-index.json');
+    if (!resp.ok) throw new Error('Auth index unavailable');
+    const idx = await resp.json();
+    const slug = idx.token_hashes[hash];
+    if (!slug) { errEl.style.display = 'block'; return; }
+    sessionStorage.setItem('portal-slug', slug);
+    sessionStorage.setItem('portal-hash', hash);
+    customerSlug = slug;
+    showApp();
+  } catch (e) {
+    console.error(e);
+    errEl.textContent = 'Unable to verify token. Please try again.';
+    errEl.style.display = 'block';
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('portal-slug');
+  sessionStorage.removeItem('portal-hash');
+  customerSlug = null; dashData = null; healthData = null;
+  document.getElementById('app').classList.remove('visible');
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('token-input').value = '';
+  location.hash = '#/login';
+}
+
+// ── Data Loading ──
+async function loadData() {
+  const [dResp, hResp] = await Promise.all([
+    fetch(DATA_BASE + customerSlug + '/dashboard.json'),
+    fetch(DATA_BASE + customerSlug + '/health.json')
+  ]);
+  if (!dResp.ok) throw new Error('Dashboard data unavailable');
+  dashData = await dResp.json();
+  healthData = hResp.ok ? await hResp.json() : null;
+}
+
+// ── Show App ──
+async function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').classList.add('visible');
+  document.getElementById('page-loading').style.display = 'flex';
+  document.querySelectorAll('.page').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
+
+  try {
+    await loadData();
+    document.getElementById('sidebar-company').textContent = dashData.company_name;
+    renderDashboard();
+    renderBilling();
+    renderHealth();
+    renderSettings();
+    document.getElementById('page-loading').style.display = 'none';
+    navigate(location.hash || '#/dashboard');
+  } catch (e) {
+    console.error(e);
+    document.getElementById('page-loading').innerHTML = '<div style="color:var(--red)">Failed to load portal data. Please try again later.</div>';
+  }
+}
+
+// ── Render: Dashboard ──
+function renderDashboard() {
+  const d = dashData; const s = d.summary;
+  document.getElementById('period-label').textContent = `Performance — ${d.period_days} Day Overview`;
+  document.getElementById('dash-metrics').innerHTML = `
+    <div class="metric-card"><div class="value">${s.agent_count}</div><div class="label">Agents</div></div>
+    <div class="metric-card"><div class="value">${s.active_agents}/${s.agent_count}</div><div class="label">Active</div></div>
+    <div class="metric-card"><div class="value">${fmt$(s.cost_saved_usd)}</div><div class="label">Saved</div></div>
+    <div class="metric-card"><div class="value">${fmtNum(s.total_tasks_completed)}</div><div class="label">Tasks Done</div></div>
+    <div class="metric-card"><div class="value">${s.hours_saved}</div><div class="label">Hours Saved</div></div>
+    <div class="metric-card"><div class="value">${s.uptime_percent}%</div><div class="label">Uptime</div></div>
+  `;
+
+  // Agent cards
+  document.getElementById('dash-agents').innerHTML = d.agents.map(a => `
+    <div class="card agent-card">
+      <div class="agent-avatar">${a.icon || '🤖'}</div>
+      <div class="agent-info">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span class="agent-name">${a.agent_name}</span>
+          ${statusBadge(a.status)}
+        </div>
+        <div class="agent-role">${a.role}</div>
+        <div class="agent-meta">
+          <span>Heartbeat: <strong>${timeAgo(a.last_heartbeat)}</strong></span>
+          <span>Today: <strong>${a.tasks_per_day} tasks</strong></span>
+          <span>Success: <strong>${a.success_rate}%</strong></span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // ROI
+  const r = d.roi;
+  document.getElementById('dash-roi').innerHTML = `
+    <div class="roi-box">
+      <div>
+        <div class="roi-label">Estimated Savings</div>
+        <div class="roi-value">${fmt$(r.monthly_savings)}</div>
+        <div class="roi-sub">${r.roi_multiplier}× return on ${fmt$(r.monthly_investment)}/mo investment</div>
+      </div>
+      <div class="roi-breakdown">
+        ${r.breakdown.map(b => `<div class="roi-line">${fmtNum(b.quantity)} ${b.label.toLowerCase()} × <strong>${fmt$(b.unit_value)}</strong> = <strong>${fmt$(b.total)}</strong></div>`).join('')}
+      </div>
+    </div>
+  `;
+
+  // Activity
+  const colorMap = { gold: 'var(--gold)', green: 'var(--green)', blue: 'var(--blue)', red: 'var(--red)' };
+  document.getElementById('dash-activity').innerHTML = d.activity.map(a => `
+    <div class="feed-item">
+      <div class="feed-dot" style="background:${colorMap[a.color] || 'var(--gold)'}"></div>
+      <div>
+        <div class="feed-text"><strong>${a.agent_name}</strong> ${a.event}</div>
+        <div class="feed-time">${timeAgo(a.timestamp)}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Refresh note
+  document.getElementById('refresh-note').textContent = 'Updated ' + timeAgo(d.generated_at);
+}
+
+// ── Render: Billing ──
+function renderBilling() {
+  const d = dashData; const b = d.billing;
+  const perAgent = d.agents.length ? Math.round(b.monthly_price_usd / d.agents.length) : 0;
+
+  document.getElementById('billing-grid').innerHTML = `
+    <div class="card billing-card">
+      <h3>Current Plan</h3>
+      <div class="plan-name">${tierLabel(d.tier)}</div>
+      <div class="plan-price">${fmt$(b.monthly_price_usd)}/mo · ${d.agents.length} agents</div>
+      <ul class="billing-list">
+        <li><span>Billing cycle</span><span>${b.billing_cycle === 'monthly' ? 'Monthly' : b.billing_cycle}</span></li>
+        <li><span>Next invoice</span><span>${b.next_invoice ? new Date(b.next_invoice + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—'}</span></li>
+        <li><span>Payment method</span><span>${b.payment_method || '—'}</span></li>
+        <li><span>Status</span><span style="color:var(--green)">${b.payment_status === 'active' ? 'Active' : b.payment_status}</span></li>
+      </ul>
+    </div>
+    <div class="card billing-card">
+      <h3>Monthly Breakdown</h3>
+      <ul class="billing-list">
+        ${d.agents.map(a => `<li><span>${a.icon} ${a.agent_name}</span><span>${fmt$(a.monthly_cost || perAgent)}</span></li>`).join('')}
+        ${b.vertical_premium_amount ? `<li><span>Vertical premium (${b.vertical_premium_pct}%)</span><span>${fmt$(b.vertical_premium_amount)}</span></li>` : ''}
+        <li style="border-top:1px solid var(--surface3);padding-top:10px;margin-top:4px"><span><strong>Total</strong></span><span><strong style="color:var(--gold)">${fmt$(b.monthly_price_usd)}</strong></span></li>
+      </ul>
+    </div>
+  `;
+
+  // Invoices
+  const inv = d.invoices || [];
+  if (inv.length === 0) {
+    document.getElementById('billing-invoices').innerHTML = '<div style="padding:24px;text-align:center;color:var(--text-dim)">No invoices yet. Your first invoice will appear here after billing begins.</div>';
+  } else {
+    document.getElementById('billing-invoices').innerHTML = `
+      <table class="invoice-table">
+        <thead><tr><th>Period</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+        <tbody>${inv.map(i => `<tr>
+          <td>${i.period}</td>
+          <td>${fmt$(i.amount_usd)}</td>
+          <td class="invoice-status-${i.status}">${i.status === 'paid' ? '✓ Paid' : i.status}</td>
+          <td>${i.paid_at ? new Date(i.paid_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—'}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    `;
+  }
+}
+
+// ── Render: Health ──
+function renderHealth() {
+  const h = healthData;
+  if (!h) {
+    document.getElementById('health-sla').innerHTML = '<div class="card" style="margin:0 32px 16px;padding:24px;text-align:center;color:var(--text-dim)">Health data is being collected. Check back soon.</div>';
+    document.getElementById('health-agents').innerHTML = '';
+    document.getElementById('health-incidents').innerHTML = '';
+    return;
+  }
+
+  // SLA banner
+  const sla = h.sla;
+  const compliant = sla.compliant;
+  document.getElementById('health-sla').innerHTML = `
+    <div style="padding:0 32px 16px"><div class="sla-banner ${compliant ? 'compliant' : 'breach'}">
+      <span class="sla-icon">${compliant ? '✅' : '🔴'}</span>
+      <span class="sla-text">SLA: <strong>${tierLabel(sla.tier)}</strong> (${sla.target_uptime}% target) — ${compliant ? 'Compliant' : 'Breached'}</span>
+      <span class="sla-pct">${h.overall_uptime_percent}%</span>
+    </div></div>
+  `;
+
+  // Agent health cards
+  document.getElementById('health-agents').innerHTML = h.agents.map(a => {
+    const days = a.uptime_daily || [];
+    const barHtml = days.map(d => {
+      const color = d.uptime >= 99.9 ? 'var(--green)' : d.uptime >= 99.0 ? 'var(--orange)' : 'var(--red)';
+      return `<div class="uptime-day" style="background:${color}" title="${d.date}: ${d.uptime}%"></div>`;
+    }).join('');
+    return `
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <span style="font-size:20px">${a.icon || '🤖'}</span>
+          <span class="agent-name">${a.agent_name}</span>
+          ${statusBadge(a.status)}
+          <span class="badge ${a.sla_compliant ? 'badge-compliant' : 'badge-breach'}" style="margin-left:auto">${a.sla_compliant ? 'SLA ✓' : 'SLA ✗'}</span>
+        </div>
+        <div class="health-stat"><span class="hl">Uptime (30d)</span><span class="hv" style="color:${a.uptime_percent >= 99.9 ? 'var(--green)' : a.uptime_percent >= 99 ? 'var(--orange)' : 'var(--red)'}">${a.uptime_percent}%</span></div>
+        <div class="health-stat"><span class="hl">Avg Response</span><span class="hv">${a.avg_response_ms}ms</span></div>
+        <div class="health-stat"><span class="hl">Errors (30d)</span><span class="hv" style="color:${a.error_count_30d > 0 ? 'var(--orange)' : 'var(--green)'}">${a.error_count_30d}</span></div>
+        <div class="health-stat"><span class="hl">Last Heartbeat</span><span class="hv">${timeAgo(a.last_heartbeat)}</span></div>
+        <div class="uptime-bar">${barHtml}</div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px"><span>${days.length ? days[days.length-1].date : ''}</span><span>${days.length ? days[0].date : ''}</span></div>
+      </div>
+    `;
+  }).join('');
+
+  // Incidents
+  const incidents = h.incidents || [];
+  document.getElementById('health-incidents').innerHTML = incidents.length === 0
+    ? '<div style="text-align:center;padding:16px;color:var(--text-dim)">No incidents recorded. All systems operational. ✓</div>'
+    : incidents.map(i => `<div class="feed-item"><div class="feed-dot" style="background:var(--red)"></div><div><div class="feed-text">${i.description}</div><div class="feed-time">${i.timestamp}</div></div></div>`).join('');
+}
+
+// ── Render: Settings ──
+function renderSettings() {
+  const d = dashData;
+  document.getElementById('settings-info').innerHTML = `
+    <h3>Company Information</h3>
+    <div class="info-row"><span class="il">Company</span><span>${d.company_name}</span></div>
+    <div class="info-row"><span class="il">Contact</span><span>${d.contact_email}</span></div>
+    <div class="info-row"><span class="il">Vertical</span><span>${tierLabel(d.vertical)}</span></div>
+    <div class="info-row"><span class="il">Plan</span><span>${tierLabel(d.tier)}</span></div>
+    <div class="info-row"><span class="il">Status</span><span>${statusBadge(d.status)}</span></div>
+    <div class="info-row"><span class="il">Onboarded</span><span>${d.onboarded_at ? new Date(d.onboarded_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '—'}</span></div>
+  `;
+
+  // Toggle handlers
+  document.querySelectorAll('.toggle').forEach(t => {
+    t.addEventListener('click', () => t.classList.toggle('on'));
+  });
+}
+
+// ── Navigation ──
+const pages = ['dashboard', 'billing', 'health', 'settings'];
+
+function navigate(hash) {
+  const page = hash.replace('#/', '').replace('#', '') || 'dashboard';
+  if (page === 'login') { logout(); return; }
+  if (!pages.includes(page)) { location.hash = '#/dashboard'; return; }
+
+  // Update active nav
+  document.querySelectorAll('.nav-link[data-page]').forEach(l => l.classList.toggle('active', l.dataset.page === page));
+  document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.toggle('active', b.dataset.page === page));
+
+  // Show page
+  document.querySelectorAll('.page').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
+  const el = document.getElementById('page-' + page);
+  if (el) { el.style.display = 'block'; requestAnimationFrame(() => el.classList.add('active')); }
+
+  // Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('mobile-overlay').classList.remove('visible');
+}
+
+window.addEventListener('hashchange', () => {
+  if (customerSlug) navigate(location.hash);
+});
+
+// ── Nav Click Handlers ──
+document.querySelectorAll('.nav-link[data-page], .bottom-nav button[data-page]').forEach(el => {
+  el.addEventListener('click', () => { location.hash = '#/' + el.dataset.page; });
+});
+
+document.getElementById('logout-btn').addEventListener('click', logout);
+
+// ── Login Handlers ──
+document.getElementById('login-btn').addEventListener('click', attemptLogin);
+document.getElementById('token-input').addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
+
+// ── Mobile Menu ──
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('mobile-overlay').classList.toggle('visible');
+});
+document.getElementById('mobile-overlay').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('mobile-overlay').classList.remove('visible');
+});
+
+// ── Auto-Refresh (every 5 min) ──
+setInterval(async () => {
+  if (!customerSlug) return;
+  try {
+    await loadData();
+    renderDashboard();
+    renderBilling();
+    renderHealth();
+  } catch (e) { console.warn('Auto-refresh failed:', e); }
+}, 300000);
+
+// ── Init ──
+(function init() {
+  const slug = sessionStorage.getItem('portal-slug');
+  if (slug) {
+    customerSlug = slug;
+    showApp();
+  } else {
+    document.getElementById('login-screen').style.display = 'flex';
+    if (location.hash && location.hash !== '#/login') location.hash = '#/login';
+  }
+})();
+</script>
+</body>
+</html>

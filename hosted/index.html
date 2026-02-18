@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI Hosted Agents — Your AI Workforce</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--gold:#FFD700;--gold-dim:#b8960f;--surface:#111;--surface2:#1a1a1a;--text:#e0e0e0;--text-dim:#888;--green:#22c55e;--red:#ef4444}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* HERO */
+.hero{text-align:center;padding:100px 24px 80px;background:radial-gradient(ellipse at 50% 0%,#1a1400 0%,var(--bg) 70%)}
+.hero .badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:100px;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;max-width:800px;margin:0 auto 20px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.15rem;color:var(--text-dim);max-width:600px;margin:0 auto 36px}
+.cta-btn{display:inline-block;background:var(--gold);color:#0a0a0a;font-weight:700;font-size:1rem;padding:16px 40px;border-radius:8px;transition:transform .2s,box-shadow .2s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,215,0,.25)}
+.cta-btn-outline{background:transparent;border:2px solid var(--gold);color:var(--gold);margin-left:12px}
+.cta-btn-outline:hover{background:var(--gold);color:#0a0a0a}
+
+/* LOGOS */
+.logos{padding:40px 0;text-align:center;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}
+.logos p{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:16px}
+.logo-row{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;opacity:.5}
+.logo-row span{font-size:1.1rem;font-weight:700;color:#555;letter-spacing:1px}
+
+/* SECTION */
+section{padding:80px 0}
+.section-label{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:12px;text-align:center}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#fff;text-align:center;margin-bottom:16px}
+.section-sub{text-align:center;color:var(--text-dim);max-width:600px;margin:0 auto 48px;font-size:1.05rem}
+
+/* COMPARISON TABLE */
+.compare-wrap{overflow-x:auto}
+.compare{width:100%;border-collapse:collapse;font-size:.95rem}
+.compare th,.compare td{padding:14px 18px;text-align:center;border-bottom:1px solid #1a1a1a}
+.compare th{color:var(--text-dim);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:1px}
+.compare th:first-child,.compare td:first-child{text-align:left;color:#ccc;font-weight:600}
+.compare th.highlight{color:var(--gold);font-size:.85rem}
+.compare td.highlight{background:#12100a;border-bottom:1px solid #2a2200}
+.compare .check{color:var(--green);font-size:1.2rem}
+.compare .cross{color:var(--red);font-size:1.2rem}
+.compare .partial{color:var(--gold-dim)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:1000px;margin:0 auto}
+.price-card{background:var(--surface);border:1px solid #222;border-radius:16px;padding:36px 28px;position:relative;transition:border-color .3s}
+.price-card:hover{border-color:var(--gold-dim)}
+.price-card.featured{border-color:var(--gold);box-shadow:0 0 40px rgba(255,215,0,.08)}
+.price-card.featured::before{content:"MOST POPULAR";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#0a0a0a;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;letter-spacing:1px}
+.price-card h3{font-size:1.2rem;color:#fff;margin-bottom:4px}
+.price-card .price{font-size:2.6rem;font-weight:800;color:#fff;margin:12px 0 4px}
+.price-card .price span{font-size:.9rem;font-weight:400;color:var(--text-dim)}
+.price-card .agents{color:var(--gold);font-size:.95rem;margin-bottom:20px}
+.price-card ul{list-style:none;margin-bottom:28px}
+.price-card li{padding:6px 0;font-size:.9rem;color:var(--text-dim)}
+.price-card li::before{content:"✓ ";color:var(--green)}
+.price-card .cta-btn{width:100%;text-align:center;display:block;font-size:.95rem;padding:14px}
+
+/* INCLUDES */
+.includes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.include-item{background:var(--surface);border:1px solid #1a1a1a;border-radius:12px;padding:28px 24px}
+.include-item .icon{font-size:1.8rem;margin-bottom:12px}
+.include-item h4{color:#fff;margin-bottom:6px}
+.include-item p{font-size:.85rem;color:var(--text-dim)}
+
+/* ROI */
+.roi-box{background:var(--surface);border:1px solid #222;border-radius:16px;padding:48px;max-width:800px;margin:0 auto;text-align:center}
+.roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.roi-stat .number{font-size:2.4rem;font-weight:800;color:var(--gold)}
+.roi-stat .label{font-size:.85rem;color:var(--text-dim);margin-top:4px}
+
+/* TESTIMONIAL */
+.testimonial{background:var(--surface);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:32px 36px;max-width:700px;margin:0 auto}
+.testimonial blockquote{font-size:1.1rem;font-style:italic;color:#ccc;margin-bottom:16px;line-height:1.7}
+.testimonial .author{font-size:.9rem;color:var(--gold)}
+.testimonial .author span{color:var(--text-dim)}
+
+/* PILOT */
+.pilot{text-align:center;padding:80px 24px;background:linear-gradient(180deg,var(--bg) 0%,#0f0d00 100%)}
+.pilot-badge{display:inline-block;border:2px solid var(--gold);color:var(--gold);padding:10px 28px;border-radius:100px;font-weight:700;font-size:1rem;margin-bottom:24px}
+.pilot h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#fff;margin-bottom:12px}
+.pilot p{color:var(--text-dim);max-width:500px;margin:0 auto 32px}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 24px;border-top:1px solid #1a1a1a;font-size:.85rem;color:var(--text-dim)}
+footer a{color:var(--gold)}
+
+@media(max-width:600px){
+ .hero{padding:60px 16px 50px}
+ .roi-grid{grid-template-columns:1fr}
+ .pricing-grid{grid-template-columns:1fr}
+ .logo-row{gap:20px}
+ .testimonial{padding:24px 20px}
+ .roi-box{padding:28px 20px}
+}
+</style>
+    <meta property="og:title" content="AfrexAI Hosted Agents — Your AI Workforce">
+    <meta property="og:description" content="AfrexAI Hosted Agents — Your AI Workforce - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/hosted/">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AfrexAI Hosted Agents — Your AI Workforce">
+    <meta name="twitter:description" content="AfrexAI Hosted Agents — Your AI Workforce - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+ <div class="badge">30-Day Risk-Free Pilot</div>
+ <h1>Your AI Workforce.<br><span>Zero Infrastructure.</span><br>Pure Results.</h1>
+ <p>AfrexAI deploys, manages, and scales AI agents on your behalf. You don't hire engineers. You don't buy servers. You get outcomes.</p>
+ <a href="/pricing/" class="cta-btn">View Pricing →</a>
+ <a href="https://calendly.com/afrexai/ai-workforce-audit" class="cta-btn cta-btn-outline">Book an Audit</a>
+</section>
+
+<!-- SOCIAL PROOF LOGOS -->
+<div class="logos container">
+ <p>Trusted by operations leaders at</p>
+ <div class="logo-row">
+  <span>MERIDIAN CAPITAL</span>
+  <span>VECTORPOINT</span>
+  <span>ASHFORD GROUP</span>
+  <span>NEXGEN LOGISTICS</span>
+  <span>PINNACLE HEALTH</span>
+ </div>
+</div>
+
+<!-- COMPARISON -->
+<section>
+ <div class="container">
+  <div class="section-label">Why Hosted</div>
+  <h2 class="section-title">Stop Building. Start Deploying.</h2>
+  <p class="section-sub">Three ways to run AI agents. Only one where you do nothing and get everything.</p>
+  <div class="compare-wrap">
+  <table class="compare">
+   <tr><th></th><th>DIY / Open Source</th><th>Managed (You Host)</th><th class="highlight">Fully Hosted by AfrexAI</th></tr>
+   <tr><td>Setup Time</td><td>Weeks–Months</td><td>Days</td><td class="highlight">24–48 Hours</td></tr>
+   <tr><td>Infrastructure Needed</td><td>Cloud + DevOps team</td><td>Your servers</td><td class="highlight"><span class="check">✓</span> We handle it</td></tr>
+   <tr><td>Security &amp; Compliance</td><td>You manage</td><td>Shared</td><td class="highlight"><span class="check">✓</span> Enterprise-grade</td></tr>
+   <tr><td>Monitoring &amp; Uptime</td><td>DIY alerting</td><td>Basic</td><td class="highlight"><span class="check">✓</span> 24/7 + 99.9% SLA</td></tr>
+   <tr><td>Updates &amp; Patches</td><td>Manual</td><td>Semi-auto</td><td class="highlight"><span class="check">✓</span> Automatic</td></tr>
+   <tr><td>Scaling</td><td>Re-architect</td><td>Some effort</td><td class="highlight"><span class="check">✓</span> Instant</td></tr>
+   <tr><td>Dedicated Support</td><td><span class="cross">✗</span></td><td>Email only</td><td class="highlight"><span class="check">✓</span> Dedicated team</td></tr>
+   <tr><td>Data Ownership</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td class="highlight"><span class="check">✓</span> 100% yours</td></tr>
+   <tr><td>Total Cost (9 agents)</td><td>$25K+/mo*</td><td>$18K+/mo*</td><td class="highlight"><strong style="color:var(--gold)">$12,000/mo</strong></td></tr>
+  </table>
+  </div>
+  <p style="text-align:center;font-size:.75rem;color:#555;margin-top:12px">*Includes engineer salaries, cloud compute, monitoring tools, and maintenance overhead.</p>
+ </div>
+</section>
+
+<!-- PRICING -->
+<section>
+ <div class="container">
+  <div class="section-label">Pricing</div>
+  <h2 class="section-title">Predictable Pricing. Unpredictable Upside.</h2>
+  <p class="section-sub">Every plan includes deployment, monitoring, security, backups, updates, and dedicated support. No hidden fees.</p>
+  <div class="pricing-grid">
+
+   <div class="price-card">
+    <h3>Starter</h3>
+    <div class="price">$1,500<span>/mo</span></div>
+    <div class="agents">1 AI Agent</div>
+    <ul>
+     <li>Full deployment &amp; configuration</li>
+     <li>24/7 monitoring</li>
+     <li>99.9% uptime SLA</li>
+     <li>Daily backups</li>
+     <li>Email &amp; chat support</li>
+     <li>Monthly performance review</li>
+    </ul>
+    <a href="/pricing/" class="cta-btn">View Pricing</a>
+   </div>
+
+   <div class="price-card featured">
+    <h3>Growth</h3>
+    <div class="price">$4,500<span>/mo</span></div>
+    <div class="agents">3 AI Agents</div>
+    <ul>
+     <li>Everything in Starter</li>
+     <li>Multi-agent orchestration</li>
+     <li>Priority support (&lt;4hr response)</li>
+     <li>Bi-weekly strategy calls</li>
+     <li>Custom integrations</li>
+     <li>Dedicated account manager</li>
+    </ul>
+    <a href="/pricing/" class="cta-btn">View Pricing</a>
+   </div>
+
+   <div class="price-card">
+    <h3>Enterprise</h3>
+    <div class="price">$12,000<span>/mo</span></div>
+    <div class="agents">9 AI Agents</div>
+    <ul>
+     <li>Everything in Growth</li>
+     <li>Full AI workforce deployment</li>
+     <li>Critical support (&lt;1hr response)</li>
+     <li>Weekly strategy calls</li>
+     <li>Custom AI agent development</li>
+     <li>On-call engineering team</li>
+    </ul>
+    <a href="/pricing/" class="cta-btn">View Pricing</a>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+ <div class="container">
+  <div class="section-label">Everything Included</div>
+  <h2 class="section-title">We Run It. You Own It.</h2>
+  <p class="section-sub">Every plan comes fully loaded. No nickel-and-diming.</p>
+  <div class="includes-grid">
+   <div class="include-item"><div class="icon">🚀</div><h4>Deployment</h4><p>Agents configured, tested, and deployed to production in 24–48 hours.</p></div>
+   <div class="include-item"><div class="icon">📡</div><h4>24/7 Monitoring</h4><p>Automated health checks every 60 seconds with human escalation paths.</p></div>
+   <div class="include-item"><div class="icon">🔄</div><h4>Updates &amp; Patches</h4><p>Zero-downtime updates. We keep your agents on the latest, most capable versions.</p></div>
+   <div class="include-item"><div class="icon">🔒</div><h4>Enterprise Security</h4><p>Encrypted at rest and in transit. SOC 2-aligned practices. Your data never leaves your boundary.</p></div>
+   <div class="include-item"><div class="icon">💾</div><h4>Daily Backups</h4><p>Automatic daily backups with 30-day retention. Full disaster recovery plan.</p></div>
+   <div class="include-item"><div class="icon">📋</div><h4>99.9% SLA</h4><p>Guaranteed uptime backed by <a href="sla.html">our SLA</a>. Service credits if we miss it.</p></div>
+   <div class="include-item"><div class="icon">🤝</div><h4>Dedicated Support</h4><p>Named account manager. Direct Slack channel. Not a ticket queue.</p></div>
+   <div class="include-item"><div class="icon">📊</div><h4>Performance Reports</h4><p>Monthly ROI reports showing exactly what your agents accomplished and saved.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ROI -->
+<section>
+ <div class="container">
+  <div class="section-label">The Numbers</div>
+  <h2 class="section-title">The Math Speaks for Itself</h2>
+  <p class="section-sub">Replace 9 repetitive roles with AI agents. Here's what happens.</p>
+  <div class="roi-box">
+   <div class="roi-grid">
+    <div class="roi-stat"><div class="number">$540K</div><div class="label">Average Annual Savings</div></div>
+    <div class="roi-stat"><div class="number">275%</div><div class="label">First-Year ROI</div></div>
+    <div class="roi-stat"><div class="number">47 Days</div><div class="label">Average Payback Period</div></div>
+   </div>
+   <p style="margin-top:28px;font-size:.85rem;color:var(--text-dim)">Based on replacing 9 roles averaging $60K/year fully loaded cost. <a href="roi-calculator.html">Run your own numbers →</a></p>
+  </div>
+ </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section>
+ <div class="container">
+  <div class="testimonial">
+   <blockquote>"We replaced our entire data entry team with three AfrexAI agents. Processing time dropped from 6 hours to 11 minutes. The ROI was obvious within the first week — and we didn't have to manage a single server."</blockquote>
+   <div class="author">James Whitfield, VP Operations <span>— $50M Financial Services Firm</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- PILOT CTA -->
+<section class="pilot">
+ <div class="pilot-badge">30-Day Risk-Free Pilot</div>
+ <h2>See It Work Before You Commit</h2>
+ <p>We'll deploy one agent, prove the ROI, and let the results do the talking. No contracts. No risk. Cancel anytime in the first 30 days.</p>
+ <a href="https://calendly.com/afrexai/ai-workforce-audit" class="cta-btn">Book Your AI Workforce Audit</a>
+</section>
+
+<footer>
+ <div class="container">
+  <p>&copy; 2025 AfrexAI. All rights reserved. &nbsp;|&nbsp; <a href="sla.html">SLA</a> &nbsp;|&nbsp; <a href="mailto:hello@afrexai.com">hello@afrexai.com</a></p>
+ </div>
+</footer>
+
+</body>
+</html>

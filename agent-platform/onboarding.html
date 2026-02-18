@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started — AfrexAI Agent Platform</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#141414;--surface2:#1a1a1a;--border:#2a2a2a;--gold:#FFD700;--gold-dim:#b8991a;--green:#22c55e;--text:#e5e5e5;--text-dim:#888;--radius:12px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--gold);text-decoration:none}
+.banner{background:linear-gradient(90deg,#1a1400,#2a2000,#1a1400);border-bottom:1px solid var(--gold-dim);padding:8px 24px;text-align:center;font-size:13px;color:var(--gold);letter-spacing:1px}
+.banner span{background:var(--gold);color:#000;padding:2px 8px;border-radius:4px;font-weight:700;font-size:11px;margin-left:8px}
+
+.container{max-width:800px;margin:0 auto;padding:40px 24px}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:28px;margin-bottom:8px}
+.header p{color:var(--text-dim);font-size:15px}
+
+/* Progress */
+.progress{display:flex;justify-content:center;gap:8px;margin-bottom:40px}
+.step-dot{display:flex;align-items:center;gap:8px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--surface2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--text-dim);transition:all .3s}
+.step-num.active{border-color:var(--gold);color:var(--gold);background:rgba(255,215,0,.1)}
+.step-num.done{border-color:var(--green);color:#000;background:var(--green)}
+.step-line{width:40px;height:2px;background:var(--border);align-self:center}
+.step-line.done{background:var(--green)}
+
+/* Steps */
+.step{display:none}
+.step.active{display:block}
+
+/* Agent picker */
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.agent-option{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all .2s;text-align:center}
+.agent-option:hover{border-color:var(--gold-dim)}
+.agent-option.selected{border-color:var(--gold);background:rgba(255,215,0,.05)}
+.agent-option .icon{font-size:28px;margin-bottom:8px}
+.agent-option .name{font-weight:600;font-size:14px}
+.agent-option .desc{font-size:11px;color:var(--text-dim);margin-top:4px}
+.agent-option .check{display:none;position:absolute;top:8px;right:8px;color:var(--green)}
+.agent-option{position:relative}
+.agent-option.selected .check{display:block}
+
+/* Integration cards */
+.int-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+.int-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px}
+.int-card:hover{border-color:var(--gold-dim)}
+.int-card.connected{border-color:var(--green)}
+.int-card .int-icon{font-size:28px;flex-shrink:0}
+.int-card .int-info .int-name{font-weight:600;font-size:14px}
+.int-card .int-info .int-desc{font-size:12px;color:var(--text-dim)}
+.int-card .int-status{margin-left:auto;font-size:12px;color:var(--text-dim)}
+.int-card.connected .int-status{color:var(--green)}
+
+/* Schedule */
+.schedule-options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+.sched-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:all .2s;text-align:center}
+.sched-card:hover{border-color:var(--gold-dim)}
+.sched-card.selected{border-color:var(--gold);background:rgba(255,215,0,.05)}
+.sched-card .sched-icon{font-size:32px;margin-bottom:8px}
+.sched-card .sched-name{font-weight:600;font-size:15px}
+.sched-card .sched-desc{font-size:12px;color:var(--text-dim);margin-top:4px}
+
+/* Launch */
+.launch-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center;margin-top:20px}
+.launch-card .big-icon{font-size:64px;margin-bottom:16px}
+.launch-card h2{font-size:22px;margin-bottom:8px}
+.launch-card p{color:var(--text-dim);font-size:14px;margin-bottom:4px}
+.launch-summary{margin-top:20px;text-align:left;background:var(--surface2);border-radius:8px;padding:16px;font-size:13px}
+.launch-summary div{padding:4px 0;display:flex;justify-content:space-between}
+.launch-summary .label{color:var(--text-dim)}
+
+/* Buttons */
+.btn-row{display:flex;justify-content:space-between;margin-top:32px}
+.btn{padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
+.btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:#ffe44d}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--gold-dim)}
+.btn:disabled{opacity:.4;cursor:default}
+
+@media(max-width:600px){.agent-grid{grid-template-columns:repeat(2,1fr)}.int-grid,.schedule-options{grid-template-columns:1fr}}
+</style>
+    <meta property="og:title" content="Get Started — AfrexAI Agent Platform">
+    <meta property="og:description" content="Get Started — AfrexAI Agent Platform - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/agent-platform/onboarding.html">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Get Started — AfrexAI Agent Platform">
+    <meta name="twitter:description" content="Get Started — AfrexAI Agent Platform - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+<div class="banner">AFREXAI AGENT PLATFORM <span>BETA</span></div>
+<div class="container">
+  <div class="header">
+    <h1>Set Up Your AI Workforce</h1>
+    <p>Choose your agents, connect your tools, and launch in minutes.</p>
+  </div>
+
+  <div class="progress">
+    <div class="step-dot"><span class="step-num active" id="sn1">1</span></div>
+    <div class="step-line" id="sl1"></div>
+    <div class="step-dot"><span class="step-num" id="sn2">2</span></div>
+    <div class="step-line" id="sl2"></div>
+    <div class="step-dot"><span class="step-num" id="sn3">3</span></div>
+    <div class="step-line" id="sl3"></div>
+    <div class="step-dot"><span class="step-num" id="sn4">4</span></div>
+  </div>
+
+  <!-- Step 1: Choose Agents -->
+  <div class="step active" id="step1">
+    <h2 style="font-size:20px;margin-bottom:4px">Step 1: Choose Your Agents</h2>
+    <p style="color:var(--text-dim);font-size:14px">Select the AI agents you want on your team. You can add more later.</p>
+    <div class="agent-grid">
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">🧑‍💼</div><div class="name">Executive Assistant</div><div class="desc">Email, briefings, scheduling</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">📈</div><div class="name">Marketing Analyst</div><div class="desc">Prospects, market intel</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">✍️</div><div class="name">Content Writer</div><div class="desc">Blog, social, copy</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">🏗️</div><div class="name">COO / Ops Manager</div><div class="desc">Daily ops, processes</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">📞</div><div class="name">Sales Dev Rep</div><div class="desc">Outreach, follow-ups</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">🤝</div><div class="name">Customer Success</div><div class="desc">Check-ins, NPS</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">💰</div><div class="name">Financial Analyst</div><div class="desc">Expenses, forecasting</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">👥</div><div class="name">HR / People Ops</div><div class="desc">Hiring, culture</div></div>
+      <div class="agent-option" onclick="toggleAgent(this)"><span class="check">✓</span><div class="icon">🔬</div><div class="name">Research Analyst</div><div class="desc">Industry reports, trends</div></div>
+    </div>
+  </div>
+
+  <!-- Step 2: Connect Accounts -->
+  <div class="step" id="step2">
+    <h2 style="font-size:20px;margin-bottom:4px">Step 2: Connect Your Accounts</h2>
+    <p style="color:var(--text-dim);font-size:14px">Give your agents access to the tools they need.</p>
+    <div class="int-grid">
+      <div class="int-card" onclick="toggleInt(this)"><div class="int-icon">📧</div><div class="int-info"><div class="int-name">Gmail / Google Workspace</div><div class="int-desc">Email access for triage and drafts</div></div><div class="int-status">Connect</div></div>
+      <div class="int-card" onclick="toggleInt(this)"><div class="int-icon">📅</div><div class="int-info"><div class="int-name">Google Calendar</div><div class="int-desc">Schedule management</div></div><div class="int-status">Connect</div></div>
+      <div class="int-card" onclick="toggleInt(this)"><div class="int-icon">💬</div><div class="int-info"><div class="int-name">Slack</div><div class="int-desc">Notifications and reports</div></div><div class="int-status">Connect</div></div>
+      <div class="int-card" onclick="toggleInt(this)"><div class="int-icon">📁</div><div class="int-info"><div class="int-name">Google Drive</div><div class="int-desc">Document storage and sharing</div></div><div class="int-status">Connect</div></div>
+      <div class="int-card" onclick="toggleInt(this)"><div class="int-icon">🏢</div><div class="int-info"><div class="int-name">CRM (HubSpot / Salesforce)</div><div class="int-desc">Contact and deal management</div></div><div class="int-status">Connect</div></div>
+      <div class="int-card" onclick="toggleInt(this)"><div class="int-icon">✅</div><div class="int-info"><div class="int-name">Notion / Asana</div><div class="int-desc">Task and project tracking</div></div><div class="int-status">Connect</div></div>
+    </div>
+  </div>
+
+  <!-- Step 3: Schedule -->
+  <div class="step" id="step3">
+    <h2 style="font-size:20px;margin-bottom:4px">Step 3: Set Your Schedule</h2>
+    <p style="color:var(--text-dim);font-size:14px">When should your agents run?</p>
+    <div class="schedule-options">
+      <div class="sched-card" onclick="toggleSched(this)"><div class="sched-icon">☀️</div><div class="sched-name">Morning Shift</div><div class="sched-desc">8:00 AM daily — briefings, triage, reports</div></div>
+      <div class="sched-card" onclick="toggleSched(this)"><div class="sched-icon">🌙</div><div class="sched-name">Evening Shift</div><div class="sched-desc">8:00 PM daily — summaries, prep for tomorrow</div></div>
+      <div class="sched-card selected" onclick="toggleSched(this)"><div class="sched-icon">🔄</div><div class="sched-name">Both Shifts</div><div class="sched-desc">8:00 AM & 8:00 PM — full coverage</div></div>
+      <div class="sched-card" onclick="toggleSched(this)"><div class="sched-icon">⚡</div><div class="sched-name">Custom</div><div class="sched-desc">Set your own cron schedule</div></div>
+    </div>
+  </div>
+
+  <!-- Step 4: Launch -->
+  <div class="step" id="step4">
+    <div class="launch-card">
+      <div class="big-icon">🚀</div>
+      <h2>Ready to Launch!</h2>
+      <p>Your AI workforce is configured and ready to go.</p>
+      <div class="launch-summary">
+        <div><span class="label">Agents Selected</span><span id="agentCount">0 agents</span></div>
+        <div><span class="label">Integrations</span><span id="intCount">0 connected</span></div>
+        <div><span class="label">Schedule</span><span>Both Shifts (8 AM & 8 PM)</span></div>
+        <div><span class="label">Estimated Time Saved</span><span style="color:var(--gold);font-weight:600">18+ hours/week</span></div>
+        <div><span class="label">First Run</span><span>Immediately after launch</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-outline" id="prevBtn" onclick="prevStep()" style="visibility:hidden">← Back</button>
+    <button class="btn btn-gold" id="nextBtn" onclick="nextStep()">Continue →</button>
+  </div>
+</div>
+
+<script>
+let current=1;const total=4;
+function show(){
+  for(let i=1;i<=total;i++){
+    document.getElementById('step'+i).classList.toggle('active',i===current);
+    const sn=document.getElementById('sn'+i);
+    sn.classList.remove('active','done');
+    if(i<current)sn.classList.add('done'),sn.textContent='✓';
+    else if(i===current)sn.classList.add('active'),sn.textContent=i;
+    else sn.textContent=i;
+    if(i<total){const sl=document.getElementById('sl'+i);sl.classList.toggle('done',i<current)}
+  }
+  document.getElementById('prevBtn').style.visibility=current===1?'hidden':'visible';
+  document.getElementById('nextBtn').textContent=current===total?'🚀 Launch Agents':'Continue →';
+  if(current===4)updateSummary();
+}
+function nextStep(){if(current===total){window.location.href='https://calendly.com/cbeckford-afrexai/30min';return}current++;show()}
+function prevStep(){if(current>1){current--;show()}}
+function toggleAgent(el){el.classList.toggle('selected')}
+function toggleInt(el){el.classList.toggle('connected');el.querySelector('.int-status').textContent=el.classList.contains('connected')?'✅ Connected':'Connect'}
+function toggleSched(el){el.parentElement.querySelectorAll('.sched-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected')}
+function updateSummary(){
+  document.getElementById('agentCount').textContent=document.querySelectorAll('.agent-option.selected').length+' agents';
+  document.getElementById('intCount').textContent=document.querySelectorAll('.int-card.connected').length+' connected';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+{
+  "api_version": "1.0.0",
+  "endpoint": "/api/v1/dashboard",
+  "description": "Mock API response for AfrexAI AaaS customer dashboard",
+  "example_response": {
+    "customer": {
+      "slug": "acme-corp",
+      "company": "Acme Corporation",
+      "contact_email": "john@acme.com",
+      "package": "growth",
+      "status": "active",
+      "onboarded_at": "2026-02-15T02:30:00Z"
+    },
+    "billing": {
+      "plan": "growth",
+      "monthly_price_usd": 4500,
+      "agent_limit": 3,
+      "agents_deployed": 3,
+      "billing_cycle": "monthly",
+      "next_invoice": "2026-03-15",
+      "status": "active",
+      "payment_method": "visa_ending_4242"
+    },
+    "agents": [
+      {
+        "slug": "ea-aria",
+        "name": "Aria",
+        "type": "ea",
+        "title": "Executive Assistant",
+        "emoji": "📋",
+        "status": "active",
+        "health": "healthy",
+        "deployed_at": "2026-02-15T02:30:00Z",
+        "last_run": "2026-02-15T08:02:14Z",
+        "next_run": "2026-02-15T20:00:00Z",
+        "shifts_completed_today": 1,
+        "memory_size_kb": 12,
+        "error_count_7d": 0,
+        "queue_depth": 0,
+        "metrics": {
+          "tasks_completed_7d": 42,
+          "emails_processed_7d": 156,
+          "escalations_7d": 3,
+          "avg_shift_duration_min": 4.2
+        }
+      },
+      {
+        "slug": "sales-hunter",
+        "name": "Hunter",
+        "type": "sales",
+        "title": "Sales Representative",
+        "emoji": "💰",
+        "status": "active",
+        "health": "healthy",
+        "deployed_at": "2026-02-15T02:30:00Z",
+        "last_run": "2026-02-15T08:05:32Z",
+        "next_run": "2026-02-15T20:00:00Z",
+        "shifts_completed_today": 1,
+        "memory_size_kb": 8,
+        "error_count_7d": 1,
+        "queue_depth": 2,
+        "metrics": {
+          "leads_contacted_7d": 34,
+          "deals_in_pipeline": 12,
+          "pipeline_value_usd": 85000,
+          "response_rate_pct": 23
+        }
+      },
+      {
+        "slug": "marketing-mika",
+        "name": "Mika",
+        "type": "marketing",
+        "title": "Marketing Analyst",
+        "emoji": "📣",
+        "status": "active",
+        "health": "warning",
+        "deployed_at": "2026-02-15T02:30:00Z",
+        "last_run": "2026-02-14T20:01:45Z",
+        "next_run": "2026-02-15T20:00:00Z",
+        "shifts_completed_today": 0,
+        "memory_size_kb": 5,
+        "error_count_7d": 4,
+        "queue_depth": 1,
+        "metrics": {
+          "campaigns_monitored": 6,
+          "content_pieces_7d": 8,
+          "engagement_score": 72,
+          "competitor_alerts_7d": 2
+        }
+      }
+    ],
+    "integrations": {
+      "email": { "status": "connected", "provider": "gmail", "accounts": 2 },
+      "slack": { "status": "connected", "workspace": "acme-corp", "channels": 3 },
+      "crm": { "status": "pending", "provider": "hubspot" },
+      "calendar": { "status": "connected", "provider": "google", "accounts": 2 }
+    },
+    "activity_feed": [
+      {
+        "timestamp": "2026-02-15T08:05:32Z",
+        "agent": "sales-hunter",
+        "action": "Completed morning shift — 5 leads contacted, 2 follow-ups scheduled"
+      },
+      {
+        "timestamp": "2026-02-15T08:02:14Z",
+        "agent": "ea-aria",
+        "action": "Morning briefing delivered — 3 urgent items flagged"
+      },
+      {
+        "timestamp": "2026-02-14T20:01:45Z",
+        "agent": "marketing-mika",
+        "action": "Evening report generated — campaign performance summary ready"
+      }
+    ],
+    "health_summary": {
+      "total_agents": 3,
+      "healthy": 2,
+      "warning": 1,
+      "critical": 0,
+      "uptime_pct_30d": 99.2
+    }
+  },
+  "endpoints": {
+    "GET /api/v1/dashboard": "Full dashboard overview",
+    "GET /api/v1/agents": "List all agents",
+    "GET /api/v1/agents/:slug": "Agent detail with full metrics",
+    "GET /api/v1/agents/:slug/logs": "Agent shift logs",
+    "POST /api/v1/agents/:slug/task": "Submit task to agent input queue",
+    "GET /api/v1/billing": "Billing & invoice details",
+    "GET /api/v1/integrations": "Integration connection status",
+    "PUT /api/v1/integrations/:provider": "Update integration config",
+    "GET /api/v1/health": "Platform health check"
+  }
+}

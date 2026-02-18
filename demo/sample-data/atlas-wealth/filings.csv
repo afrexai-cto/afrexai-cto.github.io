@@ -1,0 +1,9 @@
+filing_id,form,description,deadline,status,filed_date,entity
+FIL-201,Form ADV Part 1,Annual updating amendment,2026-03-31,in_progress,,Atlas Wealth Advisors
+FIL-202,Form 13F,Q4 2025 institutional holdings,2026-02-14,filed,2026-01-14,Atlas Wealth Advisors
+FIL-203,Form ADV Part 2B,Brochure supplement update — M. Liu,2026-03-31,draft,,Margaret Liu
+FIL-204,Form ADV Part 2B,Brochure supplement update — D. Nakamura,2026-03-31,draft,,David Nakamura
+FIL-205,Form CRS,Client relationship summary update,2026-06-30,not_started,,Atlas Wealth Advisors
+FIL-206,Form 13F,Q1 2026 institutional holdings,2026-05-15,not_started,,Atlas Wealth Advisors
+FIL-207,Schedule 13D,Beneficial ownership — Thornton Industries,2026-02-20,in_progress,,Thornton Industries 401k
+FIL-208,Form U4,Registration update — new associate,2026-02-28,in_progress,,Atlas Wealth Advisors

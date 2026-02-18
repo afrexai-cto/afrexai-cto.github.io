@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Workforce for Accounting Firms | AfrexAI</title>
+<meta name="description" content="AI agents that automate bookkeeping, tax prep workflows, and client onboarding for accounting firms. Recover 30+ hours per week per accountant.">
+<meta name="keywords" content="AI for accounting firms, AI bookkeeping automation, AI tax preparation, accounting firm automation, AI accountant, automated reconciliation">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(10px)}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700;letter-spacing:1px}
+nav .links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+nav .links a{color:#ccc;font-size:0.9rem}nav .links a:hover{color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:all 0.3s;border:2px solid #FFD700}
+.cta-btn:hover{background:transparent;color:#FFD700;text-decoration:none}
+.cta-btn-outline{display:inline-block;background:transparent;color:#FFD700;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;border:2px solid #FFD700;transition:all 0.3s}
+.cta-btn-outline:hover{background:#FFD700;color:#0a0a0a;text-decoration:none}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;background:linear-gradient(180deg,rgba(255,215,0,0.03) 0%,#0a0a0a 60%)}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.5rem;max-width:800px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.2rem;color:#aaa;max-width:600px;margin:0 auto 2rem}
+.stat-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3rem}
+.stat-bar .stat{text-align:center}
+.stat-bar .stat .num{font-size:2.5rem;font-weight:800;color:#FFD700}
+.stat-bar .stat .label{font-size:0.85rem;color:#888;margin-top:0.25rem}
+section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+.section-tag{color:#FFD700;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
+section h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:1.5rem}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.pain-card{background:#111;border:1px solid #222;border-radius:10px;padding:2rem}
+.pain-card h3{color:#FFD700;font-size:1.1rem;margin-bottom:0.75rem}
+.solution-list{list-style:none;margin-top:1.5rem}
+.solution-list li{padding:1rem 0;border-bottom:1px solid #1a1a1a;padding-left:2rem;position:relative}
+.solution-list li::before{content:"⚡";position:absolute;left:0}
+.proof{background:#111;border-left:4px solid #FFD700;border-radius:0 10px 10px 0;padding:2rem;margin:2rem 0}
+.proof .quote{font-size:1.15rem;font-style:italic;margin-bottom:0.75rem}
+.proof .source{color:#888;font-size:0.85rem}
+.final-cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,#0a0a0a 0%,rgba(255,215,0,0.05) 100%)}
+.final-cta h2{font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:1rem}
+.final-cta p{color:#aaa;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#555;font-size:0.8rem}
+@media(max-width:600px){nav{padding:0.75rem 1rem}nav .links{gap:0.75rem}.stat-bar{gap:1.5rem}.stat-bar .stat .num{font-size:1.8rem}}
+</style>
+    <meta property="og:title" content="AI Agent Workforce for Accounting Firms | AfrexAI">
+    <meta property="og:description" content="AI Agent Workforce for Accounting Firms | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/verticals/accounting/">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Agent Workforce for Accounting Firms | AfrexAI">
+    <meta name="twitter:description" content="AI Agent Workforce for Accounting Firms | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+<nav>
+<a href="/" class="logo">AfrexAI</a>
+<div class="links">
+<a href="/verticals/law-firms/">Law Firms</a>
+<a href="/verticals/financial-services/">Financial Services</a>
+<a href="/verticals/healthcare/">Healthcare</a>
+<a href="/verticals/construction/">Construction</a>
+<a href="/verticals/agencies/">Agencies</a>
+<a href="/verticals/accounting/">Accounting</a>
+<a href="/verticals/real-estate/">Real Estate</a>
+<a href="/verticals/insurance/">Insurance</a>
+<a href="/solutions/free-audit/">Free Audit</a>
+<a href="/faq/">FAQ</a>
+<a href="https://www.youtube.com/@AfrexAI" target="_blank">YouTube</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<p class="section-tag">AI Agent Workforce for Accounting Firms</p>
+<h1>Your accountants spend <span>60%</span> of their time on work AI should be doing</h1>
+<p>AI agents that handle bank reconciliation, document collection, tax prep workflows, and client follow-up — so your team focuses on advisory work that grows revenue.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Free AI Audit</a>
+<div class="stat-bar">
+<div class="stat"><div class="num">60%</div><div class="label">Time Spent on Manual Tasks</div></div>
+<div class="stat"><div class="num">30hrs</div><div class="label">Recovered Per Accountant/Week</div></div>
+<div class="stat"><div class="num">3x</div><div class="label">More Clients, Same Team</div></div>
+</div>
+</div>
+</div>
+
+<section>
+<p class="section-tag">The Problem</p>
+<h2>Tax season shouldn't mean 80-hour weeks anymore</h2>
+<p>Every accounting firm hits the same ceiling: you can only bill as many hours as your team can work. Meanwhile, 60% of those hours go to data entry, chasing clients for documents, reconciling bank feeds, and formatting reports nobody reads.</p>
+<p style="margin-top:1rem">The firms pulling ahead aren't hiring more staff. They're deploying AI agents that work 24/7 on the tasks that burn out your best people.</p>
+
+<div class="pain-grid">
+<div class="pain-card">
+<h3>🔄 Manual Bank Reconciliation</h3>
+<p>Staff spend hours matching transactions across accounts. AI agents reconcile thousands of transactions in minutes, flagging only the exceptions that need human judgment.</p>
+</div>
+<div class="pain-card">
+<h3>📄 Document Collection Chaos</h3>
+<p>Chasing clients for W-2s, 1099s, and receipts eats weeks every year. AI agents send automated follow-ups, track what's missing, and organize everything as it arrives.</p>
+</div>
+<div class="pain-card">
+<h3>⏰ Tax Prep Bottlenecks</h3>
+<p>Returns pile up because prep work is sequential. AI agents pre-populate returns, cross-reference prior year data, and flag discrepancies — before your CPA even opens the file.</p>
+</div>
+<div class="pain-card">
+<h3>💸 Unbilled Work Everywhere</h3>
+<p>Partners forget to log time. Scope creep goes untracked. AI agents monitor engagement hours against budgets in real-time and alert before write-offs happen.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">The Solution</p>
+<h2>AI agents built specifically for accounting workflows</h2>
+<p>Not generic chatbots. Not "AI-powered" software that still needs babysitting. These are autonomous agents trained on accounting workflows that actually do the work.</p>
+<ul class="solution-list">
+<li><strong>Reconciliation Agent</strong> — Matches bank feeds to GL entries across all client accounts. Learns categorization patterns. Flags anomalies for review.</li>
+<li><strong>Document Collection Agent</strong> — Sends client reminders on schedule, tracks received vs. outstanding documents, organizes uploads into your DMS automatically.</li>
+<li><strong>Tax Prep Agent</strong> — Pre-populates returns from prior year data and source documents. Cross-references K-1s, 1099s, and W-2s. Generates review notes for your CPA.</li>
+<li><strong>Client Onboarding Agent</strong> — Handles engagement letters, collects entity information, sets up client folders, and schedules kickoff calls without staff involvement.</li>
+<li><strong>Billing & WIP Agent</strong> — Tracks time against engagement budgets. Generates invoices on schedule. Sends payment reminders. Reports on realization rates.</li>
+</ul>
+</section>
+
+<section>
+<p class="section-tag">Real Results</p>
+<h2>What accounting firms achieve with AI agents</h2>
+
+<div class="proof">
+<p class="quote">"We went from handling 200 clients with 8 staff to 600 clients with the same team. The AI agents handle everything that doesn't require a CPA license."</p>
+<p class="source">— Managing Partner, Mid-Market Accounting Firm (Southeast US)</p>
+</div>
+
+<div class="pain-grid">
+<div class="pain-card">
+<h3>Before AI Agents</h3>
+<p>200 clients per firm. 80-hour weeks during tax season. 15% write-off rate. Staff turnover at 25%. Client onboarding took 2 weeks.</p>
+</div>
+<div class="pain-card">
+<h3>After AI Agents</h3>
+<p>600 clients, same headcount. Tax season stays at 50 hours. Write-offs under 3%. Turnover dropped to 8%. Onboarding in 48 hours.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">How It Works</p>
+<h2>Live in 7 days, not 7 months</h2>
+<div class="pain-grid">
+<div class="pain-card">
+<h3>Week 1: Discovery & Setup</h3>
+<p>We audit your current workflows, identify the highest-ROI automation targets, and deploy your first agent. You see results before the first invoice.</p>
+</div>
+<div class="pain-card">
+<h3>Week 2-4: Expansion</h3>
+<p>Additional agents come online for document collection, tax prep, and billing. Each one trained on your firm's specific processes and client base.</p>
+</div>
+<div class="pain-card">
+<h3>Month 2+: Optimization</h3>
+<p>Agents learn from corrections and edge cases. We expand to advisory automation, client communication, and practice management intelligence.</p>
+</div>
+</div>
+</section>
+
+<div class="final-cta">
+<h2>Ready to 3x your client capacity without hiring?</h2>
+<p>Book a free 30-minute AI audit. We'll show you exactly where your firm is losing time and money — and how AI agents fix it in weeks, not months.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Free AI Audit</a>
+<br><br>
+<a href="https://afrexai.com" class="cta-btn-outline">Learn More About AfrexAI</a>
+</div>
+
+<footer>
+<p>© 2026 AfrexAI. AI Agent Workforce for Accounting Firms.</p>
+<p style="margin-top:0.5rem"><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/contact/">Contact</a> · <a href="/blog/">Blog</a></p>
+</footer>
+</body>
+</html>

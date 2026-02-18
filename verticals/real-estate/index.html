@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Workforce for Real Estate | AfrexAI</title>
+<meta name="description" content="AI agents for real estate brokerages and property management. Automate lead follow-up, listing management, tenant screening, and deal coordination.">
+<meta name="keywords" content="AI for real estate, AI real estate agents, property management automation, real estate lead follow-up AI, AI listing management">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(10px)}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700;letter-spacing:1px}
+nav .links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+nav .links a{color:#ccc;font-size:0.9rem}nav .links a:hover{color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:all 0.3s;border:2px solid #FFD700}
+.cta-btn:hover{background:transparent;color:#FFD700;text-decoration:none}
+.cta-btn-outline{display:inline-block;background:transparent;color:#FFD700;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;border:2px solid #FFD700;transition:all 0.3s}
+.cta-btn-outline:hover{background:#FFD700;color:#0a0a0a;text-decoration:none}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;background:linear-gradient(180deg,rgba(255,215,0,0.03) 0%,#0a0a0a 60%)}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.5rem;max-width:800px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.2rem;color:#aaa;max-width:600px;margin:0 auto 2rem}
+.stat-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3rem}
+.stat-bar .stat{text-align:center}
+.stat-bar .stat .num{font-size:2.5rem;font-weight:800;color:#FFD700}
+.stat-bar .stat .label{font-size:0.85rem;color:#888;margin-top:0.25rem}
+section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+.section-tag{color:#FFD700;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
+section h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:1.5rem}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.pain-card{background:#111;border:1px solid #222;border-radius:10px;padding:2rem}
+.pain-card h3{color:#FFD700;font-size:1.1rem;margin-bottom:0.75rem}
+.solution-list{list-style:none;margin-top:1.5rem}
+.solution-list li{padding:1rem 0;border-bottom:1px solid #1a1a1a;padding-left:2rem;position:relative}
+.solution-list li::before{content:"⚡";position:absolute;left:0}
+.proof{background:#111;border-left:4px solid #FFD700;border-radius:0 10px 10px 0;padding:2rem;margin:2rem 0}
+.proof .quote{font-size:1.15rem;font-style:italic;margin-bottom:0.75rem}
+.proof .source{color:#888;font-size:0.85rem}
+.final-cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,#0a0a0a 0%,rgba(255,215,0,0.05) 100%)}
+.final-cta h2{font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:1rem}
+.final-cta p{color:#aaa;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#555;font-size:0.8rem}
+@media(max-width:600px){nav{padding:0.75rem 1rem}nav .links{gap:0.75rem}.stat-bar{gap:1.5rem}.stat-bar .stat .num{font-size:1.8rem}}
+</style>
+    <meta property="og:title" content="AI Agent Workforce for Real Estate | AfrexAI">
+    <meta property="og:description" content="AI Agent Workforce for Real Estate | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/verticals/real-estate/">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Agent Workforce for Real Estate | AfrexAI">
+    <meta name="twitter:description" content="AI Agent Workforce for Real Estate | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+<nav>
+<a href="/" class="logo">AfrexAI</a>
+<div class="links">
+<a href="/verticals/law-firms/">Law Firms</a>
+<a href="/verticals/financial-services/">Financial Services</a>
+<a href="/verticals/healthcare/">Healthcare</a>
+<a href="/verticals/construction/">Construction</a>
+<a href="/verticals/accounting/">Accounting</a>
+<a href="/verticals/real-estate/">Real Estate</a>
+<a href="/verticals/insurance/">Insurance</a>
+<a href="/solutions/free-audit/">Free Audit</a>
+<a href="/faq/">FAQ</a>
+<a href="https://www.youtube.com/@AfrexAI" target="_blank">YouTube</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<p class="section-tag">AI Agent Workforce for Real Estate</p>
+<h1><span>78%</span> of real estate leads die because nobody followed up fast enough</h1>
+<p>AI agents that respond to leads in under 60 seconds, manage listings across platforms, screen tenants, and coordinate closings — while your team focuses on showing homes and closing deals.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Free AI Audit</a>
+<div class="stat-bar">
+<div class="stat"><div class="num">78%</div><div class="label">Leads Lost to Slow Follow-Up</div></div>
+<div class="stat"><div class="num">&lt;60s</div><div class="label">AI Lead Response Time</div></div>
+<div class="stat"><div class="num">2.4x</div><div class="label">More Closings Per Agent</div></div>
+</div>
+</div>
+</div>
+
+<section>
+<p class="section-tag">The Problem</p>
+<h2>You're paying for leads you never actually work</h2>
+<p>The average real estate brokerage spends $20,000-$50,000/month on lead generation. But studies show 78% of buyers go with the agent who responds first. If your team takes more than 5 minutes, that lead is gone — to a competitor who answered faster.</p>
+<p style="margin-top:1rem">And it's not just leads. Listing updates, tenant screening, showing coordination, transaction management — your agents spend more time on admin than actually selling homes.</p>
+
+<div class="pain-grid">
+<div class="pain-card">
+<h3>📱 Lead Response Lag</h3>
+<p>Zillow, Realtor.com, and Facebook leads come in 24/7. Your team responds during business hours. AI agents respond in under 60 seconds, qualify the lead, and book a showing — at 2 AM on a Sunday.</p>
+</div>
+<div class="pain-card">
+<h3>📋 Listing Management Overhead</h3>
+<p>Updating MLS, Zillow, Redfin, and your website for every price change, open house, and status update. AI agents sync all platforms instantly from a single input.</p>
+</div>
+<div class="pain-card">
+<h3>🏠 Tenant Screening Bottleneck</h3>
+<p>Property managers waste days collecting applications, running credit checks, and verifying employment. AI agents collect, verify, and score applications automatically — with compliance built in.</p>
+</div>
+<div class="pain-card">
+<h3>📑 Transaction Coordination</h3>
+<p>Every deal involves 20+ documents, 5+ parties, and dozens of deadlines. AI agents track every milestone, send reminders, and flag issues before they become problems.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">The Solution</p>
+<h2>An AI team that never misses a lead, a deadline, or an update</h2>
+<ul class="solution-list">
+<li><strong>Lead Response Agent</strong> — Instantly engages new leads via text, email, or chat. Qualifies based on budget, timeline, and location. Books showings directly into your calendar.</li>
+<li><strong>Listing Sync Agent</strong> — Updates all platforms simultaneously when listing details change. Generates property descriptions. Schedules social media posts for new listings.</li>
+<li><strong>Tenant Screening Agent</strong> — Collects applications, runs background/credit checks, verifies income and references, and delivers a scored recommendation. Fair Housing compliant.</li>
+<li><strong>Transaction Coordinator Agent</strong> — Tracks every document, deadline, and contingency from accepted offer to closing. Sends reminders to all parties. Generates status reports.</li>
+<li><strong>Market Intelligence Agent</strong> — Monitors comp sales, price trends, and inventory changes in your target markets. Delivers weekly insights to your team and clients.</li>
+</ul>
+</section>
+
+<section>
+<p class="section-tag">Real Results</p>
+<h2>What real estate teams achieve with AI agents</h2>
+<div class="proof">
+<p class="quote">"We went from converting 4% of our leads to 19%. The AI responds before people even finish browsing Zillow. Our agents now only talk to qualified, interested buyers."</p>
+<p class="source">— Brokerage Owner, 45-Agent Team (Texas)</p>
+</div>
+<div class="pain-grid">
+<div class="pain-card">
+<h3>Before AI Agents</h3>
+<p>4% lead conversion. 2-hour average response time. 15 transactions/agent/year. 30% of team time on admin. $40K/mo lead gen spend with poor ROI.</p>
+</div>
+<div class="pain-card">
+<h3>After AI Agents</h3>
+<p>19% lead conversion. Under 60-second response. 36 transactions/agent/year. Admin time cut to 8%. Same lead spend, 4.7x return.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">How It Works</p>
+<h2>Live in 7 days, not 7 months</h2>
+<div class="pain-grid">
+<div class="pain-card">
+<h3>Week 1: Quick Win</h3>
+<p>We connect your lead sources (Zillow, Realtor.com, Facebook, website) and deploy the Lead Response Agent. You see results from day one.</p>
+</div>
+<div class="pain-card">
+<h3>Week 2-4: Full Coverage</h3>
+<p>Listing sync, transaction coordination, and tenant screening agents come online. Integrated with your CRM, MLS, and property management platform.</p>
+</div>
+<div class="pain-card">
+<h3>Month 2+: Compounding</h3>
+<p>AI learns your market, your style, and your clients. Market intelligence, automated CMAs, and predictive seller outreach drive more listings to your team.</p>
+</div>
+</div>
+</section>
+
+<div class="final-cta">
+<h2>Stop losing leads to slow follow-up</h2>
+<p>Book a free 30-minute AI audit. We'll show you exactly how many leads your team is losing — and deploy AI agents that convert them into closings.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Free AI Audit</a>
+<br><br>
+<a href="https://afrexai.com" class="cta-btn-outline">Learn More About AfrexAI</a>
+</div>
+
+<footer>
+<p>© 2026 AfrexAI. AI Agent Workforce for Real Estate.</p>
+<p style="margin-top:0.5rem"><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/contact/">Contact</a> · <a href="/blog/">Blog</a></p>
+</footer>
+</body>
+</html>

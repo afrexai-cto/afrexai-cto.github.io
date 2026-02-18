@@ -1,0 +1,100 @@
+company,contact_name,email,industry,employees,status,date
+Cuvama,MG,mg@cuvama.com,SaaS - Sales Enablement,30,sent,2026-02-13
+Trio Media,Claire Carpenter,claire@trio-media.co.uk,Digital Marketing Agency,15,sent,2026-02-13
+Leadsie,Johannes Mehlem,johannes@leadsie.com,SaaS - Agency Tools,18,sent,2026-02-13
+Beacon CRM,Chris Sherwood,chris@beaconcrm.org,SaaS - Charity CRM,20,sent,2026-02-13
+Electric Twin,Ben,ben@electrictwin.ai,AI/Tech,15,bounced,2026-02-13
+Six Degrees Creative,Brian Wright,brian@sixdegreescreative.com,Marketing Agency - Experiential,40,sent,2026-02-13
+JCW Creative,John Williams,john@jcwcreative.com,Creative Marketing Agency,30,sent,2026-02-13
+KSA Marketing,Katie Schibler Conn,katie@teamksa.com,Integrated Marketing Agency,25,sent,2026-02-13
+Ripley PR,Heather Ripley,heather@ripleypr.com,PR Agency - Construction/Trades,15,sent,2026-02-13
+Cooperate Marketing,Brian Fourman,brian@cooperatemarketing.com,MarTech Agency,30,sent,2026-02-13
+Stainless,Alex Rattray,alex@stainlessapi.com,SaaS - API Platform,30,sent,2026-02-13
+Listen Labs,Team,hello@listenlabs.ai,SaaS - AI Market Research,25,sent,2026-02-13
+Pogo,Team,hello@joinpogo.com,FinTech - Consumer Data,30,sent,2026-02-13
+Consulting IQ,Team,info@consultingiq.ai,SaaS - AI Consulting Platform,20,sent,2026-02-13
+Perceptis AI,Team,hello@perceptis.ai,SaaS - AI Consulting,25,sent,2026-02-13
+Founder's CPA,Curt Mastio,curt@founderscpa.com,Accounting - Startup Focused,20,sent,2026-02-13
+Shay CPA,Akshay Shrimanker,akshay@shaycpa.com,Accounting - Tech Startups,15,sent,2026-02-13
+Reid Collins & Tsai,Lisa Tsai,ltsai@reidcollins.com,Law Firm - Litigation Boutique,50,sent,2026-02-13
+Ignyte Group,Team,info@ignytegroup.com,Management Consulting,30,sent,2026-02-13
+The Keystone Group,Team,info@thekeystonegroup.com,Management Consulting - M&A,40,sent,2026-02-13
+Mechanical One,Jason James,jason@mechanicalone.com,HVAC/Plumbing/Electrical,50,sent,2026-02-13
+MVP Builders,Meir Vatury,meir@mvp-builders.com,Construction - Residential Remodeling,40,sent,2026-02-13
+Troyer Post Buildings,Tim Troyer,tim@troyerpostbuildings.com,Construction - Post Frame Buildings,35,sent,2026-02-13
+The Brand Agency,Priscila Martinez,priscila@thebrandagency.com,PR & Creative Communications,20,sent,2026-02-13
+Yes&,Robert Sprague,robert@yesandagency.com,Marketing Agency,50,sent,2026-02-13
+Squibble,Kim Leary,kim@squibble.design,Design & Digital Agency,20,sent,2026-02-13
+The Social Shepherd,Jack Shepherd,jack@thesocialshepherd.com,Social Media Agency,70,sent,2026-02-13
+Rise at Seven,Carrie Rose,carrie@riseatseven.com,SEO & Content Agency,100,sent,2026-02-13
+Gripped,Ben Crouch,ben@gripped.io,B2B Marketing Agency,33,sent,2026-02-13
+GA Agency,Guido Ampollini,guido@ga.agency,International Digital Marketing,40,sent,2026-02-13
+Make Agency,Tom Witcherley,tom@makeagency.co.uk,Digital Agency,30,sent,2026-02-13
+Sagefrog Marketing Group,Mark Schmukler,mark@sagefrog.com,B2B Marketing Agency,30,sent,2026-02-13
+Disruptive Advertising,Jacob Baadsgaard,jacob@disruptiveadvertising.com,PPC & Digital Advertising Agency,150,sent,2026-02-13
+Ignition Law,Alex McPherson,alex@ignitionlaw.com,Legal - Law Firm,40,sent,2026-02-13
+ClickSlice,Joshua George,joshua@clickslice.co.uk,SEO & eCommerce Agency,20,sent,2026-02-13
+Charle Agency,Nic Dunn,nic@charle.co.uk,Shopify eCommerce Agency,20,sent,2026-02-13
+Heur,Chris Nawrocki,chris@heur.co.uk,eCommerce Growth Agency,25,sent,2026-02-13
+Sphere Digital Recruitment,Ed Steer,ed@spheredigitalrecruitment.com,Recruitment Agency,50,sent,2026-02-13
+Directive,Garrett Mehrguth,garrett@directiveconsulting.com,SaaS Performance Marketing,100,sent,2026-02-13
+eComOne,Richard Hill,richard@ecomone.com,eCommerce Growth Agency,20,sent,2026-02-13
+Ironpaper,Jonathan Franchell,jonathan@ironpaper.com,B2B Growth Agency,30,sent,2026-02-13
+Cyber Command,Reade Taylor,reade@cybercommand.com,IT Managed Services,30,sent,2026-02-13
+Hallam,Jake Third,jake@hallam.agency,Digital Marketing Agency,50,sent,2026-02-13
+Funnel Boost Media,Ryan Duncan,ryan@funnelboostmedia.com,Digital Marketing & Lead Generation,30,sent,2026-02-13
+The SEO Works,Ben Foster,ben@seoworks.co.uk,Digital Growth Agency,80,sent,2026-02-13
+Dental Beauty Partners,Dr. Dev Patel,dev@dentalbeautypartners.co.uk,Healthcare - Dental Group,200+,sent,2026-02-13
+DECA Dental Group,Dr. Sulman Ahmed,info@decadental.com,Healthcare - Dental Group,500+,sent,2026-02-13
+Vista Verde Dental Partners,Dustin Netral,info@vistaverdedental.com,Healthcare - Dental Group,50-200,sent,2026-02-13
+Dental365,Dr. Scott Asnis,info@godental365.com,Healthcare - Dental Group,300+,sent,2026-02-13
+LPT Realty,Robert Palmer,robert@lptrealty.com,Real Estate - Brokerage,100+,sent,2026-02-13
+The Agency RE,Mauricio Umansky,info@theagencyre.com,Real Estate - Luxury Brokerage,200+,sent,2026-02-13
+Antwerp Dental Group,Dr. Raj Wadhwani,info@antwerpdentalgroup.co.uk,Healthcare - Dental Group,50-100,sent,2026-02-13
+Walker Logistics,Ian Walker,info@walkerlogistics.com,Logistics - 3PL Fulfilment,50-100,sent,2026-02-13
+Smart Gladiator,Puga Sankara,puga@smartgladiator.com,Logistics - Supply Chain Technology,20-50,sent,2026-02-13
+McKonly & Asbury,Michael Hoffner,mhoffner@macpas.com,Accounting - CPA Firm,100-200,sent,2026-02-13
+Keiter CPA,Managing Partner,info@keitercpa.com,Accounting - CPA Firm,100-200,sent,2026-02-13
+Hazlewoods,Managing Partner,info@hazlewoods.co.uk,Accounting - UK Firm,550,sent,2026-02-13
+Saffery,Managing Partner,info@saffery.com,Accounting - UK Chartered Accountants,200+,sent,2026-02-13
+Tiger Recruitment,David Morel,david.morel@tiger-recruitment.com,Recruitment - Business Support,50-100,sent,2026-02-13
+Brite Recruitment,Karen Pollard,info@briterecruitment.com,Recruitment - Staffing,30-50,sent,2026-02-13
+MRJ Recruitment,Jody Marks,info@mrjrecruitment.com,Recruitment - Staffing,20-50,sent,2026-02-13
+80Twenty,Founder,hello@80twenty.com,Recruitment - Boutique Staffing,10-30,sent,2026-02-13
+Spacegoods,Matthew Kelly,hello@spacegoods.com,E-commerce - Wellness/Supplements,10-30,sent,2026-02-13
+Misen,Omar Rada,hello@misen.com,E-commerce - DTC Cookware,20-50,sent,2026-02-13
+Elvie,Tania Boler,hello@elvie.com,E-commerce - FemTech,100-200,sent,2026-02-13
+The Farmer's Dog,Brett Podolsky,hello@thefarmersdog.com,E-commerce - DTC Pet Food,200+,sent,2026-02-13
+American Insurance,Kip White,info@aioinc.us,Insurance - Independent Agency,20-50,sent,2026-02-13
+Affordable American Insurance,Aimee Griffin,info@insuranceaai.com,Insurance - Independent Agency,20-50,sent,2026-02-13
+Zencargo,Alex Hersham,hello@zencargo.com,Logistics - Digital Freight Forwarding,100-200,sent,2026-02-13
+Nested,Matt Robinson,hello@nested.com,Real Estate - PropTech,50-100,sent,2026-02-13
+Blick Rothenberg,Managing Partner,info@blickrothenberg.com,Accounting - UK Advisory Firm,200+,sent,2026-02-13
+Peckar & Abramson,Steven Peckar,speckar@pecklaw.com,Law Firm - Construction Law,104,sent,2026-02-13
+Wyrick Robbins,Josh Otto,jotto@wyrick.com,Law Firm - Business/Growth,121,sent,2026-02-13
+Christian & Small,Greer Mallette,gbm@csattorneys.com,Law Firm - Litigation/Business,42,sent,2026-02-13
+McCathern Law,Stephanie Almeter,salmeter@mccathernlaw.com,Law Firm - Full Service,60,sent,2026-02-13
+Harrison Construction,Tim Harrison,info@harrison-const.com,Construction - General Contractor,150,sent,2026-02-13
+Maugel DeStefano Architects,Jonathan Cocker,jcocker@maugel.com,Architecture - Commercial/Healthcare,35,sent,2026-02-13
+BHDP Architecture,Drew Suszko,dsuszko@bhdp.com,Architecture - Strategic Design,188,sent,2026-02-13
+Quinn Evans,Alyson Steele,asteele@quinnevans.com,Architecture - Historic Preservation/Design,200,sent,2026-02-13
+Cassaday & Company,Steve Cassaday,steve@cassaday.com,Financial Advisory - Wealth Management,85,sent,2026-02-13
+LVW Advisors,Lori Van Dusen,lvandusen@lvwadvisors.com,Financial Advisory - Wealth Management,50,sent,2026-02-13
+Greenspring Advisors,Brian Gorczynski,bgorczynski@greenspringadvisors.com,Financial Advisory - RIA/Wealth Management,67,sent,2026-02-13
+Falcon Wealth Planning,Michael Jensen,michael@falconwealthplanning.com,Financial Advisory - Fee-Only RIA,30,sent,2026-02-13
+Flexial Corporation,Team,info@flexial.com,Manufacturing - Aerospace Components,150,sent,2026-02-13
+Bliss Industries,Team,info@blissindustries.com,Manufacturing - Machinery/Equipment,100,sent,2026-02-13
+Dallas Plastics Corporation,Team,info@dallasplastics.com,Manufacturing - Plastics/Packaging,100,sent,2026-02-13
+Elwood Corporation,Team,info@elwoodcorp.com,Manufacturing - Industrial Automation,120,sent,2026-02-13
+Knack,Megan Dusenbery,megan@joinknack.com,EdTech - Peer Tutoring Platform,50,sent,2026-02-13
+CYPHER Learning,Graham Glass,graham@cypherlearning.com,EdTech - Learning Management System,150,sent,2026-02-13
+ClassDojo,Sam Chaudhary,sam@classdojo.com,EdTech - K-8 Communication Platform,150,sent,2026-02-13
+Copyleaks,Alon Yamin,alon@copyleaks.com,EdTech - AI Content Detection,100,sent,2026-02-13
+Seven Reasons Group,Ezequiel Vázquez-Ger,info@sevenreasonsgroup.com,Hospitality - Multi-Concept Restaurant Group,150,sent,2026-02-13
+Castellucci Hospitality Group,Federico Castellucci III,info@chgrestaurants.com,Hospitality - Multi-Concept Restaurant Group,300,sent,2026-02-13
+Atlas Restaurant Group,Alex Smith,info@atlasrestaurantgroup.com,Hospitality - Restaurant/Entertainment Group,200,sent,2026-02-13
+Boka Restaurant Group,Rob Katz,info@bokagrp.com,Hospitality - Chef-Driven Restaurant Group,200,sent,2026-02-13
+Foster Garvey,Joe Levitt,joe.levitt@foster.com,Law Firm - Full Service/Business,130,sent,2026-02-13
+Fredon Corporation,Team,info@fredoncorp.com,Manufacturing - Machinery,100,sent,2026-02-13
+Duvall Decker Architects,Roy Decker,info@duvalldecker.com,Architecture - Award-Winning Design,40,sent,2026-02-13
+LPA Design Studios,Dan Heinfeld,info@lpadesignstudios.com,Architecture - Sustainable Design,180,sent,2026-02-13

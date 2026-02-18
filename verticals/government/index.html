@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Governance for Government & Public Sector | AfrexAI</title>
+<meta name="description" content="AI governance solutions for state agencies, federal contractors, and public sector organizations. Navigate the dual-compliance problem of federal vs state AI regulation.">
+<meta name="keywords" content="AI governance government, public sector AI compliance, state AI regulation, NASCIO AI, government AI agents, SB 205 government">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:title" content="AI Governance for Government & Public Sector | AfrexAI">
+<meta property="og:description" content="Navigate federal vs state AI regulation. AI governance frameworks for state agencies and federal contractors.">
+<meta property="og:url" content="https://afrexai-cto.github.io/verticals/government/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(10px)}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700;letter-spacing:1px}
+nav .links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+nav .links a{color:#ccc;font-size:0.9rem}nav .links a:hover{color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:all 0.3s;border:2px solid #FFD700}
+.cta-btn:hover{background:transparent;color:#FFD700;text-decoration:none}
+.cta-btn-outline{display:inline-block;background:transparent;color:#FFD700;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;border:2px solid #FFD700;transition:all 0.3s}
+.cta-btn-outline:hover{background:#FFD700;color:#0a0a0a;text-decoration:none}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;background:linear-gradient(180deg,rgba(255,215,0,0.03) 0%,#0a0a0a 60%)}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.5rem;max-width:800px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.2rem;color:#aaa;max-width:600px;margin:0 auto 2rem}
+.stat-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3rem}
+.stat-bar .stat{text-align:center}
+.stat-bar .stat .num{font-size:2.5rem;font-weight:800;color:#FFD700}
+.stat-bar .stat .label{font-size:0.85rem;color:#888;margin-top:0.25rem}
+section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+.section-tag{color:#FFD700;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
+section h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:1.5rem}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.pain-card{background:#111;border:1px solid #222;border-radius:10px;padding:2rem}
+.pain-card h3{color:#FFD700;font-size:1.1rem;margin-bottom:0.75rem}
+.solution-list{list-style:none;margin-top:1.5rem}
+.solution-list li{padding:1rem 0;border-bottom:1px solid #1a1a1a;padding-left:2rem;position:relative}
+.solution-list li::before{content:"⚡";position:absolute;left:0}
+.proof{background:#111;border-left:4px solid #FFD700;border-radius:0 10px 10px 0;padding:2rem;margin:2rem 0}
+.proof .quote{font-size:1.15rem;font-style:italic;margin-bottom:0.75rem}
+.proof .source{color:#888;font-size:0.85rem}
+.deadline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:2rem 0}
+.deadline-card{background:#161616;border:1px solid #333;border-radius:8px;padding:1.25rem;text-align:center}
+.deadline-card .date{color:#FFD700;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem}
+.deadline-card .name{color:#ccc;font-size:0.9rem}
+.final-cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,#0a0a0a 0%,rgba(255,215,0,0.05) 100%)}
+.final-cta h2{font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:1rem}
+.final-cta p{color:#aaa;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#555;font-size:0.8rem}
+@media(max-width:600px){nav{padding:0.75rem 1rem}nav .links{gap:0.75rem}.stat-bar{gap:1.5rem}.stat-bar .stat .num{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">AfrexAI</a>
+<div class="links">
+<a href="/verticals/financial-services/">Financial Services</a>
+<a href="/verticals/healthcare/">Healthcare</a>
+<a href="/verticals/insurance/">Insurance</a>
+<a href="/verticals/law-firms/">Law Firms</a>
+<a href="/blog/">Blog</a>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" style="padding:0.5rem 1.2rem;font-size:0.85rem">Book a Call</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<p class="section-tag">AI Governance for Government & Public Sector</p>
+<h1>Federal vs State AI regulation creates a <span>dual-compliance problem</span> — and agencies need help reconciling both</h1>
+<p>AI governance frameworks built for state agencies, federal contractors, and public sector organizations navigating the most complex regulatory environment in American AI history.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Free AI Governance Assessment</a>
+<div class="stat-bar">
+<div class="stat"><div class="num">$200K-$500K</div><div class="label">Typical Gov Contract Value</div></div>
+<div class="stat"><div class="num">50+</div><div class="label">State AI Bills in 2025</div></div>
+<div class="stat"><div class="num">FY2027</div><div class="label">Budgets Being Set Now</div></div>
+</div>
+</div>
+</div>
+
+<section>
+<p class="section-tag">The Problem</p>
+<h2>The federal-state AI regulation collision</h2>
+<p>Trump's Executive Order (December 11, 2025) attempts to preempt state AI laws and promote "AI freedom." Meanwhile, states like Colorado are enforcing strict AI governance requirements (SB 205, June 30, 2026). Agencies operating across jurisdictions face confusion, not clarity.</p>
+
+<div class="pain-grid">
+<div class="pain-card">
+<h3>🏛️ Dual Compliance Burden</h3>
+<p>Federal agencies must follow the EO's innovation-first mandate. State agencies must comply with state AI laws like SB 205. Agencies that work across both face contradictory requirements.</p>
+</div>
+<div class="pain-card">
+<h3>📋 No Unified Framework</h3>
+<p>There's no single AI governance standard for government. NIST AI RMF exists but isn't mandatory. States are creating their own rules. The result: every agency building governance from scratch.</p>
+</div>
+<div class="pain-card">
+<h3>🔒 Procurement Complexity</h3>
+<p>Government AI procurement requires FedRAMP, FISMA, and now AI-specific governance attestations. Vendors who can demonstrate compliance win contracts. The rest don't make the shortlist.</p>
+</div>
+<div class="pain-card">
+<h3>⏰ Budget Cycle Pressure</h3>
+<p>FY2026-2027 budgets are being finalized now. Agencies that can articulate AI governance needs with clear frameworks get funding. Those still figuring it out get cut.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">Regulatory Timeline</p>
+<h2>Four deadlines government agencies can't ignore</h2>
+
+<div class="deadline-grid">
+<div class="deadline-card">
+<div class="date">April 3, 2026</div>
+<div class="name">HHS AI Governance Mandate</div>
+</div>
+<div class="deadline-card">
+<div class="date">June 30, 2026</div>
+<div class="name">Colorado SB 205 Enforcement</div>
+</div>
+<div class="deadline-card">
+<div class="date">August 2, 2026</div>
+<div class="name">EU AI Act (High-Risk)</div>
+</div>
+<div class="deadline-card">
+<div class="date">2026-2027</div>
+<div class="name">NASCIO AI Governance Standards</div>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">The Solution</p>
+<h2>AI governance built for government procurement cycles</h2>
+<ul class="solution-list">
+<li><strong>AI System Inventory & Classification</strong> — Catalogue every AI tool across your agency. Classify by risk level under applicable federal and state frameworks. Identify gaps before auditors do.</li>
+<li><strong>Policy Development</strong> — Custom AI governance policies aligned with NIST AI RMF, state requirements, and your agency's specific mandate. Not boilerplate — built for your jurisdiction.</li>
+<li><strong>Impact Assessments</strong> — Algorithmic impact assessments for AI systems making consequential decisions. Required under SB 205 and becoming standard for federal contractors.</li>
+<li><strong>Bias Testing & Monitoring</strong> — Continuous testing for protected-class bias in AI systems used for benefits determination, enforcement, hiring, or public-facing services.</li>
+<li><strong>Vendor AI Governance Attestation</strong> — Framework for evaluating AI governance readiness of technology vendors. If you're procuring AI, you need this.</li>
+<li><strong>Training & Change Management</strong> — Government-specific AI governance training for staff. No jargon. Practical workflows. Meets mandatory training requirements.</li>
+</ul>
+</section>
+
+<section>
+<p class="section-tag">Target Segments</p>
+<h2>Who we work with</h2>
+<div class="pain-grid">
+<div class="pain-card">
+<h3>State Agencies</h3>
+<p>Chief Data Officers and Chief AI Officers in Colorado, California, Texas, New York, Illinois, Virginia, and Connecticut. Helping navigate state AI laws while maintaining operational efficiency.</p>
+</div>
+<div class="pain-card">
+<h3>Federal Contractors</h3>
+<p>Booz Allen Hamilton, Palantir, Leidos, SAIC, and mid-tier GovTech firms. AI governance attestation is becoming a proposal requirement — we make sure you're ready.</p>
+</div>
+<div class="pain-card">
+<h3>Municipal Government</h3>
+<p>City and county agencies adopting AI for 311 services, permitting, public safety, and constituent communication. Governance frameworks scaled for smaller budgets.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">Conference Presence</p>
+<h2>Where to find us in 2026</h2>
+<div class="pain-grid">
+<div class="pain-card">
+<h3>NASCIO Midyear — Apr 26-29</h3>
+<p>Philadelphia, PA. State CIO/CDO audience. AI governance track. Speaker application submitted.</p>
+</div>
+<div class="pain-card">
+<h3>NASCIO Annual — Sep 27-30</h3>
+<p>San Diego, CA. Full state technology leadership audience. Booth + speaking slot target.</p>
+</div>
+</div>
+</section>
+
+<div class="final-cta">
+<h2>Ready to build your AI governance framework?</h2>
+<p>Book a free 30-minute assessment. We'll map your AI landscape, identify compliance gaps, and build a roadmap aligned with your budget cycle.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Free Assessment</a>
+<br><br>
+<a href="/blog/shadow-ai-governance-timebomb/" class="cta-btn-outline">Read: Shadow AI Is Your Biggest Risk</a>
+</div>
+
+<footer>
+<p>© 2026 AfrexAI. AI Governance Solutions for Government & Public Sector.</p>
+<p style="margin-top:0.5rem"><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/contact/">Contact</a> · <a href="/blog/">Blog</a></p>
+</footer>
+</body>
+</html>

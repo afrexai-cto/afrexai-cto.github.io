@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent ROI Calculator — AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff;color:#1a1a1a;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.7;max-width:820px;margin:0 auto;padding:40px 32px}
+.cover{text-align:center;padding:60px 0 50px;border-bottom:3px solid #0066FF;margin-bottom:48px}
+.cover .logo{font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:20px}
+.cover h1{font-size:34px;font-weight:800;color:#0a0a0a;line-height:1.2;margin-bottom:12px}
+.cover .subtitle{font-size:18px;color:#666}
+.cover .meta{font-size:13px;color:#999;margin-top:12px}
+h2{font-size:22px;font-weight:700;color:#0a0a0a;margin:48px 0 20px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+h3{font-size:17px;font-weight:700;margin:24px 0 12px}
+p,.note{font-size:15px;color:#555;margin-bottom:16px}
+.formula-box{background:#f0f7ff;border:2px solid #0066FF;border-radius:12px;padding:28px 32px;margin:24px 0;text-align:center}
+.formula-box .label{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#0066FF;margin-bottom:12px}
+.formula-box .formula{font-size:22px;font-weight:800;color:#0a0a0a;font-family:'Courier New',monospace}
+.formula-box .desc{font-size:13px;color:#888;margin-top:8px}
+table{width:100%;border-collapse:collapse;margin:20px 0 32px}
+th{text-align:left;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#888;padding:10px 12px;border-bottom:2px solid #e0e0e0}
+td{padding:14px 12px;border-bottom:1px solid #f0f0f0;font-size:15px}
+td:last-child{text-align:right;font-weight:600}
+.input-cell{background:#fffde7;border:1px dashed #FFD700;border-radius:6px;min-width:120px;padding:8px 12px;text-align:right}
+.result-row{background:#f0f7ff;font-weight:700}
+.result-row td{color:#0066FF;font-size:16px}
+.benchmark{background:#fafafa;border:1px solid #eee;border-radius:12px;padding:28px;margin:32px 0}
+.benchmark h3{margin-top:0;color:#0a0a0a}
+.benchmark-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.b-card{background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:16px;text-align:center}
+.b-card .industry{font-size:13px;font-weight:600;color:#888;margin-bottom:4px}
+.b-card .value{font-size:28px;font-weight:800;color:#0a0a0a}
+.b-card .unit{font-size:12px;color:#999}
+.step{display:flex;gap:16px;margin:20px 0;align-items:flex-start}
+.step-num{width:32px;height:32px;background:#0066FF;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.step-content{flex:1}
+.step-content strong{display:block;margin-bottom:4px}
+.projection{margin:32px 0}
+.projection table{font-size:14px}
+.projection th{font-size:12px}
+.highlight{background:#e8f5e9;color:#2e7d32;font-weight:700}
+.cta{text-align:center;padding:48px 32px;background:linear-gradient(135deg,#0a0a0a,#1a1a1a);border-radius:12px;margin-top:48px}
+.cta h2{font-size:28px;color:#fff;font-weight:800;margin-bottom:10px;border:none;padding:0}
+.cta p{color:#999;margin-bottom:24px;font-size:16px}
+.cta a{display:inline-block;background:#0066FF;color:#fff;font-weight:700;padding:16px 40px;border-radius:8px;font-size:16px;text-decoration:none}
+.footer{text-align:center;padding:32px 0;font-size:12px;color:#ccc;margin-top:40px}
+.footer span{color:#0066FF}
+@media print{
+  body{padding:20px;font-size:13px}
+  .cover{padding:30px 0 20px}
+  .cover h1{font-size:26px}
+  .cta{background:#f5f5f5 !important}
+  .cta h2,.cta p{color:#0a0a0a !important}
+  .cta a{background:#0a0a0a !important;color:#fff !important}
+  .input-cell{border:1px solid #ccc}
+}
+</style>
+    <meta property="og:title" content="AI Agent ROI Calculator — AfrexAI">
+    <meta property="og:description" content="AI Agent ROI Calculator — AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/lead-magnets/roi-template.html">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Agent ROI Calculator — AfrexAI">
+    <meta name="twitter:description" content="AI Agent ROI Calculator — AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+<div class="cover">
+  <div class="logo">AfrexAI</div>
+  <h1>AI Agent ROI Calculator Template</h1>
+  <div class="subtitle">Calculate the exact financial impact of deploying AI agents in your business</div>
+  <div class="meta">Fillable Template &nbsp;•&nbsp; 2026 Edition</div>
+</div>
+
+<h2>The Core Formula</h2>
+<div class="formula-box">
+  <div class="label">Monthly Net Savings</div>
+  <div class="formula">(Hours Saved × Hourly Rate) − Agent Cost</div>
+  <div class="desc">This is the foundation. Everything below helps you fill in these three variables accurately.</div>
+</div>
+
+<h2>Step 1: Calculate Your Current Labor Cost</h2>
+<p>Identify the tasks you'd delegate to AI agents and calculate what they currently cost you.</p>
+<table>
+  <tr><th>Variable</th><th>Your Number</th></tr>
+  <tr><td>Number of employees performing target tasks</td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>Average hours/week spent on target tasks (per person)</td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td><strong>Total hours/week</strong> (employees × hours)</td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td><strong>Total hours/month</strong> (× 4.33)</td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>Fully-loaded hourly rate (salary + benefits + overhead)</td><td><div class="input-cell">$</div></td></tr>
+  <tr class="result-row"><td>Current Monthly Cost of Target Tasks</td><td><div class="input-cell">$</div></td></tr>
+</table>
+<p class="note" style="font-size:13px;color:#888">💡 <strong>Tip:</strong> Fully-loaded cost is typically 1.3–1.5× base salary. A $60K/yr employee costs ~$78K–$90K fully loaded, or $37–$43/hr.</p>
+
+<h2>Step 2: Estimate AI Agent Coverage</h2>
+<p>AI agents won't replace 100% of a task on day one. Use realistic coverage estimates.</p>
+<table>
+  <tr><th>Task Type</th><th>Typical AI Coverage</th><th>Your Estimate</th></tr>
+  <tr><td>Data entry & formatting</td><td>85–95%</td><td><div class="input-cell">%</div></td></tr>
+  <tr><td>Email triage & response</td><td>60–80%</td><td><div class="input-cell">%</div></td></tr>
+  <tr><td>Report generation</td><td>70–90%</td><td><div class="input-cell">%</div></td></tr>
+  <tr><td>Customer support (Tier 1)</td><td>65–85%</td><td><div class="input-cell">%</div></td></tr>
+  <tr><td>Scheduling & coordination</td><td>80–95%</td><td><div class="input-cell">%</div></td></tr>
+  <tr><td>Research & summarization</td><td>70–85%</td><td><div class="input-cell">%</div></td></tr>
+  <tr class="result-row"><td colspan="2">Weighted average coverage</td><td><div class="input-cell">%</div></td></tr>
+</table>
+
+<h2>Step 3: Calculate Monthly Savings</h2>
+<table>
+  <tr><th>Calculation</th><th>Amount</th></tr>
+  <tr><td>Monthly hours currently spent (from Step 1)</td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>× AI coverage rate (from Step 2)</td><td><div class="input-cell">%</div></td></tr>
+  <tr><td>= <strong>Hours saved per month</strong></td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>× Fully-loaded hourly rate</td><td><div class="input-cell">$</div></td></tr>
+  <tr><td>= <strong>Gross monthly savings</strong></td><td><div class="input-cell">$</div></td></tr>
+  <tr><td>− AI agent service cost (monthly)</td><td><div class="input-cell">$</div></td></tr>
+  <tr class="result-row"><td><strong>= Net Monthly Savings</strong></td><td><div class="input-cell">$</div></td></tr>
+</table>
+
+<div class="formula-box">
+  <div class="label">ROI Percentage</div>
+  <div class="formula">(Net Savings ÷ Agent Cost) × 100 = ROI%</div>
+  <div class="desc">Example: $8,000 savings on a $3,000/mo agent = 167% ROI</div>
+</div>
+
+<h2>Step 4: 12-Month Projection</h2>
+<p>AI agents improve over time. Model a realistic ramp-up:</p>
+<div class="projection">
+<table>
+  <tr><th>Month</th><th>Coverage</th><th>Hours Saved</th><th>Gross Savings</th><th>Agent Cost</th><th>Net Savings</th><th>Cumulative</th></tr>
+  <tr><td>1</td><td>50%</td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>2</td><td>65%</td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>3</td><td>75%</td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>4–6</td><td>80%</td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr><td>7–12</td><td>85–90%</td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td><td><div class="input-cell">&nbsp;</div></td></tr>
+  <tr class="result-row"><td colspan="5"><strong>12-Month Total Net Savings</strong></td><td colspan="2"><div class="input-cell">$</div></td></tr>
+</table>
+</div>
+
+<h2>Industry Benchmarks</h2>
+<div class="benchmark">
+  <h3>Average Monthly Savings by Department (AI Agent Deployments, 2025–2026)</h3>
+  <div class="benchmark-grid">
+    <div class="b-card"><div class="industry">Customer Support</div><div class="value">$6,200</div><div class="unit">per agent / month saved</div></div>
+    <div class="b-card"><div class="industry">Sales Operations</div><div class="value">$8,400</div><div class="unit">per agent / month saved</div></div>
+    <div class="b-card"><div class="industry">Finance & Accounting</div><div class="value">$5,800</div><div class="unit">per agent / month saved</div></div>
+    <div class="b-card"><div class="industry">HR & Recruiting</div><div class="value">$4,900</div><div class="unit">per agent / month saved</div></div>
+  </div>
+</div>
+<div class="benchmark">
+  <h3>Key Metrics Across 200+ Deployments</h3>
+  <div class="benchmark-grid">
+    <div class="b-card"><div class="industry">Average ROI</div><div class="value">247%</div><div class="unit">within first 6 months</div></div>
+    <div class="b-card"><div class="industry">Breakeven Time</div><div class="value">2.3</div><div class="unit">months on average</div></div>
+    <div class="b-card"><div class="industry">Hours Reclaimed</div><div class="value">160+</div><div class="unit">per agent / month</div></div>
+    <div class="b-card"><div class="industry">Error Rate Reduction</div><div class="value">62%</div><div class="unit">average improvement</div></div>
+  </div>
+</div>
+
+<h2>Hidden Savings to Consider</h2>
+<p>The formula above captures direct savings. Don't forget these multipliers:</p>
+<table>
+  <tr><th>Hidden Benefit</th><th>Typical Impact</th></tr>
+  <tr><td>Reduced hiring & onboarding costs</td><td>$4,000–$15,000 per avoided hire</td></tr>
+  <tr><td>Eliminated overtime</td><td>15–25% of current overtime spend</td></tr>
+  <tr><td>Faster turnaround time → revenue acceleration</td><td>Varies (often 2–5× direct savings)</td></tr>
+  <tr><td>Reduced employee turnover (less burnout)</td><td>$8,000–$25,000 per retained employee</td></tr>
+  <tr><td>24/7 availability (no shifts, no PTO)</td><td>2–3× capacity vs. single employee</td></tr>
+</table>
+
+<div class="cta">
+  <h2 style="border:none">Want Exact Numbers for YOUR Business?</h2>
+  <p>Our team will analyze your specific workflows, calculate your projected ROI, and build a custom business case — free for qualified businesses.</p>
+  <a href="https://afrexai.com/book">Get Your Custom ROI Analysis →</a>
+</div>
+
+<div class="footer">© 2026 <span>AfrexAI</span> &nbsp;•&nbsp; afrexai.com</div>
+</body>
+</html>

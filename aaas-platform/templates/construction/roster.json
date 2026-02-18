@@ -1,0 +1,24 @@
+{
+  "vertical": "construction",
+  "vertical_label": "Construction",
+  "agents": [
+    {
+      "id": "site-reporter",
+      "name": "Site Reporter",
+      "description": "Compiles daily site reports, logs progress photos, tracks weather delays and milestones",
+      "tier_minimum": "starter"
+    },
+    {
+      "id": "safety-compliance",
+      "name": "Safety & Compliance Monitor",
+      "description": "Tracks OSHA compliance, safety incidents, certification expiry, and toolbox talk schedules",
+      "tier_minimum": "growth"
+    },
+    {
+      "id": "project-coordinator",
+      "name": "Project Coordinator",
+      "description": "Manages subcontractor schedules, material deliveries, RFIs, and change orders",
+      "tier_minimum": "growth"
+    }
+  ]
+}

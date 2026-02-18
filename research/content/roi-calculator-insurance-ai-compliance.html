@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance AI Compliance ROI Calculator | AfrexAI</title>
+<meta name="description" content="Calculate the cost of AI compliance gaps in your insurance operations. See potential fines, efficiency losses, and ROI from automated governance.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e5e5e5; min-height: 100vh; }
+  .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { color: #eab308; font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .subtitle { color: #a3a3a3; margin-bottom: 2rem; font-size: 1rem; }
+  .card { background: #171717; border: 1px solid #262626; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .card h2 { color: #eab308; font-size: 1.1rem; margin-bottom: 1rem; }
+  label { display: block; color: #d4d4d4; font-size: 0.9rem; margin-bottom: 0.4rem; margin-top: 1rem; }
+  label:first-of-type { margin-top: 0; }
+  input[type="number"], select { width: 100%; padding: 0.7rem; background: #262626; border: 1px solid #404040; border-radius: 8px; color: #fff; font-size: 1rem; }
+  input:focus, select:focus { outline: none; border-color: #eab308; }
+  .help { color: #737373; font-size: 0.8rem; margin-top: 0.2rem; }
+  .results { background: #1a1a0a; border: 2px solid #eab308; }
+  .result-row { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid #333; }
+  .result-row:last-child { border-bottom: none; }
+  .result-label { color: #d4d4d4; }
+  .result-value { color: #eab308; font-size: 1.3rem; font-weight: 700; }
+  .result-value.red { color: #ef4444; }
+  .result-value.green { color: #22c55e; }
+  .big-number { font-size: 2rem; text-align: center; padding: 1rem; }
+  .big-number span { display: block; color: #a3a3a3; font-size: 0.9rem; font-weight: 400; }
+  .cta { display: block; width: 100%; padding: 1rem; background: #eab308; color: #0a0a0a; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; text-align: center; margin-top: 1.5rem; text-decoration: none; }
+  .cta:hover { background: #ca8a04; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .stat { text-align: center; padding: 1rem; background: #1c1c1c; border-radius: 8px; }
+  .stat .num { font-size: 1.5rem; font-weight: 700; color: #eab308; }
+  .stat .lbl { font-size: 0.8rem; color: #a3a3a3; margin-top: 0.3rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🛡️ Insurance AI Compliance ROI Calculator</h1>
+  <p class="subtitle">See exactly what AI governance gaps cost your organization — and the ROI of fixing them in 3 weeks.</p>
+
+  <div class="card">
+    <h2>Your Organization</h2>
+    <label>Annual Premium Volume ($)</label>
+    <input type="number" id="premiumVol" value="500000000" step="10000000">
+    <p class="help">Total premiums written annually</p>
+
+    <label>Number of AI Models in Production</label>
+    <input type="number" id="aiModels" value="12" step="1">
+    <p class="help">Underwriting, claims, fraud, pricing, etc.</p>
+
+    <label>States You Operate In</label>
+    <input type="number" id="states" value="15" step="1">
+    <p class="help">Multi-state = multi-regulation exposure</p>
+
+    <label>Current Compliance Staff (FTEs on AI governance)</label>
+    <input type="number" id="compStaff" value="3" step="1">
+
+    <label>Average Compliance Staff Salary ($)</label>
+    <input type="number" id="salary" value="125000" step="5000">
+
+    <label>Primary Line of Business</label>
+    <select id="lob">
+      <option value="property">Property & Casualty</option>
+      <option value="life">Life & Annuity</option>
+      <option value="health">Health</option>
+      <option value="specialty">Specialty / Surplus</option>
+    </select>
+  </div>
+
+  <div class="card">
+    <h2>Risk Exposure</h2>
+    <label>Do you operate in Colorado? (SB 24-205)</label>
+    <select id="colorado">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <label>Have you had a regulatory inquiry in the last 2 years?</label>
+    <select id="inquiry">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+
+    <label>Do you have documented AI model governance?</label>
+    <select id="governance">
+      <option value="no">No — ad hoc processes</option>
+      <option value="partial">Partial — some documentation</option>
+      <option value="yes">Yes — formal framework</option>
+    </select>
+  </div>
+
+  <div class="card results" id="resultsCard">
+    <h2>📊 Your AI Compliance Risk Profile</h2>
+    <div class="big-number">
+      <span>Annual Risk Exposure</span>
+      <span class="result-value red" id="totalRisk">$0</span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Regulatory Fine Exposure (per state)</span>
+      <span class="result-value red" id="fineExposure">$0</span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Market Conduct Exam Cost (if triggered)</span>
+      <span class="result-value red" id="examCost">$0</span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Manual Compliance Labor Cost / Year</span>
+      <span class="result-value red" id="laborCost">$0</span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Remediation Cost (if violation found)</span>
+      <span class="result-value red" id="remediationCost">$0</span>
+    </div>
+
+    <h2 style="margin-top:1.5rem">✅ With AfrexAI Automated Governance</h2>
+    <div class="stat-grid">
+      <div class="stat"><div class="num" id="savedTime">0%</div><div class="lbl">Compliance Time Saved</div></div>
+      <div class="stat"><div class="num" id="savedCost">$0</div><div class="lbl">Annual Savings</div></div>
+      <div class="stat"><div class="num" id="roiMultiple">0x</div><div class="lbl">ROI (Year 1)</div></div>
+      <div class="stat"><div class="num" id="payback">0</div><div class="lbl">Payback Period</div></div>
+    </div>
+
+    <a class="cta" href="https://afrexai-cto.github.io/context-packs/" target="_blank">Get AI Governance in 3 Weeks → Book a Call</a>
+  </div>
+
+  <p style="text-align:center;color:#525252;font-size:0.8rem;margin-top:2rem;">© 2026 AfrexAI. Estimates based on NAIC model bulletins, state regulatory precedents, and industry benchmarks.</p>
+</div>
+
+<script>
+function fmt(n) {
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+  if (n >= 1000) return '$' + (n/1000).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function calc() {
+  const pv = +document.getElementById('premiumVol').value;
+  const models = +document.getElementById('aiModels').value;
+  const states = +document.getElementById('states').value;
+  const staff = +document.getElementById('compStaff').value;
+  const salary = +document.getElementById('salary').value;
+  const colorado = document.getElementById('colorado').value === 'yes';
+  const inquiry = document.getElementById('inquiry').value === 'yes';
+  const gov = document.getElementById('governance').value;
+
+  // Fine exposure: $10K-$50K per violation per state, assume 1 model violation
+  const finePerState = gov === 'no' ? 50000 : gov === 'partial' ? 25000 : 10000;
+  const fineTotal = finePerState * states * (colorado ? 1.5 : 1) * (inquiry ? 2 : 1);
+
+  // Market conduct exam: $200K-$500K depending on size
+  const examCost = pv > 1e9 ? 500000 : pv > 500e6 ? 350000 : 200000;
+
+  // Labor cost
+  const laborCost = staff * salary;
+
+  // Remediation: 0.1-0.3% of premium volume
+  const remRate = gov === 'no' ? 0.003 : gov === 'partial' ? 0.0015 : 0.0005;
+  const remediation = pv * remRate;
+
+  // Risk probability weighting
+  const riskMult = gov === 'no' ? 0.4 : gov === 'partial' ? 0.2 : 0.05;
+  const totalRisk = (fineTotal + examCost + remediation) * riskMult + laborCost;
+
+  // AfrexAI savings
+  const timeSaved = gov === 'no' ? 70 : gov === 'partial' ? 50 : 30;
+  const laborSaved = laborCost * (timeSaved / 100);
+  const riskReduction = (fineTotal + examCost + remediation) * riskMult * 0.8;
+  const totalSaved = laborSaved + riskReduction;
+  const investmentCost = 120000; // typical engagement
+  const roi = totalSaved / investmentCost;
+  const paybackMonths = Math.max(1, Math.round(12 / roi));
+
+  document.getElementById('totalRisk').textContent = fmt(totalRisk);
+  document.getElementById('fineExposure').textContent = fmt(fineTotal);
+  document.getElementById('examCost').textContent = fmt(examCost);
+  document.getElementById('laborCost').textContent = fmt(laborCost);
+  document.getElementById('remediationCost').textContent = fmt(remediation);
+  document.getElementById('savedTime').textContent = timeSaved + '%';
+  document.getElementById('savedCost').textContent = fmt(totalSaved);
+  document.getElementById('roiMultiple').textContent = roi.toFixed(1) + 'x';
+  document.getElementById('payback').textContent = paybackMonths + ' mo';
+}
+
+document.querySelectorAll('input, select').forEach(el => el.addEventListener('change', calc));
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

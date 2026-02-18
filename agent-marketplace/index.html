@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Marketplace — Hire Your AI Workforce | AfrexAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+.gold{color:#FFD700}
+nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700}
+nav .links{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.9rem}
+nav .links a{color:#aaa}nav .links a:hover{color:#FFD700}
+.hero{text-align:center;padding:5rem 2rem 3rem;max-width:900px;margin:0 auto}
+.hero h1{font-size:2.8rem;margin-bottom:1rem;line-height:1.2}.hero h1 span{color:#FFD700}
+.hero p{font-size:1.2rem;color:#999;max-width:700px;margin:0 auto 2rem}
+.badge-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.badge{background:#1a1a1a;border:1px solid #333;padding:.5rem 1.2rem;border-radius:2rem;font-size:.85rem;color:#ccc}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2rem;max-width:1200px;margin:0 auto;padding:0 2rem 4rem}
+.agent-card{background:#111;border:1px solid #222;border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s}
+.agent-card:hover{border-color:#FFD700;transform:translateY(-4px)}
+.card-header{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid #1a1a1a}
+.card-header .icon{font-size:2rem;margin-bottom:.5rem}
+.card-header h3{font-size:1.3rem;color:#fff;margin-bottom:.3rem}
+.card-header .role{color:#FFD700;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.card-body{padding:1.5rem}
+.card-body p{font-size:.95rem;color:#aaa;margin-bottom:1rem}
+.integrations{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.integrations span{background:#1a1a1a;border:1px solid #333;padding:.25rem .7rem;border-radius:1rem;font-size:.75rem;color:#ccc}
+.tiers{display:flex;gap:.5rem;margin-bottom:1.2rem}
+.tier{flex:1;text-align:center;padding:.5rem;background:#1a1a1a;border-radius:8px;font-size:.75rem}
+.tier .name{color:#FFD700;font-weight:600;display:block;margin-bottom:.2rem}
+.tier .desc{color:#888}
+.cta-btn{display:block;width:100%;padding:.85rem;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-weight:700;font-size:1rem;border:none;border-radius:10px;cursor:pointer;text-align:center;transition:opacity .3s}
+.cta-btn:hover{opacity:.9;text-decoration:none}
+.section-title{text-align:center;padding:3rem 2rem 2rem}
+.section-title h2{font-size:2rem;color:#fff}.section-title p{color:#888;margin-top:.5rem}
+.how-it-works{max-width:900px;margin:0 auto;padding:0 2rem 4rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.step{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;text-align:center}
+.step .num{font-size:2rem;color:#FFD700;font-weight:800;margin-bottom:.5rem}
+.step h4{color:#fff;margin-bottom:.5rem}.step p{color:#888;font-size:.9rem}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #222;color:#666;font-size:.85rem}
+@media(max-width:600px){.hero h1{font-size:1.8rem}.agents-grid{grid-template-columns:1fr}nav{flex-direction:column;gap:.8rem}}
+</style>
+    <meta property="og:title" content="AI Agent Marketplace — Hire Your AI Workforce | AfrexAI">
+    <meta property="og:description" content="AI Agent Marketplace — Hire Your AI Workforce | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+    <meta property="og:url" content="https://afrexai-cto.github.io/agent-marketplace/">
+    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Agent Marketplace — Hire Your AI Workforce | AfrexAI">
+    <meta name="twitter:description" content="AI Agent Marketplace — Hire Your AI Workforce | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
+</head>
+<body>
+<nav>
+<div class="logo">AfrexAI</div>
+<div class="links">
+<a href="/agent-marketplace/">Marketplace</a>
+<a href="/skills/">Skills</a>
+<a href="/case-studies/">Case Studies</a>
+<a href="/pricing/">Pricing</a>
+<a href="/context-packs/">Context Packs</a>
+<a href="/ai-revenue-calculator/">Calculator</a>
+<a href="/agent-setup/">Setup Wizard</a>
+</div>
+</nav>
+
+<div class="hero">
+<h1>Hire an <span>AI Employee</span> Today</h1>
+<p>Pre-built AI agent accounts with their own email, integrations, and workflows. Subscribe to an agent like you'd hire an employee — except it works 24/7 and never calls in sick.</p>
+<div class="badge-row">
+<span class="badge">🤖 Own Gmail & Google Drive</span>
+<span class="badge">⚡ Ready in 24 Hours</span>
+<span class="badge">🔄 Works 24/7</span>
+<span class="badge">📈 Scales Instantly</span>
+</div>
+</div>
+
+<div class="agents-grid">
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">🗂️</div>
+<h3>Executive Assistant</h3>
+<div class="role">Operations & Admin</div>
+</div>
+<div class="card-body">
+<p>Manages your calendar, triages emails, drafts responses, books meetings, and keeps your day organised. Like a chief of staff that never sleeps.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📅 Google Calendar</span><span>📁 Google Drive</span><span>💬 Slack</span><span>📋 Notion</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">Email + Calendar</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">+ Slack + Notion</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Full Suite</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">📊</div>
+<h3>Marketing Analyst</h3>
+<div class="role">Marketing & Analytics</div>
+</div>
+<div class="card-body">
+<p>Tracks campaign performance, pulls reports from ad platforms, identifies trends, and sends weekly insights. Your always-on marketing brain.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📊 Google Analytics</span><span>📈 Google Ads</span><span>📁 Google Sheets</span><span>🎯 Meta Ads</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">Weekly Reports</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">+ Multi-platform</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">+ Custom Dashboards</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">✍️</div>
+<h3>Content Writer</h3>
+<div class="role">Content & Communications</div>
+</div>
+<div class="card-body">
+<p>Writes blog posts, social media content, email sequences, and case studies in your brand voice. Produces humanised, on-brand content daily.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📁 Google Docs</span><span>📱 Buffer</span><span>🌐 WordPress</span><span>💼 LinkedIn</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">5 pieces/wk</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">15 pieces/wk</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Unlimited</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">📞</div>
+<h3>Outbound Sales</h3>
+<div class="role">Sales & Revenue</div>
+</div>
+<div class="card-body">
+<p>Researches prospects, writes personalised outreach, follows up automatically, and logs everything in your CRM. Your tireless SDR.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>💼 LinkedIn</span><span>🗃️ HubSpot</span><span>📁 Google Sheets</span><span>🔍 Apollo</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">50 leads/mo</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">200 leads/mo</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Unlimited</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">💰</div>
+<h3>Bookkeeper</h3>
+<div class="role">Finance & Accounting</div>
+</div>
+<div class="card-body">
+<p>Categorises transactions, reconciles accounts, generates financial reports, and flags anomalies. Keeps your books clean around the clock.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📊 QuickBooks</span><span>📁 Google Sheets</span><span>🏦 Xero</span><span>📄 Stripe</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">Monthly Reports</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">+ Weekly + Alerts</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Full Finance Suite</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">🎯</div>
+<h3>COO Agent</h3>
+<div class="role">Operations & Strategy</div>
+</div>
+<div class="card-body">
+<p>Monitors KPIs, coordinates between teams, identifies bottlenecks, and produces operational reports. Your AI chief operating officer.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📋 Notion</span><span>💬 Slack</span><span>📊 Google Sheets</span><span>📈 Looker</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">KPI Tracking</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">+ Team Coord</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Full Ops Suite</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">🧠</div>
+<h3>Strategist</h3>
+<div class="role">Strategy & Research</div>
+</div>
+<div class="card-body">
+<p>Runs competitive analysis, market research, and strategic planning. Delivers actionable insights and go-to-market recommendations weekly.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📁 Google Drive</span><span>📊 Google Sheets</span><span>🔍 Web Research</span><span>📋 Notion</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">Monthly Intel</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">Weekly + Alerts</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Daily + Custom</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">💡</div>
+<h3>Consultant</h3>
+<div class="role">Advisory & Analysis</div>
+</div>
+<div class="card-body">
+<p>Analyses your business processes, identifies automation opportunities, and delivers implementation roadmaps. On-demand AI advisory.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📁 Google Drive</span><span>📊 Google Sheets</span><span>📋 Notion</span><span>💬 Slack</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">1 Audit/mo</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">Ongoing Advisory</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Embedded Team</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+<div class="agent-card">
+<div class="card-header">
+<div class="icon">📋</div>
+<h3>Project Manager</h3>
+<div class="role">Project & Delivery</div>
+</div>
+<div class="card-body">
+<p>Tracks tasks, sends status updates, manages deadlines, and keeps projects on track. Your AI PM that never misses a follow-up.</p>
+<div class="integrations">
+<span>📧 Gmail</span><span>📋 Notion</span><span>✅ Asana</span><span>💬 Slack</span><span>📊 Google Sheets</span>
+</div>
+<div class="tiers">
+<div class="tier"><span class="name">Starter</span><span class="desc">1 Project</span></div>
+<div class="tier"><span class="name">Pro</span><span class="desc">5 Projects</span></div>
+<div class="tier"><span class="name">Enterprise</span><span class="desc">Unlimited</span></div>
+</div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Get Started →</a>
+</div>
+</div>
+
+</div>
+
+<div class="section-title">
+<h2>How It Works</h2>
+<p>Three steps to your AI workforce</p>
+</div>
+<div class="how-it-works">
+<div class="step"><div class="num">01</div><h4>Choose Your Agent</h4><p>Browse the marketplace and pick the AI employees your business needs.</p></div>
+<div class="step"><div class="num">02</div><h4>We Set It Up</h4><p>We create its accounts (Gmail, Drive, CRM) and configure your workflows.</p></div>
+<div class="step"><div class="num">03</div><h4>It Gets to Work</h4><p>Your AI employee starts delivering from day one. Monitor, adjust, scale.</p></div>
+</div>
+
+<footer>
+<p>© 2026 AfrexAI — AI Agent Workforce Solutions</p>
+<p style="margin-top:.5rem"><a href="/context-packs/">Context Packs</a> · <a href="/ai-revenue-calculator/">Revenue Calculator</a> · <a href="/agent-setup/">Setup Wizard</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "contract-review",
+    "company": "pacific-legal",
+    "companyName": "Pacific Legal Group",
+    "agent": "document-analyst",
+    "agentName": "Document Analyst",
+    "prompt": "You are a Document Analyst AI agent at Pacific Legal Group. Review this contract excerpt and produce a professional analysis.\n\n{contract_text}\n\nProduce a detailed contract review including:\n1. Executive summary\n2. Key terms identified\n3. Non-standard or concerning clauses flagged\n4. Risk assessment\n5. Recommended modifications\n6. Overall recommendation (Approve/Approve with changes/Reject)",
+    "data_source": "sample-data/pacific-legal/documents/sample-contract.txt",
+    "prepare": "full-file",
+    "output_type": "contract-review",
+    "output_format": "markdown",
+    "actionTemplate": "Completed contract review and risk assessment",
+    "activityType": "document-review"
+  },
+  {
+    "id": "brief-summary",
+    "company": "pacific-legal",
+    "companyName": "Pacific Legal Group",
+    "agent": "document-analyst",
+    "agentName": "Document Analyst",
+    "prompt": "You are a Document Analyst AI agent at Pacific Legal Group. Summarize this legal brief.\n\n{brief_text}\n\nProduce a professional brief summary including:\n1. Case overview\n2. Key arguments\n3. Legal standards cited\n4. Strengths and weaknesses\n5. Recommended response strategy",
+    "data_source": "sample-data/pacific-legal/documents/sample-brief.txt",
+    "prepare": "full-file",
+    "output_type": "brief-summary",
+    "output_format": "markdown",
+    "actionTemplate": "Generated legal brief summary and analysis",
+    "activityType": "document-review"
+  },
+  {
+    "id": "client-followup",
+    "company": "pacific-legal",
+    "companyName": "Pacific Legal Group",
+    "agent": "client-followup",
+    "agentName": "Client Follow-up Coordinator",
+    "prompt": "You are a Client Follow-up Coordinator AI agent at Pacific Legal Group. Draft a professional status update email for this client.\n\nClient: {client_name}\nMatter: {matter}\nAttorney: {assigned_to}\nAction needed: {action_needed}\nDue: {due_date}\nPriority: {priority}\n\nProduce a professional, warm but concise client status update email including:\n1. Current case status\n2. Recent actions taken\n3. Upcoming deadlines\n4. Next steps\n5. Call to action if needed",
+    "data_source": "sample-data/pacific-legal/follow-ups.csv",
+    "prepare": "random-row",
+    "output_type": "client-email",
+    "output_format": "markdown",
+    "actionTemplate": "Drafted client status update for {client_name} — {matter}",
+    "activityType": "client-communication"
+  }
+]

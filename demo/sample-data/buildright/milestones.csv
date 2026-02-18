@@ -1,0 +1,21 @@
+project_id,milestone,target_date,actual_date,status
+BR-101,Foundation and below-grade work,2025-11-15,2025-11-10,completed
+BR-101,Structural steel erection,2026-01-15,2026-01-18,completed
+BR-101,Exterior envelope and waterproofing,2026-03-15,,in_progress
+BR-101,MEP rough-in,2026-05-01,,upcoming
+BR-102,Hazardous material abatement,2025-12-01,2025-12-15,completed
+BR-102,Structural reinforcement,2026-01-15,2026-02-01,completed
+BR-102,HVAC system replacement,2026-02-28,,delayed
+BR-102,Interior finishes and flooring,2026-04-15,,upcoming
+BR-103,Site clearing and grading,2026-01-05,2026-01-05,completed
+BR-103,Foundation work units 20-40,2026-02-15,,in_progress
+BR-103,Framing units 20-40,2026-04-01,,upcoming
+BR-103,Roofing and exterior,2026-06-15,,upcoming
+BR-104,Foundation and ground floor slab,2025-08-15,2025-08-12,completed
+BR-104,Cast-in-place concrete levels 1-3,2025-11-30,2025-11-20,completed
+BR-104,Cast-in-place concrete levels 4-6,2026-01-30,2026-01-22,completed
+BR-104,Elevator and stair installation,2026-03-01,,in_progress
+BR-104,Striping and signage,2026-04-15,,upcoming
+BR-105,Permit approvals and site prep,2026-01-15,2026-01-30,completed
+BR-105,Foundation excavation and pour,2026-03-01,,delayed
+BR-105,Structural steel erection,2026-05-15,,upcoming
