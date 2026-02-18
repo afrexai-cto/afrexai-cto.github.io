@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech AI ROI Calculator | AfrexAI</title>
+<meta name="description" content="Calculate how much your EdTech platform loses to support costs, content creation overhead, and student churn. See your AI automation ROI in 60 seconds.">
+<meta property="og:title" content="EdTech AI ROI Calculator | AfrexAI">
+<meta property="og:description" content="Calculate your EdTech AI automation ROI in 60 seconds. Support, content, churn — quantified.">
+<meta property="og:url" content="https://afrexai-cto.github.io/verticals/edtech/roi-calculator.html">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EdTech AI ROI Calculator | AfrexAI">
+<meta name="twitter:description" content="Calculate your EdTech AI automation ROI in 60 seconds.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(10px)}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700;letter-spacing:1px}
+nav .links{display:flex;gap:1.5rem;align-items:center}
+nav .links a{color:#ccc;font-size:0.9rem}
+nav .links a:hover{color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:all 0.3s;border:2px solid #FFD700;cursor:pointer}
+.cta-btn:hover{background:transparent;color:#FFD700;text-decoration:none}
+.container{max-width:900px;margin:0 auto;padding:8rem 2rem 4rem}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:1rem}
+h1 span{color:#FFD700}
+.subtitle{font-size:1.1rem;color:#aaa;margin-bottom:3rem;max-width:640px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3rem}
+@media(max-width:768px){.calc-grid{grid-template-columns:1fr}}
+.input-group{margin-bottom:1.5rem}
+.input-group label{display:block;font-size:0.9rem;color:#ccc;margin-bottom:0.5rem;font-weight:500}
+.input-group input,.input-group select{width:100%;padding:0.75rem 1rem;background:#161616;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:1rem}
+.input-group input:focus,.input-group select:focus{outline:none;border-color:#FFD700}
+.input-group .hint{font-size:0.75rem;color:#666;margin-top:0.3rem}
+.results-panel{background:#161616;border:1px solid #333;border-radius:12px;padding:2rem;position:sticky;top:6rem}
+.results-panel h2{color:#FFD700;font-size:1.3rem;margin-bottom:1.5rem}
+.result-row{display:flex;justify-content:space-between;padding:0.75rem 0;border-bottom:1px solid #222}
+.result-row:last-of-type{border-bottom:none}
+.result-row .label{color:#aaa;font-size:0.9rem}
+.result-row .value{font-weight:700;font-size:1rem}
+.result-row .value.gold{color:#FFD700;font-size:1.3rem}
+.result-row .value.red{color:#ef4444}
+.result-row .value.green{color:#22c55e}
+.big-number{text-align:center;margin:2rem 0;padding:2rem;background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:12px}
+.big-number .amount{font-size:3rem;font-weight:800;color:#FFD700}
+.big-number .desc{font-size:0.9rem;color:#aaa;margin-top:0.5rem}
+.cta-section{text-align:center;margin-top:3rem;padding:3rem;background:#161616;border-radius:12px;border:1px solid #333}
+.cta-section h3{font-size:1.4rem;margin-bottom:0.75rem}
+.cta-section p{color:#aaa;margin-bottom:1.5rem}
+.context-bar{background:#111;border:1px solid #222;border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:2.5rem;display:flex;gap:2rem;flex-wrap:wrap;justify-content:center}
+.context-stat{text-align:center}
+.context-stat .num{font-size:1.3rem;font-weight:700;color:#FFD700}
+.context-stat .lbl{font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:.05em}
+footer{text-align:center;padding:3rem 2rem;color:#555;font-size:0.8rem;border-top:1px solid #222;margin-top:4rem}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">AfrexAI</a>
+  <div class="links">
+    <a href="/verticals/edtech/">EdTech</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/results/">Results</a>
+    <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" style="padding:0.5rem 1.2rem;font-size:0.85rem">Book a Call</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>How Much Is <span>Student Churn</span> Really Costing Your Platform?</h1>
+  <p class="subtitle">Answer 6 questions. See what AI agents recover from support overhead, content bottlenecks, and student attrition. No email required.</p>
+
+  <div class="context-bar">
+    <div class="context-stat"><span class="num">$400B</span><span class="lbl">Global EdTech market by 2028</span></div>
+    <div class="context-stat"><span class="num">47%</span><span class="lbl">Of students prefer AI tutoring</span></div>
+    <div class="context-stat"><span class="num">30-50%</span><span class="lbl">Support cost reduction with AI</span></div>
+  </div>
+
+  <div class="calc-grid">
+    <div class="inputs-side">
+      <div class="input-group">
+        <label>Number of active students</label>
+        <input type="number" id="students" value="10000" min="100" max="10000000" oninput="calculate()">
+        <div class="hint">Total active enrolled students on your platform</div>
+      </div>
+      <div class="input-group">
+        <label>Monthly support tickets</label>
+        <input type="number" id="tickets" value="2000" min="0" max="500000" oninput="calculate()">
+        <div class="hint">Help desk, live chat, email inquiries per month</div>
+      </div>
+      <div class="input-group">
+        <label>Cost per support ticket ($)</label>
+        <input type="number" id="ticketCost" value="8" min="1" max="100" oninput="calculate()">
+        <div class="hint">Fully loaded cost including agent time, tools, overhead</div>
+      </div>
+      <div class="input-group">
+        <label>Content creation hours per month</label>
+        <input type="number" id="contentHrs" value="200" min="0" max="10000" oninput="calculate()">
+        <div class="hint">Writing, video, course design, quiz creation</div>
+      </div>
+      <div class="input-group">
+        <label>Hourly content creator cost ($)</label>
+        <input type="number" id="creatorCost" value="55" min="10" max="500" oninput="calculate()">
+        <div class="hint">Avg blended rate for instructional designers & creators</div>
+      </div>
+      <div class="input-group">
+        <label>AI adoption level</label>
+        <select id="aiLevel" onchange="calculate()">
+          <option value="0.20">Conservative (20% impact)</option>
+          <option value="0.40" selected>Moderate (40% impact)</option>
+          <option value="0.60">Aggressive (60% impact)</option>
+        </select>
+        <div class="hint">How aggressively you'd deploy AI agents</div>
+      </div>
+    </div>
+
+    <div class="results-side">
+      <div class="results-panel">
+        <h2>Your EdTech ROI</h2>
+        <div class="result-row">
+          <span class="label">Student support cost / year</span>
+          <span class="value red" id="r-support-cost">—</span>
+        </div>
+        <div class="result-row">
+          <span class="label">Content creation cost / year</span>
+          <span class="value red" id="r-content-cost">—</span>
+        </div>
+        <div class="result-row">
+          <span class="label">Student churn cost / year</span>
+          <span class="value red" id="r-churn-cost">—</span>
+        </div>
+        <div class="result-row">
+          <span class="label">Total waste / year</span>
+          <span class="value red" id="r-total-waste">—</span>
+        </div>
+        <hr style="border:0;border-top:1px solid #333;margin:0.5rem 0">
+        <div class="result-row">
+          <span class="label">Recoverable with AI agents</span>
+          <span class="value green" id="r-recoverable">—</span>
+        </div>
+        <div class="result-row">
+          <span class="label">AfrexAI investment (est.)</span>
+          <span class="value" id="r-investment">—</span>
+        </div>
+        <div class="big-number">
+          <div class="amount" id="r-net-roi">—</div>
+          <div class="desc">Net annual ROI</div>
+        </div>
+        <div class="result-row">
+          <span class="label">ROI multiple</span>
+          <span class="value gold" id="r-multiple">—</span>
+        </div>
+        <div class="result-row">
+          <span class="label">Payback period</span>
+          <span class="value gold" id="r-payback">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h3>Want a custom AI deployment plan for your platform?</h3>
+    <p>Get a free assessment covering AI tutoring, automated support, and content generation — specific to your EdTech operation.</p>
+    <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Free Assessment →</a>
+  </div>
+</div>
+
+<footer>© 2026 AfrexAI</footer>
+
+<script>
+function fmt(n){return n>=1000000?'$'+(n/1000000).toFixed(1)+'M':n>=1000?'$'+(n/1000).toFixed(0)+'K':'$'+n.toFixed(0)}
+function calculate(){
+  const students=Math.max(100,parseInt(document.getElementById('students').value)||10000);
+  const tickets=Math.max(0,parseInt(document.getElementById('tickets').value)||2000);
+  const ticketCost=Math.max(1,parseInt(document.getElementById('ticketCost').value)||8);
+  const contentHrs=Math.max(0,parseInt(document.getElementById('contentHrs').value)||200);
+  const creatorCost=Math.max(10,parseInt(document.getElementById('creatorCost').value)||55);
+  const aiLevel=parseFloat(document.getElementById('aiLevel').value);
+
+  const supportCostYear=tickets*ticketCost*12;
+  const contentCostYear=contentHrs*creatorCost*12;
+  // Student churn: 5% monthly churn × $30 avg subscription
+  const churnCostYear=students*0.05*30*12;
+  const totalWaste=supportCostYear+contentCostYear+churnCostYear;
+  const recoverable=totalWaste*aiLevel;
+
+  // Pricing: $2500/agent/mo for EdTech, scale by student count
+  const agentCount=Math.max(2,Math.ceil(students/5000)+1);
+  const investment=agentCount*2500*12;
+  const netRoi=recoverable-investment;
+  const multiple=investment>0?(recoverable/investment).toFixed(1):'∞';
+  const paybackMonths=recoverable>0?Math.ceil(investment/(recoverable/12)):99;
+
+  document.getElementById('r-support-cost').textContent=fmt(supportCostYear);
+  document.getElementById('r-content-cost').textContent=fmt(contentCostYear);
+  document.getElementById('r-churn-cost').textContent=fmt(churnCostYear);
+  document.getElementById('r-total-waste').textContent=fmt(totalWaste);
+  document.getElementById('r-recoverable').textContent=fmt(recoverable);
+  document.getElementById('r-investment').textContent=fmt(investment)+'/yr';
+  document.getElementById('r-net-roi').textContent=fmt(netRoi>0?netRoi:0);
+  document.getElementById('r-multiple').textContent=multiple+'x';
+  document.getElementById('r-payback').textContent=paybackMonths<=12?paybackMonths+' months':'12+ months';
+}
+calculate();
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 # AfrexAI $11M ARR PLAYBOOK
-*Consolidated: 2026-02-14 22:56 GMT | Living document — updated every 30 min by Revenue Engine*
+*Consolidated: 2026-02-18 19:56 GMT | Living document — updated every 30 min by Revenue Engine*
 
 ---
 
@@ -160,3 +160,17 @@ See: `content/email-sequences/legalweek-pre-event-outreach.md`
 ## Email Templates Ready
 - `content/email-caroline-sweeney-dorsey.md` — Personalized outreach for Dorsey & Whitney CKIO
 - `content/email-template-finserv-compliance.md` — 2 variants (pain-led + results-led) for bank CCOs
+
+## Insurance Vertical — Key Contact (NEW)
+- **Scott Hallworth** — Chief Digital Officer, AIG. Appointed Sep 2025, reports directly to CEO Peter Zaffino since Jan 2026. Previously reported to Claude Wade (EVP, CDO & Global Head of Business Ops & Claims). New in role = building his stack = perfect timing for AI agent pitch. NYC-based.
+- **Claude Wade** — Former CDO at AIG (predecessor to Hallworth). May have moved to advisory/board role — research further.
+
+## Conference Pipeline (Updated Feb 18)
+| Conference | Dates | Location | Vertical | Status |
+|-----------|-------|----------|----------|--------|
+| Legalweek 2026 | Mar 9-12 | NYC Javits | Legal | Outreach sequence drafted, Email 1 OVERDUE |
+| ABA TECHSHOW 2026 | Mar 25-28 | Chicago Hyatt McCormick | Legal | Outreach sequence drafted ✅ |
+| InsurTech Spring 2026 | Apr 2-3 | NYC | Insurance | Outreach sequence drafted ✅ |
+| **Agentic AI for Insurance** | **Apr 1** | **NYC** | **Insurance** | **INVITE-ONLY executive roundtable — PERFECT fit for AfrexAI. Request invite ASAP** |
+| Insurtech Insights USA | Jun 3-4 | NYC | Insurance | NEW — 6,000 attendees |
+| ITC Vegas 2026 | Sep 29-Oct 1 | Las Vegas Mandalay Bay | Insurance | Largest insurtech event globally |

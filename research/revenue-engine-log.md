@@ -1,5 +1,54 @@
 # Revenue Engine Log
 
+## 2026-02-18 12:56 GMT — Run #40
+**Actions taken:**
+1. **Drafted personalized 3-email sequence for Alexander Khalessi, MD, MBA (CIO, UC San Diego Health)** — saved to `content/personalized-emails/alexander-khalessi-ucsd-health.md`. Khalessi is a neurosurgeon-turned-innovation-leader appointed Dec 2025 (~2.5 months in). Dual role as CIO + Interim Asst VC for Health Sciences Innovation & AI. Leads Jacobs Center for Health Innovation + West Health Accelerator. Emails angle on perioperative AI ROI, research-to-clinical translation, and the "prove value fast" pressure of being new in role. Ready for Christina to send week of Feb 24.
+
+**Research findings:**
+- Khalessi: MD + MBA, board-certified neurosurgeon, chair of Neuro Surgery at UCSD
+- Mandate: systemwide AI readiness, digital transformation, capital alignment, technology deployment
+- Oversees applied research → scalable digital solutions pipeline (perfect AfrexAI fit)
+- San Diego biotech ecosystem = additional partnership angles
+- UCSD Health is a top-tier academic medical center — high ACV prospect ($250-500K)
+
+**Expected impact:**
+- 1 high-value prospect ready for outreach ($250-500K ACV)
+- Academic medical center pipeline now has 2 active sequences (UVA + UCSD)
+- Perioperative AI angle is differentiated — most competitors pitch diagnostic AI
+
+**Next run priorities:**
+- Research Aimee Cardwell (Transcend) for partnership pitch
+- Mine Becker's "135 CIOs to know 2026" for more targets
+- Draft LinkedIn post on perioperative AI ROI (content that supports both email sequences)
+- Research insurance vertical CISO/CIO appointments
+
+## 2026-02-18 10:56 GMT — Run #39
+**Actions taken:**
+1. **Cold email sequence drafted: Sonney Sapra (CIO, UVA Health)** — Started Jan 26, only 3 weeks in. 15 years health IT, CHCIO certified. CEO Mitch Rosner specifically called out AI in his appointment announcement = top-down mandate. 3-email nurture using "New Exec" template, HHS April 3 deadline as hook. Saved to `content/cold-email-sonney-sapra-uva-health.md`. ACV: $200-500K.
+2. **Research verified:** Sapra background confirmed — Samaritan Health Services, MBA, CHCIO cert. Academic medical center = innovation budget + research mandate + HHS pressure. Perfect profile.
+
+**Research findings:**
+- UVA Health CEO explicitly mentioned AI in Sapra's appointment announcement — signals institutional AI priority, not just IT maintenance
+- Sapra has CHCIO certification (College of Healthcare Information Management Executives) — he understands health IT governance deeply, compliance-first angle will resonate
+- LinkedIn active (posted about the role) — warm signal for social selling
+- Becker's covered the appointment — high visibility hire
+
+**Expected impact:**
+- UVA Health is a tier-1 academic medical center. Even a meeting builds credibility for healthcare vertical.
+- $200-500K ACV potential. Combined with pipeline from runs #36-38, healthcare prospect pipeline now at $1M+.
+- Reusable sequence template continues to compound — every new CIO appointment = instant 3-email nurture.
+
+**Pipeline update (healthcare vertical):**
+- Sonney Sapra, CIO, UVA Health — Email drafted, ready to send
+- Alexander Khalessi, UC San Diego Health — Still needs research (next run)
+- Becker's "135 CIOs" list — Still needs mining (next run)
+
+**Next run priorities:**
+- Research Alexander Khalessi (UC San Diego Health) — background + draft outreach
+- Mine Becker's 135 healthcare CIOs list for 5 more targets
+- Draft Aimee Cardwell partnership email (Transcend, ex-UnitedHealth)
+- Build SB-205 compliance assessment tool for GitHub Pages
+
 ## 2026-02-13 19:56 GMT — Run #1 (Initial)
 **Actions taken:**
 1. Read all 12 research files + 7 golden nuggets files — fully ingested
@@ -1262,3 +1311,228 @@
 - Build SB-205 compliance assessment HTML tool for GitHub Pages
 - Draft email sequence for "new exec" persona (3-email nurture: intro → case study → meeting ask)
 - Research new CISO/CIO appointments in insurance vertical (our strongest vertical)
+
+## 2026-02-18 09:56 GMT — Run #38
+**Actions taken:**
+1. **Built 3-email "New Exec" nurture sequence** — templated for newly appointed CIOs/CDTOs in their first 90 days. Covers intro, case study, and close. Saved to `content/email-sequence-new-exec-nurture.md`. This is a repeatable sales asset — every new exec appointment is now a trigger for a 3-touch sequence.
+2. **Found 3 new prospects from this week's appointments:**
+   - Sonney Sapra — new CIO at UVA Health (academic medical center, $200-500K ACV)
+   - Aimee Cardwell — new CIO/CISO at Transcend, ex-UnitedHealth Group (partnership potential)
+   - Gregg Cottage — new CIO/CISO at NN Inc. (manufacturing, $140-200K ACV)
+3. **Prospect file created:** `prospects/new-exec-appointments-feb2026.md` with 5 tracked prospects
+
+**Research findings:**
+- Becker's published "135 hospital CIOs to know 2026" list — goldmine for healthcare targeting
+- Forrester: US insurance tech spending shifting "from modernization to intelligence" in 2026 — validates our insurance vertical push
+- Healthcare ransomware costs hit $4.4M average — CISO angle for security-focused AI agents
+- Transcend/Aimee Cardwell appointment signals: compliance + AI convergence is a real market
+
+**Expected impact:**
+- Nurture sequence is reusable infrastructure — turns every "new exec" Google Alert into pipeline
+- 3 new prospects added ($500K-$1M combined ACV potential)
+- UVA Health is high-value: academic medical centers have budget + innovation mandate + HHS deadline pressure
+
+**Next run priorities:**
+- Research Sonney Sapra (UVA Health) deeper — LinkedIn, background, draft personalized Email 1
+- Mine Becker's "135 CIOs to know" list for more healthcare targets
+- Research Alexander Khalessi (UC San Diego Health)
+- Draft cold email for Aimee Cardwell positioning AfrexAI as partnership (not sale)
+
+## 2026-02-18 11:56 GMT — Run #39
+**Actions taken:**
+1. **Drafted personalized 3-email sequence for Sonney Sapra (CIO, UVA Health)** — saved to `content/personalized-emails/sonney-sapra-uva-health.md`. Emails leverage his Jan 26 start date (now ~3 weeks in), CEO Mitch Rosner's public AI comments, CHCIO certification, and HHS April 3 deadline. Ready for Christina to send week of Feb 24.
+2. **Drafted LinkedIn post "The New CIO's 90-Day AI Problem"** — positions AfrexAI as the shortcut for new healthcare CIOs facing HHS deadline pressure. Saved to `content/linkedin-posts/2026-02-18-new-cio-playbook.md`.
+
+**Research findings:**
+- Sonney Sapra: MBA, CHCIO certified, ~15 years health IT, previously Samaritan Health Services, started Jan 26 2026
+- UVA Health CEO explicitly named AI as priority in press release — strong buying signal
+- Academic medical centers have dual angle: clinical AI + research/IRB automation
+
+**Expected impact:**
+- UVA Health = $200-500K ACV prospect. Personalized sequence ready to deploy.
+- LinkedIn post targets the "new CIO" persona broadly — every new appointment becomes a potential inbound lead
+- Combined: 1 warm prospect + 1 content asset that compounds
+
+**Next run priorities:**
+- Research Alexander Khalessi (UC San Diego Health) — draft personalized outreach
+- Mine Becker's "135 CIOs to know 2026" for more targets
+- Draft email for Aimee Cardwell (Transcend) as partnership pitch
+- Research insurance vertical CISO appointments
+
+## 2026-02-18 13:56 GMT — Run #40
+**Actions taken:**
+1. **Drafted personalized 3-email sequence for Alexander Khalessi, MD, MBA (CIO + Interim AVC for Health Sciences Innovation & AI, UC San Diego Health)** — saved to `content/personalized-emails/alexander-khalessi-ucsd-health.md`. Emails leverage his Dec 2025 appointment (~10 weeks in), dual CIO/AVC mandate, Chancellor Khosla's public AI comments, Joan & Irwin Jacobs Center for Health Innovation partnership, and HHS April 3 deadline. Ready for Christina to send week of Feb 24.
+
+**Research findings:**
+- Khalessi: MD + MBA, neurosurgeon, appointed Dec 8 2025
+- Dual role: CIO of UCSD Health + Interim AVC for Health Sciences Innovation and AI (covers academic + clinical)
+- Mandate from Chancellor Khosla to integrate AI across patient care + research
+- Partners with Jacobs Center for Health Innovation — natural pilot home
+- Academic medical center = large budget, innovation-friendly, prestige reference customer
+- HHS April 3 deadline creates urgency (6 weeks from send date)
+
+**Expected impact:**
+- UCSD Health = $300K-$750K ACV prospect (major academic medical center, dual mandate, AI-first leadership)
+- 3-email sequence ready to deploy — Christina sends week of Feb 24
+- If converted: massive reference customer for entire healthcare vertical
+
+**Next run priorities:**
+- Research Aimee Cardwell (Transcend) — draft partnership pitch
+- Mine Becker's "135 CIOs to know 2026" for more healthcare targets
+- Research insurance vertical CISO/CIO appointments for AI governance angle
+- Draft LinkedIn post about HHS April 3 deadline urgency
+
+## 2026-02-18 14:56 GMT — Run #41
+**Actions taken:**
+1. **Drafted 3-email partnership pitch for Aimee Cardwell (CIO & CISO in Residence, Transcend)** — saved to `content/personalized-emails/aimee-cardwell-transcend-partnership.md`. Positions AfrexAI + Transcend as complementary: data governance + AI agent implementation. Cardwell is ex-UnitedHealth CIO/CISO, ex-AmEx VP. Role expanded Feb 12 2026 — perfect timing.
+2. **Drafted LinkedIn post "44 Days — HHS April 3 AI Deadline"** — urgency-driven content targeting healthcare CIOs. Includes CTA ("DM HHS for free timeline"). Saved to `content/linkedin-posts/2026-02-18-hhs-ai-deadline-countdown.md`.
+3. **Added Matt Coy (new CIO, MEMIC Group) to insurance carrier prospects** — hired Jan 2026, replacing retired CIO. Workers' comp = claims processing, fraud detection AI use cases. Fresh appointment = greenfield AI strategy.
+
+**Research findings:**
+- Aimee Cardwell expanded from CISO-only to CIO+CISO in Residence at Transcend (Feb 12 2026)
+- Her thesis: enterprises can't deploy AI responsibly without solving data permissions first → natural AfrexAI partnership angle
+- MEMIC Group: workers' comp insurer, Portland ME, new CIO starting fresh
+
+**Expected impact:**
+- Transcend partnership could unlock referral channel to their entire enterprise client base (data governance → AI implementation handoff)
+- HHS countdown post creates time-sensitive urgency — should drive inbound DMs from healthcare CIOs
+- Matt Coy = net new prospect in insurance vertical
+
+**Next run priorities:**
+- Draft personalized email sequence for Matt Coy (MEMIC Group)
+- Research AIG's new Chief Digital Officer for AI angle
+- Mine Becker's "135 CIOs to know 2026" list
+- Create HHS 44-day implementation timeline (lead magnet for LinkedIn post CTA)
+
+## 2026-02-18 15:56 GMT — Run #42
+**Actions taken:**
+1. **Drafted personalized 3-email sequence for Matt Coy (new CIO, MEMIC Group)** — saved to `content/personalized-emails/matt-coy-memic-group.md`. Leverages his Jan 2026 appointment, "welcome back" angle (returning to MEMIC), WCP® designation, and workers' comp-specific AI use cases (claims triage, fraud detection, LAE reduction). Ready for Christina to send week of Feb 24.
+2. **Created HHS April 3 AI Implementation Timeline lead magnet** — saved to `content/lead-magnets/hhs-ai-implementation-timeline.md`. 44-day week-by-week checklist with deliverables, common pitfalls, and AfrexAI CTA. Designed to pair with the LinkedIn countdown post from Run #41 as downloadable resource.
+
+**Research findings:**
+- Matt Coy: MBA (Westminster), dual BS Accounting + IS&T (Weber State), WCP® certified, PMP®
+- Previously at MEMIC (hence "welcome back"), appointed Jan 2026, replacing Jack Yao (retired after 9 years)
+- MEMIC = super-regional WC insurer, Portland ME — right size for $200K-$400K ACV deal
+- AIG CDO research blocked by rate limit — retry next run
+
+**Expected impact:**
+- Matt Coy = $200K-$400K ACV prospect (new CIO, greenfield AI strategy, WC-specific pain points)
+- HHS timeline = lead magnet that drives inbound from healthcare CIOs seeing the LinkedIn post
+- Combined with Run #41 LinkedIn post: post creates urgency → CTA offers timeline → timeline sells AfrexAI
+
+**Next run priorities:**
+- Research AIG Chief Digital Officer for insurance enterprise play
+- Mine Becker's "135 CIOs to know 2026" for more targets
+- Draft blog post version of HHS timeline for SEO
+- Research Legalweek 2026 conference — Anni Datesh speaking, possible AfrexAI presence
+
+## 2026-02-18 16:56 GMT — Run #43
+**Actions taken:**
+1. **Created SEO blog post "44 Days to HHS April 3 AI Mandate"** — full week-by-week survival guide targeting healthcare CIOs. Saved to `content/blog-hhs-ai-deadline-april3.md`. 4,400 words, includes pitfall avoidance, CTA to book timeline review. Ready to publish on AfrexAI blog/Medium/LinkedIn article.
+2. **Legalweek 2026 intelligence confirmed** — March 9-12, North Javits Center NYC. 6,000+ attendees, 400+ speakers. Discount code 1HAY30 (30% off via HaystackID). **ALERT: Email 1 of Legalweek outreach sequence was due Feb 17 (yesterday). Email 2 due Feb 24. Christina needs to review and send ASAP.**
+3. **AIG CDO research** — rate-limited, retry next run.
+
+**Research findings:**
+- Legalweek = largest legal tech conference. Key vendors: iManage, HaystackID, all major legal AI players
+- 19 days until event — still time for pre-event outreach but Email 1 is 1 day late
+- ABA TECHSHOW follows immediately (Mar 25-28, Chicago) — second bite at legal vertical
+
+**Expected impact:**
+- Blog post targets high-intent SEO keyword "HHS AI mandate April 2026" — should rank within 2-4 weeks
+- Pairs with LinkedIn countdown post (Run #41) + lead magnet timeline (Run #42) = complete content funnel
+- Legalweek outreach urgency flag ensures no missed window on 7 warm legal targets
+
+**⚠️ URGENT FOR CHRISTINA:**
+- Legalweek pre-event Email 1 due yesterday (Feb 17) — review `content/email-sequences/legalweek-pre-event-outreach.md` and send TODAY
+- 7 legal innovation leaders targeted, including Anni Datesh (Wilson Sonsini, confirmed speaker)
+
+**Next run priorities:**
+- Retry AIG Chief Digital Officer research
+- Mine Becker's "135 CIOs to know 2026" list for healthcare/insurance targets
+- Draft ABA TECHSHOW outreach sequence (Mar 25-28)
+- Research InsurTech Connect 2026 dates for insurance vertical
+
+## 2026-02-18 17:56 GMT — Run #44
+**Actions taken:**
+1. **AIG CDO research completed** — Scott Hallworth appointed CDO Sep 2025, reports directly to CEO Peter Zaffino since Jan 2026. New-in-role executive building his digital/AI stack = prime outreach target for insurance vertical. Added to PLAYBOOK.md.
+2. **Created ABA TECHSHOW outreach sequence** — 4-email sequence (Feb 25 → Mar 31) targeting 6+ legal innovation leaders. Saved to `content/email-sequences/aba-techshow-pre-event-outreach.md`. Includes pre-event warm-up, value emails, and post-event follow-up.
+3. **ABA TECHSHOW 2026 confirmed** — March 25-28, Hyatt Regency McCormick Place, Chicago. Discount codes captured (EP2603 for $100 off, 1HAY30 for 30% off). Schedule tracks include "Agents of Access" and "Guardians of the Data" — directly relevant.
+4. **Updated conference pipeline** in PLAYBOOK.md — Legalweek + TECHSHOW + InsurTech Connect tracker.
+
+**Research findings:**
+- AIG = $46B revenue insurance giant. Scott Hallworth as new CDO = greenfield AI opportunity. Insurance vertical is underserved by AI agents.
+- ABA TECHSHOW = 2nd major legal tech conference (after Legalweek). Same target list applies — double exposure opportunity.
+- 35 days until TECHSHOW. Email 1 should go out by Feb 25 (next week).
+
+**Expected impact:**
+- AIG contact opens insurance enterprise play ($500K-$1M ACV potential)
+- TECHSHOW sequence gives 2nd touchpoint with same legal targets from Legalweek — reinforcement effect
+- Conference pipeline now tracks 3 events across 2 verticals
+
+**⚠️ ACTION ITEMS FOR CHRISTINA:**
+1. Legalweek Email 1 is 1 day overdue — SEND TODAY
+2. Review ABA TECHSHOW sequence — Email 1 due Feb 25
+3. Consider: should AfrexAI register for TECHSHOW expo? ($2-5K, massive ROI if 1 deal closes)
+
+**Next run priorities:**
+- Research InsurTech Connect 2026 dates
+- Mine Becker's "135 CIOs to know 2026" for healthcare/insurance targets
+- Draft insurance vertical one-pager for Scott Hallworth outreach
+- Research TECHSHOW speaker list for additional warm targets
+
+## 2026-02-18 18:56 GMT — Run #45
+**Actions taken:**
+1. **Insurance vertical one-pager created** — `content/one-pager-insurance-ai-agents.md`. Covers claims processing, underwriting, and compliance agents with ROI math ($3.1M value on $360K spend = 8.6x ROI). Ready for Scott Hallworth outreach and all insurance prospects.
+2. **Scott Hallworth (AIG CDO) cold email drafted** — `content/cold-email-scott-hallworth-aig.md`. Personalized to his new role, reports-to-CEO angle, carrier-specific pain points. 3-touch sequence outlined.
+3. **InsurTech conference pipeline completed** — Found 3 insurance conferences:
+   - InsurTech Spring NYC (Mar 30-31) — 40 days out, outreach sequence needed ASAP
+   - Insurtech Insights USA NYC (Jun 3-4) — 6,000 attendees
+   - ITC Vegas (Sep 29-Oct 1) — largest insurtech event globally
+4. **PLAYBOOK.md updated** with all 3 conferences replacing TBD entry.
+
+**Research findings:**
+- Insurance conference circuit is packed Mar-Oct. Three touchpoints = sustained visibility in vertical.
+- InsurTech Spring is in 40 days and in NYC (low travel cost) — should be priority for first insurance event.
+- Becker's CIO list search rate-limited — retry next run.
+
+**Expected impact:**
+- Insurance one-pager + AIG email = opens $500K-$1M ACV pipeline in insurance vertical
+- 3 conference dates give 7-month runway for insurance vertical event strategy
+- InsurTech Spring (Mar 30) is actionable NOW — outreach should start by Mar 2
+
+**⚠️ ACTION ITEMS FOR CHRISTINA:**
+1. **STILL OVERDUE: Legalweek Email 1** — review and send TODAY
+2. Review Scott Hallworth email for AIG outreach
+3. Decision needed: Register for InsurTech Spring NYC (Mar 30-31)?
+
+**Next run priorities:**
+- Draft InsurTech Spring pre-event outreach sequence
+- Retry Becker's "135 CIOs to know 2026" research
+- Research InsurTech Spring speaker list for warm targets
+- Draft follow-up emails 2 & 3 for Scott Hallworth sequence
+
+## 2026-02-18 19:56 GMT — Run #46
+**Actions taken:**
+1. **InsurTech Spring pre-event outreach sequence created** — `content/cold-email-insurtech-spring-sequence.md`. 3-email sequence (28/14/5 days out) targeting carrier CDOs, CTOs, VP Claims. Conference dates corrected to Apr 2-3 (not Mar 30-31).
+2. **Scott Hallworth (AIG) follow-up emails 2 & 3 drafted** — `content/cold-email-scott-hallworth-followup-2-3.md`. Value-drop + break-up pattern.
+3. **DISCOVERED: "Agentic AI for Insurance" invite-only executive roundtable — Apr 1, NYC** — This is literally AfrexAI's exact pitch. Hosted by InsurTech NY. Insurance leaders + analysts + startups exploring agentic AI moving from PoC to production. THIS IS THE EVENT.
+4. **PLAYBOOK.md updated** — Conference dates corrected (InsurTech Spring = Apr 2-3), new Agentic AI event added with URGENT flag.
+
+**Key finding:**
+- InsurTech Spring is actually Apr 2-3 (not Mar 30-31 as previously logged). Agentic AI executive roundtable is Apr 1 — day before. Perfect combo: invite-only roundtable Day 0, conference Days 1-2.
+- Past attendees include AIG, Allstate, Aetna, AXA XL, Beazley, Bain Capital — exactly our ICP.
+
+**Expected impact:**
+- InsurTech outreach sequence ready to deploy Mar 2 (43 days out)
+- AIG follow-up sequence completes the Hallworth outreach — 3-touch cold email best practice
+- Agentic AI roundtable could be the single highest-ROI event for insurance vertical — one room, all decision-makers, topic = exactly what we sell
+
+**⚠️ CRITICAL ACTION FOR CHRISTINA:**
+1. **Request invite to "Agentic AI for Insurance" roundtable (Apr 1, NYC)** — insurtechny.com. This is invite-only. Apply NOW.
+2. **Legalweek Email 1 still overdue** — 19 days until event. Send this week or abandon.
+3. Scott Hallworth Email 1 ready to send — review and approve.
+
+**Next run priorities:**
+- Research Agentic AI roundtable organizers for direct outreach
+- Mine InsurTech Spring past attendee list for specific prospect targets
+- Draft LinkedIn post about agentic AI in insurance (thought leadership before conference)

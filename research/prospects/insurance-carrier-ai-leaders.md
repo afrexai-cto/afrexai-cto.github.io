@@ -15,6 +15,12 @@
 - **Angle:** SB-205 compliance + explainable AI governance. TheZebra operates in insurance recommendations = "consequential decisions" under Colorado AI Act
 - **Source:** insurasales.com Feb 2026
 
+### Matt Coy — CIO, The MEMIC Group
+- **Company:** MEMIC Group (workers' comp insurance, Portland ME)
+- **Signal:** Newly hired Jan 2026, replacing retired CIO Jack Yao. Fresh in role = greenfield AI strategy.
+- **Angle:** New CIO with clean slate. Workers' comp = claims processing, fraud detection, return-to-work prediction — all perfect AI agent use cases. "First 90 days, prove AI ROI before the board asks."
+- **Source:** Insurance Journal, Jan 28 2026
+
 ## Tier 2: Conference Targets
 
 ### Insurance Leaders Technology Forum 2026
