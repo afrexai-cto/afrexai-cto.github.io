@@ -1218,6 +1218,28 @@
 - Research Alexander Khalessi (UC San Diego Health) deeper — find email, draft outreach
 - Check if any new Stripe payments came in
 
+## 2026-02-18 08:56 GMT — Run #38
+**Actions taken:**
+1. **Built 3-email "New Exec" nurture sequence** — Complete email sequence targeting CIOs/CDTOs in their first 6 months. Hook → Proof → Close cadence (Day 0/4/9). Saved to `content/email-sequences/new-exec-3-email-nurture.md`. This is reusable across ALL new exec prospects.
+2. **Cold email drafted: Bradley Lontz (CIO, CSAA Insurance Group)** — Brand new CIO at AAA-affiliated insurer (Feb 2026). Insurance vertical = regulated, compliance-heavy, perfect for managed AI agents. Angle: quick win in first 90 days, claims/underwriting/compliance automation. Saved to `content/cold-emails/cold-email-bradley-lontz-csaa-insurance.md`. ACV: $200K-$500K.
+3. **New insurance prospect identified: Amy Bingham (CIO, Frankenmuth Insurance)** — Also newly appointed, came from Pekin Insurance CIO role. Smaller insurer but fits the "new exec" pattern.
+
+**Research findings:**
+- CIO.com Feb 2026 tracker confirms insurance vertical seeing leadership turnover: CSAA Insurance, Frankenmuth Insurance, Pathward (fintech/banking) all appointed new tech leaders in Feb 2026
+- "New exec" pattern continues to accelerate — this is THE buying signal for managed AI services
+- Insurance vertical underrepresented in our prospect pipeline despite being perfect fit (regulated, compliance-heavy, legacy systems, operational complexity)
+
+**Expected impact:**
+- 3-email nurture sequence is now a SCALABLE ASSET — every new exec prospect gets this sequence, customized in 5 minutes. Previously we drafted one-off emails. Now we have a repeatable system.
+- CSAA Insurance is $5B+ premium insurer — even a small engagement = $200K+ ACV
+- Insurance vertical now has named prospects: Bradley Lontz (CSAA), Amy Bingham (Frankenmuth)
+
+**Next run priorities:**
+- Research Amy Bingham (Frankenmuth Insurance) deeper, draft cold email
+- Draft insurance-specific version of the nurture sequence (compliance angles, claims automation stats)
+- Build SB-205 compliance assessment HTML tool for GitHub Pages
+- Research Pathward (Charles Ingram, new CIOO) — fintech/banking crossover target
+
 ## 2026-02-18 07:56 GMT — Run #37
 **Actions taken:**
 1. **Cold email drafted: Amala Duggirala (CDTO, Delta Air Lines)** — Former USAA CIO, started Jan 12 2026. 5 weeks in, prime "quick win" window. Delta = $60B revenue, 100K+ employees. Angle: regulated AI experience from finserv, now needs airline-scale results fast. Saved to `content/cold-email-amala-duggirala-delta.md`. ACV: $500K-$1M+.

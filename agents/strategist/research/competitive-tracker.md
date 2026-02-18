@@ -10,12 +10,13 @@ Last full update: 2026-02-13
 | Aident AI | SMB Agent | Plain-English SOPs → deterministic playbooks | 🟢 Low | 2026-02-13 |
 | Thomson Reuters (CoCounsel) | Legal AI | Market-leading legal AI + thought leadership + distribution | 🔴 High | 2026-02-13 |
 | Big 4 (Accenture, Deloitte, etc.) | Consulting | Slow AI adoption, but massive budgets and client trust | 🟡 Medium | 2026-02-13 |
-| Harvey AI | Legal AI | AI for law firms, well-funded | 🔴 High | 2026-02-13 |
+| Harvey AI | Legal AI | 25K workflows, Gabriel Macht brand deal, mid-market push, Dallas expansion April 2026 | 🔴 High | 2026-02-18 |
 | Lyzr.ai | Agent Platform | $10.5M raised, Accenture investor, "Agentic Transformation Consultants" | 🟡 Medium | 2026-02-13 |
 | Monaco AI | AI Sales Agents | $35M raised (Founders Fund), targeting Salesforce market | 🟢 Low | 2026-02-13 |
 | Microsoft (Healthcare AI) | Platform | Joint healthcare agentic AI readiness push with Health Mgmt Academy | 🟡 Medium | 2026-02-13 |
 | Anthropic | Platform/Legal | Legal AI plug-in triggered market selloff; moving toward vertical solutions | 🔴 High | 2026-02-14 |
 | Altruist | Wealth Mgmt AI | AI-enabled tax planning features spooked entire brokerage sector | 🟢 Low | 2026-02-14 |
+| SS&C Blue Prism | Agentic RPA | Rebranding as "Agentic Automation Company", legacy RPA pivoting to AI agents | 🟢 Low | 2026-02-18 |
 
 ## Strategic Position
 

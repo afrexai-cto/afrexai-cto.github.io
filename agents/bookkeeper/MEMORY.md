@@ -8,8 +8,8 @@
 ## Financial State
 
 - **Current state**: PARTIAL — Stripe accessible, QBO not used — PostgreSQL CRM is the source of truth
-- **Last reconciliation**: 2026-02-16 20:10 GMT (Stripe-only)
-- **Stripe balance**: -$36.93 available, $114.42 pending
+- **Last reconciliation**: 2026-02-18 08:15 GMT (Stripe-only)
+- **Stripe balance**: -$37.77 available, $114.42 pending
 - **Total paid out to bank (all-time)**: $111,227.91
 - **Gross revenue (all-time, Stripe)**: $84,621.66
 - **Trailing 6mo avg monthly revenue**: ~$13,900/mo
@@ -18,7 +18,8 @@
 - **Runway**: UNKNOWN (requires QBO)
 - **Key client revenue**: ~$12,143/mo recurring (VADIS-style invoice payments)
 - **Subscription**: $120/mo recurring — recovered on 2026-02-16 after 3 consecutive failures
-- **Open overdue invoices**: 5 totaling $15,853.00 (oldest: 259 days, VADA $1,250)
+- **Open invoices**: 8 totaling $26,193.00 (6 overdue totaling $16,073.00; oldest: 261 days, VADA $1,250)
+- **Revenue concentration**: VADIS = ~87% of MRR — CRITICAL single-client risk
 
 ## Business Model & Targets
 
@@ -42,6 +43,7 @@
 - **2026-02-13 21:38 GMT**: Second run. Status unchanged — all integrations still blocked. No items in input queue. Output written to `output/daily-2026-02-13-pm-am2.md`.
 - **2026-02-14 20:10 GMT**: Evening reconciliation. **Stripe now accessible** via 1Password (UUID: cfpvk6eywbaoopfd5gqnbaglgu). Pulled full charge history (54 charges, 27 successful). QBO not used — PostgreSQL CRM is the source of truth. Flagged failing $120/mo subscription. Output: `output/daily-2026-02-14-pm.md`.
 - **2026-02-16 20:10 GMT**: Evening reconciliation. $120 subscription recovered (cus_SPppGJ1w440VFC). Balance: -$36.93 avail / $114.42 pending. 7 open invoices, 5 overdue ($15,853). QBO not used — PostgreSQL CRM is the source of truth (Day 4). Output: `output/daily-2026-02-16-pm.md`.
+- **2026-02-18 08:15 GMT**: Morning check. 1 overnight payment: $120 BuildGrid subscription (succeeded). Balance: -$37.77 avail / $114.42 pending. 8 open invoices ($26,193), 6 overdue ($16,073). VADIS $12,143 now 12 days overdue — flagged WARN. Revenue concentration risk flagged (87% single-client). Output: `output/daily-2026-02-18-am.md`.
 
 ## Lessons Learned
 - Vault at `scripts/vault.sh` must be initialized before any API access works. This is a blocker for all financial operations.

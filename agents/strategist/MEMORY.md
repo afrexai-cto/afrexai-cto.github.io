@@ -73,6 +73,13 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **Healthcare prior auth + legal revolt = two forced-buyer markets in 2026.** Sequence: legal first (VADIS proof), healthcare second (CMS mandate pressure Q3-Q4).
 - **Contrarian flag logged:** Legal may be too crowded (Harvey, Anthropic, Thomson Reuters). Healthcare prior auth has fewer competitors + regulatory forcing function. Decision gate: track conversion rate from first 10 legal conversations.
 
+## Key Intelligence (Updated 2026-02-18)
+
+- **Harvey AI at 25K workflows + celebrity brand deal** (Gabriel Macht from Suits). Clear mid-market push beyond BigLaw. Dallas expansion April 2026 still on track. Threat level remains 🔴 High.
+- **McKinsey stat: 25% enterprise workflows automated by agentic AI by 2028.** Use in every sales conversation as urgency anchor.
+- **Legacy RPA (Blue Prism) rebranding as "agentic"** — reduces our education burden but increases noise. Vertical specificity is our differentiation.
+- **New opportunity identified: Corporate legal departments (in-house)** as distinct from law firms. Harvey serves supply side (firms), we can own demand side (corporate legal ops). GC revolt + Harvey's market education = warm buyers looking for alternatives.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?

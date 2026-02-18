@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-18T07:01:34.449Z",
+  "lastUpdated": "2026-02-18T08:07:56.000Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 2869,
-        "hoursSaved": 320.01,
+        "tasksCompleted": 2872,
+        "hoursSaved": 320.77,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -30,11 +30,29 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-18T06:59:00.292Z",
-          "taskCount": 959
+          "lastActive": "2026-02-18T07:55:07.144Z",
+          "taskCount": 962
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-18T07:55:07.144Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from PeaceHealth SW Washington for Hannah Bergstrom",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-18T08:02:34.620Z",
+          "agent": "records-analyst",
+          "action": "Archived 20 inactive patient records",
+          "type": "maintenance"
+        },
+        {
+          "ts": "2026-02-18T08:06:37.713Z",
+          "agent": "records-analyst",
+          "action": "Sent records to Pacific Orthopedic Specialists via secure transfer",
+          "type": "records"
+        },
         {
           "ts": "2026-02-18T06:59:00.292Z",
           "agent": "records-analyst",
@@ -44,7 +62,7 @@
         {
           "ts": "2026-02-18T06:48:22.118Z",
           "agent": "records-analyst",
-          "action": "Completed chart review — Neurology",
+          "action": "Completed chart review \u2014 Neurology",
           "type": "quality"
         },
         {
@@ -62,7 +80,7 @@
         {
           "ts": "2026-02-18T05:58:06.954Z",
           "agent": "records-analyst",
-          "action": "Completed chart review — Orthopedics",
+          "action": "Completed chart review \u2014 Orthopedics",
           "type": "quality"
         },
         {
@@ -74,19 +92,19 @@
         {
           "ts": "2026-02-17T08:25:01.170Z",
           "agent": "compliance-officer",
-          "action": "Reviewed Nurse Chen's access to procedure notes — authorized",
+          "action": "Reviewed Nurse Chen's access to procedure notes \u2014 authorized",
           "type": "audit"
         },
         {
           "ts": "2026-02-17T08:00:23.709Z",
           "agent": "compliance-officer",
-          "action": "Reviewed Nurse Chen's access to procedure notes — authorized",
+          "action": "Reviewed Nurse Chen's access to procedure notes \u2014 authorized",
           "type": "audit"
         },
         {
           "ts": "2026-02-17T07:55:21.615Z",
           "agent": "patient-coordinator",
-          "action": "Processed referral from Dr. Okafor → Internal Medicine",
+          "action": "Processed referral from Dr. Okafor \u2192 Internal Medicine",
           "type": "referral"
         },
         {
@@ -116,13 +134,13 @@
         {
           "ts": "2026-02-17T07:01:04.289Z",
           "agent": "records-analyst",
-          "action": "Completed chart review — Neurology",
+          "action": "Completed chart review \u2014 Neurology",
           "type": "quality"
         },
         {
           "ts": "2026-02-17T06:23:45.877Z",
           "agent": "compliance-officer",
-          "action": "Verified access log audit — Endocrinology",
+          "action": "Verified access log audit \u2014 Endocrinology",
           "type": "audit"
         },
         {
@@ -134,7 +152,7 @@
         {
           "ts": "2026-02-17T05:49:05.091Z",
           "agent": "records-analyst",
-          "action": "Completed chart review — Gastroenterology",
+          "action": "Completed chart review \u2014 Gastroenterology",
           "type": "quality"
         },
         {
@@ -164,7 +182,7 @@
         {
           "ts": "2026-02-17T04:13:16.814Z",
           "agent": "patient-coordinator",
-          "action": "Scheduled follow-up appointment for Anthony Washington — Gastroenterology",
+          "action": "Scheduled follow-up appointment for Anthony Washington \u2014 Gastroenterology",
           "type": "scheduling"
         },
         {
@@ -188,7 +206,7 @@
         {
           "ts": "2026-02-15T07:40:07.224Z",
           "agent": "compliance-officer",
-          "action": "Completed HIPAA training verification — Tech Davis",
+          "action": "Completed HIPAA training verification \u2014 Tech Davis",
           "type": "compliance"
         },
         {
@@ -224,7 +242,7 @@
         {
           "ts": "2026-02-14T03:20:09.592Z",
           "agent": "compliance-officer",
-          "action": "Completed HIPAA training verification — Nurse Patel",
+          "action": "Completed HIPAA training verification \u2014 Nurse Patel",
           "type": "compliance"
         },
         {
@@ -236,13 +254,13 @@
         {
           "ts": "2026-02-13T23:42:40.774Z",
           "agent": "records-analyst",
-          "action": "Completed chart review — Cardiology",
+          "action": "Completed chart review \u2014 Cardiology",
           "type": "quality"
         },
         {
           "ts": "2026-02-13T21:29:42.626Z",
           "agent": "compliance-officer",
-          "action": "Verified access log audit — Gastroenterology",
+          "action": "Verified access log audit \u2014 Gastroenterology",
           "type": "audit"
         },
         {
@@ -272,13 +290,13 @@
         {
           "ts": "2026-02-12T20:24:21.104Z",
           "agent": "compliance-officer",
-          "action": "Reviewed Dr. Singh's access to pathology report — authorized",
+          "action": "Reviewed Dr. Singh's access to pathology report \u2014 authorized",
           "type": "audit"
         },
         {
           "ts": "2026-02-12T19:09:34.543Z",
           "agent": "compliance-officer",
-          "action": "Verified access log audit — Orthopedics",
+          "action": "Verified access log audit \u2014 Orthopedics",
           "type": "audit"
         },
         {
@@ -290,7 +308,7 @@
         {
           "ts": "2026-02-12T09:03:21.996Z",
           "agent": "compliance-officer",
-          "action": "Verified access log audit — Neurology",
+          "action": "Verified access log audit \u2014 Neurology",
           "type": "audit"
         },
         {
@@ -314,25 +332,7 @@
         {
           "ts": "2026-02-11T16:00:32.717Z",
           "agent": "compliance-officer",
-          "action": "Completed HIPAA training verification — Dr. Singh",
-          "type": "compliance"
-        },
-        {
-          "ts": "2026-02-11T15:38:35.592Z",
-          "agent": "compliance-officer",
-          "action": "Flagged expired BAA with BioWaste Mgmt",
-          "type": "compliance"
-        },
-        {
-          "ts": "2026-02-10T23:50:25.828Z",
-          "agent": "records-analyst",
-          "action": "Completed chart review — Dermatology",
-          "type": "quality"
-        },
-        {
-          "ts": "2026-02-10T19:22:05.921Z",
-          "agent": "compliance-officer",
-          "action": "Completed HIPAA training verification — Dr. Kim",
+          "action": "Completed HIPAA training verification \u2014 Dr. Singh",
           "type": "compliance"
         }
       ]
@@ -342,8 +342,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2052,
-        "hoursSaved": 240.37,
+        "tasksCompleted": 2054,
+        "hoursSaved": 240.9,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -359,22 +359,34 @@
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-18T06:00:48.434Z",
-          "taskCount": 684
+          "lastActive": "2026-02-18T08:02:25.755Z",
+          "taskCount": 685
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-18T06:48:24.231Z",
-          "taskCount": 687
+          "lastActive": "2026-02-18T07:59:54.605Z",
+          "taskCount": 688
         }
       ],
       "recentActivity": [
         {
+          "ts": "2026-02-18T07:59:54.605Z",
+          "agent": "client-followup",
+          "action": "Scheduled consultation with Thompson v. Legacy Health",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-18T08:02:25.755Z",
+          "agent": "document-analyst",
+          "action": "Reviewed contract for Svetlana Kozlov (15 pages)",
+          "type": "review"
+        },
+        {
           "ts": "2026-02-18T06:48:24.231Z",
           "agent": "client-followup",
-          "action": "Followed up on outstanding invoice — Diallo Family Trust",
+          "action": "Followed up on outstanding invoice \u2014 Diallo Family Trust",
           "type": "billing"
         },
         {
@@ -410,13 +422,13 @@
         {
           "ts": "2026-02-17T08:23:47.240Z",
           "agent": "legal-ea",
-          "action": "Calendared deadline: filing_deadline — Ramirez v. Pacific Northwest Electric on 2026-02-27",
+          "action": "Calendared deadline: filing_deadline \u2014 Ramirez v. Pacific Northwest Electric on 2026-02-27",
           "type": "scheduling"
         },
         {
           "ts": "2026-02-17T07:55:45.485Z",
           "agent": "client-followup",
-          "action": "Followed up on outstanding invoice — Patel Family Trust",
+          "action": "Followed up on outstanding invoice \u2014 Patel Family Trust",
           "type": "billing"
         },
         {
@@ -434,7 +446,7 @@
         {
           "ts": "2026-02-17T06:55:32.369Z",
           "agent": "legal-ea",
-          "action": "Calendared deadline: client_meeting — Estate of Williams on 2026-02-18",
+          "action": "Calendared deadline: client_meeting \u2014 Estate of Williams on 2026-02-18",
           "type": "scheduling"
         },
         {
@@ -446,7 +458,7 @@
         {
           "ts": "2026-02-17T06:23:57.105Z",
           "agent": "legal-ea",
-          "action": "Calendared deadline: filing_deadline — Patel Family Trust v. IRS on 2026-02-18",
+          "action": "Calendared deadline: filing_deadline \u2014 Patel Family Trust v. IRS on 2026-02-18",
           "type": "scheduling"
         },
         {
@@ -482,19 +494,19 @@
         {
           "ts": "2026-02-17T04:26:48.017Z",
           "agent": "document-analyst",
-          "action": "Summarised deposition transcript — Hassan Import Export LLC",
+          "action": "Summarised deposition transcript \u2014 Hassan Import Export LLC",
           "type": "analysis"
         },
         {
           "ts": "2026-02-17T04:14:27.972Z",
           "agent": "document-analyst",
-          "action": "Summarised deposition transcript — Torres v. Apex Construction LLC",
+          "action": "Summarised deposition transcript \u2014 Torres v. Apex Construction LLC",
           "type": "analysis"
         },
         {
           "ts": "2026-02-17T04:25:01.881Z",
           "agent": "document-analyst",
-          "action": "Summarised deposition transcript — Martinez v. State Farm",
+          "action": "Summarised deposition transcript \u2014 Martinez v. State Farm",
           "type": "analysis"
         },
         {
@@ -530,13 +542,13 @@
         {
           "ts": "2026-02-15T10:34:27.116Z",
           "agent": "legal-ea",
-          "action": "Sent court appearance reminder — Office - Conference Room A",
+          "action": "Sent court appearance reminder \u2014 Office - Conference Room A",
           "type": "notification"
         },
         {
           "ts": "2026-02-14T16:09:26.886Z",
           "agent": "legal-ea",
-          "action": "Calendared deadline: client_meeting — Nakamura Property Trust on 2026-02-04",
+          "action": "Calendared deadline: client_meeting \u2014 Nakamura Property Trust on 2026-02-04",
           "type": "scheduling"
         },
         {
@@ -584,13 +596,13 @@
         {
           "ts": "2026-02-13T01:25:11.953Z",
           "agent": "client-followup",
-          "action": "Followed up on outstanding invoice — Westbrook Manufacturing Inc",
+          "action": "Followed up on outstanding invoice \u2014 Westbrook Manufacturing Inc",
           "type": "billing"
         },
         {
           "ts": "2026-02-12T23:07:59.988Z",
           "agent": "legal-ea",
-          "action": "Sent court appearance reminder — Opposing counsel office - Stoel Rives",
+          "action": "Sent court appearance reminder \u2014 Opposing counsel office - Stoel Rives",
           "type": "notification"
         },
         {
@@ -620,7 +632,7 @@
         {
           "ts": "2026-02-11T21:05:47.638Z",
           "agent": "client-followup",
-          "action": "Followed up on outstanding invoice — Bergman & Associates",
+          "action": "Followed up on outstanding invoice \u2014 Bergman & Associates",
           "type": "billing"
         },
         {
@@ -638,13 +650,13 @@
         {
           "ts": "2026-02-11T11:26:01.096Z",
           "agent": "client-followup",
-          "action": "Followed up on outstanding invoice — Daniela Ramirez",
+          "action": "Followed up on outstanding invoice \u2014 Daniela Ramirez",
           "type": "billing"
         },
         {
           "ts": "2026-02-11T07:26:50.860Z",
           "agent": "legal-ea",
-          "action": "Sent court appearance reminder — US Tax Court Portland",
+          "action": "Sent court appearance reminder \u2014 US Tax Court Portland",
           "type": "notification"
         },
         {
@@ -656,20 +668,8 @@
         {
           "ts": "2026-02-10T22:25:39.884Z",
           "agent": "legal-ea",
-          "action": "Calendared deadline: filing_deadline — Patel Family Trust v. IRS on 2026-02-18",
+          "action": "Calendared deadline: filing_deadline \u2014 Patel Family Trust v. IRS on 2026-02-18",
           "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-10T10:41:26.933Z",
-          "agent": "document-analyst",
-          "action": "Reviewed contract for Rosa Martinez (7 pages)",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-10T08:48:48.262Z",
-          "agent": "legal-ea",
-          "action": "Filed motion in Torres v. Apex Construction LLC",
-          "type": "filing"
         }
       ]
     },
@@ -678,8 +678,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 444,
-        "hoursSaved": 74.86,
+        "tasksCompleted": 447,
+        "hoursSaved": 75.66,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -688,27 +688,45 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-18T07:00:13.670Z",
-          "taskCount": 444
+          "lastActive": "2026-02-18T08:00:21.669Z",
+          "taskCount": 447
         }
       ],
       "recentActivity": [
         {
+          "ts": "2026-02-18T08:00:21.669Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance \u2014 Pearl District Parking Structure (ahead)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-18T08:05:13.186Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report \u2014 Hillsboro Medical Office Building",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-18T07:57:40.598Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Riverfront Mixed-Use: clear \u2014 none",
+          "type": "delay"
+        },
+        {
           "ts": "2026-02-18T07:00:13.670Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Riverfront Mixed-Use Development",
+          "action": "Generated daily report \u2014 Riverfront Mixed-Use Development",
           "type": "reporting"
         },
         {
           "ts": "2026-02-18T06:59:50.756Z",
           "agent": "site-reporter",
-          "action": "Logged weather delay at Cascade Elementary: rain — none",
+          "action": "Logged weather delay at Cascade Elementary: rain \u2014 none",
           "type": "delay"
         },
         {
           "ts": "2026-02-18T06:49:18.183Z",
           "agent": "site-reporter",
-          "action": "Logged weather delay at Hillsboro Medical Office: wind — reduced",
+          "action": "Logged weather delay at Hillsboro Medical Office: wind \u2014 reduced",
           "type": "delay"
         },
         {
@@ -726,25 +744,25 @@
         {
           "ts": "2026-02-17T08:20:10.137Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Hillsboro Medical Office Building (delayed)",
+          "action": "Flagged schedule variance \u2014 Hillsboro Medical Office Building (delayed)",
           "type": "alert"
         },
         {
           "ts": "2026-02-17T07:58:03.065Z",
           "agent": "site-reporter",
-          "action": "Logged weather delay at Riverfront Mixed-Use: clear — none",
+          "action": "Logged weather delay at Riverfront Mixed-Use: clear \u2014 none",
           "type": "delay"
         },
         {
           "ts": "2026-02-17T08:01:38.992Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Summit Ridge Residential Phase 2 (on_track)",
+          "action": "Flagged schedule variance \u2014 Summit Ridge Residential Phase 2 (on_track)",
           "type": "alert"
         },
         {
           "ts": "2026-02-17T08:03:10.116Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Hillsboro Medical Office Building",
+          "action": "Generated daily report \u2014 Hillsboro Medical Office Building",
           "type": "reporting"
         },
         {
@@ -756,37 +774,37 @@
         {
           "ts": "2026-02-17T07:22:29.692Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Cascade Elementary School Renovation",
+          "action": "Generated daily report \u2014 Cascade Elementary School Renovation",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T07:20:00.723Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Cascade Elementary School Renovation",
+          "action": "Generated daily report \u2014 Cascade Elementary School Renovation",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T07:23:57.865Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Hillsboro Medical Office Building",
+          "action": "Generated daily report \u2014 Hillsboro Medical Office Building",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T06:56:22.030Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Cascade Elementary School Renovation",
+          "action": "Generated daily report \u2014 Cascade Elementary School Renovation",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T06:22:02.353Z",
           "agent": "site-reporter",
-          "action": "Logged weather delay at Riverfront Mixed-Use: fog — reduced",
+          "action": "Logged weather delay at Riverfront Mixed-Use: fog \u2014 reduced",
           "type": "delay"
         },
         {
           "ts": "2026-02-17T05:54:00.993Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Riverfront Mixed-Use Development",
+          "action": "Generated daily report \u2014 Riverfront Mixed-Use Development",
           "type": "reporting"
         },
         {
@@ -798,7 +816,7 @@
         {
           "ts": "2026-02-17T04:16:26.921Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Pearl District Parking Structure",
+          "action": "Generated daily report \u2014 Pearl District Parking Structure",
           "type": "reporting"
         },
         {
@@ -810,7 +828,7 @@
         {
           "ts": "2026-02-17T04:17:47.042Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Summit Ridge Residential Phase 2",
+          "action": "Generated daily report \u2014 Summit Ridge Residential Phase 2",
           "type": "reporting"
         },
         {
@@ -822,7 +840,7 @@
         {
           "ts": "2026-02-17T03:23:43.962Z",
           "agent": "site-reporter",
-          "action": "Logged weather delay at Cascade Elementary: clear — none",
+          "action": "Logged weather delay at Cascade Elementary: clear \u2014 none",
           "type": "delay"
         },
         {
@@ -834,13 +852,13 @@
         {
           "ts": "2026-02-15T19:39:03.896Z",
           "agent": "site-reporter",
-          "action": "Logged weather delay at Summit Ridge Residential: rain — suspended",
+          "action": "Logged weather delay at Summit Ridge Residential: rain \u2014 suspended",
           "type": "delay"
         },
         {
           "ts": "2026-02-15T18:25:15.525Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Pearl District Parking Structure (ahead)",
+          "action": "Flagged schedule variance \u2014 Pearl District Parking Structure (ahead)",
           "type": "alert"
         },
         {
@@ -852,19 +870,19 @@
         {
           "ts": "2026-02-15T11:14:45.753Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Cascade Elementary School Renovation (delayed)",
+          "action": "Flagged schedule variance \u2014 Cascade Elementary School Renovation (delayed)",
           "type": "alert"
         },
         {
           "ts": "2026-02-15T10:31:17.789Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Riverfront Mixed-Use Development",
+          "action": "Generated daily report \u2014 Riverfront Mixed-Use Development",
           "type": "reporting"
         },
         {
           "ts": "2026-02-14T16:20:13.908Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Pearl District Parking Structure",
+          "action": "Generated daily report \u2014 Pearl District Parking Structure",
           "type": "reporting"
         },
         {
@@ -876,31 +894,31 @@
         {
           "ts": "2026-02-13T23:18:10.476Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Hillsboro Medical Office Building (delayed)",
+          "action": "Flagged schedule variance \u2014 Hillsboro Medical Office Building (delayed)",
           "type": "alert"
         },
         {
           "ts": "2026-02-13T22:24:30.905Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Riverfront Mixed-Use Development (on_track)",
+          "action": "Flagged schedule variance \u2014 Riverfront Mixed-Use Development (on_track)",
           "type": "alert"
         },
         {
           "ts": "2026-02-13T17:58:38.650Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Summit Ridge Residential Phase 2 (on_track)",
+          "action": "Flagged schedule variance \u2014 Summit Ridge Residential Phase 2 (on_track)",
           "type": "alert"
         },
         {
           "ts": "2026-02-13T09:29:07.460Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Pearl District Parking Structure (ahead)",
+          "action": "Flagged schedule variance \u2014 Pearl District Parking Structure (ahead)",
           "type": "alert"
         },
         {
           "ts": "2026-02-13T09:11:19.219Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Riverfront Mixed-Use Development (on_track)",
+          "action": "Flagged schedule variance \u2014 Riverfront Mixed-Use Development (on_track)",
           "type": "alert"
         },
         {
@@ -912,13 +930,13 @@
         {
           "ts": "2026-02-13T00:15:01.659Z",
           "agent": "site-reporter",
-          "action": "Generated daily report — Summit Ridge Residential Phase 2",
+          "action": "Generated daily report \u2014 Summit Ridge Residential Phase 2",
           "type": "reporting"
         },
         {
           "ts": "2026-02-12T20:23:07.780Z",
           "agent": "site-reporter",
-          "action": "Flagged schedule variance — Hillsboro Medical Office Building (delayed)",
+          "action": "Flagged schedule variance \u2014 Hillsboro Medical Office Building (delayed)",
           "type": "alert"
         },
         {
@@ -936,7 +954,7 @@
         {
           "ts": "2026-02-11T19:00:30.906Z",
           "agent": "site-reporter",
-          "action": "Logged weather delay at Riverfront Mixed-Use: clear — none",
+          "action": "Logged weather delay at Riverfront Mixed-Use: clear \u2014 none",
           "type": "delay"
         },
         {
@@ -974,24 +992,6 @@
           "agent": "site-reporter",
           "action": "Updated milestone: Site clearing and grading at Riverfront Mixed-Use Development",
           "type": "milestone"
-        },
-        {
-          "ts": "2026-02-10T10:49:34.579Z",
-          "agent": "site-reporter",
-          "action": "Compiled weekly progress summary for Summit Ridge Residential Phase 2",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-10T09:13:07.973Z",
-          "agent": "site-reporter",
-          "action": "Logged weather delay at Riverfront Mixed-Use: clear — none",
-          "type": "delay"
-        },
-        {
-          "ts": "2026-02-10T09:10:00.240Z",
-          "agent": "site-reporter",
-          "action": "Logged weather delay at Cascade Elementary: clear — none",
-          "type": "delay"
         }
       ]
     },
@@ -1000,8 +1000,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 1905,
-        "hoursSaved": 207.07,
+        "tasksCompleted": 1906,
+        "hoursSaved": 207.3,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -1017,8 +1017,8 @@
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-17T08:30:14.848Z",
-          "taskCount": 632
+          "lastActive": "2026-02-18T07:59:08.026Z",
+          "taskCount": 633
         },
         {
           "id": "support-triage",
@@ -1030,33 +1030,39 @@
       ],
       "recentActivity": [
         {
+          "ts": "2026-02-18T07:59:08.026Z",
+          "agent": "onboarding-specialist",
+          "action": "Scheduled kickoff call with SummitView Analytics \u2014 Sarah Chen",
+          "type": "scheduling"
+        },
+        {
           "ts": "2026-02-18T07:00:15.428Z",
           "agent": "support-triage",
-          "action": "Resolved ticket TK-4210 — access issue for Oaktree Consulting",
+          "action": "Resolved ticket TK-4210 \u2014 access issue for Oaktree Consulting",
           "type": "resolution"
         },
         {
           "ts": "2026-02-18T06:59:09.911Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4209: SAML certificate renewal required — routed to security",
+          "action": "Auto-triaged ticket TK-4209: SAML certificate renewal required \u2014 routed to security",
           "type": "triage"
         },
         {
           "ts": "2026-02-18T06:59:20.719Z",
           "agent": "churn-analyst",
-          "action": "Flagged churn risk: Brightpath Education (Enterprise, $$4200/mo) — score dropped below 50",
+          "action": "Flagged churn risk: Brightpath Education (Enterprise, $$4200/mo) \u2014 score dropped below 50",
           "type": "alert"
         },
         {
           "ts": "2026-02-18T06:01:30.662Z",
           "agent": "support-triage",
-          "action": "Categorised 4 new tickets — 3 auto-resolved",
+          "action": "Categorised 4 new tickets \u2014 3 auto-resolved",
           "type": "triage"
         },
         {
           "ts": "2026-02-18T06:00:30.974Z",
           "agent": "support-triage",
-          "action": "Categorised 6 new tickets — 2 auto-resolved",
+          "action": "Categorised 6 new tickets \u2014 2 auto-resolved",
           "type": "triage"
         },
         {
@@ -1068,13 +1074,13 @@
         {
           "ts": "2026-02-18T05:47:09.151Z",
           "agent": "churn-analyst",
-          "action": "Generated weekly churn risk report — 3 accounts at risk",
+          "action": "Generated weekly churn risk report \u2014 3 accounts at risk",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T08:26:59.089Z",
           "agent": "support-triage",
-          "action": "Categorised 10 new tickets — 3 auto-resolved",
+          "action": "Categorised 10 new tickets \u2014 3 auto-resolved",
           "type": "triage"
         },
         {
@@ -1086,31 +1092,31 @@
         {
           "ts": "2026-02-17T08:30:14.848Z",
           "agent": "onboarding-specialist",
-          "action": "Scheduled kickoff call with Horizon Pharma — Sarah Chen",
+          "action": "Scheduled kickoff call with Horizon Pharma \u2014 Sarah Chen",
           "type": "scheduling"
         },
         {
           "ts": "2026-02-17T07:54:41.057Z",
           "agent": "support-triage",
-          "action": "Resolved ticket TK-4205 — billing issue for Titanium Fitness",
+          "action": "Resolved ticket TK-4205 \u2014 billing issue for Titanium Fitness",
           "type": "resolution"
         },
         {
           "ts": "2026-02-17T08:02:02.599Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4202: Dashboard loading slowly — routed to performance",
+          "action": "Auto-triaged ticket TK-4202: Dashboard loading slowly \u2014 routed to performance",
           "type": "triage"
         },
         {
           "ts": "2026-02-17T07:27:58.418Z",
           "agent": "onboarding-specialist",
-          "action": "Scheduled kickoff call with Redwood Healthcare — Sarah Chen",
+          "action": "Scheduled kickoff call with Redwood Healthcare \u2014 Sarah Chen",
           "type": "scheduling"
         },
         {
           "ts": "2026-02-17T07:27:52.101Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4203: Cannot export CSV reports — routed to bug",
+          "action": "Auto-triaged ticket TK-4203: Cannot export CSV reports \u2014 routed to bug",
           "type": "triage"
         },
         {
@@ -1122,25 +1128,25 @@
         {
           "ts": "2026-02-17T06:50:44.965Z",
           "agent": "support-triage",
-          "action": "Categorised 3 new tickets — 2 auto-resolved",
+          "action": "Categorised 3 new tickets \u2014 2 auto-resolved",
           "type": "triage"
         },
         {
           "ts": "2026-02-17T06:52:59.577Z",
           "agent": "churn-analyst",
-          "action": "Calculated health score for SummitView Analytics — 90/100",
+          "action": "Calculated health score for SummitView Analytics \u2014 90/100",
           "type": "analysis"
         },
         {
           "ts": "2026-02-17T06:58:52.192Z",
           "agent": "support-triage",
-          "action": "Categorised 4 new tickets — 3 auto-resolved",
+          "action": "Categorised 4 new tickets \u2014 3 auto-resolved",
           "type": "triage"
         },
         {
           "ts": "2026-02-17T06:51:33.966Z",
           "agent": "churn-analyst",
-          "action": "Calculated health score for Cobalt Security — 63/100",
+          "action": "Calculated health score for Cobalt Security \u2014 63/100",
           "type": "analysis"
         },
         {
@@ -1152,13 +1158,13 @@
         {
           "ts": "2026-02-17T06:25:52.928Z",
           "agent": "churn-analyst",
-          "action": "Flagged churn risk: Polaris Shipping (Growth, $$3200/mo) — score dropped below 50",
+          "action": "Flagged churn risk: Polaris Shipping (Growth, $$3200/mo) \u2014 score dropped below 50",
           "type": "alert"
         },
         {
           "ts": "2026-02-17T06:26:16.927Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4206: API rate limit exceeded — routed to integration",
+          "action": "Auto-triaged ticket TK-4206: API rate limit exceeded \u2014 routed to integration",
           "type": "triage"
         },
         {
@@ -1170,25 +1176,25 @@
         {
           "ts": "2026-02-17T06:02:05.658Z",
           "agent": "support-triage",
-          "action": "Categorised 4 new tickets — 4 auto-resolved",
+          "action": "Categorised 4 new tickets \u2014 4 auto-resolved",
           "type": "triage"
         },
         {
           "ts": "2026-02-17T06:02:16.609Z",
           "agent": "onboarding-specialist",
-          "action": "Scheduled kickoff call with Horizon Pharma — Sarah Chen",
+          "action": "Scheduled kickoff call with Horizon Pharma \u2014 Sarah Chen",
           "type": "scheduling"
         },
         {
           "ts": "2026-02-17T06:01:36.704Z",
           "agent": "onboarding-specialist",
-          "action": "Completed data import for Oaktree Consulting — 1731 records migrated",
+          "action": "Completed data import for Oaktree Consulting \u2014 1731 records migrated",
           "type": "onboarding"
         },
         {
           "ts": "2026-02-17T02:30:00Z",
           "agent": "support-triage",
-          "action": "Generated support ticket triage summary — 10 tickets processed, 0 SLA breaches",
+          "action": "Generated support ticket triage summary \u2014 10 tickets processed, 0 SLA breaches",
           "type": "reporting",
           "artifact": "deliverables/novacrm/ticket-triage-2026-02-17T02-30-00.md",
           "real": true
@@ -1196,7 +1202,7 @@
         {
           "ts": "2026-02-17T01:00:00Z",
           "agent": "onboarding-specialist",
-          "action": "Generated onboarding pipeline status report — 5 active onboardings, 1 blocked",
+          "action": "Generated onboarding pipeline status report \u2014 5 active onboardings, 1 blocked",
           "type": "reporting",
           "artifact": "deliverables/novacrm/onboarding-status-2026-02-17T01-00-00.md",
           "real": true
@@ -1204,7 +1210,7 @@
         {
           "ts": "2026-02-16T10:00:00Z",
           "agent": "churn-analyst",
-          "action": "Generated weekly churn risk report — 4 accounts at risk, $3,870 MRR at risk",
+          "action": "Generated weekly churn risk report \u2014 4 accounts at risk, $3,870 MRR at risk",
           "type": "reporting",
           "artifact": "deliverables/novacrm/churn-risk-report-2026-02-16T10-00-00.md",
           "real": true
@@ -1218,43 +1224,43 @@
         {
           "ts": "2026-02-17T04:26:30.594Z",
           "agent": "support-triage",
-          "action": "Categorised 4 new tickets — 4 auto-resolved",
+          "action": "Categorised 4 new tickets \u2014 4 auto-resolved",
           "type": "triage"
         },
         {
           "ts": "2026-02-17T04:25:49.539Z",
           "agent": "onboarding-specialist",
-          "action": "Scheduled kickoff call with Titanium Fitness — Priya Desai",
+          "action": "Scheduled kickoff call with Titanium Fitness \u2014 Priya Desai",
           "type": "scheduling"
         },
         {
           "ts": "2026-02-16T21:18:51.203Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4207: Onboarding checklist not loading — routed to onboarding",
+          "action": "Auto-triaged ticket TK-4207: Onboarding checklist not loading \u2014 routed to onboarding",
           "type": "triage"
         },
         {
           "ts": "2026-02-16T13:26:29.882Z",
           "agent": "onboarding-specialist",
-          "action": "Completed data import for Urban Harvest Co — 1548 records migrated",
+          "action": "Completed data import for Urban Harvest Co \u2014 1548 records migrated",
           "type": "onboarding"
         },
         {
           "ts": "2026-02-16T11:16:24.524Z",
           "agent": "churn-analyst",
-          "action": "Detected usage decline at Meridian Logistics — active users down 40%",
+          "action": "Detected usage decline at Meridian Logistics \u2014 active users down 40%",
           "type": "analysis"
         },
         {
           "ts": "2026-02-16T10:50:57.366Z",
           "agent": "churn-analyst",
-          "action": "Calculated health score for Atlas Construction — 82/100",
+          "action": "Calculated health score for Atlas Construction \u2014 82/100",
           "type": "analysis"
         },
         {
           "ts": "2026-02-16T07:29:31.992Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4204: Request for custom webhook endpoint — routed to feature_request",
+          "action": "Auto-triaged ticket TK-4204: Request for custom webhook endpoint \u2014 routed to feature_request",
           "type": "triage"
         },
         {
@@ -1266,19 +1272,19 @@
         {
           "ts": "2026-02-15T23:23:50.441Z",
           "agent": "churn-analyst",
-          "action": "Generated weekly churn risk report — 3 accounts at risk",
+          "action": "Generated weekly churn risk report \u2014 3 accounts at risk",
           "type": "reporting"
         },
         {
           "ts": "2026-02-15T07:42:40.232Z",
           "agent": "churn-analyst",
-          "action": "Flagged churn risk: Pinecrest Hotels (Growth, $$2400/mo) — score dropped below 50",
+          "action": "Flagged churn risk: Pinecrest Hotels (Growth, $$2400/mo) \u2014 score dropped below 50",
           "type": "alert"
         },
         {
           "ts": "2026-02-15T01:22:43.891Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4203: Cannot export CSV reports — routed to bug",
+          "action": "Auto-triaged ticket TK-4203: Cannot export CSV reports \u2014 routed to bug",
           "type": "triage"
         },
         {
@@ -1290,13 +1296,13 @@
         {
           "ts": "2026-02-14T21:10:23.421Z",
           "agent": "onboarding-specialist",
-          "action": "Completed data import for Urban Harvest Co — 2046 records migrated",
+          "action": "Completed data import for Urban Harvest Co \u2014 2046 records migrated",
           "type": "onboarding"
         },
         {
           "ts": "2026-02-14T15:53:41.950Z",
           "agent": "churn-analyst",
-          "action": "Calculated health score for Starline Media — 41/100",
+          "action": "Calculated health score for Starline Media \u2014 41/100",
           "type": "analysis"
         },
         {
@@ -1308,13 +1314,13 @@
         {
           "ts": "2026-02-14T08:38:46.719Z",
           "agent": "onboarding-specialist",
-          "action": "Scheduled kickoff call with Brightpath Education — Sarah Chen",
+          "action": "Scheduled kickoff call with Brightpath Education \u2014 Sarah Chen",
           "type": "scheduling"
         },
         {
           "ts": "2026-02-14T01:05:47.876Z",
           "agent": "support-triage",
-          "action": "Auto-triaged ticket TK-4204: Request for custom webhook endpoint — routed to feature_request",
+          "action": "Auto-triaged ticket TK-4204: Request for custom webhook endpoint \u2014 routed to feature_request",
           "type": "triage"
         },
         {
@@ -1326,14 +1332,8 @@
         {
           "ts": "2026-02-13T15:05:07.172Z",
           "agent": "support-triage",
-          "action": "Categorised 7 new tickets — 3 auto-resolved",
+          "action": "Categorised 7 new tickets \u2014 3 auto-resolved",
           "type": "triage"
-        },
-        {
-          "ts": "2026-02-13T14:24:11.801Z",
-          "agent": "churn-analyst",
-          "action": "Triggered re-engagement sequence for Cobalt Security",
-          "type": "automation"
         }
       ]
     },
@@ -1342,8 +1342,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2262,
-        "hoursSaved": 276.72,
+        "tasksCompleted": 2265,
+        "hoursSaved": 277.55,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1352,8 +1352,8 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-18T07:01:04.463Z",
-          "taskCount": 754
+          "lastActive": "2026-02-18T07:52:07.007Z",
+          "taskCount": 755
         },
         {
           "id": "portfolio-reviewer",
@@ -1366,57 +1366,75 @@
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-18T05:54:05.530Z",
-          "taskCount": 752
+          "lastActive": "2026-02-18T08:05:13.134Z",
+          "taskCount": 754
         }
       ],
       "recentActivity": [
         {
+          "ts": "2026-02-18T08:05:13.134Z",
+          "agent": "filing-coordinator",
+          "action": "Submitted Form ADV Part 2B to SEC EDGAR \u2014 David Nakamura",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-18T07:52:07.007Z",
+          "agent": "compliance-monitor",
+          "action": "Completed annual_amendment check \u2014 Form ADV Part 2 \u2014 due",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-18T07:55:22.354Z",
+          "agent": "filing-coordinator",
+          "action": "Deadline alert: Form CRS (Client relationship summary update) due 2026-06-30",
+          "type": "alert"
+        },
+        {
           "ts": "2026-02-18T07:01:04.463Z",
           "agent": "compliance-monitor",
-          "action": "Reviewed personal trading pre-clearance — 5 requests, no violations",
+          "action": "Reviewed personal trading pre-clearance \u2014 5 requests, no violations",
           "type": "compliance"
         },
         {
           "ts": "2026-02-18T06:55:14.081Z",
           "agent": "portfolio-reviewer",
-          "action": "Flagged rebalancing needed — Hartwell Family LP (moderate profile)",
+          "action": "Flagged rebalancing needed \u2014 Hartwell Family LP (moderate profile)",
           "type": "alert"
         },
         {
           "ts": "2026-02-18T06:58:22.241Z",
           "agent": "portfolio-reviewer",
-          "action": "Flagged rebalancing needed — Thornton Industries 401k (balanced profile)",
+          "action": "Flagged rebalancing needed \u2014 Thornton Industries 401k (balanced profile)",
           "type": "alert"
         },
         {
           "ts": "2026-02-18T05:54:05.530Z",
           "agent": "filing-coordinator",
-          "action": "Submitted Form ADV Part 2B to SEC EDGAR — David Nakamura",
+          "action": "Submitted Form ADV Part 2B to SEC EDGAR \u2014 David Nakamura",
           "type": "filing"
         },
         {
           "ts": "2026-02-18T05:54:48.048Z",
           "agent": "filing-coordinator",
-          "action": "Generated regulatory filing status report — 1 filings due this month",
+          "action": "Generated regulatory filing status report \u2014 1 filings due this month",
           "type": "reporting"
         },
         {
           "ts": "2026-02-18T06:01:31.539Z",
           "agent": "portfolio-reviewer",
-          "action": "Calculated RMD for Danielle Moreau — distribution schedule updated",
+          "action": "Calculated RMD for Danielle Moreau \u2014 distribution schedule updated",
           "type": "analysis"
         },
         {
           "ts": "2026-02-17T08:24:29.846Z",
           "agent": "compliance-monitor",
-          "action": "Reviewed personal trading pre-clearance — 10 requests, no violations",
+          "action": "Reviewed personal trading pre-clearance \u2014 10 requests, no violations",
           "type": "compliance"
         },
         {
           "ts": "2026-02-17T08:24:08.147Z",
           "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 3 action items",
+          "action": "Generated weekly compliance review \u2014 3 action items",
           "type": "reporting"
         },
         {
@@ -1428,7 +1446,7 @@
         {
           "ts": "2026-02-17T08:02:47.587Z",
           "agent": "portfolio-reviewer",
-          "action": "Prepared client review materials for Richardson Family Trust — meeting 2026-04-15",
+          "action": "Prepared client review materials for Richardson Family Trust \u2014 meeting 2026-04-15",
           "type": "preparation"
         },
         {
@@ -1440,55 +1458,55 @@
         {
           "ts": "2026-02-17T07:54:56.069Z",
           "agent": "filing-coordinator",
-          "action": "Updated Schedule 13D filing progress — in_progress",
+          "action": "Updated Schedule 13D filing progress \u2014 in_progress",
           "type": "filing"
         },
         {
           "ts": "2026-02-17T07:28:18.547Z",
           "agent": "portfolio-reviewer",
-          "action": "Prepared client review materials for Richardson Family Trust — meeting 2026-04-15",
+          "action": "Prepared client review materials for Richardson Family Trust \u2014 meeting 2026-04-15",
           "type": "preparation"
         },
         {
           "ts": "2026-02-17T07:21:10.779Z",
           "agent": "filing-coordinator",
-          "action": "Submitted Form 13F to SEC EDGAR — Atlas Wealth Advisors",
+          "action": "Submitted Form 13F to SEC EDGAR \u2014 Atlas Wealth Advisors",
           "type": "filing"
         },
         {
           "ts": "2026-02-17T07:24:48.026Z",
           "agent": "filing-coordinator",
-          "action": "Updated Schedule 13D filing progress — in_progress",
+          "action": "Updated Schedule 13D filing progress \u2014 in_progress",
           "type": "filing"
         },
         {
           "ts": "2026-02-17T07:21:36.525Z",
           "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 3 action items",
+          "action": "Generated weekly compliance review \u2014 3 action items",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T06:56:13.479Z",
           "agent": "compliance-monitor",
-          "action": "Reviewed personal trading pre-clearance — 4 requests, no violations",
+          "action": "Reviewed personal trading pre-clearance \u2014 4 requests, no violations",
           "type": "compliance"
         },
         {
           "ts": "2026-02-17T06:56:48.660Z",
           "agent": "filing-coordinator",
-          "action": "Generated regulatory filing status report — 2 filings due this month",
+          "action": "Generated regulatory filing status report \u2014 2 filings due this month",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T06:50:44.100Z",
           "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 1 action items",
+          "action": "Generated weekly compliance review \u2014 1 action items",
           "type": "reporting"
         },
         {
           "ts": "2026-02-17T06:24:47.442Z",
           "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 3 action items",
+          "action": "Generated weekly compliance review \u2014 3 action items",
           "type": "reporting"
         },
         {
@@ -1500,25 +1518,25 @@
         {
           "ts": "2026-02-17T05:54:17.867Z",
           "agent": "portfolio-reviewer",
-          "action": "Calculated RMD for Greenfield Pension Fund — distribution schedule updated",
+          "action": "Calculated RMD for Greenfield Pension Fund \u2014 distribution schedule updated",
           "type": "analysis"
         },
         {
           "ts": "2026-02-17T05:56:22.077Z",
           "agent": "filing-coordinator",
-          "action": "Submitted Form 13F to SEC EDGAR — Atlas Wealth Advisors",
+          "action": "Submitted Form 13F to SEC EDGAR \u2014 Atlas Wealth Advisors",
           "type": "filing"
         },
         {
           "ts": "2026-02-17T05:52:31.688Z",
           "agent": "compliance-monitor",
-          "action": "Completed privacy_notice_distribution check — Reg S-P — compliant",
+          "action": "Completed privacy_notice_distribution check \u2014 Reg S-P \u2014 compliant",
           "type": "compliance"
         },
         {
           "ts": "2026-02-17T02:00:00Z",
           "agent": "portfolio-reviewer",
-          "action": "Prepared client review materials for Barbara Steinfeld — meeting Feb 28",
+          "action": "Prepared client review materials for Barbara Steinfeld \u2014 meeting Feb 28",
           "type": "preparation",
           "artifact": "deliverables/atlas-wealth/client-review-prep-2026-02-17T02-00-00.md",
           "real": true
@@ -1526,7 +1544,7 @@
         {
           "ts": "2026-02-17T01:30:00Z",
           "agent": "filing-coordinator",
-          "action": "Generated regulatory filing status report — Schedule 13D due in 3 days",
+          "action": "Generated regulatory filing status report \u2014 Schedule 13D due in 3 days",
           "type": "reporting",
           "artifact": "deliverables/atlas-wealth/regulatory-filing-2026-02-17T01-30-00.md",
           "real": true
@@ -1542,7 +1560,7 @@
         {
           "ts": "2026-02-16T09:00:00Z",
           "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 2 critical findings, 1 upcoming deadline",
+          "action": "Generated weekly compliance review \u2014 2 critical findings, 1 upcoming deadline",
           "type": "reporting",
           "artifact": "deliverables/atlas-wealth/compliance-review-2026-02-16T09-00-00.md",
           "real": true
@@ -1568,7 +1586,7 @@
         {
           "ts": "2026-02-17T04:18:58.898Z",
           "agent": "portfolio-reviewer",
-          "action": "Calculated RMD for Thornton Industries 401k — distribution schedule updated",
+          "action": "Calculated RMD for Thornton Industries 401k \u2014 distribution schedule updated",
           "type": "analysis"
         },
         {
@@ -1598,7 +1616,7 @@
         {
           "ts": "2026-02-15T19:21:26.054Z",
           "agent": "filing-coordinator",
-          "action": "Updated Form CRS filing progress — not_started",
+          "action": "Updated Form CRS filing progress \u2014 not_started",
           "type": "filing"
         },
         {
@@ -1610,43 +1628,43 @@
         {
           "ts": "2026-02-15T14:10:58.482Z",
           "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 1 action items",
+          "action": "Generated weekly compliance review \u2014 1 action items",
           "type": "reporting"
         },
         {
           "ts": "2026-02-15T12:34:08.671Z",
           "agent": "filing-coordinator",
-          "action": "Updated Schedule 13D filing progress — in_progress",
+          "action": "Updated Schedule 13D filing progress \u2014 in_progress",
           "type": "filing"
         },
         {
           "ts": "2026-02-14T18:14:18.857Z",
           "agent": "compliance-monitor",
-          "action": "Reviewed personal trading pre-clearance — 5 requests, no violations",
+          "action": "Reviewed personal trading pre-clearance \u2014 5 requests, no violations",
           "type": "compliance"
         },
         {
           "ts": "2026-02-14T17:03:33.828Z",
           "agent": "filing-coordinator",
-          "action": "Submitted Form 13F to SEC EDGAR — Atlas Wealth Advisors",
+          "action": "Submitted Form 13F to SEC EDGAR \u2014 Atlas Wealth Advisors",
           "type": "filing"
         },
         {
           "ts": "2026-02-14T16:39:03.779Z",
           "agent": "filing-coordinator",
-          "action": "Deadline alert: Form ADV Part 2B (Brochure supplement update — M. Liu) due 2026-03-31",
+          "action": "Deadline alert: Form ADV Part 2B (Brochure supplement update \u2014 M. Liu) due 2026-03-31",
           "type": "alert"
         },
         {
           "ts": "2026-02-14T12:49:03.646Z",
           "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 2 action items",
+          "action": "Generated weekly compliance review \u2014 2 action items",
           "type": "reporting"
         },
         {
           "ts": "2026-02-14T06:14:48.763Z",
           "agent": "filing-coordinator",
-          "action": "Submitted Form U4 to SEC EDGAR — Atlas Wealth Advisors",
+          "action": "Submitted Form U4 to SEC EDGAR \u2014 Atlas Wealth Advisors",
           "type": "filing"
         },
         {
@@ -1658,26 +1676,8 @@
         {
           "ts": "2026-02-13T22:18:40.131Z",
           "agent": "compliance-monitor",
-          "action": "Reviewed personal trading pre-clearance — 11 requests, no violations",
+          "action": "Reviewed personal trading pre-clearance \u2014 11 requests, no violations",
           "type": "compliance"
-        },
-        {
-          "ts": "2026-02-13T07:43:28.901Z",
-          "agent": "compliance-monitor",
-          "action": "Flagged overdue surprise_examination for Atlas Wealth Advisors",
-          "type": "alert"
-        },
-        {
-          "ts": "2026-02-13T01:46:54.822Z",
-          "agent": "filing-coordinator",
-          "action": "Prepared Form ADV Part 1 draft for CCO review",
-          "type": "preparation"
-        },
-        {
-          "ts": "2026-02-12T20:37:44.879Z",
-          "agent": "filing-coordinator",
-          "action": "Generated regulatory filing status report — 1 filings due this month",
-          "type": "reporting"
         }
       ]
     }
@@ -1694,6 +1694,20 @@
         "project_id": "BR-104",
         "artifact": "demo/data/deliverables/buildright/site-report-2026-02-17T080700Z.md",
         "real": true
+      }
+    ]
+  },
+  "pacific-legal": {
+    "recentActivity": [
+      {
+        "timestamp": "2026-02-18T08:06:00Z",
+        "agent": "document-analyst",
+        "agentName": "Document Analyst",
+        "type": "document-review",
+        "action": "Completed contract review and risk assessment",
+        "detail": "Commercial Lease Agreement \u2014 Greenfield Acquisitions LLC \u2194 Kimura Commercial Properties Inc. Recommendation: Approve with Changes. 7 modifications recommended.",
+        "real": true,
+        "artifact": "demo/data/deliverables/pacific-legal/contract-review-2026-02-18T08-06-00.md"
       }
     ]
   }

@@ -33,3 +33,15 @@
 **Connection to AfrexAI's 3-Step Plan:** Accelerates Step 2 timeline. Enterprise buyers who were "evaluating" AI 3 months ago are now in "deploy or die" mode. Our "Week I Win" (demo in 7 days) and "$40K Recovery" (90 days) promises directly address the urgency. Position AfrexAI as the fast-mover antidote to slow consultancy engagements.
 
 **What it takes:** Prepare a "Fear to Action" sales narrative for financial services and legal prospects. Lead with: "Your competitors are already deploying. Your service providers are being disrupted. Here's what you can have running in 7 days." Estimated effort: 1-2 days content creation, then fold into existing outreach.
+
+---
+
+## 2026-02-18 — "Bypass the Law Firm AI Tax" — Mid-Market Legal In-House
+
+**What:** Harvey's celebrity branding + 25K workflows signals they're pushing downmarket from BigLaw into mid-market and in-house legal. But their product is built for *law firms*, not *corporate legal departments*. GCs already revolted (Feb 16 signal) saying law firms deliver zero AI benefit to clients. The gap: corporate legal teams (50-500 employees) who need AI for *their own* operations, not through their outside counsel.
+
+**Why now:** Harvey is spending millions educating mid-market buyers about legal AI — every dollar they spend on Gabriel Macht makes "legal AI" a board-level conversation. But their product serves the supply side (law firms). Corporate legal departments are the demand side, and they're being ignored. The GC revolt signal proves these buyers are actively frustrated with current options.
+
+**Connection to AfrexAI's 3-Step Plan:** Step 2 service account targeting corporate legal departments directly (not law firms). Different buyer, different pain, less competition. Contract review, regulatory compliance tracking, litigation hold management — all automatable, all currently done manually by $200K+/yr attorneys. "Recovered capacity" framing is perfect here: "Your $350K associate is spending 60% of their time on work an agent can do in minutes."
+
+**What it takes:** Reposition legal vertical messaging from "law firm AI" to "corporate legal operations AI." Create one case study mockup based on VADIS engagement pattern. Target: 50+ corporate legal departments at companies with $100M-$1B revenue. Estimated: 3-5 days for messaging + prospect list + initial outreach sequences.

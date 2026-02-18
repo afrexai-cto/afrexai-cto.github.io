@@ -29,3 +29,12 @@ All pages: dark theme (#0a0a0a), gold (#FFD700), standalone HTML, inline CSS, mo
 5. `/faq/index.html` — Comprehensive FAQ page (18 questions, interactive accordion)
 6. `/partner/index.html` — Partner program page (referral, reseller, strategic tiers)
 7. `/blog/how-to-automate-client-intake/index.html` — SEO blog: "How to Automate Client Intake With AI Agents (2026 Guide)"
+
+## 2026-02-18 (Tuesday)
+1. `/seo/ai-agent-services-dallas/index.html` — City SEO page: AI Agent Services in Dallas-Fort Worth (energy, law, healthcare, logistics, construction, fintech)
+2. `/seo/ai-agent-services-miami/index.html` — City SEO page: AI Agent Services in Miami & South Florida (real estate, hospitality, law, finance/crypto, healthcare, trade/logistics)
+3. `/seo/ai-agent-services-atlanta/index.html` — City SEO page: AI Agent Services in Atlanta & Southeast (healthcare, logistics, fintech/payments, law, professional services, media)
+4. `/seo/ai-automation-for-recruitment/index.html` — SEO automation page: AI Automation for Recruitment (sourcing, screening, scheduling, nurture, before/after workflow, stats)
+5. `/comparisons/afrexai-vs-outsourcing/index.html` — Comparison page: AfrexAI vs Traditional Outsourcing/BPOs (10-point comparison table, hidden costs breakdown, transition guide)
+6. `/blog/how-to-automate-accounts-payable/index.html` — SEO blog: "How to Automate Accounts Payable With AI Agents (2026 Guide)" (4-step process, auto-approval rules, $122K ROI projection)
+7. `/blog/ai-agents-edtech-2026/index.html` — Blog: "AI Agents in EdTech: 7 Use Cases Reshaping Education in 2026" (enrollment, student support, grading, retention, personalization, admin ops, financial aid)

@@ -85,6 +85,14 @@
 - Key objection: "We're too small for AI governance" → "The FCA doesn't fine by size. SM&CR applies to every regulated firm."
 - Terminology: "Consumer Duty", "SM&CR", "SYSC 15A", "MRM principles", "file reviews", "suitability reports", "DIM permissions"
 - Content handoff created for blog post + LinkedIn + lead magnet checklist
+- **UPDATE 2026-02-18:** Treasury Committee published inquiry — called for **prescriptive AI regulation for financial advice firms by end of 2026**. This is a hard deadline, not guidance.
+- Kennedys Law confirms "dual compliance framework" needed: FCA conduct + data protection simultaneously
+- FCA COCON extension Sept 2026 — widens senior manager accountability net
+- Guardian reports UK wealth manager shares falling on AI disruption fears (11 Feb 2026) — fear = buying urgency
+- EY 2026 Outlook: "firms must prioritize regulatory adherence for AI in each jurisdiction" — Big 4 validation of our positioning
+- **75%+ of UK FS firms already using AI** (BoE/FCA 2024 survey) — most without governance frameworks
+- **US research gap:** Need to map SEC/FINRA/OCC AI positions to make CRM prospects (US-heavy) actionable
+- Top CRM prospects identified: Allworth Financial, Carson Group, Cerity Partners (wealth mgmt); Alerus Financial, Triumph Financial (banks); Riskalyze (partnership angle)
 
 - *This section updated as new verticals, use cases, and insights are developed*
 
