@@ -1,0 +1,217 @@
+{
+  "jobs": [
+    {
+      "id": "meeting-actions-fathom-poll",
+      "system": "meeting-actions",
+      "action": "fathom-poll",
+      "cron": "*/5 9-18 * * 1-5",
+      "description": "Fathom meeting poll (business hours only)",
+      "topic": "action-items"
+    },
+    {
+      "id": "urgent-email-scan",
+      "system": "urgent-email-detection",
+      "action": "scan",
+      "cron": "0,30 * * * *",
+      "description": "Urgent email scan every 30min",
+      "topic": "email"
+    },
+    {
+      "id": "git-auto-sync",
+      "system": "git-auto-sync",
+      "action": "sync",
+      "cron": "15,45 * * * *",
+      "description": "Git auto-sync every 30min",
+      "topic": "cron-updates"
+    },
+    {
+      "id": "db-backups",
+      "system": "db-backups",
+      "action": "backup",
+      "cron": "0 * * * *",
+      "description": "Database backups every hour",
+      "topic": "cron-updates"
+    },
+    {
+      "id": "daily-briefing",
+      "system": "daily-briefing",
+      "action": "generate",
+      "cron": "0 7 * * *",
+      "description": "Morning briefing at 7am",
+      "topic": "daily-brief",
+      "dataPipes": ["personal-crm", "social-tracker", "meeting-actions", "asana-integration", "urgent-email-detection"]
+    },
+    {
+      "id": "health-tracker-morning",
+      "system": "health-tracker",
+      "action": "remind",
+      "cron": "0 8 * * *",
+      "description": "Morning health check-in",
+      "topic": "health",
+      "params": { "label": "morning" }
+    },
+    {
+      "id": "health-tracker-afternoon",
+      "system": "health-tracker",
+      "action": "remind",
+      "cron": "0 13 * * *",
+      "description": "Afternoon health check-in",
+      "topic": "health",
+      "params": { "label": "afternoon" }
+    },
+    {
+      "id": "health-tracker-evening",
+      "system": "health-tracker",
+      "action": "remind",
+      "cron": "0 19 * * *",
+      "description": "Evening health check-in",
+      "topic": "health",
+      "params": { "label": "evening" }
+    },
+    {
+      "id": "meeting-actions-check-8am",
+      "system": "meeting-actions",
+      "action": "completion-check",
+      "cron": "0 8 * * 1-5",
+      "description": "Meeting actions completion check 8am",
+      "topic": "action-items"
+    },
+    {
+      "id": "meeting-actions-check-12pm",
+      "system": "meeting-actions",
+      "action": "completion-check",
+      "cron": "0 12 * * 1-5",
+      "description": "Meeting actions completion check 12pm",
+      "topic": "action-items"
+    },
+    {
+      "id": "meeting-actions-check-4pm",
+      "system": "meeting-actions",
+      "action": "completion-check",
+      "cron": "0 16 * * 1-5",
+      "description": "Meeting actions completion check 4pm",
+      "topic": "action-items"
+    },
+    {
+      "id": "earnings-preview",
+      "system": "earnings-reports",
+      "action": "preview",
+      "cron": "0 9 * * 0",
+      "description": "Sunday 9am earnings preview",
+      "topic": "earnings"
+    },
+    {
+      "id": "security-council-nightly",
+      "system": "security-council",
+      "action": "nightly-review",
+      "cron": "30 3 * * *",
+      "description": "Security council nightly review at 3:30am",
+      "topic": "security"
+    },
+    {
+      "id": "health-monitoring-daily",
+      "system": "health-monitoring",
+      "action": "daily",
+      "cron": "0 6 * * *",
+      "description": "Daily health monitoring checks",
+      "topic": "security"
+    },
+    {
+      "id": "social-tracker-snapshot",
+      "system": "social-tracker",
+      "action": "snapshot",
+      "cron": "0 23 * * *",
+      "description": "Daily social tracker snapshot",
+      "topic": "meta-analysis"
+    },
+    {
+      "id": "platform-health-daily",
+      "system": "platform-health",
+      "action": "check",
+      "cron": "0 5 * * *",
+      "description": "Daily platform health check",
+      "topic": "cron-updates"
+    },
+    {
+      "id": "advisory-council-weekly",
+      "system": "advisory-council",
+      "action": "full-session",
+      "cron": "0 10 * * 1",
+      "description": "Weekly advisory council (Monday 10am)",
+      "topic": "advisory-council",
+      "dataPipes": ["personal-crm", "newsletter-crm", "social-tracker", "asana-integration", "platform-health"]
+    },
+    {
+      "id": "security-memory-scan",
+      "system": "security-safety",
+      "action": "memory-scan",
+      "cron": "0 2 1 * *",
+      "description": "Monthly security memory scan",
+      "topic": "security"
+    },
+    {
+      "id": "model-cost-tracker-daily",
+      "system": "model-cost-tracker",
+      "action": "daily-summary",
+      "cron": "0 23 * * *",
+      "description": "Daily cost summary",
+      "topic": "cron-updates"
+    },
+    {
+      "id": "google-workspace-sync",
+      "system": "google-workspace",
+      "action": "sync",
+      "cron": "0 6 * * *",
+      "description": "Google Workspace daily sync",
+      "topic": "cron-updates"
+    },
+    {
+      "id": "newsletter-crm-sync",
+      "system": "newsletter-crm",
+      "action": "sync",
+      "cron": "0 6 * * *",
+      "description": "Newsletter CRM daily sync",
+      "topic": "crm"
+    },
+    {
+      "id": "personal-crm-enrich",
+      "system": "personal-crm",
+      "action": "enrich",
+      "cron": "0 6 * * *",
+      "description": "Personal CRM daily enrichment",
+      "topic": "crm"
+    },
+    {
+      "id": "knowledge-base-ingest",
+      "system": "knowledge-base",
+      "action": "ingest",
+      "cron": "0 4 * * *",
+      "description": "Knowledge base nightly ingest",
+      "topic": "cron-updates"
+    },
+    {
+      "id": "asana-sync",
+      "system": "asana-integration",
+      "action": "sync",
+      "cron": "0 7 * * *",
+      "description": "Asana task sync",
+      "topic": "cron-updates"
+    },
+    {
+      "id": "video-pipeline-check",
+      "system": "video-pipeline",
+      "action": "check",
+      "cron": "0 10 * * 1-5",
+      "description": "Video pipeline daily check",
+      "topic": "video-ideas"
+    },
+    {
+      "id": "security-safety-check",
+      "system": "security-safety",
+      "action": "check",
+      "cron": "0 4 * * *",
+      "description": "Security safety daily check",
+      "topic": "security"
+    }
+  ]
+}

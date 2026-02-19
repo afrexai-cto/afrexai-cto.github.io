@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Systems Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#111;--border:#222;--gold:#FFD700;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--text:#e5e5e5;--muted:#777;--card-hover:#181818}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--gold);text-decoration:none}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid var(--border)}
+.header h1{font-size:1.5rem;font-weight:700;letter-spacing:-0.5px}
+.header h1 span{color:var(--gold)}
+.header-meta{color:var(--muted);font-size:.85rem}
+.header-meta .live{color:var(--green);font-weight:600}
+
+/* Layout */
+.container{max-width:1440px;margin:0 auto;padding:24px 32px}
+.section{margin-bottom:32px}
+.section-title{font-size:1.1rem;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:3px;height:18px;background:var(--gold);border-radius:2px;display:inline-block}
+
+/* Top row: health + cost */
+.top-row{display:grid;grid-template-columns:280px 1fr 320px;gap:20px;margin-bottom:32px}
+.health-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.health-score{font-size:4rem;font-weight:800;color:var(--gold);line-height:1}
+.health-label{color:var(--muted);font-size:.85rem;margin-top:4px}
+.health-trend{font-size:1.5rem;margin-top:8px}
+.health-trend.up{color:var(--green)}
+.health-trend.down{color:var(--red)}
+.health-trend.stable{color:var(--muted)}
+
+/* Quick Actions */
+.actions-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.actions-card h3{font-size:.9rem;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.action-btn{background:#1a1a1a;border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;cursor:pointer;font-size:.82rem;transition:all .2s;text-align:left}
+.action-btn:hover{border-color:var(--gold);background:#1f1a0a}
+.action-btn .icon{margin-right:6px}
+
+/* Activity */
+.activity-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.activity-card h3{font-size:.9rem;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.activity-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.activity-item:last-child{border-bottom:none}
+.activity-time{color:var(--gold);font-size:.8rem;font-weight:600;min-width:50px}
+.activity-badge{font-size:.65rem;padding:2px 8px;border-radius:10px;font-weight:600;text-transform:uppercase}
+.badge-briefing{background:#1a2a1a;color:var(--green)}
+.badge-email{background:#2a1a1a;color:var(--amber)}
+.badge-action{background:#1a1a2a;color:#60a5fa}
+.activity-text{font-size:.85rem;flex:1}
+
+/* Cost chart */
+.cost-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.cost-card h3{font-size:.9rem;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.cost-today{font-size:2rem;font-weight:700;color:var(--gold)}
+.cost-chart{display:flex;align-items:flex-end;gap:6px;height:80px;margin-top:12px;padding-top:8px}
+.cost-bar{flex:1;background:linear-gradient(to top,var(--gold),#b8960a);border-radius:4px 4px 0 0;min-height:4px;position:relative;transition:all .3s}
+.cost-bar:last-child{background:linear-gradient(to top,var(--gold),#fff3b0)}
+.cost-bar-label{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:.6rem;color:var(--muted)}
+
+/* System Grid */
+.system-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.sys-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;transition:all .2s;cursor:default}
+.sys-card:hover{border-color:var(--gold);background:var(--card-hover);transform:translateY(-1px)}
+.sys-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sys-name{font-weight:600;font-size:.9rem}
+.sys-status{font-size:1.1rem}
+.sys-meta{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+.sys-tests{background:#1a1a2a;color:#60a5fa;padding:2px 8px;border-radius:8px;font-size:.7rem}
+.sys-card.running{border-left:3px solid var(--green)}
+.sys-card.needs_keys{border-left:3px solid var(--amber)}
+.sys-card.error{border-left:3px solid var(--red)}
+
+/* Data Flow */
+.flow-container{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;overflow-x:auto}
+.flow-svg{width:100%;height:320px}
+.flow-node{cursor:default}
+.flow-node rect{rx:8;ry:8;stroke-width:1.5;transition:all .2s}
+.flow-node:hover rect{stroke:var(--gold);stroke-width:2}
+.flow-node text{font-family:inherit;font-size:11px;fill:var(--text)}
+.flow-edge{stroke:var(--border);stroke-width:1.5;fill:none;marker-end:url(#arrow)}
+
+/* Footer */
+.footer{text-align:center;padding:24px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+
+/* Responsive */
+@media(max-width:900px){
+  .top-row{grid-template-columns:1fr}
+  .system-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+  .container{padding:16px}
+  .header{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>Afrex</span>AI — Systems Dashboard</h1>
+  <div class="header-meta">
+    <span class="live">● LIVE</span> &nbsp;|&nbsp; Last updated: <span id="lastUpdated">—</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Top Row: Health + Activity + Cost -->
+  <div class="top-row">
+    <div class="health-card">
+      <div class="health-score" id="healthScore">—</div>
+      <div class="health-label">PLATFORM HEALTH</div>
+      <div class="health-trend" id="healthTrend"></div>
+    </div>
+    <div class="activity-card">
+      <h3>Today's Activity</h3>
+      <div id="activityList"></div>
+    </div>
+    <div class="cost-card">
+      <h3>API Spend</h3>
+      <div class="cost-today">$<span id="costToday">—</span></div>
+      <div class="cost-chart" id="costChart"></div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="section">
+    <div class="section-title">Quick Actions</div>
+    <div class="actions-card">
+      <div class="action-grid">
+        <button class="action-btn" onclick="runAction('briefing')"><span class="icon">📋</span> Generate Briefing</button>
+        <button class="action-btn" onclick="runAction('email')"><span class="icon">📧</span> Check Emails</button>
+        <button class="action-btn" onclick="runAction('update-status')"><span class="icon">🔄</span> Refresh Status</button>
+        <button class="action-btn" onclick="runAction('calendar')"><span class="icon">📅</span> Sync Calendar</button>
+        <button class="action-btn" onclick="runAction('social')"><span class="icon">📱</span> Social Scan</button>
+        <button class="action-btn" onclick="runAction('knowledge')"><span class="icon">🧠</span> Update Knowledge</button>
+        <button class="action-btn" onclick="runAction('security')"><span class="icon">🔒</span> Security Audit</button>
+        <button class="action-btn" onclick="runAction('all')"><span class="icon">⚡</span> Run All Systems</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Status Grid -->
+  <div class="section">
+    <div class="section-title">System Status</div>
+    <div class="system-grid" id="systemGrid"></div>
+  </div>
+
+  <!-- Data Flow -->
+  <div class="section">
+    <div class="section-title">Data Flow</div>
+    <div class="flow-container">
+      <svg class="flow-svg" id="flowSvg"></svg>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">AfrexAI Platform v1.0 — 26 Systems — Built with ☕ and ambition</div>
+
+<script>
+const STATUS_URL = 'status.json';
+const STATUS_ICONS = { running: '✅', needs_keys: '⚠️', error: '❌' };
+const TREND_ARROWS = { up: '↑', down: '↓', stable: '→' };
+
+async function loadDashboard() {
+  let data;
+  try {
+    const res = await fetch(STATUS_URL);
+    data = await res.json();
+  } catch(e) {
+    document.getElementById('healthScore').textContent = '?';
+    return;
+  }
+
+  // Header
+  document.getElementById('lastUpdated').textContent = new Date(data.lastUpdated).toLocaleString();
+
+  // Health
+  document.getElementById('healthScore').textContent = data.healthScore + '%';
+  const trend = document.getElementById('healthTrend');
+  trend.textContent = TREND_ARROWS[data.healthTrend] || '→';
+  trend.className = 'health-trend ' + (data.healthTrend || 'stable');
+
+  // Activity
+  const actEl = document.getElementById('activityList');
+  actEl.innerHTML = (data.activity || []).map(a =>
+    `<div class="activity-item">
+      <span class="activity-time">${a.time}</span>
+      <span class="activity-badge badge-${a.type}">${a.type}</span>
+      <span class="activity-text">${a.text}</span>
+    </div>`
+  ).join('');
+
+  // Cost
+  document.getElementById('costToday').textContent = (data.costToday || 0).toFixed(2);
+  const chart = document.getElementById('costChart');
+  const max = Math.max(...(data.costWeek || [1]));
+  chart.innerHTML = (data.costWeek || []).map((v, i) =>
+    `<div class="cost-bar" style="height:${(v/max)*100}%">
+      <span class="cost-bar-label">${(data.costLabels||[])[i]||''}</span>
+    </div>`
+  ).join('');
+
+  // System Grid
+  const grid = document.getElementById('systemGrid');
+  grid.innerHTML = (data.systems || []).map(s => {
+    const lastRun = s.lastRun ? timeAgo(new Date(s.lastRun)) : 'Never';
+    return `<div class="sys-card ${s.status}">
+      <div class="sys-card-header">
+        <span class="sys-name">${s.name}</span>
+        <span class="sys-status">${STATUS_ICONS[s.status]||'❓'}</span>
+      </div>
+      <div class="sys-meta">
+        <span>${lastRun}</span>
+        <span class="sys-tests">${s.tests} tests</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Data Flow SVG
+  drawFlowDiagram(data);
+}
+
+function timeAgo(date) {
+  const diff = (Date.now() - date.getTime()) / 1000;
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  return Math.floor(diff/86400) + 'd ago';
+}
+
+function drawFlowDiagram(data) {
+  const svg = document.getElementById('flowSvg');
+  const systems = data.systems || [];
+  const flows = data.dataFlows || [];
+
+  // Layout: arrange nodes in layers
+  const layers = {
+    input: ['email', 'calendar', 'social-twitter', 'social-linkedin', 'search', 'browser'],
+    process: ['crm', 'knowledge', 'memory', 'cron', 'security', 'media'],
+    output: ['briefing', 'advisory', 'notifications', 'voice', 'docs', 'heartbeat'],
+    external: ['finance', 'invoicing', 'legal', 'analytics', 'travel', 'health', 'property', 'social-ig']
+  };
+
+  const positions = {};
+  const nodeW = 120, nodeH = 32, padX = 160, padY = 48, offsetX = 40, offsetY = 30;
+  const layerNames = Object.keys(layers);
+  const layerLabels = ['INPUT', 'PROCESSING', 'OUTPUT', 'STANDALONE'];
+
+  let svgContent = `<defs>
+    <marker id="arrow" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#444"/>
+    </marker>
+  </defs>`;
+
+  // Layer labels
+  layerNames.forEach((l, li) => {
+    const x = offsetX + li * padX;
+    svgContent += `<text x="${x + nodeW/2}" y="${offsetY - 8}" fill="#555" font-size="10" text-anchor="middle" font-weight="600">${layerLabels[li]}</text>`;
+  });
+
+  // Nodes
+  layerNames.forEach((l, li) => {
+    layers[l].forEach((id, ni) => {
+      const x = offsetX + li * padX;
+      const y = offsetY + ni * padY;
+      positions[id] = { x: x + nodeW/2, y: y + nodeH/2 };
+      const sys = systems.find(s => s.id === id);
+      const color = !sys ? '#333' : sys.status === 'running' ? 'var(--green)' : sys.status === 'needs_keys' ? 'var(--amber)' : 'var(--red)';
+      const label = sys ? sys.name : id;
+      const shortLabel = label.length > 15 ? label.slice(0,14) + '…' : label;
+      svgContent += `<g class="flow-node">
+        <rect x="${x}" y="${y}" width="${nodeW}" height="${nodeH}" fill="#181818" stroke="${color}"/>
+        <text x="${x + nodeW/2}" y="${y + nodeH/2 + 4}" text-anchor="middle" font-size="10">${shortLabel}</text>
+      </g>`;
+    });
+  });
+
+  // Edges
+  flows.forEach(([from, to]) => {
+    const a = positions[from], b = positions[to];
+    if (!a || !b) return;
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    if (len === 0) return;
+    const sx = a.x + (dx/len) * (nodeW/2 + 2);
+    const sy = a.y + (dy/len) * (nodeH/2 + 2);
+    const ex = b.x - (dx/len) * (nodeW/2 + 2);
+    const ey = b.y - (dy/len) * (nodeH/2 + 2);
+    const cx = (sx + ex)/2 + (dy/len) * 20;
+    const cy = (sy + ey)/2 - (dx/len) * 20;
+    svgContent += `<path class="flow-edge" d="M${sx},${sy} Q${cx},${cy} ${ex},${ey}"/>`;
+  });
+
+  svg.innerHTML = svgContent;
+}
+
+function runAction(action) {
+  alert(`🚀 Triggering: ${action}\n\nIn production, this calls:\nnode ../scripts/${action}.js`);
+}
+
+loadDashboard();
+// Auto-refresh every 60s
+setInterval(loadDashboard, 60000);
+</script>
+</body>
+</html>
