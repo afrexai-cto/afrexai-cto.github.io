@@ -27,7 +27,7 @@ async function initDB() {
  * @returns {object} result
  */
 async function runPipeline(input) {
-  const db = initDB();
+  const db = await initDB();
 
   try {
     const { idea, threadContext, slackChannel, slackThreadTs, slackUser } = input;

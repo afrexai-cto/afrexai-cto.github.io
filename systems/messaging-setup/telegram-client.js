@@ -22,11 +22,24 @@ function resolveSecret(ref) {
 export class TelegramClient {
   constructor(overrides = {}) {
     const cfg = loadConfig().telegram;
-    this.token = overrides.botToken || resolveSecret(cfg.botToken);
-    this.chatId = overrides.chatId || resolveSecret(cfg.chatId);
+    this._overrides = overrides;
+    this._cfg = cfg;
+    this._token = null;
+    this._chatId = null;
     this.apiBase = cfg.apiBase;
     this.topics = cfg.topics;
   }
+
+  /** Lazily resolve secrets only when actually needed for API calls. */
+  _resolveSecrets() {
+    if (!this._token) {
+      this._token = this._overrides.botToken || resolveSecret(this._cfg.botToken);
+      this._chatId = this._overrides.chatId || resolveSecret(this._cfg.chatId);
+    }
+  }
+
+  get token() { this._resolveSecrets(); return this._token; }
+  get chatId() { this._resolveSecrets(); return this._chatId; }
 
   get baseUrl() {
     return `${this.apiBase}/bot${this.token}`;

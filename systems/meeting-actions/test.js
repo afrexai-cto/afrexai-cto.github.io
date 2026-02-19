@@ -46,9 +46,10 @@ async function runTests() {
 
   // 3. Create meeting
   const meetingId = uuid();
+  const fathomId = `fathom_test_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   db.prepare(`INSERT INTO meetings (id, fathom_id, title, started_at, ended_at, transcript, summary)
     VALUES (?, ?, ?, ?, ?, ?, ?)`).run(
-    meetingId, 'fathom_123', 'Q1 Planning Call',
+    meetingId, fathomId, 'Q1 Planning Call',
     '2026-02-19T10:00:00Z', '2026-02-19T10:45:00Z',
     SAMPLE_TRANSCRIPT, 'Discussed Q1 planning, proposals, and follow-up actions.'
   );

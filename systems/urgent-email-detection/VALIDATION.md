@@ -1,6 +1,6 @@
 # Urgent Email Detection - Validation Report
 
-Run: 2026-02-19T03:04:49Z
+Run: 2026-02-19T03:16:46.272Z
 
 ## 1. Database Initialization
 ✅ Database initialized. Tables: classifications, sqlite_sequence, feedback, sender_reputation, scan_log
@@ -13,7 +13,7 @@ Run: 2026-02-19T03:04:49Z
 ✅ test-005 (security@google.com): noise=false, expected=false
 ✅ test-006 (promo@shopify-store.com): noise=true, expected=true
 
-Pre-filter: **6/6 correct**
+Pre-filter: 6/6 correct
 
 ## 3. Time Gating
 ✅ Wed 3am GMT: waking=false, expected=false
@@ -22,28 +22,16 @@ Pre-filter: **6/6 correct**
 ✅ Sat 6am GMT: waking=false, expected=false
 ✅ Sat 10am GMT: waking=true, expected=true
 
-Time gating: **5/5 correct**
-
 ## 4. AI Classification
-⚠️ **Blocked by 1Password CLI** — `op read "op://AfrexAI/Anthropic/api_key"` requires 1Password desktop app integration which isn't available in this sandbox session. The `ANTHROPIC_API_KEY` env var is an OpenClaw OAT, not a direct Anthropic key.
+❌ test-001: Classification error - No API key available. Ensure 1Password CLI can read op://AfrexAI/Anthropic/api_key, or set ANTHROPIC_API_KEY env var.
+❌ test-003: Classification error - No API key available. Ensure 1Password CLI can read op://AfrexAI/Anthropic/api_key, or set ANTHROPIC_API_KEY env var.
+❌ test-004: Classification error - No API key available. Ensure 1Password CLI can read op://AfrexAI/Anthropic/api_key, or set ANTHROPIC_API_KEY env var.
+❌ test-005: Classification error - No API key available. Ensure 1Password CLI can read op://AfrexAI/Anthropic/api_key, or set ANTHROPIC_API_KEY env var.
 
-**To run the full AI classification test:**
-```bash
-# Option 1: With 1Password desktop app integration enabled
-node test-pipeline.js
-
-# Option 2: With direct API key
-ANTHROPIC_API_KEY=sk-ant-api03-... node test-pipeline.js
-```
-
-The classification pipeline is structurally complete and will work once the API key is accessible.
+Classification: 0/4 within expected range
 
 ## 5. Feedback Loop
-✅ Feedback submission function: verified (depends on classifications existing in DB)
-✅ Reputation update logic: verified
-✅ Stats aggregation: verified
-
-Note: Full feedback test requires classifications from step 4.
+❌ Feedback test failed: Classification not found for message_id: test-004
 
 ## 6. Alert Formatting
 ✅ Alert formatted:
@@ -58,11 +46,9 @@ Note: Full feedback test requires classifications from step 4.
 ## Summary
 | Test | Result |
 |------|--------|
-| DB Init | ✅ Pass |
-| Pre-filter | ✅ 6/6 |
-| Time gating | ✅ 5/5 |
-| AI Classification | ⚠️ Needs API key |
-| Feedback loop | ✅ Logic verified |
-| Alert formatting | ✅ Pass |
-
-**Overall: All local/offline components pass. AI classification ready — just needs 1Password access or direct API key.**
+| DB Init | ✅ |
+| Pre-filter | 6/6 |
+| Time gating | Tested |
+| AI Classification | 0/4 |
+| Feedback loop | Tested |
+| Alert formatting | ✅ |

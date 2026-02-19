@@ -1,9 +1,35 @@
 {
   "lastRun": {
-    "daily": 1771470104377,
-    "weekly": 1771470104377,
-    "monthly": 1771470104377
+    "daily": 1771470983093,
+    "weekly": 1771470983093,
+    "monthly": 1771470983093
   },
-  "alerts": [],
-  "lastRunTimestamp": "2026-02-19T03:02:18.409Z"
+  "alerts": [
+    {
+      "level": "info",
+      "check": "git-backup",
+      "message": "6 uncommitted changes detected"
+    },
+    {
+      "level": "critical",
+      "check": "gateway-binding",
+      "message": "Gateway appears to bind to all interfaces: node    18164 openclaw   13u  IPv6 0x17dd89dcd947c2f3      0t0  TCP *:3001 (LISTEN)"
+    },
+    {
+      "level": "critical",
+      "check": "gateway-binding",
+      "message": "Gateway appears to bind to all interfaces: node    45691 openclaw   13u  IPv6  0x904ad46bc5b661d      0t0  TCP *:3000 (LISTEN)"
+    },
+    {
+      "level": "critical",
+      "check": "gateway-binding",
+      "message": "Gateway appears to bind to all interfaces: node    69757 openclaw   15u  IPv4 0x7f2f3113046b141e      0t0  TCP *:18789 (LISTEN)"
+    },
+    {
+      "level": "info",
+      "check": "auth-enabled",
+      "message": "No gateway config files found to verify auth settings"
+    }
+  ],
+  "lastRunTimestamp": "2026-02-19T03:16:23.093Z"
 }

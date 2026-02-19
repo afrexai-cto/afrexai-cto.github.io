@@ -1,24 +1,23 @@
 {
-  "runId": 1,
-  "overall": 67,
+  "runId": 2,
+  "overall": 69,
   "results": [
     {
-      "score": 94,
+      "score": 97,
       "findings": [
         "ℹ️ No dedicated cron directory found - jobs may be managed via OpenClaw scheduler",
-        "📊 19 systems found, 16 have active data/packages"
+        "📊 26 systems found, 24 have active data/packages"
       ],
       "area": "cron-health",
       "status": "healthy"
     },
     {
-      "score": 33,
+      "score": 49,
       "findings": [
-        "📊 98 JS/TS files, ~8592 total lines",
-        "⚠️ 8 TODO comments found",
-        "🔴 11 HACK/FIXME/XXX markers found",
+        "📊 157 JS/TS files, ~9509 total lines",
+        "⚠️ 28 TODO comments found",
         "⚠️ 2 files exceed 300 lines",
-        "⚠️ 16 async files without try/catch"
+        "⚠️ 24 async files without try/catch"
       ],
       "area": "code-quality",
       "status": "critical"
@@ -26,7 +25,7 @@
     {
       "score": 10,
       "findings": [
-        "📊 0 test files found across 93 source files (ratio: 0.0%)",
+        "📊 0 test files found across 145 source files (ratio: 0.0%)",
         "🔴 No tests found in systems/",
         "🔴 No tests found in skills/",
         "🔴 No tests found in crm/",
@@ -47,24 +46,23 @@
       "status": "healthy"
     },
     {
-      "score": 20,
+      "score": 25,
       "findings": [
         "⚠️ No lockfile: ./stripe-api/package.json",
+        "⚠️ No lockfile: ./systems/asana-integration/package.json",
         "⚠️ No lockfile: ./systems/daily-briefing/package.json",
         "⚠️ No lockfile: ./systems/health-monitoring/package.json",
         "⚠️ No lockfile: ./systems/humanizer/package.json",
-        "⚠️ No lockfile: ./systems/knowledge-base/package.json",
-        "⚠️ No lockfile: ./systems/meeting-actions/package.json",
+        "⚠️ No lockfile: ./systems/image-gen/package.json",
+        "⚠️ No lockfile: ./systems/messaging-setup/package.json",
         "⚠️ No lockfile: ./systems/model-cost-tracker/package.json",
+        "⚠️ No lockfile: ./systems/newsletter-crm/package.json",
         "⚠️ No lockfile: ./systems/platform-health/package.json",
         "⚠️ No lockfile: ./systems/prompt-engineering/package.json",
         "⚠️ No lockfile: ./systems/security-safety/package.json",
-        "⚠️ No lockfile: ./systems/social-tracker/package.json",
-        "⚠️ No lockfile: ./systems/urgent-email-detection/package.json",
-        "⚠️ No lockfile: ./systems/video-pipeline/package.json",
-        "📊 21 package.json files, 29 total dependencies",
-        "ℹ️ 29 dependencies use floating versions (^/~)",
-        "📦 Most shared deps: googleapis(4x), better-sqlite3(5x)"
+        "📊 29 package.json files, 36 total dependencies",
+        "ℹ️ 36 dependencies use floating versions (^/~)",
+        "📦 Most shared deps: googleapis(5x), sql.js(3x)"
       ],
       "area": "dependencies",
       "status": "critical"
@@ -93,7 +91,7 @@
     {
       "score": 90,
       "findings": [
-        "📊 10 config files found (10 valid JSON, 0 .env, 0 op.env)"
+        "📊 18 config files found (18 valid JSON, 0 .env, 0 op.env)"
       ],
       "area": "config-consistency",
       "status": "healthy"
@@ -102,7 +100,6 @@
       "score": 100,
       "findings": [
         "✅ ./crm has package.json",
-        "🗄️ Database: crm.db (72KB)",
         "✅ ./systems/personal-crm has package.json",
         "💾 Backup system found with 7 files",
         "✅ Schema/migration files present"
@@ -114,10 +111,10 @@
   "recommendations": [
     "Address critical issues in: code-quality, test-coverage, dependencies",
     "Review warnings in: skill-integrity",
-    "code-quality: Needs immediate attention (score: 33)",
+    "code-quality: Needs immediate attention (score: 49)",
     "test-coverage: Needs immediate attention (score: 10)",
-    "dependencies: Needs immediate attention (score: 20)",
+    "dependencies: Needs immediate attention (score: 25)",
     "skill-integrity: Room for improvement (score: 68)"
   ],
-  "timestamp": "2026-02-19T03:03:04.449Z"
+  "timestamp": "2026-02-19T03:16:22.937Z"
 }

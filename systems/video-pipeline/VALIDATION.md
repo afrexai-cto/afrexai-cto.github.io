@@ -1,6 +1,6 @@
 # VALIDATION.md - Video Pipeline Test Results
 
-**Date:** 2026-02-19T03:08:24.511Z
+**Date:** 2026-02-19T03:16:45.354Z
 **Tests:** 22/22 passed
 
 ## Results
@@ -20,7 +20,7 @@
 | 11 | Pattern analysis | ✅ PASS | - |
 | 12 | Pattern insights | ✅ PASS | insights: coding |
 | 13 | Dedup - similar vectors | ✅ PASS | sim=1.0000 |
-| 14 | Dedup - different vectors | ✅ PASS | sim=0.7568 |
+| 14 | Dedup - different vectors | ✅ PASS | sim=0.7453 |
 | 15 | Angle extraction | ✅ PASS | angles: Tutorial/How-to, Comparison, Trend/Future outlook, Beginner guide |
 | 16 | Angle - tutorial | ✅ PASS | - |
 | 17 | Angle - comparison | ✅ PASS | - |
