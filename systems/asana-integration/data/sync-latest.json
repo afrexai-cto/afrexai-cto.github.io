@@ -1,0 +1,124 @@
+{
+  "workspace": {
+    "gid": "ws_mock_001",
+    "name": "Creator Studio"
+  },
+  "projects": [
+    {
+      "gid": "proj_001",
+      "name": "Video Pipeline",
+      "archived": false,
+      "sections": [
+        {
+          "gid": "sec_001",
+          "name": "Inbox"
+        },
+        {
+          "gid": "sec_002",
+          "name": "Research"
+        },
+        {
+          "gid": "sec_003",
+          "name": "Scripting"
+        },
+        {
+          "gid": "sec_004",
+          "name": "Production"
+        },
+        {
+          "gid": "sec_005",
+          "name": "Published"
+        }
+      ],
+      "tasks": [
+        {
+          "gid": "task_001",
+          "name": "AI Agents Explained — Deep Dive",
+          "completed": false,
+          "due_on": "2026-03-01",
+          "notes": "Research angles:\n- History of AI agents\n- Current landscape\n- Where we're headed\n\nSources:\n- Anthropic blog\n- OpenAI docs\n- Academic papers",
+          "assignee": {
+            "name": "Kalin"
+          },
+          "section": "Research",
+          "created_at": "2026-02-10T10:00:00Z",
+          "modified_at": "2026-02-18T15:30:00Z"
+        },
+        {
+          "gid": "task_002",
+          "name": "Why Everyone's Wrong About AGI",
+          "completed": false,
+          "due_on": "2026-03-15",
+          "notes": "Contrarian take on AGI timelines.\n\nAngles:\n- Overhyped predictions\n- What \"general\" actually means\n- Hardware bottlenecks",
+          "assignee": {
+            "name": "Kalin"
+          },
+          "section": "Inbox",
+          "created_at": "2026-02-15T09:00:00Z",
+          "modified_at": "2026-02-17T11:00:00Z"
+        },
+        {
+          "gid": "task_003",
+          "name": "Building a Second Brain with AI Tools",
+          "completed": false,
+          "due_on": "2026-02-25",
+          "notes": "Practical tutorial format.\n\nSources:\n- Tiago Forte's methodology\n- Notion/Obsidian workflows\n- AI-augmented PKM",
+          "assignee": {
+            "name": "Kalin"
+          },
+          "section": "Scripting",
+          "created_at": "2026-02-01T08:00:00Z",
+          "modified_at": "2026-02-19T01:00:00Z"
+        },
+        {
+          "gid": "task_004",
+          "name": "The Creator Economy is Broken",
+          "completed": true,
+          "due_on": "2026-02-10",
+          "notes": "Published Feb 10. Strong performance.",
+          "assignee": {
+            "name": "Kalin"
+          },
+          "section": "Published",
+          "created_at": "2026-01-20T10:00:00Z",
+          "modified_at": "2026-02-10T18:00:00Z"
+        },
+        {
+          "gid": "task_1771470369688",
+          "name": "Test Video Idea",
+          "completed": false,
+          "due_on": null,
+          "notes": "Testing card creation",
+          "assignee": null,
+          "section": "Inbox",
+          "created_at": "2026-02-19T03:06:09.688Z",
+          "modified_at": "2026-02-19T03:06:09.689Z"
+        }
+      ]
+    },
+    {
+      "gid": "proj_002",
+      "name": "Channel Operations",
+      "archived": false,
+      "sections": [
+        {
+          "gid": "sec_010",
+          "name": "Tasks"
+        }
+      ],
+      "tasks": [
+        {
+          "gid": "task_010",
+          "name": "Update channel branding",
+          "completed": false,
+          "due_on": "2026-03-01",
+          "notes": "New colour palette and thumbnails",
+          "assignee": null,
+          "section": "Tasks",
+          "created_at": "2026-02-18T12:00:00Z",
+          "modified_at": "2026-02-18T12:00:00Z"
+        }
+      ]
+    }
+  ]
+}

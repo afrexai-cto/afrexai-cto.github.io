@@ -1,0 +1,13 @@
+{
+  "name": "platform-health-council",
+  "version": "1.0.0",
+  "description": "Automated platform health analysis across 9 areas with AI-powered recommendations",
+  "type": "module",
+  "scripts": {
+    "check": "node health-check.js",
+    "report": "node report.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}

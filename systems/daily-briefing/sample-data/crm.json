@@ -1,0 +1,79 @@
+{
+  "contacts": {
+    "sarah.chen@acmecorp.com": {
+      "name": "Sarah Chen",
+      "title": "VP of Sales",
+      "company": "Acme Corp",
+      "industry": "SaaS",
+      "dealStage": "Negotiation",
+      "dealValue": "$240,000 ARR",
+      "lastInteraction": "2026-02-14",
+      "lastInteractionNote": "Sent revised pricing proposal. She mentioned board approval needed by end of Feb.",
+      "history": [
+        "2026-01-20: Initial discovery call - strong fit for enterprise tier",
+        "2026-02-01: Demo to wider team, positive reception",
+        "2026-02-14: Pricing negotiation - asked for 15% volume discount"
+      ],
+      "notes": "Decision maker. Reports to CEO. Prefers concise communication."
+    },
+    "james.wilson@techflow.io": {
+      "name": "James Wilson",
+      "title": "CTO",
+      "company": "TechFlow",
+      "industry": "DevTools",
+      "dealStage": "Customer - Expansion",
+      "dealValue": "$85,000 ARR (current), $150,000 (proposed expansion)",
+      "lastInteraction": "2026-02-17",
+      "lastInteractionNote": "Discussed adding 3 more team seats and API tier upgrade.",
+      "history": [
+        "2025-08-15: Closed initial deal ($85k ARR)",
+        "2026-01-10: Expansion conversation started",
+        "2026-02-17: Sent expansion proposal"
+      ],
+      "notes": "Technical buyer. Loves detailed docs. Big advocate internally."
+    },
+    "lisa.park@meridianhealth.com": {
+      "name": "Lisa Park",
+      "title": "Chief Digital Officer",
+      "company": "Meridian Health",
+      "industry": "Healthcare",
+      "dealStage": "Demo/Evaluation",
+      "dealValue": "$500,000 ARR (estimated)",
+      "lastInteraction": "2026-02-10",
+      "lastInteractionNote": "Introductory call. Very interested in HIPAA compliance features.",
+      "history": [
+        "2026-02-05: Inbound lead from website",
+        "2026-02-10: Discovery call - 12 hospitals, need unified platform"
+      ],
+      "notes": "Reports to CEO. Key concern is compliance and data residency."
+    },
+    "tom.nguyen@meridianhealth.com": {
+      "name": "Tom Nguyen",
+      "title": "Head of Procurement",
+      "company": "Meridian Health",
+      "industry": "Healthcare",
+      "dealStage": "Demo/Evaluation",
+      "dealValue": null,
+      "lastInteraction": "2026-02-10",
+      "lastInteractionNote": "On the discovery call with Lisa. Asked about SOC2 and BAA.",
+      "history": [
+        "2026-02-10: Joined discovery call"
+      ],
+      "notes": "Procurement gatekeeper. Will need security questionnaire completed."
+    },
+    "alex.kumar@internal.com": {
+      "name": "Alex Kumar",
+      "title": "Engineering Lead",
+      "company": "Internal",
+      "industry": null,
+      "dealStage": null,
+      "dealValue": null,
+      "lastInteraction": "2026-02-12",
+      "lastInteractionNote": "Discussed API v3 timeline. On track for March release.",
+      "history": [
+        "Weekly 1:1s since 2025-06"
+      ],
+      "notes": "Key internal stakeholder. Owns API and integrations team."
+    }
+  }
+}

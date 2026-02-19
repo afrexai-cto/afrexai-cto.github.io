@@ -1,0 +1,123 @@
+{
+  "runId": 1,
+  "overall": 67,
+  "results": [
+    {
+      "score": 94,
+      "findings": [
+        "ℹ️ No dedicated cron directory found - jobs may be managed via OpenClaw scheduler",
+        "📊 19 systems found, 16 have active data/packages"
+      ],
+      "area": "cron-health",
+      "status": "healthy"
+    },
+    {
+      "score": 33,
+      "findings": [
+        "📊 98 JS/TS files, ~8592 total lines",
+        "⚠️ 8 TODO comments found",
+        "🔴 11 HACK/FIXME/XXX markers found",
+        "⚠️ 2 files exceed 300 lines",
+        "⚠️ 16 async files without try/catch"
+      ],
+      "area": "code-quality",
+      "status": "critical"
+    },
+    {
+      "score": 10,
+      "findings": [
+        "📊 0 test files found across 93 source files (ratio: 0.0%)",
+        "🔴 No tests found in systems/",
+        "🔴 No tests found in skills/",
+        "🔴 No tests found in crm/",
+        "🔴 No tests found in outbound/",
+        "🔴 No tests found in stripe-api/"
+      ],
+      "area": "test-coverage",
+      "status": "critical"
+    },
+    {
+      "score": 92,
+      "findings": [
+        "📊 28 prompt/skill files found",
+        "ℹ️ 22 prompts lack examples",
+        "✅ 17 prompts are well-structured (headers + constraints)"
+      ],
+      "area": "prompt-quality",
+      "status": "healthy"
+    },
+    {
+      "score": 20,
+      "findings": [
+        "⚠️ No lockfile: ./stripe-api/package.json",
+        "⚠️ No lockfile: ./systems/daily-briefing/package.json",
+        "⚠️ No lockfile: ./systems/health-monitoring/package.json",
+        "⚠️ No lockfile: ./systems/humanizer/package.json",
+        "⚠️ No lockfile: ./systems/knowledge-base/package.json",
+        "⚠️ No lockfile: ./systems/meeting-actions/package.json",
+        "⚠️ No lockfile: ./systems/model-cost-tracker/package.json",
+        "⚠️ No lockfile: ./systems/platform-health/package.json",
+        "⚠️ No lockfile: ./systems/prompt-engineering/package.json",
+        "⚠️ No lockfile: ./systems/security-safety/package.json",
+        "⚠️ No lockfile: ./systems/social-tracker/package.json",
+        "⚠️ No lockfile: ./systems/urgent-email-detection/package.json",
+        "⚠️ No lockfile: ./systems/video-pipeline/package.json",
+        "📊 21 package.json files, 29 total dependencies",
+        "ℹ️ 29 dependencies use floating versions (^/~)",
+        "📦 Most shared deps: googleapis(4x), better-sqlite3(5x)"
+      ],
+      "area": "dependencies",
+      "status": "critical"
+    },
+    {
+      "score": 93,
+      "findings": [
+        "📁 Large files (>1MB):",
+        "  - ./systems/security-council/scan-data.json (3.5MB)",
+        "📊 Total large file storage: 3.5MB"
+      ],
+      "area": "storage",
+      "status": "healthy"
+    },
+    {
+      "score": 68,
+      "findings": [
+        "📊 23 skills found",
+        "✅ 22/23 have SKILL.md",
+        "📦 0/23 have package.json",
+        "🔧 0/23 have an entrypoint"
+      ],
+      "area": "skill-integrity",
+      "status": "warning"
+    },
+    {
+      "score": 90,
+      "findings": [
+        "📊 10 config files found (10 valid JSON, 0 .env, 0 op.env)"
+      ],
+      "area": "config-consistency",
+      "status": "healthy"
+    },
+    {
+      "score": 100,
+      "findings": [
+        "✅ ./crm has package.json",
+        "🗄️ Database: crm.db (72KB)",
+        "✅ ./systems/personal-crm has package.json",
+        "💾 Backup system found with 7 files",
+        "✅ Schema/migration files present"
+      ],
+      "area": "data-integrity",
+      "status": "healthy"
+    }
+  ],
+  "recommendations": [
+    "Address critical issues in: code-quality, test-coverage, dependencies",
+    "Review warnings in: skill-integrity",
+    "code-quality: Needs immediate attention (score: 33)",
+    "test-coverage: Needs immediate attention (score: 10)",
+    "dependencies: Needs immediate attention (score: 20)",
+    "skill-integrity: Room for improvement (score: 68)"
+  ],
+  "timestamp": "2026-02-19T03:03:04.449Z"
+}

@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    { "id": "t-001", "title": "Send SOC2 report to Meridian Health", "status": "pending", "due": "2026-02-19", "priority": "high", "tags": ["meridian", "compliance"] },
+    { "id": "t-002", "title": "Review Q1 forecast spreadsheet", "status": "pending", "due": "2026-02-19", "priority": "medium", "tags": ["pipeline"] },
+    { "id": "t-003", "title": "Follow up with Sarah on board timeline", "status": "overdue", "due": "2026-02-17", "priority": "high", "tags": ["acme"] },
+    { "id": "t-004", "title": "Prepare Meridian demo environment", "status": "done", "due": "2026-02-18", "priority": "high", "tags": ["meridian"] },
+    { "id": "t-005", "title": "Draft blog post on API v3 features", "status": "pending", "due": "2026-02-21", "priority": "low", "tags": ["content"] },
+    { "id": "t-006", "title": "Get legal review on TechFlow expansion contract", "status": "waiting", "waitingOn": "Legal team", "due": "2026-02-20", "priority": "high", "tags": ["techflow"] },
+    { "id": "t-007", "title": "Update investor deck with Jan metrics", "status": "overdue", "due": "2026-02-15", "priority": "medium", "tags": ["finance"] }
+  ]
+}

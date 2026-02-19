@@ -1,0 +1,14 @@
+{
+  "name": "newsletter-crm",
+  "version": "1.0.0",
+  "description": "Newsletter & CRM Platform Integration (Beehiiv + HubSpot)",
+  "scripts": {
+    "sync": "node sync.js all",
+    "sync:beehiiv": "node sync.js beehiiv",
+    "sync:hubspot": "node sync.js hubspot",
+    "report": "node report.js overview",
+    "test": "node test-mock.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

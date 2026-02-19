@@ -1,0 +1,11 @@
+{
+  "name": "daily-briefing",
+  "version": "1.0.0",
+  "description": "Daily briefing generator with pluggable data sources",
+  "main": "briefing.js",
+  "type": "module",
+  "scripts": {
+    "briefing": "node briefing.js",
+    "test": "node briefing.js --date 2026-02-19"
+  }
+}

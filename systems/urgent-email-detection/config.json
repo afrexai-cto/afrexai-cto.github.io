@@ -1,0 +1,52 @@
+{
+  "gmail": {
+    "credentialsPath": "credentials.json",
+    "tokenPath": "token.json",
+    "maxResults": 20,
+    "query": "is:unread category:primary"
+  },
+  "scanning": {
+    "intervalMinutes": 30,
+    "wakingHours": {
+      "weekday": { "start": 5, "end": 21 },
+      "weekend": { "start": 7, "end": 21 }
+    },
+    "timezone": "Europe/London"
+  },
+  "classification": {
+    "model": "claude-sonnet-4-20250514",
+    "urgencyThresholds": {
+      "critical": 0.9,
+      "high": 0.7,
+      "medium": 0.4
+    },
+    "alertMinimumLabel": "high",
+    "maxTokens": 1024
+  },
+  "noiseSenders": [
+    "noreply@github.com",
+    "notifications@github.com",
+    "no-reply@accounts.google.com",
+    "noreply@medium.com",
+    "digest@quora.com",
+    "info@linkedin.com",
+    "jobs-noreply@linkedin.com",
+    "newsletter@",
+    "marketing@",
+    "promo@",
+    "noreply@notify.bugsnag.com"
+  ],
+  "noiseDomains": [
+    "promotions.google.com",
+    "marketing.stripe.com",
+    "e.groupon.com"
+  ],
+  "database": {
+    "path": "emails.db"
+  },
+  "alerts": {
+    "webhookUrl": "",
+    "telegramBotToken": "",
+    "telegramChatId": ""
+  }
+}

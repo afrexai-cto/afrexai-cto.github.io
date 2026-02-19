@@ -1,0 +1,21 @@
+{
+  "workspaceRoot": "/Users/openclaw/.openclaw/workspace-main",
+  "dbPath": "./health.db",
+  "areas": [
+    "cron-health",
+    "code-quality",
+    "test-coverage",
+    "prompt-quality",
+    "dependencies",
+    "storage",
+    "skill-integrity",
+    "config-consistency",
+    "data-integrity"
+  ],
+  "thresholds": {
+    "healthy": 80,
+    "warning": 50
+  },
+  "anthropicModel": "claude-sonnet-4-20250514",
+  "maxAiAnalysisTokens": 1024
+}

@@ -1,0 +1,9 @@
+{
+  "apiKey": "YOUR_GEMINI_API_KEY",
+  "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+  "model": "gemini-2.0-flash-exp-image-generation",
+  "imageModel": "imagen-3.0-generate-002",
+  "outputDir": "./output",
+  "defaultWidth": 1024,
+  "defaultHeight": 1024
+}

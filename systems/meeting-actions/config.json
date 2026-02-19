@@ -1,0 +1,30 @@
+{
+  "fathom": {
+    "apiKey": "FATHOM_API_KEY_PLACEHOLDER",
+    "baseUrl": "https://api.fathom.video/v1",
+    "pollIntervalMs": 300000,
+    "bufferAfterMeetingMs": 120000
+  },
+  "todoist": {
+    "apiKey": "TODOIST_API_KEY_PLACEHOLDER",
+    "baseUrl": "https://api.todoist.com/rest/v2",
+    "projectId": "TODOIST_PROJECT_ID_PLACEHOLDER"
+  },
+  "calendar": {
+    "provider": "google",
+    "calendarId": "primary"
+  },
+  "businessHours": {
+    "start": 9,
+    "end": 18,
+    "timezone": "Europe/London",
+    "days": [1, 2, 3, 4, 5]
+  },
+  "completionCheckTimes": ["08:00", "12:00", "16:00"],
+  "archiveAfterDays": 14,
+  "internalDomains": ["mycompany.com"],
+  "approvalWebhook": "TELEGRAM_WEBHOOK_URL_PLACEHOLDER",
+  "db": {
+    "path": "./meeting-actions.db"
+  }
+}

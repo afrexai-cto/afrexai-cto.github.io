@@ -1,0 +1,5 @@
+{"timestamp":"2026-02-19T03:00:22.342Z","model":"claude-opus-4-6","provider":"Anthropic","input_tokens":5000,"output_tokens":2000,"task":"email-scan","input_cost":0.075,"output_cost":0.15,"total_cost":0.22499999999999998}
+{"timestamp":"2026-02-19T03:00:23.183Z","model":"gpt-4o","provider":"OpenAI","input_tokens":3000,"output_tokens":1500,"task":"summarize","input_cost":0.0075,"output_cost":0.015,"total_cost":0.0225}
+{"timestamp":"2026-02-19T03:00:23.725Z","model":"claude-sonnet-4-6","provider":"Anthropic","input_tokens":8000,"output_tokens":3000,"task":"email-scan","input_cost":0.024,"output_cost":0.045,"total_cost":0.069}
+{"timestamp":"2026-02-19T03:00:24.108Z","model":"gemini-2.0-flash","provider":"Google","input_tokens":10000,"output_tokens":5000,"task":"code-review","input_cost":0.001,"output_cost":0.002,"total_cost":0.003}
+{"timestamp":"2026-02-19T03:00:24.536Z","model":"grok-3","provider":"xAI","input_tokens":2000,"output_tokens":800,"task":"summarize","input_cost":0.006,"output_cost":0.012,"total_cost":0.018000000000000002}

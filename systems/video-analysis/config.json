@@ -1,0 +1,23 @@
+{
+  "model": "gemini-2.5-flash",
+  "maxFileSizeMB": 2000,
+  "pollIntervalMs": 5000,
+  "pollTimeoutMs": 300000,
+  "tempDir": "/tmp/gemini-video-analysis",
+  "supportedFormats": ["mp4", "mpeg", "mov", "avi", "flv", "mpg", "webm", "wmv", "3gp"],
+  "mimeTypes": {
+    "mp4": "video/mp4",
+    "mpeg": "video/mpeg",
+    "mov": "video/quicktime",
+    "avi": "video/x-msvideo",
+    "flv": "video/x-flv",
+    "mpg": "video/mpeg",
+    "webm": "video/webm",
+    "wmv": "video/x-ms-wmv",
+    "3gp": "video/3gpp"
+  },
+  "prompt": {
+    "analysis": "Analyze this video comprehensively. Provide:\n\n## Summary\nA detailed summary of the video content.\n\n## Key Moments\nList key moments with timestamps in [MM:SS] format. For each moment, describe what happens.\n\n## Insights\nNotable observations, themes, patterns, or interesting details.\n\n## Talking Points\nKey discussion points or takeaways someone should know after watching this video.\n\n## Technical Notes\nAny relevant technical observations (video quality, editing style, production notes).",
+    "custom_prefix": "Analyze this video. "
+  }
+}

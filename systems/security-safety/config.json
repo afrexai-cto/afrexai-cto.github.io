@@ -1,0 +1,64 @@
+{
+  "redaction": {
+    "enabled": true,
+    "patterns": {
+      "openai_key": "sk-[A-Za-z0-9_-]{20,}",
+      "anthropic_key": "sk-ant-[A-Za-z0-9_-]{20,}",
+      "aws_access_key": "AKIA[0-9A-Z]{16}",
+      "aws_secret_key": "[A-Za-z0-9/+=]{40}",
+      "github_token": "gh[pousr]_[A-Za-z0-9_]{36,}",
+      "generic_api_key": "(?:api[_-]?key|token|secret|password|credential)\\s*[:=]\\s*['\"]?[A-Za-z0-9_\\-/.+=]{16,}",
+      "bearer_token": "Bearer\\s+[A-Za-z0-9_\\-/.+=]{20,}",
+      "private_key_block": "-----BEGIN (?:RSA |EC |DSA )?PRIVATE KEY-----",
+      "slack_token": "xox[baprs]-[A-Za-z0-9-]{10,}",
+      "stripe_key": "(?:sk|pk)_(?:live|test)_[A-Za-z0-9]{20,}",
+      "env_file_secret": "^[A-Z_]+=(?!op://)\\S{16,}"
+    },
+    "replacement": "[REDACTED]"
+  },
+  "injection": {
+    "enabled": true,
+    "markers": [
+      "System:",
+      "SYSTEM:",
+      "Ignore previous instruction",
+      "ignore previous instruction",
+      "Ignore all previous",
+      "ignore all previous",
+      "Disregard above",
+      "disregard above",
+      "You are now",
+      "you are now",
+      "New instruction:",
+      "new instruction:",
+      "Override:",
+      "override:",
+      "Forget everything",
+      "forget everything",
+      "Act as",
+      "Pretend you are",
+      "Do not follow",
+      "IMPORTANT: From now on",
+      "<!-- injection",
+      "[INST]",
+      "<<SYS>>",
+      "</s>",
+      "Human:",
+      "Assistant:",
+      "\\n\\nHuman:",
+      "```system"
+    ],
+    "action": "report_and_sanitize"
+  },
+  "dataProtection": {
+    "financialDataDMOnly": true,
+    "neverCommitEnvFiles": true,
+    "envFilePatterns": [".env", ".env.*", "*.env", "op.env"]
+  },
+  "automatedChecks": {
+    "nightlyCodeReview": { "cron": "0 3 * * *", "enabled": true },
+    "weeklyGatewayVerify": { "cron": "0 4 * * 1", "enabled": true },
+    "monthlyMemoryScan": { "cron": "0 5 1 * *", "enabled": true },
+    "repoSizeMonitor": { "cron": "0 6 * * 0", "enabled": true, "warnThresholdMB": 500, "criticalThresholdMB": 1000 }
+  }
+}

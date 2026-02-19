@@ -1,0 +1,40 @@
+{
+  "threads": [
+    {
+      "id": "em-301",
+      "subject": "Re: Acme Corp - Revised Pricing",
+      "participants": ["sarah.chen@acmecorp.com", "you"],
+      "lastMessage": "2026-02-18T17:45:00Z",
+      "snippet": "Thanks for the updated numbers. I'll present to the board on Thursday. Can we lock in the 10% discount if we sign by end of month?",
+      "unread": true,
+      "relatedEvents": ["evt-001"]
+    },
+    {
+      "id": "em-302",
+      "subject": "Meridian Health - Security Questionnaire",
+      "participants": ["tom.nguyen@meridianhealth.com", "you", "security@internal.com"],
+      "lastMessage": "2026-02-18T14:20:00Z",
+      "snippet": "Attached is our standard security questionnaire (87 questions). Would appreciate completion before the demo Thursday.",
+      "unread": true,
+      "relatedEvents": ["evt-002"]
+    },
+    {
+      "id": "em-303",
+      "subject": "Re: TechFlow Expansion - API Tier",
+      "participants": ["james.wilson@techflow.io", "you"],
+      "lastMessage": "2026-02-17T11:00:00Z",
+      "snippet": "Looks good overall. One question — does the enterprise API tier include dedicated support?",
+      "unread": false,
+      "relatedEvents": ["evt-001"]
+    },
+    {
+      "id": "em-304",
+      "subject": "API v3 Release Timeline",
+      "participants": ["alex.kumar@internal.com", "you", "product@internal.com"],
+      "lastMessage": "2026-02-18T16:00:00Z",
+      "snippet": "QA found 2 P1 bugs in batch endpoint. Might push release by a week. Let's discuss tomorrow.",
+      "unread": true,
+      "relatedEvents": ["evt-003"]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "scanRoot": "/Users/openclaw/.openclaw/workspace-main",
+  "dbPath": "./security-council.db",
+  "scanExtensions": [".js", ".ts", ".json", ".sql", ".env", ".yaml", ".yml", ".md", ".sh"],
+  "excludeDirs": ["node_modules", ".git", "package-lock.json", "security-council"],
+  "excludeFiles": ["package-lock.json"],
+  "maxFileSizeKb": 500,
+  "batchSize": 5,
+  "anthropicModel": "claude-sonnet-4-20250514",
+  "apiKeyRef": "op://AfrexAI/Anthropic/api_key",
+  "perspectives": {
+    "offensive": "You are a red-team attacker. Find exploitable vulnerabilities: injection, auth bypass, SSRF, path traversal, secret exposure, privilege escalation. Think like someone who wants to break in.",
+    "defensive": "You are a blue-team defender. Evaluate: are protections adequate? Missing input validation, error handling gaps, missing rate limiting, insecure defaults, weak auth patterns.",
+    "data_privacy": "You are a data privacy auditor. Find: PII exposure, missing encryption, excessive logging of sensitive data, data retention issues, GDPR/compliance gaps, secrets in code.",
+    "operational_realism": "You are a pragmatic security engineer. Distinguish real risks from security theater. Flag things that look secure but aren't, and things flagged as issues that don't matter in context."
+  },
+  "severityThresholds": {
+    "critical": "Actively exploitable, immediate risk of data breach or system compromise",
+    "high": "Significant vulnerability requiring prompt remediation",
+    "medium": "Notable weakness, should be addressed in normal development cycle",
+    "low": "Minor issue or hardening opportunity",
+    "info": "Observation or best-practice suggestion"
+  }
+}

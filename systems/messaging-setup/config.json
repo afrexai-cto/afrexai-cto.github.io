@@ -1,0 +1,30 @@
+{
+  "telegram": {
+    "botToken": "op://AfrexAI/Telegram-Bot/token",
+    "chatId": "op://AfrexAI/Telegram-Bot/forum_chat_id",
+    "apiBase": "https://api.telegram.org",
+    "topics": {
+      "daily-brief":      { "name": "📋 Daily Brief",       "iconColor": 7322096,  "threadId": null },
+      "crm":              { "name": "🤝 CRM",               "iconColor": 16766590, "threadId": null },
+      "email":            { "name": "📧 Email",              "iconColor": 13338331, "threadId": null },
+      "knowledge-base":   { "name": "📚 Knowledge Base",     "iconColor": 9367192,  "threadId": null },
+      "meta-analysis":    { "name": "🔬 Meta Analysis",      "iconColor": 16749490, "threadId": null },
+      "video-ideas":      { "name": "🎬 Video Ideas",        "iconColor": 16478047, "threadId": null },
+      "earnings":         { "name": "💰 Earnings",           "iconColor": 6737151,  "threadId": null },
+      "cron-updates":     { "name": "⚙️ Cron Updates",       "iconColor": 16737095, "threadId": null, "filter": "failures-only" },
+      "financials":       { "name": "🔒 Financials",         "iconColor": 8440772,  "threadId": null, "locked": true },
+      "health":           { "name": "🏥 Health",             "iconColor": 7322096,  "threadId": null },
+      "security":         { "name": "🛡️ Security",           "iconColor": 16737095, "threadId": null },
+      "advisory-council": { "name": "🧠 Advisory Council",   "iconColor": 9367192,  "threadId": null },
+      "action-items":     { "name": "✅ Action Items",        "iconColor": 7322096,  "threadId": null }
+    }
+  },
+  "slack": {
+    "botToken": "op://AfrexAI/Slack-Bot/bot_token",
+    "signingSecret": "op://AfrexAI/Slack-Bot/signing_secret",
+    "mode": "mention-only",
+    "userAllowlist": [],
+    "autoReactEmoji": "eyes",
+    "maxMessagesPerTask": 2
+  }
+}

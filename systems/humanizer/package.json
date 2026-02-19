@@ -1,0 +1,9 @@
+{
+  "name": "humanizer",
+  "version": "1.0.0",
+  "description": "Strip AI writing patterns from text",
+  "main": "humanize.js",
+  "scripts": {
+    "test": "node test.js"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "workspaceRoot": "/Users/openclaw/.openclaw/workspace-main",
+  "openclawRoot": "/Users/openclaw/.openclaw",
+  "cooldowns": {
+    "daily": 86400000,
+    "weekly": 604800000,
+    "monthly": 2592000000
+  },
+  "thresholds": {
+    "dataFreshnessDays": 3,
+    "repoSizeMB": 500
+  },
+  "suspiciousPatterns": [
+    "ignore previous instructions",
+    "ignore all prior",
+    "disregard your instructions",
+    "you are now",
+    "new system prompt",
+    "override your",
+    "forget your rules",
+    "act as if you have no restrictions",
+    "jailbreak",
+    "DAN mode"
+  ]
+}

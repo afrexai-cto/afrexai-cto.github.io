@@ -1,0 +1,15 @@
+{
+  "name": "image-gen",
+  "version": "1.0.0",
+  "description": "Gemini Imagen image generation, editing, and composition CLI",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.js",
+    "edit": "node edit.js",
+    "compose": "node compose.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "slack": {
+    "botToken": "op://AfrexAI/SlackBot/bot-token",
+    "appToken": "op://AfrexAI/SlackBot/app-token",
+    "signingSecret": "op://AfrexAI/SlackBot/signing-secret"
+  },
+  "asana": {
+    "accessToken": "op://AfrexAI/Asana/access-token",
+    "workspaceGid": "op://AfrexAI/Asana/workspace-gid",
+    "projectGid": "op://AfrexAI/Asana/video-pipeline-project-gid"
+  },
+  "twitter": {
+    "bearerToken": "op://AfrexAI/TwitterAPI/bearer-token"
+  },
+  "openai": {
+    "apiKey": "op://AfrexAI/OpenAI/api-key",
+    "embeddingModel": "text-embedding-3-small",
+    "embeddingDimensions": 1536
+  },
+  "pipeline": {
+    "duplicateThreshold": 0.4,
+    "triggerPhrase": "potential video idea",
+    "maxResearchTweets": 50
+  }
+}

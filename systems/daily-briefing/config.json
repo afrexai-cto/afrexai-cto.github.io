@@ -1,0 +1,15 @@
+{
+  "briefingTime": "07:00",
+  "timezone": "Europe/London",
+  "sources": {
+    "calendar": { "enabled": true, "provider": "local", "path": "sample-data/calendar.json" },
+    "crm": { "enabled": true, "provider": "local", "path": "sample-data/crm.json" },
+    "tasks": { "enabled": true, "provider": "local", "path": "sample-data/tasks.json" },
+    "social": { "enabled": true, "provider": "local", "path": "sample-data/social.json" },
+    "email": { "enabled": true, "provider": "local", "path": "sample-data/email.json" }
+  },
+  "output": {
+    "format": "markdown",
+    "file": "briefing-output.md"
+  }
+}

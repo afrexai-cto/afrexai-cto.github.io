@@ -1,0 +1,6 @@
+{
+  "name": "model-cost-tracker",
+  "version": "1.0.0",
+  "description": "AI model usage and cost tracking system",
+  "type": "module"
+}

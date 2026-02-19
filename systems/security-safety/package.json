@@ -1,0 +1,13 @@
+{
+  "name": "security-safety",
+  "version": "1.0.0",
+  "description": "Security and safety system: redaction, injection detection, gateway verification, memory scanning, repo monitoring",
+  "scripts": {
+    "redact": "node redact.js",
+    "detect": "node injection-detector.js",
+    "gateway": "node gateway-verify.js",
+    "scan-memory": "node memory-scanner.js",
+    "monitor-repo": "node repo-monitor.js",
+    "test": "node test.js"
+  }
+}

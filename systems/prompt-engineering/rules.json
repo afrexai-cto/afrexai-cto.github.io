@@ -1,0 +1,70 @@
+{
+  "rules": [
+    {
+      "id": "no-caps-urgency",
+      "name": "No ALL-CAPS urgency markers",
+      "description": "ALL-CAPS words like CRITICAL, MUST, NEVER, ALWAYS cause the model to overtrigger on rules, treating every instruction as maximum priority.",
+      "pattern": "\\b(CRITICAL|MUST|NEVER|ALWAYS|IMPORTANT|WARNING|REQUIRED|FORBIDDEN|MANDATORY|ESSENTIAL|ABSOLUTELY|STRICTLY)\\b",
+      "severity": "warning",
+      "suggestion": "Rewrite in calm, lowercase language. The model follows clear instructions without shouting."
+    },
+    {
+      "id": "no-if-in-doubt",
+      "name": "No 'if in doubt' defaults",
+      "description": "Phrases like 'if unsure', 'if in doubt', 'when not certain' cause overly broad tool/behavior triggering.",
+      "pattern": "\\b(if (you('re| are))? ?(unsure|in doubt|not (sure|certain))|when (unsure|in doubt|not (sure|certain))|default to|fall ?back)\\b",
+      "severity": "warning",
+      "suggestion": "Replace with specific conditions that describe when the action should happen."
+    },
+    {
+      "id": "no-anti-patterns",
+      "name": "No anti-pattern examples",
+      "description": "Showing the model what NOT to do causes it to anchor on and reproduce the bad behavior.",
+      "pattern": "\\b(don'?t (respond|do|write|say|output) like this|bad example|wrong way|incorrect example|anti[- ]?pattern|instead of this)\\b",
+      "severity": "warning",
+      "suggestion": "Remove the bad example entirely. Only show what good output looks like."
+    },
+    {
+      "id": "explain-why",
+      "name": "Rules should explain why",
+      "description": "Rules without reasoning get followed literally. Rules with reasoning get followed in spirit and generalize to edge cases.",
+      "check": "heuristic",
+      "severity": "info",
+      "suggestion": "Add reasoning after rules — explain why the rule exists so the model can generalize."
+    },
+    {
+      "id": "format-mismatch",
+      "name": "Prompt format should match output format",
+      "description": "If you use bullet points and headers in the prompt but want conversational output, the model will follow the prompt's formatting style.",
+      "check": "heuristic",
+      "severity": "info",
+      "suggestion": "Write your prompt in the same style you want the output to be."
+    },
+    {
+      "id": "too-many-rules",
+      "name": "Too many distinct rules",
+      "description": "The model loses track after roughly 10 distinct behavioral instructions. Consolidate or prioritize.",
+      "check": "heuristic",
+      "threshold": 10,
+      "severity": "info",
+      "suggestion": "Consolidate rules — aim for under 10 distinct behavioral instructions."
+    },
+    {
+      "id": "vague-persona",
+      "name": "Vague persona adjectives",
+      "description": "Adjectives like 'friendly', 'helpful', 'knowledgeable' don't change behavior. Concrete behavior descriptions do.",
+      "pattern": "\\b[Yy]ou are (a |an )?(friendly|helpful|knowledgeable|professional|polite|kind|smart|intelligent|brilliant|expert)\\b",
+      "severity": "info",
+      "suggestion": "Replace vague adjectives with specific behavior descriptions — what does 'friendly' look like in practice?"
+    },
+    {
+      "id": "negation-heavy",
+      "name": "Negation-heavy instructions",
+      "description": "Multiple 'do not' / 'don't' instructions are less effective than stating what TO do.",
+      "pattern": "\\b(do not|don'?t|never|avoid|refrain from)\\b",
+      "severity": "info",
+      "countThreshold": 5,
+      "suggestion": "If you have many negations, try flipping them to positive instructions describing desired behavior."
+    }
+  ]
+}

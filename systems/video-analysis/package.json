@@ -1,0 +1,15 @@
+{
+  "name": "gemini-video-analysis",
+  "version": "1.0.0",
+  "description": "Video analysis using Google Gemini native video understanding",
+  "type": "module",
+  "main": "analyze.js",
+  "scripts": {
+    "analyze": "node analyze.js",
+    "test": "node analyze.js --help"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "yt-dlp-exec": "^1.0.2"
+  }
+}

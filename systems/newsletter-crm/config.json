@@ -1,0 +1,15 @@
+{
+  "beehiiv": {
+    "apiKey": "STUB_BEEHIIV_API_KEY",
+    "publicationId": "pub_00000000-0000-0000-0000-000000000000",
+    "baseUrl": "https://api.beehiiv.com/v2"
+  },
+  "hubspot": {
+    "apiKey": "STUB_HUBSPOT_API_KEY",
+    "baseUrl": "https://api.hubapi.com"
+  },
+  "database": {
+    "path": "./data.db"
+  },
+  "mock": true
+}

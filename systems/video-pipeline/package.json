@@ -1,0 +1,16 @@
+{
+  "name": "video-idea-pipeline",
+  "version": "1.0.0",
+  "description": "Video idea pipeline: Slack trigger → research → dedup → Asana card",
+  "main": "pipeline.js",
+  "scripts": {
+    "start": "node slack-listener.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@slack/socket-mode": "^2.0.0",
+    "@slack/web-api": "^7.0.0",
+    "openai": "^4.0.0",
+    "sql.js": "^1.14.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "knowledge-base",
+  "version": "1.0.0",
+  "description": "RAG Knowledge Base with semantic search, entity extraction, and multi-source ingestion",
+  "type": "module",
+  "scripts": {
+    "ingest": "node ingest.js",
+    "query": "node query.js",
+    "setup": "node setup.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "sql.js": "^1.10.0",
+    "cheerio": "^1.0.0",
+    "node-fetch": "^3.3.2",
+    "pdf-parse": "^1.1.1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "urgent-email-detection",
+  "version": "1.0.0",
+  "description": "AI-powered urgent email detection with feedback learning loop",
+  "type": "module",
+  "scripts": {
+    "scan": "node scanner.js",
+    "test": "node test-pipeline.js",
+    "init-db": "node init-db.js",
+    "feedback": "node feedback.js"
+  },
+  "dependencies": {
+    "sql.js": "^1.11.0",
+    "googleapis": "^144.0.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "meeting-actions",
+  "version": "1.0.0",
+  "description": "Meeting Action Items system - polls Fathom, extracts actions, manages approval queue",
+  "type": "module",
+  "scripts": {
+    "init-db": "node db.js init",
+    "poll": "node fathom-poller.js",
+    "check": "node completion-check.js",
+    "archive": "node auto-archive.js",
+    "test": "node test.js",
+    "validate": "node test.js > VALIDATION.md 2>&1"
+  },
+  "dependencies": {
+    "uuid": "^10.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-02-18",
+  "platforms": {
+    "twitter": {
+      "posts": [
+        { "id": "tw-101", "text": "Just shipped API v3 beta — 10x faster batch processing...", "postedAt": "2026-02-18T10:30:00Z", "impressions": 12400, "likes": 187, "retweets": 43, "replies": 22, "clicks": 891 },
+        { "id": "tw-102", "text": "Hot take: most enterprise SaaS demos are broken...", "postedAt": "2026-02-18T15:00:00Z", "impressions": 34200, "likes": 512, "retweets": 128, "replies": 67, "clicks": 2103 }
+      ],
+      "followersDelta": "+142"
+    },
+    "linkedin": {
+      "posts": [
+        { "id": "li-201", "text": "We're hiring 3 senior engineers to join our platform team...", "postedAt": "2026-02-18T09:00:00Z", "impressions": 8900, "likes": 234, "comments": 45, "shares": 31, "clicks": 670 }
+      ],
+      "followersDelta": "+89"
+    }
+  },
+  "topPerformer": { "platform": "twitter", "id": "tw-102", "metric": "impressions", "value": 34200 }
+}

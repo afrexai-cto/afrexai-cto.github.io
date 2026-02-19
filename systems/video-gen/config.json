@@ -1,0 +1,18 @@
+{
+  "projectId": "YOUR_GCP_PROJECT_ID",
+  "location": "us-central1",
+  "model": "veo-3.0-generate-001",
+  "fastModel": "veo-3.0-fast-generate-001",
+  "defaults": {
+    "aspectRatio": "16:9",
+    "resolution": "720p",
+    "durationSeconds": 8,
+    "sampleCount": 1,
+    "personGeneration": "allow_adult"
+  },
+  "polling": {
+    "intervalMs": 5000,
+    "maxAttempts": 120
+  },
+  "outputDir": "./output"
+}

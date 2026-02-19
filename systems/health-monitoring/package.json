@@ -1,0 +1,13 @@
+{
+  "name": "health-monitoring",
+  "version": "1.0.0",
+  "description": "Workspace health monitoring system",
+  "main": "monitor.js",
+  "scripts": {
+    "check": "node monitor.js",
+    "check:daily": "node monitor.js --daily",
+    "check:weekly": "node monitor.js --weekly",
+    "check:monthly": "node monitor.js --monthly",
+    "check:all": "node monitor.js --all"
+  }
+}

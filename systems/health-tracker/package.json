@@ -1,0 +1,6 @@
+{
+  "name": "health-tracker",
+  "version": "1.0.0",
+  "description": "Food Journal / Health Tracking system with symptom correlation",
+  "dependencies": {}
+}

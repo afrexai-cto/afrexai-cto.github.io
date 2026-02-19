@@ -1,0 +1,29 @@
+{
+  "approvalGates": {
+    "email": {
+      "requireApproval": true,
+      "description": "All outbound emails require human approval before sending"
+    },
+    "tweet": {
+      "requireApproval": true,
+      "description": "All tweets/public social posts require approval"
+    },
+    "publicContent": {
+      "requireApproval": true,
+      "description": "Any content posted publicly requires approval"
+    },
+    "videoPitch": {
+      "requireApproval": true,
+      "requireDedup": true,
+      "description": "Video pitches must pass deduplication check and approval"
+    },
+    "fileDeletion": {
+      "requireApproval": true,
+      "preferTrash": true,
+      "description": "File deletion asks first; trash preferred over permanent delete"
+    }
+  },
+  "bypassConditions": {
+    "none": "No bypass conditions configured. All gates enforced."
+  }
+}

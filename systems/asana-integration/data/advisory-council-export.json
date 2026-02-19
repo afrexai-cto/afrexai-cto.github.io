@@ -1,0 +1,81 @@
+{
+  "exportedAt": "2026-02-19T03:06:09.435Z",
+  "workspace": "Creator Studio",
+  "totalProjects": 2,
+  "totalTasks": 5,
+  "completedTasks": 1,
+  "projects": [
+    {
+      "name": "Video Pipeline",
+      "taskCount": 4,
+      "completedCount": 1,
+      "overdue": 0
+    },
+    {
+      "name": "Channel Operations",
+      "taskCount": 1,
+      "completedCount": 0,
+      "overdue": 0
+    }
+  ],
+  "pipeline": {
+    "projectName": "Video Pipeline",
+    "sectionBreakdown": {
+      "Research": 1,
+      "Inbox": 1,
+      "Scripting": 1,
+      "Published": 1
+    },
+    "upcomingDeadlines": [
+      {
+        "name": "Building a Second Brain with AI Tools",
+        "due": "2026-02-25",
+        "section": "Scripting"
+      },
+      {
+        "name": "AI Agents Explained — Deep Dive",
+        "due": "2026-03-01",
+        "section": "Research"
+      },
+      {
+        "name": "Why Everyone's Wrong About AGI",
+        "due": "2026-03-15",
+        "section": "Inbox"
+      }
+    ],
+    "cards": [
+      {
+        "gid": "task_001",
+        "title": "AI Agents Explained — Deep Dive",
+        "status": "Research",
+        "due": "2026-03-01",
+        "assignee": "Kalin",
+        "lastModified": "2026-02-18T15:30:00Z"
+      },
+      {
+        "gid": "task_002",
+        "title": "Why Everyone's Wrong About AGI",
+        "status": "Inbox",
+        "due": "2026-03-15",
+        "assignee": "Kalin",
+        "lastModified": "2026-02-17T11:00:00Z"
+      },
+      {
+        "gid": "task_003",
+        "title": "Building a Second Brain with AI Tools",
+        "status": "Scripting",
+        "due": "2026-02-25",
+        "assignee": "Kalin",
+        "lastModified": "2026-02-19T01:00:00Z"
+      },
+      {
+        "gid": "task_004",
+        "title": "The Creator Economy is Broken",
+        "status": "completed",
+        "due": "2026-02-10",
+        "assignee": "Kalin",
+        "lastModified": "2026-02-10T18:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "youtube": {
+    "apiKey": "YOUR_YOUTUBE_API_KEY",
+    "channelId": "YOUR_CHANNEL_ID",
+    "baseUrl": "https://youtube.googleapis.com/youtube/v3"
+  },
+  "instagram": {
+    "accessToken": "YOUR_INSTAGRAM_ACCESS_TOKEN",
+    "accountId": "YOUR_INSTAGRAM_ACCOUNT_ID",
+    "baseUrl": "https://graph.facebook.com/v21.0"
+  },
+  "twitter": {
+    "bearerToken": "YOUR_X_BEARER_TOKEN",
+    "userId": "YOUR_X_USER_ID",
+    "baseUrl": "https://api.x.com/2"
+  },
+  "tiktok": {
+    "accessToken": "YOUR_TIKTOK_ACCESS_TOKEN",
+    "username": "YOUR_TIKTOK_USERNAME",
+    "baseUrl": "https://open.tiktokapis.com/v2"
+  },
+  "database": {
+    "path": "./data/social-tracker.db"
+  },
+  "useMockData": true
+}

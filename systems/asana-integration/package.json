@@ -1,0 +1,15 @@
+{
+  "name": "asana-integration",
+  "version": "1.0.0",
+  "description": "Asana API integration for project/task management and video idea pipeline",
+  "main": "tasks.js",
+  "scripts": {
+    "sync": "node sync.js",
+    "tasks": "node tasks.js",
+    "test": "node --test test.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

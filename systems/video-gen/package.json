@@ -1,0 +1,14 @@
+{
+  "name": "video-gen",
+  "version": "1.0.0",
+  "description": "Google Veo 3 video generation CLI",
+  "main": "generate.js",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.js",
+    "test": "node --test test.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0"
+  }
+}

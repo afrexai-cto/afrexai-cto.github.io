@@ -1,0 +1,12 @@
+{
+  "name": "prompt-linter",
+  "version": "1.0.0",
+  "description": "Lint prompts against prompt engineering best practices for Claude Opus 4.6",
+  "main": "lint.js",
+  "bin": {
+    "prompt-lint": "./lint.js"
+  },
+  "scripts": {
+    "lint": "node lint.js"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "google-workspace-integration",
+  "version": "1.0.0",
+  "description": "Google Workspace integration: Gmail, Calendar, Drive, Docs/Sheets/Slides",
+  "type": "module",
+  "scripts": {
+    "auth": "node auth.js",
+    "gmail": "node gmail.js",
+    "calendar": "node calendar.js",
+    "drive": "node drive.js",
+    "docs": "node docs.js"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0",
+    "open": "^10.1.0"
+  }
+}

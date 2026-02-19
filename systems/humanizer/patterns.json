@@ -1,0 +1,375 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "AI writing patterns and replacements. Based on Wikipedia 'Signs of AI writing'."
+  },
+  "patterns": [
+    {
+      "id": "delve",
+      "category": "ai-vocabulary",
+      "find": "\\bdelv(?:e|es|ed|ing)\\s+(?:into|deeper)\\b",
+      "replace": "exploring",
+      "flags": "gi"
+    },
+    {
+      "id": "delve-standalone",
+      "category": "ai-vocabulary",
+      "find": "\\bdelv(?:e|es|ed|ing)\\b",
+      "replace": "dig",
+      "flags": "gi"
+    },
+    {
+      "id": "landscape",
+      "category": "ai-vocabulary",
+      "find": "\\bthe\\s+(?:evolving|changing|shifting|current|broader|wider)\\s+landscape\\b",
+      "replace": "how things are changing",
+      "flags": "gi"
+    },
+    {
+      "id": "landscape-of",
+      "category": "ai-vocabulary",
+      "find": "\\bthe\\s+landscape\\s+of\\b",
+      "replace": "the world of",
+      "flags": "gi"
+    },
+    {
+      "id": "tapestry",
+      "category": "ai-vocabulary",
+      "find": "\\b(?:a\\s+)?(?:rich\\s+)?tapestry\\s+of\\b",
+      "replace": "a mix of",
+      "flags": "gi"
+    },
+    {
+      "id": "leveraging",
+      "category": "ai-vocabulary",
+      "find": "\\bleveraging\\b",
+      "replace": "using",
+      "flags": "gi"
+    },
+    {
+      "id": "leverage",
+      "category": "ai-vocabulary",
+      "find": "\\bleverage(?:s|d)?\\b",
+      "replace": "use",
+      "flags": "gi"
+    },
+    {
+      "id": "robust",
+      "category": "ai-vocabulary",
+      "find": "\\brobust\\b",
+      "replace": "strong",
+      "flags": "gi"
+    },
+    {
+      "id": "comprehensive",
+      "category": "ai-vocabulary",
+      "find": "\\bcomprehensive\\b",
+      "replace": "thorough",
+      "flags": "gi"
+    },
+    {
+      "id": "streamline",
+      "category": "ai-vocabulary",
+      "find": "\\bstreamline(?:s|d)?\\b",
+      "replace": "simplify",
+      "flags": "gi"
+    },
+    {
+      "id": "foster",
+      "category": "ai-vocabulary",
+      "find": "\\bfoster(?:s|ed|ing)?\\s+(?:a\\s+)?(?:sense\\s+of|environment|culture|community|collaboration|innovation|growth)\\b",
+      "replace": "build",
+      "flags": "gi"
+    },
+    {
+      "id": "foster-standalone",
+      "category": "ai-vocabulary",
+      "find": "\\bfoster(?:s|ed|ing)?\\b",
+      "replace": "encourage",
+      "flags": "gi"
+    },
+    {
+      "id": "in-terms-of",
+      "category": "ai-vocabulary",
+      "find": "\\bin terms of\\b",
+      "replace": "for",
+      "flags": "gi"
+    },
+    {
+      "id": "utilize",
+      "category": "ai-vocabulary",
+      "find": "\\butilize(?:s|d)?\\b",
+      "replace": "use",
+      "flags": "gi"
+    },
+    {
+      "id": "facilitate",
+      "category": "ai-vocabulary",
+      "find": "\\bfacilitate(?:s|d)?\\b",
+      "replace": "help with",
+      "flags": "gi"
+    },
+    {
+      "id": "multifaceted",
+      "category": "ai-vocabulary",
+      "find": "\\bmultifaceted\\b",
+      "replace": "complex",
+      "flags": "gi"
+    },
+    {
+      "id": "paradigm",
+      "category": "ai-vocabulary",
+      "find": "\\bparadigm(?:\\s+shift)?\\b",
+      "replace": "change",
+      "flags": "gi"
+    },
+    {
+      "id": "synergy",
+      "category": "ai-vocabulary",
+      "find": "\\bsynerg(?:y|ies|istic)\\b",
+      "replace": "teamwork",
+      "flags": "gi"
+    },
+    {
+      "id": "pivotal",
+      "category": "ai-vocabulary",
+      "find": "\\bpivotal\\b",
+      "replace": "key",
+      "flags": "gi"
+    },
+    {
+      "id": "arguably",
+      "category": "ai-vocabulary",
+      "find": "\\barguably\\b",
+      "replace": "probably",
+      "flags": "gi"
+    },
+    {
+      "id": "realm",
+      "category": "ai-vocabulary",
+      "find": "\\bin the realm of\\b",
+      "replace": "in",
+      "flags": "gi"
+    },
+    {
+      "id": "navigate",
+      "category": "ai-vocabulary",
+      "find": "\\bnavigate(?:s|d)?\\s+(?:the\\s+)?(?:complexities|challenges|intricacies)\\b",
+      "replace": "deal with the difficulties",
+      "flags": "gi"
+    },
+    {
+      "id": "its-worth-noting",
+      "category": "stock-phrases",
+      "find": "\\bit(?:'s|\\s+is)\\s+worth\\s+noting\\s+that\\b",
+      "replace": "",
+      "flags": "gi",
+      "note": "Remove entirely — adds nothing"
+    },
+    {
+      "id": "its-important-to-note",
+      "category": "stock-phrases",
+      "find": "\\bit(?:'s|\\s+is)\\s+important\\s+to\\s+(?:note|remember|understand)\\s+that\\b",
+      "replace": "",
+      "flags": "gi"
+    },
+    {
+      "id": "at-the-end-of-the-day",
+      "category": "stock-phrases",
+      "find": "\\bat the end of the day,?\\b",
+      "replace": "Ultimately,",
+      "flags": "gi"
+    },
+    {
+      "id": "in-today-world",
+      "category": "stock-phrases",
+      "find": "\\bin today(?:'s|\\s+s) (?:world|age|era|society|digital age|fast-paced world)\\b",
+      "replace": "Now",
+      "flags": "gi"
+    },
+    {
+      "id": "in-conclusion",
+      "category": "stock-phrases",
+      "find": "\\bin conclusion,?\\b",
+      "replace": "So,",
+      "flags": "gi"
+    },
+    {
+      "id": "stands-as-testament",
+      "category": "stock-phrases",
+      "find": "\\bstands?\\s+as\\s+(?:a\\s+)?testament\\s+to\\b",
+      "replace": "shows",
+      "flags": "gi"
+    },
+    {
+      "id": "serves-as-reminder",
+      "category": "stock-phrases",
+      "find": "\\bserves?\\s+as\\s+(?:a\\s+)?(?:stark\\s+|powerful\\s+|poignant\\s+)?reminder\\b",
+      "replace": "reminds us",
+      "flags": "gi"
+    },
+    {
+      "id": "the-question-remains",
+      "category": "stock-phrases",
+      "find": "\\bthe question remains:?\\b",
+      "replace": "But:",
+      "flags": "gi"
+    },
+    {
+      "id": "without-a-doubt",
+      "category": "stock-phrases",
+      "find": "\\bwithout a doubt\\b",
+      "replace": "clearly",
+      "flags": "gi"
+    },
+    {
+      "id": "only-time-will-tell",
+      "category": "stock-phrases",
+      "find": "\\bonly time will tell\\b",
+      "replace": "we'll see",
+      "flags": "gi"
+    },
+    {
+      "id": "it-is-clear-that",
+      "category": "stock-phrases",
+      "find": "\\bit(?:'s| is) clear that\\b",
+      "replace": "",
+      "flags": "gi"
+    },
+    {
+      "id": "this-is-not-just",
+      "category": "stock-phrases",
+      "find": "\\bthis is(?:n't| not) just\\b",
+      "replace": "this isn't only",
+      "flags": "gi"
+    },
+    {
+      "id": "cannot-be-overstated",
+      "category": "stock-phrases",
+      "find": "\\bcannot be overstated\\b",
+      "replace": "matters a lot",
+      "flags": "gi"
+    },
+    {
+      "id": "em-dash-aside",
+      "category": "structural",
+      "find": "\\s—\\s",
+      "replace": ", ",
+      "flags": "g",
+      "note": "Replace em-dash asides with commas"
+    },
+    {
+      "id": "however-comma",
+      "category": "hedging",
+      "find": "(?:^|(?<=\\.\\s))However,\\s",
+      "replace": "But ",
+      "flags": "gm"
+    },
+    {
+      "id": "moreover",
+      "category": "hedging",
+      "find": "(?:^|(?<=\\.\\s))Moreover,\\s",
+      "replace": "Also, ",
+      "flags": "gm"
+    },
+    {
+      "id": "furthermore",
+      "category": "hedging",
+      "find": "(?:^|(?<=\\.\\s))Furthermore,\\s",
+      "replace": "And ",
+      "flags": "gm"
+    },
+    {
+      "id": "additionally",
+      "category": "hedging",
+      "find": "(?:^|(?<=\\.\\s))Additionally,\\s",
+      "replace": "Also, ",
+      "flags": "gm"
+    },
+    {
+      "id": "nevertheless",
+      "category": "hedging",
+      "find": "\\bnevertheless\\b",
+      "replace": "still",
+      "flags": "gi"
+    },
+    {
+      "id": "consequently",
+      "category": "hedging",
+      "find": "(?:^|(?<=\\.\\s))Consequently,\\s",
+      "replace": "So, ",
+      "flags": "gm"
+    },
+    {
+      "id": "it-should-be-noted",
+      "category": "hedging",
+      "find": "\\bit should be noted that\\b",
+      "replace": "",
+      "flags": "gi"
+    },
+    {
+      "id": "one-might-argue",
+      "category": "hedging",
+      "find": "\\bone (?:might|could|would) argue\\s+that\\b",
+      "replace": "you could say",
+      "flags": "gi"
+    },
+    {
+      "id": "performed-authenticity-crucial",
+      "category": "performed-authenticity",
+      "find": "\\bplays?\\s+a\\s+crucial\\s+role\\b",
+      "replace": "matters",
+      "flags": "gi"
+    },
+    {
+      "id": "not-without-challenges",
+      "category": "performed-authenticity",
+      "find": "\\bnot without (?:its )?challenges\\b",
+      "replace": "hard",
+      "flags": "gi"
+    },
+    {
+      "id": "raises-important-questions",
+      "category": "performed-authenticity",
+      "find": "\\braises?\\s+important\\s+questions\\b",
+      "replace": "makes you wonder",
+      "flags": "gi"
+    },
+    {
+      "id": "shed-light",
+      "category": "performed-authenticity",
+      "find": "\\bshed(?:s|ding)?\\s+light\\s+on\\b",
+      "replace": "explain",
+      "flags": "gi"
+    },
+    {
+      "id": "pave-the-way",
+      "category": "performed-authenticity",
+      "find": "\\bpav(?:e|es|ed|ing)\\s+the\\s+way\\s+for\\b",
+      "replace": "open up",
+      "flags": "gi"
+    },
+    {
+      "id": "double-space-cleanup",
+      "category": "cleanup",
+      "find": "  +",
+      "replace": " ",
+      "flags": "g"
+    },
+    {
+      "id": "leading-space-after-period",
+      "category": "cleanup",
+      "find": "\\.\\s{2,}",
+      "replace": ". ",
+      "flags": "g"
+    },
+    {
+      "id": "capitalize-after-period",
+      "category": "cleanup",
+      "find": "\\.\\s+([a-z])",
+      "replace": "._CAP_$1",
+      "flags": "g",
+      "postProcess": "capitalize"
+    }
+  ]
+}

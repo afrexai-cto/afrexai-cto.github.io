@@ -1,0 +1,13 @@
+{
+  "name": "earnings-reports",
+  "version": "1.0.0",
+  "description": "Automated earnings report system with watchlist, calendar sync, and narrative summaries",
+  "type": "module",
+  "scripts": {
+    "weekly-preview": "node earnings-calendar.js preview",
+    "process-reports": "node scheduler.js run",
+    "test": "node test.js"
+  },
+  "dependencies": {}
+
+}

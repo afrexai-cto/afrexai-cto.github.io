@@ -1,0 +1,17 @@
+{
+  "name": "security-council",
+  "version": "1.0.0",
+  "description": "AI-powered security review system with four analysis perspectives",
+  "type": "module",
+  "scripts": {
+    "scan": "node scanner.js",
+    "analyze": "node analyzer.js",
+    "report": "node report-generator.js",
+    "deep-dive": "node deep-dive.js",
+    "full-review": "node scanner.js && node analyzer.js && node report-generator.js",
+    "init-db": "node -e \"import('./analyzer.js').then(m => m.initDb())\""
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0"
+  }
+}

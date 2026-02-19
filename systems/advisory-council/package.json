@@ -1,0 +1,16 @@
+{
+  "name": "advisory-council",
+  "version": "1.0.0",
+  "description": "Business Advisory Council - 8 parallel AI expert personas",
+  "type": "module",
+  "main": "council.js",
+  "scripts": {
+    "council": "node council.js",
+    "deep-dive": "node deep-dive.js",
+    "feedback": "node feedback.js",
+    "test": "node council.js --test"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0"
+  }
+}

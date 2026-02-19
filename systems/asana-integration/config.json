@@ -1,0 +1,17 @@
+{
+  "asana": {
+    "personalAccessToken": "ASANA_PAT_PLACEHOLDER",
+    "baseUrl": "https://app.asana.com/api/1.0",
+    "workspaceGid": "",
+    "defaultProjectName": "Video Pipeline"
+  },
+  "sync": {
+    "intervalMinutes": 30,
+    "outputDir": "./data",
+    "exportFile": "./data/advisory-council-export.json"
+  },
+  "pipeline": {
+    "sections": ["Inbox", "Research", "Scripting", "Production", "Published"],
+    "cardFields": ["name", "notes", "custom_fields", "assignee", "due_on", "completed"]
+  }
+}

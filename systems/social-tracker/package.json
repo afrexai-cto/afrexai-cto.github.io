@@ -1,0 +1,17 @@
+{
+  "name": "social-tracker",
+  "version": "1.0.0",
+  "description": "Daily social media metrics snapshot and reporting system",
+  "main": "snapshot.js",
+  "scripts": {
+    "snapshot": "node snapshot.js all",
+    "snapshot:youtube": "node snapshot.js youtube",
+    "snapshot:instagram": "node snapshot.js instagram",
+    "snapshot:twitter": "node snapshot.js twitter",
+    "snapshot:tiktok": "node snapshot.js tiktok",
+    "report": "node report.js yesterday",
+    "test": "node snapshot.js all && node report.js yesterday"
+  },
+  "dependencies": {}
+
+}

@@ -1,0 +1,14 @@
+{
+  "fmp": {
+    "apiKey": "YOUR_FMP_API_KEY",
+    "baseUrl": "https://financialmodelingprep.com/api/v3"
+  },
+  "alphaVantage": {
+    "apiKey": "YOUR_ALPHA_VANTAGE_API_KEY",
+    "baseUrl": "https://www.alphavantage.co/query"
+  },
+  "database": "./earnings.db",
+  "deliveryChannel": "webchat",
+  "postEarningsDelayMinutes": 90,
+  "opEnvFile": "op.env"
+}

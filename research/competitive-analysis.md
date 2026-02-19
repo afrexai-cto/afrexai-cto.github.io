@@ -1,5 +1,17 @@
 # AfrexAI Competitive Intelligence Report
-*Last Updated: 13 February 2026*
+*Last Updated: 19 February 2026*
+
+---
+
+## NEW ENTRANT: HaystackID AI Governance Services (Feb 17, 2026)
+- **What:** AI governance consulting — audit-ready frameworks for regulated industries
+- **Target:** Financial services, healthcare, insurance, employment, government
+- **Positioning:** "Defensibility" — litigation/e-discovery background pivoting to AI governance
+- **CEO:** Chad Pinson
+- **Threat level:** MEDIUM — overlaps on governance but consulting-only, no agent deployment
+- **Our edge:** We BUILD and DEPLOY agents with governance baked in. They just audit/consult.
+- **Action:** Reference in pitches: "Governance-only firms can't deploy — we do both"
+- **Source:** helpnetsecurity.com, Feb 17, 2026
 
 ---
 
