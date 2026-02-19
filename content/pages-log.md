@@ -30,6 +30,15 @@ All pages: dark theme (#0a0a0a), gold (#FFD700), standalone HTML, inline CSS, mo
 6. `/partner/index.html` — Partner program page (referral, reseller, strategic tiers)
 7. `/blog/how-to-automate-client-intake/index.html` — SEO blog: "How to Automate Client Intake With AI Agents (2026 Guide)"
 
+## 2026-02-19 (Thursday)
+1. `/verticals/edtech/index.html` — AI for EdTech Companies vertical (enrollment, student support, analytics, assessment, retention, revenue ops)
+2. `/verticals/architecture/index.html` — AI for Architecture Firms vertical (RFP automation, project coordination, compliance, biz dev, utilization)
+3. `/verticals/logistics/index.html` — AI for Logistics & Supply Chain vertical (dispatch, tracking, carrier comms, exception mgmt, invoicing, analytics)
+4. `/seo/ai-agent-services-los-angeles/index.html` — City SEO page: AI Agent Services in Los Angeles (entertainment, real estate, legal, healthcare, tech, construction)
+5. `/seo/ai-agent-services-london/index.html` — City SEO page: AI Agent Services in London (financial services, legal, property, healthcare, accounting, e-commerce)
+6. `/blog/how-to-automate-contract-review/index.html` — SEO blog: "How to Automate Contract Review With AI Agents (2026 Guide)" (5-step playbook, clause extraction, obligation tracking, ROI metrics)
+7. `/content/newsletter/index.html` — Newsletter signup page: "The Agent Edge" (weekly AI automation intel, FormSubmit integration, sample issue preview)
+
 ## 2026-02-18 (Tuesday)
 1. `/seo/ai-agent-services-dallas/index.html` — City SEO page: AI Agent Services in Dallas-Fort Worth (energy, law, healthcare, logistics, construction, fintech)
 2. `/seo/ai-agent-services-miami/index.html` — City SEO page: AI Agent Services in Miami & South Florida (real estate, hospitality, law, finance/crypto, healthcare, trade/logistics)
