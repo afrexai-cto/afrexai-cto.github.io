@@ -48,3 +48,42 @@
 2. **Start with virtual conferences** — lower cost, still get the audience
 3. **Sponsor small events** — $2-5K for logo + booth + attendee list can generate 5-10 qualified leads
 4. **Always have a lead magnet** — AI Governance Readiness Checklist as the giveaway at every event
+
+---
+
+## NEW — High-Priority Q2 2026 Conferences (Added 2026-02-18)
+
+### AI Agent Conference — NYC
+- **Dates:** May 4-5, 2026
+- **Location:** New York City
+- **Why:** FIRST dedicated AI agent conference. Our EXACT positioning. Every attendee is a potential buyer or partner.
+- **Action:** Apply to speak (Christina). Topic: "Deploying AI Agents in Regulated Industries — What Actually Works." Sponsor if budget allows ($5-15K typical). Even attending = high-quality networking.
+- **Priority:** ★★★★★
+
+### HumanX 2026 — San Francisco
+- **Dates:** April 6-9, 2026
+- **Location:** San Francisco
+- **Why:** AI + human potential intersection. Enterprise buyers who want AI but worry about implementation. Our sweet spot.
+- **Action:** Attend, network. Target CIOs and innovation officers.
+- **Priority:** ★★★★
+
+### Google Cloud NEXT — Las Vegas
+- **Dates:** April 22-24, 2026
+- **Location:** Las Vegas
+- **Why:** Massive enterprise audience. Partnership opportunity with GCP consulting ecosystem.
+- **Action:** Attend for partnership development. Find GCP consulting firms who need AI agent implementation partners.
+- **Priority:** ★★★
+
+### Gartner Data & Analytics Summit — Orlando
+- **Dates:** March 9-12, 2026 (SAME AS LEGALWEEK)
+- **Location:** Orlando, FL
+- **Why:** Enterprise data leaders = warm audience for AI agent deployment
+- **Note:** Date conflict with Legalweek. Skip this one — Legalweek targets are more qualified.
+- **Priority:** ★★ (skip due to conflict)
+
+### ODSC AI East — Boston
+- **Dates:** April 28-30, 2026
+- **Location:** Boston
+- **Why:** Technical audience, good for credibility building and hiring pipeline
+- **Action:** Submit talk proposal. Lower priority than agent-specific events.
+- **Priority:** ★★★

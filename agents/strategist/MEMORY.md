@@ -88,6 +88,8 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - How do we price the transition from project-based to AaaS?
 - Should we target Dallas/Houston as first US geography given Harvey's move there?
 - Decision gate: If legal outbound converts <15% after 10 conversations, pivot healthcare to lead?
+- Is our demand-side legal differentiation structural or merely temporal? (Contrarian flag 2026-02-18)
+- First 5 legal discovery calls should probe Harvey evaluation experience specifically
 
 ## TARGET MARKET
 - **US ONLY** — AfrexAI is a US-based company

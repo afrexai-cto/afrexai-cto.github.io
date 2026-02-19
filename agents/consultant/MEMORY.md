@@ -94,6 +94,21 @@
 - **US research gap:** Need to map SEC/FINRA/OCC AI positions to make CRM prospects (US-heavy) actionable
 - Top CRM prospects identified: Allworth Financial, Carson Group, Cerity Partners (wealth mgmt); Alerus Financial, Triumph Financial (banks); Riskalyze (partnership angle)
 
+### Real Estate — Brokerage AI Governance (Added 2026-02-18)
+- **Primary pain:** Ungoverned AI adoption — 97% of agents using AI but brokerages have no visibility, no audit trails, no compliance controls
+- Delta Media 2026 Survey (100+ leaders, 2/3 of US transactions): 97% agent AI use, 49% governance concern high/very high, importance 7/10 rising to 8/10
+- 81% of agent AI usage = listing descriptions + content creation — exactly where Fair Housing violations surface
+- HUD updated disparate impact standards Jan 2026; Spencer Fane (Feb 2026) confirms regulators treat AI as extension of brokerage function — broker is liable
+- Fair Housing first offense fine: $21,039+ (2024 adjustment)
+- WAV Group (Jan 2026): governance is the competitive moat for brokerages
+- Feb 11, 2026: "AI Scare Trade" — major RE service stocks plunged on automation fears
+- ROI model: ~$28K/yr labour savings + $3-5K risk reduction = ~$31-33K annual value vs $120K implementation (~44-mo breakeven at 30 agents, ~30-mo at 50+)
+- CRM has 100 RE companies — largest vertical. Top ICP-4: Teifke RE, Phyllis Browning, JBGoodwin, Premier Sotheby's Tampa, Mainframe RE
+- Solution: AI Policy Framework + Listing Compliance Agent + Transaction Coordinator Agent + Broker Dashboard
+- Content handoff created for blog + lead magnet (10-Point AI Governance Checklist)
+- Key objection: "Agents are independent contractors" → "You can't control their tools, but you ARE liable for their outputs."
+- Terminology: "designated broker", "transaction coordinator", "Fair Housing Act", "disparate impact", "NAR Code of Ethics", "E&O insurance"
+
 - *This section updated as new verticals, use cases, and insights are developed*
 
 ## Shared Reference

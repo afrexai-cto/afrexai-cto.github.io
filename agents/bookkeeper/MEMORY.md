@@ -44,6 +44,7 @@
 - **2026-02-14 20:10 GMT**: Evening reconciliation. **Stripe now accessible** via 1Password (UUID: cfpvk6eywbaoopfd5gqnbaglgu). Pulled full charge history (54 charges, 27 successful). QBO not used — PostgreSQL CRM is the source of truth. Flagged failing $120/mo subscription. Output: `output/daily-2026-02-14-pm.md`.
 - **2026-02-16 20:10 GMT**: Evening reconciliation. $120 subscription recovered (cus_SPppGJ1w440VFC). Balance: -$36.93 avail / $114.42 pending. 7 open invoices, 5 overdue ($15,853). QBO not used — PostgreSQL CRM is the source of truth (Day 4). Output: `output/daily-2026-02-16-pm.md`.
 - **2026-02-18 08:15 GMT**: Morning check. 1 overnight payment: $120 BuildGrid subscription (succeeded). Balance: -$37.77 avail / $114.42 pending. 8 open invoices ($26,193), 6 overdue ($16,073). VADIS $12,143 now 12 days overdue — flagged WARN. Revenue concentration risk flagged (87% single-client). Output: `output/daily-2026-02-18-am.md`.
+- **2026-02-18 20:10 GMT**: Evening reconciliation. Zero revenue day — no charges or payment events. Balance unchanged: -$37.77 avail / $114.42 pending. 8 open invoices ($26,073), 6 overdue ($16,073). 3 invoices now CRITICAL (>90d): Jacob Johnson $2,200 @ 99d, BuildGrid $120 @ 128d, VADA $1,250 @ 261d. Recommended VADA write-off. Output: `output/daily-2026-02-18-pm.md`.
 
 ## Lessons Learned
 - Vault at `scripts/vault.sh` must be initialized before any API access works. This is a blocker for all financial operations.
