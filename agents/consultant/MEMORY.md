@@ -91,8 +91,12 @@
 - Guardian reports UK wealth manager shares falling on AI disruption fears (11 Feb 2026) — fear = buying urgency
 - EY 2026 Outlook: "firms must prioritize regulatory adherence for AI in each jurisdiction" — Big 4 validation of our positioning
 - **75%+ of UK FS firms already using AI** (BoE/FCA 2024 survey) — most without governance frameworks
-- **US research gap:** Need to map SEC/FINRA/OCC AI positions to make CRM prospects (US-heavy) actionable
-- Top CRM prospects identified: Allworth Financial, Carson Group, Cerity Partners (wealth mgmt); Alerus Financial, Triumph Financial (banks); Riskalyze (partnership angle)
+- **US research gap CLOSED (2026-02-19):** FINRA 2026 report has dedicated GenAI section — first ever. Reg S-P compliance deadline June 3, 2026 for smaller firms. FinCEN reclassified investment advisers as "financial institutions" under BSA effective Jan 1, 2026.
+- FINRA expects same supervisory rigor for AI outputs as traditional systems — recordkeeping deficiencies cited 50+ times
+- Smarsh analysis: AI moving from experimentation to "operational dependency" — ungoverned usage = regulatory exposure
+- Combined US/UK pitch: "2026 is the year AI governance goes from optional to mandatory — FINRA, FCA, and SEC are all converging"
+- Top CRM prospects (updated): Mariner Wealth (450 emp, CEO Marty Bicknell), Cerity Partners (400 emp, CEO Kurt Miscinski), EP Wealth (400 emp, CEO Patrick Goshtigian), Moneta Group (350 emp), Pathstone (350 emp)
+- Previously identified: Allworth Financial, Carson Group (wealth mgmt); Alerus Financial, Triumph Financial (banks); Riskalyze (partnership angle)
 
 ### Real Estate — Brokerage AI Governance (Added 2026-02-18)
 - **Primary pain:** Ungoverned AI adoption — 97% of agents using AI but brokerages have no visibility, no audit trails, no compliance controls

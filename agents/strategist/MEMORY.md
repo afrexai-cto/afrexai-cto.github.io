@@ -80,6 +80,14 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **Legacy RPA (Blue Prism) rebranding as "agentic"** — reduces our education burden but increases noise. Vertical specificity is our differentiation.
 - **New opportunity identified: Corporate legal departments (in-house)** as distinct from law firms. Harvey serves supply side (firms), we can own demand side (corporate legal ops). GC revolt + Harvey's market education = warm buyers looking for alternatives.
 
+## Key Intelligence (Updated 2026-02-19)
+
+- **Harvey AI raising $200M at $11B valuation** (up from $8B Dec 2025). Stinson LLP rolled out firmwide. Supply-side dominance accelerating. Demand-side (corporate legal ops) remains our lane.
+- **AIG deployed full agentic AI orchestration** — front-to-back workflow (intake, risk, claims). First major insurer to go public with full agent deployment. Mid-market insurers will follow.
+- **Microsoft IDC study: insurance AI early adopters see 3x returns** vs slow adopters. Microsoft actively evangelizing agentic AI for insurance. Free market education.
+- **MIT Sloan published "Agentic AI Explained"** — market education phase is over. Enterprise buyers understand the category. Question is now WHO implements, not WHAT it is.
+- **New opportunity logged: mid-market insurance implementation.** Nobody owns this space yet. 20 insurance agencies already in CRM. 6-12 month window before Big 4 package offerings.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?

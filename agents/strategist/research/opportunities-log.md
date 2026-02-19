@@ -1,5 +1,15 @@
 # 🔮 Opportunities Log
 
+## 2026-02-19 — Mid-Market Insurance: The AIG Trickle-Down
+
+**What:** AIG just deployed full agentic AI orchestration (intake → risk assessment → claims). Microsoft published that early insurance AI adopters see 3x returns vs slow adopters. Mid-market insurers (100-500 employees) want these results but lack internal AI teams to build it.
+
+**Why now:** The proof points are public (AIG, Microsoft IDC study). Mid-market insurance buyers no longer need convincing that agentic AI works — they need someone to implement it. Harvey owns legal, nobody owns insurance implementation yet. The window is 6-12 months before Big 4 consultancies build packaged insurance AI offerings.
+
+**AfrexAI connection:** Step 2 (Service Accounts) — insurance workflow automation as a managed service. Claims processing, underwriting support, policy servicing. Price anchored to recovered capacity: "We give your adjusters back 15 hours/week." Our CRM already has 20 insurance agencies. Start with discovery calls to the highest-ICP ones.
+
+**What it takes:** 2-3 insurance-specific agent templates, one reference case study (even simulated), and targeted outreach to CRM insurance contacts. Estimated 4-6 weeks to first pilot proposal.
+
 ## 2026-02-13 — Legal AI ROI Measurement Gap
 
 **What:** 40% of professional services firms have org-wide AI adoption, but only 18% measure ROI (Thomson Reuters 2026 Report). Legal firms are spending on AI but flying blind on whether it works.
