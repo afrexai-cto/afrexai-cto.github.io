@@ -1,12 +1,12 @@
 {
-  "runId": 2,
+  "runId": 3,
   "overall": 69,
   "results": [
     {
-      "score": 97,
+      "score": 89,
       "findings": [
         "ℹ️ No dedicated cron directory found - jobs may be managed via OpenClaw scheduler",
-        "📊 26 systems found, 24 have active data/packages"
+        "📊 33 systems found, 24 have active data/packages"
       ],
       "area": "cron-health",
       "status": "healthy"
@@ -14,7 +14,7 @@
     {
       "score": 49,
       "findings": [
-        "📊 157 JS/TS files, ~9509 total lines",
+        "📊 161 JS/TS files, ~9593 total lines",
         "⚠️ 28 TODO comments found",
         "⚠️ 2 files exceed 300 lines",
         "⚠️ 24 async files without try/catch"
@@ -25,7 +25,7 @@
     {
       "score": 10,
       "findings": [
-        "📊 0 test files found across 145 source files (ratio: 0.0%)",
+        "📊 0 test files found across 149 source files (ratio: 0.0%)",
         "🔴 No tests found in systems/",
         "🔴 No tests found in skills/",
         "🔴 No tests found in crm/",
@@ -46,17 +46,13 @@
       "status": "healthy"
     },
     {
-      "score": 25,
+      "score": 45,
       "findings": [
         "⚠️ No lockfile: ./stripe-api/package.json",
-        "⚠️ No lockfile: ./systems/asana-integration/package.json",
         "⚠️ No lockfile: ./systems/daily-briefing/package.json",
         "⚠️ No lockfile: ./systems/health-monitoring/package.json",
         "⚠️ No lockfile: ./systems/humanizer/package.json",
-        "⚠️ No lockfile: ./systems/image-gen/package.json",
-        "⚠️ No lockfile: ./systems/messaging-setup/package.json",
         "⚠️ No lockfile: ./systems/model-cost-tracker/package.json",
-        "⚠️ No lockfile: ./systems/newsletter-crm/package.json",
         "⚠️ No lockfile: ./systems/platform-health/package.json",
         "⚠️ No lockfile: ./systems/prompt-engineering/package.json",
         "⚠️ No lockfile: ./systems/security-safety/package.json",
@@ -68,14 +64,18 @@
       "status": "critical"
     },
     {
-      "score": 93,
+      "score": 79,
       "findings": [
         "📁 Large files (>1MB):",
-        "  - ./systems/security-council/scan-data.json (3.5MB)",
-        "📊 Total large file storage: 3.5MB"
+        "  - ./systems/security-council/scan-data.json (4.0MB)",
+        "  - ./systems/db-backups/backups/backup-20260219-230241.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260220-000244.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260220-010212.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260220-020222.tar.enc (1.4MB)",
+        "📊 Total large file storage: 13.7MB"
       ],
       "area": "storage",
-      "status": "healthy"
+      "status": "warning"
     },
     {
       "score": 68,
@@ -100,8 +100,9 @@
       "score": 100,
       "findings": [
         "✅ ./crm has package.json",
+        "🗄️ Database: crm.db (88KB)",
         "✅ ./systems/personal-crm has package.json",
-        "💾 Backup system found with 7 files",
+        "💾 Backup system found with 8 files",
         "✅ Schema/migration files present"
       ],
       "area": "data-integrity",
@@ -110,11 +111,12 @@
   ],
   "recommendations": [
     "Address critical issues in: code-quality, test-coverage, dependencies",
-    "Review warnings in: skill-integrity",
+    "Review warnings in: storage, skill-integrity",
     "code-quality: Needs immediate attention (score: 49)",
     "test-coverage: Needs immediate attention (score: 10)",
-    "dependencies: Needs immediate attention (score: 25)",
+    "dependencies: Needs immediate attention (score: 45)",
+    "storage: Room for improvement (score: 79)",
     "skill-integrity: Room for improvement (score: 68)"
   ],
-  "timestamp": "2026-02-19T03:16:22.937Z"
+  "timestamp": "2026-02-20T05:02:48.654Z"
 }

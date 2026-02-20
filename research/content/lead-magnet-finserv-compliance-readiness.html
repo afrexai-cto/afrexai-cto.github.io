@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Compliance Readiness Assessment | AfrexAI</title>
+<meta name="description" content="Free 5-minute assessment: Is your financial services firm ready for Basel III.1, DORA, and SEC AI disclosure requirements? Score your AI governance maturity.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6}
+.container{max-width:720px;margin:0 auto;padding:24px}
+h1{color:#eab308;font-size:2rem;margin-bottom:8px}
+h2{color:#eab308;font-size:1.3rem;margin:32px 0 16px}
+.subtitle{color:#a3a3a3;font-size:1.1rem;margin-bottom:32px}
+.stat{background:#1a1a1a;border-left:3px solid #eab308;padding:16px 20px;margin:16px 0;border-radius:0 8px 8px 0}
+.stat strong{color:#eab308}
+.question{background:#1a1a1a;border-radius:8px;padding:20px;margin:12px 0}
+.question p{font-weight:600;margin-bottom:12px;color:#fff}
+.options label{display:block;padding:8px 12px;margin:4px 0;border-radius:6px;cursor:pointer;transition:background .2s}
+.options label:hover{background:#2a2a2a}
+.options input{margin-right:8px;accent-color:#eab308}
+.btn{display:block;width:100%;padding:16px;background:#eab308;color:#0a0a0a;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;margin-top:24px;transition:background .2s}
+.btn:hover{background:#ca9d07}
+.result{display:none;background:#1a1a1a;border:2px solid #eab308;border-radius:12px;padding:24px;margin-top:24px}
+.score-display{font-size:3rem;color:#eab308;font-weight:800;text-align:center}
+.score-label{text-align:center;font-size:1.2rem;margin-bottom:16px}
+.rec{padding:12px 16px;margin:8px 0;background:#0a0a0a;border-radius:8px;border-left:3px solid #eab308}
+.cta-box{background:linear-gradient(135deg,#1a1a00,#1a1a1a);border:1px solid #eab308;border-radius:12px;padding:24px;margin-top:24px;text-align:center}
+.cta-box a{color:#eab308;font-weight:700;text-decoration:none;font-size:1.1rem}
+.email-capture{margin-top:16px}
+.email-capture input{padding:12px;width:65%;border:1px solid #333;background:#0a0a0a;color:#e5e5e5;border-radius:8px 0 0 8px;font-size:1rem}
+.email-capture button{padding:12px 20px;width:34%;background:#eab308;color:#0a0a0a;border:none;border-radius:0 8px 8px 0;font-weight:700;cursor:pointer;font-size:1rem}
+footer{text-align:center;color:#666;margin-top:48px;padding:24px;font-size:.85rem}
+footer a{color:#eab308}
+@media(max-width:600px){h1{font-size:1.5rem}.email-capture input{width:60%}.email-capture button{width:39%}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>⚡ AI Compliance Readiness Assessment</h1>
+<p class="subtitle">5 minutes. 10 questions. Find out if your firm is ready for the 2026 regulatory convergence.</p>
+
+<div class="stat">
+<strong>Basel III.1 + DORA + SEC AI Disclosure</strong> are converging in 2026. 73% of financial services firms aren't ready. Where do you stand?
+</div>
+
+<form id="assessment">
+<h2>Section 1: AI Governance Foundation</h2>
+
+<div class="question">
+<p>1. Does your firm have a documented AI governance policy?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="3"> Yes, board-approved and reviewed quarterly</label>
+<label><input type="radio" name="q1" value="2"> Yes, but it hasn't been updated in 6+ months</label>
+<label><input type="radio" name="q1" value="1"> We have informal guidelines</label>
+<label><input type="radio" name="q1" value="0"> No formal policy exists</label>
+</div>
+</div>
+
+<div class="question">
+<p>2. Can you explain how each AI system makes decisions to a regulator?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="3"> Yes, full model documentation and audit trails</label>
+<label><input type="radio" name="q2" value="2"> For some systems, not all</label>
+<label><input type="radio" name="q2" value="1"> We'd need significant work to produce this</label>
+<label><input type="radio" name="q2" value="0"> We couldn't do this today</label>
+</div>
+</div>
+
+<h2>Section 2: Risk & Monitoring</h2>
+
+<div class="question">
+<p>3. How do you monitor AI model drift and performance?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="3"> Automated monitoring with alerting thresholds</label>
+<label><input type="radio" name="q3" value="2"> Periodic manual reviews (monthly/quarterly)</label>
+<label><input type="radio" name="q3" value="1"> Ad-hoc checks when issues are reported</label>
+<label><input type="radio" name="q3" value="0"> We don't systematically monitor AI outputs</label>
+</div>
+</div>
+
+<div class="question">
+<p>4. Do you have bias testing procedures for AI-driven decisions?</p>
+<div class="options">
+<label><input type="radio" name="q4" value="3"> Yes, regular testing across protected classes with documented results</label>
+<label><input type="radio" name="q4" value="2"> Initial testing done at deployment, but no ongoing program</label>
+<label><input type="radio" name="q4" value="1"> Aware of the need but haven't implemented</label>
+<label><input type="radio" name="q4" value="0"> No bias testing in place</label>
+</div>
+</div>
+
+<div class="question">
+<p>5. What's your incident response plan for AI failures?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="3"> Documented plan with assigned roles, tested annually</label>
+<label><input type="radio" name="q5" value="2"> General IT incident plan that covers AI</label>
+<label><input type="radio" name="q5" value="1"> We'd figure it out as needed</label>
+<label><input type="radio" name="q5" value="0"> No plan exists</label>
+</div>
+</div>
+
+<h2>Section 3: Regulatory Readiness</h2>
+
+<div class="question">
+<p>6. Are you tracking Basel III.1 implications for AI in risk models?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="3"> Yes, dedicated workstream with timeline</label>
+<label><input type="radio" name="q6" value="2"> Awareness at leadership level, planning stage</label>
+<label><input type="radio" name="q6" value="1"> General awareness but no specific plan</label>
+<label><input type="radio" name="q6" value="0"> Not on our radar</label>
+</div>
+</div>
+
+<div class="question">
+<p>7. How prepared are you for DORA's operational resilience requirements?</p>
+<div class="options">
+<label><input type="radio" name="q7" value="3"> Fully mapped AI systems against DORA requirements</label>
+<label><input type="radio" name="q7" value="2"> Gap analysis complete, remediation in progress</label>
+<label><input type="radio" name="q7" value="1"> Early assessment stage</label>
+<label><input type="radio" name="q7" value="0"> Haven't started DORA planning for AI</label>
+</div>
+</div>
+
+<div class="question">
+<p>8. Could you produce an AI inventory for SEC disclosure tomorrow?</p>
+<div class="options">
+<label><input type="radio" name="q8" value="3"> Yes, maintained and current</label>
+<label><input type="radio" name="q8" value="2"> Partial inventory exists</label>
+<label><input type="radio" name="q8" value="1"> We know where most AI is, but it's not documented</label>
+<label><input type="radio" name="q8" value="0"> We don't have a complete picture of AI usage</label>
+</div>
+</div>
+
+<h2>Section 4: Implementation Maturity</h2>
+
+<div class="question">
+<p>9. Who owns AI governance in your organization?</p>
+<div class="options">
+<label><input type="radio" name="q9" value="3"> Dedicated CAIO/Head of AI with cross-functional mandate</label>
+<label><input type="radio" name="q9" value="2"> CTO/CIO has it as part of broader responsibility</label>
+<label><input type="radio" name="q9" value="1"> Shared across teams with no clear owner</label>
+<label><input type="radio" name="q9" value="0"> Nobody specifically owns this</label>
+</div>
+</div>
+
+<div class="question">
+<p>10. What percentage of your AI use cases have moved beyond pilot?</p>
+<div class="options">
+<label><input type="radio" name="q10" value="3"> 50%+ in production with measured ROI</label>
+<label><input type="radio" name="q10" value="2"> 20-50% in production</label>
+<label><input type="radio" name="q10" value="1"> Under 20% — mostly still piloting</label>
+<label><input type="radio" name="q10" value="0"> Everything is still experimental</label>
+</div>
+</div>
+
+<button type="button" class="btn" onclick="calculateScore()">Get My Score →</button>
+</form>
+
+<div id="result" class="result">
+<div class="score-display" id="scoreNum"></div>
+<div class="score-label" id="scoreLabel"></div>
+<div id="recommendations"></div>
+
+<div class="cta-box">
+<p style="margin-bottom:8px">Want a detailed breakdown with remediation roadmap?</p>
+<a href="mailto:ksmolichki@afrexai.com?subject=AI%20Compliance%20Assessment%20-%20Detailed%20Review&body=I%20scored%20[YOUR_SCORE]%20on%20the%20AI%20Compliance%20Readiness%20Assessment.%20I'd%20like%20to%20discuss%20a%20remediation%20roadmap.">Book a 30-minute compliance review call →</a>
+<div class="email-capture" style="margin-top:16px">
+<form action="https://formsubmit.co/ksmolichki@afrexai.com" method="POST">
+<input type="hidden" name="_subject" value="AI Compliance Assessment Lead">
+<input type="hidden" name="_template" value="table">
+<input type="email" name="email" placeholder="Your work email" required>
+<button type="submit">Send My Report</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+© 2026 <a href="https://afrexai-cto.github.io/context-packs/">AfrexAI</a> · AI Implementation That Actually Works
+</footer>
+
+<script>
+function calculateScore(){
+ let s=0,a=0;
+ for(let i=1;i<=10;i++){
+  const r=document.querySelector(`input[name="q${i}"]:checked`);
+  if(r){s+=parseInt(r.value);a++}
+ }
+ if(a<8){alert('Please answer at least 8 questions.');return}
+ const pct=Math.round(s/(a*3)*100);
+ document.getElementById('scoreNum').textContent=pct+'%';
+ let label,recs;
+ if(pct>=75){
+  label='Strong Foundation';
+  recs='<div class="rec">✅ Your governance framework is ahead of most peers. Focus on: stress-testing your AI incident response, ensuring board-level reporting cadence, and preparing for regulatory examinations.</div><div class="rec">💡 Next step: Move from compliance to competitive advantage. The firms that treat AI governance as a moat — not a cost center — win the next decade.</div>';
+ }else if(pct>=50){
+  label='Gaps That Need Closing';
+  recs='<div class="rec">⚠️ You have foundations but critical gaps remain. Most firms at this stage have governance on paper but lack operational enforcement.</div><div class="rec">🔴 Priority: AI inventory + explainability documentation. Regulators ask for this first.</div><div class="rec">💡 The gap between 50% and 80% readiness is typically 8-12 weeks of focused work with the right implementation partner.</div>';
+ }else if(pct>=25){
+  label='Significant Risk Exposure';
+  recs='<div class="rec">🔴 Your firm has material regulatory risk. With Basel III.1, DORA, and SEC convergence in 2026, the window to remediate is narrowing.</div><div class="rec">⚠️ Immediate priorities: (1) Appoint AI governance owner, (2) Build AI system inventory, (3) Implement basic bias testing, (4) Document decision-making processes.</div><div class="rec">💡 Firms at this stage typically need 3-6 months to reach baseline compliance. Starting this quarter is not optional — it\'s urgent.</div>';
+ }else{
+  label='Critical — Immediate Action Required';
+  recs='<div class="rec">🚨 Your firm is exposed to regulatory action, reputational damage, and operational failure. This isn\'t a future problem — it\'s a current one.</div><div class="rec">🔴 You need: (1) Emergency AI inventory, (2) Governance framework buildout, (3) Regulatory gap analysis, (4) Board-level awareness session.</div><div class="rec">💡 The good news: with the right partner, you can go from zero to baseline compliance in 90 days. But you have to start now.</div>';
+ }
+ document.getElementById('scoreLabel').textContent=label;
+ document.getElementById('recommendations').innerHTML=recs;
+ document.getElementById('result').style.display='block';
+ document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

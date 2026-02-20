@@ -88,6 +88,14 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **MIT Sloan published "Agentic AI Explained"** — market education phase is over. Enterprise buyers understand the category. Question is now WHO implements, not WHAT it is.
 - **New opportunity logged: mid-market insurance implementation.** Nobody owns this space yet. 20 insurance agencies already in CRM. 6-12 month window before Big 4 package offerings.
 
+## Key Intelligence (Updated 2026-02-20)
+
+- **Mayer Brown published agentic AI contracting guidance** — formal shift from SaaS to services model. Recommends outcome-based SLAs, BPO-style clauses, indemnification, governance/audit rights. Enterprise legal teams now EXPECTING this contract structure. Our "recovered capacity" pricing already aligns. Use in every pitch.
+- **Camunda insurance blueprint: 60-80% faster claims, 20-35% claims leakage reduction** with orchestration-first agentic AI. Hard ROI numbers for insurance outreach. 20 insurance agencies in CRM.
+- **Platform acceleration:** IBM Watson Orchestrate ADK, Oracle Fusion AI Agent Studio, Ada Reasoning Engine all launched same week. Platform commoditization accelerating — validates our implementation-layer positioning.
+- **Contracting shift = procurement activation.** Law firms writing contract guidance means budgets are being allocated, legal/procurement teams involved, enterprise buying cycle has begun. Market crossed from "experimenting" to "procuring."
+- **New opportunity logged:** Outcome-based contracting as structural sales differentiator. Formalize contract templates with outcome-based SLA language.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?

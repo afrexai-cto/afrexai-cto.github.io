@@ -18,6 +18,11 @@ Last full update: 2026-02-13
 | Altruist | Wealth Mgmt AI | AI-enabled tax planning features spooked entire brokerage sector | 🟢 Low | 2026-02-14 |
 | SS&C Blue Prism | Agentic RPA | Rebranding as "Agentic Automation Company", legacy RPA pivoting to AI agents | 🟢 Low | 2026-02-18 |
 | AIG | Insurance (Buyer) | Deployed agentic AI orchestration across full workflow — intake to claims | ⚪ Reference | 2026-02-19 |
+| Ada | Enterprise CX AI | Patent-pending "Unified Reasoning Engine" for enterprise-scale agent management | 🟢 Low | 2026-02-20 |
+| IBM (Watson Orchestrate) | Platform | ADK for governed enterprise agent ecosystems with human-in-the-loop | 🟡 Medium | 2026-02-20 |
+| Oracle (Fusion AI) | Platform | AI Agent Studio in Fusion Apps (24B release) — multi-step HR/finance tasks | 🟡 Medium | 2026-02-20 |
+| Camunda | Insurance Orchestration | Published insurance agentic AI blueprint — 60-80% faster claims, 20-35% leakage reduction | ⚪ Reference | 2026-02-20 |
+| Mayer Brown | Legal Guidance | Published agentic AI contracting guidance — SaaS→Services shift, outcome-based SLAs | ⚪ Reference | 2026-02-20 |
 
 ## Strategic Position
 

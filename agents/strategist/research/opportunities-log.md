@@ -55,3 +55,7 @@
 **Connection to AfrexAI's 3-Step Plan:** Step 2 service account targeting corporate legal departments directly (not law firms). Different buyer, different pain, less competition. Contract review, regulatory compliance tracking, litigation hold management — all automatable, all currently done manually by $200K+/yr attorneys. "Recovered capacity" framing is perfect here: "Your $350K associate is spending 60% of their time on work an agent can do in minutes."
 
 **What it takes:** Reposition legal vertical messaging from "law firm AI" to "corporate legal operations AI." Create one case study mockup based on VADIS engagement pattern. Target: 50+ corporate legal departments at companies with $100M-$1B revenue. Estimated: 3-5 days for messaging + prospect list + initial outreach sequences.
+
+## 2026-02-20: Outcome-Based Contracting as Sales Differentiator
+
+Mayer Brown published formal guidance stating agentic AI should be contracted as services (BPO-style), not SaaS. This means enterprise buyers are now EXPECTING outcome-based SLAs, indemnification, and audit rights. Most AI vendors still sell seat licenses or API calls. We already price on "recovered capacity" (outcomes). Leaning into this framing — "We're the only vendor whose contract model matches what your legal team is now demanding" — gives us a structural sales advantage. Requires: formalize our contract templates with outcome-based SLA language, reference Mayer Brown guidance in sales collateral. Connects to Step 2 (Service Accounts) directly. Low effort, high signal.

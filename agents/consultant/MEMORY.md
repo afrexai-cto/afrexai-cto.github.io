@@ -113,6 +113,42 @@
 - Key objection: "Agents are independent contractors" → "You can't control their tools, but you ARE liable for their outputs."
 - Terminology: "designated broker", "transaction coordinator", "Fair Housing Act", "disparate impact", "NAR Code of Ethics", "E&O insurance"
 
+### Insurance Agencies — AI Governance & E&O Risk (Added 2026-02-19)
+- **Primary pain:** Ungoverned AI adoption — producers using ChatGPT for client comms, policy summaries, marketing with zero oversight
+- NAIC Model Bulletin (Dec 2023) requires written AI governance programs — **23 states + DC adopted** by late 2025
+- **NAIC AI Systems Evaluation Tool** will be used during regulatory examinations starting 2026 — agencies without governance will fail
+- Draft AI model law expected 2026 — would create enforceable standards beyond guidance
+- AI adoption massive: 92% health insurers, 88% auto, 70% home — mostly without governance
+- 1/3 of health insurers don't test AI for bias despite NAIC requirements
+- Active lawsuits: Kelly v. State Farm (discriminatory AI claims), Kisting-Leung v. Cigna (AI claim denials without review)
+- Colorado SB 24-205: first comprehensive state AI governance law — template for others
+- E&O exposure: agency liable for AI-generated errors, not AI vendor — uncharted territory for E&O carriers
+- AI insurance market: $8.63B (2025) → $59.5B by 2033 (27.32% CAGR)
+- ROI: ~$40-47K/yr value for 40-person agency vs $120K implementation (30-36mo breakeven); scales to $80-120K at 100+ employees
+- CRM has 20 insurance agencies — top prospects: Inszone Insurance (Sacramento CA), Atlas Insurance Brokers (Overland Park KS), CCIG (Greenwood Village CO — Colorado law!), Plastridge Insurance (Delray Beach FL)
+- CCIG in Colorado is highest-priority — they're already under the strictest AI governance law in the US
+- Key objection: "We're just a small agency" → "The NAIC bulletin applies to every insurer. Your state regulator will use the AI Evaluation Tool at your next exam."
+- Terminology: "E&O exposure", "NAIC Model Bulletin", "producer", "CSR", "AMS" (Applied Epic, Vertafore, HawkSoft), "book of business", "carrier appointments"
+- Content handoff created for blog + lead magnet (5-Point AI Governance Checklist)
+
+### Accounting Firms — AI Governance (Added 2026-02-20)
+- **Primary pain:** Ungoverned AI adoption at scale — 98% using AI but only 21% have policy/strategy (Karbon 2026, n=600)
+- Staff pasting client tax returns, financial statements into ChatGPT with zero data classification
+- Average 60 min/day saved per employee — but without governance, savings come with malpractice risk
+- Agentic AI entering accounting in 2026 — autonomous systems making decisions without guardrails
+- Professional liability: AI errors in tax filings or audit workpapers = malpractice exposure, due care failure under AICPA standards
+- Boards demanding AI inventories, model risk frameworks, guardrails (Accounting Today, multiple sources)
+- 53% of high-growth firms have deeply integrated AI systems (Wolters Kluwer 2025 Future Ready Accountant)
+- 91% of graduates prefer AI-active firms — governance enables recruitment marketing
+- PwC Chief AI Officer implementing automated red teaming; Deloitte sees staff shifting to "AI orchestrators"
+- Small Business AI Training Act of 2026 reintroduced federally — tailwind for structured adoption
+- ROI: ~$75-95K/yr value for 40-person firm vs $120K implementation (18-19mo breakeven); scales to $150K+ at 100+
+- CRM has 20 accounting companies — top prospects: Armanino (500 emp, San Ramon CA), Sikich (400, Naperville IL), Withum (400, Princeton NJ), Citrin Cooperman (400, NYC), Whitley Penn (400, Fort Worth TX)
+- All 5 top prospects logged as $120K deals in CRM
+- Key objection: "Our tech vendor handles governance" → "Practice management tools provide features, not frameworks. Who's liable when staff paste client data into ChatGPT?"
+- Terminology: "managing partner", "engagement letter", "workpapers", "peer review", "AICPA standards", "professional liability", "E&O insurance", "busy season", "advisory services"
+- Content handoff created for blog + lead magnet (7-Point AI Governance Checklist)
+
 - *This section updated as new verticals, use cases, and insights are developed*
 
 ## Shared Reference

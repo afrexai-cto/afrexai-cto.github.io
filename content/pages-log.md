@@ -47,3 +47,12 @@ All pages: dark theme (#0a0a0a), gold (#FFD700), standalone HTML, inline CSS, mo
 5. `/comparisons/afrexai-vs-outsourcing/index.html` — Comparison page: AfrexAI vs Traditional Outsourcing/BPOs (10-point comparison table, hidden costs breakdown, transition guide)
 6. `/blog/how-to-automate-accounts-payable/index.html` — SEO blog: "How to Automate Accounts Payable With AI Agents (2026 Guide)" (4-step process, auto-approval rules, $122K ROI projection)
 7. `/blog/ai-agents-edtech-2026/index.html` — Blog: "AI Agents in EdTech: 7 Use Cases Reshaping Education in 2026" (enrollment, student support, grading, retention, personalization, admin ops, financial aid)
+
+## 2026-02-20 (Friday)
+1. `/seo/ai-agent-services-san-francisco/index.html` — City SEO page: AI Agent Services in San Francisco & Bay Area (SaaS, biotech, fintech, law, real estate, professional services)
+2. `/seo/ai-agent-services-houston/index.html` — City SEO page: AI Agent Services in Houston & Gulf Coast (energy/oil&gas, healthcare, construction, law, logistics, real estate)
+3. `/seo/ai-agent-services-boston/index.html` — City SEO page: AI Agent Services in Boston & New England (biotech, healthcare, financial services, higher education, law, research)
+4. `/seo/ai-automation-for-manufacturing/index.html` — SEO automation page: AI Automation for Manufacturing (production scheduling, QC, supply chain, predictive maintenance, inventory, compliance)
+5. `/blog/how-to-automate-employee-onboarding/index.html` — SEO blog: "How to Automate Employee Onboarding With AI Agents (2026 Guide)" (5-step playbook, document collection, system provisioning, training, benefits, 30/60/90 check-ins)
+6. `/blog/ai-agents-real-estate-2026/index.html` — Blog: "AI Agents in Real Estate: 8 Use Cases Transforming the Industry in 2026" (lead qual, CMA, transaction coord, property mgmt, listing content, market analysis, showings, compliance)
+7. `/content/resources/index.html` — Resource Hub page: links to all calculators, guides, playbooks, blog posts, videos, and webinars in one place

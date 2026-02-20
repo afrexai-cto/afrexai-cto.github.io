@@ -54,7 +54,7 @@
 ## 4. security-safety — ✅ PASS
 
 ### Redaction (`node redact.js`)
-**Input:** `"my key is sk-ant-api03-abc123def456 and ghp_REDACTED"`  
+**Input:** `"my key is sk-ant-api03-abc123def456 and ghp_EXAMPLE_TOKEN_REDACTED"`  
 **Output:** `"my key is [REDACTED] and [REDACTED]"` — correctly identified as `openai_key` and `github_token`
 
 ### Injection Detection (`node injection-detector.js`)

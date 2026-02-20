@@ -1,64 +1,15 @@
-# ☀️ Daily Briefing — Thursday, 19 February 2026
+# ☀️ Daily Briefing — Friday, 20 February 2026
 
 ## 📅 Today's Schedule
 
-### 09:00–10:00 · Q1 Pipeline Review
-
-📍 Zoom · _Review Q1 pipeline numbers and discuss expansion deals_
-
-**Attendees:**
-
-- **Sarah Chen** · VP of Sales @ Acme Corp
-  - Deal: Negotiation · $240,000 ARR
-  - Last (2026-02-14): Sent revised pricing proposal. She mentioned board approval needed by end of Feb.
-  - 💡 Decision maker. Reports to CEO. Prefers concise communication.
-- **James Wilson** · CTO @ TechFlow
-  - Deal: Customer - Expansion · $85,000 ARR (current), $150,000 (proposed expansion)
-  - Last (2026-02-17): Discussed adding 3 more team seats and API tier upgrade.
-  - 💡 Technical buyer. Loves detailed docs. Big advocate internally.
-
-**Related Email Threads:**
-
-- 🔴 **Re: Acme Corp - Revised Pricing** — "Thanks for the updated numbers. I'll present to the board on Thursday. Can we lock in the 10% discount if we sign by end of month?"
-- ⚪ **Re: TechFlow Expansion - API Tier** — "Looks good overall. One question — does the enterprise API tier include dedicated support?"
-
-### 14:00–15:00 · Product Demo - Meridian Health
-
-📍 Google Meet · _Enterprise demo for Meridian Health procurement team_
-
-**Attendees:**
-
-- **Lisa Park** · Chief Digital Officer @ Meridian Health
-  - Deal: Demo/Evaluation · $500,000 ARR (estimated)
-  - Last (2026-02-10): Introductory call. Very interested in HIPAA compliance features.
-  - 💡 Reports to CEO. Key concern is compliance and data residency.
-- **Tom Nguyen** · Head of Procurement @ Meridian Health
-  - Deal: Demo/Evaluation · null
-  - Last (2026-02-10): On the discovery call with Lisa. Asked about SOC2 and BAA.
-  - 💡 Procurement gatekeeper. Will need security questionnaire completed.
-
-**Related Email Threads:**
-
-- 🔴 **Meridian Health - Security Questionnaire** — "Attached is our standard security questionnaire (87 questions). Would appreciate completion before the demo Thursday."
-
-### 16:30–17:00 · 1:1 with Alex (Engineering)
-
-📍 Office · _Weekly sync on roadmap and blockers_
-
-**Attendees:**
-
-- **Alex Kumar** · Engineering Lead @ Internal
-  - Last (2026-02-12): Discussed API v3 timeline. On track for March release.
-  - 💡 Key internal stakeholder. Owns API and integrations team.
-
-**Related Email Threads:**
-
-- 🔴 **API v3 Release Timeline** — "QA found 2 P1 bugs in batch endpoint. Might push release by a week. Let's discuss tomorrow."
+_No events today._
 
 ## ✅ Action Items
 
 **🔴 Overdue:**
 
+- ~~2026-02-19~~ **Send SOC2 report to Meridian Health** [high]
+- ~~2026-02-19~~ **Review Q1 forecast spreadsheet** [medium]
 - ~~2026-02-17~~ **Follow up with Sarah on board timeline** [high]
 - ~~2026-02-15~~ **Update investor deck with Jan metrics** [medium]
 
