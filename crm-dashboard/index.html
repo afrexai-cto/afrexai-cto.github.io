@@ -211,7 +211,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 <script>
 const HASH = '1c05f9a1d0bdde3fdd0b8896808cb1bfcd3821166830d5de6866f621ed8b7f66';
 const DATA = {
-  "totalCompanies": 367,
+  "totalCompanies": 0,
   "totalContacts": 200,
   "totalActivities": 98,
   "activities7d": 0,
@@ -672,8 +672,17 @@ function render(){
   renderBarChart('chart-industry', DATA.byIndustry, 'industry', 'cnt');
   renderBarChart('chart-metro', DATA.byMetro, r=>(r.city||'Unknown')+(r.state&&r.state!=='—'?', '+r.state:''), 'cnt');
 
+  // Merge ALL companies: topCompanies (DB) + CRM_PROSPECTS (CSV)
+  const allCompanies = [
+    ...DATA.topCompanies.map(c=>({name:c.name,email:c.email,website:c.website,city:c.city,state:c.state,industry:c.industry,employees:c.employees,source:c.source,origin:'crm-db'})),
+    ...CRM_PROSPECTS.map(c=>({name:c.company,email:c.email,website:null,city:null,state:null,industry:c.industry,employees:null,source:null,origin:'crm-csv'}))
+  ];
+  // Update total companies card dynamically
+  DATA.totalCompanies = allCompanies.length;
+  document.querySelector('#cards').children[0].querySelector('.value').textContent = fmt(allCompanies.length);
+
   const tbody=document.querySelector('#companies-table tbody');
-  tbody.innerHTML=DATA.topCompanies.map((c,i)=>`
+  tbody.innerHTML=allCompanies.map((c,i)=>`
     <tr><td>${i+1}</td><td>${c.name}</td><td>${c.email||'—'}</td><td>${c.website?'<a href="https://'+c.website+'" target="_blank" style="color:var(--gold)">'+c.website+'</a>':'—'}</td><td>${c.city||'—'}</td><td>${c.state||'—'}</td><td>${c.industry||'—'}</td><td>${fmt(c.employees)}</td><td>${c.source?'<a href="'+c.source+'" target="_blank" style="color:var(--gold)">Source</a>':'—'}</td></tr>
   `).join('');
 }
