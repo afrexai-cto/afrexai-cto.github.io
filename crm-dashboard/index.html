@@ -83,6 +83,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 .kanban-card .kc-meta{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
 .kanban-card .kc-industry{font-size:.68rem;color:var(--muted);background:#1a1a1a;padding:2px 6px;border-radius:4px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kanban-card .kc-icp{font-size:.65rem;font-weight:700;padding:2px 6px;border-radius:4px}
+.kanban-card .kc-source{font-size:.62rem;color:#999;background:#1a1a1a;border:1px solid #2a2a2a;padding:1px 5px;border-radius:3px;margin-top:6px;display:inline-block}
 .stage-badge{font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.3px}
 .stage-lead{background:#333;color:#ccc}
 .stage-contacted{background:#1a3a5c;color:#5ba3e6}
@@ -91,6 +92,19 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 .stage-negotiation{background:#3a1a0a;color:#e67817}
 .stage-won{background:#0a3a1a;color:#17e678}
 .stage-lost{background:#3a0a0a;color:#e63717}
+/* Search/Filter Bar */
+.kanban-filters{background:#111;border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.kanban-filters input[type="text"]{flex:1;min-width:200px;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:#1a1a1a;color:#fff;font-size:.9rem;outline:none}
+.kanban-filters input[type="text"]:focus{border-color:var(--gold)}
+.kanban-filters select{padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:#1a1a1a;color:#ccc;font-size:.8rem;outline:none;cursor:pointer}
+.kanban-filters select:focus{border-color:var(--gold)}
+.kanban-filters .filter-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.kanban-filters .filter-group{display:flex;flex-direction:column;gap:3px}
+.filter-stats{color:var(--muted);font-size:.78rem;margin-bottom:8px}
+/* Revenue indicator */
+.kc-revenue{font-size:.68rem;color:#17e678;background:#0a2a1a;padding:2px 6px;border-radius:4px;font-weight:700;display:inline-block;margin-top:4px}
+.kc-revenue.mid{color:#e6a817;background:#2a1a0a}
+.kc-revenue.small{color:#5ba3e6;background:#0a1a2a}
 /* Column accent tops */
 .kanban-col[data-stage="lead"] .kanban-col-header{border-top:3px solid #666}
 .kanban-col[data-stage="contacted"] .kanban-col-header{border-top:3px solid #5ba3e6}
@@ -135,7 +149,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 <div id="dashboard">
   <header>
     <h1>📊 AfrexAI CRM Dashboard</h1>
-    <span class="updated">Last updated: Feb 21, 2026 at 19:36 GMT</span>
+    <span class="updated">Last updated: Feb 21, 2026 at 19:48 GMT</span>
   </header>
 
   <div class="view-toggle">
@@ -162,7 +176,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
     </section>
 
     <section>
-      <h2>🏢 Top 50 Companies</h2>
+      <h2>🏢 All Companies</h2>
       <div class="table-wrap">
         <table id="companies-table">
           <thead><tr><th>#</th><th>Company</th><th>Email</th><th>Website</th><th>City</th><th>State</th><th>Industry</th><th>Employees</th><th>Source</th></tr></thead>
@@ -175,7 +189,15 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
   <div id="kanban-view">
     <section>
       <h2>🔀 Sales Pipeline Board</h2>
-      <p style="color:var(--muted);font-size:.8rem;margin-bottom:16px">Drag-scroll horizontally to see all stages. Cards show real CRM prospects (ICP 8+, US-based).</p>
+      <p style="color:var(--muted);font-size:.8rem;margin-bottom:12px">All prospects from CRM database and CSV pipeline. Drag cards between stages.</p>
+      <div class="kanban-filters">
+        <input type="text" id="kanban-search" placeholder="🔍 Search company, contact, email, or industry…" oninput="applyKanbanFilters()">
+        <div class="filter-group"><span class="filter-label">ICP Score</span><select id="filter-icp" onchange="applyKanbanFilters()"><option value="">All</option><option value="9">9+ (Hot)</option><option value="8">8+</option><option value="0">Any / Unknown</option></select></div>
+        <div class="filter-group"><span class="filter-label">Industry</span><select id="filter-industry" onchange="applyKanbanFilters()"><option value="">All Industries</option></select></div>
+        <div class="filter-group"><span class="filter-label">Revenue</span><select id="filter-revenue" onchange="applyKanbanFilters()"><option value="">All Sizes</option><option value="100">$100M+</option><option value="50">$50M+</option><option value="10">$10M+</option><option value="5">$5M+</option></select></div>
+        <div class="filter-group"><span class="filter-label">Source</span><select id="filter-source" onchange="applyKanbanFilters()"><option value="">All Sources</option><option value="crm-db">🏢 Top Companies</option><option value="crm-csv">📋 CRM CSV</option></select></div>
+      </div>
+      <div class="filter-stats" id="filter-stats"></div>
       <div class="kanban-board" id="kanban-board"></div>
     </section>
   </div>
@@ -241,7 +263,7 @@ const DATA = {
     {"name":"Independent Bank Group","city":"McKinney","state":"TX","industry":"Regional Bank","employees":350,"email":"david.brooks@ibtx.com","website":"ibtx.com","source":null},
     {"name":"Wipfli","city":"Milwaukee","state":"WI","industry":"Accounting","employees":350,"email":"kevin.latz@wipfli.com","website":"wipfli.com","source":null},
     {"name":"Schneider Downs","city":"Pittsburgh","state":"PA","industry":"Accounting","employees":350,"email":"karl.kunkel@schneiderdowns.com","website":"schneiderdowns.com","source":null},
-    {"name":"CrossFirst Bankshares","city":"Leawood","state":"KS","industry":"Regional Bank","employees":350,"email":"mike.maddox@crossmikebank.com","website":"crossfirstbank.com","source":null},
+    {"name":"CrossFirst Bankshares","city":"Leawood","state":"KS","industry":"Regional Bank","employees":350,"email":"mike.maddox@crossfirstbank.com","website":"crossfirstbank.com","source":null},
     {"name":"Southside Bancshares","city":"Tyler","state":"TX","industry":"Regional Bank","employees":350,"email":"lee.gibson@southside.com","website":"southside.com","source":null},
     {"name":"Allworth Financial","city":"Sacramento","state":"CA","industry":"Wealth Management","employees":350,"email":"scott.hanson@allworthfinancial.com","website":"allworthfinancial.com","source":null},
     {"name":"Woodruff Sawyer","city":"San Francisco","state":"CA","industry":"Insurance Agency","employees":350,"email":"andy.barrengos@woodruffsawyer.com","website":"woodruffsawyer.com","source":null},
@@ -292,11 +314,10 @@ const CRM_PROSPECTS = [
   {company:"Lema AI",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (Supply Chain)",icp:8,stage:"prospect"},
   {company:"Algorized",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (Industrial)",icp:8,stage:"prospect"},
   {company:"Loop AI",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (Logistics)",icp:8,stage:"prospect"},
-  {company:"Newo AI",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (Voice AI)",icp:8,stage:"prospect"},
   {company:"Simile",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (AI)",icp:8,stage:"prospect"},
   {company:"WitnessAI",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (Security)",icp:8,stage:"prospect"},
   {company:"Sapiom",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (Fintech)",icp:8,stage:"prospect"},
-  {company:"Brandlight",contact:"Didi Dvash",role:"Co-founder",email:"",industry:"AI Marketing",icp:8,stage:"prospect"},
+  {company:"Brandlight",contact:"Dvir Dvash",role:"CTO & Co-founder",email:"",industry:"AI Marketing",icp:8,stage:"prospect"},
   {company:"Flock AI",contact:"Manvitha Mallela",role:"Founder",email:"",industry:"AI Ecommerce",icp:8,stage:"prospect"},
   {company:"Cadastral",contact:"Unknown",role:"Unknown",email:"",industry:"Real Estate Tech",icp:8,stage:"prospect"},
   {company:"OPAQUE",contact:"Unknown",role:"Unknown",email:"",industry:"Confidential AI",icp:8,stage:"prospect"},
@@ -309,9 +330,7 @@ const CRM_PROSPECTS = [
   {company:"Hubbl Technologies",contact:"Unknown",role:"CEO",email:"",industry:"SaaS",icp:8,stage:"prospect"},
   {company:"Meridian",contact:"Unknown",role:"CEO",email:"",industry:"Fintech",icp:8,stage:"prospect"},
   {company:"Biller Genie",contact:"Unknown",role:"CEO",email:"",industry:"Fintech",icp:8,stage:"prospect"},
-  {company:"Backslash Security",contact:"Unknown",role:"CEO",email:"",industry:"SaaS",icp:8,stage:"prospect"},
-  {company:"Gather AI (Warehouse)",contact:"Unknown",role:"Unknown",email:"",industry:"B2B SaaS (Warehouse AI)",icp:8,stage:"prospect"},
-  {company:"Winn.AI (Sales)",contact:"Unknown",role:"Unknown",email:"",industry:"Sales AI",icp:8,stage:"prospect"}
+  {company:"Backslash Security",contact:"Unknown",role:"CEO",email:"",industry:"SaaS",icp:8,stage:"prospect"}
 ];
 
 // Pipeline stage definitions
@@ -329,34 +348,60 @@ const STAGES = [
 function getSavedMoves(){try{return JSON.parse(localStorage.getItem('crm_kanban_moves')||'{}');}catch(e){return {};}}
 function saveMoves(moves){localStorage.setItem('crm_kanban_moves',JSON.stringify(moves));}
 
+// Estimate revenue from employee count (rough: $150K revenue per employee for services firms)
+function estimateRevenue(employees){
+  if(!employees) return null;
+  return employees * 150000;
+}
+function fmtRevenue(rev){
+  if(!rev) return null;
+  if(rev >= 1e9) return '$'+(rev/1e9).toFixed(1)+'B';
+  if(rev >= 1e6) return '$'+(rev/1e6).toFixed(0)+'M';
+  if(rev >= 1e3) return '$'+(rev/1e3).toFixed(0)+'K';
+  return '$'+rev;
+}
+function revenueClass(rev){
+  if(!rev) return '';
+  if(rev >= 50e6) return '';
+  if(rev >= 10e6) return 'mid';
+  return 'small';
+}
+
+let allKanbanProspects = [];
+
 function buildKanbanData(){
   const prospects = [];
-  // Add topCompanies with inferred stages
+  const seen = new Set();
+  // Add ALL topCompanies with inferred stages
   DATA.topCompanies.forEach((c,i)=>{
-    // Deduplicate Hazlewoods
-    if(i===0 && c.name==='Hazlewoods') return;
+    // Deduplicate by name+email
+    const key = c.name+'||'+(c.email||'');
+    if(seen.has(key)) return;
+    seen.add(key);
     let stage = 'lead';
     if(c.email && c.website) stage = 'discovery';
     else if(c.email) stage = 'contacted';
     const contactName = c.email ? c.email.split('@')[0].split('.').map(s=>s.charAt(0).toUpperCase()+s.slice(1)).join(' ') : 'Unknown';
+    const rev = estimateRevenue(c.employees);
     prospects.push({
       company: c.name,
       contact: contactName,
       email: c.email || '',
       industry: c.industry || 'Unknown',
       employees: c.employees,
+      revenue: rev,
       stage: stage,
       icp: null,
       source: 'crm-db'
     });
   });
-  // Add CRM CSV prospects
+  // Add ALL CRM CSV prospects
   CRM_PROSPECTS.forEach(p=>{
     let stage = 'lead';
     if(p.stage === 'lead') stage = 'lead';
+    else if(p.stage === 'new') stage = 'lead';
     else if(p.email) stage = 'contacted';
     else stage = 'lead';
-    // ICP 9 prospects with known contacts get bumped to contacted
     if(p.icp >= 9 && p.contact !== 'Unknown') stage = 'contacted';
     prospects.push({
       company: p.company,
@@ -364,6 +409,7 @@ function buildKanbanData(){
       email: p.email || '',
       industry: p.industry,
       employees: null,
+      revenue: null,
       stage: stage,
       icp: p.icp,
       source: 'crm-csv'
@@ -375,7 +421,63 @@ function buildKanbanData(){
     const key = p.company+'||'+p.contact;
     if(moves[key]) p.stage = moves[key];
   });
+  allKanbanProspects = prospects;
   return prospects;
+}
+
+function applyKanbanFilters(){
+  const search = (document.getElementById('kanban-search').value||'').toLowerCase();
+  const icpFilter = document.getElementById('filter-icp').value;
+  const indFilter = document.getElementById('filter-industry').value;
+  const revFilter = document.getElementById('filter-revenue').value;
+  const srcFilter = document.getElementById('filter-source').value;
+
+  const cards = document.querySelectorAll('.kanban-card');
+  let shown=0, total=cards.length;
+  cards.forEach(card=>{
+    const company = (card.dataset.company||'').toLowerCase();
+    const contact = (card.dataset.contact||'').toLowerCase();
+    const email = (card.dataset.email||'').toLowerCase();
+    const industry = (card.dataset.industry||'').toLowerCase();
+    const icp = parseInt(card.dataset.icp)||0;
+    const rev = parseFloat(card.dataset.revenue)||0;
+    const src = card.dataset.source||'';
+
+    let visible = true;
+    if(search && !company.includes(search) && !contact.includes(search) && !email.includes(search) && !industry.includes(search)) visible=false;
+    if(icpFilter){
+      const minIcp = parseInt(icpFilter);
+      if(minIcp > 0 && icp < minIcp) visible=false;
+    }
+    if(indFilter && !industry.includes(indFilter.toLowerCase())) visible=false;
+    if(revFilter && rev < parseFloat(revFilter)*1e6) visible=false;
+    if(srcFilter && src !== srcFilter) visible=false;
+
+    card.style.display = visible ? '' : 'none';
+    if(visible) shown++;
+  });
+
+  // Update column counts
+  document.querySelectorAll('.kanban-col').forEach(col=>{
+    const cnt = col.querySelectorAll('.kanban-card:not([style*="display: none"])').length;
+    const b = col.querySelector('.count-badge');
+    if(b) b.textContent = cnt;
+  });
+
+  document.getElementById('filter-stats').textContent = `Showing ${shown} of ${total} prospects`;
+}
+
+function populateFilterDropdowns(){
+  const industries = new Set();
+  allKanbanProspects.forEach(p=>{ if(p.industry) industries.add(p.industry); });
+  const sel = document.getElementById('filter-industry');
+  const sorted = [...industries].sort();
+  sorted.forEach(ind=>{
+    const opt = document.createElement('option');
+    opt.value = ind;
+    opt.textContent = ind;
+    sel.appendChild(opt);
+  });
 }
 
 function renderKanban(){
@@ -399,6 +501,7 @@ function renderKanban(){
       <div class="kanban-col-body">`;
     cards.forEach(c=>{
       const icpHtml = c.icp ? `<span class="kc-icp" style="background:${c.icp>=9?'#0a3a1a':'#1a3a5c'};color:${c.icp>=9?'#17e678':'#5ba3e6'}">ICP ${c.icp}</span>` : '';
+      const srcLabel = c.source==='crm-csv'?'📋 CRM CSV':c.source==='crm-db'?'🏢 Top Companies':'❓ Unknown';
       html += `<div class="kanban-card" draggable="true" data-company="${c.company.replace(/"/g,'&quot;')}" data-contact="${(c.contact||'').replace(/"/g,'&quot;')}">
         <div class="kc-company"><span class="drag-handle">⠿</span> ${c.company}</div>
         <div class="kc-contact">👤 ${c.contact}${c.employees ? ' · '+c.employees+' emp' : ''}</div>
@@ -408,6 +511,7 @@ function renderKanban(){
           ${icpHtml}
           <span class="stage-badge stage-${s.id}">${s.label}</span>
         </div>
+        <span class="kc-source">${srcLabel}</span>
       </div>`;
     });
     html += '</div></div>';
