@@ -70,7 +70,13 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 .kanban-col-header .count-badge{background:var(--gold);color:#0a0a0a;font-size:.7rem;font-weight:800;padding:2px 8px;border-radius:10px;min-width:22px;text-align:center}
 .kanban-col-body{padding:8px;flex:1;overflow-y:auto;max-height:70vh}
 .kanban-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:8px;transition:border-color .2s,transform .15s}
+.kanban-card{cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none}
 .kanban-card:hover{border-color:var(--gold);transform:translateY(-1px)}
+.kanban-card:active{cursor:grabbing}
+.kanban-card.dragging{opacity:.4;transform:scale(.95);border-color:var(--gold)}
+.kanban-col.drag-over{box-shadow:0 0 16px 2px rgba(255,215,0,.45);border-color:var(--gold);transition:box-shadow .2s,border-color .2s}
+.kanban-card .drag-handle{display:inline-block;color:var(--muted);font-size:.7rem;margin-right:4px;vertical-align:middle;opacity:.4;transition:opacity .2s}
+.kanban-card:hover .drag-handle{opacity:1}
 .kanban-card .kc-company{font-weight:700;font-size:.85rem;color:#fff;margin-bottom:6px}
 .kanban-card .kc-contact{font-size:.78rem;color:var(--muted);margin-bottom:4px}
 .kanban-card .kc-email{font-size:.72rem;color:var(--gold);margin-bottom:6px;word-break:break-all}
@@ -319,6 +325,10 @@ const STAGES = [
   {id:'lost',label:'Lost',icon:'❌'}
 ];
 
+// localStorage persistence for card moves
+function getSavedMoves(){try{return JSON.parse(localStorage.getItem('crm_kanban_moves')||'{}');}catch(e){return {};}}
+function saveMoves(moves){localStorage.setItem('crm_kanban_moves',JSON.stringify(moves));}
+
 function buildKanbanData(){
   const prospects = [];
   // Add topCompanies with inferred stages
@@ -359,6 +369,12 @@ function buildKanbanData(){
       source: 'crm-csv'
     });
   });
+  // Apply saved moves from localStorage
+  const moves = getSavedMoves();
+  prospects.forEach(p=>{
+    const key = p.company+'||'+p.contact;
+    if(moves[key]) p.stage = moves[key];
+  });
   return prospects;
 }
 
@@ -383,8 +399,8 @@ function renderKanban(){
       <div class="kanban-col-body">`;
     cards.forEach(c=>{
       const icpHtml = c.icp ? `<span class="kc-icp" style="background:${c.icp>=9?'#0a3a1a':'#1a3a5c'};color:${c.icp>=9?'#17e678':'#5ba3e6'}">ICP ${c.icp}</span>` : '';
-      html += `<div class="kanban-card">
-        <div class="kc-company">${c.company}</div>
+      html += `<div class="kanban-card" draggable="true" data-company="${c.company.replace(/"/g,'&quot;')}" data-contact="${(c.contact||'').replace(/"/g,'&quot;')}">
+        <div class="kc-company"><span class="drag-handle">⠿</span> ${c.company}</div>
         <div class="kc-contact">👤 ${c.contact}${c.employees ? ' · '+c.employees+' emp' : ''}</div>
         ${c.email ? '<div class="kc-email">✉ '+c.email+'</div>' : ''}
         <div class="kc-meta">
@@ -397,6 +413,97 @@ function renderKanban(){
     html += '</div></div>';
   });
   board.innerHTML = html;
+  initDragAndDrop();
+}
+
+// Drag and Drop
+let draggedCard = null;
+function initDragAndDrop(){
+  const cards = document.querySelectorAll('.kanban-card');
+  const cols = document.querySelectorAll('.kanban-col');
+
+  cards.forEach(card=>{
+    card.addEventListener('dragstart',e=>{
+      draggedCard = card;
+      card.classList.add('dragging');
+      e.dataTransfer.effectAllowed='move';
+      e.dataTransfer.setData('text/plain','');
+    });
+    card.addEventListener('dragend',()=>{
+      if(draggedCard) draggedCard.classList.remove('dragging');
+      draggedCard = null;
+      cols.forEach(c=>c.classList.remove('drag-over'));
+    });
+
+    // Touch events for mobile
+    let touchClone=null, touchStartX=0, touchStartY=0, touchCol=null;
+    card.addEventListener('touchstart',e=>{
+      draggedCard = card;
+      const t=e.touches[0];
+      touchStartX=t.clientX; touchStartY=t.clientY;
+      card.classList.add('dragging');
+    },{passive:true});
+    card.addEventListener('touchmove',e=>{
+      if(!draggedCard) return;
+      e.preventDefault();
+      const t=e.touches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      cols.forEach(c=>c.classList.remove('drag-over'));
+      const col=el?el.closest('.kanban-col'):null;
+      if(col) {col.classList.add('drag-over'); touchCol=col;}
+      else touchCol=null;
+    },{passive:false});
+    card.addEventListener('touchend',()=>{
+      if(draggedCard && touchCol){
+        dropCard(draggedCard, touchCol);
+      }
+      if(draggedCard) draggedCard.classList.remove('dragging');
+      draggedCard=null; touchCol=null;
+      cols.forEach(c=>c.classList.remove('drag-over'));
+    });
+  });
+
+  cols.forEach(col=>{
+    col.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='move';col.classList.add('drag-over');});
+    col.addEventListener('dragleave',()=>col.classList.remove('drag-over'));
+    col.addEventListener('drop',e=>{
+      e.preventDefault();
+      col.classList.remove('drag-over');
+      if(draggedCard) dropCard(draggedCard, col);
+    });
+  });
+}
+
+function dropCard(card, col){
+  const newStage = col.dataset.stage;
+  const body = col.querySelector('.kanban-col-body');
+  const oldCol = card.closest('.kanban-col');
+  if(oldCol === col) return;
+
+  // Move DOM
+  body.appendChild(card);
+
+  // Update stage badge
+  const stageInfo = STAGES.find(s=>s.id===newStage);
+  const badge = card.querySelector('.stage-badge');
+  if(badge && stageInfo){
+    badge.className = 'stage-badge stage-'+newStage;
+    badge.textContent = stageInfo.label;
+  }
+
+  // Update column counts
+  [oldCol, col].forEach(c=>{
+    const cnt = c.querySelectorAll('.kanban-card').length;
+    const b = c.querySelector('.count-badge');
+    if(b) b.textContent = cnt;
+  });
+
+  // Persist to localStorage
+  const company = card.dataset.company;
+  const contact = card.dataset.contact;
+  const moves = getSavedMoves();
+  moves[company+'||'+contact] = newStage;
+  saveMoves(moves);
 }
 
 function switchView(view){
