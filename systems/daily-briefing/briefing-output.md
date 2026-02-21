@@ -1,4 +1,4 @@
-# ☀️ Daily Briefing — Friday, 20 February 2026
+# ☀️ Daily Briefing — Saturday, 21 February 2026
 
 ## 📅 Today's Schedule
 
@@ -17,14 +17,11 @@ _No events today._
 
 - **Send SOC2 report to Meridian Health** [high]
 - **Review Q1 forecast spreadsheet** [medium]
+- **Draft blog post on API v3 features** [low]
 
 **⏳ Waiting On:**
 
 - **Get legal review on TechFlow expansion contract** — waiting on _Legal team_ (due 2026-02-20) [high]
-
-**📆 Coming Up (next 3 days):**
-
-- 2026-02-21: **Draft blog post on API v3 features** [low]
 
 ## 📊 Yesterday's Content Performance (2026-02-18)
 

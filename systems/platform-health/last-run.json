@@ -1,5 +1,5 @@
 {
-  "runId": 3,
+  "runId": 4,
   "overall": 69,
   "results": [
     {
@@ -67,12 +67,12 @@
       "score": 79,
       "findings": [
         "📁 Large files (>1MB):",
-        "  - ./systems/security-council/scan-data.json (4.0MB)",
-        "  - ./systems/db-backups/backups/backup-20260219-230241.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260220-000244.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260220-010212.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260220-020222.tar.enc (1.4MB)",
-        "📊 Total large file storage: 13.7MB"
+        "  - ./systems/security-council/scan-data.json (4.6MB)",
+        "  - ./systems/db-backups/backups/backup-20260220-230307.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260221-000257.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260221-010146.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260221-020254.tar.enc (1.4MB)",
+        "📊 Total large file storage: 14.3MB"
       ],
       "area": "storage",
       "status": "warning"
@@ -118,5 +118,5 @@
     "storage: Room for improvement (score: 79)",
     "skill-integrity: Room for improvement (score: 68)"
   ],
-  "timestamp": "2026-02-20T05:02:48.654Z"
+  "timestamp": "2026-02-21T05:02:48.251Z"
 }
