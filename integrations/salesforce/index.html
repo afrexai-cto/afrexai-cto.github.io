@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salesforce Integration — AI Agents for Your CRM | AfrexAI</title>
+<meta name="description" content="AfrexAI agents connect to Salesforce to update deals, automate follow-ups, and keep your pipeline accurate — without manual data entry.">
+<meta property="og:title" content="Salesforce Integration — AI Agents for Your CRM | AfrexAI">
+<meta property="og:description" content="AI agents that live inside your Salesforce and keep your pipeline moving.">
+<meta property="og:url" content="https://afrexai-cto.github.io/integrations/salesforce/">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Salesforce Integration | AfrexAI">
+<meta name="twitter:description" content="AI agents that live inside your Salesforce and keep your pipeline moving.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(10px)}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700;letter-spacing:1px}
+nav .links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+nav .links a{color:#ccc;font-size:0.9rem}nav .links a:hover{color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:all 0.3s;border:2px solid #FFD700}
+.cta-btn:hover{background:transparent;color:#FFD700;text-decoration:none}
+.cta-btn-outline{display:inline-block;background:transparent;color:#FFD700;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;border:2px solid #FFD700;transition:all 0.3s}
+.cta-btn-outline:hover{background:#FFD700;color:#0a0a0a;text-decoration:none}
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;background:linear-gradient(180deg,rgba(255,215,0,0.03) 0%,#0a0a0a 60%)}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.5rem;max-width:800px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.2rem;color:#aaa;max-width:600px;margin:0 auto 2rem}
+section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+.section-tag{color:#FFD700;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
+section h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.card{background:#111;border:1px solid #222;border-radius:10px;padding:2rem}
+.card h3{color:#FFD700;font-size:1.1rem;margin-bottom:0.75rem}
+.steps{list-style:none;margin-top:1.5rem;counter-reset:step}
+.steps li{padding:1.25rem 0;border-bottom:1px solid #1a1a1a;padding-left:2.5rem;position:relative;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;width:1.75rem;height:1.75rem;background:#FFD700;color:#0a0a0a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;top:1.25rem}
+.final-cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,#0a0a0a 0%,rgba(255,215,0,0.05) 100%)}
+.final-cta h2{font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:1rem}
+.final-cta p{color:#aaa;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#555;font-size:0.8rem}
+@media(max-width:600px){nav{padding:0.75rem 1rem}nav .links{gap:0.75rem}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">AfrexAI</a>
+<div class="links">
+<a href="/integrations/">All Integrations</a>
+<a href="/integrations/quickbooks/">QuickBooks</a>
+<a href="/integrations/gmail/">Gmail</a>
+<a href="/integrations/procore/">Procore</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<p class="section-tag">Salesforce Integration</p>
+<h1>Your CRM stays updated <span>without your team</span> doing the updating</h1>
+<p>AfrexAI agents connect directly to Salesforce. They log activities, move deals forward, and chase follow-ups — so your reps sell instead of type.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call</a>
+</div>
+</div>
+
+<section>
+<p class="section-tag">What the Agent Does</p>
+<h2>Everything your reps forget to do in Salesforce</h2>
+<div class="grid">
+<div class="card">
+<h3>Pipeline Hygiene</h3>
+<p>Automatically updates deal stages, close dates, and next steps based on email and calendar activity. No more stale opportunities sitting in your pipeline for months.</p>
+</div>
+<div class="card">
+<h3>Follow-Up Automation</h3>
+<p>When a prospect goes quiet, the agent notices. It drafts follow-up sequences, schedules tasks for your reps, and flags deals at risk of going cold.</p>
+</div>
+<div class="card">
+<h3>Activity Logging</h3>
+<p>Calls, emails, and meetings get logged to the right contact and opportunity automatically. Your managers finally get accurate reporting without nagging the team.</p>
+</div>
+<div class="card">
+<h3>Lead Qualification</h3>
+<p>Inbound leads get scored and routed based on your criteria. The agent enriches contact data, checks for duplicates, and assigns to the right rep.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">How It Works</p>
+<h2>Connected in days, not months</h2>
+<ol class="steps">
+<li><strong>We audit your Salesforce setup.</strong> We look at your objects, workflows, and where data goes stale. Takes about a day.</li>
+<li><strong>Secure API connection.</strong> We connect via Salesforce's standard OAuth flow. Your admin approves access. Your data stays in Salesforce.</li>
+<li><strong>Agents start working.</strong> They begin with the highest-impact tasks — usually pipeline cleanup and follow-up automation.</li>
+<li><strong>You see results in your existing dashboards.</strong> No new tools to learn. Your Salesforce reports just start looking a lot better.</li>
+</ol>
+</section>
+
+<section>
+<p class="section-tag">What You'll Get</p>
+<h2>Concrete outcomes, not vague promises</h2>
+<div class="grid">
+<div class="card">
+<h3>Clean Pipeline Data</h3>
+<p>Every deal has an accurate stage, close date, and next step. Your forecast actually reflects reality.</p>
+</div>
+<div class="card">
+<h3>Faster Response Times</h3>
+<p>Leads get contacted within minutes, not hours. Follow-ups happen on schedule, every time.</p>
+</div>
+<div class="card">
+<h3>Hours Back Per Rep Per Week</h3>
+<p>Your reps spend 5-8 fewer hours per week on data entry and admin. That's selling time they get back.</p>
+</div>
+</div>
+</section>
+
+<div class="final-cta">
+<p class="section-tag">Next Step</p>
+<h2>See what your agents can do with your Salesforce</h2>
+<p>30-minute call. We'll look at your CRM and show you exactly where an agent would make the biggest impact.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call</a>
+<br><br>
+<a href="/integrations/" class="cta-btn-outline">See All Integrations</a>
+</div>
+
+<footer>&copy; 2026 AfrexAI. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gmail &amp; Google Workspace Integration — AI Agents for Your Inbox | AfrexAI</title>
+<meta name="description" content="AfrexAI agents triage your Gmail, draft responses, and make sure important emails never get buried.">
+<meta property="og:title" content="Gmail & Google Workspace Integration | AfrexAI">
+<meta property="og:description" content="AI agents that manage your inbox so you can focus on the work that matters.">
+<meta property="og:url" content="https://afrexai-cto.github.io/integrations/gmail/">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gmail & Google Workspace Integration | AfrexAI">
+<meta name="twitter:description" content="AI agents that manage your inbox so you can focus on the work that matters.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(10px)}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700;letter-spacing:1px}
+nav .links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+nav .links a{color:#ccc;font-size:0.9rem}nav .links a:hover{color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:all 0.3s;border:2px solid #FFD700}
+.cta-btn:hover{background:transparent;color:#FFD700;text-decoration:none}
+.cta-btn-outline{display:inline-block;background:transparent;color:#FFD700;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;border:2px solid #FFD700;transition:all 0.3s}
+.cta-btn-outline:hover{background:#FFD700;color:#0a0a0a;text-decoration:none}
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;background:linear-gradient(180deg,rgba(255,215,0,0.03) 0%,#0a0a0a 60%)}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1.5rem;max-width:800px}
+.hero h1 span{color:#FFD700}
+.hero p{font-size:1.2rem;color:#aaa;max-width:600px;margin:0 auto 2rem}
+section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+.section-tag{color:#FFD700;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
+section h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.card{background:#111;border:1px solid #222;border-radius:10px;padding:2rem}
+.card h3{color:#FFD700;font-size:1.1rem;margin-bottom:0.75rem}
+.steps{list-style:none;margin-top:1.5rem;counter-reset:step}
+.steps li{padding:1.25rem 0;border-bottom:1px solid #1a1a1a;padding-left:2.5rem;position:relative;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;width:1.75rem;height:1.75rem;background:#FFD700;color:#0a0a0a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;top:1.25rem}
+.final-cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,#0a0a0a 0%,rgba(255,215,0,0.05) 100%)}
+.final-cta h2{font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:1rem}
+.final-cta p{color:#aaa;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#555;font-size:0.8rem}
+@media(max-width:600px){nav{padding:0.75rem 1rem}nav .links{gap:0.75rem}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">AfrexAI</a>
+<div class="links">
+<a href="/integrations/">All Integrations</a>
+<a href="/integrations/salesforce/">Salesforce</a>
+<a href="/integrations/quickbooks/">QuickBooks</a>
+<a href="/integrations/procore/">Procore</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<p class="section-tag">Gmail &amp; Google Workspace Integration</p>
+<h1>Stop drowning in email. <span>Let an agent handle it.</span></h1>
+<p>AfrexAI agents read, triage, and draft responses across your Gmail and Google Workspace — so the important stuff gets handled and the noise gets filtered out.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call</a>
+</div>
+</div>
+
+<section>
+<p class="section-tag">What the Agent Does</p>
+<h2>Your inbox, finally under control</h2>
+<div class="grid">
+<div class="card">
+<h3>Smart Triage</h3>
+<p>Every incoming email gets categorised by urgency and type. Client requests, vendor invoices, internal updates — each goes to the right place with the right priority.</p>
+</div>
+<div class="card">
+<h3>Draft Responses</h3>
+<p>The agent drafts replies to routine emails in your voice. Meeting requests, status updates, simple questions — ready for you to review and send with one click.</p>
+</div>
+<div class="card">
+<h3>Follow-Up Tracking</h3>
+<p>Sent an important email three days ago with no reply? The agent flags it and drafts a follow-up. Nothing falls through the cracks.</p>
+</div>
+<div class="card">
+<h3>Calendar Coordination</h3>
+<p>Meeting requests get cross-referenced with your Google Calendar. The agent suggests times, flags conflicts, and can send scheduling links automatically.</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="section-tag">How It Works</p>
+<h2>Your email, your rules</h2>
+<ol class="steps">
+<li><strong>We learn your email patterns.</strong> Which senders matter most, how you like to respond, what gets ignored. The agent adapts to you, not the other way around.</li>
+<li><strong>Secure Google OAuth connection.</strong> Standard Google Workspace authentication. Your IT team controls the permissions. We only access what you approve.</li>
+<li><strong>The agent starts triaging.</strong> Within days, your inbox is organised. Drafts appear for routine replies. Urgent items get surfaced immediately.</li>
+</ol>
+</section>
+
+<section>
+<p class="section-tag">What You'll Get</p>
+<h2>Hours back in your week</h2>
+<div class="grid">
+<div class="card">
+<h3>60-90 Minutes Saved Daily</h3>
+<p>That's how much time most professionals spend on email that an agent can handle. Over a year, that's nearly 400 hours.</p>
+</div>
+<div class="card">
+<h3>Zero Missed Follow-Ups</h3>
+<p>Every outbound email gets tracked. If someone doesn't reply within your window, the agent follows up. Automatically.</p>
+</div>
+<div class="card">
+<h3>Faster Response Times</h3>
+<p>Clients and prospects get replies in minutes instead of hours. That responsiveness wins deals and builds trust.</p>
+</div>
+</div>
+</section>
+
+<div class="final-cta">
+<p class="section-tag">Next Step</p>
+<h2>See how much time your team wastes on email</h2>
+<p>30-minute call. We'll look at your email volume and show you exactly what an agent can take off your plate.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call</a>
+<br><br>
+<a href="/integrations/" class="cta-btn-outline">See All Integrations</a>
+</div>
+
+<footer>&copy; 2026 AfrexAI. All rights reserved.</footer>
+</body>
+</html>
