@@ -86,7 +86,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 <div id="dashboard">
   <header>
     <h1>📊 AfrexAI CRM Dashboard</h1>
-    <span class="updated">Last updated: Feb 20, 2026 at 21:03 GMT</span>
+    <span class="updated">Last updated: Feb 21, 2026 at 09:09 GMT</span>
   </header>
 
   <div class="cards" id="cards"></div>
@@ -117,7 +117,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
   </section>
 
   <footer>
-    Updated every 12 hours. Next update at ~Feb 21, 2026 09:03 GMT.<br>
+    Updated every 12 hours. Next update at ~Feb 21, 2026 21:09 GMT.<br>
     &copy; 2026 AfrexAI &middot; Internal Use Only
   </footer>
 </div>
@@ -128,19 +128,15 @@ const DATA = {
   "totalCompanies": 367,
   "totalContacts": 200,
   "totalActivities": 98,
-  "activities7d": 98,
-  "deals": [{"stage":"prospecting","count":6,"total_value":720000}],
-  "topCompanies": [
+  "activities7d": 0,
+  "deals": [
     {
-      "name": "Hazlewoods",
-      "city": null,
-      "state": null,
-      "industry": "Accounting - UK Firm",
-      "employees": 550,
-      "email": "info@hazlewoods.co.uk",
-      "website": null,
-      "source": null
-    },
+      "stage": "prospecting",
+      "count": 11,
+      "total_value": 1320000
+    }
+  ],
+  "topCompanies": [
     {
       "name": "Hazlewoods",
       "city": null,
@@ -152,13 +148,13 @@ const DATA = {
       "source": null
     },
     {
-      "name": "Armanino",
-      "city": "San Ramon",
-      "state": "CA",
-      "industry": "Accounting",
-      "employees": 500,
-      "email": "matt.armanino@armanino.com",
-      "website": "armanino.com",
+      "name": "Hazlewoods",
+      "city": null,
+      "state": null,
+      "industry": "Accounting - UK Firm",
+      "employees": 550,
+      "email": "info@hazlewoods.co.uk",
+      "website": null,
       "source": null
     },
     {
@@ -172,23 +168,13 @@ const DATA = {
       "source": null
     },
     {
-      "name": "Plaid",
-      "city": "San Francisco",
+      "name": "Armanino",
+      "city": "San Ramon",
       "state": "CA",
-      "industry": "Fintech",
-      "employees": 450,
-      "email": "zach.perret@plaid.com",
-      "website": "plaid.com",
-      "source": null
-    },
-    {
-      "name": "Mariner Wealth Advisors",
-      "city": "Overland Park",
-      "state": "KS",
-      "industry": "Wealth Management",
-      "employees": 450,
-      "email": "marty.bicknell@marinerwealthadvisors.com",
-      "website": "marinerwealthadvisors.com",
+      "industry": "Accounting",
+      "employees": 500,
+      "email": "matt.armanino@armanino.com",
+      "website": "armanino.com",
       "source": null
     },
     {
@@ -222,16 +208,6 @@ const DATA = {
       "source": null
     },
     {
-      "name": "AssuredPartners",
-      "city": "Lake Mary",
-      "state": "FL",
-      "industry": "Insurance Agency",
-      "employees": 450,
-      "email": "tom.riley@assuredpartners.com",
-      "website": "assuredpartners.com",
-      "source": null
-    },
-    {
       "name": "Marcum",
       "city": "New York",
       "state": "NY",
@@ -239,6 +215,16 @@ const DATA = {
       "employees": 450,
       "email": "jeffrey.weiner@marcumllp.com",
       "website": "marcumllp.com",
+      "source": null
+    },
+    {
+      "name": "AssuredPartners",
+      "city": "Lake Mary",
+      "state": "FL",
+      "industry": "Insurance Agency",
+      "employees": 450,
+      "email": "tom.riley@assuredpartners.com",
+      "website": "assuredpartners.com",
       "source": null
     },
     {
@@ -252,73 +238,23 @@ const DATA = {
       "source": null
     },
     {
-      "name": "Whitley Penn",
-      "city": "Fort Worth",
-      "state": "TX",
-      "industry": "Accounting",
-      "employees": 400,
-      "email": "larry.autrey@whitleypenn.com",
-      "website": "whitleypenn.com",
-      "source": null
-    },
-    {
-      "name": "Orion Advisor Solutions",
-      "city": "Omaha",
-      "state": "NE",
-      "industry": "Fintech",
-      "employees": 400,
-      "email": "eric.clarke@orion.com",
-      "website": "orion.com",
-      "source": null
-    },
-    {
-      "name": "Carson Group",
-      "city": "Omaha",
-      "state": "NE",
-      "industry": "Wealth Management",
-      "employees": 400,
-      "email": "ron.carson@carsongroup.com",
-      "website": "carsongroup.com",
-      "source": null
-    },
-    {
-      "name": "BRP Group (Baldwin Insurance)",
-      "city": "Tampa",
-      "state": "FL",
-      "industry": "Insurance Agency",
-      "employees": 400,
-      "email": "trevor.baldwin@baldwinriskpartners.com",
-      "website": "baldwinriskpartners.com",
-      "source": null
-    },
-    {
-      "name": "EP Wealth Advisors",
-      "city": "Torrance",
+      "name": "Plaid",
+      "city": "San Francisco",
       "state": "CA",
+      "industry": "Fintech",
+      "employees": 450,
+      "email": "zach.perret@plaid.com",
+      "website": "plaid.com",
+      "source": null
+    },
+    {
+      "name": "Mariner Wealth Advisors",
+      "city": "Overland Park",
+      "state": "KS",
       "industry": "Wealth Management",
-      "employees": 400,
-      "email": "patrick.goshtigian@epwealth.com",
-      "website": "epwealth.com",
-      "source": null
-    },
-    {
-      "name": "Glacier Bancorp",
-      "city": "Kalispell",
-      "state": "MT",
-      "industry": "Regional Bank",
-      "employees": 400,
-      "email": "randall.chesler@glacierbancorp.com",
-      "website": "glacierbancorp.com",
-      "source": null
-    },
-    {
-      "name": "The Hilb Group",
-      "city": "Richmond",
-      "state": "VA",
-      "industry": "Insurance Agency",
-      "employees": 400,
-      "email": "ricky.spiro@hilbgroup.com",
-      "website": "hilbgroup.com",
+      "employees": 450,
+      "email": "marty.bicknell@marinerwealthadvisors.com",
+      "website": "marinerwealthadvisors.com",
       "source": null
     },
     {
@@ -332,23 +268,83 @@ const DATA = {
       "source": null
     },
     {
-      "name": "IMA Financial Group",
-      "city": "Denver",
-      "state": "CO",
-      "industry": "Insurance Agency",
+      "name": "EP Wealth Advisors",
+      "city": "Torrance",
+      "state": "CA",
+      "industry": "Wealth Management",
       "employees": 400,
-      "email": "rob.cohen@imacorp.com",
-      "website": "imacorp.com",
+      "email": "patrick.goshtigian@epwealth.com",
+      "website": "epwealth.com",
       "source": null
     },
     {
-      "name": "Enterprise Bancorp",
-      "city": "Lowell",
-      "state": "MA",
+      "name": "Eide Bailly",
+      "city": "Fargo",
+      "state": "ND",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "jeremy.hauk@eidebailly.com",
+      "website": "eidebailly.com",
+      "source": null
+    },
+    {
+      "name": "Renasant Bank",
+      "city": "Tupelo",
+      "state": "MS",
       "industry": "Regional Bank",
       "employees": 400,
-      "email": "jack.clancy@enterprisebanking.com",
-      "website": "enterprisebanking.com",
+      "email": "mitch.waycaster@renasantbank.com",
+      "website": "renasantbank.com",
+      "source": null
+    },
+    {
+      "name": "Orion Advisor Solutions",
+      "city": "Omaha",
+      "state": "NE",
+      "industry": "Fintech",
+      "employees": 400,
+      "email": "eric.clarke@orion.com",
+      "website": "orion.com",
+      "source": null
+    },
+    {
+      "name": "World Insurance Associates",
+      "city": "Tinton Falls",
+      "state": "NJ",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "giancarlo.campise@worldinsurance.com",
+      "website": "worldinsurance.com",
+      "source": null
+    },
+    {
+      "name": "Sikich",
+      "city": "Naperville",
+      "state": "IL",
+      "industry": "Accounting",
+      "employees": 400,
+      "email": "chris.geier@sikich.com",
+      "website": "sikich.com",
+      "source": null
+    },
+    {
+      "name": "The Hilb Group",
+      "city": "Richmond",
+      "state": "VA",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "ricky.spiro@hilbgroup.com",
+      "website": "hilbgroup.com",
+      "source": null
+    },
+    {
+      "name": "Holmes Murphy",
+      "city": "Waukee",
+      "state": "IA",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "dan.keough@holmesmurphy.com",
+      "website": "holmesmurphy.com",
       "source": null
     },
     {
@@ -362,33 +358,13 @@ const DATA = {
       "source": null
     },
     {
-      "name": "Risk Strategies",
-      "city": "Boston",
-      "state": "MA",
-      "industry": "Insurance Agency",
-      "employees": 400,
-      "email": "john.mina@risk-strategies.com",
-      "website": "risk-strategies.com",
-      "source": null
-    },
-    {
-      "name": "Katz Sapper & Miller",
-      "city": "Indianapolis",
-      "state": "IN",
+      "name": "Withum",
+      "city": "Princeton",
+      "state": "NJ",
       "industry": "Accounting",
       "employees": 400,
-      "email": "tim.cook@ksmcpa.com",
-      "website": "ksmcpa.com",
-      "source": null
-    },
-    {
-      "name": "Blend Labs",
-      "city": "San Francisco",
-      "state": "CA",
-      "industry": "Fintech",
-      "employees": 400,
-      "email": "nima.ghamsari@blend.com",
-      "website": "blend.com",
+      "email": "pat.walsh@withum.com",
+      "website": "withum.com",
       "source": null
     },
     {
@@ -412,113 +388,23 @@ const DATA = {
       "source": null
     },
     {
-      "name": "Origin Bancorp",
-      "city": "Ruston",
-      "state": "LA",
-      "industry": "Regional Bank",
-      "employees": 400,
-      "email": "drake.mills@origin.bank",
-      "website": "origin.bank",
-      "source": null
-    },
-    {
-      "name": "Citrin Cooperman",
-      "city": "New York",
-      "state": "NY",
+      "name": "Katz Sapper & Miller",
+      "city": "Indianapolis",
+      "state": "IN",
       "industry": "Accounting",
       "employees": 400,
-      "email": "alan.goldenberg@citrincooperman.com",
-      "website": "citrincooperman.com",
+      "email": "tim.cook@ksmcpa.com",
+      "website": "ksmcpa.com",
       "source": null
     },
     {
-      "name": "Withum",
-      "city": "Princeton",
-      "state": "NJ",
+      "name": "Whitley Penn",
+      "city": "Fort Worth",
+      "state": "TX",
       "industry": "Accounting",
       "employees": 400,
-      "email": "pat.walsh@withum.com",
-      "website": "withum.com",
-      "source": null
-    },
-    {
-      "name": "Patriot Growth Insurance Services",
-      "city": "Fort Lauderdale",
-      "state": "FL",
-      "industry": "Insurance Agency",
-      "employees": 400,
-      "email": "matt.simon@patriotgis.com",
-      "website": "patriotgis.com",
-      "source": null
-    },
-    {
-      "name": "Expensify",
-      "city": "Portland",
-      "state": "OR",
-      "industry": "Fintech",
-      "employees": 400,
-      "email": "david.barrett@expensify.com",
-      "website": "expensify.com",
-      "source": null
-    },
-    {
-      "name": "World Insurance Associates",
-      "city": "Tinton Falls",
-      "state": "NJ",
-      "industry": "Insurance Agency",
-      "employees": 400,
-      "email": "giancarlo.campise@worldinsurance.com",
-      "website": "worldinsurance.com",
-      "source": null
-    },
-    {
-      "name": "Eide Bailly",
-      "city": "Fargo",
-      "state": "ND",
-      "industry": "Accounting",
-      "employees": 400,
-      "email": "jeremy.hauk@eidebailly.com",
-      "website": "eidebailly.com",
-      "source": null
-    },
-    {
-      "name": "Holmes Murphy",
-      "city": "Waukee",
-      "state": "IA",
-      "industry": "Insurance Agency",
-      "employees": 400,
-      "email": "dan.keough@holmesmurphy.com",
-      "website": "holmesmurphy.com",
-      "source": null
-    },
-    {
-      "name": "Renasant Bank",
-      "city": "Tupelo",
-      "state": "MS",
-      "industry": "Regional Bank",
-      "employees": 400,
-      "email": "mitch.waycaster@renasantbank.com",
-      "website": "renasantbank.com",
-      "source": null
-    },
-    {
-      "name": "Berkshire Hills Bancorp",
-      "city": "Boston",
-      "state": "MA",
-      "industry": "Regional Bank",
-      "employees": 400,
-      "email": "nitin.mhatre@berkshirebank.com",
-      "website": "berkshirebank.com",
-      "source": null
-    },
-    {
-      "name": "Sikich",
-      "city": "Naperville",
-      "state": "IL",
-      "industry": "Accounting",
-      "employees": 400,
-      "email": "chris.geier@sikich.com",
-      "website": "sikich.com",
+      "email": "larry.autrey@whitleypenn.com",
+      "website": "whitleypenn.com",
       "source": null
     },
     {
@@ -542,73 +428,133 @@ const DATA = {
       "source": null
     },
     {
-      "name": "Aldrich CPAs",
+      "name": "Risk Strategies",
+      "city": "Boston",
+      "state": "MA",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "john.mina@risk-strategies.com",
+      "website": "risk-strategies.com",
+      "source": null
+    },
+    {
+      "name": "BRP Group (Baldwin Insurance)",
+      "city": "Tampa",
+      "state": "FL",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "trevor.baldwin@baldwinriskpartners.com",
+      "website": "baldwinriskpartners.com",
+      "source": null
+    },
+    {
+      "name": "Patriot Growth Insurance Services",
+      "city": "Fort Lauderdale",
+      "state": "FL",
+      "industry": "Insurance Agency",
+      "employees": 400,
+      "email": "matt.simon@patriotgis.com",
+      "website": "patriotgis.com",
+      "source": null
+    },
+    {
+      "name": "Enterprise Bancorp",
+      "city": "Lowell",
+      "state": "MA",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "jack.clancy@enterprisebanking.com",
+      "website": "enterprisebanking.com",
+      "source": null
+    },
+    {
+      "name": "Expensify",
       "city": "Portland",
       "state": "OR",
-      "industry": "Accounting",
-      "employees": 350,
-      "email": "jeff.lewis@aldrichadvisors.com",
-      "website": "aldrichadvisors.com",
+      "industry": "Fintech",
+      "employees": 400,
+      "email": "david.barrett@expensify.com",
+      "website": "expensify.com",
       "source": null
     },
     {
-      "name": "The Bonadio Group",
-      "city": "Rochester",
-      "state": "NY",
-      "industry": "Accounting",
-      "employees": 350,
-      "email": "bruce.zicari@bonadio.com",
-      "website": "bonadio.com",
-      "source": null
-    },
-    {
-      "name": "Moneta Group",
-      "city": "St. Louis",
-      "state": "MO",
-      "industry": "Wealth Management",
-      "employees": 350,
-      "email": "eric.kittner@monetagroup.com",
-      "website": "monetagroup.com",
-      "source": null
-    },
-    {
-      "name": "Relation Insurance Services",
-      "city": "Walnut Creek",
-      "state": "CA",
+      "name": "IMA Financial Group",
+      "city": "Denver",
+      "state": "CO",
       "industry": "Insurance Agency",
-      "employees": 350,
-      "email": "joe.tatum@relationinsurance.com",
-      "website": "relationinsurance.com",
+      "employees": 400,
+      "email": "rob.cohen@imacorp.com",
+      "website": "imacorp.com",
       "source": null
     },
     {
-      "name": "Anchin",
+      "name": "Glacier Bancorp",
+      "city": "Kalispell",
+      "state": "MT",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "randall.chesler@glacierbancorp.com",
+      "website": "glacierbancorp.com",
+      "source": null
+    },
+    {
+      "name": "Blend Labs",
+      "city": "San Francisco",
+      "state": "CA",
+      "industry": "Fintech",
+      "employees": 400,
+      "email": "nima.ghamsari@blend.com",
+      "website": "blend.com",
+      "source": null
+    },
+    {
+      "name": "Berkshire Hills Bancorp",
+      "city": "Boston",
+      "state": "MA",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "nitin.mhatre@berkshirebank.com",
+      "website": "berkshirebank.com",
+      "source": null
+    },
+    {
+      "name": "Origin Bancorp",
+      "city": "Ruston",
+      "state": "LA",
+      "industry": "Regional Bank",
+      "employees": 400,
+      "email": "drake.mills@origin.bank",
+      "website": "origin.bank",
+      "source": null
+    },
+    {
+      "name": "Citrin Cooperman",
       "city": "New York",
       "state": "NY",
       "industry": "Accounting",
-      "employees": 350,
-      "email": "russell.shinsky@anchin.com",
-      "website": "anchin.com",
+      "employees": 400,
+      "email": "alan.goldenberg@citrincooperman.com",
+      "website": "citrincooperman.com",
       "source": null
     },
     {
-      "name": "Higginbotham",
-      "city": "Fort Worth",
+      "name": "Carson Group",
+      "city": "Omaha",
+      "state": "NE",
+      "industry": "Wealth Management",
+      "employees": 400,
+      "email": "ron.carson@carsongroup.com",
+      "website": "carsongroup.com",
+      "source": null
+    },
+    {
+      "name": "Independent Bank Group",
+      "city": "McKinney",
       "state": "TX",
-      "industry": "Insurance Agency",
+      "industry": "Regional Bank",
       "employees": 350,
-      "email": "rusty.reid@higginbotham.com",
-      "website": "higginbotham.com",
-      "source": null
-    },
-    {
-      "name": "Hylant",
-      "city": "Toledo",
-      "state": "OH",
-      "industry": "Insurance Agency",
-      "employees": 350,
-      "email": "eric.mcloughlin@hylant.com",
-      "website": "hylant.com",
+      "email": "david.brooks@ibtx.com",
+      "website": "ibtx.com",
       "source": null
     },
     {
@@ -622,13 +568,73 @@ const DATA = {
       "source": null
     },
     {
-      "name": "Keystone Agency Partners",
-      "city": "Bethlehem",
+      "name": "Schneider Downs",
+      "city": "Pittsburgh",
       "state": "PA",
+      "industry": "Accounting",
+      "employees": 350,
+      "email": "karl.kunkel@schneiderdowns.com",
+      "website": "schneiderdowns.com",
+      "source": null
+    },
+    {
+      "name": "CrossFirst Bankshares",
+      "city": "Leawood",
+      "state": "KS",
+      "industry": "Regional Bank",
+      "employees": 350,
+      "email": "mike.maddox@crossmikebank.com",
+      "website": "crossfirstbank.com",
+      "source": null
+    },
+    {
+      "name": "Southside Bancshares",
+      "city": "Tyler",
+      "state": "TX",
+      "industry": "Regional Bank",
+      "employees": 350,
+      "email": "lee.gibson@southside.com",
+      "website": "southside.com",
+      "source": null
+    },
+    {
+      "name": "Allworth Financial",
+      "city": "Sacramento",
+      "state": "CA",
+      "industry": "Wealth Management",
+      "employees": 350,
+      "email": "scott.hanson@allworthfinancial.com",
+      "website": "allworthfinancial.com",
+      "source": null
+    },
+    {
+      "name": "Woodruff Sawyer",
+      "city": "San Francisco",
+      "state": "CA",
       "industry": "Insurance Agency",
       "employees": 350,
-      "email": "josh.denberg@keystoneagencypartners.com",
-      "website": "keystoneagencypartners.com",
+      "email": "andy.barrengos@woodruffsawyer.com",
+      "website": "woodruffsawyer.com",
+      "source": null
+    },
+    {
+      "name": "Anchin",
+      "city": "New York",
+      "state": "NY",
+      "industry": "Accounting",
+      "employees": 350,
+      "email": "russell.shinsky@anchin.com",
+      "website": "anchin.com",
+      "source": null
+    },
+    {
+      "name": "The Bonadio Group",
+      "city": "Rochester",
+      "state": "NY",
+      "industry": "Accounting",
+      "employees": 350,
+      "email": "bruce.zicari@bonadio.com",
+      "website": "bonadio.com",
       "source": null
     }
   ],
