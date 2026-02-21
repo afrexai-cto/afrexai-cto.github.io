@@ -378,9 +378,8 @@ function buildKanbanData(){
     const key = c.name+'||'+(c.email||'');
     if(seen.has(key)) return;
     seen.add(key);
+    // Default all to Lead — having an email doesn't mean we contacted them
     let stage = 'lead';
-    if(c.email && c.website) stage = 'discovery';
-    else if(c.email) stage = 'contacted';
     const contactName = c.email ? c.email.split('@')[0].split('.').map(s=>s.charAt(0).toUpperCase()+s.slice(1)).join(' ') : 'Unknown';
     const rev = estimateRevenue(c.employees);
     prospects.push({
@@ -397,12 +396,8 @@ function buildKanbanData(){
   });
   // Add ALL CRM CSV prospects
   CRM_PROSPECTS.forEach(p=>{
+    // Default all to Lead — no auto-promotion without real outreach evidence
     let stage = 'lead';
-    if(p.stage === 'lead') stage = 'lead';
-    else if(p.stage === 'new') stage = 'lead';
-    else if(p.email) stage = 'contacted';
-    else stage = 'lead';
-    if(p.icp >= 9 && p.contact !== 'Unknown') stage = 'contacted';
     prospects.push({
       company: p.company,
       contact: p.contact || 'Unknown',
