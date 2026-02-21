@@ -149,7 +149,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 <div id="dashboard">
   <header>
     <h1>📊 AfrexAI CRM Dashboard</h1>
-    <span class="updated">Last updated: Feb 21, 2026 at 19:48 GMT</span>
+    <span class="updated">Last updated: Feb 21, 2026 at 19:50 GMT</span>
   </header>
 
   <div class="view-toggle">
@@ -502,7 +502,9 @@ function renderKanban(){
     cards.forEach(c=>{
       const icpHtml = c.icp ? `<span class="kc-icp" style="background:${c.icp>=9?'#0a3a1a':'#1a3a5c'};color:${c.icp>=9?'#17e678':'#5ba3e6'}">ICP ${c.icp}</span>` : '';
       const srcLabel = c.source==='crm-csv'?'📋 CRM CSV':c.source==='crm-db'?'🏢 Top Companies':'❓ Unknown';
-      html += `<div class="kanban-card" draggable="true" data-company="${c.company.replace(/"/g,'&quot;')}" data-contact="${(c.contact||'').replace(/"/g,'&quot;')}">
+      const revStr = fmtRevenue(c.revenue);
+      const revHtml = revStr ? `<span class="kc-revenue ${revenueClass(c.revenue)}">💰 ${revStr} est.</span>` : '';
+      html += `<div class="kanban-card" draggable="true" data-company="${c.company.replace(/"/g,'&quot;')}" data-contact="${(c.contact||'').replace(/"/g,'&quot;')}" data-email="${(c.email||'').replace(/"/g,'&quot;')}" data-industry="${(c.industry||'').replace(/"/g,'&quot;')}" data-icp="${c.icp||0}" data-revenue="${c.revenue||0}" data-source="${c.source||''}">
         <div class="kc-company"><span class="drag-handle">⠿</span> ${c.company}</div>
         <div class="kc-contact">👤 ${c.contact}${c.employees ? ' · '+c.employees+' emp' : ''}</div>
         ${c.email ? '<div class="kc-email">✉ '+c.email+'</div>' : ''}
@@ -511,6 +513,7 @@ function renderKanban(){
           ${icpHtml}
           <span class="stage-badge stage-${s.id}">${s.label}</span>
         </div>
+        ${revHtml}
         <span class="kc-source">${srcLabel}</span>
       </div>`;
     });
@@ -615,7 +618,7 @@ function switchView(view){
   document.getElementById('kanban-view').style.display = view==='pipeline' ? 'block' : 'none';
   document.getElementById('btn-dashboard').className = view==='dashboard' ? 'active' : '';
   document.getElementById('btn-pipeline').className = view==='pipeline' ? 'active' : '';
-  if(view==='pipeline') renderKanban();
+  if(view==='pipeline'){ renderKanban(); populateFilterDropdowns(); document.getElementById('filter-stats').textContent='Showing '+allKanbanProspects.length+' of '+allKanbanProspects.length+' prospects'; }
 }
 
 async function sha256(str){
