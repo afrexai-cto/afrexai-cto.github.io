@@ -149,6 +149,24 @@
 - Terminology: "managing partner", "engagement letter", "workpapers", "peer review", "AICPA standards", "professional liability", "E&O insurance", "busy season", "advisory services"
 - Content handoff created for blog + lead magnet (7-Point AI Governance Checklist)
 
+### Regional/Community Banking — AI Governance (Added 2026-02-20)
+- **Primary pain:** Ungoverned AI on two fronts — vendor-embedded AI they can't validate + staff using GenAI without policy
+- CCG Catalyst (Feb 2026): CSPs embed AI into fraud/underwriting without disclosing model logic, training data, or governance — "real compliance exposure under fair lending laws"
+- 3 CSPs (FIS, Fiserv, Jack Henry) serve 70%+ of depository institutions — community banks have near-zero leverage to demand AI transparency
+- OCC Bulletin 2025-24: eliminated fixed exam requirements for community banks effective Jan 1, 2026 — replaced with risk-based supervision (ungoverned AI = easy examiner finding)
+- OCC will NOT subject community banks to prescriptive model validation exams — but banks still must demonstrate governance "commensurate with risk"
+- FFIEC AI Cybersecurity Profile (Dec 2025): harmonizes 2,500+ regulatory expectations from Fed, FDIC, OCC into diagnostic statements
+- New BSA/AML exam procedures effective Feb 1, 2026 — AI in transaction monitoring must be documented
+- Interagency guidance: using third-party AI does NOT diminish the bank's responsibility to manage risk
+- S&P Global/MIT: only 5% of banking AI pilots have scaled — governance is the primary blocker
+- ABA Core Platforms Survey 2024: innovation satisfaction just 3.19/5 — banks know providers aren't keeping pace
+- Talent gap: community banks rarely have in-house data science; vendor tools built for enterprise scale
+- ROI: ~$251K/yr value for 300-employee bank vs $120K implementation (6-month breakeven); biggest driver is $162K productivity unlock from governed adoption
+- CRM has 20 regional banks — top prospects: Glacier Bancorp (400 emp, MT), Renasant Bank (400, MS), Triumph Financial (400, TX), Pacific Premier Bancorp (400, CA), Enterprise Bancorp (400, MA)
+- Key objection: "Our core provider handles AI for us" → "They embed AI without disclosing how it works. When the examiner asks how your fraud model makes decisions, your provider won't be in the room."
+- Terminology: "core service provider", "CSP", "model risk management", "SR 11-7", "OCC 2011-12", "BSA/AML", "MRA" (Matter Requiring Attention), "CAMELS rating", "consent order"
+- Content handoff created for blog + lead magnet (6-Point AI Governance Checklist)
+
 - *This section updated as new verticals, use cases, and insights are developed*
 
 ## Shared Reference
