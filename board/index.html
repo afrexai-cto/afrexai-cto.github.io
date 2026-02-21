@@ -134,7 +134,11 @@ header h1{color:var(--gold);font-size:1.2rem;white-space:nowrap}
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SUPABASE_URL='https://abazbcvjzfhpkncxhmsk.supabase.co';
+const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiYXpiY3ZqemZocGtuY3hobXNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3MDEyNDIsImV4cCI6MjA4NzI3NzI0Mn0.czH04ic6xHWI0lDH7vKIenMrjUW2WAjFIUl5Wvz_oX0';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 const PW_HASH='1c05f9a1d0bdde3fdd0b8896808cb1bfcd3821166830d5de6866f621ed8b7f66';
 const COLUMNS=[
   {id:'triage',name:'To Triage',color:'var(--col-triage)'},
@@ -289,19 +293,34 @@ document.getElementById('login-pw').addEventListener('keydown',e=>{if(e.key==='E
 
 function logout(){sessionStorage.removeItem('wr-auth');location.reload()}
 
-function showApp(){
+async function showApp(){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('app').style.display='flex';
-  loadTasks();
+  await loadTasks();
   render();
 }
 
-// Data
-function loadTasks(){
+// Data — Supabase as source of truth, localStorage as fallback
+async function loadTasks(){
+  try{
+    const{data,error}=await sb.from('tasks').select('*').order('id');
+    if(error)throw error;
+    if(data&&data.length>0){tasks=data;localStorage.setItem('wr-tasks-v2',JSON.stringify(tasks));return}
+  }catch(e){console.warn('Supabase load failed, using localStorage',e)}
   const s=localStorage.getItem('wr-tasks-v2');
   tasks=s?JSON.parse(s):DEFAULT_TASKS.map(t=>({...t}));
 }
 function saveTasks(){localStorage.setItem('wr-tasks-v2',JSON.stringify(tasks))}
+async function upsertTask(t){
+  saveTasks();
+  try{
+    const row={id:t.id,title:t.title,status:t.status,step:t.step,priority:t.priority,assignee:t.assignee,project:t.project||'',note:t.note||'',updated_at:new Date().toISOString()};
+    await sb.from('tasks').upsert(row,{onConflict:'id'});
+  }catch(e){console.warn('Supabase upsert failed',e)}
+}
+async function deleteTaskFromDb(id){
+  try{await sb.from('tasks').delete().eq('id',id)}catch(e){console.warn('Supabase delete failed',e)}
+}
 function nextId(){return tasks.length?Math.max(...tasks.map(t=>t.id))+1:1}
 
 // Filters
@@ -346,7 +365,7 @@ function render(){
     // Drop
     cards.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over')});
     cards.addEventListener('dragleave',()=>div.classList.remove('drag-over'));
-    cards.addEventListener('drop',e=>{e.preventDefault();div.classList.remove('drag-over');if(dragId==null)return;const t=tasks.find(x=>x.id===dragId);if(t){t.status=col.id;saveTasks();render()}});
+    cards.addEventListener('drop',e=>{e.preventDefault();div.classList.remove('drag-over');if(dragId==null)return;const t=tasks.find(x=>x.id===dragId);if(t){t.status=col.id;upsertTask(t);render()}});
     board.appendChild(div);
   });
 }
@@ -356,11 +375,13 @@ function esc(s){const d=document.createElement('div');d.textContent=s;return d.i
 // Modal
 function openModal(){document.getElementById('modal').classList.add('active');document.getElementById('m-title').value='';document.getElementById('m-note').value='';document.getElementById('m-title').focus()}
 function closeModal(){document.getElementById('modal').classList.remove('active')}
-function saveTask(){
+async function saveTask(){
   const title=document.getElementById('m-title').value.trim();
   if(!title)return;
-  tasks.push({id:nextId(),title,status:document.getElementById('m-status').value,project:document.getElementById('m-project').value,step:document.getElementById('m-step').value,priority:document.getElementById('m-priority').value,assignee:document.getElementById('m-assignee').value,note:document.getElementById('m-note').value.trim()});
-  saveTasks();closeModal();render();
+  const t={id:nextId(),title,status:document.getElementById('m-status').value,project:document.getElementById('m-project').value,step:document.getElementById('m-step').value,priority:document.getElementById('m-priority').value,assignee:document.getElementById('m-assignee').value,note:document.getElementById('m-note').value.trim()};
+  tasks.push(t);
+  await upsertTask(t);
+  closeModal();render();
 }
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 
