@@ -221,9 +221,9 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 <script>
 const SUPABASE_URL = 'https://abazbcvjzfhpkncxhmsk.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiYXpiY3ZqemZocGtuY3hobXNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3MDEyNDIsImV4cCI6MjA4NzI3NzI0Mn0.czH04ic6xHWI0lDH7vKIenMrjUW2WAjFIUl5Wvz_oX0';
-let supabase = null;
+let sbClient = null;
 let supabaseConnected = false;
-try { supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) { console.warn('Supabase init failed:', e); }
+try { sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) { console.warn('Supabase init failed:', e); }
 
 const HASH = '1c05f9a1d0bdde3fdd0b8896808cb1bfcd3821166830d5de6866f621ed8b7f66';
 const DATA = {
@@ -4071,9 +4071,9 @@ function saveMoves(moves){localStorage.setItem('crm_kanban_moves',JSON.stringify
 
 // Supabase stage persistence
 async function saveStageToSupabase(company, contact, newStage){
-  if(!supabase) return;
+  if(!sbClient) return;
   try {
-    const { error } = await supabase.from('prospects')
+    const { error } = await sbClient.from('prospects')
       .update({ stage: newStage, updated_at: new Date().toISOString() })
       .eq('company', company);
     if(error) console.warn('Supabase update error:', error);
@@ -4082,9 +4082,9 @@ async function saveStageToSupabase(company, contact, newStage){
 
 // Load prospects from Supabase
 async function loadFromSupabase(){
-  if(!supabase) return null;
+  if(!sbClient) return null;
   try {
-    const { data, error } = await supabase.from('prospects').select('*').order('id');
+    const { data, error } = await sbClient.from('prospects').select('*').order('id');
     if(error) { console.warn('Supabase load error:', error); return null; }
     if(data && data.length > 0) {
       supabaseConnected = true;
