@@ -1,0 +1,37 @@
+{
+  "matter_ref": "HA-2026-0347",
+  "client": "Meridian Supply Chain Solutions Ltd",
+  "billing_setup": {
+    "billing_type": "hourly",
+    "billing_frequency": "monthly",
+    "payment_terms_days": 30,
+    "currency": "GBP",
+    "vat_rate": 0.20,
+    "retainer_required": 10000,
+    "retainer_status": "pending",
+    "late_payment_interest": "base_rate_plus_4pct"
+  },
+  "rate_card": [
+    {"grade": "Senior Partner", "name": "Victoria Hartwell", "rate_gbp": 550},
+    {"grade": "Senior Associate", "name": "David Osei", "rate_gbp": 350},
+    {"grade": "Associate", "name": "TBC", "rate_gbp": 250},
+    {"grade": "Paralegal", "name": "TBC", "rate_gbp": 150},
+    {"grade": "Trainee", "name": "TBC", "rate_gbp": 125}
+  ],
+  "budget": {
+    "phase_1_assessment": {"low": 8000, "high": 12000},
+    "phase_2_preaction": {"low": 15000, "high": 20000},
+    "phase_3_negotiation": {"low": 10000, "high": 18000},
+    "phase_4_litigation": {"low": 80000, "high": 150000},
+    "total_prelitigation": {"low": 33000, "high": 50000}
+  },
+  "accounts_contact": {
+    "name": "Finance Department",
+    "email": "accounts@hartwellassociates.co.uk",
+    "phone": "+44 20 7242 8905"
+  },
+  "client_billing_contact": {
+    "name": "James Whitfield",
+    "email": "j.whitfield@meridianscs.co.uk"
+  }
+}

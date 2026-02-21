@@ -1,0 +1,12 @@
+{
+  "tenant_id": "hartwell-associates",
+  "company": "Hartwell Associates",
+  "email": "ops@hartwelllaw.com",
+  "tier": "growth",
+  "vertical": "legal",
+  "agent_count": 5,
+  "created": "2026-02-21T03:06:16Z",
+  "status": "active",
+  "api_key": "654f83e6-0617-4915-9d68-6cf2755af071",
+  "api_secret": "cbb84b84-0fc8-4703-b86a-7604cf99b0d2"
+}

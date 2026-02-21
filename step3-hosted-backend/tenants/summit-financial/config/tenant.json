@@ -1,0 +1,12 @@
+{
+  "tenant_id": "summit-financial",
+  "company": "Summit Financial",
+  "email": "admin@summitfin.com",
+  "tier": "enterprise",
+  "vertical": "finance",
+  "agent_count": 9,
+  "created": "2026-02-21T03:06:16Z",
+  "status": "active",
+  "api_key": "8f8bc09b-21fe-4b47-9f70-edbce3246732",
+  "api_secret": "db4b23c6-c935-4ce8-acfa-602f2db37965"
+}

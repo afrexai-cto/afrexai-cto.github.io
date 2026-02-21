@@ -1,0 +1,11 @@
+{
+  "agent_id": "agent-01",
+  "tenant_id": "meridian-health",
+  "role": "Patient Intake Coordinator",
+  "status": "running",
+  "created": "2026-02-21T03:06:17Z",
+  "schedule": "weekdays 09:00-18:00",
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens_daily": 50000,
+  "last_action_time": "2026-02-21T03:06:18Z"
+}

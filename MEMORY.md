@@ -83,7 +83,7 @@ Executive Assistant, Marketing Analyst, Content Writer, Outbound Sales, Bookkeep
 - **Lisa Kingham** (Hansford Road AI) — $1,166 + $120/mo subscription
 - **Al Bryant** (RapidShift) — $300 one-off
 - **George Davidson** — $150 one-off
-- **VADA** (Albert & Shawnda) — $1,250 overdue 259 days
+- **VADA** (Albert & Shawnda) — ~$12K overdue 259+ days
 - **StoryLab** — NOT in Stripe. Deal not invoiced or handled elsewhere.
 - **Stripe API key**: item "Stripe API" (cfpvk6eywbaoopfd5gqnbaglgu) in 1Password vault AfrexAI, field "secret key"
 

@@ -1,0 +1,10 @@
+{
+  "tenant_id": "meridian-health",
+  "period": "2026-01",
+  "tasks_completed": 217,
+  "tokens_used": 285728,
+  "emails_sent": 97,
+  "documents_processed": 44,
+  "api_calls": 664,
+  "last_updated": "2026-02-21T03:08:40Z"
+}

@@ -1,0 +1,10 @@
+{
+  "tenant_id": "summit-financial",
+  "period": "2026-02",
+  "tasks_completed": 477,
+  "tokens_used": 716416,
+  "emails_sent": 249,
+  "documents_processed": 162,
+  "api_calls": 1423,
+  "last_updated": "2026-02-21T03:07:47Z"
+}

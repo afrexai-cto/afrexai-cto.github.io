@@ -1,0 +1,730 @@
+[
+  {
+    "date": "2025-11-23",
+    "tasks_completed": 0,
+    "tokens_used": 5343,
+    "emails_sent": 0,
+    "documents_processed": 0,
+    "api_calls": 0
+  },
+  {
+    "date": "2025-11-24",
+    "tasks_completed": 13,
+    "tokens_used": 7853,
+    "emails_sent": 4,
+    "documents_processed": 0,
+    "api_calls": 39
+  },
+  {
+    "date": "2025-11-25",
+    "tasks_completed": 10,
+    "tokens_used": 15541,
+    "emails_sent": 5,
+    "documents_processed": 1,
+    "api_calls": 26
+  },
+  {
+    "date": "2025-11-26",
+    "tasks_completed": 13,
+    "tokens_used": 8375,
+    "emails_sent": 1,
+    "documents_processed": 3,
+    "api_calls": 31
+  },
+  {
+    "date": "2025-11-27",
+    "tasks_completed": 10,
+    "tokens_used": 10842,
+    "emails_sent": 0,
+    "documents_processed": 0,
+    "api_calls": 39
+  },
+  {
+    "date": "2025-11-28",
+    "tasks_completed": 7,
+    "tokens_used": 16826,
+    "emails_sent": 6,
+    "documents_processed": 4,
+    "api_calls": 26
+  },
+  {
+    "date": "2025-11-29",
+    "tasks_completed": 0,
+    "tokens_used": 1921,
+    "emails_sent": 0,
+    "documents_processed": 2,
+    "api_calls": 0
+  },
+  {
+    "date": "2025-11-30",
+    "tasks_completed": 3,
+    "tokens_used": 1622,
+    "emails_sent": 1,
+    "documents_processed": 1,
+    "api_calls": 6
+  },
+  {
+    "date": "2025-12-01",
+    "tasks_completed": 4,
+    "tokens_used": 7417,
+    "emails_sent": 5,
+    "documents_processed": 3,
+    "api_calls": 9
+  },
+  {
+    "date": "2025-12-02",
+    "tasks_completed": 7,
+    "tokens_used": 12337,
+    "emails_sent": 4,
+    "documents_processed": 0,
+    "api_calls": 20
+  },
+  {
+    "date": "2025-12-03",
+    "tasks_completed": 13,
+    "tokens_used": 7788,
+    "emails_sent": 3,
+    "documents_processed": 1,
+    "api_calls": 43
+  },
+  {
+    "date": "2025-12-04",
+    "tasks_completed": 7,
+    "tokens_used": 10857,
+    "emails_sent": 0,
+    "documents_processed": 3,
+    "api_calls": 14
+  },
+  {
+    "date": "2025-12-05",
+    "tasks_completed": 9,
+    "tokens_used": 15504,
+    "emails_sent": 4,
+    "documents_processed": 3,
+    "api_calls": 34
+  },
+  {
+    "date": "2025-12-06",
+    "tasks_completed": 5,
+    "tokens_used": 0,
+    "emails_sent": 0,
+    "documents_processed": 0,
+    "api_calls": 21
+  },
+  {
+    "date": "2025-12-07",
+    "tasks_completed": 4,
+    "tokens_used": 4896,
+    "emails_sent": 0,
+    "documents_processed": 0,
+    "api_calls": 18
+  },
+  {
+    "date": "2025-12-08",
+    "tasks_completed": 9,
+    "tokens_used": 8114,
+    "emails_sent": 4,
+    "documents_processed": 0,
+    "api_calls": 31
+  },
+  {
+    "date": "2025-12-09",
+    "tasks_completed": 13,
+    "tokens_used": 10836,
+    "emails_sent": 4,
+    "documents_processed": 1,
+    "api_calls": 29
+  },
+  {
+    "date": "2025-12-10",
+    "tasks_completed": 3,
+    "tokens_used": 12773,
+    "emails_sent": 0,
+    "documents_processed": 3,
+    "api_calls": 0
+  },
+  {
+    "date": "2025-12-11",
+    "tasks_completed": 9,
+    "tokens_used": 10062,
+    "emails_sent": 2,
+    "documents_processed": 2,
+    "api_calls": 25
+  },
+  {
+    "date": "2025-12-12",
+    "tasks_completed": 12,
+    "tokens_used": 14854,
+    "emails_sent": 1,
+    "documents_processed": 3,
+    "api_calls": 30
+  },
+  {
+    "date": "2025-12-13",
+    "tasks_completed": 0,
+    "tokens_used": 0,
+    "emails_sent": 0,
+    "documents_processed": 2,
+    "api_calls": 0
+  },
+  {
+    "date": "2025-12-14",
+    "tasks_completed": 3,
+    "tokens_used": 736,
+    "emails_sent": 2,
+    "documents_processed": 0,
+    "api_calls": 7
+  },
+  {
+    "date": "2025-12-15",
+    "tasks_completed": 4,
+    "tokens_used": 9236,
+    "emails_sent": 4,
+    "documents_processed": 1,
+    "api_calls": 12
+  },
+  {
+    "date": "2025-12-16",
+    "tasks_completed": 13,
+    "tokens_used": 14916,
+    "emails_sent": 3,
+    "documents_processed": 2,
+    "api_calls": 30
+  },
+  {
+    "date": "2025-12-17",
+    "tasks_completed": 5,
+    "tokens_used": 13754,
+    "emails_sent": 5,
+    "documents_processed": 1,
+    "api_calls": 18
+  },
+  {
+    "date": "2025-12-18",
+    "tasks_completed": 7,
+    "tokens_used": 16599,
+    "emails_sent": 2,
+    "documents_processed": 4,
+    "api_calls": 25
+  },
+  {
+    "date": "2025-12-19",
+    "tasks_completed": 5,
+    "tokens_used": 15456,
+    "emails_sent": 6,
+    "documents_processed": 0,
+    "api_calls": 7
+  },
+  {
+    "date": "2025-12-20",
+    "tasks_completed": 5,
+    "tokens_used": 5519,
+    "emails_sent": 1,
+    "documents_processed": 0,
+    "api_calls": 16
+  },
+  {
+    "date": "2025-12-21",
+    "tasks_completed": 0,
+    "tokens_used": 6610,
+    "emails_sent": 0,
+    "documents_processed": 0,
+    "api_calls": 0
+  },
+  {
+    "date": "2025-12-22",
+    "tasks_completed": 10,
+    "tokens_used": 7372,
+    "emails_sent": 1,
+    "documents_processed": 2,
+    "api_calls": 29
+  },
+  {
+    "date": "2025-12-23",
+    "tasks_completed": 3,
+    "tokens_used": 8720,
+    "emails_sent": 4,
+    "documents_processed": 2,
+    "api_calls": 1
+  },
+  {
+    "date": "2025-12-24",
+    "tasks_completed": 3,
+    "tokens_used": 16982,
+    "emails_sent": 4,
+    "documents_processed": 4,
+    "api_calls": 7
+  },
+  {
+    "date": "2025-12-25",
+    "tasks_completed": 7,
+    "tokens_used": 10803,
+    "emails_sent": 1,
+    "documents_processed": 0,
+    "api_calls": 24
+  },
+  {
+    "date": "2025-12-26",
+    "tasks_completed": 11,
+    "tokens_used": 16707,
+    "emails_sent": 2,
+    "documents_processed": 1,
+    "api_calls": 23
+  },
+  {
+    "date": "2025-12-27",
+    "tasks_completed": 4,
+    "tokens_used": 0,
+    "emails_sent": 0,
+    "documents_processed": 2,
+    "api_calls": 22
+  },
+  {
+    "date": "2025-12-28",
+    "tasks_completed": 0,
+    "tokens_used": 0,
+    "emails_sent": 2,
+    "documents_processed": 2,
+    "api_calls": 0
+  },
+  {
+    "date": "2025-12-29",
+    "tasks_completed": 12,
+    "tokens_used": 15673,
+    "emails_sent": 1,
+    "documents_processed": 3,
+    "api_calls": 39
+  },
+  {
+    "date": "2025-12-30",
+    "tasks_completed": 3,
+    "tokens_used": 7082,
+    "emails_sent": 5,
+    "documents_processed": 1,
+    "api_calls": 19
+  },
+  {
+    "date": "2025-12-31",
+    "tasks_completed": 5,
+    "tokens_used": 10912,
+    "emails_sent": 4,
+    "documents_processed": 1,
+    "api_calls": 8
+  },
+  {
+    "date": "2026-01-01",
+    "tasks_completed": 4,
+    "tokens_used": 15579,
+    "emails_sent": 4,
+    "documents_processed": 2,
+    "api_calls": 16
+  },
+  {
+    "date": "2026-01-02",
+    "tasks_completed": 9,
+    "tokens_used": 16143,
+    "emails_sent": 5,
+    "documents_processed": 0,
+    "api_calls": 17
+  },
+  {
+    "date": "2026-01-03",
+    "tasks_completed": 6,
+    "tokens_used": 3399,
+    "emails_sent": 3,
+    "documents_processed": 0,
+    "api_calls": 9
+  },
+  {
+    "date": "2026-01-04",
+    "tasks_completed": 2,
+    "tokens_used": 1529,
+    "emails_sent": 1,
+    "documents_processed": 2,
+    "api_calls": 6
+  },
+  {
+    "date": "2026-01-05",
+    "tasks_completed": 5,
+    "tokens_used": 15901,
+    "emails_sent": 2,
+    "documents_processed": 1,
+    "api_calls": 8
+  },
+  {
+    "date": "2026-01-06",
+    "tasks_completed": 9,
+    "tokens_used": 15708,
+    "emails_sent": 2,
+    "documents_processed": 2,
+    "api_calls": 24
+  },
+  {
+    "date": "2026-01-07",
+    "tasks_completed": 10,
+    "tokens_used": 8935,
+    "emails_sent": 0,
+    "documents_processed": 3,
+    "api_calls": 26
+  },
+  {
+    "date": "2026-01-08",
+    "tasks_completed": 10,
+    "tokens_used": 8708,
+    "emails_sent": 0,
+    "documents_processed": 4,
+    "api_calls": 37
+  },
+  {
+    "date": "2026-01-09",
+    "tasks_completed": 7,
+    "tokens_used": 10517,
+    "emails_sent": 2,
+    "documents_processed": 3,
+    "api_calls": 22
+  },
+  {
+    "date": "2026-01-10",
+    "tasks_completed": 0,
+    "tokens_used": 3468,
+    "emails_sent": 0,
+    "documents_processed": 0,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-01-11",
+    "tasks_completed": 5,
+    "tokens_used": 0,
+    "emails_sent": 0,
+    "documents_processed": 1,
+    "api_calls": 21
+  },
+  {
+    "date": "2026-01-12",
+    "tasks_completed": 12,
+    "tokens_used": 7142,
+    "emails_sent": 3,
+    "documents_processed": 0,
+    "api_calls": 41
+  },
+  {
+    "date": "2026-01-13",
+    "tasks_completed": 13,
+    "tokens_used": 9606,
+    "emails_sent": 6,
+    "documents_processed": 2,
+    "api_calls": 48
+  },
+  {
+    "date": "2026-01-14",
+    "tasks_completed": 13,
+    "tokens_used": 7085,
+    "emails_sent": 5,
+    "documents_processed": 3,
+    "api_calls": 38
+  },
+  {
+    "date": "2026-01-15",
+    "tasks_completed": 7,
+    "tokens_used": 14840,
+    "emails_sent": 6,
+    "documents_processed": 2,
+    "api_calls": 24
+  },
+  {
+    "date": "2026-01-16",
+    "tasks_completed": 9,
+    "tokens_used": 16037,
+    "emails_sent": 2,
+    "documents_processed": 3,
+    "api_calls": 20
+  },
+  {
+    "date": "2026-01-17",
+    "tasks_completed": 6,
+    "tokens_used": 189,
+    "emails_sent": 3,
+    "documents_processed": 0,
+    "api_calls": 18
+  },
+  {
+    "date": "2026-01-18",
+    "tasks_completed": 0,
+    "tokens_used": 1377,
+    "emails_sent": 2,
+    "documents_processed": 0,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-01-19",
+    "tasks_completed": 9,
+    "tokens_used": 7764,
+    "emails_sent": 1,
+    "documents_processed": 1,
+    "api_calls": 36
+  },
+  {
+    "date": "2026-01-20",
+    "tasks_completed": 12,
+    "tokens_used": 15324,
+    "emails_sent": 3,
+    "documents_processed": 0,
+    "api_calls": 43
+  },
+  {
+    "date": "2026-01-21",
+    "tasks_completed": 5,
+    "tokens_used": 10313,
+    "emails_sent": 3,
+    "documents_processed": 2,
+    "api_calls": 24
+  },
+  {
+    "date": "2026-01-22",
+    "tasks_completed": 7,
+    "tokens_used": 10776,
+    "emails_sent": 6,
+    "documents_processed": 4,
+    "api_calls": 12
+  },
+  {
+    "date": "2026-01-23",
+    "tasks_completed": 3,
+    "tokens_used": 16985,
+    "emails_sent": 6,
+    "documents_processed": 1,
+    "api_calls": 12
+  },
+  {
+    "date": "2026-01-24",
+    "tasks_completed": 0,
+    "tokens_used": 668,
+    "emails_sent": 2,
+    "documents_processed": 0,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-01-25",
+    "tasks_completed": 2,
+    "tokens_used": 0,
+    "emails_sent": 3,
+    "documents_processed": 2,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-01-26",
+    "tasks_completed": 11,
+    "tokens_used": 12764,
+    "emails_sent": 3,
+    "documents_processed": 1,
+    "api_calls": 42
+  },
+  {
+    "date": "2026-01-27",
+    "tasks_completed": 7,
+    "tokens_used": 16733,
+    "emails_sent": 6,
+    "documents_processed": 0,
+    "api_calls": 25
+  },
+  {
+    "date": "2026-01-28",
+    "tasks_completed": 10,
+    "tokens_used": 14413,
+    "emails_sent": 5,
+    "documents_processed": 1,
+    "api_calls": 21
+  },
+  {
+    "date": "2026-01-29",
+    "tasks_completed": 12,
+    "tokens_used": 9247,
+    "emails_sent": 4,
+    "documents_processed": 3,
+    "api_calls": 44
+  },
+  {
+    "date": "2026-01-30",
+    "tasks_completed": 12,
+    "tokens_used": 10730,
+    "emails_sent": 6,
+    "documents_processed": 1,
+    "api_calls": 30
+  },
+  {
+    "date": "2026-01-31",
+    "tasks_completed": 0,
+    "tokens_used": 3848,
+    "emails_sent": 3,
+    "documents_processed": 0,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-02-01",
+    "tasks_completed": 0,
+    "tokens_used": 6080,
+    "emails_sent": 0,
+    "documents_processed": 2,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-02-02",
+    "tasks_completed": 9,
+    "tokens_used": 16642,
+    "emails_sent": 4,
+    "documents_processed": 2,
+    "api_calls": 33
+  },
+  {
+    "date": "2026-02-03",
+    "tasks_completed": 12,
+    "tokens_used": 12673,
+    "emails_sent": 3,
+    "documents_processed": 2,
+    "api_calls": 33
+  },
+  {
+    "date": "2026-02-04",
+    "tasks_completed": 9,
+    "tokens_used": 15777,
+    "emails_sent": 1,
+    "documents_processed": 2,
+    "api_calls": 26
+  },
+  {
+    "date": "2026-02-05",
+    "tasks_completed": 12,
+    "tokens_used": 16677,
+    "emails_sent": 0,
+    "documents_processed": 2,
+    "api_calls": 42
+  },
+  {
+    "date": "2026-02-06",
+    "tasks_completed": 11,
+    "tokens_used": 7285,
+    "emails_sent": 2,
+    "documents_processed": 4,
+    "api_calls": 23
+  },
+  {
+    "date": "2026-02-07",
+    "tasks_completed": 0,
+    "tokens_used": 4408,
+    "emails_sent": 1,
+    "documents_processed": 2,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-02-08",
+    "tasks_completed": 4,
+    "tokens_used": 1361,
+    "emails_sent": 0,
+    "documents_processed": 0,
+    "api_calls": 10
+  },
+  {
+    "date": "2026-02-09",
+    "tasks_completed": 5,
+    "tokens_used": 14872,
+    "emails_sent": 6,
+    "documents_processed": 0,
+    "api_calls": 5
+  },
+  {
+    "date": "2026-02-10",
+    "tasks_completed": 10,
+    "tokens_used": 14557,
+    "emails_sent": 1,
+    "documents_processed": 3,
+    "api_calls": 27
+  },
+  {
+    "date": "2026-02-11",
+    "tasks_completed": 13,
+    "tokens_used": 7569,
+    "emails_sent": 6,
+    "documents_processed": 4,
+    "api_calls": 29
+  },
+  {
+    "date": "2026-02-12",
+    "tasks_completed": 13,
+    "tokens_used": 12508,
+    "emails_sent": 2,
+    "documents_processed": 2,
+    "api_calls": 34
+  },
+  {
+    "date": "2026-02-13",
+    "tasks_completed": 9,
+    "tokens_used": 7030,
+    "emails_sent": 6,
+    "documents_processed": 2,
+    "api_calls": 24
+  },
+  {
+    "date": "2026-02-14",
+    "tasks_completed": 0,
+    "tokens_used": 5308,
+    "emails_sent": 2,
+    "documents_processed": 0,
+    "api_calls": 0
+  },
+  {
+    "date": "2026-02-15",
+    "tasks_completed": 6,
+    "tokens_used": 5492,
+    "emails_sent": 1,
+    "documents_processed": 1,
+    "api_calls": 26
+  },
+  {
+    "date": "2026-02-16",
+    "tasks_completed": 8,
+    "tokens_used": 7221,
+    "emails_sent": 4,
+    "documents_processed": 0,
+    "api_calls": 30
+  },
+  {
+    "date": "2026-02-17",
+    "tasks_completed": 4,
+    "tokens_used": 10584,
+    "emails_sent": 6,
+    "documents_processed": 4,
+    "api_calls": 3
+  },
+  {
+    "date": "2026-02-18",
+    "tasks_completed": 6,
+    "tokens_used": 10438,
+    "emails_sent": 2,
+    "documents_processed": 0,
+    "api_calls": 24
+  },
+  {
+    "date": "2026-02-19",
+    "tasks_completed": 10,
+    "tokens_used": 14611,
+    "emails_sent": 4,
+    "documents_processed": 4,
+    "api_calls": 21
+  },
+  {
+    "date": "2026-02-20",
+    "tasks_completed": 9,
+    "tokens_used": 15448,
+    "emails_sent": 4,
+    "documents_processed": 3,
+    "api_calls": 21
+  },
+  {
+    "date": "2026-02-21",
+    "tasks_completed": 3,
+    "tokens_used": 2588,
+    "emails_sent": 3,
+    "documents_processed": 1,
+    "api_calls": 15
+  }
+]

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Hosted Agent Workforce</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--gold:#FFD700;--gold2:#FFC000;--white:#f5f5f5;--gray:#888;--dark:#111;--card:#151515;--green:#00C853}
+html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:var(--bg);color:var(--white)}
+/* Progress bar */
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:999;transition:width .4s ease}
+/* Slide nav dots */
+#nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:.3s}
+.dot.active{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+/* Slides */
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 80px;opacity:0;transform:translateY(40px);pointer-events:none;transition:opacity .5s ease,transform .5s ease}
+.slide.active{opacity:1;transform:translateY(0);pointer-events:all}
+/* Typography */
+h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:800;line-height:1.1;text-align:center}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;text-align:center;margin-bottom:12px}
+h3{font-size:1.3rem;font-weight:600}
+.gold{color:var(--gold)}
+.subtitle{font-size:clamp(1rem,2vw,1.4rem);color:var(--gray);text-align:center;margin-top:16px;font-weight:300;max-width:700px}
+.big-num{font-size:clamp(3rem,8vw,7rem);font-weight:900;color:var(--gold);line-height:1}
+/* Grid helpers */
+.row{display:flex;gap:32px;flex-wrap:wrap;justify-content:center;margin-top:40px;width:100%;max-width:1200px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 24px;flex:1;min-width:220px;max-width:320px;text-align:center;transition:.3s}
+.card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.card h3{margin-bottom:8px}
+.card p{color:var(--gray);font-size:.9rem;line-height:1.5}
+.card .num{font-size:2rem;font-weight:800;color:var(--gold);margin-bottom:4px}
+/* Buttons */
+.btn{display:inline-block;padding:16px 40px;border-radius:50px;font-weight:700;font-size:1.1rem;text-decoration:none;cursor:pointer;transition:.3s;border:none}
+.btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:var(--gold2);transform:scale(1.05)}
+.btn-outline{border:2px solid var(--gold);color:var(--gold);background:none}.btn-outline:hover{background:var(--gold);color:#000}
+/* Steps */
+.steps{display:flex;gap:0;align-items:center;margin-top:48px;flex-wrap:wrap;justify-content:center}
+.step-item{text-align:center;flex:0 0 160px}
+.step-circle{width:72px;height:72px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.8rem;font-weight:800;color:var(--gold)}
+.step-arrow{font-size:2rem;color:var(--gold);margin:0 8px;flex:0 0 auto}
+.step-label{font-weight:600;font-size:1rem}.step-sub{color:var(--gray);font-size:.8rem;margin-top:4px}
+/* Agent roster grid */
+.roster{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;width:100%;max-width:1000px}
+.agent-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px 16px;text-align:left;transition:.3s}
+.agent-card:hover{border-color:var(--gold)}
+.agent-card .icon{font-size:1.6rem;margin-bottom:6px}
+.agent-card h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.agent-card p{font-size:.78rem;color:var(--gray);line-height:1.4}
+.agent-card .roi{color:var(--green);font-weight:700;font-size:.85rem;margin-top:6px}
+/* Pricing */
+.price-card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px 28px;flex:1;min-width:260px;max-width:340px;text-align:center}
+.price-card.featured{border-color:var(--gold);box-shadow:0 0 40px rgba(255,215,0,.12)}
+.price-card .tier{font-size:.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--gray);margin-bottom:8px}
+.price-card .price{font-size:2.6rem;font-weight:800;color:var(--gold)}
+.price-card .per{color:var(--gray);font-size:.9rem}
+.price-card ul{list-style:none;margin-top:20px;text-align:left}
+.price-card li{padding:6px 0;font-size:.9rem;color:var(--white);border-bottom:1px solid rgba(255,255,255,.04)}
+.price-card li::before{content:'✓ ';color:var(--gold);font-weight:700}
+/* ROI Calc */
+.calc{background:var(--card);border-radius:20px;padding:40px;max-width:700px;width:100%;margin-top:32px}
+.calc label{display:block;font-size:.9rem;color:var(--gray);margin-bottom:6px;margin-top:16px}
+.calc input[type=range]{width:100%;accent-color:var(--gold)}
+.calc .val{font-size:1.1rem;font-weight:700;color:var(--white)}
+.calc .result{margin-top:28px;text-align:center;padding:24px;background:rgba(255,215,0,.06);border-radius:12px;border:1px solid rgba(255,215,0,.15)}
+.calc .result .big{font-size:2.8rem;font-weight:900;color:var(--gold)}
+/* Case study */
+.case{background:var(--card);border-radius:20px;padding:36px 40px;max-width:500px;flex:1;min-width:300px;border:1px solid rgba(255,255,255,.06)}
+.case .logo{font-size:1.4rem;font-weight:800;margin-bottom:8px;color:var(--gold)}
+.case .saved{font-size:2.4rem;font-weight:900;color:var(--green);margin:12px 0}
+.case ul{list-style:none;margin-top:12px}.case li{padding:4px 0;font-size:.9rem;color:var(--gray)}
+.case li::before{content:'→ ';color:var(--gold)}
+/* Footer hint */
+.hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.2);font-size:.75rem;z-index:99}
+/* Badge */
+.badge{display:inline-block;background:rgba(255,215,0,.1);color:var(--gold);padding:6px 16px;border-radius:30px;font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+@media(max-width:768px){
+  .slide{padding:40px 24px}
+  .roster{grid-template-columns:repeat(2,1fr)}
+  .row{gap:16px}
+  #nav{right:12px}
+}
+</style>
+</head>
+<body>
+<div id="progress" style="width:10%"></div>
+<div id="nav"></div>
+
+<!-- SLIDE 0: TITLE -->
+<div class="slide active" data-slide="0">
+  <div class="badge">Step 3 — The Full Stack</div>
+  <h1>AfrexAI <span class="gold">Hosted Agent</span> Workforce</h1>
+  <p class="subtitle">Your AI department, fully managed. Deploy an enterprise-grade agent workforce in days — not months. We run everything.</p>
+  <div style="margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+    <a class="btn btn-gold" onclick="goTo(9)">Book a Call →</a>
+    <a class="btn btn-outline" onclick="goTo(1)">See the Pitch</a>
+  </div>
+</div>
+
+<!-- SLIDE 1: THE PROBLEM -->
+<div class="slide" data-slide="1">
+  <h2>The Problem</h2>
+  <p class="subtitle" style="margin-bottom:36px">Every company wants AI. Almost none can pull it off.</p>
+  <div class="row">
+    <div class="card"><div class="num">$4.7T</div><h3>Wasted Annually</h3><p>Global spend on manual, repetitive tasks that AI agents can automate today.</p></div>
+    <div class="card"><div class="num">95%</div><h3>AI Pilots Fail</h3><p>Most internal AI projects stall in proof-of-concept. No infra, no talent, no follow-through.</p></div>
+    <div class="card"><div class="num">4M+</div><h3>Talent Shortage</h3><p>Open AI/ML roles globally. Your competitors are fighting for the same scarce engineers.</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 2: THE SOLUTION -->
+<div class="slide" data-slide="2">
+  <div class="badge">The AfrexAI Advantage</div>
+  <h1 style="font-size:clamp(2rem,4vw,3.2rem)">A Fully Managed<br><span class="gold">AI Agent Workforce</span></h1>
+  <p class="subtitle">Deployed in days. Managed 24/7. No hiring. No infra. No risk.<br>You focus on your business — we run your AI department.</p>
+  <div class="row" style="margin-top:32px">
+    <div class="card"><div class="num" style="font-size:1.4rem">⚡</div><h3>Days, Not Months</h3><p>Live agents producing value within 5 business days.</p></div>
+    <div class="card"><div class="num" style="font-size:1.4rem">🔒</div><h3>Zero Risk</h3><p>Cancel anytime. No lock-in. We earn your business monthly.</p></div>
+    <div class="card"><div class="num" style="font-size:1.4rem">📈</div><h3>10× ROI</h3><p>Average customer sees 10× return on their AfrexAI investment.</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 3: HOW IT WORKS -->
+<div class="slide" data-slide="3">
+  <h2>How It Works</h2>
+  <p class="subtitle">Four steps from first call to scaled AI workforce.</p>
+  <div class="steps">
+    <div class="step-item"><div class="step-circle">1</div><div class="step-label">Discovery</div><div class="step-sub">Map your workflows<br>& pain points</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-item"><div class="step-circle">2</div><div class="step-label">Deploy</div><div class="step-sub">Agents go live<br>in ≤5 days</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-item"><div class="step-circle">3</div><div class="step-label">Monitor</div><div class="step-sub">24/7 oversight<br>& optimization</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-item"><div class="step-circle">4</div><div class="step-label">Scale</div><div class="step-sub">Add agents as<br>you grow</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 4: AGENT ROSTER -->
+<div class="slide" data-slide="4">
+  <h2>The Agent Roster</h2>
+  <p class="subtitle">9 specialized agents. Each replaces hours of human toil.</p>
+  <div class="roster">
+    <div class="agent-card"><div class="icon">🤖</div><h4>Inbox Agent</h4><p>Triages, drafts & replies to email. Handles 80% of volume autonomously.</p><div class="roi">Saves ~$48K/yr</div></div>
+    <div class="agent-card"><div class="icon">📊</div><h4>Reporting Agent</h4><p>Generates dashboards, KPI summaries & board decks from raw data.</p><div class="roi">Saves ~$62K/yr</div></div>
+    <div class="agent-card"><div class="icon">📞</div><h4>Voice Agent</h4><p>Answers calls, qualifies leads, books meetings. 24/7, no hold music.</p><div class="roi">Saves ~$55K/yr</div></div>
+    <div class="agent-card"><div class="icon">💬</div><h4>Chat Agent</h4><p>Website & app live chat with human-quality responses. Multilingual.</p><div class="roi">Saves ~$42K/yr</div></div>
+    <div class="agent-card"><div class="icon">📋</div><h4>Compliance Agent</h4><p>Monitors regulatory changes, flags risks, drafts policy updates.</p><div class="roi">Saves ~$85K/yr</div></div>
+    <div class="agent-card"><div class="icon">🔍</div><h4>Research Agent</h4><p>Market intel, competitor tracking, due diligence — delivered daily.</p><div class="roi">Saves ~$58K/yr</div></div>
+    <div class="agent-card"><div class="icon">📝</div><h4>Content Agent</h4><p>Blog posts, social media, newsletters — on-brand, on-schedule.</p><div class="roi">Saves ~$50K/yr</div></div>
+    <div class="agent-card"><div class="icon">🗓️</div><h4>Scheduling Agent</h4><p>Calendar management, meeting coordination, timezone juggling.</p><div class="roi">Saves ~$38K/yr</div></div>
+    <div class="agent-card"><div class="icon">⚙️</div><h4>Ops Agent</h4><p>Workflow automation, system integrations, process optimization.</p><div class="roi">Saves ~$72K/yr</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 5: CASE STUDIES -->
+<div class="slide" data-slide="5">
+  <h2>Proven Results</h2>
+  <p class="subtitle">Real customers. Real numbers.</p>
+  <div class="row" style="max-width:1050px">
+    <div class="case">
+      <div class="logo">VADIS Group</div>
+      <p style="font-size:.85rem;color:var(--gray)">Global supply chain risk & sustainability platform</p>
+      <div class="saved">$1.6M saved</div>
+      <ul>
+        <li>7 agents deployed across compliance & research</li>
+        <li>85% reduction in manual report generation</li>
+        <li>ROI achieved in under 90 days</li>
+        <li>Scaled from 3 to 7 agents in 6 months</li>
+      </ul>
+    </div>
+    <div class="case">
+      <div class="logo">SiteVoice</div>
+      <p style="font-size:.85rem;color:var(--gray)">AI-powered website accessibility platform</p>
+      <div class="saved">$52K saved</div>
+      <ul>
+        <li>3 agents: Chat, Content & Scheduling</li>
+        <li>60% reduction in support ticket volume</li>
+        <li>2× content output with zero new hires</li>
+        <li>Full deployment in 4 business days</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: LIVE DEMO -->
+<div class="slide" data-slide="6">
+  <div style="text-align:center">
+    <div class="big-num" style="font-size:clamp(2rem,5vw,4rem);margin-bottom:12px">See It Live</div>
+    <p class="subtitle" style="margin-bottom:40px">Experience the AfrexAI customer portal — where you monitor, manage, and scale your agent workforce in real time.</p>
+    <a class="btn btn-gold" href="https://portal.afrexai.com" target="_blank" style="font-size:1.3rem;padding:20px 52px">Launch Demo Portal →</a>
+    <p style="margin-top:20px;color:var(--gray);font-size:.85rem">Opens in a new tab • No login required for demo</p>
+  </div>
+</div>
+
+<!-- SLIDE 7: PRICING -->
+<div class="slide" data-slide="7">
+  <h2>Simple, Transparent Pricing</h2>
+  <p class="subtitle">No setup fees. No contracts. Cancel anytime.</p>
+  <div class="row" style="max-width:1100px;align-items:stretch">
+    <div class="price-card">
+      <div class="tier">Starter</div>
+      <div class="price">$1,500</div>
+      <div class="per">/month</div>
+      <ul>
+        <li>3 AI agents</li>
+        <li>Standard support</li>
+        <li>Weekly performance reports</li>
+        <li>5-day deployment</li>
+        <li>Portal access</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <div class="tier">Growth <span style="background:var(--gold);color:#000;padding:2px 8px;border-radius:8px;font-size:.7rem;vertical-align:middle;margin-left:4px">Popular</span></div>
+      <div class="price">$4,500</div>
+      <div class="per">/month</div>
+      <ul>
+        <li>5 AI agents</li>
+        <li>Priority support</li>
+        <li>Daily reports + alerts</li>
+        <li>3-day deployment</li>
+        <li>Custom integrations</li>
+        <li>Dedicated success manager</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="tier">Enterprise</div>
+      <div class="price">$12,000</div>
+      <div class="per">/month</div>
+      <ul>
+        <li>9 AI agents (full roster)</li>
+        <li>24/7 white-glove support</li>
+        <li>Real-time dashboards</li>
+        <li>Same-day deployment</li>
+        <li>Custom agent development</li>
+        <li>On-prem / VPC options</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: ROI CALCULATOR -->
+<div class="slide" data-slide="8">
+  <h2>ROI Calculator</h2>
+  <p class="subtitle">See what AfrexAI agents save you.</p>
+  <div class="calc">
+    <label>Employees doing repetitive tasks</label>
+    <div style="display:flex;align-items:center;gap:16px"><input type="range" id="headcount" min="1" max="100" value="10"><span class="val" id="hcVal">10</span></div>
+    <label>Average annual salary ($)</label>
+    <div style="display:flex;align-items:center;gap:16px"><input type="range" id="salary" min="30000" max="200000" step="5000" value="65000"><span class="val" id="salVal">$65,000</span></div>
+    <label>% of time on automatable tasks</label>
+    <div style="display:flex;align-items:center;gap:16px"><input type="range" id="pct" min="10" max="80" value="40"><span class="val" id="pctVal">40%</span></div>
+    <div class="result">
+      <div style="color:var(--gray);font-size:.9rem;margin-bottom:8px">Estimated Annual Savings</div>
+      <div class="big" id="savings">$260,000</div>
+      <div style="color:var(--gray);font-size:.85rem;margin-top:8px"><span id="roiX">14.4</span>× ROI vs Growth plan</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: CTA -->
+<div class="slide" data-slide="9">
+  <div style="text-align:center">
+    <h1 style="margin-bottom:8px">Ready to <span class="gold">Scale</span>?</h1>
+    <p class="subtitle" style="margin-bottom:48px">Let's map your workflows and show you exactly what your AI agent workforce looks like. 30-minute call. No commitment.</p>
+    <a class="btn btn-gold" href="https://calendly.com/cbeckford-afrexai/30min" target="_blank" style="font-size:1.4rem;padding:22px 56px">Book Your Call →</a>
+    <p style="margin-top:32px;color:var(--gray);font-size:.9rem">cbeckford@afrexai.com &nbsp;|&nbsp; afrexai.com</p>
+  </div>
+</div>
+
+<div class="hint">← → arrow keys to navigate &nbsp;|&nbsp; F11 for fullscreen</div>
+
+<script>
+const slides=document.querySelectorAll('.slide'),total=slides.length;
+let cur=0;
+const nav=document.getElementById('nav');
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);nav.appendChild(d)}
+const dots=document.querySelectorAll('.dot'),bar=document.getElementById('progress');
+
+function goTo(n){
+  if(n<0||n>=total)return;
+  slides[cur].classList.remove('active');dots[cur].classList.remove('active');
+  cur=n;
+  slides[cur].classList.add('active');dots[cur].classList.add('active');
+  bar.style.width=((cur+1)/total*100)+'%';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' ')goTo(cur+1);
+  if(e.key==='ArrowLeft')goTo(cur-1);
+});
+
+// ROI calc
+const hc=document.getElementById('headcount'),sal=document.getElementById('salary'),pct=document.getElementById('pct');
+function calc(){
+  const h=+hc.value,s=+sal.value,p=+pct.value;
+  document.getElementById('hcVal').textContent=h;
+  document.getElementById('salVal').textContent='$'+s.toLocaleString();
+  document.getElementById('pctVal').textContent=p+'%';
+  const saving=Math.round(h*s*(p/100)*0.7);
+  document.getElementById('savings').textContent='$'+saving.toLocaleString();
+  document.getElementById('roiX').textContent=(saving/54000).toFixed(1);
+}
+hc.oninput=sal.oninput=pct.oninput=calc;
+
+// Touch swipe
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX);
+document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50){d<0?goTo(cur+1):goTo(cur-1)}});
+</script>
+</body>
+</html>

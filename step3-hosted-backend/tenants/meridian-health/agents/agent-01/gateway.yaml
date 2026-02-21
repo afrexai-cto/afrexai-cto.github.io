@@ -1,0 +1,19 @@
+# OpenClaw Gateway Config — meridian-health/agent-01
+agent:
+  name: "agent-01"
+  label: "Patient Intake Coordinator"
+  tenant: "meridian-health"
+
+model:
+  provider: anthropic
+  model: claude-sonnet-4-20250514
+  max_tokens: 4096
+
+schedule:
+  active_hours: "09:00-18:00"
+  timezone: "Europe/London"
+  days: ["mon","tue","wed","thu","fri"]
+
+channels: []
+
+soul_path: "./SOUL.md"

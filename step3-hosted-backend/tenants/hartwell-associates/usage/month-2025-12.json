@@ -1,0 +1,10 @@
+{
+  "tenant_id": "hartwell-associates",
+  "period": "2025-12",
+  "tasks_completed": 403,
+  "tokens_used": 631923,
+  "emails_sent": 176,
+  "documents_processed": 113,
+  "api_calls": 1239,
+  "last_updated": "2026-02-21T03:06:37Z"
+}

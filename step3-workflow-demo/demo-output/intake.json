@@ -1,0 +1,45 @@
+{
+  "client_id": "HA-2026-0347",
+  "intake_timestamp": "2026-02-21T09:14:22Z",
+  "source": "website_form",
+  "status": "new",
+  "contact": {
+    "company_name": "Meridian Supply Chain Solutions Ltd",
+    "trading_as": "Meridian SCS",
+    "company_number": "14829361",
+    "registered_address": "45 Canary Wharf Tower, London E14 5AB",
+    "website": "https://meridianscs.co.uk",
+    "industry": "Logistics & Supply Chain Management",
+    "annual_revenue": "£12.4M",
+    "employee_count": 86
+  },
+  "primary_contact": {
+    "name": "Sarah Chen",
+    "title": "Chief Operating Officer",
+    "email": "s.chen@meridianscs.co.uk",
+    "phone": "+44 20 7946 0958",
+    "preferred_contact": "email"
+  },
+  "secondary_contact": {
+    "name": "James Whitfield",
+    "title": "Finance Director",
+    "email": "j.whitfield@meridianscs.co.uk",
+    "phone": "+44 20 7946 0960"
+  },
+  "matter": {
+    "type": "Commercial Contract Dispute",
+    "description": "Dispute with primary freight forwarding partner (GlobalFreight PLC) regarding alleged breach of exclusivity clause in master services agreement. Contract value approx £2.8M annually. Counterparty threatening to terminate and claim damages of £1.2M. Client seeks to enforce exclusivity provision and counterclaim for service failures.",
+    "urgency": "high",
+    "opposing_party": "GlobalFreight PLC",
+    "estimated_value": "£4,000,000",
+    "court_deadline": null,
+    "referral_source": "Marcus Webb, Partner at Deloitte"
+  },
+  "compliance": {
+    "sanctions_check_required": true,
+    "pep_check_required": true,
+    "aml_verification": "pending",
+    "source_of_funds": "trading_revenue",
+    "risk_rating": "standard"
+  }
+}

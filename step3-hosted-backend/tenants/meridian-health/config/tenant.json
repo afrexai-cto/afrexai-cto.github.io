@@ -1,0 +1,12 @@
+{
+  "tenant_id": "meridian-health",
+  "company": "Meridian Health",
+  "email": "tech@meridianhealth.org",
+  "tier": "starter",
+  "vertical": "healthcare",
+  "agent_count": 3,
+  "created": "2026-02-21T03:06:17Z",
+  "status": "active",
+  "api_key": "9262b943-b143-4510-bdc1-7df0c6208c2f",
+  "api_secret": "3c0a9572-d8c8-496d-9c35-a309c327dfc5"
+}

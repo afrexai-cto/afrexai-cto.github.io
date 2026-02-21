@@ -1,0 +1,11 @@
+{
+  "agent_id": "agent-09",
+  "tenant_id": "summit-financial",
+  "role": "Regulatory Tracker",
+  "status": "running",
+  "created": "2026-02-21T03:06:16Z",
+  "schedule": "weekdays 09:00-18:00",
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens_daily": 50000,
+  "last_action_time": "2026-02-21T03:06:17Z"
+}

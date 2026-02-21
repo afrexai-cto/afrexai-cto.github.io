@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Customer Portal</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#141414;--card2:#1a1a1a;--gold:#FFD700;--gold2:#b8960c;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--blue:#3b82f6;--text:#e5e5e5;--muted:#888;--border:#2a2a2a}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--gold);text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+input,textarea,select{font-family:inherit;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;width:100%}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold)}
+.btn{background:var(--gold);color:#000;border:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;transition:all .2s}
+.btn:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:8px 20px;border-radius:8px;font-weight:500;font-size:13px;transition:all .2s}
+.btn-outline:hover{background:var(--gold);color:#000}
+.btn-sm{padding:6px 14px;font-size:12px;border-radius:6px}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{background:#dc2626}
+
+/* Login */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:radial-gradient(ellipse at top,#1a1a0a 0%,#0a0a0a 70%)}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px;max-width:420px;width:100%;text-align:center}
+.login-box h1{font-size:28px;margin-bottom:4px}
+.login-box h1 span{color:var(--gold)}
+.login-box p{color:var(--muted);margin-bottom:32px;font-size:14px}
+.login-box .field{margin-bottom:16px;text-align:left}
+.login-box label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.demo-accounts{margin-top:24px;text-align:left}
+.demo-accounts h4{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.demo-acc{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--card2);border-radius:8px;margin-bottom:8px;cursor:pointer;border:1px solid transparent;transition:all .2s}
+.demo-acc:hover{border-color:var(--gold);background:#1f1f0f}
+.demo-acc .name{font-weight:600;font-size:14px}.demo-acc .email{font-size:12px;color:var(--muted)}
+
+/* App shell */
+#app{display:none}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:100}
+.topbar .logo{font-size:20px;font-weight:700}.topbar .logo span{color:var(--gold)}
+.topbar .user-info{display:flex;align-items:center;gap:12px}
+.topbar .avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#000;font-weight:700;font-size:14px}
+.topbar .company-name{font-weight:600;font-size:14px}
+.topbar .logout{color:var(--muted);font-size:13px;cursor:pointer}
+.topbar .logout:hover{color:var(--red)}
+
+.layout{display:flex;min-height:calc(100vh - 69px)}
+.sidebar{width:220px;background:var(--card);border-right:1px solid var(--border);padding:16px 0;flex-shrink:0}
+.sidebar .nav-item{display:flex;align-items:center;gap:10px;padding:10px 24px;color:var(--muted);font-size:14px;cursor:pointer;transition:all .15s;border-left:3px solid transparent}
+.sidebar .nav-item:hover{color:var(--text);background:var(--card2)}
+.sidebar .nav-item.active{color:var(--gold);border-left-color:var(--gold);background:rgba(255,215,0,.05)}
+.sidebar .nav-item svg{width:18px;height:18px;flex-shrink:0}
+
+.main{flex:1;padding:32px;overflow-y:auto;max-height:calc(100vh - 69px)}
+.page{display:none}.page.active{display:block}
+.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
+.grid{display:grid;gap:20px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card h3{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.stat-val{font-size:32px;font-weight:700}.stat-sub{font-size:13px;color:var(--muted);margin-top:4px}
+
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-green{background:rgba(34,197,94,.15);color:var(--green)}
+.badge-yellow{background:rgba(234,179,8,.15);color:var(--yellow)}
+.badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+.badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+.badge-gold{background:rgba(255,215,0,.12);color:var(--gold)}
+
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;padding:10px 14px;border-bottom:1px solid var(--border)}
+td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:14px}
+tr:last-child td{border-bottom:none}
+
+.feed-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.feed-item:last-child{border-bottom:none}
+.feed-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0}
+.feed-time{font-size:12px;color:var(--muted);white-space:nowrap;min-width:70px}
+.feed-text{font-size:14px;line-height:1.5}
+.feed-text strong{color:var(--gold)}
+
+.config-panel{display:none;position:fixed;top:0;right:0;width:520px;height:100vh;background:var(--card);border-left:1px solid var(--border);z-index:200;overflow-y:auto;padding:32px;animation:slideIn .2s}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.config-panel .close-btn{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer}
+.config-panel .close-btn:hover{color:var(--text)}
+.config-panel h2{font-size:20px;margin-bottom:4px}
+.config-panel .role{color:var(--muted);font-size:14px;margin-bottom:24px}
+.config-section{margin-bottom:24px}
+.config-section h4{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.soul-block{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:'SF Mono',monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;color:var(--text);max-height:200px;overflow-y:auto}
+.toggle{position:relative;width:48px;height:26px;background:#333;border-radius:13px;cursor:pointer;transition:all .2s}
+.toggle.on{background:var(--green)}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:all .2s}
+.toggle.on::after{left:25px}
+.schedule-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.schedule-day{padding:8px 4px;background:var(--card2);border-radius:6px;font-size:11px}
+.schedule-day.active{background:rgba(255,215,0,.15);color:var(--gold);border:1px solid var(--gold)}
+.integration-tag{display:inline-block;padding:4px 12px;background:var(--card2);border:1px solid var(--border);border-radius:6px;font-size:12px;margin:4px 4px 4px 0}
+
+.sla-meter{height:8px;background:var(--card2);border-radius:4px;overflow:hidden;margin-top:8px}
+.sla-fill{height:100%;border-radius:4px;transition:width .5s}
+
+.ticket-form textarea{min-height:120px;resize:vertical}
+.ticket-list{margin-top:24px}
+.ticket{padding:16px;background:var(--card2);border-radius:8px;margin-bottom:12px;border-left:3px solid var(--gold)}
+.ticket .t-id{font-size:12px;color:var(--gold);font-weight:600}
+.ticket .t-subject{font-weight:600;margin:4px 0}
+.ticket .t-meta{font-size:12px;color:var(--muted)}
+
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:199}
+
+.chart-container{position:relative;height:220px}
+
+@media(max-width:1024px){.grid-4{grid-template-columns:repeat(2,1fr)}.sidebar{width:180px}}
+@media(max-width:768px){.layout{flex-direction:column}.sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0}.sidebar .nav-item{border-left:none;border-bottom:3px solid transparent;white-space:nowrap;padding:12px 16px}.sidebar .nav-item.active{border-bottom-color:var(--gold);border-left:none}.grid-4,.grid-3{grid-template-columns:1fr 1fr}.main{padding:20px}.config-panel{width:100%}.topbar{padding:12px 16px}}
+@media(max-width:480px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+<div class="login-box">
+<h1>Afrex<span>AI</span></h1>
+<p>Customer Portal — Hosted Agent Platform</p>
+<div class="field"><label>Email</label><input type="email" id="login-email" placeholder="you@company.com"></div>
+<div class="field"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••" value="demo2024"></div>
+<button class="btn" style="width:100%;margin-top:8px" onclick="doLogin()">Sign In</button>
+<div class="demo-accounts">
+<h4>Demo Accounts</h4>
+<div class="demo-acc" onclick="quickLogin('hartwell')"><div><div class="name">Hartwell Associates</div><div class="email">ops@hartwell.com</div></div><span class="badge badge-gold">Enterprise</span></div>
+<div class="demo-acc" onclick="quickLogin('summit')"><div><div class="name">Summit Financial</div><div class="email">admin@summitfin.com</div></div><span class="badge badge-blue">Growth</span></div>
+<div class="demo-acc" onclick="quickLogin('meridian')"><div><div class="name">Meridian Health</div><div class="email">tech@meridianhealth.org</div></div><span class="badge badge-green">Pro</span></div>
+</div>
+</div>
+</div>
+
+<!-- APP -->
+<div id="app">
+<div class="topbar">
+<div class="logo">Afrex<span>AI</span> <span style="font-weight:400;font-size:14px;color:var(--muted)">Portal</span></div>
+<div class="user-info">
+<div><div class="company-name" id="tb-company"></div><div style="font-size:12px;color:var(--muted)" id="tb-email"></div></div>
+<div class="avatar" id="tb-avatar"></div>
+<div class="logout" onclick="doLogout()">Sign Out</div>
+</div>
+</div>
+<div class="layout">
+<div class="sidebar" id="sidebar"></div>
+<div class="main" id="main-content"></div>
+</div>
+</div>
+
+<!-- Config Panel Overlay -->
+<div class="overlay" id="overlay" onclick="closeConfig()"></div>
+<div class="config-panel" id="config-panel">
+<button class="close-btn" onclick="closeConfig()">&times;</button>
+<div id="config-content"></div>
+</div>
+
+<script>
+// ==================== DATA ====================
+const COMPANIES = {
+hartwell: {
+name: "Hartwell Associates",
+email: "ops@hartwell.com",
+avatar: "HA",
+plan: "Enterprise",
+planColor: "gold",
+monthlyRate: 4800,
+agents: [
+{id:"h1",name:"Atlas",role:"Executive Assistant",status:"online",uptime:99.94,tasksToday:47,tasksWeek:312,tasksMonth:1284,
+ soul:`# Atlas — Executive Assistant\n\n## Identity\nYou are Atlas, the executive assistant for Hartwell Associates.\n\n## Personality\n- Professional, anticipatory, discreet\n- British-inflected tone, concise\n- Proactive about scheduling conflicts\n\n## Core Duties\n- Calendar management for 4 partners\n- Meeting prep & follow-up summaries\n- Travel booking & expense pre-approval\n- Client communication drafting`,
+ schedule:[1,1,1,1,1,0,0],integrations:["Google Workspace","Calendly","Expensify","Slack"],activities:["Drafted board meeting agenda for Q1 review","Rescheduled Henderson call to 3pm GMT","Sent expense report summary to CFO","Booked flights for NYC client visit Mar 4-6","Compiled weekly KPI digest for partners"]},
+{id:"h2",name:"Prism",role:"Research Analyst",status:"busy",uptime:99.87,tasksToday:23,tasksWeek:158,tasksMonth:671,
+ soul:`# Prism — Research Analyst\n\n## Identity\nYou are Prism, Hartwell's dedicated research analyst.\n\n## Personality\n- Methodical, data-driven, thorough\n- Presents findings with confidence intervals\n- Flags contradictory sources\n\n## Core Duties\n- Market research & competitor analysis\n- Due diligence reports\n- Industry trend monitoring\n- Data visualization & briefings`,
+ schedule:[1,1,1,1,1,1,0],integrations:["Bloomberg Terminal","Pitchbook","Google Sheets","Notion"],activities:["Generated competitor landscape report for FinTech sector","Analyzed Q4 earnings data for 12 target companies","Updated market sizing model with 2024 census data","Flagged regulatory change impacting client portfolio","Compiled ESG scoring for 8 PE targets"]},
+{id:"h3",name:"Echo",role:"Client Comms Manager",status:"online",uptime:99.91,tasksToday:61,tasksWeek:423,tasksMonth:1847,
+ soul:`# Echo — Client Communications\n\n## Identity\nYou are Echo, managing all client-facing communications.\n\n## Personality\n- Warm but professional, UK English\n- Mirrors client tone & formality level\n- Never sends without sentiment check\n\n## Core Duties\n- Email drafting & response management\n- Client onboarding sequences\n- NPS survey follow-ups\n- Escalation triage`,
+ schedule:[1,1,1,1,1,1,1],integrations:["HubSpot","Gmail","Intercom","Typeform"],activities:["Responded to 14 client inquiries across 3 accounts","Drafted onboarding welcome sequence for new client","Escalated urgent billing dispute to partner team","Sent NPS follow-up to 28 clients","Updated CRM contact records for Meridian account"]},
+{id:"h4",name:"Forge",role:"Document Automation",status:"idle",uptime:99.96,tasksToday:8,tasksWeek:89,tasksMonth:367,
+ soul:`# Forge — Document Automation\n\n## Identity\nYou are Forge, handling all document generation.\n\n## Personality\n- Precise, detail-obsessed, quality-first\n- Double-checks formatting & legal references\n- Flags outdated templates\n\n## Core Duties\n- Contract generation from templates\n- Proposal & pitch deck creation\n- Compliance document updates\n- Version control & archival`,
+ schedule:[1,1,1,1,1,0,0],integrations:["DocuSign","Google Docs","Dropbox","PandaDoc"],activities:["Generated 3 NDAs from updated template","Created investor pitch deck v4.2","Updated terms of service with Feb 2026 amendments","Archived 47 expired contracts to cold storage","Formatted annual compliance report"]}
+],
+billing:{nextInvoice:"$4,800.00",nextDate:"Mar 1, 2026",history:[
+{date:"Feb 1, 2026",amount:"$4,800.00",status:"Paid"},{date:"Jan 1, 2026",amount:"$4,800.00",status:"Paid"},
+{date:"Dec 1, 2025",amount:"$4,200.00",status:"Paid"},{date:"Nov 1, 2025",amount:"$4,200.00",status:"Paid"},
+{date:"Oct 1, 2025",amount:"$3,600.00",status:"Paid"},{date:"Sep 1, 2025",amount:"$3,600.00",status:"Paid"}]},
+sla:{guaranteed:99.9,actual:99.92,responseGuarantee:"< 2 min",responseActual:"1.4 min",incidents:1,lastIncident:"Jan 14, 2026 — 12min degraded performance"}
+},
+summit: {
+name: "Summit Financial",
+email: "admin@summitfin.com",
+avatar: "SF",
+plan: "Growth",
+planColor: "blue",
+monthlyRate: 2400,
+agents: [
+{id:"s1",name:"Sentinel",role:"Lead Scorer & Qualifier",status:"online",uptime:99.88,tasksToday:134,tasksWeek:892,tasksMonth:3641,
+ soul:`# Sentinel — Lead Intelligence\n\n## Identity\nYou are Sentinel, Summit Financial's lead scoring engine.\n\n## Personality\n- Analytical, fast, no-nonsense\n- Scores with rationale, never just numbers\n- Aggressive on hot leads, patient on nurture\n\n## Core Duties\n- Inbound lead scoring (1-100)\n- Qualification via enrichment data\n- Auto-routing to correct advisor\n- Weekly pipeline health reports`,
+ schedule:[1,1,1,1,1,1,1],integrations:["Salesforce","Clearbit","LinkedIn Sales Nav","Zapier"],activities:["Scored 34 new inbound leads from webinar campaign","Qualified 8 leads as Sales-Ready (score >80)","Enriched 22 contacts with firmographic data","Flagged 3 leads as potential duplicates","Generated weekly pipeline velocity report"]},
+{id:"s2",name:"Catalyst",role:"Financial Report Generator",status:"online",uptime:99.91,tasksToday:19,tasksWeek:127,tasksMonth:518,
+ soul:`# Catalyst — Financial Reporting\n\n## Identity\nYou are Catalyst, Summit's automated reporting engine.\n\n## Personality\n- Numbers-first, visual storytelling\n- Always includes YoY comparisons\n- Conservative on projections\n\n## Core Duties\n- Daily P&L summaries\n- Client portfolio performance reports\n- Regulatory filing preparation\n- Board-ready financial decks`,
+ schedule:[1,1,1,1,1,0,0],integrations:["QuickBooks","Xero","Google Sheets","Power BI"],activities:["Generated daily P&L summary for 3 fund portfolios","Created client quarterly performance report","Updated tax provision estimates for Q1","Compiled AUM growth chart for board deck","Reconciled 142 transactions from clearing house"]},
+{id:"s3",name:"Pulse",role:"Client Engagement Bot",status:"busy",uptime:99.85,tasksToday:78,tasksWeek:534,tasksMonth:2156,
+ soul:`# Pulse — Client Engagement\n\n## Identity\nYou are Pulse, Summit's client engagement specialist.\n\n## Personality\n- Friendly, knowledgeable about financial products\n- Explains complex concepts simply\n- Always compliant, never gives direct advice\n\n## Core Duties\n- Inbound client chat support\n- Account status inquiries\n- Product education sequences\n- Appointment scheduling with advisors`,
+ schedule:[1,1,1,1,1,1,0],integrations:["Intercom","Calendly","Twilio","HubSpot"],activities:["Handled 23 live chat sessions with prospects","Scheduled 7 advisor consultations","Sent product comparison to 12 nurture contacts","Answered 18 account balance inquiries","Triggered re-engagement sequence for dormant accounts"]}
+],
+billing:{nextInvoice:"$2,400.00",nextDate:"Mar 1, 2026",history:[
+{date:"Feb 1, 2026",amount:"$2,400.00",status:"Paid"},{date:"Jan 1, 2026",amount:"$2,400.00",status:"Paid"},
+{date:"Dec 1, 2025",amount:"$2,400.00",status:"Paid"},{date:"Nov 1, 2025",amount:"$1,800.00",status:"Paid"},
+{date:"Oct 1, 2025",amount:"$1,800.00",status:"Paid"},{date:"Sep 1, 2025",amount:"$1,800.00",status:"Paid"}]},
+sla:{guaranteed:99.5,actual:99.88,responseGuarantee:"< 5 min",responseActual:"2.1 min",incidents:2,lastIncident:"Feb 3, 2026 — 8min API timeout"}
+},
+meridian: {
+name: "Meridian Health",
+email: "tech@meridianhealth.org",
+avatar: "MH",
+plan: "Pro",
+planColor: "green",
+monthlyRate: 3200,
+agents: [
+{id:"m1",name:"Triage",role:"Patient Intake Coordinator",status:"online",uptime:99.97,tasksToday:89,tasksWeek:612,tasksMonth:2534,
+ soul:`# Triage — Patient Intake\n\n## Identity\nYou are Triage, Meridian Health's intake coordinator.\n\n## Personality\n- Compassionate, clear, HIPAA-conscious\n- Never rushes patients\n- Escalates clinical concerns immediately\n\n## Core Duties\n- New patient registration processing\n- Insurance verification\n- Appointment scheduling & reminders\n- Pre-visit questionnaire collection`,
+ schedule:[1,1,1,1,1,1,0],integrations:["Epic EMR","Zocdoc","Twilio","Stripe"],activities:["Processed 22 new patient registrations","Verified insurance for 31 upcoming appointments","Sent appointment reminders to 45 patients","Collected 18 pre-visit questionnaires","Escalated 2 urgent symptom reports to nursing"]},
+{id:"m2",name:"Clarity",role:"Medical Records Assistant",status:"online",uptime:99.93,tasksToday:34,tasksWeek:241,tasksMonth:1023,
+ soul:`# Clarity — Medical Records\n\n## Identity\nYou are Clarity, managing Meridian's medical records workflow.\n\n## Personality\n- Meticulous, privacy-first, audit-ready\n- Cross-references everything\n- Zero tolerance for data inconsistency\n\n## Core Duties\n- Record retrieval & transfer requests\n- Chart completion follow-ups\n- Coding accuracy verification\n- Compliance audit preparation`,
+ schedule:[1,1,1,1,1,0,0],integrations:["Epic EMR","HealthGorilla","Box","Slack"],activities:["Processed 12 records transfer requests","Flagged 4 incomplete charts for physician review","Verified ICD-10 coding on 28 encounters","Prepared documentation for HIPAA audit","Updated 8 patient demographic records"]},
+{id:"m3",name:"Beacon",role:"Billing & Claims Agent",status:"busy",uptime:99.89,tasksToday:56,tasksWeek:387,tasksMonth:1598,
+ soul:`# Beacon — Billing & Claims\n\n## Identity\nYou are Beacon, Meridian's billing and claims specialist.\n\n## Personality\n- Persistent, detail-oriented, patient-advocate\n- Fights denials methodically\n- Explains bills in plain language\n\n## Core Duties\n- Claims submission & tracking\n- Denial management & appeals\n- Patient billing inquiries\n- Payment plan administration`,
+ schedule:[1,1,1,1,1,1,0],integrations:["Waystar","Epic EMR","Stripe","Availity"],activities:["Submitted 34 claims to 6 different payers","Appealed 5 denied claims with supporting documentation","Answered 19 patient billing inquiries","Set up 7 payment plans for outstanding balances","Reconciled $142K in expected reimbursements"]}
+],
+billing:{nextInvoice:"$3,200.00",nextDate:"Mar 1, 2026",history:[
+{date:"Feb 1, 2026",amount:"$3,200.00",status:"Paid"},{date:"Jan 1, 2026",amount:"$3,200.00",status:"Paid"},
+{date:"Dec 1, 2025",amount:"$3,200.00",status:"Paid"},{date:"Nov 1, 2025",amount:"$3,200.00",status:"Paid"},
+{date:"Oct 1, 2025",amount:"$2,400.00",status:"Paid"},{date:"Sep 1, 2025",amount:"$2,400.00",status:"Paid"}]},
+sla:{guaranteed:99.9,actual:99.93,responseGuarantee:"< 2 min",responseActual:"1.2 min",incidents:0,lastIncident:"None — zero incidents in billing period"}
+}
+};
+
+const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const NAV = [
+{id:'dashboard',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',label:'Dashboard'},
+{id:'activity',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',label:'Activity Feed'},
+{id:'billing',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>',label:'Usage & Billing'},
+{id:'sla',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',label:'SLA Status'},
+{id:'support',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',label:'Support'}
+];
+
+let currentCompany = null;
+let currentPage = 'dashboard';
+let charts = {};
+
+// ==================== AUTH ====================
+function doLogin() {
+  const email = document.getElementById('login-email').value.toLowerCase();
+  const key = Object.keys(COMPANIES).find(k => COMPANIES[k].email === email);
+  if (key) { loginAs(key); } else { alert('Unknown email. Try a demo account.'); }
+}
+function quickLogin(key) {
+  document.getElementById('login-email').value = COMPANIES[key].email;
+  loginAs(key);
+}
+function loginAs(key) {
+  currentCompany = key;
+  localStorage.setItem('afrex_company', key);
+  showApp();
+}
+function doLogout() {
+  localStorage.removeItem('afrex_company');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+}
+function showApp() {
+  const c = COMPANIES[currentCompany];
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('tb-company').textContent = c.name;
+  document.getElementById('tb-email').textContent = c.email;
+  document.getElementById('tb-avatar').textContent = c.avatar;
+  renderSidebar();
+  navigate('dashboard');
+}
+
+// ==================== NAV ====================
+function renderSidebar() {
+  document.getElementById('sidebar').innerHTML = NAV.map(n =>
+    `<div class="nav-item${n.id===currentPage?' active':''}" onclick="navigate('${n.id}')">${n.icon}<span>${n.label}</span></div>`
+  ).join('');
+}
+function navigate(page) {
+  currentPage = page;
+  renderSidebar();
+  const main = document.getElementById('main-content');
+  Object.values(charts).forEach(c => c.destroy());
+  charts = {};
+  switch(page) {
+    case 'dashboard': renderDashboard(main); break;
+    case 'activity': renderActivity(main); break;
+    case 'billing': renderBilling(main); break;
+    case 'sla': renderSLA(main); break;
+    case 'support': renderSupport(main); break;
+  }
+}
+
+// ==================== DASHBOARD ====================
+function renderDashboard(el) {
+  const c = COMPANIES[currentCompany];
+  const totalTasks = c.agents.reduce((s,a) => s + a.tasksMonth, 0);
+  const avgUptime = (c.agents.reduce((s,a) => s + a.uptime, 0) / c.agents.length).toFixed(2);
+  const online = c.agents.filter(a => a.status==='online').length;
+
+  el.innerHTML = `
+    <h2 class="page-title">Dashboard</h2>
+    <div class="grid grid-4" style="margin-bottom:24px">
+      <div class="card"><h3>Active Agents</h3><div class="stat-val">${c.agents.length}</div><div class="stat-sub">${online} online now</div></div>
+      <div class="card"><h3>Avg Uptime</h3><div class="stat-val" style="color:var(--green)">${avgUptime}%</div><div class="stat-sub">Last 30 days</div></div>
+      <div class="card"><h3>Tasks This Month</h3><div class="stat-val">${totalTasks.toLocaleString()}</div><div class="stat-sub">${c.agents.reduce((s,a)=>s+a.tasksWeek,0).toLocaleString()} this week</div></div>
+      <div class="card"><h3>Monthly Spend</h3><div class="stat-val" style="color:var(--gold)">$${c.monthlyRate.toLocaleString()}</div><div class="stat-sub">${c.plan} plan</div></div>
+    </div>
+    <div class="grid grid-2" style="margin-bottom:24px">
+      <div class="card"><h3>Task Volume (30 days)</h3><div class="chart-container"><canvas id="chart-tasks"></canvas></div></div>
+      <div class="card"><h3>Agent Utilization</h3><div class="chart-container"><canvas id="chart-util"></canvas></div></div>
+    </div>
+    <div class="card">
+      <h3>Your Agents</h3>
+      <table>
+        <thead><tr><th>Agent</th><th>Role</th><th>Status</th><th>Uptime</th><th>Tasks Today</th><th></th></tr></thead>
+        <tbody>${c.agents.map(a => `
+          <tr style="cursor:pointer" onclick="openConfig('${a.id}')">
+            <td><strong style="color:var(--gold)">${a.name}</strong></td>
+            <td>${a.role}</td>
+            <td><span class="badge badge-${a.status==='online'?'green':a.status==='busy'?'yellow':'blue'}">${a.status}</span></td>
+            <td>${a.uptime}%</td>
+            <td>${a.tasksToday}</td>
+            <td><button class="btn-outline btn-sm" onclick="event.stopPropagation();openConfig('${a.id}')">Configure</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  // Tasks chart
+  const days = Array.from({length:30},(_,i) => {const d=new Date();d.setDate(d.getDate()-29+i);return d.toLocaleDateString('en',{month:'short',day:'numeric'})});
+  const taskData = days.map(() => Math.floor(Math.random()*80+totalTasks/30*0.7));
+  charts.tasks = new Chart(document.getElementById('chart-tasks'),{type:'line',data:{labels:days,datasets:[{label:'Tasks',data:taskData,borderColor:'#FFD700',backgroundColor:'rgba(255,215,0,.1)',fill:true,tension:.4,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888',maxTicksLimit:8},grid:{color:'#1a1a1a'}},y:{ticks:{color:'#888'},grid:{color:'#1a1a1a'}}}}});
+
+  // Utilization chart
+  charts.util = new Chart(document.getElementById('chart-util'),{type:'doughnut',data:{labels:c.agents.map(a=>a.name),datasets:[{data:c.agents.map(a=>a.tasksMonth),backgroundColor:['#FFD700','#3b82f6','#22c55e','#a855f7','#f97316'].slice(0,c.agents.length),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#e5e5e5',padding:16}}}}});
+}
+
+// ==================== ACTIVITY ====================
+function renderActivity(el) {
+  const c = COMPANIES[currentCompany];
+  const feed = [];
+  const now = Date.now();
+  c.agents.forEach(a => {
+    a.activities.forEach((act, i) => {
+      feed.push({agent:a.name,text:act,time:now - (i*47+Math.random()*60)*60000,status:a.status});
+    });
+  });
+  feed.sort((a,b) => b.time - a.time);
+
+  el.innerHTML = `
+    <h2 class="page-title">Agent Activity Feed</h2>
+    <div class="card">
+      <div style="display:flex;gap:8px;margin-bottom:20px">
+        <button class="btn-outline btn-sm filter-btn active-filter" onclick="filterFeed(this,'all')">All Agents</button>
+        ${c.agents.map(a=>`<button class="btn-outline btn-sm filter-btn" onclick="filterFeed(this,'${a.name}')">${a.name}</button>`).join('')}
+      </div>
+      <div id="feed-list">${feed.map(f => feedItemHTML(f)).join('')}</div>
+    </div>`;
+
+  // Simulate new activity every 8s
+  if (window._feedInterval) clearInterval(window._feedInterval);
+  window._feedInterval = setInterval(() => {
+    if (currentPage !== 'activity') { clearInterval(window._feedInterval); return; }
+    const a = c.agents[Math.floor(Math.random()*c.agents.length)];
+    const act = a.activities[Math.floor(Math.random()*a.activities.length)];
+    const item = {agent:a.name,text:act,time:Date.now(),status:a.status};
+    const list = document.getElementById('feed-list');
+    if (list) { list.insertAdjacentHTML('afterbegin', feedItemHTML(item)); }
+  }, 8000);
+}
+function feedItemHTML(f) {
+  const t = new Date(f.time);
+  const ts = t.toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'});
+  const col = f.status==='online'?'var(--green)':f.status==='busy'?'var(--yellow)':'var(--blue)';
+  return `<div class="feed-item" data-agent="${f.agent}"><div class="feed-time">${ts}</div><div class="feed-dot" style="background:${col}"></div><div class="feed-text"><strong>${f.agent}</strong> — ${f.text}</div></div>`;
+}
+function filterFeed(btn, agent) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
+  btn.classList.add('active-filter');
+  btn.style.background = 'var(--gold)'; btn.style.color = '#000';
+  document.querySelectorAll('.filter-btn:not(.active-filter)').forEach(b => {b.style.background='';b.style.color='';});
+  document.querySelectorAll('.feed-item').forEach(item => {
+    item.style.display = (agent==='all' || item.dataset.agent===agent) ? '' : 'none';
+  });
+}
+
+// ==================== BILLING ====================
+function renderBilling(el) {
+  const c = COMPANIES[currentCompany];
+  const usage = c.agents.reduce((s,a)=>s+a.tasksMonth,0);
+  el.innerHTML = `
+    <h2 class="page-title">Usage & Billing</h2>
+    <div class="grid grid-3" style="margin-bottom:24px">
+      <div class="card"><h3>Current Plan</h3><div class="stat-val"><span class="badge badge-${c.planColor}" style="font-size:18px;padding:6px 16px">${c.plan}</span></div><div class="stat-sub">${c.agents.length} agents included</div></div>
+      <div class="card"><h3>Next Invoice</h3><div class="stat-val" style="color:var(--gold)">${c.billing.nextInvoice}</div><div class="stat-sub">Due ${c.billing.nextDate}</div></div>
+      <div class="card"><h3>Tasks This Period</h3><div class="stat-val">${usage.toLocaleString()}</div><div class="stat-sub">Cost per task: $${(c.monthlyRate/usage).toFixed(2)}</div></div>
+    </div>
+    <div class="grid grid-2" style="margin-bottom:24px">
+      <div class="card"><h3>Monthly Spend Trend</h3><div class="chart-container"><canvas id="chart-spend"></canvas></div></div>
+      <div class="card"><h3>Usage by Agent</h3><div class="chart-container"><canvas id="chart-usage"></canvas></div></div>
+    </div>
+    <div class="card">
+      <h3>Payment History</h3>
+      <table>
+        <thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Invoice</th></tr></thead>
+        <tbody>${c.billing.history.map((h,i) => `
+          <tr>
+            <td>${h.date}</td>
+            <td style="font-weight:600">${h.amount}</td>
+            <td><span class="badge badge-green">✓ ${h.status}</span></td>
+            <td><a href="#" onclick="event.preventDefault();alert('Invoice PDF would download here')">INV-2026-${String(800-i).padStart(4,'0')}</a></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  const months = c.billing.history.map(h=>h.date.split(',')[0]).reverse();
+  const amounts = c.billing.history.map(h=>parseFloat(h.amount.replace(/[$,]/g,''))).reverse();
+  charts.spend = new Chart(document.getElementById('chart-spend'),{type:'bar',data:{labels:months,datasets:[{label:'Amount',data:amounts,backgroundColor:'rgba(255,215,0,.3)',borderColor:'#FFD700',borderWidth:1,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{display:false}},y:{ticks:{color:'#888',callback:v=>'$'+v.toLocaleString()},grid:{color:'#1a1a1a'}}}}});
+
+  charts.usage = new Chart(document.getElementById('chart-usage'),{type:'bar',data:{labels:c.agents.map(a=>a.name),datasets:[{label:'Tasks',data:c.agents.map(a=>a.tasksMonth),backgroundColor:['#FFD700','#3b82f6','#22c55e','#a855f7'].slice(0,c.agents.length),borderRadius:6}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{color:'#1a1a1a'}},y:{ticks:{color:'#e5e5e5'},grid:{display:false}}}}});
+}
+
+// ==================== SLA ====================
+function renderSLA(el) {
+  const c = COMPANIES[currentCompany];
+  const s = c.sla;
+  const uptimeColor = s.actual >= s.guaranteed ? 'var(--green)' : s.actual >= s.guaranteed-0.1 ? 'var(--yellow)' : 'var(--red)';
+  const uptimeBadge = s.actual >= s.guaranteed ? 'green' : s.actual >= s.guaranteed-0.1 ? 'yellow' : 'red';
+
+  el.innerHTML = `
+    <h2 class="page-title">SLA Status</h2>
+    <div class="grid grid-3" style="margin-bottom:24px">
+      <div class="card" style="border-color:${uptimeColor}">
+        <h3>Uptime SLA</h3>
+        <div style="display:flex;align-items:baseline;gap:12px">
+          <div class="stat-val" style="color:${uptimeColor}">${s.actual}%</div>
+          <span class="badge badge-${uptimeBadge}">${s.actual >= s.guaranteed ? '✓ Within SLA' : '⚠ Below SLA'}</span>
+        </div>
+        <div class="stat-sub">Guaranteed: ${s.guaranteed}%</div>
+        <div class="sla-meter"><div class="sla-fill" style="width:${s.actual}%;background:${uptimeColor}"></div></div>
+      </div>
+      <div class="card" style="border-color:var(--green)">
+        <h3>Response Time</h3>
+        <div class="stat-val" style="color:var(--green)">${s.responseActual}</div>
+        <div class="stat-sub">Guaranteed: ${s.responseGuarantee}</div>
+        <div class="sla-meter"><div class="sla-fill" style="width:${parseFloat(s.responseActual)/parseFloat(s.responseGuarantee.replace('< ',''))*100}%;background:var(--green)"></div></div>
+      </div>
+      <div class="card">
+        <h3>Incidents (30d)</h3>
+        <div class="stat-val">${s.incidents}</div>
+        <div class="stat-sub" style="margin-top:8px;font-size:12px">${s.lastIncident}</div>
+      </div>
+    </div>
+    <div class="grid grid-2">
+      <div class="card"><h3>Uptime History (30 days)</h3><div class="chart-container"><canvas id="chart-uptime"></canvas></div></div>
+      <div class="card"><h3>Response Time (30 days)</h3><div class="chart-container"><canvas id="chart-response"></canvas></div></div>
+    </div>
+    <div class="card" style="margin-top:24px">
+      <h3>Per-Agent SLA</h3>
+      <table>
+        <thead><tr><th>Agent</th><th>Uptime</th><th>Status</th><th>Tasks Completed</th></tr></thead>
+        <tbody>${c.agents.map(a => {
+          const col = a.uptime >= s.guaranteed ? 'green' : a.uptime >= s.guaranteed-0.1 ? 'yellow' : 'red';
+          return `<tr><td><strong style="color:var(--gold)">${a.name}</strong></td><td>${a.uptime}%</td><td><span class="badge badge-${col}">${col==='green'?'✓ Passing':col==='yellow'?'⚠ Warning':'✗ Failing'}</span></td><td>${a.tasksMonth.toLocaleString()}</td></tr>`;
+        }).join('')}</tbody>
+      </table>
+    </div>`;
+
+  const days30 = Array.from({length:30},(_,i)=>{const d=new Date();d.setDate(d.getDate()-29+i);return d.toLocaleDateString('en',{month:'short',day:'numeric'})});
+  charts.uptime = new Chart(document.getElementById('chart-uptime'),{type:'line',data:{labels:days30,datasets:[{label:'Uptime %',data:days30.map(()=>(99.5+Math.random()*0.5).toFixed(2)),borderColor:'var(--green)',backgroundColor:'rgba(34,197,94,.1)',fill:true,tension:.3,pointRadius:0},{label:'SLA Target',data:days30.map(()=>s.guaranteed),borderColor:'var(--gold)',borderDash:[5,5],pointRadius:0,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#e5e5e5'}}},scales:{x:{ticks:{color:'#888',maxTicksLimit:8},grid:{color:'#1a1a1a'}},y:{min:99,max:100,ticks:{color:'#888'},grid:{color:'#1a1a1a'}}}}});
+  charts.response = new Chart(document.getElementById('chart-response'),{type:'line',data:{labels:days30,datasets:[{label:'Avg Response (min)',data:days30.map(()=>(0.5+Math.random()*2.5).toFixed(1)),borderColor:'var(--blue)',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.3,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#e5e5e5'}}},scales:{x:{ticks:{color:'#888',maxTicksLimit:8},grid:{color:'#1a1a1a'}},y:{ticks:{color:'#888'},grid:{color:'#1a1a1a'}}}}});
+}
+
+// ==================== SUPPORT ====================
+function renderSupport(el) {
+  const tickets = JSON.parse(localStorage.getItem('afrex_tickets_'+currentCompany) || '[]');
+  el.innerHTML = `
+    <h2 class="page-title">Support</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Submit a Ticket</h3>
+        <div class="field" style="margin-bottom:14px"><label style="display:block;font-size:12px;color:var(--muted);margin-bottom:6px">Subject</label><input id="ticket-subject" placeholder="Brief description of your issue"></div>
+        <div class="field" style="margin-bottom:14px"><label style="display:block;font-size:12px;color:var(--muted);margin-bottom:6px">Priority</label><select id="ticket-priority"><option>Low</option><option selected>Medium</option><option>High</option><option>Critical</option></select></div>
+        <div class="field" style="margin-bottom:14px"><label style="display:block;font-size:12px;color:var(--muted);margin-bottom:6px">Agent (if applicable)</label><select id="ticket-agent"><option value="">General</option>${COMPANIES[currentCompany].agents.map(a=>`<option value="${a.name}">${a.name} — ${a.role}</option>`).join('')}</select></div>
+        <div class="field" style="margin-bottom:14px"><label style="display:block;font-size:12px;color:var(--muted);margin-bottom:6px">Description</label><textarea id="ticket-desc" class="ticket-form" placeholder="Describe your issue in detail..."></textarea></div>
+        <button class="btn" onclick="submitTicket()">Submit Ticket</button>
+      </div>
+      <div class="card">
+        <h3>Your Tickets</h3>
+        <div id="ticket-list">${tickets.length ? tickets.map(ticketHTML).join('') : '<p style="color:var(--muted);padding:20px 0">No tickets yet. Your support history will appear here.</p>'}</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:24px">
+      <h3>Quick Help</h3>
+      <div class="grid grid-3">
+        <div style="padding:16px;background:var(--card2);border-radius:8px;cursor:pointer" onclick="alert('Documentation portal would open here')"><strong>📚 Documentation</strong><p style="font-size:13px;color:var(--muted);margin-top:4px">Agent setup guides, API docs, best practices</p></div>
+        <div style="padding:16px;background:var(--card2);border-radius:8px;cursor:pointer" onclick="alert('Status page: All systems operational')"><strong>🟢 System Status</strong><p style="font-size:13px;color:var(--muted);margin-top:4px">Current platform status and incidents</p></div>
+        <div style="padding:16px;background:var(--card2);border-radius:8px;cursor:pointer" onclick="alert('Your dedicated CSM: James Chen — james@afrexai.com')"><strong>👤 Your CSM</strong><p style="font-size:13px;color:var(--muted);margin-top:4px">Contact your Customer Success Manager</p></div>
+      </div>
+    </div>`;
+}
+function submitTicket() {
+  const subject = document.getElementById('ticket-subject').value;
+  const desc = document.getElementById('ticket-desc').value;
+  if (!subject || !desc) { alert('Please fill in subject and description.'); return; }
+  const tickets = JSON.parse(localStorage.getItem('afrex_tickets_'+currentCompany) || '[]');
+  tickets.unshift({
+    id: 'TKT-' + String(Math.floor(Math.random()*9000)+1000),
+    subject,
+    description: desc,
+    priority: document.getElementById('ticket-priority').value,
+    agent: document.getElementById('ticket-agent').value || 'General',
+    status: 'Open',
+    date: new Date().toLocaleDateString('en',{month:'short',day:'numeric',year:'numeric'})
+  });
+  localStorage.setItem('afrex_tickets_'+currentCompany, JSON.stringify(tickets));
+  navigate('support');
+}
+function ticketHTML(t) {
+  const pc = {Low:'blue',Medium:'gold',High:'yellow',Critical:'red'}[t.priority]||'blue';
+  return `<div class="ticket"><div style="display:flex;justify-content:space-between"><span class="t-id">${t.id}</span><span class="badge badge-${pc}">${t.priority}</span></div><div class="t-subject">${t.subject}</div><div class="t-meta">${t.date} · ${t.agent} · <span class="badge badge-green">${t.status}</span></div></div>`;
+}
+
+// ==================== CONFIG PANEL ====================
+function openConfig(agentId) {
+  const c = COMPANIES[currentCompany];
+  const a = c.agents.find(x => x.id === agentId);
+  if (!a) return;
+  const paused = JSON.parse(localStorage.getItem('afrex_paused') || '{}');
+  const isPaused = paused[agentId];
+  document.getElementById('config-content').innerHTML = `
+    <h2 style="color:var(--gold)">${a.name}</h2>
+    <div class="role">${a.role} · <span class="badge badge-${a.status==='online'?'green':a.status==='busy'?'yellow':'blue'}">${isPaused?'paused':a.status}</span></div>
+    <div class="config-section">
+      <h4>Status Control</h4>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="toggle ${isPaused?'':'on'}" id="toggle-${agentId}" onclick="toggleAgent('${agentId}')"></div>
+        <span id="toggle-label-${agentId}">${isPaused?'Agent Paused':'Agent Running'}</span>
+      </div>
+    </div>
+    <div class="config-section">
+      <h4>SOUL.md — Personality & Instructions</h4>
+      <div class="soul-block">${a.soul}</div>
+    </div>
+    <div class="config-section">
+      <h4>Schedule</h4>
+      <div class="schedule-grid">${DAYS.map((d,i) => `<div class="schedule-day ${a.schedule[i]?'active':''}">${d}<br>${a.schedule[i]?'ON':'OFF'}</div>`).join('')}</div>
+    </div>
+    <div class="config-section">
+      <h4>Integrations</h4>
+      <div>${a.integrations.map(i => `<span class="integration-tag">${i}</span>`).join('')}</div>
+    </div>
+    <div class="config-section">
+      <h4>Performance</h4>
+      <div class="grid grid-3" style="gap:12px">
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:8px"><div style="font-size:24px;font-weight:700">${a.uptime}%</div><div style="font-size:11px;color:var(--muted)">Uptime</div></div>
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:8px"><div style="font-size:24px;font-weight:700">${a.tasksToday}</div><div style="font-size:11px;color:var(--muted)">Today</div></div>
+        <div style="text-align:center;padding:12px;background:var(--bg);border-radius:8px"><div style="font-size:24px;font-weight:700">${a.tasksMonth.toLocaleString()}</div><div style="font-size:11px;color:var(--muted)">This Month</div></div>
+      </div>
+    </div>
+    <div class="config-section">
+      <h4>Recent Activity</h4>
+      ${a.activities.map(act => `<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px">• ${act}</div>`).join('')}
+    </div>`;
+  document.getElementById('config-panel').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+}
+function closeConfig() {
+  document.getElementById('config-panel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+}
+function toggleAgent(agentId) {
+  const paused = JSON.parse(localStorage.getItem('afrex_paused') || '{}');
+  paused[agentId] = !paused[agentId];
+  localStorage.setItem('afrex_paused', JSON.stringify(paused));
+  const tog = document.getElementById('toggle-'+agentId);
+  const lbl = document.getElementById('toggle-label-'+agentId);
+  tog.classList.toggle('on');
+  lbl.textContent = paused[agentId] ? 'Agent Paused' : 'Agent Running';
+}
+
+// ==================== INIT ====================
+const saved = localStorage.getItem('afrex_company');
+if (saved && COMPANIES[saved]) { currentCompany = saved; showApp(); }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "event": {
+    "title": "Welcome Call — Meridian SCS (HA-2026-0347)",
+    "date": "2026-02-24",
+    "time": "10:00",
+    "timezone": "Europe/London",
+    "duration_minutes": 45,
+    "location": "Microsoft Teams — link to follow",
+    "attendees": [
+      {"name": "Victoria Hartwell", "role": "Senior Partner", "email": "v.hartwell@hartwellassociates.co.uk"},
+      {"name": "David Osei", "role": "Senior Associate", "email": "d.osei@hartwellassociates.co.uk"},
+      {"name": "Sarah Chen", "role": "Client — COO", "email": "s.chen@meridianscs.co.uk"}
+    ],
+    "agenda": [
+      "Introductions and overview of Hartwell Associates' approach",
+      "Detailed discussion of the GlobalFreight dispute",
+      "Review of master services agreement and exclusivity clause",
+      "Preliminary strategy discussion",
+      "Fee arrangements and engagement terms",
+      "Document collection requirements",
+      "Compliance and AML verification process",
+      "Next steps and timeline"
+    ],
+    "notes": "High-priority referral from Marcus Webb (Deloitte). Client reports urgency — counterparty threatening termination and £1.2M damages claim."
+  }
+}
