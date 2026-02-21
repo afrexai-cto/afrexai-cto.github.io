@@ -19,6 +19,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Debug - List blog files
+        run: |
+          echo "Blog directories:"
+          ls -la blog/ | head -40
+          echo "---"
+          echo "Total files:"
+          find . -name "index.html" -path "*/blog/*" | wc -l
+          echo "---"
+          ls blog/ai-agents-law-firms-2026/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
