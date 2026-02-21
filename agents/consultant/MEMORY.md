@@ -167,6 +167,26 @@
 - Terminology: "core service provider", "CSP", "model risk management", "SR 11-7", "OCC 2011-12", "BSA/AML", "MRA" (Matter Requiring Attention), "CAMELS rating", "consent order"
 - Content handoff created for blog + lead magnet (6-Point AI Governance Checklist)
 
+### Law Firms — AI Governance & Malpractice Risk (Added 2026-02-21)
+- **Primary pain:** Ungoverned AI adoption — ~80% of US lawyers using AI (Clio 2024 Legal Trends), but most without firm-level policies or oversight
+- ABA Formal Opinion 512 (2024) applies Model Rules to AI: competence (Rule 1.1), confidentiality (Rule 1.6(c)), candor (Rule 3.3), supervision (Rules 5.1/5.3)
+- **Hallucination sanctions are real**: Mata v. Avianca (fabricated cases from ChatGPT, sanctions), US v. Cohen (Bard hallucinations)
+- State bars issuing guidance at accelerating pace — patchwork of requirements across jurisdictions
+- Clio: firms must demonstrate "constant alignment with all relevant ABA rules and professional obligations" for AI use
+- Key risks: client data leaking into third-party AI systems, unverified AI-generated citations in filings, staff using consumer AI without oversight
+- ABA requires "appropriate degree of independent verification or review" — failure = malpractice exposure
+- 2026 trend (Verbit/Artificial Lawyer): agentic AI entering law firms — multi-agent systems handling complex workflows without governance
+- 31% of mid-size firm lawyers think their bar would never approve AI — regulatory awareness gap = consulting opportunity
+- Justia (Feb 18, 2026): clients don't care if lawyers use AI **provided firm maintains strict Human-in-the-Loop verification** — governance is the trust enabler
+- Construction law firms (Peckar & Abramson) face double exposure: construction AI governance + legal practice AI governance
+- ROI: ~$50-70K/yr value for 50-100 attorney firm (paralegal time savings + risk reduction + billing recovery) vs $120K implementation (~20-24mo breakeven)
+- CRM has 7 unique law firms — top prospects: Foster Garvey (130 emp, full service), Wyrick Robbins (121, business/growth), Peckar & Abramson (104, construction law), McCathern Law (60, full service), Christian & Small (42, litigation)
+- All 5 top prospects logged as $120K deals in CRM
+- Peckar & Abramson highest-priority — construction law specialty means dual governance need
+- Key objection: "We already have an AI policy" → "A policy isn't governance. Who audits compliance? What happens when an associate pastes a client's financials into ChatGPT?"
+- Terminology: "managing partner", "practice group leader", "associate", "paralegal", "matter management", "client intake", "conflicts check", "trust accounting", "IOLTA", "CLE"
+- Content handoff needed for blog + lead magnet (Law Firm AI Governance Checklist)
+
 - *This section updated as new verticals, use cases, and insights are developed*
 
 ## Shared Reference

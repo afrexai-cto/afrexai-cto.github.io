@@ -96,6 +96,14 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **Contracting shift = procurement activation.** Law firms writing contract guidance means budgets are being allocated, legal/procurement teams involved, enterprise buying cycle has begun. Market crossed from "experimenting" to "procuring."
 - **New opportunity logged:** Outcome-based contracting as structural sales differentiator. Formalize contract templates with outcome-based SLA language.
 
+## Key Intelligence (Updated 2026-02-21)
+
+- **Agent sprawl is now a named enterprise pain point.** Cloud Wars identifies orchestration + governance as the #1 scaling challenge. Building agents is commoditized; managing them is the new differentiator. Validates our Step 2 implementation positioning.
+- **Agentic AI market: $7.38B → $47B by 2030** (44.8% CAGR, MarketsandMarkets). JPMorgan deployed compliance AI agents for KYC/AML. Mid-tier firms (Kanerika) getting visibility — market fragmenting, room for vertical specialists.
+- **Blue Prism continuing hard pivot** from RPA to "AI agent integration." Enterprise relationships but weak AI-native capability. Watch for them targeting insurance/fintech with existing accounts.
+- **New opportunity logged:** "Agent Governance Audit" as Step 2 wedge — $15K-$25K fixed-price assessment leading to $120K+ implementation. Target: enterprises with Copilot/ChatGPT sprawl.
+- **Brave Search API at 88.5% quota** (1770/2000). Will hit limit before month-end at current pace. Flag for upgrade or alternative.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?

@@ -1,5 +1,17 @@
 # 🔮 Opportunities Log
 
+## 2026-02-21 — Agent Governance Audit as Step 2 Wedge Offering
+
+**What:** Enterprise "agent sprawl" is becoming a recognized pain point — organizations deploying disconnected AI agents without orchestration or governance. Cloud Wars (Feb 21) identifies this as the #1 scaling challenge for 2026. No dedicated mid-market offering exists for agent assessment and consolidation.
+
+**Why now:** Low-code platforms (Copilot Studio, Zapier) made agent creation trivially easy. Enterprises now have 5-50 agents built by different teams with no coordination. The Mayer Brown contracting guidance (from Feb 20) means procurement teams are now auditing AI agent deployments. Someone needs to help them make sense of the mess.
+
+**AfrexAI connection:** "Agent Audit" — a fixed-price ($15K-$25K) engagement that assesses existing AI agents, maps workflows, identifies redundancy, and delivers a consolidation roadmap. Low-commitment entry point that naturally leads to $120K+ implementation deals. Positions AfrexAI as the "orchestration expert" rather than "another agent vendor." Directly supports Step 2 transition. Could be the fastest path to first 5 non-VADIS customers.
+
+**What it takes:** Service template, assessment framework (10-15 question diagnostic), sample deliverable. 2-3 days of work to productize. Target: companies already using Copilot/ChatGPT Enterprise who need to rationalize.
+
+---
+
 ## 2026-02-19 — Mid-Market Insurance: The AIG Trickle-Down
 
 **What:** AIG just deployed full agentic AI orchestration (intake → risk assessment → claims). Microsoft published that early insurance AI adopters see 3x returns vs slow adopters. Mid-market insurers (100-500 employees) want these results but lack internal AI teams to build it.

@@ -48,6 +48,15 @@ All pages: dark theme (#0a0a0a), gold (#FFD700), standalone HTML, inline CSS, mo
 6. `/blog/how-to-automate-accounts-payable/index.html` — SEO blog: "How to Automate Accounts Payable With AI Agents (2026 Guide)" (4-step process, auto-approval rules, $122K ROI projection)
 7. `/blog/ai-agents-edtech-2026/index.html` — Blog: "AI Agents in EdTech: 7 Use Cases Reshaping Education in 2026" (enrollment, student support, grading, retention, personalization, admin ops, financial aid)
 
+## 2026-02-21 (Saturday)
+1. `/seo/ai-agent-services-seattle/index.html` — City SEO page: AI Agent Services in Seattle & Pacific Northwest (SaaS, healthcare, logistics, real estate, law, construction)
+2. `/seo/ai-agent-services-denver/index.html` — City SEO page: AI Agent Services in Denver & Colorado (energy, aerospace, healthcare, construction, tourism, cannabis)
+3. `/seo/ai-automation-for-insurance/index.html` — SEO automation page: AI Automation for Insurance (claims processing, underwriting, policy admin, fraud detection, compliance, before/after ROI table)
+4. `/blog/how-to-automate-customer-support/index.html` — SEO blog: "How to Automate Customer Support With AI Agents (2026 Guide)" (5-step playbook, 70/20/10 rule, phased deployment, escalation framework)
+5. `/blog/ai-agents-law-firms-2026/index.html` — Blog: "AI Agents for Law Firms: 9 Use Cases Transforming Legal Practice in 2026" (contract review, research, intake, discovery, billing, deadlines, compliance, drafting, client comms)
+6. `/content/testimonials/index.html` — Testimonials & social proof page (6 client stories across law, construction, insurance, accounting, SaaS, healthcare with specific ROI metrics)
+7. `/one-pagers/construction/index.html` — Construction one-pager (print-ready PDF-style, $52K recovery stat, before/after comparison, $40K guarantee, Ctrl+P optimized)
+
 ## 2026-02-20 (Friday)
 1. `/seo/ai-agent-services-san-francisco/index.html` — City SEO page: AI Agent Services in San Francisco & Bay Area (SaaS, biotech, fintech, law, real estate, professional services)
 2. `/seo/ai-agent-services-houston/index.html` — City SEO page: AI Agent Services in Houston & Gulf Coast (energy/oil&gas, healthcare, construction, law, logistics, real estate)
