@@ -243,12 +243,12 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 
 <!-- Top Nav -->
 <nav style="position:fixed;top:0;left:0;right:0;height:44px;background:rgba(17,17,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;z-index:9999">
-  <a href="landing.html" style="color:#FFD700;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:.5px">AfrexAI Demo</a>
+  <a href="landing" style="color:#FFD700;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:.5px">AfrexAI Demo</a>
   <div style="display:flex;gap:4px;align-items:center">
-    <a href="index.html" style="color:#FFD700;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px;font-weight:600">Managed</a>
-    <a href="cma.html" style="color:#999;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px">Self-Managed</a>
-    <a href="how-it-works.html" style="color:#999;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px">How It Works</a>
-    <a href="agency.html" style="color:#999;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px">For Agencies</a>
+    <a href="./" style="color:#FFD700;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px;font-weight:600">Managed</a>
+    <a href="cma" style="color:#999;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px">Self-Managed</a>
+    <a href="how-it-works" style="color:#999;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px">How It Works</a>
+    <a href="agency" style="color:#999;font-size:12px;text-decoration:none;padding:6px 12px;border-radius:6px">For Agencies</a>
     <a href="https://calendly.com/cbeckford-afrexai/30min" style="color:#0a0a0a;background:#FFD700;font-weight:600;font-size:12px;padding:5px 12px;border-radius:6px;text-decoration:none">Book a Call</a>
   </div>
 </nav>
@@ -472,20 +472,58 @@ after:[{task:"Compliance monitoring",time:"Continuous automated checks",savings:
 }
 ]};
 
+// ── API Configuration ──
+// Change this URL when migrating from Cloudflare tunnel to api.afrexai.com
+const API_BASE = 'https://jail-archived-providence-documentary.trycloudflare.com';
+
 // ── Live Data ──
 let liveData = null;
 async function fetchLiveData() {
   try {
-    const r = await fetch('data/activity.json?_=' + Date.now());
-    if (r.ok) {
-      const d = await r.json();
-      const age = Date.now() - new Date(d.lastUpdated).getTime();
-      if (age < 7200000) { liveData = d; updateLiveBadge(true, d.lastUpdated); return true; }
+    // Fetch from backend API
+    const [healthRes, companiesRes] = await Promise.all([
+      fetch(API_BASE + '/api/health', {signal: AbortSignal.timeout(8000)}),
+      fetch(API_BASE + '/api/companies', {signal: AbortSignal.timeout(8000)})
+    ]);
+    if (!healthRes.ok || !companiesRes.ok) throw new Error('API error');
+    const health = await healthRes.json();
+    const companiesData = await companiesRes.json();
+    // Transform API response into liveData format expected by existing code
+    const companies = {};
+    for (const co of (companiesData.companies || [])) {
+      companies[co.id] = {
+        kpis: {
+          tasksCompleted: co.kpis?.tasksCompleted || 0,
+          hoursSaved: co.kpis?.hoursSaved || 0,
+          accuracyRate: co.kpis?.accuracyRate || 0
+        },
+        agents: (co.agents || []).map(a => ({
+          id: a.id, status: a.status || 'active', taskCount: a.taskCount || 0
+        })),
+        recentActivity: (co.recentActivity || []).map(a => ({
+          ts: a.ts, agent: a.agent, action: a.action, type: a.type,
+          real: a.real || false, artifact: a.artifact || null
+        }))
+      };
     }
-  } catch(e) {}
-  liveData = null;
-  updateLiveBadge(false);
-  return false;
+    liveData = { lastUpdated: health.lastUpdated || new Date().toISOString(), companies };
+    updateLiveBadge(true, liveData.lastUpdated);
+    return true;
+  } catch(e) {
+    console.warn('API fetch failed, using simulated data:', e.message);
+    // Fallback: try local data/activity.json
+    try {
+      const r = await fetch('data/activity.json?_=' + Date.now());
+      if (r.ok) {
+        const d = await r.json();
+        const age = Date.now() - new Date(d.lastUpdated).getTime();
+        if (age < 7200000) { liveData = d; updateLiveBadge(true, d.lastUpdated); return true; }
+      }
+    } catch(e2) {}
+    liveData = null;
+    updateLiveBadge(false);
+    return false;
+  }
 }
 function updateLiveBadge(isLive, lastUpdated) {
   let badge = document.getElementById('live-badge');
@@ -890,15 +928,28 @@ function renderMarkdown(md) {
 const artifactCache = {};
 async function fetchArtifact(path) {
   if (artifactCache[path]) return artifactCache[path];
-  try {
-    const r = await fetch('data/deliverables/' + path + '?_=' + Date.now());
-    if (!r.ok) throw new Error('Not found');
-    const text = await r.text();
-    artifactCache[path] = text;
-    return text;
-  } catch(e) {
-    return null;
+  // Try API first, then local fallback
+  const urls = [
+    API_BASE + '/api/deliverables/' + path,
+    'data/deliverables/' + path + '?_=' + Date.now()
+  ];
+  for (const url of urls) {
+    try {
+      const r = await fetch(url, {signal: AbortSignal.timeout(8000)});
+      if (!r.ok) continue;
+      const ct = r.headers.get('content-type') || '';
+      let text;
+      if (ct.includes('application/json')) {
+        const json = await r.json();
+        text = json.content || JSON.stringify(json, null, 2);
+      } else {
+        text = await r.text();
+      }
+      artifactCache[path] = text;
+      return text;
+    } catch(e) { continue; }
   }
+  return null;
 }
 
 // ── Artifact Modal ──
