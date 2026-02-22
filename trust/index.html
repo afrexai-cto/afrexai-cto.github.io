@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trust & Security — AfrexAI</title>
+<meta name="description" content="How AfrexAI protects your data, meets compliance requirements, and keeps your AI agents secure. SOC 2, HIPAA, GDPR-ready infrastructure.">
+<meta property="og:title" content="Trust & Security — AfrexAI">
+<meta property="og:description" content="Enterprise-grade security for AI agent deployments. SOC 2, HIPAA, GDPR-ready.">
+<meta property="og:url" content="https://afrexai-cto.github.io/trust/">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#111;--gold:#FFD700;--text:#e0e0e0;--muted:#999;--border:#222}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:800px;margin:0 auto;padding:40px 20px}
+nav{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+nav .logo{color:var(--gold);font-weight:700;font-size:1.1rem}
+nav .links a{color:var(--muted);margin-left:20px;font-size:.9rem}
+nav .links a:hover{color:var(--gold)}
+h1{color:var(--gold);font-size:2.2rem;margin-bottom:12px;line-height:1.2}
+.subtitle{color:var(--muted);font-size:1.1rem;margin-bottom:40px}
+h2{color:#fff;font-size:1.4rem;margin:36px 0 16px;padding-top:20px;border-top:1px solid var(--border)}
+h2:first-of-type{border-top:none;margin-top:20px}
+h3{color:var(--gold);font-size:1rem;margin:20px 0 8px}
+p{margin-bottom:14px;color:var(--text)}
+ul{margin:0 0 16px 20px}
+li{margin-bottom:8px;color:var(--text)}
+.badge-row{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+.badge{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 20px;flex:1;min-width:140px;text-align:center}
+.badge .icon{font-size:2rem;margin-bottom:8px}
+.badge .label{font-size:.85rem;color:var(--muted)}
+.badge .value{font-size:1rem;font-weight:600;color:#fff}
+.cta-box{background:var(--card);border:1px solid var(--gold);border-radius:12px;padding:32px;text-align:center;margin:40px 0}
+.cta-box h3{color:var(--gold);font-size:1.2rem;margin-bottom:8px}
+.cta-box p{color:var(--muted);margin-bottom:16px}
+.cta-btn{display:inline-block;padding:12px 28px;background:var(--gold);color:#000;font-weight:700;border-radius:8px;font-size:1rem}
+.cta-btn:hover{opacity:.9;text-decoration:none}
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:40px}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">⚡ AfrexAI</a>
+  <div class="links">
+    <a href="/industries/">Industries</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/case-studies/">Case Studies</a>
+    <a href="/blog/">Blog</a>
+  </div>
+</nav>
+
+<div class="container">
+<h1>Trust & Security</h1>
+<p class="subtitle">Your data stays yours. Your agents run on isolated infrastructure with enterprise-grade protections.</p>
+
+<div class="badge-row">
+  <div class="badge"><div class="icon">🔒</div><div class="value">Encrypted at Rest</div><div class="label">AES-256</div></div>
+  <div class="badge"><div class="icon">🛡️</div><div class="value">Encrypted in Transit</div><div class="label">TLS 1.3</div></div>
+  <div class="badge"><div class="icon">🏗️</div><div class="value">Isolated Tenancy</div><div class="label">1 VPS per customer</div></div>
+  <div class="badge"><div class="icon">📋</div><div class="value">Compliance Ready</div><div class="label">SOC 2 · HIPAA · GDPR</div></div>
+</div>
+
+<h2>Infrastructure Security</h2>
+<p>Every customer gets their own dedicated virtual server. No shared databases. No multi-tenant risk. Your AI agents run in complete isolation.</p>
+<ul>
+  <li><strong>Dedicated VPS</strong> — Each customer runs on a separate Hetzner Cloud instance (CX31+) in their preferred region</li>
+  <li><strong>No shared resources</strong> — Your data, configs, logs, and agent memory are physically isolated from other customers</li>
+  <li><strong>Firewall rules</strong> — Only SSH (key-based, no passwords) and HTTPS ports open. Everything else blocked by default</li>
+  <li><strong>Automatic updates</strong> — Security patches applied within 24 hours of release via unattended-upgrades</li>
+</ul>
+
+<h2>Data Protection</h2>
+<p>We treat your data like it belongs to you — because it does.</p>
+<ul>
+  <li><strong>AES-256 encryption at rest</strong> — All stored data encrypted on disk</li>
+  <li><strong>TLS 1.3 in transit</strong> — All communications encrypted end-to-end</li>
+  <li><strong>No training on your data</strong> — We never use customer data to train models. Period.</li>
+  <li><strong>Data residency</strong> — Choose your server region: US East, US West, EU (Frankfurt), or UK (London)</li>
+  <li><strong>30-day deletion</strong> — Request account deletion and all data is wiped within 30 days, with cryptographic proof</li>
+</ul>
+
+<h2>Access Controls</h2>
+<ul>
+  <li><strong>1Password vault per customer</strong> — API keys and credentials stored in encrypted vaults, never in plain text</li>
+  <li><strong>SSH key-only access</strong> — Password authentication disabled on all servers</li>
+  <li><strong>Principle of least privilege</strong> — Agents only access the systems you explicitly authorize</li>
+  <li><strong>Audit logs</strong> — Every agent action is logged with timestamps. Available on request.</li>
+</ul>
+
+<h2>Compliance</h2>
+<h3>SOC 2 Type I</h3>
+<p>Kickoff planned for Q2 2026. Our infrastructure already meets SOC 2 Trust Service Criteria for security, availability, and confidentiality.</p>
+
+<h3>HIPAA</h3>
+<p>Healthcare customers get BAA-ready deployments. Isolated infrastructure, encrypted PHI, access logs, and breach notification procedures built in.</p>
+
+<h3>GDPR</h3>
+<p>EU data residency available. Data processing agreements (DPA) provided. Right to deletion enforced. No data leaves your chosen region.</p>
+
+<h3>State-Level Regulations</h3>
+<p>We track evolving AI regulations including Colorado SB 205, NYC Local Law 144, and Illinois BIPA. Our agents are configured to comply with jurisdiction-specific requirements.</p>
+
+<h2>AI Model Security</h2>
+<ul>
+  <li><strong>No data leakage between customers</strong> — Each agent instance runs independently with its own context</li>
+  <li><strong>Prompt injection defenses</strong> — Input validation, output filtering, and sandboxed execution</li>
+  <li><strong>Model provider controls</strong> — We use Anthropic Claude (SOC 2 Type II certified) with zero data retention agreements</li>
+  <li><strong>Human-in-the-loop</strong> — Critical actions (sending emails, financial transactions) require approval unless explicitly automated</li>
+</ul>
+
+<h2>Incident Response</h2>
+<ul>
+  <li><strong>24-hour SLA</strong> on security incident acknowledgment</li>
+  <li><strong>72-hour notification</strong> for any data breach (GDPR-compliant)</li>
+  <li><strong>Post-incident reports</strong> provided within 5 business days</li>
+  <li><strong>Dedicated security contact</strong> for enterprise customers</li>
+</ul>
+
+<h2>Uptime & Reliability</h2>
+<ul>
+  <li><strong>99.5% uptime SLA</strong> for Managed Agent customers</li>
+  <li><strong>Automated health checks</strong> every 5 minutes</li>
+  <li><strong>Auto-restart on failure</strong> — systemd watchdog restarts agents within 30 seconds</li>
+  <li><strong>Daily encrypted backups</strong> with 30-day retention</li>
+</ul>
+
+<div class="cta-box">
+  <h3>Questions about security?</h3>
+  <p>We are happy to walk through our security posture in detail. Book a call with our team.</p>
+  <a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Security Review →</a>
+</div>
+</div>
+
+<footer>
+  <p>© 2026 AfrexAI. All rights reserved.</p>
+  <p style="margin-top:8px"><a href="/">Home</a> · <a href="/pricing/">Pricing</a> · <a href="/industries/">Industries</a> · <a href="/trust/">Trust</a> · <a href="/blog/">Blog</a></p>
+</footer>
+</body>
+</html>
