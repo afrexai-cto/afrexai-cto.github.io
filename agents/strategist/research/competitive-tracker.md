@@ -1,6 +1,6 @@
 # 🔮 Competitive Tracker
 
-Last full update: 2026-02-13
+Last full update: 2026-02-22
 
 | Competitor | Category | Recent Move | Threat Level | Last Updated |
 |---|---|---|---|---|
@@ -23,6 +23,7 @@ Last full update: 2026-02-13
 | Oracle (Fusion AI) | Platform | AI Agent Studio in Fusion Apps (24B release) — multi-step HR/finance tasks | 🟡 Medium | 2026-02-20 |
 | Camunda | Insurance Orchestration | Published insurance agentic AI blueprint — 60-80% faster claims, 20-35% leakage reduction | ⚪ Reference | 2026-02-20 |
 | Mayer Brown | Legal Guidance | Published agentic AI contracting guidance — SaaS→Services shift, outcome-based SLAs | ⚪ Reference | 2026-02-20 |
+| FourDragons | ServiceNow Partner | Formal partnership for Now Assist + AI Agents deployment — small firm winning platform deals | ⚪ Reference | 2026-02-22 |
 
 ## Strategic Position
 

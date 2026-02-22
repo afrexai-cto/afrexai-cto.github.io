@@ -232,10 +232,7 @@ tr:hover td{background:rgba(255,215,0,.03)}
 <div id="refresh-indicator"></div>
 
 <script>
-// ── API Configuration ──
-// Change this URL when migrating from Cloudflare tunnel to api.afrexai.com
-const API_BASE = 'https://jail-archived-providence-documentary.trycloudflare.com';
-const API = API_BASE + '/api';
+const API = '/api';
 let STATE = { companies: [], tasks: [], deliverables: [], schedules: [], metrics: {}, runs: [] };
 
 // --- NAV ---
@@ -578,17 +575,11 @@ function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'
 
 // --- INIT & REFRESH ---
 async function loadAll() {
-  const indicator = document.getElementById('refresh-indicator');
-  indicator.innerHTML = '<div class="spinner" style="display:inline-block;margin-right:6px"></div> Connecting to API...';
   try {
     await Promise.all([loadOverview(), loadTasks(), loadDeliverables(), loadScheduler(), loadMetrics(), loadActivity()]);
-    indicator.textContent = '🟢 Live · Updated ' + new Date().toLocaleTimeString();
-    indicator.style.color = 'var(--green)';
+    document.getElementById('refresh-indicator').textContent = 'Updated ' + new Date().toLocaleTimeString();
   } catch(e) {
     console.error('Load error:', e);
-    indicator.textContent = '🔴 API unreachable';
-    indicator.style.color = 'var(--red)';
-    toast('⚠️ Cannot reach API at ' + API_BASE + ' — is the tunnel running?', 'error');
   }
 }
 

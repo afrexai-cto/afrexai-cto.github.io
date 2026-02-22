@@ -23,3 +23,15 @@ Healthcare prior auth, by contrast, has: (a) a regulatory forcing function (CMS 
 **What would change my mind:** If corporate legal ops buyers confirm in discovery calls that their needs are fundamentally different from what Harvey offers (not just "Harvey is too expensive" but "Harvey doesn't solve THIS problem"). That would validate structural differentiation.
 
 **Action:** First 5 legal discovery calls should specifically probe: "Have you evaluated Harvey? What did/didn't it solve for you?"
+
+## 2026-02-21: What If "Agent Governance" Is Just Another Consultant Play?
+
+**Consensus position:** Agent sprawl creates a wedge opportunity. We audit, consolidate, orchestrate. $15-25K assessment → $120K implementation.
+
+**Contrarian case:** "Agent governance audit" sounds exactly like what Deloitte and Accenture will offer by Q3 2026. It's a consulting-shaped service from a company that claims to be a product company. If we lead with audits, we're competing on consulting trust — where Big 4 crushes startups. Every mid-tier AI firm (Kanerika, Fractal, etc.) will offer the same assessment. It's a crowded play disguised as insight.
+
+The real moat isn't auditing sprawl — it's preventing it. If we build the orchestration layer that enterprises deploy INSTEAD of creating sprawl, we're a product. If we audit their mess after the fact, we're a body shop with a fancy name.
+
+**What would change my mind:** If the audit consistently converts to implementation at >60%, and implementation creates lock-in (our orchestration layer becomes infrastructure). Then the audit is just a wedge, not the product. But if audit conversion is <30%, we're just selling PowerPoints.
+
+**Action:** If we pursue this, track audit → implementation conversion obsessively. And design the audit to conclude with "deploy OUR orchestration framework" — not "here's a report, good luck."

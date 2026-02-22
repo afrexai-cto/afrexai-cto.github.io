@@ -1,14 +1,19 @@
 {
   "lastRun": {
-    "daily": 1771646667318,
-    "weekly": 1771646667318,
-    "monthly": 1771646667318
+    "daily": 1771733037847,
+    "weekly": 1771733037847,
+    "monthly": 1771733037847
   },
   "alerts": [
     {
       "level": "info",
       "check": "git-backup",
-      "message": "7 uncommitted changes detected"
+      "message": "85 uncommitted changes detected"
+    },
+    {
+      "level": "warn",
+      "check": "git-backup",
+      "message": "Remote unreachable: spawnSync /bin/sh ETIMEDOUT"
     },
     {
       "level": "critical",
@@ -31,5 +36,5 @@
       "message": "No gateway config files found to verify auth settings"
     }
   ],
-  "lastRunTimestamp": "2026-02-21T04:04:27.318Z"
+  "lastRunTimestamp": "2026-02-22T04:03:57.847Z"
 }

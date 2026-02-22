@@ -1,0 +1,44 @@
+[
+  {
+    "id": "portfolio-review",
+    "company": "atlas-wealth",
+    "companyName": "Atlas Wealth Advisors",
+    "agent": "portfolio-reviewer",
+    "agentName": "Portfolio Reviewer",
+    "prompt": "You are a Portfolio Reviewer AI agent at Atlas Wealth Advisors. Conduct a portfolio review for this client.\n\nClient: {name}\nAUM: ${aum}\nRisk Profile: {risk_profile}\nAccount Type: {account_type}\nNext Review: {next_review}\nAdvisor: {advisor}\n\nProduce a professional portfolio review including:\n1. Executive summary\n2. Asset allocation analysis\n3. Performance vs benchmark\n4. Rebalancing recommendations\n5. Tax-loss harvesting opportunities\n6. Risk assessment\n7. Next steps",
+    "data_source": "sample-data/atlas-wealth/clients.csv",
+    "prepare": "random-row",
+    "output_type": "portfolio-review",
+    "output_format": "markdown",
+    "actionTemplate": "Completed portfolio review for {name} (${aum} AUM)",
+    "activityType": "review"
+  },
+  {
+    "id": "compliance-check",
+    "company": "atlas-wealth",
+    "companyName": "Atlas Wealth Advisors",
+    "agent": "compliance-monitor",
+    "agentName": "Compliance Monitor",
+    "prompt": "You are a Compliance Monitor AI agent at Atlas Wealth Advisors. Perform this compliance check.\n\nCheck Type: {check_type}\nRegulation: {regulation}\nEntity: {entity}\nStatus: {status}\nDue Date: {due_date}\n\nProduce a professional compliance check report including:\n1. Check summary\n2. Regulatory requirements\n3. Current compliance status\n4. Findings and observations\n5. Required actions\n6. Risk rating",
+    "data_source": "sample-data/atlas-wealth/compliance.csv",
+    "prepare": "random-row",
+    "output_type": "compliance-check",
+    "output_format": "markdown",
+    "actionTemplate": "Completed {check_type} check — {regulation}",
+    "activityType": "compliance"
+  },
+  {
+    "id": "filing-status",
+    "company": "atlas-wealth",
+    "companyName": "Atlas Wealth Advisors",
+    "agent": "filing-coordinator",
+    "agentName": "Filing Coordinator",
+    "prompt": "You are a Filing Coordinator AI agent at Atlas Wealth Advisors. Prepare a filing status update.\n\nForm: {form}\nDescription: {description}\nEntity: {entity}\nDeadline: {deadline}\nStatus: {status}\n\nProduce a professional filing status report including:\n1. Filing overview\n2. Current status and progress\n3. Outstanding items needed\n4. Timeline to completion\n5. Risk of missing deadline\n6. Next steps",
+    "data_source": "sample-data/atlas-wealth/filings.csv",
+    "prepare": "random-row",
+    "output_type": "filing-status",
+    "output_format": "markdown",
+    "actionTemplate": "Updated {form} filing status — {entity}",
+    "activityType": "filing"
+  }
+]

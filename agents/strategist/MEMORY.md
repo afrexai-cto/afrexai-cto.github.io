@@ -104,6 +104,21 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **New opportunity logged:** "Agent Governance Audit" as Step 2 wedge — $15K-$25K fixed-price assessment leading to $120K+ implementation. Target: enterprises with Copilot/ChatGPT sprawl.
 - **Brave Search API at 88.5% quota** (1770/2000). Will hit limit before month-end at current pace. Flag for upgrade or alternative.
 
+## Key Intelligence (Updated 2026-02-21 Evening)
+
+- **"Agent Governance Audit" identified as Step 2 wedge** — $15-25K assessment → $120K implementation. But contrarian flag raised: this looks like consulting, not product. Must convert to orchestration layer deployment, not just reports.
+- **JPMorgan KYC/AML deployment** is the reference case for insurance outreach. 20 agencies in CRM ready for Monday.
+- **Brave API at 88.5% quota** — operational constraint affecting all agents. Upgrade or throttle decision needed.
+
+## Key Intelligence (Updated 2026-02-22)
+
+- **Gartner: 40% enterprise apps will embed AI agents by EOY 2026** (up from <5% in 2025). Market adoption inflection confirmed. Use in every outreach.
+- **FourDragons (boutique firm) landed ServiceNow partnership** for AI Agent deployment. Pattern: platform vendors need implementation partners. Partnership play logged as new opportunity.
+- **IBM 2026 AI Trends: governance from day one** — agent sprawl named #1 scaling challenge again. Our governance audit wedge is market-timed.
+- **Pipeline state: 11 deals, all prospecting, all Sage, all $120K.** Zero advancement. Concentration risk flagged. Real Estate (100 companies) has zero pipeline.
+- **⚠️ Brave API at 99.2% (1984/2000).** Critical — all research agents degraded. Upgrade decision needed Monday.
+- **New opportunity: Platform Partnership Play** — pursue formal implementation partnership with ServiceNow or Microsoft for warm leads + credibility.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?
@@ -114,6 +129,8 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - Decision gate: If legal outbound converts <15% after 10 conversations, pivot healthcare to lead?
 - Is our demand-side legal differentiation structural or merely temporal? (Contrarian flag 2026-02-18)
 - First 5 legal discovery calls should probe Harvey evaluation experience specifically
+- Is "Agent Governance Audit" a product wedge or a consulting trap? Track audit → implementation conversion. (Contrarian flag 2026-02-21)
+- Should we build an orchestration PRODUCT (prevents sprawl) vs. an audit SERVICE (cleans up sprawl)?
 
 ## TARGET MARKET
 - **US ONLY** — AfrexAI is a US-based company

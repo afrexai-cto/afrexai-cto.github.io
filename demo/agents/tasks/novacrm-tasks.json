@@ -1,0 +1,44 @@
+[
+  {
+    "id": "churn-analysis",
+    "company": "novacrm",
+    "companyName": "NovaCRM",
+    "agent": "churn-analyst",
+    "agentName": "Churn Analyst",
+    "prompt": "You are a Churn Analyst AI agent at NovaCRM. Analyze this customer's churn risk.\n\nCompany: {company_name}\nPlan: {plan}\nMRR: ${mrr}\nHealth Score: {health_score}/100\nCSM: {csm_assigned}\nContract Renewal: {renewal_date}\n\nProduce a professional churn risk analysis including:\n1. Risk assessment summary\n2. Key risk indicators\n3. Usage trends analysis\n4. Engagement score breakdown\n5. Recommended interventions\n6. Retention playbook actions\n7. Escalation recommendation",
+    "data_source": "sample-data/novacrm/customers.csv",
+    "prepare": "random-row",
+    "output_type": "churn-analysis",
+    "output_format": "markdown",
+    "actionTemplate": "Completed churn risk analysis for {company_name} (score: {health_score})",
+    "activityType": "analysis"
+  },
+  {
+    "id": "onboarding-update",
+    "company": "novacrm",
+    "companyName": "NovaCRM",
+    "agent": "onboarding-specialist",
+    "agentName": "Onboarding Specialist",
+    "prompt": "You are an Onboarding Specialist AI agent at NovaCRM. Generate a progress update for this customer onboarding.\n\nCustomer: {customer}\nStage: {stage}\nProgress: {progress_pct}%\nAssigned CSM: {csm}\nStart Date: {start_date}\n\nProduce a professional onboarding progress report including:\n1. Current status overview\n2. Milestones completed\n3. Blockers or risks\n4. Next steps with timeline\n5. Customer engagement notes\n6. CSM action items",
+    "data_source": "sample-data/novacrm/onboarding.csv",
+    "prepare": "random-row",
+    "output_type": "onboarding-update",
+    "output_format": "markdown",
+    "actionTemplate": "Generated onboarding update for {customer} ({stage} — {progress_pct}%)",
+    "activityType": "onboarding"
+  },
+  {
+    "id": "ticket-triage",
+    "company": "novacrm",
+    "companyName": "NovaCRM",
+    "agent": "support-triage",
+    "agentName": "Support Triage",
+    "prompt": "You are a Support Triage AI agent at NovaCRM. Triage and analyze this support ticket.\n\nTicket ID: {ticket_id}\nCustomer: {customer}\nSubject: {subject}\nCategory: {category}\nPriority: {priority}\nSLA Hours: {sla_hours}\n\nProduce a professional triage report including:\n1. Issue classification\n2. Root cause hypothesis\n3. Recommended resolution steps\n4. Estimated resolution time\n5. SLA compliance status\n6. Escalation needed (yes/no with reason)\n7. Knowledge base article suggestion",
+    "data_source": "sample-data/novacrm/tickets.csv",
+    "prepare": "random-row",
+    "output_type": "ticket-triage",
+    "output_format": "markdown",
+    "actionTemplate": "Triaged ticket {ticket_id}: {subject} for {customer}",
+    "activityType": "triage"
+  }
+]

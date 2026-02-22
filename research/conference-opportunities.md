@@ -1,6 +1,14 @@
 # Conference & Speaking Opportunities — Q1-Q2 2026
 
-*Updated: 2026-02-20*
+*Updated: 2026-02-21*
+
+## 🔥 TOP PRIORITY — Candescent AXIS 2026
+- **When:** April 21-23, 2026, Orlando FL
+- **What:** Candescent's annual client/partner conference — "Connected Brilliance" / Intelligent Banking
+- **Why #1:** Candescent (ex-NCR Digital Banking) serves community banks = OUR EXACT ICP. Warm audience.
+- **Registration:** https://events.candescent.com/CandescentAXIS26
+- **Action:** Register Christina. Inquire re: speaking slots. Full strategy: `content/candescent-axis-strategy.md`
+- **Status:** Strategy doc created 2026-02-21. Awaiting Christina approval to register.
 
 ## NEW — Just Discovered (Feb 20)
 

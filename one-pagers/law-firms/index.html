@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents for Law Firms — One-Pager | AfrexAI</title>
+    <meta name="description" content="AfrexAI one-pager for law firms: AI agents for contract review, discovery, intake, and billing. $1.6M in recovered billable hours. $40K performance guarantee.">
+    <style>
+        @page { size: letter; margin: 0.5in; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+        a { color: #FFD700; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav { background: #111; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; }
+        .nav-logo { font-size: 1.5rem; font-weight: 800; color: #FFD700; }
+        .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .nav-links a { color: #ccc; font-size: 0.95rem; }
+        .nav-links a:hover { color: #FFD700; }
+        .page { max-width: 850px; margin: 0 auto; padding: 2rem; }
+        .header { text-align: center; padding: 2.5rem 1rem; border-bottom: 3px solid #FFD700; margin-bottom: 2rem; }
+        .header h1 { font-size: 2.2rem; color: #FFD700; margin-bottom: 0.5rem; }
+        .header .subtitle { font-size: 1.15rem; color: #ccc; }
+        .header .tagline { font-size: 1.5rem; color: #fff; font-weight: 700; margin-top: 1rem; }
+        .hero-stat { text-align: center; background: linear-gradient(135deg, #1a1a00 0%, #0a0a0a 100%); border: 2px solid #FFD700; border-radius: 12px; padding: 2rem; margin: 2rem 0; }
+        .hero-stat .big { font-size: 3.5rem; font-weight: 900; color: #FFD700; }
+        .hero-stat .desc { font-size: 1.1rem; color: #ccc; margin-top: 0.25rem; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+        .col-card { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 1.5rem; }
+        .col-card h3 { color: #FFD700; font-size: 1.15rem; margin-bottom: 0.75rem; }
+        .col-card p, .col-card li { color: #ccc; font-size: 0.95rem; }
+        .col-card ul { padding-left: 1.25rem; }
+        .col-card li { margin-bottom: 0.35rem; }
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 2rem 0; border-radius: 10px; overflow: hidden; }
+        .comp-col { padding: 1.5rem; }
+        .comp-col.before { background: #1a0000; border: 1px solid #331111; }
+        .comp-col.after { background: #001a00; border: 1px solid #113311; }
+        .comp-col h3 { margin-bottom: 0.75rem; font-size: 1.1rem; }
+        .comp-col.before h3 { color: #ff6666; }
+        .comp-col.after h3 { color: #66ff66; }
+        .comp-col li { color: #ccc; font-size: 0.9rem; margin-bottom: 0.3rem; }
+        .comp-col ul { padding-left: 1.25rem; }
+        .guarantee { text-align: center; background: #111; border: 2px solid #FFD700; border-radius: 12px; padding: 2rem; margin: 2rem 0; }
+        .guarantee h2 { color: #FFD700; font-size: 1.6rem; margin-bottom: 0.5rem; }
+        .guarantee p { color: #ccc; font-size: 1.05rem; }
+        .guarantee .amount { font-size: 2.5rem; font-weight: 900; color: #FFD700; }
+        .cta-box { text-align: center; padding: 2rem; margin: 2rem 0; }
+        .cta-box h2 { color: #FFD700; font-size: 1.5rem; margin-bottom: 1rem; }
+        .btn { display: inline-block; background: #FFD700; color: #0a0a0a; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 700; font-size: 1rem; }
+        .btn:hover { background: #e6c200; text-decoration: none; }
+        .stats-row { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+        .mini-stat { text-align: center; }
+        .mini-stat .num { font-size: 1.8rem; font-weight: 800; color: #FFD700; }
+        .mini-stat .lbl { color: #999; font-size: 0.8rem; }
+        footer { text-align: center; padding: 1.5rem; color: #666; font-size: 0.8rem; border-top: 1px solid #222; }
+
+        @media print {
+            body { background: #fff; color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            nav { display: none; }
+            .page { padding: 0; max-width: 100%; }
+            .header { border-bottom-color: #b8960f; padding: 1rem; }
+            .header h1 { color: #b8960f; font-size: 1.8rem; }
+            .header .tagline { color: #000; }
+            .header .subtitle { color: #444; }
+            .hero-stat { border-color: #b8960f; background: #fffbe6; }
+            .hero-stat .big { color: #b8960f; font-size: 2.5rem; }
+            .hero-stat .desc { color: #333; }
+            .col-card { background: #f9f9f9; border-color: #ddd; }
+            .col-card h3 { color: #b8960f; }
+            .col-card p, .col-card li { color: #333; }
+            .comp-col.before { background: #fff0f0; border-color: #fcc; }
+            .comp-col.after { background: #f0fff0; border-color: #cfc; }
+            .comp-col.before h3 { color: #c00; }
+            .comp-col.after h3 { color: #060; }
+            .comp-col li { color: #333; }
+            .guarantee { background: #fffbe6; border-color: #b8960f; }
+            .guarantee h2 { color: #b8960f; }
+            .guarantee .amount { color: #b8960f; }
+            .guarantee p { color: #333; }
+            .mini-stat .num { color: #b8960f; }
+            .mini-stat .lbl { color: #666; }
+            .btn { background: #b8960f; color: #fff; }
+            .cta-box h2 { color: #b8960f; }
+            footer { color: #999; border-top-color: #ddd; }
+            a { color: #b8960f; }
+        }
+
+        @media (max-width: 768px) {
+            .two-col, .comparison { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.6rem; }
+            .hero-stat .big { font-size: 2.5rem; }
+            nav { padding: 0.75rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">AfrexAI</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/verticals/">Industries</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/case-studies/">Case Studies</a>
+            <a href="/blog/">Blog</a>
+            <a href="/contact/">Contact</a>
+        </div>
+    </nav>
+
+    <div class="page">
+        <div class="header">
+            <h1>AI Agents for Law Firms</h1>
+            <div class="subtitle">Custom AI Automation for Contract Review, Discovery, Intake & Billing</div>
+            <div class="tagline">Stop Losing Revenue to Manual Processes</div>
+        </div>
+
+        <div class="hero-stat">
+            <div class="big">$1.6M</div>
+            <div class="desc">Average billable hours recovered per year for a 25-attorney firm using AfrexAI agents</div>
+        </div>
+
+        <div class="stats-row">
+            <div class="mini-stat">
+                <div class="num">85%</div>
+                <div class="lbl">Faster Contract Review</div>
+            </div>
+            <div class="mini-stat">
+                <div class="num">70%</div>
+                <div class="lbl">Less Time on Discovery</div>
+            </div>
+            <div class="mini-stat">
+                <div class="num">12 min</div>
+                <div class="lbl">Avg. Client Intake (was 45 min)</div>
+            </div>
+            <div class="mini-stat">
+                <div class="num">99.1%</div>
+                <div class="lbl">Billing Accuracy</div>
+            </div>
+        </div>
+
+        <h2 style="color:#FFD700; font-size:1.5rem; margin:2rem 0 1rem;">What We Automate</h2>
+
+        <div class="two-col">
+            <div class="col-card">
+                <h3>📑 Contract Review & Analysis</h3>
+                <p>AI agents review contracts in minutes instead of hours. Identify risky clauses, missing provisions, non-standard terms, and deviations from your playbook — across 50+ contract types.</p>
+                <ul>
+                    <li>Clause extraction & risk scoring</li>
+                    <li>Automated redlining suggestions</li>
+                    <li>Playbook compliance checking</li>
+                    <li>Multi-party comparison analysis</li>
+                </ul>
+            </div>
+            <div class="col-card">
+                <h3>🔍 Document Discovery</h3>
+                <p>Process 100,000+ documents in hours instead of weeks. AI agents classify, tag, privilege-flag, and extract key facts — reducing discovery costs by 70% while improving accuracy.</p>
+                <ul>
+                    <li>Intelligent document classification</li>
+                    <li>Privilege & relevance scoring</li>
+                    <li>Key fact extraction & timeline building</li>
+                    <li>Deduplication & near-duplicate detection</li>
+                </ul>
+            </div>
+            <div class="col-card">
+                <h3>👤 Client Intake & Conflicts</h3>
+                <p>Convert website visitors into qualified clients automatically. AI handles initial screening, conflict checks, engagement letter generation, and document collection — 24/7.</p>
+                <ul>
+                    <li>24/7 intake with intelligent screening</li>
+                    <li>Automated conflict of interest checks</li>
+                    <li>Engagement letter generation</li>
+                    <li>Client portal & document collection</li>
+                </ul>
+            </div>
+            <div class="col-card">
+                <h3>💵 Billing & Time Entry</h3>
+                <p>Capture every billable minute. AI agents reconstruct time entries from emails, documents, and calendar events — eliminating the $180K+ in leaked revenue the average firm loses annually.</p>
+                <ul>
+                    <li>Automated time reconstruction</li>
+                    <li>Pre-bill narrative generation</li>
+                    <li>LEDES/UTBMS compliance formatting</li>
+                    <li>Write-off reduction & collection automation</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 style="color:#FFD700; font-size:1.5rem; margin:2rem 0 1rem;">Before & After AfrexAI</h2>
+
+        <div class="comparison">
+            <div class="comp-col before">
+                <h3>❌ Without AI Agents</h3>
+                <ul>
+                    <li>Contract review: 3–4 hours per contract</li>
+                    <li>Discovery: $15,000–$50,000 per matter</li>
+                    <li>Intake: 45 min per prospect, business hours only</li>
+                    <li>Billing: 20–40% of time goes unbilled</li>
+                    <li>Conflicts: Manual check takes 30+ minutes</li>
+                    <li>Associates spend 65% on non-billable tasks</li>
+                    <li>Client response time: 24–48 hours</li>
+                    <li>Revenue per attorney: $420K average</li>
+                </ul>
+            </div>
+            <div class="comp-col after">
+                <h3>✅ With AfrexAI Agents</h3>
+                <ul>
+                    <li>Contract review: 15–25 minutes per contract</li>
+                    <li>Discovery: $3,000–$8,000 per matter</li>
+                    <li>Intake: 12 min automated, 24/7/365</li>
+                    <li>Billing: 95%+ time capture rate</li>
+                    <li>Conflicts: Instant automated check</li>
+                    <li>Associates spend 85% on billable work</li>
+                    <li>Client response time: under 5 minutes</li>
+                    <li>Revenue per attorney: $680K average</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="guarantee">
+            <h2>Our Performance Guarantee</h2>
+            <div class="amount">$40,000</div>
+            <p>We guarantee a minimum of <strong>$40,000 in measurable value</strong> within your first 12 months — through recovered billable hours, reduced overhead, and increased client capacity. If we don't deliver, we work for free until we do.</p>
+        </div>
+
+        <h2 style="color:#FFD700; font-size:1.5rem; margin:2rem 0 1rem;">The Numbers That Matter</h2>
+        <div class="two-col">
+            <div class="col-card">
+                <h3>Revenue Impact</h3>
+                <ul>
+                    <li><strong>$1.6M</strong> in recovered billable hours/year (25-attorney firm)</li>
+                    <li><strong>62%</strong> increase in revenue per attorney</li>
+                    <li><strong>3.2x</strong> more matters handled per associate</li>
+                    <li><strong>89%</strong> reduction in write-offs</li>
+                </ul>
+            </div>
+            <div class="col-card">
+                <h3>Efficiency Impact</h3>
+                <ul>
+                    <li><strong>85%</strong> faster contract review</li>
+                    <li><strong>70%</strong> lower discovery costs</li>
+                    <li><strong>94%</strong> reduction in intake processing time</li>
+                    <li><strong>99.1%</strong> billing accuracy rate</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Ready to Recover $1.6M in Lost Revenue?</h2>
+            <p style="color:#ccc; margin-bottom:1.5rem;">Book a free 30-minute strategy call. We'll audit your current workflows and show you exactly where AI agents can drive revenue — with specific dollar projections for your firm.</p>
+            <a href="https://calendly.com/cbeckford-afrexai/30min" class="btn">Book Your Free Strategy Call</a>
+            <p style="margin-top:1rem; color:#999; font-size:0.9rem;">
+                <a href="https://afrexai.com">afrexai.com</a> &nbsp;|&nbsp;
+                <a href="https://www.youtube.com/@AfrexAI">YouTube</a> &nbsp;|&nbsp;
+                Ctrl+P to save as PDF
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AfrexAI. All rights reserved. | AI Agents for Law Firms — Contract Review, Discovery, Intake & Billing Automation</p>
+    </footer>
+</body>
+</html>

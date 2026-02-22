@@ -1,6 +1,6 @@
 {
-  "runId": 4,
-  "overall": 69,
+  "runId": 5,
+  "overall": 70,
   "results": [
     {
       "score": 89,
@@ -12,20 +12,20 @@
       "status": "healthy"
     },
     {
-      "score": 49,
+      "score": 60,
       "findings": [
-        "📊 161 JS/TS files, ~9593 total lines",
-        "⚠️ 28 TODO comments found",
-        "⚠️ 2 files exceed 300 lines",
-        "⚠️ 24 async files without try/catch"
+        "📊 178 JS/TS files, ~9533 total lines",
+        "⚠️ 3 TODO comments found",
+        "⚠️ 3 files exceed 300 lines",
+        "⚠️ 22 async files without try/catch"
       ],
       "area": "code-quality",
-      "status": "critical"
+      "status": "warning"
     },
     {
       "score": 10,
       "findings": [
-        "📊 0 test files found across 149 source files (ratio: 0.0%)",
+        "📊 0 test files found across 166 source files (ratio: 0.0%)",
         "🔴 No tests found in systems/",
         "🔴 No tests found in skills/",
         "🔴 No tests found in crm/",
@@ -56,9 +56,9 @@
         "⚠️ No lockfile: ./systems/platform-health/package.json",
         "⚠️ No lockfile: ./systems/prompt-engineering/package.json",
         "⚠️ No lockfile: ./systems/security-safety/package.json",
-        "📊 29 package.json files, 36 total dependencies",
-        "ℹ️ 36 dependencies use floating versions (^/~)",
-        "📦 Most shared deps: googleapis(5x), sql.js(3x)"
+        "📊 30 package.json files, 37 total dependencies",
+        "ℹ️ 37 dependencies use floating versions (^/~)",
+        "📦 Most shared deps: googleapis(5x), express(3x), sql.js(3x)"
       ],
       "area": "dependencies",
       "status": "critical"
@@ -68,10 +68,10 @@
       "findings": [
         "📁 Large files (>1MB):",
         "  - ./systems/security-council/scan-data.json (4.6MB)",
-        "  - ./systems/db-backups/backups/backup-20260220-230307.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260221-000257.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260221-010146.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260221-020254.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260221-230305.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260222-000215.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260222-010151.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260222-020203.tar.enc (1.4MB)",
         "📊 Total large file storage: 14.3MB"
       ],
       "area": "storage",
@@ -110,13 +110,13 @@
     }
   ],
   "recommendations": [
-    "Address critical issues in: code-quality, test-coverage, dependencies",
-    "Review warnings in: storage, skill-integrity",
-    "code-quality: Needs immediate attention (score: 49)",
+    "Address critical issues in: test-coverage, dependencies",
+    "Review warnings in: code-quality, storage, skill-integrity",
+    "code-quality: Room for improvement (score: 60)",
     "test-coverage: Needs immediate attention (score: 10)",
     "dependencies: Needs immediate attention (score: 45)",
     "storage: Room for improvement (score: 79)",
     "skill-integrity: Room for improvement (score: 68)"
   ],
-  "timestamp": "2026-02-21T05:02:48.251Z"
+  "timestamp": "2026-02-22T05:02:14.145Z"
 }

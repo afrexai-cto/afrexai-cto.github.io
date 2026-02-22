@@ -1,4 +1,4 @@
-# ☀️ Daily Briefing — Saturday, 21 February 2026
+# ☀️ Daily Briefing — Sunday, 22 February 2026
 
 ## 📅 Today's Schedule
 
@@ -11,6 +11,7 @@ _No events today._
 - ~~2026-02-19~~ **Send SOC2 report to Meridian Health** [high]
 - ~~2026-02-19~~ **Review Q1 forecast spreadsheet** [medium]
 - ~~2026-02-17~~ **Follow up with Sarah on board timeline** [high]
+- ~~2026-02-21~~ **Draft blog post on API v3 features** [low]
 - ~~2026-02-15~~ **Update investor deck with Jan metrics** [medium]
 
 **📌 Due Today:**

@@ -71,3 +71,10 @@
 ## 2026-02-20: Outcome-Based Contracting as Sales Differentiator
 
 Mayer Brown published formal guidance stating agentic AI should be contracted as services (BPO-style), not SaaS. This means enterprise buyers are now EXPECTING outcome-based SLAs, indemnification, and audit rights. Most AI vendors still sell seat licenses or API calls. We already price on "recovered capacity" (outcomes). Leaning into this framing — "We're the only vendor whose contract model matches what your legal team is now demanding" — gives us a structural sales advantage. Requires: formalize our contract templates with outcome-based SLA language, reference Mayer Brown guidance in sales collateral. Connects to Step 2 (Service Accounts) directly. Low effort, high signal.
+
+## 2026-02-22: Platform Partnership Play
+**What:** Pursue formal implementation partnership with a major platform vendor (ServiceNow, Salesforce, or Microsoft) for their AI agent features.
+**Why now:** FourDragons (small firm) just landed a ServiceNow partnership for AI Agent deployment. Pattern repeating across all platforms — they need boutique implementers.
+**AfrexAI connection:** Aligns with Step 2 (Service Accounts). Partnership provides warm leads from platform's own pipeline, instant credibility, and co-marketing.
+**What it takes:** Identify partnership program requirements for one vendor. ServiceNow or Microsoft Copilot Studio most aligned with our verticals. Application + demo of vertical capability.
+**Risk:** Partnership requirements may include certifications or minimum headcount. Research before committing.

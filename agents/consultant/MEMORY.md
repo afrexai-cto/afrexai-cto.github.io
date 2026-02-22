@@ -187,6 +187,23 @@
 - Terminology: "managing partner", "practice group leader", "associate", "paralegal", "matter management", "client intake", "conflicts check", "trust accounting", "IOLTA", "CLE"
 - Content handoff needed for blog + lead magnet (Law Firm AI Governance Checklist)
 
+### Dental Groups / DSOs — AI Governance & HIPAA (Added 2026-02-21)
+- **Primary pain:** Ungoverned AI adoption + HIPAA regulatory tightening — staff using ChatGPT with patient data, no BAAs, no audit trails
+- 35% of dentists globally already using AI (BMC Oral Health 2025) — adoption far ahead of governance
+- **No specific AI legislation for healthcare yet** — AI falls under existing HIPAA framework; AI vendors = business associates requiring BAAs
+- CDA explicitly warns: never use free/public ChatGPT with patient data — inputs can train the model
+- **Feb 16, 2026 NPP deadline** — practices must update Notice of Privacy Practices (SUD alignment)
+- HHS signaling mandatory MFA + encryption (moving from "addressable" to required) in upcoming Security Rule update
+- Solo dental practices already fined $50,000-$70,000 for compliance failures (SPS Dental Academy, Dec 2025)
+- HIPAA penalties: $100-$50,000 per violation, caps up to $1.9M for willful neglect
+- AI in dentistry market: $421M (2024) → $3.1B by 2034 (22.3% CAGR)
+- DSO-specific: multi-location = multiplied compliance surface; clinical AI (FDA-cleared) is governed, admin GenAI is not
+- ROI: ~$115-250K/yr value for 200-employee group vs $60K implementation (4-6mo breakeven)
+- CRM has 5 dental groups — top prospects: DECA Dental Group (500 emp), Dental365 (300 emp), Dental Beauty Partners (200 emp)
+- Key objection: "We only use FDA-cleared AI tools" → "What about the ChatGPT your office managers use for patient emails? That's where the breach happens."
+- Terminology: "DSO", "practice administrator", "managing partner", "Dentrix", "Eaglesoft", "Open Dental", "BAA", "ePHI", "NPP", "covered entity"
+- Content handoff created for blog + lead magnet (6-Point AI Governance Checklist)
+
 - *This section updated as new verticals, use cases, and insights are developed*
 
 ## Shared Reference
