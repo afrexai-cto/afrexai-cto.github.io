@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Results & Trust Signals | Why Companies Choose Managed AI Agents</title>
+<meta name="description" content="See why companies trust AfrexAI to deploy and manage their AI workforce. Real results, real infrastructure, real support.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--gold:#eab308;--gold-dim:#ca9a06;--white:#f5f5f5;--gray:#a3a3a3;--card:#141414;--card-border:#1f1f1f}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--card-border);padding:16px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:-.5px}
+.logo span{color:var(--gold)}
+nav a.cta-btn{background:var(--gold);color:#0a0a0a;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.875rem;transition:background .2s}
+nav a.cta-btn:hover{background:var(--gold-dim)}
+
+.hero{padding:140px 0 80px;text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.1rem;color:var(--gray);max-width:580px;margin:0 auto}
+
+section{padding:80px 0}
+.section-label{text-transform:uppercase;font-size:.75rem;font-weight:600;letter-spacing:.12em;color:var(--gold);margin-bottom:12px}
+.section-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.section-sub{color:var(--gray);max-width:560px;margin-bottom:48px;font-size:1rem}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+
+/* Stats bar */
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:60px}
+.stat{text-align:center;padding:32px 20px}
+.stat .num{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--gold);line-height:1}
+.stat .label{font-size:.9rem;color:var(--gray);margin-top:8px}
+
+/* Proof cards */
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.proof-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:32px 28px;transition:border-color .2s}
+.proof-card:hover{border-color:var(--gold)}
+.proof-card .icon{font-size:2rem;margin-bottom:16px}
+.proof-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.proof-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
+
+/* Testimonial */
+.testimonial{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:48px 40px;max-width:720px;margin:0 auto;position:relative}
+.testimonial::before{content:""";font-size:6rem;color:var(--gold);opacity:.3;position:absolute;top:8px;left:24px;line-height:1;font-family:Georgia,serif}
+.testimonial blockquote{font-size:1.15rem;line-height:1.8;margin-bottom:20px;padding-left:8px;font-style:italic;color:var(--white)}
+.testimonial .attribution{font-size:.85rem;color:var(--gray);font-style:normal}
+.testimonial .attribution strong{color:var(--gold)}
+
+/* Guarantees */
+.guarantee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.guarantee{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:28px 24px;text-align:center}
+.guarantee .icon{font-size:2.2rem;margin-bottom:12px}
+.guarantee h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.guarantee p{color:var(--gray);font-size:.85rem}
+
+/* CTA */
+.final-cta{text-align:center;padding:80px 0 100px}
+.final-cta h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;margin-bottom:16px}
+.final-cta p{color:var(--gray);max-width:480px;margin:0 auto 36px;font-size:1rem}
+.cta-btn{display:inline-block;background:var(--gold);color:#0a0a0a;padding:16px 40px;border-radius:10px;font-weight:700;font-size:1.05rem;transition:background .2s,transform .15s}
+.cta-btn:hover{background:var(--gold-dim);transform:translateY(-2px)}
+
+footer{text-align:center;padding:32px 0;border-top:1px solid var(--card-border);font-size:.8rem;color:#555}
+</style>
+</head>
+<body>
+
+<nav><div class="container">
+<a href="/aaas/landing.html" class="logo">Afrex<span>AI</span></a>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Call →</a>
+</div></nav>
+
+<header class="hero"><div class="container">
+<h1>Built on <span>Real Results</span>, Not Promises</h1>
+<p>We don't sell hype. We deploy infrastructure that runs your operations while you sleep — and we prove it works before you pay full price.</p>
+
+<div class="stats-bar">
+<div class="stat"><div class="num">$111K</div><div class="label">Pre-delivery revenue from first enterprise client</div></div>
+<div class="stat"><div class="num">99.9%</div><div class="label">Uptime SLA on dedicated infrastructure</div></div>
+<div class="stat"><div class="num">7 Days</div><div class="label">From signup to first agent live</div></div>
+<div class="stat"><div class="num">86-96%</div><div class="label">Gross margins — we keep costs low, value high</div></div>
+</div>
+</div></header>
+
+<!-- Trust Signals -->
+<section><div class="container">
+<div class="text-center">
+<div class="section-label">Why Us</div>
+<div class="section-title">Trust Signals That Matter</div>
+<div class="section-sub">We built the infrastructure ourselves. We run it for our own business. Now we run it for yours.</div>
+</div>
+
+<div class="proof-grid">
+<div class="proof-card">
+<div class="icon">🏗️</div>
+<h3>We Use What We Sell</h3>
+<p>Our own business runs on the exact same AI agent stack we deploy for clients. Email triage, CRM updates, lead research, content generation — all automated, all day, every day. Dogfooding isn't optional. It's how we catch problems before you do.</p>
+</div>
+<div class="proof-card">
+<div class="icon">🔒</div>
+<h3>Dedicated Infrastructure</h3>
+<p>Your agents run on isolated VPS instances — not shared tenants. Your data never touches another client's environment. Full encryption at rest and in transit. SOC 2 practices from day one.</p>
+</div>
+<div class="proof-card">
+<div class="icon">💰</div>
+<h3>$111K Pre-Delivery Trust</h3>
+<p>Our first enterprise client paid $111,000 before we delivered a single line of code. That's the kind of trust you earn by being specific about what you'll build and honest about what you won't.</p>
+</div>
+<div class="proof-card">
+<div class="icon">📊</div>
+<h3>Transparent Reporting</h3>
+<p>Weekly performance reports with real numbers. Tasks completed, hours saved, error rates, uptime. No vanity metrics. If an agent isn't pulling its weight, we'll tell you — and fix it or kill it.</p>
+</div>
+<div class="proof-card">
+<div class="icon">⚡</div>
+<h3>Week One Win Guarantee</h3>
+<p>Your first agent is live and producing results within 7 days. Not "set up." Not "configured." Actually working — triaging emails, researching leads, drafting content. Measurable output in week one or we extend free.</p>
+</div>
+<div class="proof-card">
+<div class="icon">🧑‍💻</div>
+<h3>Built by Engineers, Not Resellers</h3>
+<p>We're not wrapping ChatGPT in a nice UI. Our team builds custom agent architectures — multi-agent swarms, validation loops, automated pipelines. The tech is ours. The expertise is real.</p>
+</div>
+</div>
+</div></section>
+
+<!-- Client Story -->
+<section style="background:#0d0d0d"><div class="container">
+<div class="text-center">
+<div class="section-label">In Practice</div>
+<div class="section-title">What It Looks Like in the Real World</div>
+<div class="section-sub">A typical AfrexAI client deployment in the first 30 days.</div>
+</div>
+
+<div class="testimonial">
+<blockquote>"We went from manually triaging 200+ emails a day and spending 15 hours a week on lead research to having an AI agent handle both — overnight. The first week alone freed up our operations manager to focus on closing deals instead of sorting inboxes."</blockquote>
+<div class="attribution">— <strong>Mid-market professional services firm</strong>, 50 employees, $8M revenue</div>
+</div>
+</div></section>
+
+<!-- Guarantees -->
+<section><div class="container">
+<div class="text-center">
+<div class="section-label">Our Commitments</div>
+<div class="section-title">Guarantees, Not Disclaimers</div>
+<div class="section-sub">We put skin in the game. If we don't deliver, you don't pay.</div>
+</div>
+
+<div class="guarantee-grid">
+<div class="guarantee">
+<div class="icon">🎯</div>
+<h3>Week I Win</h3>
+<p>First agent producing measurable output within 7 days of onboarding. If not, the extra time is on us.</p>
+</div>
+<div class="guarantee">
+<div class="icon">💸</div>
+<h3>$40K Recovery Target</h3>
+<p>We aim to save or generate $40K+ in the first 90 days through automation. If we're not tracking toward it, we course-correct immediately.</p>
+</div>
+<div class="guarantee">
+<div class="icon">🔐</div>
+<h3>Zero Overrun</h3>
+<p>Fixed monthly pricing. No surprise bills. No "oh we need more compute." The price you see is the price you pay.</p>
+</div>
+<div class="guarantee">
+<div class="icon">📞</div>
+<h3>Direct Access</h3>
+<p>Talk to the engineers who build and maintain your agents. No support tiers. No ticket queues. Slack channel with the actual team.</p>
+</div>
+</div>
+</div></section>
+
+<!-- Final CTA -->
+<div class="final-cta"><div class="container">
+<h2>Ready to see it in action?</h2>
+<p>Book a 30-minute call. We'll map your operations, identify the biggest automation wins, and show you exactly what your first agent would do.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Discovery Call →</a>
+<p style="margin-top:16px;font-size:.85rem;color:#555">Or start with our <a href="https://buy.stripe.com/fZuaEQaPs9Mrge87l50sU0a" style="text-decoration:underline">$750/mo intro offer</a> — no call needed.</p>
+</div></div>
+
+<footer><div class="container">© 2026 AfrexAI. All rights reserved. <a href="/aaas/landing.html">Back to AaaS</a> · <a href="/">Home</a></div></footer>
+
+</body>
+</html>
