@@ -3,225 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — AI Agent Insights | AfrexAI</title>
+<title>Blog | AfrexAI — AI Agents as a Service</title>
+<meta name="description" content="Practical guides on deploying AI agents for healthcare, recruitment, construction, real estate, manufacturing, legal, and SaaS businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
-a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
-nav{background:#111;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100}
-nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700}
-nav .links{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.9rem}
-nav .links a{color:#aaa}nav .links a:hover{color:#FFD700}
-.hero{text-align:center;padding:5rem 2rem 3rem;max-width:700px;margin:0 auto}
-.hero h1{font-size:2.8rem;margin-bottom:1rem;color:#fff}.hero h1 span{color:#FFD700}
-.hero p{font-size:1.1rem;color:#999}
-.posts{max-width:800px;margin:0 auto;padding:0 2rem 4rem}
-.post-card{background:#111;border:1px solid #222;border-radius:14px;padding:2rem;margin-bottom:1.5rem;transition:border-color .3s}
-.post-card:hover{border-color:#FFD700}
-.post-card .meta{color:#888;font-size:.8rem;margin-bottom:.5rem}
-.post-card h3{color:#fff;font-size:1.3rem;margin-bottom:.5rem}
-.post-card h3 a{color:#fff}.post-card h3 a:hover{color:#FFD700}
-.post-card p{color:#aaa;font-size:.95rem;margin-bottom:1rem}
-.read-more{color:#FFD700;font-weight:600;font-size:.9rem}
-footer{text-align:center;padding:3rem 2rem;border-top:1px solid #222;color:#666;font-size:.85rem}
-footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
-footer .footer-links a{color:#888;font-size:.85rem}footer .footer-links a:hover{color:#FFD700}
-@media(max-width:600px){.hero h1{font-size:1.8rem}}
+body{background:#0a0a0a;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.nav{padding:1.5rem;border-bottom:1px solid #222}
+.nav a{color:#eab308;font-weight:600;font-size:1.1rem}
+.container{max-width:960px;margin:0 auto;padding:3rem 1.5rem}
+.hero{text-align:center;margin-bottom:3rem}
+.hero h1{font-size:2.5rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
+.hero p{color:#999;font-size:1.1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.card{background:#141414;border:1px solid #222;border-radius:12px;padding:1.8rem;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column}
+.card:hover{border-color:#eab308;transform:translateY(-2px)}
+.card .tag{display:inline-block;background:#eab308;color:#0a0a0a;padding:0.15rem 0.5rem;border-radius:4px;font-weight:600;font-size:0.75rem;margin-bottom:0.8rem;width:fit-content}
+.card h2{font-size:1.2rem;color:#fff;margin-bottom:0.5rem;font-weight:600}
+.card p{color:#999;font-size:0.9rem;flex:1}
+.card .read-more{color:#eab308;font-weight:600;font-size:0.9rem;margin-top:1rem}
+.footer{text-align:center;color:#666;font-size:0.85rem;padding:3rem 0;border-top:1px solid #222;margin-top:3rem}
 </style>
-    <meta property="og:title" content="Blog — AI Agent Insights | AfrexAI">
-    <meta property="og:description" content="Blog — AI Agent Insights | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
-    <meta property="og:url" content="https://afrexai-cto.github.io/blog/">
-    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Blog — AI Agent Insights | AfrexAI">
-    <meta name="twitter:description" content="Blog — AI Agent Insights | AfrexAI - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
 </head>
 <body>
-<nav>
-<div class="logo"><a href="/" style="color:#FFD700">AfrexAI</a></div>
-<div class="links">
-<a href="/">Home</a>
-<a href="/agent-marketplace/">Marketplace</a>
-<a href="/pricing/">Pricing</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-</div>
-</nav>
-
+<nav class="nav"><a href="https://afrexai.com">AfrexAI</a></nav>
+<div class="container">
 <div class="hero">
-<h1>Blog & <span>Insights</span></h1>
-<p>Real talk about AI agents, automation, and building workforces that don't sleep.</p>
+<h1>The AfrexAI Blog</h1>
+<p>Practical guides on AI agents for real businesses.</p>
 </div>
-
-<div class="posts">
-
-<div class="post-card">
-<div class="meta">February 21, 2026 · 12 min read</div>
-<h3><a href="/blog/how-to-automate-property-management/">How to Automate Property Management with AI Agents in 2026</a></h3>
-<p>Property managers spend 62% of their day on admin. AI agents handle tenant screening in 4 minutes, cut maintenance resolution from 4.2 days to 1.7, and let one manager handle 200 units. Real numbers from real portfolios.</p>
-<a href="/blog/how-to-automate-property-management/" class="read-more">Read More →</a>
+<div class="grid">
+<a href="/blog/ai-agents-for-healthcare.html" class="card">
+<span class="tag">Healthcare</span>
+<h2>AI Agents for Healthcare Practices</h2>
+<p>Reclaim 20+ hours per week of staff time with AI agents that handle scheduling, insurance verification, patient intake, and billing.</p>
+<span class="read-more">Read article →</span>
+</a>
+<a href="/blog/ai-agents-for-recruitment.html" class="card">
+<span class="tag">Recruitment</span>
+<h2>AI Agents for Recruitment & Staffing</h2>
+<p>Stop drowning in resumes. AI agents handle screening, scheduling, outreach, and pipeline reporting so recruiters focus on closing.</p>
+<span class="read-more">Read article →</span>
+</a>
+<a href="/blog/ai-agents-for-construction.html" class="card">
+<span class="tag">Construction</span>
+<h2>AI Agents for Construction Companies</h2>
+<p>Stop losing money to manual processes. AI agents handle RFIs, daily reports, scheduling, invoicing, and safety compliance.</p>
+<span class="read-more">Read article →</span>
+</a>
+<a href="/blog/ai-agents-for-real-estate.html" class="card">
+<span class="tag">Real Estate</span>
+<h2>AI Agents for Real Estate</h2>
+<p>Stop letting leads die in your CRM. AI agents handle lead response, transaction coordination, and client nurture 24/7.</p>
+<span class="read-more">Read article →</span>
+</a>
+<a href="/blog/ai-agents-for-manufacturing.html" class="card">
+<span class="tag">Manufacturing</span>
+<h2>AI Agents for Manufacturing</h2>
+<p>Stop paying people to chase spreadsheets. AI agents handle POs, maintenance scheduling, quality docs, and production reporting.</p>
+<span class="read-more">Read article →</span>
+</a>
+<a href="/blog/ai-agents-for-legal-firms.html" class="card">
+<span class="tag">Legal</span>
+<h2>AI Agents for Legal Firms</h2>
+<p>Your competitors are already using them. AI agents handle intake, document review, deadline tracking, and billing.</p>
+<span class="read-more">Read article →</span>
+</a>
+<a href="/blog/ai-agents-for-saas.html" class="card">
+<span class="tag">SaaS</span>
+<h2>AI Agents for SaaS Companies</h2>
+<p>Stop burning runway on tasks that don't need humans. AI agents handle support triage, onboarding, RevOps, and reporting.</p>
+<span class="read-more">Read article →</span>
+</a>
 </div>
-
-<div class="post-card">
-<div class="meta">February 21, 2026 · 11 min read</div>
-<h3><a href="/blog/how-to-automate-lead-qualification/">How to Automate Lead Qualification with AI Agents in 2026</a></h3>
-<p>67% of the leads your team chases will never convert. AI agents qualify in 11 seconds, cut unqualified meetings by 71%, and double close rates on qualified pipeline. Here's the full playbook.</p>
-<a href="/blog/how-to-automate-lead-qualification/" class="read-more">Read More →</a>
 </div>
-
-<div class="post-card">
-<div class="meta">February 21, 2026 · 12 min read</div>
-<h3><a href="/blog/how-to-automate-compliance-reporting/">How to Automate Compliance Reporting with AI Agents in 2026</a></h3>
-<p>Compliance teams spend 73% of their time on data collection and report formatting. AI agents cut report generation by 81% and reduce error rates from 4.2% to 0.3%. The practical deployment guide.</p>
-<a href="/blog/how-to-automate-compliance-reporting/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 21, 2026 · 11 min read</div>
-<h3><a href="/blog/how-to-automate-sales-pipeline/">How to Automate Your Sales Pipeline with AI Agents in 2026</a></h3>
-<p>Your reps spend 64% of their time NOT selling. Here's how AI agents fix that — lead scoring, CRM hygiene, personalized outreach, proposal generation. With real numbers and a 3-week implementation sprint.</p>
-<a href="/blog/how-to-automate-sales-pipeline/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 20, 2026 · 10 min read</div>
-<h3><a href="/blog/ai-agents-financial-services-2026/">AI Agents for Financial Services in 2026: Beyond the Chatbot Hype</a></h3>
-<p>$35B in AI spend, mostly wasted on chatbots. Here's what AI agents actually automate — KYC, compliance, portfolio ops, fraud detection — with real deployment data from wealth managers and banks.</p>
-<a href="/blog/ai-agents-financial-services-2026/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 20, 2026 · 9 min read</div>
-<h3><a href="/blog/ai-agents-law-firms-2026/">AI Agents for Law Firms in 2026: What Actually Works (And What's Just Marketing)</a></h3>
-<p>Contract review in 11 minutes, 78% faster client intake, $340K annual savings. What AI agents actually do for law firms today — cut through the vendor hype with real numbers.</p>
-<a href="/blog/ai-agents-law-firms-2026/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 20, 2026 · 12 min read</div>
-<h3><a href="/blog/how-to-build-ai-agent-workforce/">How to Build an AI Agent Workforce in 2026 — Step by Step</a></h3>
-<p>The practical guide. Architecture, costs, implementation timeline, and the 5 mistakes that kill most deployments. Based on real client work across law, finance, construction, and healthcare.</p>
-<a href="/blog/how-to-build-ai-agent-workforce/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 19, 2026 · 8 min read</div>
-<h3><a href="/blog/ai-agents-recruitment-2026/">AI Agents Are Transforming Recruitment Agencies in 2026</a></h3>
-<p>62% of employers will use AI for most hiring steps by 2026. But most agencies are still stuck on LinkedIn Recruiter. Here's what real AI agent deployment looks like — from resume screening to compliance tracking.</p>
-<a href="/blog/ai-agents-recruitment-2026/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 19, 2026 · 8 min read</div>
-<h3><a href="/blog/ai-agents-healthcare-2026/">AI Agents Are Revolutionizing Healthcare Operations in 2026</a></h3>
-<p>Healthcare burns $265B/year on admin. Physicians spend 2 hours on paperwork for every hour with patients. AI agents are cutting that in half — from prior auth to documentation to billing.</p>
-<a href="/blog/ai-agents-healthcare-2026/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 19, 2026 · 8 min read</div>
-<h3><a href="/blog/ai-agents-ecommerce-2026/">AI Agents Are Rewriting Ecommerce Operations in 2026</a></h3>
-<p>Average ecommerce margin dropped below 4%. The brands surviving aren't working harder — they're running AI agents for inventory, pricing, returns, and fraud. Here's the math on a $10M brand.</p>
-<a href="/blog/ai-agents-ecommerce-2026/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 19, 2026 · 8 min read</div>
-<h3><a href="/blog/ai-agents-real-estate-2026/">AI Agents Are Reshaping Real Estate Brokerages in 2026</a></h3>
-<p>98% of brokerage leaders plan to adopt AI in 2026. But most are stuck using ChatGPT for listing descriptions. Here's what actual AI agent deployment looks like — from lead qualification to transaction coordination to compliance.</p>
-<a href="/blog/ai-agents-real-estate-2026/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 18, 2026 · 7 min read</div>
-<h3><a href="/blog/ai-agents-accounting-firms-2026/">Why 67% of Accounting Firms Are Losing the Talent War (And How AI Agents Fix It)</a></h3>
-<p>300K accountants left the profession since 2020. 75% of CPAs eligible to retire next decade. The firms that survive will automate the 40% of work that never needed a human. Here's the math.</p>
-<a href="/blog/ai-agents-accounting-firms-2026/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 18, 2026 · 7 min read</div>
-<h3><a href="/blog/predictive-maintenance-roi-manufacturing/">Predictive Maintenance ROI: The Real Numbers for 2026</a></h3>
-<p>Unplanned downtime costs manufacturers $260 billion annually. Here's how AI agents cut that number — with real math, not vendor fluff. Plus: why 85% of predictive maintenance projects fail.</p>
-<a href="/blog/predictive-maintenance-roi-manufacturing/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 17, 2026 · 8 min read</div>
-<h3><a href="/blog/shadow-ai-governance-timebomb/">Shadow AI Is Your Biggest Governance Risk in 2026</a></h3>
-<p>Employees are building AI agents faster than IT can govern them. Four major compliance deadlines in the next 6 months. Shadow AI makes you non-compliant for all of them.</p>
-<a href="/blog/shadow-ai-governance-timebomb/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 17, 2026 · 7 min read</div>
-<h3><a href="/blog/eu-ai-act-us-companies/">Why US Companies Can't Ignore the EU AI Act Anymore</a></h3>
-<p>The EU AI Act isn't a European problem. If you sell into the EU or deploy AI that touches EU data, you're in scope. Fines up to 7% of global revenue. August 2026 is coming fast.</p>
-<a href="/blog/eu-ai-act-us-companies/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 17, 2026 · 8 min read</div>
-<h3><a href="/blog/ai-native-insurers-sb205/">Why AI-Native Insurers Are the Least Prepared for SB 205</a></h3>
-<p>The insurance companies most dependent on AI are the ones least ready for Colorado SB 205. AI-native InsurTechs face an architecture problem, not a compliance checkbox. 133 days to go.</p>
-<a href="/blog/ai-native-insurers-sb205/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 17, 2026 · 6 min read</div>
-<h3><a href="/blog/42cfr-hipaa-ai-compliance/">42 CFR Part 2 + HIPAA Convergence: What It Means for Healthcare AI</a></h3>
-<p>As of February 16, SUD records fall under HIPAA. Every AI system touching patient data needs updated governance. And the HHS AI mandate is 45 days away.</p>
-<a href="/blog/42cfr-hipaa-ai-compliance/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 2026 · 8 min read</div>
-<h3><a href="/blog/hidden-cost-manual-compliance/">The Hidden Cost of Manual Compliance: $847K/Year for Mid-Size Firms</a></h3>
-<p>Manual compliance processes cost mid-size financial firms an average of $847K per year. 62% of that hides in indirect costs nobody tracks. Here's the full breakdown — and how AI agents cut it by 42%.</p>
-<a href="/blog/hidden-cost-manual-compliance/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 2026 · 7 min read</div>
-<h3><a href="/blog/ai-agents-vs-rpa/">AI Agents vs RPA: Why Bots That Think Beat Bots That Click</a></h3>
-<p>RPA records and replays mouse clicks. AI agents understand intent and adapt. Here's the real comparison — maintenance costs, exception handling, and why companies are making the switch.</p>
-<a href="/blog/ai-agents-vs-rpa/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 2025 · 8 min read</div>
-<h3><a href="/blog/9-ai-agents-running-247/">What Actually Happens When You Run 9 AI Agents 24/7</a></h3>
-<p>We're running a swarm of 9 AI agents around the clock. Here's what actually happens — the wins, the weird edge cases, and what we've learned about autonomous AI workforces in production.</p>
-<a href="/blog/9-ai-agents-running-247/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">February 2025 · 6 min read</div>
-<h3><a href="/blog/ai-agents-are-not-chatbots/">Why AI Agents Are Not Chatbots (And Why That Matters)</a></h3>
-<p>Everyone says "AI" but most mean chatbots. There's a massive difference between a bot that answers questions and an agent that does the work. Here's why the distinction matters for your business.</p>
-<a href="/blog/ai-agents-are-not-chatbots/" class="read-more">Read More →</a>
-</div>
-
-<div class="post-card">
-<div class="meta">January 2025 · 10 min read</div>
-<h3><a href="/blog/1-6m-revenue-leak-law-firm/">The $1.6M Revenue Leak: How a Law Firm Recovered What They Didn't Know They Were Losing</a></h3>
-<p>A mid-size law firm thought they were running fine. Then we audited their operations and found $1.6M in unbilled hours, missed collections, and compliance gaps. Here's the full story.</p>
-<a href="/blog/1-6m-revenue-leak-law-firm/" class="read-more">Read More →</a>
-</div>
-
-</div>
-
-<footer>
-<div class="footer-links">
-<a href="/">Home</a>
-<a href="/agent-marketplace/">Marketplace</a>
-<a href="/case-studies/">Case Studies</a>
-<a href="/pricing/">Pricing</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-</div>
-<p>🖤💛 AfrexAI — Your AI Workforce, Deployed. © 2025</p>
-</footer>
+<footer class="footer">© 2025 AfrexAI. All rights reserved.</footer>
 </body>
 </html>
