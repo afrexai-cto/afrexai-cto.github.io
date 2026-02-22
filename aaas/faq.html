@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — AfrexAI AI-as-a-Service</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e5e5e5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+a{color:#eab308;text-decoration:none}
+a:hover{color:#FFD700}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+header{text-align:center;padding:3rem 0 2rem}
+header h1{font-size:2.5rem;color:#FFD700;margin-bottom:.5rem}
+header p{color:#a3a3a3;font-size:1.1rem}
+.section-title{font-size:1.4rem;color:#eab308;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid #262626}
+.faq-item{border:1px solid #262626;border-radius:8px;margin-bottom:.75rem;overflow:hidden;transition:border-color .2s}
+.faq-item:hover{border-color:#eab308}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;cursor:pointer;background:#111;font-weight:600;font-size:1rem;user-select:none}
+.faq-q::after{content:'+';font-size:1.4rem;color:#eab308;transition:transform .2s}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;background:#0a0a0a}
+.faq-a-inner{padding:0 1.25rem 1.25rem;color:#d4d4d4;font-size:.95rem}
+.cta{text-align:center;margin:3rem 0;padding:2.5rem;border:1px solid #262626;border-radius:12px;background:#111}
+.cta h2{color:#FFD700;margin-bottom:.75rem;font-size:1.6rem}
+.cta p{color:#a3a3a3;margin-bottom:1.5rem}
+.btn{display:inline-block;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;margin:.5rem;transition:opacity .2s}
+.btn-primary{background:#eab308;color:#0a0a0a}
+.btn-outline{border:2px solid #eab308;color:#eab308}
+.btn:hover{opacity:.85}
+footer{text-align:center;padding:2rem 0;color:#525252;font-size:.85rem;border-top:1px solid #1a1a1a;margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Frequently Asked Questions</h1>
+<p>Everything you need to know about AfrexAI's AI-as-a-Service</p>
+</header>
+
+<div class="section-title">General</div>
+<div class="faq-item"><div class="faq-q">What is AI-as-a-Service (AaaS)?</div><div class="faq-a"><div class="faq-a-inner">AaaS is AfrexAI's managed AI agent service. We deploy purpose-built AI agents that integrate directly into your business operations — handling tasks like customer support, data analysis, scheduling, and workflow automation — so your team can focus on high-value work.</div></div></div>
+<div class="faq-item"><div class="faq-q">How does AaaS work?</div><div class="faq-a"><div class="faq-a-inner">We start with a discovery call to understand your workflows and pain points. From there, we configure and deploy a dedicated AI agent (or swarm of agents) tailored to your needs. Agents connect to your existing tools via APIs and are monitored and optimised continuously by our team.</div></div></div>
+<div class="faq-item"><div class="faq-q">What industries do you serve?</div><div class="faq-a"><div class="faq-a-inner">AfrexAI works across a wide range of industries including professional services, e-commerce, healthcare administration, real estate, fintech, and SaaS. If your business has repetitive processes that consume staff time, our agents can help.</div></div></div>
+<div class="faq-item"><div class="faq-q">Do I need technical expertise to use AaaS?</div><div class="faq-a"><div class="faq-a-inner">Not at all. We handle all the technical setup, integration, and ongoing management. You interact with your agent through familiar channels — Slack, email, dashboards — and our team is always available for support.</div></div></div>
+
+<div class="section-title">Pricing</div>
+<div class="faq-item"><div class="faq-q">How much does a single AI agent cost?</div><div class="faq-a"><div class="faq-a-inner">A single managed AI agent is <strong>$1,500 per month</strong>. This includes deployment, integration, monitoring, and ongoing optimisation by our team.</div></div></div>
+<div class="faq-item"><div class="faq-q">What is a swarm plan?</div><div class="faq-a"><div class="faq-a-inner">The swarm plan at <strong>$5,000 per month</strong> gives you a coordinated team of AI agents working together across multiple workflows. Ideal for businesses that need automation across departments — e.g. one agent for support, one for scheduling, one for reporting.</div></div></div>
+<div class="faq-item"><div class="faq-q">Is there a way to try AaaS before committing?</div><div class="faq-a"><div class="faq-a-inner">Yes. We offer a <strong>$2,500 intro engagement</strong> that includes a discovery session, a custom agent deployment, and your first Week 1 Win — a tangible result within your first seven days. No long-term commitment required.</div></div></div>
+<div class="faq-item"><div class="faq-q">Are there any setup fees or hidden costs?</div><div class="faq-a"><div class="faq-a-inner">No setup fees. The monthly price covers everything: agent configuration, deployment, integrations, monitoring, and support. If your use case requires premium third-party API access, we'll discuss that transparently upfront.</div></div></div>
+
+<div class="section-title">Security &amp; Privacy</div>
+<div class="faq-item"><div class="faq-q">How is my data kept secure?</div><div class="faq-a"><div class="faq-a-inner">Every client gets a fully isolated environment. Your data is never shared across accounts or used to train models. All data is encrypted at rest (AES-256) and in transit (TLS 1.3).</div></div></div>
+<div class="faq-item"><div class="faq-q">Are you SOC 2 compliant?</div><div class="faq-a"><div class="faq-a-inner">We are actively pursuing SOC 2 Type II certification and follow SOC 2 controls across our infrastructure today — including access management, audit logging, and incident response procedures.</div></div></div>
+<div class="faq-item"><div class="faq-q">Can I control what data the AI agent can access?</div><div class="faq-a"><div class="faq-a-inner">Absolutely. You define the data boundaries during onboarding. Agents operate on a least-privilege basis and only access the systems and data you explicitly authorise.</div></div></div>
+<div class="faq-item"><div class="faq-q">Where is my data stored?</div><div class="faq-a"><div class="faq-a-inner">Data is stored on SOC 2-compliant cloud infrastructure with data residency options available. We can accommodate region-specific requirements upon request.</div></div></div>
+
+<div class="section-title">Technical</div>
+<div class="faq-item"><div class="faq-q">How long does deployment take?</div><div class="faq-a"><div class="faq-a-inner">Most agents are deployed within <strong>48–72 hours</strong> of completing the discovery call. Complex multi-agent swarms may take up to one week depending on integration requirements.</div></div></div>
+<div class="faq-item"><div class="faq-q">What is your uptime SLA?</div><div class="faq-a"><div class="faq-a-inner">We guarantee <strong>99.9% uptime</strong> across all managed agents. Downtime incidents are communicated proactively and resolved with priority support.</div></div></div>
+<div class="faq-item"><div class="faq-q">What tools and platforms do you integrate with?</div><div class="faq-a"><div class="faq-a-inner">AfrexAI agents integrate with Slack, Microsoft Teams, Gmail, Google Workspace, HubSpot, Salesforce, Notion, Stripe, QuickBooks, Zapier, and hundreds of other platforms via APIs and webhooks.</div></div></div>
+<div class="faq-item"><div class="faq-q">Can I use my own AI models or APIs?</div><div class="faq-a"><div class="faq-a-inner">Yes. We can configure agents to use your preferred LLM provider or connect to your own fine-tuned models. We're model-agnostic and optimise for your specific use case.</div></div></div>
+
+<div class="section-title">Getting Started</div>
+<div class="faq-item"><div class="faq-q">What does the onboarding process look like?</div><div class="faq-a"><div class="faq-a-inner">It's simple: (1) Book a 30-minute consultation call, (2) we identify your highest-impact automation opportunity, (3) we deploy your agent within 48–72 hours, (4) you get your Week 1 Win — a measurable result in seven days or less.</div></div></div>
+<div class="faq-item"><div class="faq-q">What is the Week 1 Win guarantee?</div><div class="faq-a"><div class="faq-a-inner">We guarantee a tangible, measurable result within your first week — whether that's hours saved, tickets resolved, reports automated, or leads processed. If we don't deliver, we'll make it right.</div></div></div>
+<div class="faq-item"><div class="faq-q">Can I cancel at any time?</div><div class="faq-a"><div class="faq-a-inner">Yes. AaaS is month-to-month with no long-term contracts. You can cancel at any time with 30 days' notice. We're confident the results will speak for themselves.</div></div></div>
+<div class="faq-item"><div class="faq-q">How do I get started?</div><div class="faq-a"><div class="faq-a-inner">Book a free 30-minute consultation below, or jump straight in with our $2,500 intro engagement. We'll have your first agent live within days.</div></div></div>
+
+<div class="cta">
+<h2>Ready to automate?</h2>
+<p>Book a free consultation or get started with our $2,500 intro engagement today.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="btn btn-primary">Book Consultation</a>
+<a href="https://buy.stripe.com/9B6dR23n0cYD4vqgVF0sU0c" class="btn btn-outline">$2,500 Intro — Get Started</a>
+</div>
+
+<footer>© 2026 AfrexAI. All rights reserved.</footer>
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const a=item.querySelector('.faq-a');
+    const wasOpen=item.classList.contains('open');
+    item.classList.toggle('open');
+    a.style.maxHeight=wasOpen?'0':a.scrollHeight+'px';
+  });
+});
+</script>
+</body>
+</html>
