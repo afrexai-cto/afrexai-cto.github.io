@@ -1729,6 +1729,17 @@
   },
   "taskRuns": [
     {
+      "id": "run-1771763916622-bl2lrw",
+      "companyId": "atlas-wealth",
+      "taskId": "portfolio-review",
+      "agentId": "portfolio-reviewer",
+      "agentName": "Portfolio Reviewer",
+      "status": "failed",
+      "startedAt": "2026-02-22T12:38:36.624Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-22T12:38:36.711Z"
+    },
+    {
       "id": "run-1771763443943-3qq7ur",
       "companyId": "pacific-legal",
       "taskId": "client-followup",
@@ -2288,7 +2299,7 @@
       }
     }
   },
-  "lastUpdated": "2026-02-22T12:30:54.672Z",
+  "lastUpdated": "2026-02-22T12:38:36.711Z",
   "recentActivity": [
     {
       "ts": "2026-02-22T12:30:54.666Z",
