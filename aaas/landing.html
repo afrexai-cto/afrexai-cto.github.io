@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Managed AI Agents for Your Business | Agent-as-a-Service</title>
+<meta name="description" content="AfrexAI deploys, manages, and optimizes AI agents that run your business operations 24/7. Email triage, lead research, content writing, and more — fully managed on dedicated infrastructure.">
+<meta name="keywords" content="AI agents, agent as a service, business automation, managed AI, AI workforce, AfrexAI">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AfrexAI — Your AI Workforce, Running 24/7">
+<meta property="og:description" content="Managed AI agents that handle your business operations while you sleep. Starting at $1,500/mo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://afrexai.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AfrexAI — Your AI Workforce, Running 24/7">
+<meta name="twitter:description" content="Managed AI agents that handle your business operations while you sleep.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--gold:#eab308;--gold-dim:#ca9a06;--white:#f5f5f5;--gray:#a3a3a3;--card:#141414;--card-border:#1f1f1f}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--card-border);padding:16px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:-.5px}
+.logo span{color:var(--gold)}
+nav a.cta-btn{background:var(--gold);color:#0a0a0a;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.875rem;transition:background .2s}
+nav a.cta-btn:hover{background:var(--gold-dim)}
+
+/* Intro Banner */
+.intro-banner{background:linear-gradient(90deg,#eab30815,#eab30830,#eab30815);border:1px solid #eab30840;text-align:center;padding:14px 24px;margin-top:73px;font-size:.95rem;font-weight:500}
+.intro-banner strong{color:var(--gold)}
+.intro-banner a{color:var(--gold);text-decoration:underline;font-weight:700}
+
+/* Hero */
+.hero{padding:100px 0 80px;text-align:center}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.15rem;color:var(--gray);max-width:600px;margin:0 auto 40px}
+.hero .cta-btn{display:inline-block;background:var(--gold);color:#0a0a0a;padding:16px 40px;border-radius:10px;font-weight:700;font-size:1.05rem;transition:background .2s,transform .15s}
+.hero .cta-btn:hover{background:var(--gold-dim);transform:translateY(-2px)}
+
+/* Section */
+section{padding:80px 0}
+.section-label{text-transform:uppercase;font-size:.75rem;font-weight:600;letter-spacing:.12em;color:var(--gold);margin-bottom:12px}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.section-sub{color:var(--gray);max-width:560px;margin-bottom:48px;font-size:1rem}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+
+/* Problem */
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.problem-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:28px 24px}
+.problem-card .num{font-size:2rem;font-weight:800;color:var(--gold)}
+.problem-card p{color:var(--gray);font-size:.9rem;margin-top:8px}
+
+/* Capabilities */
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.cap-item{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:20px;text-align:center;font-weight:500;font-size:.9rem;transition:border-color .2s}
+.cap-item:hover{border-color:var(--gold)}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:760px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:36px 32px;position:relative;transition:border-color .2s,transform .2s}
+.price-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.price-card.featured{border-color:var(--gold)}
+.price-card .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#0a0a0a;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 16px;border-radius:20px}
+.price-card h3{font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.price-card .price{font-size:2.4rem;font-weight:800;color:var(--gold);margin:16px 0 4px}
+.price-card .price span{font-size:.9rem;font-weight:500;color:var(--gray)}
+.price-card ul{list-style:none;margin:20px 0 28px}
+.price-card li{padding:6px 0;font-size:.9rem;color:var(--gray)}
+.price-card li::before{content:"✓ ";color:var(--gold);font-weight:700}
+.price-card a.card-btn{display:block;text-align:center;background:var(--gold);color:#0a0a0a;padding:14px;border-radius:10px;font-weight:700;font-size:.95rem;transition:background .2s}
+.price-card a.card-btn:hover{background:var(--gold-dim)}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;counter-reset:step}
+.step{position:relative;background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:32px 24px 24px}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:-14px;left:24px;background:var(--gold);color:#0a0a0a;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem}
+.step h4{font-weight:600;margin-bottom:6px}
+.step p{font-size:.85rem;color:var(--gray)}
+
+/* Final CTA */
+.final-cta{text-align:center;padding:80px 0 100px}
+.final-cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:16px}
+.final-cta p{color:var(--gray);margin-bottom:36px;font-size:1.05rem}
+.final-cta .cta-btn{display:inline-block;background:var(--gold);color:#0a0a0a;padding:16px 48px;border-radius:10px;font-weight:700;font-size:1.05rem;transition:background .2s,transform .15s}
+.final-cta .cta-btn:hover{background:var(--gold-dim);transform:translateY(-2px)}
+
+/* Footer */
+footer{border-top:1px solid var(--card-border);padding:32px 0;text-align:center;font-size:.8rem;color:#525252}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+<div class="logo">Afrex<span>AI</span></div>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Call</a>
+</div>
+</nav>
+
+<div class="intro-banner">
+🚀 <strong>Limited Offer:</strong> Get your first month for just <strong>$750</strong> — <a href="https://buy.stripe.com/fZuaEQaPs9Mrge87l50sU0a">Claim Now →</a>
+</div>
+
+<section class="hero">
+<div class="container">
+<h1>Your AI Workforce,<br><span>Running 24/7</span></h1>
+<p>Managed AI agents that handle your business operations while you sleep. Deployed on dedicated infrastructure. Monitored around the clock.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call →</a>
+</div>
+</section>
+
+<section id="problem">
+<div class="container text-center">
+<div class="section-label">The Problem</div>
+<h2 class="section-title">SMBs Waste 20+ Hours Every Week</h2>
+<p class="section-sub">Repetitive tasks drain your team — email, research, scheduling, reporting. That's time and money you'll never get back.</p>
+<div class="problem-grid">
+<div class="problem-card"><div class="num">20+</div><p>Hours wasted per week on tasks AI can handle</p></div>
+<div class="problem-card"><div class="num">$52K</div><p>Average annual cost of manual operations overhead</p></div>
+<div class="problem-card"><div class="num">67%</div><p>Of business tasks are repetitive and automatable</p></div>
+</div>
+</div>
+</section>
+
+<section id="solution">
+<div class="container text-center">
+<div class="section-label">The Solution</div>
+<h2 class="section-title">We Deploy & Manage Your AI Agents</h2>
+<p class="section-sub">You don't hire IT staff to run your servers. Don't build AI agents yourself either. We deploy, manage, and optimize them on dedicated infrastructure — so you focus on growth.</p>
+</div>
+</section>
+
+<section id="capabilities">
+<div class="container text-center">
+<div class="section-label">Capabilities</div>
+<h2 class="section-title">What Your Agents Can Do</h2>
+<p class="section-sub">Every agent is configured to your workflows, tools, and business context.</p>
+<div class="cap-grid">
+<div class="cap-item">📧 Email Triage</div>
+<div class="cap-item">🔍 Lead Research</div>
+<div class="cap-item">✍️ Content Writing</div>
+<div class="cap-item">💰 Financial Tracking</div>
+<div class="cap-item">📊 Competitor Monitoring</div>
+<div class="cap-item">🌐 Market Research</div>
+<div class="cap-item">📅 Calendar Management</div>
+<div class="cap-item">🗂️ CRM Updates</div>
+<div class="cap-item">💬 Customer Support</div>
+</div>
+</div>
+</section>
+
+<section id="pricing">
+<div class="container text-center">
+<div class="section-label">Pricing</div>
+<h2 class="section-title">Simple, Transparent Pricing</h2>
+<p class="section-sub">No hidden fees. No per-query charges. Dedicated infrastructure included.</p>
+<div class="pricing-grid">
+<div class="price-card">
+<h3>Single Agent</h3>
+<div class="price">$1,500<span>/mo</span></div>
+<ul>
+<li>One dedicated AI agent</li>
+<li>Dedicated server infrastructure</li>
+<li>24/7 uptime monitoring</li>
+<li>Monthly optimization & tuning</li>
+<li>Slack/email support</li>
+</ul>
+<a href="https://buy.stripe.com/00w7sE5v88In8LGaxh0sU09" class="card-btn">Get Started →</a>
+</div>
+<div class="price-card featured">
+<div class="badge">Most Popular</div>
+<h3>Full Swarm</h3>
+<div class="price">$5,000<span>/mo</span></div>
+<ul>
+<li>Up to 9 AI agents</li>
+<li>Full automation suite</li>
+<li>Dedicated server infrastructure</li>
+<li>24/7 uptime monitoring</li>
+<li>Weekly optimization & tuning</li>
+<li>Priority support</li>
+</ul>
+<a href="https://buy.stripe.com/7sY14g6zccYD4vq9td0sU0b" class="card-btn">Get Started →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how-it-works">
+<div class="container text-center">
+<div class="section-label">How It Works</div>
+<h2 class="section-title">Live in Under a Week</h2>
+<p class="section-sub">From first call to running agents — we handle everything.</p>
+<div class="steps">
+<div class="step"><h4>Discovery Call</h4><p>We learn your workflows, tools, and pain points.</p></div>
+<div class="step"><h4>Configure Agents</h4><p>We build and train agents to your exact business context.</p></div>
+<div class="step"><h4>Deploy</h4><p>Agents go live on dedicated, secure infrastructure.</p></div>
+<div class="step"><h4>Monitor & Optimize</h4><p>24/7 monitoring with monthly performance tuning.</p></div>
+</div>
+</div>
+</section>
+
+<section class="final-cta">
+<div class="container">
+<h2>Stop Doing Work AI Can Handle</h2>
+<p>Book a 30-minute discovery call. We'll map your operations and show you what to automate first.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Call →</a>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>© 2026 AfrexAI. All prices USD.</p>
+</div>
+</footer>
+
+</body>
+</html>
