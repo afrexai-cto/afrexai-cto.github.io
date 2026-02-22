@@ -419,7 +419,7 @@ kpis:{tasksThisMonth:2037,hoursSaved:237,costSavings:23700,avgResponseTime:"1.8 
 beforeAfter:{before:[{task:"Court filing tracking",time:"Manual calendar checks",errors:"8% missed deadlines"},{task:"Contract review",time:"4-6 hours per contract",errors:"Key clauses missed"},{task:"Client follow-up",time:"Sporadic, often late",errors:"23% complaints about communication"},{task:"Deadline management",time:"Spreadsheet-based",errors:"Critical dates slip"}],
 after:[{task:"Court filing tracking",time:"Automated alerts",savings:"Zero missed deadlines"},{task:"Contract review",time:"45 min flagged summary",savings:"85% faster"},{task:"Client follow-up",time:"Same-day automated",savings:"97% satisfaction rate"},{task:"Deadline management",time:"Real-time monitoring",savings:"100% on-time"}]}
 },
-{id:"buildright",name:"BuildRight Construction",vertical:"Construction",tier:"Starter",monthlyPrice:1500,logo:"🏗️",
+{id:"buildright",name:"BuildRight Construction",vertical:"Construction",tier:"Starter",monthlyPrice:5500,logo:"🏗️",
 tagline:"Commercial contractor — 28 crew, 4 active sites",deployedSince:"2026-01-08",
 agents:[
 {id:"site-reporter",name:"Site Reporter",description:"Compiles daily site reports, logs progress photos, tracks weather delays and milestones",status:"active",statusText:"Generating daily report",icon:"📊",tasksCompleted:423,tasksToday:14,avgTaskTime:"3.5 min",hoursSavedMonth:67,uptime:99.92,capacity:71,
@@ -756,7 +756,7 @@ function renderROI(){
   document.getElementById('upgrade-content').innerHTML=c.tier==='Starter'?`
     <div class="upgrade-cta">
       <h3>📈 Ready to Scale?</h3>
-      <p>${c.name} runs ${c.agents.length} agent on Starter (${fmt$(c.monthlyPrice)}/mo). Upgrading to Growth ($4,500/mo) adds Safety & Compliance Monitor + Project Coordinator.</p>
+      <p>${c.name} runs ${c.agents.length} agent on Starter (${fmt$(c.monthlyPrice)}/mo). Upgrading to Growth ($12,000/mo) adds Safety & Compliance Monitor + Project Coordinator.</p>
       <a href="https://calendly.com/cbeckford-afrexai/30min" target="_blank" class="cta-btn">Discuss Upgrade →</a>
     </div>
   `:'';
