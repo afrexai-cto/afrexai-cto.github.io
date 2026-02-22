@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Admin Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#1a1a1a;--border:#333;--gold:#FFD700;--text:#e0e0e0;--muted:#888;--green:#4ade80;--red:#f87171;--blue:#60a5fa;--sidebar-w:220px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
+a{color:var(--gold);text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+
+/* Sidebar */
+#sidebar{width:var(--sidebar-w);background:#111;border-right:1px solid var(--border);padding:16px 0;display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;transition:transform .2s}
+#sidebar .brand{padding:12px 20px;font-size:20px;font-weight:700;color:var(--gold);letter-spacing:1px;border-bottom:1px solid var(--border);margin-bottom:8px}
+#sidebar .brand span{color:var(--text)}
+.nav-item{padding:10px 20px;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);transition:all .15s}
+.nav-item:hover,.nav-item.active{color:var(--gold);background:rgba(255,215,0,.06)}
+.nav-item.active{border-right:3px solid var(--gold)}
+.nav-item .icon{font-size:16px;width:20px;text-align:center}
+
+/* Main */
+#main{margin-left:var(--sidebar-w);flex:1;min-height:100vh;padding:24px;width:calc(100vw - var(--sidebar-w))}
+.page{display:none}
+.page.active{display:block}
+h1{font-size:24px;font-weight:600;margin-bottom:20px;color:#fff}
+h2{font-size:18px;font-weight:600;margin-bottom:14px;color:#fff}
+h3{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--text)}
+
+/* Cards grid */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.kpi-card .label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
+.kpi-card .value{font-size:28px;font-weight:700;color:var(--gold)}
+.kpi-card .sub{font-size:12px;color:var(--muted);margin-top:4px}
+
+.company-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:24px}
+.company-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;cursor:pointer;transition:all .15s}
+.company-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.company-card .name{font-size:16px;font-weight:600;color:#fff;margin-bottom:4px}
+.company-card .meta{font-size:12px;color:var(--muted);margin-bottom:12px}
+.agents-row{display:flex;gap:8px;flex-wrap:wrap}
+.agent-badge{font-size:11px;padding:4px 10px;border-radius:20px;background:#222;border:1px solid var(--border);display:flex;align-items:center;gap:5px}
+.status-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.status-dot.active{background:var(--green)}
+.status-dot.idle{background:var(--gold)}
+.status-dot.error{background:var(--red)}
+
+/* Tables */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+td{padding:10px 12px;border-bottom:1px solid #222}
+tr:hover td{background:rgba(255,215,0,.03)}
+
+/* Buttons */
+.btn{padding:7px 16px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:13px;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn-gold{background:var(--gold);color:#000;border-color:var(--gold);font-weight:600}
+.btn-gold:hover{background:#e6c200}
+.btn-sm{padding:4px 10px;font-size:12px}
+.btn-danger{border-color:var(--red);color:var(--red)}
+.btn-danger:hover{background:var(--red);color:#fff}
+
+/* Toggle */
+.toggle{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.toggle input[type=checkbox]{appearance:none;width:36px;height:20px;border-radius:10px;background:#333;position:relative;cursor:pointer;transition:background .2s}
+.toggle input[type=checkbox]::after{content:'';position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#888;transition:all .2s}
+.toggle input[type=checkbox]:checked{background:var(--gold)}
+.toggle input[type=checkbox]:checked::after{left:19px;background:#000}
+
+/* Activity feed */
+.activity-feed{max-height:500px;overflow-y:auto;padding-right:8px}
+.activity-item{padding:10px 0;border-bottom:1px solid #222;display:flex;gap:12px;font-size:13px}
+.activity-item .time{color:var(--muted);white-space:nowrap;font-size:11px;min-width:60px}
+.activity-item .agent-name{color:var(--gold);font-weight:500;min-width:120px}
+.activity-item .action-text{color:var(--text)}
+.activity-type{font-size:10px;padding:2px 7px;border-radius:4px;background:#222;color:var(--muted);margin-left:auto;white-space:nowrap}
+
+/* Deliverable viewer */
+.deliverable-content{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;line-height:1.7;font-size:14px;max-height:70vh;overflow-y:auto}
+.deliverable-content h1,.deliverable-content h2,.deliverable-content h3{color:var(--gold);margin:16px 0 8px}
+.deliverable-content ul,.deliverable-content ol{padding-left:24px;margin:8px 0}
+.deliverable-content code{background:#222;padding:2px 6px;border-radius:4px;font-size:13px}
+.deliverable-content pre{background:#222;padding:12px;border-radius:8px;overflow-x:auto;margin:8px 0}
+.deliverable-content table{margin:8px 0}
+.deliverable-content table td,.deliverable-content table th{border:1px solid var(--border)}
+
+/* Charts (CSS bars) */
+.bar-chart{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;align-items:center;gap:12px}
+.bar-label{width:140px;font-size:12px;color:var(--muted);text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:24px;background:#222;border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;transition:width .5s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:600;color:#000;min-width:fit-content}
+.bar-fill.gold{background:var(--gold)}
+.bar-fill.blue{background:var(--blue)}
+.bar-fill.green{background:var(--green)}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
+.modal h2{margin-bottom:16px}
+.modal label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px;margin-top:12px}
+.modal input,.modal select{width:100%;padding:8px 12px;background:#222;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px}
+.modal input:focus,.modal select:focus{outline:none;border-color:var(--gold)}
+.modal .actions{display:flex;gap:8px;margin-top:20px;justify-content:flex-end}
+
+/* Toast */
+#toast-container{position:fixed;bottom:20px;right:20px;z-index:300;display:flex;flex-direction:column;gap:8px}
+.toast{background:#1a1a1a;border:1px solid var(--gold);border-radius:10px;padding:12px 20px;font-size:13px;color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,.5);animation:slideIn .3s ease;max-width:350px}
+.toast.error{border-color:var(--red)}
+@keyframes slideIn{from{transform:translateX(100px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* Spinner */
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay{display:flex;align-items:center;justify-content:center;padding:40px;color:var(--muted);gap:10px}
+
+/* Back link */
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:13px;margin-bottom:16px;cursor:pointer}
+.back-link:hover{color:var(--gold)}
+
+/* Responsive */
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  #main{margin-left:0;width:100%;padding:16px}
+  .mobile-toggle{display:block!important}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .company-grid{grid-template-columns:1fr}
+}
+.mobile-toggle{display:none;position:fixed;top:12px;left:12px;z-index:150;background:var(--card);border:1px solid var(--border);color:var(--gold);width:40px;height:40px;border-radius:8px;font-size:20px;cursor:pointer}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#555}
+
+/* Status refresh indicator */
+#refresh-indicator{position:fixed;top:12px;right:16px;font-size:11px;color:var(--muted);z-index:50}
+</style>
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<nav id="sidebar">
+  <div class="brand">Afrex<span>AI</span></div>
+  <div class="nav-item active" data-page="overview"><span class="icon">📊</span> Overview</div>
+  <div class="nav-item" data-page="tasks"><span class="icon">⚡</span> Task Runner</div>
+  <div class="nav-item" data-page="deliverables"><span class="icon">📄</span> Deliverables</div>
+  <div class="nav-item" data-page="scheduler"><span class="icon">🕐</span> Scheduler</div>
+  <div class="nav-item" data-page="metrics"><span class="icon">📈</span> Metrics</div>
+  <div class="nav-item" data-page="activity"><span class="icon">🔔</span> Activity Feed</div>
+</nav>
+
+<div id="main">
+  <!-- OVERVIEW -->
+  <div class="page active" id="page-overview">
+    <h1>Dashboard Overview</h1>
+    <div class="kpi-grid" id="kpi-cards"></div>
+    <h2>Companies</h2>
+    <div class="company-grid" id="company-cards"></div>
+  </div>
+
+  <!-- COMPANY DETAIL -->
+  <div class="page" id="page-company-detail">
+    <div class="back-link" onclick="showPage('overview')">← Back to Overview</div>
+    <div id="company-detail-content"></div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="page" id="page-tasks">
+    <h1>Task Runner</h1>
+    <div style="margin-bottom:16px;display:flex;align-items:center;gap:16px">
+      <label class="toggle"><input type="checkbox" id="dry-run-toggle"> Dry Run</label>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Task</th><th>Company</th><th>Agent</th><th>Type</th><th>Action</th></tr></thead><tbody id="tasks-body"></tbody></table></div>
+    <h2 style="margin-top:32px">Recent Runs</h2>
+    <div class="table-wrap"><table><thead><tr><th>Time</th><th>Task</th><th>Company</th><th>Status</th><th>Cost</th><th>Tokens</th><th>Duration</th></tr></thead><tbody id="runs-body"></tbody></table></div>
+  </div>
+
+  <!-- DELIVERABLES -->
+  <div class="page" id="page-deliverables">
+    <h1>Deliverables</h1>
+    <div id="deliverables-list">
+      <div class="table-wrap"><table><thead><tr><th>Document</th><th>Company</th><th>Agent</th><th>Created</th><th>Actions</th></tr></thead><tbody id="deliverables-body"></tbody></table></div>
+    </div>
+    <div id="deliverable-viewer" style="display:none">
+      <div class="back-link" onclick="closeDeliverable()">← Back to List</div>
+      <div id="deliverable-meta" style="margin-bottom:12px"></div>
+      <div class="deliverable-content" id="deliverable-content"></div>
+    </div>
+  </div>
+
+  <!-- SCHEDULER -->
+  <div class="page" id="page-scheduler">
+    <h1>Scheduler</h1>
+    <div style="margin-bottom:16px"><button class="btn btn-gold" onclick="openScheduleModal()">+ New Schedule</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Label</th><th>Company</th><th>Task</th><th>Cron</th><th>Enabled</th><th>Last Run</th><th>Actions</th></tr></thead><tbody id="scheduler-body"></tbody></table></div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="page" id="page-metrics">
+    <h1>Metrics Dashboard</h1>
+    <div class="kpi-grid" id="metrics-kpis"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px" id="metrics-charts">
+      <div><h3>Cost by Company</h3><div class="bar-chart" id="chart-cost"></div></div>
+      <div><h3>Tokens by Company</h3><div class="bar-chart" id="chart-tokens"></div></div>
+      <div><h3>Hours Saved by Company</h3><div class="bar-chart" id="chart-hours"></div></div>
+      <div><h3>Tasks by Company</h3><div class="bar-chart" id="chart-tasks"></div></div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY -->
+  <div class="page" id="page-activity">
+    <h1>Activity Feed</h1>
+    <div class="activity-feed" id="global-activity" style="max-height:calc(100vh - 120px)"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<!-- Toasts -->
+<div id="toast-container"></div>
+<div id="refresh-indicator"></div>
+
+<script>
+// ── API Configuration ──
+// Change this URL when migrating from Cloudflare tunnel to api.afrexai.com
+const API_BASE = 'https://jail-archived-providence-documentary.trycloudflare.com';
+const API = API_BASE + '/api';
+let STATE = { companies: [], tasks: [], deliverables: [], schedules: [], metrics: {}, runs: [] };
+
+// --- NAV ---
+document.querySelectorAll('.nav-item').forEach(el => {
+  el.addEventListener('click', () => {
+    showPage(el.dataset.page);
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+
+function showPage(page) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === page));
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) el.classList.add('active');
+}
+
+// --- API ---
+async function api(path, opts) {
+  const res = await fetch(API + path, opts);
+  if (!res.ok) throw new Error(`API ${res.status}`);
+  return res.json();
+}
+
+// --- TOAST ---
+function toast(msg, type = 'info') {
+  const el = document.createElement('div');
+  el.className = 'toast' + (type === 'error' ? ' error' : '');
+  el.textContent = msg;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+
+// --- MODAL ---
+function closeModal() { document.getElementById('modal-overlay').classList.remove('show'); }
+
+// --- TIME ---
+function timeAgo(ts) {
+  if (!ts) return '—';
+  const d = Date.now() - new Date(ts).getTime();
+  if (d < 60000) return 'just now';
+  if (d < 3600000) return Math.floor(d/60000) + 'm ago';
+  if (d < 86400000) return Math.floor(d/3600000) + 'h ago';
+  return Math.floor(d/86400000) + 'd ago';
+}
+function fmtTime(ts) { return ts ? new Date(ts).toLocaleString() : '—'; }
+function fmtDuration(ms) { return ms ? (ms/1000).toFixed(1) + 's' : '—'; }
+
+// --- OVERVIEW ---
+async function loadOverview() {
+  const [compData, metData] = await Promise.all([api('/companies'), api('/metrics')]);
+  STATE.companies = compData.companies;
+  STATE.metrics = metData;
+
+  const m = metData;
+  document.getElementById('kpi-cards').innerHTML = [
+    kpiCard('Total Tasks', (m.totalTasks || 0).toLocaleString(), 'Across all companies'),
+    kpiCard('Hours Saved', (m.totalHoursSaved || 0).toFixed(1) + 'h', '$' + ((m.totalHoursSaved||0)*75).toFixed(0) + ' value'),
+    kpiCard('Total Cost', '$' + (m.totalCost || 0).toFixed(4), 'API usage'),
+    kpiCard('ROI', ((m.totalHoursSaved||0)*75/Math.max(m.totalCost||1,.001)).toFixed(0) + 'x', 'Hours saved / cost'),
+  ].join('');
+
+  document.getElementById('company-cards').innerHTML = STATE.companies.map(c => `
+    <div class="company-card" onclick="showCompanyDetail('${c.id}')">
+      <div class="name">${esc(c.name)}</div>
+      <div class="meta">${esc(c.vertical||'')} · ${esc(c.tier||'')} · ${c.kpis?.tasksCompleted||0} tasks</div>
+      <div class="agents-row">${(c.agents||[]).map(a => `<span class="agent-badge"><span class="status-dot ${a.status}"></span>${esc(a.name)}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+function kpiCard(label, value, sub) {
+  return `<div class="kpi-card"><div class="label">${label}</div><div class="value">${value}</div><div class="sub">${sub}</div></div>`;
+}
+
+// --- COMPANY DETAIL ---
+async function showCompanyDetail(id) {
+  showPage('company-detail');
+  const el = document.getElementById('company-detail-content');
+  el.innerHTML = '<div class="loading-overlay"><div class="spinner"></div> Loading...</div>';
+  const co = await api('/companies/' + id);
+  const delivs = await api('/deliverables?company=' + id);
+  el.innerHTML = `
+    <h1>${esc(co.name)}</h1>
+    <div class="kpi-grid" style="margin-bottom:24px">
+      ${kpiCard('Tasks', (co.kpis?.tasksCompleted||0).toLocaleString(), 'completed')}
+      ${kpiCard('Hours Saved', (co.kpis?.hoursSaved||0).toFixed(1)+'h', '')}
+      ${kpiCard('Accuracy', (co.kpis?.accuracyRate||0)+'%', '')}
+      ${kpiCard('Active Since', co.kpis?.activeSince||'—', '')}
+    </div>
+    <h2>Agents</h2>
+    <div class="agents-row" style="margin-bottom:24px">${(co.agents||[]).map(a => `
+      <span class="agent-badge"><span class="status-dot ${a.status}"></span>${esc(a.name)} <span style="color:var(--muted);font-size:10px">${a.taskCount} tasks · ${timeAgo(a.lastActive)}</span></span>`).join('')}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div><h2>Recent Activity</h2><div class="activity-feed">${(co.recentActivity||[]).slice(0,20).map(a => `
+        <div class="activity-item"><span class="time">${timeAgo(a.ts)}</span><span class="agent-name">${esc(a.agent)}</span><span class="action-text">${esc(a.action)}</span><span class="activity-type">${esc(a.type||'')}</span></div>`).join('') || '<div style="color:var(--muted);padding:12px">No activity yet</div>'}</div></div>
+      <div><h2>Deliverables</h2><div style="max-height:400px;overflow-y:auto">${(delivs.deliverables||[]).slice(0,15).map(d => `
+        <div style="padding:8px 0;border-bottom:1px solid #222;font-size:13px;display:flex;justify-content:space-between;align-items:center">
+          <div><div style="color:#fff">${esc(d.task||d.filename)}</div><div style="color:var(--muted);font-size:11px">${esc(d.agent||'')} · ${timeAgo(d.created)}</div></div>
+          <button class="btn btn-sm" onclick="viewDeliverable('${esc(d.company)}','${esc(d.filename)}')">View</button>
+        </div>`).join('') || '<div style="color:var(--muted);padding:12px">No deliverables yet</div>'}</div></div>
+    </div>`;
+}
+
+// --- TASKS ---
+async function loadTasks() {
+  const [taskData, runData] = await Promise.all([api('/tasks'), api('/tasks/runs/list')]);
+  STATE.tasks = taskData.tasks;
+  STATE.runs = runData.runs;
+  renderTasks();
+  renderRuns();
+}
+
+function renderTasks() {
+  document.getElementById('tasks-body').innerHTML = STATE.tasks.map(t => `<tr>
+    <td style="color:#fff;font-weight:500">${esc(t.id)}</td>
+    <td>${esc(t.companyName||t.company)}</td>
+    <td>${esc(t.agentName||t.agent)}</td>
+    <td><span class="activity-type">${esc(t.output_type||'')}</span></td>
+    <td><button class="btn btn-gold btn-sm" onclick="runTask('${t.id}')" id="run-btn-${t.id}">▶ Run Now</button></td>
+  </tr>`).join('');
+}
+
+function renderRuns() {
+  document.getElementById('runs-body').innerHTML = (STATE.runs||[]).slice(0,30).map(r => `<tr>
+    <td>${timeAgo(r.completedAt||r.startedAt)}</td>
+    <td>${esc(r.taskId)}</td>
+    <td>${esc(r.companyId)}</td>
+    <td><span style="color:${r.status==='success'?'var(--green)':r.status==='running'?'var(--gold)':'var(--red)'}">${esc(r.status)}</span></td>
+    <td>${r.cost ? '$'+r.cost.toFixed(4) : '—'}</td>
+    <td>${r.tokens||'—'}</td>
+    <td>${fmtDuration(r.durationMs)}</td>
+  </tr>`).join('');
+}
+
+async function runTask(id) {
+  const btn = document.getElementById('run-btn-' + id);
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<div class="spinner"></div>';
+  btn.disabled = true;
+  try {
+    const dryRun = document.getElementById('dry-run-toggle').checked;
+    const result = await api('/tasks/' + id + '/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dryRun })
+    });
+    toast(`✅ ${id} completed` + (dryRun ? ' (dry run)' : '') + (result.cost ? ` — $${result.cost.toFixed(4)}` : ''));
+    loadTasks();
+  } catch (e) {
+    toast('❌ Task failed: ' + e.message, 'error');
+  }
+  btn.innerHTML = orig;
+  btn.disabled = false;
+}
+
+// --- DELIVERABLES ---
+async function loadDeliverables() {
+  const data = await api('/deliverables');
+  STATE.deliverables = data.deliverables;
+  document.getElementById('deliverables-body').innerHTML = STATE.deliverables.map(d => `<tr>
+    <td style="color:#fff">${esc(d.task||d.filename)}</td>
+    <td>${esc(d.company)}</td>
+    <td>${esc(d.agent||'')}</td>
+    <td>${timeAgo(d.created)}</td>
+    <td>
+      <button class="btn btn-sm" onclick="viewDeliverable('${encComp(d)}','${esc(d.filename)}')">View</button>
+      <a class="btn btn-sm" href="${API}/deliverables/${encComp(d)}/${encodeURIComponent(d.filename)}/download" download>↓</a>
+    </td>
+  </tr>`).join('');
+}
+
+function encComp(d) {
+  // deliverable company might be display name; path has the id
+  const p = d.path || '';
+  const parts = p.split('/');
+  return parts.length >= 2 ? parts[parts.length-2] : encodeURIComponent(d.company);
+}
+
+async function viewDeliverable(company, filename) {
+  document.getElementById('deliverables-list').style.display = 'none';
+  document.getElementById('deliverable-viewer').style.display = 'block';
+  document.getElementById('deliverable-content').innerHTML = '<div class="loading-overlay"><div class="spinner"></div></div>';
+  try {
+    const data = await api('/deliverables/' + company + '/' + encodeURIComponent(filename));
+    document.getElementById('deliverable-meta').innerHTML = `<h2>${esc(data.meta?.task || filename)}</h2><div style="color:var(--muted);font-size:12px">${esc(data.meta?.agent||'')} · ${esc(data.meta?.generated||'')}</div>`;
+    document.getElementById('deliverable-content').innerHTML = renderMarkdown(data.content);
+  } catch(e) {
+    document.getElementById('deliverable-content').innerHTML = '<div style="color:var(--red)">Failed to load</div>';
+  }
+}
+
+function closeDeliverable() {
+  document.getElementById('deliverables-list').style.display = '';
+  document.getElementById('deliverable-viewer').style.display = 'none';
+}
+
+function renderMarkdown(md) {
+  if (!md) return '';
+  return md
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/^# (.+)$/gm,'<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/`(.+?)`/g,'<code>$1</code>')
+    .replace(/^- (.+)$/gm,'<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm,'<li>$2</li>')
+    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    .replace(/\n{2,}/g,'<br><br>')
+    .replace(/\n/g,'<br>');
+}
+
+// --- SCHEDULER ---
+async function loadScheduler() {
+  const data = await api('/scheduler');
+  STATE.schedules = data.schedules;
+  renderScheduler();
+}
+
+function renderScheduler() {
+  document.getElementById('scheduler-body').innerHTML = STATE.schedules.map(s => `<tr>
+    <td style="color:#fff">${esc(s.label||s.taskId)}</td>
+    <td>${esc(s.companyId)}</td>
+    <td>${esc(s.taskId)}</td>
+    <td><code>${esc(s.cron)}</code></td>
+    <td><span style="color:${s.enabled?'var(--green)':'var(--red)'}">${s.enabled?'Yes':'No'}</span></td>
+    <td>${timeAgo(s.lastRun)}</td>
+    <td>
+      <button class="btn btn-sm" onclick="editSchedule('${s.id}')">Edit</button>
+      <button class="btn btn-sm btn-danger" onclick="deleteSchedule('${s.id}')">Delete</button>
+    </td>
+  </tr>`).join('');
+}
+
+function openScheduleModal(existing) {
+  const s = existing || {};
+  document.getElementById('modal-content').innerHTML = `
+    <h2>${s.id ? 'Edit' : 'New'} Schedule</h2>
+    <label>Company</label>
+    <select id="sched-company">${STATE.companies.map(c=>`<option value="${c.id}" ${c.id===s.companyId?'selected':''}>${esc(c.name)}</option>`).join('')}</select>
+    <label>Task</label>
+    <select id="sched-task">${STATE.tasks.map(t=>`<option value="${t.id}" ${t.id===s.taskId?'selected':''}>${esc(t.id)} (${esc(t.companyName||'')})</option>`).join('')}</select>
+    <label>Cron Expression</label>
+    <input id="sched-cron" value="${esc(s.cron||'0 9 * * 1-5')}" placeholder="0 9 * * 1-5">
+    <label>Label</label>
+    <input id="sched-label" value="${esc(s.label||'')}" placeholder="Daily morning run">
+    <div class="actions">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-gold" onclick="saveSchedule('${s.id||''}')">${s.id?'Update':'Create'}</button>
+    </div>`;
+  document.getElementById('modal-overlay').classList.add('show');
+}
+
+async function saveSchedule(id) {
+  const body = {
+    companyId: document.getElementById('sched-company').value,
+    taskId: document.getElementById('sched-task').value,
+    cron: document.getElementById('sched-cron').value,
+    label: document.getElementById('sched-label').value,
+  };
+  try {
+    if (id) {
+      await api('/scheduler/' + id, { method: 'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    } else {
+      await api('/scheduler', { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    }
+    toast('✅ Schedule saved');
+    closeModal();
+    loadScheduler();
+  } catch(e) { toast('❌ ' + e.message, 'error'); }
+}
+
+function editSchedule(id) {
+  const s = STATE.schedules.find(x => x.id === id);
+  if (s) openScheduleModal(s);
+}
+
+async function deleteSchedule(id) {
+  if (!confirm('Delete this schedule?')) return;
+  try {
+    await api('/scheduler/' + id, { method: 'DELETE' });
+    toast('🗑️ Schedule deleted');
+    loadScheduler();
+  } catch(e) { toast('❌ ' + e.message, 'error'); }
+}
+
+// --- METRICS ---
+async function loadMetrics() {
+  const m = await api('/metrics');
+  STATE.metrics = m;
+
+  document.getElementById('metrics-kpis').innerHTML = [
+    kpiCard('Total Cost', '$' + (m.totalCost||0).toFixed(4), ''),
+    kpiCard('Total Tokens', (m.totalTokens||0).toLocaleString(), ''),
+    kpiCard('Tasks Run', (m.totalTasks||0).toLocaleString(), ''),
+    kpiCard('Hours Saved', (m.totalHoursSaved||0).toFixed(1) + 'h', '~$' + ((m.totalHoursSaved||0)*75).toFixed(0) + ' value'),
+  ].join('');
+
+  const bc = m.byCompany || {};
+  const names = Object.keys(bc);
+  if (!names.length) return;
+
+  const maxCost = Math.max(...names.map(n => bc[n].cost||0), 0.001);
+  const maxTokens = Math.max(...names.map(n => bc[n].tokens||0), 1);
+  const maxHours = Math.max(...names.map(n => bc[n].hoursSaved||0), 0.1);
+  const maxTasks = Math.max(...names.map(n => bc[n].tasks||0), 1);
+
+  document.getElementById('chart-cost').innerHTML = names.map(n => barRow(n, '$'+(bc[n].cost||0).toFixed(4), (bc[n].cost||0)/maxCost*100, 'gold')).join('');
+  document.getElementById('chart-tokens').innerHTML = names.map(n => barRow(n, (bc[n].tokens||0).toLocaleString(), (bc[n].tokens||0)/maxTokens*100, 'blue')).join('');
+  document.getElementById('chart-hours').innerHTML = names.map(n => barRow(n, (bc[n].hoursSaved||0).toFixed(1)+'h', (bc[n].hoursSaved||0)/maxHours*100, 'green')).join('');
+  document.getElementById('chart-tasks').innerHTML = names.map(n => barRow(n, (bc[n].tasks||0)+'', (bc[n].tasks||0)/maxTasks*100, 'gold')).join('');
+}
+
+function barRow(label, val, pct, color) {
+  return `<div class="bar-row"><span class="bar-label">${esc(label)}</span><div class="bar-track"><div class="bar-fill ${color}" style="width:${Math.max(pct,5)}%">${val}</div></div></div>`;
+}
+
+// --- ACTIVITY ---
+async function loadActivity() {
+  const data = await api('/companies');
+  const all = [];
+  for (const co of data.companies) {
+    for (const a of (co.recentActivity || [])) {
+      all.push({ ...a, companyName: co.name, companyId: co.id });
+    }
+  }
+  all.sort((a, b) => new Date(b.ts) - new Date(a.ts));
+  document.getElementById('global-activity').innerHTML = all.slice(0, 100).map(a => `
+    <div class="activity-item">
+      <span class="time">${timeAgo(a.ts)}</span>
+      <span class="agent-name">${esc(a.agent)}</span>
+      <span class="action-text">${esc(a.action)}</span>
+      <span class="activity-type">${esc(a.companyName)}</span>
+    </div>`).join('') || '<div style="color:var(--muted);padding:20px">No activity yet</div>';
+}
+
+// --- UTILS ---
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// --- INIT & REFRESH ---
+async function loadAll() {
+  const indicator = document.getElementById('refresh-indicator');
+  indicator.innerHTML = '<div class="spinner" style="display:inline-block;margin-right:6px"></div> Connecting to API...';
+  try {
+    await Promise.all([loadOverview(), loadTasks(), loadDeliverables(), loadScheduler(), loadMetrics(), loadActivity()]);
+    indicator.textContent = '🟢 Live · Updated ' + new Date().toLocaleTimeString();
+    indicator.style.color = 'var(--green)';
+  } catch(e) {
+    console.error('Load error:', e);
+    indicator.textContent = '🔴 API unreachable';
+    indicator.style.color = 'var(--red)';
+    toast('⚠️ Cannot reach API at ' + API_BASE + ' — is the tunnel running?', 'error');
+  }
+}
+
+loadAll();
+setInterval(loadAll, 30000);
+</script>
+</body>
+</html>
