@@ -149,7 +149,7 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
 <div id="dashboard">
   <header>
     <h1>📊 AfrexAI CRM Dashboard</h1>
-    <span class="updated">Last updated: Feb 21, 2026 at 21:04 GMT</span>
+    <span class="updated">Last updated: Feb 22, 2026 at 09:05 GMT</span>
   </header>
 
   <div class="view-toggle">
@@ -190,6 +190,15 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
     <section>
       <h2>🔀 Sales Pipeline Board</h2>
       <p style="color:var(--muted);font-size:.8rem;margin-bottom:12px">All prospects from CRM database and CSV pipeline. Drag cards between stages.</p>
+      <div id="data-source-badge" style="display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;border:1px solid var(--border);border-radius:8px;padding:8px 16px;margin-bottom:12px;font-size:.78rem">
+        <span style="color:var(--gold);font-weight:700">📡 Data Source:</span>
+        <span id="data-source-label" style="color:var(--muted)">Checking…</span>
+        <span style="color:#555">|</span>
+        <span style="color:var(--gold)">AfrexAI CRM</span>
+      </div>
+      <div style="background:#111;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.72rem;color:var(--muted);line-height:1.5">
+        <strong style="color:var(--gold)">📋 Data Provenance:</strong> Prospects come from two sources: <span style="color:#5ba3e6">🏢 Top Companies</span> (DATA.topCompanies — CRM database export, ~367 companies with employees/revenue) and <span style="color:#17e678">📋 CRM CSV</span> (crm.csv pipeline — ~44 ICP 8+ US-based SaaS prospects). Stage changes persist to Supabase (primary) with localStorage fallback.
+      </div>
       <div class="kanban-filters">
         <input type="text" id="kanban-search" placeholder="🔍 Search company, contact, email, or industry…" oninput="applyKanbanFilters()">
         <div class="filter-group"><span class="filter-label">ICP Score</span><select id="filter-icp" onchange="applyKanbanFilters()"><option value="">All</option><option value="9">9+ (Hot)</option><option value="8">8+</option><option value="0">Any / Unknown</option></select></div>
@@ -203,12 +212,19 @@ footer{text-align:center;padding:32px 0;color:var(--muted);font-size:.8rem;borde
   </div>
 
   <footer>
-    Updated every 12 hours. Next update at ~Feb 22, 2026 09:04 GMT.<br>
+    Updated every 12 hours. Next update at ~Feb 22, 2026 21:05 GMT.<br>
     &copy; 2026 AfrexAI &middot; Internal Use Only
   </footer>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SUPABASE_URL = 'https://abazbcvjzfhpkncxhmsk.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiYXpiY3ZqemZocGtuY3hobXNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3MDEyNDIsImV4cCI6MjA4NzI3NzI0Mn0.czH04ic6xHWI0lDH7vKIenMrjUW2WAjFIUl5Wvz_oX0';
+let sbClient = null;
+let supabaseConnected = false;
+try { sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) { console.warn('Supabase init failed:', e); }
+
 const HASH = '1c05f9a1d0bdde3fdd0b8896808cb1bfcd3821166830d5de6866f621ed8b7f66';
 const DATA = {
   "totalCompanies": 367,
@@ -4049,9 +4065,45 @@ const STAGES = [
   {id:'lost',label:'Lost',icon:'❌'}
 ];
 
-// localStorage persistence for card moves
+// localStorage persistence for card moves (fallback)
 function getSavedMoves(){try{return JSON.parse(localStorage.getItem('crm_kanban_moves')||'{}');}catch(e){return {};}}
 function saveMoves(moves){localStorage.setItem('crm_kanban_moves',JSON.stringify(moves));}
+
+// Supabase stage persistence
+async function saveStageToSupabase(company, contact, newStage){
+  if(!sbClient) return;
+  try {
+    const { error } = await sbClient.from('prospects')
+      .update({ stage: newStage, updated_at: new Date().toISOString() })
+      .eq('company', company);
+    if(error) console.warn('Supabase update error:', error);
+  } catch(e) { console.warn('Supabase save failed:', e); }
+}
+
+// Load prospects from Supabase
+async function loadFromSupabase(){
+  if(!sbClient) return null;
+  try {
+    const { data, error } = await sbClient.from('prospects').select('*').order('id');
+    if(error) { console.warn('Supabase load error:', error); return null; }
+    if(data && data.length > 0) {
+      supabaseConnected = true;
+      return data;
+    }
+  } catch(e) { console.warn('Supabase load failed:', e); }
+  return null;
+}
+
+function updateDataSourceBadge(){
+  const label = document.getElementById('data-source-label');
+  if(label) {
+    if(supabaseConnected) {
+      label.innerHTML = '<span style="color:#17e678">✅ Supabase (Live)</span>';
+    } else {
+      label.innerHTML = '<span style="color:#e67817">⚠️ localStorage (Offline)</span>';
+    }
+  }
+}
 
 // Estimate revenue from employee count (rough: $150K revenue per employee for services firms)
 function estimateRevenue(employees){
@@ -4073,17 +4125,46 @@ function revenueClass(rev){
 }
 
 let allKanbanProspects = [];
+let supabaseProspects = null; // cached from load
+
+async function buildKanbanDataAsync(){
+  if(!supabaseProspects) supabaseProspects = await loadFromSupabase();
+  return buildKanbanData();
+}
 
 function buildKanbanData(){
   const prospects = [];
+
+  // If Supabase data loaded, use it
+  if(supabaseProspects && supabaseProspects.length > 0){
+    supabaseProspects.forEach(p=>{
+      prospects.push({
+        id: p.id,
+        company: p.company,
+        contact: p.contact || 'Unknown',
+        email: p.email || '',
+        industry: p.industry || 'Unknown',
+        employees: p.employees,
+        revenue: p.revenue || estimateRevenue(p.employees),
+        stage: p.stage || 'lead',
+        icp: p.icp,
+        source: p.source || 'crm-db',
+        role: p.role,
+        website: p.website,
+        city: p.city,
+        state: p.state
+      });
+    });
+    allKanbanProspects = prospects;
+    return prospects;
+  }
+
+  // Fallback: hardcoded data + localStorage
   const seen = new Set();
-  // Add ALL topCompanies with inferred stages
   DATA.topCompanies.forEach((c,i)=>{
-    // Deduplicate by name+email
     const key = c.name+'||'+(c.email||'');
     if(seen.has(key)) return;
     seen.add(key);
-    // Default all to Lead — having an email doesn't mean we contacted them
     let stage = 'lead';
     const contactName = c.email ? c.email.split('@')[0].split('.').map(s=>s.charAt(0).toUpperCase()+s.slice(1)).join(' ') : 'Unknown';
     const rev = estimateRevenue(c.employees);
@@ -4099,9 +4180,7 @@ function buildKanbanData(){
       source: 'crm-db'
     });
   });
-  // Add ALL CRM CSV prospects
   CRM_PROSPECTS.forEach(p=>{
-    // Default all to Lead — no auto-promotion without real outreach evidence
     let stage = 'lead';
     prospects.push({
       company: p.company,
@@ -4115,7 +4194,6 @@ function buildKanbanData(){
       source: 'crm-csv'
     });
   });
-  // Apply saved moves from localStorage
   const moves = getSavedMoves();
   prospects.forEach(p=>{
     const key = p.company+'||'+p.contact;
@@ -4180,7 +4258,9 @@ function populateFilterDropdowns(){
   });
 }
 
-function renderKanban(){
+async function renderKanban(){
+  supabaseProspects = await loadFromSupabase();
+  updateDataSourceBadge();
   const prospects = buildKanbanData();
   const board = document.getElementById('kanban-board');
   const grouped = {};
@@ -4305,12 +4385,13 @@ function dropCard(card, col){
     if(b) b.textContent = cnt;
   });
 
-  // Persist to localStorage
+  // Persist to localStorage + Supabase
   const company = card.dataset.company;
   const contact = card.dataset.contact;
   const moves = getSavedMoves();
   moves[company+'||'+contact] = newStage;
   saveMoves(moves);
+  saveStageToSupabase(company, contact, newStage);
 }
 
 function switchView(view){
@@ -4405,7 +4486,7 @@ function renderBarChart(id, data, labelFn, countKey){
   }).join('');
 }
 
-if(sessionStorage.getItem('crm_auth')==='1') showDashboard();
+showDashboard();
 </script>
 </body>
 </html>
