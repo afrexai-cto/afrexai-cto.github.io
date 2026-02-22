@@ -21,13 +21,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Debug - List blog files
         run: |
-          echo "Blog directories:"
-          ls -la blog/ | head -40
+          echo "Blog HTML files:"
+          ls blog/*.html | head -40
           echo "---"
-          echo "Total files:"
-          find . -name "index.html" -path "*/blog/*" | wc -l
-          echo "---"
-          ls blog/ai-agents-law-firms-2026/
+          echo "Total blog HTML files:"
+          ls blog/*.html | wc -l
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
