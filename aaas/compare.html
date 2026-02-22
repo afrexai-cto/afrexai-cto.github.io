@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI vs DIY vs Hiring — AI Agent Comparison | AfrexAI</title>
+<meta name="description" content="Should you build AI agents yourself, hire an engineer, or let AfrexAI run them? Side-by-side comparison of cost, time, risk, and results.">
+<meta name="keywords" content="AI agents comparison, build vs buy AI, hire AI engineer, managed AI agents, AfrexAI, agent as a service">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AfrexAI vs DIY vs Hiring — Which One Actually Works?">
+<meta property="og:description" content="Side-by-side comparison: building AI agents yourself, hiring an engineer, or using AfrexAI managed agents. Real numbers, no fluff.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://afrexai.com/aaas/compare.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AfrexAI vs DIY vs Hiring — Which One Actually Works?">
+<meta name="twitter:description" content="Side-by-side comparison of cost, time, and risk for AI agent deployment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--gold:#eab308;--gold-dim:#ca9a06;--white:#f5f5f5;--gray:#a3a3a3;--card:#141414;--card-border:#1f1f1f}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--card-border);padding:16px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:-.5px}
+.logo span{color:var(--gold)}
+nav a.cta-btn{background:var(--gold);color:#0a0a0a;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.875rem;transition:background .2s}
+nav a.cta-btn:hover{background:var(--gold-dim)}
+
+/* Hero */
+.hero{padding:120px 0 80px;text-align:center}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.15rem;color:var(--gray);max-width:620px;margin:0 auto 40px}
+
+/* Section */
+section{padding:80px 0}
+.section-label{text-transform:uppercase;font-size:.75rem;font-weight:600;letter-spacing:.12em;color:var(--gold);margin-bottom:12px}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.section-sub{color:var(--gray);max-width:560px;margin-bottom:48px;font-size:1rem}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+
+/* Comparison Table */
+.compare-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -24px;padding:0 24px}
+.compare-table{width:100%;border-collapse:collapse;min-width:700px}
+.compare-table th,.compare-table td{padding:18px 20px;text-align:left;border-bottom:1px solid var(--card-border);font-size:.92rem}
+.compare-table thead th{background:var(--card);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);position:sticky;top:0}
+.compare-table thead th:last-child{color:var(--gold)}
+.compare-table thead th.highlight{background:linear-gradient(180deg,#eab30812,#eab30806);border-top:2px solid var(--gold)}
+.compare-table td:first-child{font-weight:600;color:var(--white)}
+.compare-table td{color:var(--gray)}
+.compare-table td:last-child{color:var(--white);font-weight:500}
+.compare-table td.winner{background:#eab30808}
+.compare-table .bad{color:#ef4444}
+.compare-table .ok{color:#f59e0b}
+.compare-table .good{color:#22c55e}
+
+/* Hidden Costs */
+.costs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.cost-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:28px 24px}
+.cost-card h4{font-weight:700;font-size:1.05rem;margin-bottom:8px}
+.cost-card .cost-num{font-size:1.6rem;font-weight:800;color:#ef4444;margin-bottom:8px}
+.cost-card p{color:var(--gray);font-size:.9rem}
+
+/* ROI Callout */
+.roi-callout{background:linear-gradient(135deg,#eab30810,#eab30820);border:1px solid #eab30840;border-radius:16px;padding:48px 40px;text-align:center;max-width:700px;margin:0 auto}
+.roi-callout h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.roi-callout p{color:var(--gray);margin-bottom:28px;font-size:1rem}
+.roi-callout .cta-btn{display:inline-block;background:var(--gold);color:#0a0a0a;padding:14px 36px;border-radius:10px;font-weight:700;font-size:1rem;transition:background .2s,transform .15s}
+.roi-callout .cta-btn:hover{background:var(--gold-dim);transform:translateY(-2px)}
+
+/* Final CTA */
+.final-cta{text-align:center;padding:80px 0 100px}
+.final-cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:16px}
+.final-cta p{color:var(--gray);margin-bottom:36px;font-size:1.05rem}
+.final-cta .cta-btn{display:inline-block;background:var(--gold);color:#0a0a0a;padding:16px 48px;border-radius:10px;font-weight:700;font-size:1.05rem;transition:background .2s,transform .15s}
+.final-cta .cta-btn:hover{background:var(--gold-dim);transform:translateY(-2px)}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:760px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:36px 32px;position:relative;transition:border-color .2s,transform .2s}
+.price-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.price-card.featured{border-color:var(--gold)}
+.price-card .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#0a0a0a;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 16px;border-radius:20px}
+.price-card h3{font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.price-card .price{font-size:2.4rem;font-weight:800;color:var(--gold);margin:16px 0 4px}
+.price-card .price span{font-size:.9rem;font-weight:500;color:var(--gray)}
+.price-card ul{list-style:none;margin:20px 0 28px}
+.price-card li{padding:6px 0;font-size:.9rem;color:var(--gray)}
+.price-card li::before{content:"✓ ";color:var(--gold);font-weight:700}
+.price-card a.card-btn{display:block;text-align:center;background:var(--gold);color:#0a0a0a;padding:14px;border-radius:10px;font-weight:700;font-size:.95rem;transition:background .2s}
+.price-card a.card-btn:hover{background:var(--gold-dim)}
+
+/* Footer */
+footer{border-top:1px solid var(--card-border);padding:40px 0;text-align:center}
+footer .footer-links{margin-bottom:16px}
+footer .footer-links a{color:var(--gray);font-size:.85rem;margin:0 16px;transition:color .2s}
+footer .footer-links a:hover{color:var(--gold)}
+footer p{font-size:.8rem;color:#525252}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+<a href="/aaas/landing.html" class="logo">Afrex<span>AI</span></a>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Call</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<h1>Build It, Hire It, or<br><span>Let Us Run It?</span></h1>
+<p>Three ways to get AI agents working for your business. One of them doesn't require you to become an AI expert, manage infrastructure, or pray that your engineer doesn't quit.</p>
+</div>
+</section>
+
+<section id="comparison">
+<div class="container text-center">
+<div class="section-label">Side-by-Side</div>
+<h2 class="section-title">The Honest Comparison</h2>
+<p class="section-sub">We're not going to pretend the other options don't exist. Here's what each one actually looks like.</p>
+<div class="compare-table-wrap">
+<table class="compare-table">
+<thead>
+<tr>
+<th></th>
+<th>🛠️ DIY<br><small style="font-weight:400;text-transform:none;letter-spacing:0">ChatGPT + Open Source</small></th>
+<th>👤 Hire In-House<br><small style="font-weight:400;text-transform:none;letter-spacing:0">AI/ML Engineer</small></th>
+<th class="highlight">⚡ AfrexAI<br><small style="font-weight:400;text-transform:none;letter-spacing:0">Managed Agents</small></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setup Time</td>
+<td class="bad">2–6 months of fumbling</td>
+<td class="bad">3–6 months (hiring + onboarding)</td>
+<td class="winner good">Under 7 days</td>
+</tr>
+<tr>
+<td>Monthly Cost</td>
+<td class="ok">$200–$2,000 in API bills + your time</td>
+<td class="bad">$12,000–$25,000 salary + benefits</td>
+<td class="winner good">$1,500–$5,000/mo, all-in</td>
+</tr>
+<tr>
+<td>Expertise Needed</td>
+<td class="bad">You become the AI team</td>
+<td class="ok">You need to manage an AI team</td>
+<td class="winner good">Zero. We handle everything</td>
+</tr>
+<tr>
+<td>Uptime Guarantee</td>
+<td class="bad">None — it breaks, you fix it</td>
+<td class="ok">Depends on your engineer's vacation schedule</td>
+<td class="winner good">24/7 monitoring, guaranteed</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td class="bad">All on you. APIs change, things break</td>
+<td class="ok">Your engineer handles it (when they're around)</td>
+<td class="winner good">Fully managed. Updates included</td>
+</tr>
+<tr>
+<td>Customization</td>
+<td class="ok">Unlimited... if you can build it</td>
+<td class="good">High, but limited to one person's skills</td>
+<td class="winner good">Built to your exact workflows</td>
+</tr>
+<tr>
+<td>Scale Speed</td>
+<td class="bad">Weeks to months per new agent</td>
+<td class="ok">Limited by headcount</td>
+<td class="winner good">New agent in days</td>
+</tr>
+<tr>
+<td>Support</td>
+<td class="bad">Stack Overflow and hope</td>
+<td class="ok">Your one engineer (if they haven't quit)</td>
+<td class="winner good">Dedicated team, Slack/email</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="hidden-costs">
+<div class="container text-center">
+<div class="section-label">What People Forget</div>
+<h2 class="section-title">The Hidden Costs Nobody Talks About</h2>
+<p class="section-sub">The sticker price is never the real price. Here's what actually eats your budget.</p>
+<div class="costs-grid">
+<div class="cost-card">
+<h4>🛠️ DIY: Your Time Isn't Free</h4>
+<div class="cost-num">$8,000+/mo</div>
+<p>If you're spending 15–20 hours/week debugging prompts and fixing integrations, that's your $150/hr time. You're paying more than hiring — you're just not writing the check.</p>
+</div>
+<div class="cost-card">
+<h4>👤 Hiring: Turnover Will Hit You</h4>
+<div class="cost-num">$45,000</div>
+<p>Average cost to replace a technical employee. AI engineers stay about 18 months on average. So budget for recruiting every year and a half — and the knowledge that walks out the door with them.</p>
+</div>
+<div class="cost-card">
+<h4>🛠️ DIY: Infrastructure Surprises</h4>
+<div class="cost-num">$500–$3,000/mo</div>
+<p>Cloud compute, vector databases, API rate limits, logging, security patches. It adds up fast. And when something breaks at 2 AM, that's your phone ringing.</p>
+</div>
+<div class="cost-card">
+<h4>👤 Hiring: The Onboarding Tax</h4>
+<div class="cost-num">3–6 months</div>
+<p>Your new AI engineer spends months learning your business before they ship anything useful. Meanwhile, you're paying full salary for someone still figuring out where the codebase lives.</p>
+</div>
+<div class="cost-card">
+<h4>🛠️ DIY: Opportunity Cost</h4>
+<div class="cost-num">∞</div>
+<p>Every hour you spend wrangling LangChain is an hour you're not closing deals, building product, or talking to customers. The real cost is what you didn't do.</p>
+</div>
+<div class="cost-card">
+<h4>👤 Hiring: Benefits & Overhead</h4>
+<div class="cost-num">30–40%</div>
+<p>On top of salary: health insurance, equity, equipment, office space, management time. A $150K engineer costs you $200K+ when you add it all up.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="roi">
+<div class="container">
+<div class="roi-callout">
+<h3>🧮 What's AI Actually Worth to Your Business?</h3>
+<p>Run the numbers yourself. Our calculator shows the real ROI based on your team size, hourly rates, and the tasks you'd automate.</p>
+<a href="/ai-revenue-calculator/" class="cta-btn">Calculate Your ROI →</a>
+</div>
+</div>
+</section>
+
+<section id="pricing">
+<div class="container text-center">
+<div class="section-label">Pricing</div>
+<h2 class="section-title">Pick Your Plan</h2>
+<p class="section-sub">No per-query charges. No surprise bills. Dedicated infrastructure included.</p>
+<div class="pricing-grid">
+<div class="price-card">
+<h3>Single Agent</h3>
+<div class="price">$1,500<span>/mo</span></div>
+<ul>
+<li>One dedicated AI agent</li>
+<li>Dedicated server infrastructure</li>
+<li>24/7 uptime monitoring</li>
+<li>Monthly optimization & tuning</li>
+<li>Slack/email support</li>
+</ul>
+<a href="https://buy.stripe.com/00w7sE5v88In8LGaxh0sU09" class="card-btn">Get Started →</a>
+</div>
+<div class="price-card featured">
+<div class="badge">Most Popular</div>
+<h3>Full Swarm</h3>
+<div class="price">$5,000<span>/mo</span></div>
+<ul>
+<li>Up to 9 AI agents</li>
+<li>Full automation suite</li>
+<li>Dedicated server infrastructure</li>
+<li>24/7 uptime monitoring</li>
+<li>Weekly optimization & tuning</li>
+<li>Priority support</li>
+</ul>
+<a href="https://buy.stripe.com/7sY14g6zccYD4vq9td0sU0b" class="card-btn">Get Started →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="final-cta">
+<div class="container">
+<h2>Skip the Learning Curve</h2>
+<p>30-minute call. We'll look at your operations, tell you what to automate first, and give you a straight answer on whether we're the right fit.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book a Discovery Call →</a>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="footer-links">
+<a href="/aaas/landing.html">Home</a>
+<a href="/aaas/faq.html">FAQ</a>
+<a href="/aaas/social-proof.html">Results</a>
+<a href="/blog/">Blog</a>
+</div>
+<p>© 2026 AfrexAI. All prices USD.</p>
+</div>
+</footer>
+
+</body>
+</html>
