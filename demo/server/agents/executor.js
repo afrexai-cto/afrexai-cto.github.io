@@ -28,7 +28,7 @@ function getApiKey() {
   } catch {
     try {
       // Fallback to vault file
-      const envFile = path.join(process.env.HOME, '.openclaw/vault/anthropic.env');
+      const envFile = path.join('/Users/openclaw', '.openclaw/vault/anthropic.env');
       if (fs.existsSync(envFile)) {
         const content = fs.readFileSync(envFile, 'utf-8');
         const match = content.match(/ANTHROPIC_API_KEY=(.+)/);

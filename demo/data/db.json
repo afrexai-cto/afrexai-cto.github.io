@@ -5,7 +5,7 @@
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 3045,
+        "tasksCompleted": 3048,
         "hoursSaved": 372.43,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
@@ -15,25 +15,52 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-21T17:01:19.166Z",
-          "taskCount": 1011
+          "lastActive": "2026-02-22T12:28:01.059Z",
+          "taskCount": 1012
         },
         {
           "id": "compliance-officer",
           "name": "Compliance Officer",
           "status": "active",
-          "lastActive": "2026-02-21T16:55:25.508Z",
-          "taskCount": 1017
+          "lastActive": "2026-02-22T12:28:19.645Z",
+          "taskCount": 1018
         },
         {
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-21T14:31:07.882Z",
-          "taskCount": 1017
+          "lastActive": "2026-02-22T12:28:40.792Z",
+          "taskCount": 1018
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-22T12:28:40.792Z",
+          "agent": "records-analyst",
+          "action": "Processed records request RR-014 for William Osei",
+          "type": "records",
+          "artifact": "deliverables/meridian-health/records-summary-2026-02-22T12-28-40-792Z.md",
+          "real": true,
+          "runId": "run-1771763299719-okal88"
+        },
+        {
+          "ts": "2026-02-22T12:28:19.645Z",
+          "agent": "compliance-officer",
+          "action": "Generated HIPAA compliance audit report",
+          "type": "compliance",
+          "artifact": "deliverables/meridian-health/compliance-report-2026-02-22T12-28-19-645Z.md",
+          "real": true,
+          "runId": "run-1771763272807-ahlclw"
+        },
+        {
+          "ts": "2026-02-22T12:28:01.059Z",
+          "agent": "patient-coordinator",
+          "action": "Generated scheduling confirmation for Francesca Moretti — Gastroenterology",
+          "type": "scheduling",
+          "artifact": "deliverables/meridian-health/scheduling-confirmation-2026-02-22T12-28-01-059Z.md",
+          "real": true,
+          "runId": "run-1771763264947-41zeog"
+        },
         {
           "ts": "2026-02-21T17:01:19.166Z",
           "agent": "patient-coordinator",
@@ -318,24 +345,6 @@
           "agent": "compliance-officer",
           "action": "Completed HIPAA training verification — Dr. Kim",
           "type": "compliance"
-        },
-        {
-          "ts": "2026-02-20T18:56:37.721Z",
-          "agent": "compliance-officer",
-          "action": "Completed HIPAA training verification — Dr. Kim",
-          "type": "compliance"
-        },
-        {
-          "ts": "2026-02-20T18:46:40.088Z",
-          "agent": "records-analyst",
-          "action": "Sent records to Pacific Skin Institute via secure transfer",
-          "type": "records"
-        },
-        {
-          "ts": "2026-02-20T18:50:18.033Z",
-          "agent": "records-analyst",
-          "action": "Archived 17 inactive patient records",
-          "type": "maintenance"
         }
       ]
     },
@@ -344,7 +353,7 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2234,
+        "tasksCompleted": 2237,
         "hoursSaved": 291.5,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
@@ -361,18 +370,45 @@
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-21T17:45:09.687Z",
-          "taskCount": 752
+          "lastActive": "2026-02-22T12:30:43.914Z",
+          "taskCount": 754
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-21T18:53:34.211Z",
-          "taskCount": 739
+          "lastActive": "2026-02-22T12:30:54.666Z",
+          "taskCount": 740
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-22T12:30:54.666Z",
+          "agent": "client-followup",
+          "action": "Drafted client status update for Nakamura Family Trust — Trust Amendment",
+          "type": "client-communication",
+          "artifact": "deliverables/pacific-legal/client-email-2026-02-22T12-30-54-666Z.md",
+          "real": true,
+          "runId": "run-1771763443943-3qq7ur"
+        },
+        {
+          "ts": "2026-02-22T12:30:43.914Z",
+          "agent": "document-analyst",
+          "action": "Generated legal brief summary and analysis",
+          "type": "document-review",
+          "artifact": "deliverables/pacific-legal/brief-summary-2026-02-22T12-30-43-914Z.md",
+          "real": true,
+          "runId": "run-1771763422554-9lltyw"
+        },
+        {
+          "ts": "2026-02-22T12:30:22.526Z",
+          "agent": "document-analyst",
+          "action": "Completed contract review and risk assessment",
+          "type": "document-review",
+          "artifact": "deliverables/pacific-legal/contract-review-2026-02-22T12-30-22-526Z.md",
+          "real": true,
+          "runId": "run-1771763393130-saxlns"
+        },
         {
           "ts": "2026-02-21T18:53:34.211Z",
           "agent": "client-followup",
@@ -660,24 +696,6 @@
           "agent": "legal-ea",
           "action": "Calendared deadline: client_meeting — Estate of Williams on 2026-02-18",
           "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-20T18:59:44.956Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in Lease Negotiation",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-20T19:00:35.721Z",
-          "agent": "client-followup",
-          "action": "Sent medium reminder: File articles of incorporation with Secretary of State for Chen Industries LLC",
-          "type": "follow-up"
-        },
-        {
-          "ts": "2026-02-20T17:51:34.766Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in Martinez v. State Farm",
-          "type": "review"
         }
       ]
     },
@@ -686,7 +704,7 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 604,
+        "tasksCompleted": 605,
         "hoursSaved": 119.86,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
@@ -696,11 +714,20 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-21T17:44:34.470Z",
-          "taskCount": 604
+          "lastActive": "2026-02-22T12:27:44.914Z",
+          "taskCount": 605
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-22T12:27:44.914Z",
+          "agent": "site-reporter",
+          "action": "Generated daily site report for Hillsboro Medical Office Building",
+          "type": "site-report",
+          "artifact": "deliverables/buildright/site-report-2026-02-22T12-27-44-914Z.md",
+          "real": true,
+          "runId": "run-1771763239325-88yswj"
+        },
         {
           "ts": "2026-02-21T17:44:34.470Z",
           "agent": "site-reporter",
@@ -997,12 +1024,6 @@
           "agent": "site-reporter",
           "action": "Updated milestone: Framing units 20-40 at Cascade Elementary School Renovation",
           "type": "milestone"
-        },
-        {
-          "ts": "2026-02-20T17:48:04.027Z",
-          "agent": "site-reporter",
-          "action": "Generated daily report — Hillsboro Medical Office Building",
-          "type": "reporting"
         }
       ]
     },
@@ -1011,7 +1032,7 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 2069,
+        "tasksCompleted": 2072,
         "hoursSaved": 255.61,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
@@ -1021,25 +1042,52 @@
           "id": "churn-analyst",
           "name": "Churn Analyst",
           "status": "active",
-          "lastActive": "2026-02-21T17:45:17.149Z",
-          "taskCount": 680
+          "lastActive": "2026-02-22T12:29:09.403Z",
+          "taskCount": 681
         },
         {
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-21T15:49:12.351Z",
-          "taskCount": 688
+          "lastActive": "2026-02-22T12:29:33.581Z",
+          "taskCount": 689
         },
         {
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-21T16:57:57.215Z",
-          "taskCount": 700
+          "lastActive": "2026-02-22T12:29:53.097Z",
+          "taskCount": 701
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-22T12:29:53.097Z",
+          "agent": "support-triage",
+          "action": "Triaged ticket TK-4204: Request for custom webhook endpoint for Apex Retail Group",
+          "type": "triage",
+          "artifact": "deliverables/novacrm/ticket-triage-2026-02-22T12-29-53-097Z.md",
+          "real": true,
+          "runId": "run-1771763373610-w1g6xn"
+        },
+        {
+          "ts": "2026-02-22T12:29:33.581Z",
+          "agent": "onboarding-specialist",
+          "action": "Generated onboarding update for Starline Media (training — 80%)",
+          "type": "onboarding",
+          "artifact": "deliverables/novacrm/onboarding-update-2026-02-22T12-29-33-581Z.md",
+          "real": true,
+          "runId": "run-1771763349431-1delij"
+        },
+        {
+          "ts": "2026-02-22T12:29:09.403Z",
+          "agent": "churn-analyst",
+          "action": "Completed churn risk analysis for Nexus Financial (score: 86)",
+          "type": "analysis",
+          "artifact": "deliverables/novacrm/churn-analysis-2026-02-22T12-29-09-403Z.md",
+          "real": true,
+          "runId": "run-1771763320822-ynj16w"
+        },
         {
           "ts": "2026-02-21T17:45:17.149Z",
           "agent": "churn-analyst",
@@ -1324,24 +1372,6 @@
           "agent": "support-triage",
           "action": "Auto-triaged ticket TK-4204: Request for custom webhook endpoint — routed to feature_request",
           "type": "triage"
-        },
-        {
-          "ts": "2026-02-20T20:03:51.751Z",
-          "agent": "onboarding-specialist",
-          "action": "Sent onboarding checklist to GreenLeaf Foods",
-          "type": "communication"
-        },
-        {
-          "ts": "2026-02-20T18:56:33.892Z",
-          "agent": "churn-analyst",
-          "action": "Triggered re-engagement sequence for Apex Retail Group",
-          "type": "automation"
-        },
-        {
-          "ts": "2026-02-20T18:59:39.093Z",
-          "agent": "onboarding-specialist",
-          "action": "Completed data import for Oaktree Consulting — 3662 records migrated",
-          "type": "onboarding"
         }
       ]
     },
@@ -1350,7 +1380,7 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2442,
+        "tasksCompleted": 2445,
         "hoursSaved": 329.26,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
@@ -1360,25 +1390,52 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-21T16:49:05.833Z",
-          "taskCount": 809
+          "lastActive": "2026-02-22T12:26:53.239Z",
+          "taskCount": 810
         },
         {
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-21T18:50:19.701Z",
-          "taskCount": 827
+          "lastActive": "2026-02-22T12:26:22.741Z",
+          "taskCount": 828
         },
         {
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-21T15:47:31.631Z",
-          "taskCount": 804
+          "lastActive": "2026-02-22T12:27:19.294Z",
+          "taskCount": 805
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-22T12:27:19.294Z",
+          "agent": "filing-coordinator",
+          "action": "Updated Form CRS filing status — Atlas Wealth Advisors",
+          "type": "filing",
+          "artifact": "deliverables/atlas-wealth/filing-status-2026-02-22T12-27-19-294Z.md",
+          "real": true,
+          "runId": "run-1771763213269-n30wnf"
+        },
+        {
+          "ts": "2026-02-22T12:26:53.239Z",
+          "agent": "compliance-monitor",
+          "action": "Completed best_interest_documentation check — Reg BI",
+          "type": "compliance",
+          "artifact": "deliverables/atlas-wealth/compliance-check-2026-02-22T12-26-53-239Z.md",
+          "real": true,
+          "runId": "run-1771763182776-fsq3f3"
+        },
+        {
+          "ts": "2026-02-22T12:26:22.741Z",
+          "agent": "portfolio-reviewer",
+          "action": "Completed portfolio review for Greenfield Pension Fund ($$28500000 AUM)",
+          "type": "review",
+          "artifact": "deliverables/atlas-wealth/portfolio-review-2026-02-22T12-26-22-741Z.md",
+          "real": true,
+          "runId": "run-1771763144716-698gef"
+        },
         {
           "ts": "2026-02-21T18:50:19.701Z",
           "agent": "portfolio-reviewer",
@@ -1666,29 +1723,248 @@
           "agent": "compliance-monitor",
           "action": "Verified Reg BI best interest documentation for Angela DiMartino",
           "type": "compliance"
-        },
-        {
-          "ts": "2026-02-20T19:57:54.021Z",
-          "agent": "portfolio-reviewer",
-          "action": "Completed quarterly portfolio review for Richardson Family Trust ($$4200000 AUM)",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-20T18:49:56.832Z",
-          "agent": "portfolio-reviewer",
-          "action": "Flagged rebalancing needed — Angela DiMartino (moderate profile)",
-          "type": "alert"
-        },
-        {
-          "ts": "2026-02-20T18:53:55.946Z",
-          "agent": "portfolio-reviewer",
-          "action": "Prepared client review materials for Richardson Family Trust — meeting 2026-04-15",
-          "type": "preparation"
         }
       ]
     }
   },
   "taskRuns": [
+    {
+      "id": "run-1771763443943-3qq7ur",
+      "companyId": "pacific-legal",
+      "taskId": "client-followup",
+      "agentId": "client-followup",
+      "agentName": "Client Follow-up Coordinator",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:30:43.944Z",
+      "completedAt": "2026-02-22T12:30:54.666Z",
+      "cost": 0.007227,
+      "tokens": 613,
+      "durationMs": 10723,
+      "deliverablePath": "deliverables/pacific-legal/client-email-2026-02-22T12-30-54-666Z.md"
+    },
+    {
+      "id": "run-1771763422554-9lltyw",
+      "companyId": "pacific-legal",
+      "taskId": "brief-summary",
+      "agentId": "document-analyst",
+      "agentName": "Document Analyst",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:30:22.554Z",
+      "completedAt": "2026-02-22T12:30:43.914Z",
+      "cost": 0.017868000000000002,
+      "tokens": 1732,
+      "durationMs": 21360,
+      "deliverablePath": "deliverables/pacific-legal/brief-summary-2026-02-22T12-30-43-914Z.md"
+    },
+    {
+      "id": "run-1771763393130-saxlns",
+      "companyId": "pacific-legal",
+      "taskId": "contract-review",
+      "agentId": "document-analyst",
+      "agentName": "Document Analyst",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:29:53.131Z",
+      "completedAt": "2026-02-22T12:30:22.526Z",
+      "cost": 0.024720000000000002,
+      "tokens": 2184,
+      "durationMs": 29396,
+      "deliverablePath": "deliverables/pacific-legal/contract-review-2026-02-22T12-30-22-526Z.md"
+    },
+    {
+      "id": "run-1771763373610-w1g6xn",
+      "companyId": "novacrm",
+      "taskId": "ticket-triage",
+      "agentId": "support-triage",
+      "agentName": "Support Triage",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:29:33.611Z",
+      "completedAt": "2026-02-22T12:29:53.097Z",
+      "cost": 0.013325999999999998,
+      "tokens": 1026,
+      "durationMs": 19487,
+      "deliverablePath": "deliverables/novacrm/ticket-triage-2026-02-22T12-29-53-097Z.md"
+    },
+    {
+      "id": "run-1771763349431-1delij",
+      "companyId": "novacrm",
+      "taskId": "onboarding-update",
+      "agentId": "onboarding-specialist",
+      "agentName": "Onboarding Specialist",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:29:09.432Z",
+      "completedAt": "2026-02-22T12:29:33.581Z",
+      "cost": 0.018786,
+      "tokens": 1382,
+      "durationMs": 24150,
+      "deliverablePath": "deliverables/novacrm/onboarding-update-2026-02-22T12-29-33-581Z.md"
+    },
+    {
+      "id": "run-1771763320822-ynj16w",
+      "companyId": "novacrm",
+      "taskId": "churn-analysis",
+      "agentId": "churn-analyst",
+      "agentName": "Churn Analyst",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:28:40.824Z",
+      "completedAt": "2026-02-22T12:29:09.403Z",
+      "cost": 0.021134999999999998,
+      "tokens": 1545,
+      "durationMs": 28581,
+      "deliverablePath": "deliverables/novacrm/churn-analysis-2026-02-22T12-29-09-403Z.md"
+    },
+    {
+      "id": "run-1771763299719-okal88",
+      "companyId": "meridian-health",
+      "taskId": "records-request",
+      "agentId": "records-analyst",
+      "agentName": "Records Analyst",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:28:19.720Z",
+      "completedAt": "2026-02-22T12:28:40.792Z",
+      "cost": 0.014807999999999998,
+      "tokens": 1112,
+      "durationMs": 21073,
+      "deliverablePath": "deliverables/meridian-health/records-summary-2026-02-22T12-28-40-792Z.md"
+    },
+    {
+      "id": "run-1771763272807-ahlclw",
+      "companyId": "meridian-health",
+      "taskId": "compliance-audit",
+      "agentId": "compliance-officer",
+      "agentName": "Compliance Officer",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:27:52.808Z",
+      "completedAt": "2026-02-22T12:28:19.645Z",
+      "cost": 0.025323,
+      "tokens": 2793,
+      "durationMs": 26838,
+      "deliverablePath": "deliverables/meridian-health/compliance-report-2026-02-22T12-28-19-645Z.md"
+    },
+    {
+      "id": "run-1771763264947-41zeog",
+      "companyId": "meridian-health",
+      "taskId": "schedule-patient",
+      "agentId": "patient-coordinator",
+      "agentName": "Patient Coordinator",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:27:44.947Z",
+      "completedAt": "2026-02-22T12:28:01.059Z",
+      "cost": 0.011472,
+      "tokens": 900,
+      "durationMs": 16112,
+      "deliverablePath": "deliverables/meridian-health/scheduling-confirmation-2026-02-22T12-28-01-059Z.md"
+    },
+    {
+      "id": "run-1771763239325-88yswj",
+      "companyId": "buildright",
+      "taskId": "daily-site-report",
+      "agentId": "site-reporter",
+      "agentName": "Site Reporter",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:27:19.326Z",
+      "completedAt": "2026-02-22T12:27:44.914Z",
+      "cost": 0.016668000000000002,
+      "tokens": 1276,
+      "durationMs": 25589,
+      "deliverablePath": "deliverables/buildright/site-report-2026-02-22T12-27-44-914Z.md"
+    },
+    {
+      "id": "run-1771763213269-n30wnf",
+      "companyId": "atlas-wealth",
+      "taskId": "filing-status",
+      "agentId": "filing-coordinator",
+      "agentName": "Filing Coordinator",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:26:53.270Z",
+      "completedAt": "2026-02-22T12:27:19.294Z",
+      "cost": 0.017702999999999997,
+      "tokens": 1301,
+      "durationMs": 26025,
+      "deliverablePath": "deliverables/atlas-wealth/filing-status-2026-02-22T12-27-19-294Z.md"
+    },
+    {
+      "id": "run-1771763182776-fsq3f3",
+      "companyId": "atlas-wealth",
+      "taskId": "compliance-check",
+      "agentId": "compliance-monitor",
+      "agentName": "Compliance Monitor",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:26:22.777Z",
+      "completedAt": "2026-02-22T12:26:53.239Z",
+      "cost": 0.022862999999999998,
+      "tokens": 1645,
+      "durationMs": 30463,
+      "deliverablePath": "deliverables/atlas-wealth/compliance-check-2026-02-22T12-26-53-239Z.md"
+    },
+    {
+      "id": "run-1771763144716-698gef",
+      "companyId": "atlas-wealth",
+      "taskId": "portfolio-review",
+      "agentId": "portfolio-reviewer",
+      "agentName": "Portfolio Reviewer",
+      "status": "completed",
+      "startedAt": "2026-02-22T12:25:44.717Z",
+      "completedAt": "2026-02-22T12:26:22.741Z",
+      "cost": 0.030497999999999997,
+      "tokens": 2166,
+      "durationMs": 38025,
+      "deliverablePath": "deliverables/atlas-wealth/portfolio-review-2026-02-22T12-26-22-741Z.md"
+    },
+    {
+      "id": "run-1771763060892-monknm",
+      "companyId": "atlas-wealth",
+      "taskId": "portfolio-review",
+      "agentId": "portfolio-reviewer",
+      "agentName": "Portfolio Reviewer",
+      "status": "failed",
+      "startedAt": "2026-02-22T12:24:20.893Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-22T12:24:20.977Z"
+    },
+    {
+      "id": "run-1771762822691-qtzd75",
+      "companyId": "atlas-wealth",
+      "taskId": "portfolio-review",
+      "agentId": "portfolio-reviewer",
+      "agentName": "Portfolio Reviewer",
+      "status": "failed",
+      "startedAt": "2026-02-22T12:20:22.692Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-22T12:20:22.758Z"
+    },
+    {
+      "id": "run-1771762818973-5ylfsu",
+      "companyId": "atlas-wealth",
+      "taskId": "portfolio-review",
+      "agentId": "portfolio-reviewer",
+      "agentName": "Portfolio Reviewer",
+      "status": "failed",
+      "startedAt": "2026-02-22T12:20:18.973Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-22T12:20:19.013Z"
+    },
+    {
+      "id": "run-1771762791794-q0r1t4",
+      "companyId": "atlas-wealth",
+      "taskId": "portfolio-review",
+      "agentId": "portfolio-reviewer",
+      "agentName": "Portfolio Reviewer",
+      "status": "failed",
+      "startedAt": "2026-02-22T12:19:51.795Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-22T12:19:51.835Z"
+    },
+    {
+      "id": "run-1771762787077-gmkqct",
+      "companyId": "atlas-wealth",
+      "taskId": "portfolio-review",
+      "agentId": "portfolio-reviewer",
+      "agentName": "Portfolio Reviewer",
+      "status": "failed",
+      "startedAt": "2026-02-22T12:19:47.078Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-22T12:19:47.196Z"
+    },
     {
       "id": "run-1771700002553-ohzfp7",
       "companyId": "pacific-legal",
@@ -1970,43 +2246,167 @@
   "dataSources": {},
   "outputConfigs": {},
   "metrics": {
-    "totalCost": 0.1323,
-    "totalTokens": 10060,
-    "totalTasks": 6,
-    "totalHoursSaved": 1.5,
+    "totalCost": 0.3747,
+    "totalTokens": 29735,
+    "totalTasks": 19,
+    "totalHoursSaved": 4.75,
     "byCompany": {
       "buildright": {
-        "cost": 0.0187,
-        "tokens": 1413,
-        "tasks": 1,
-        "hoursSaved": 0.25,
-        "avgDurationMs": 27469
+        "cost": 0.0354,
+        "tokens": 2689,
+        "tasks": 2,
+        "hoursSaved": 0.5,
+        "avgDurationMs": 26529
       },
       "pacific-legal": {
-        "cost": 0.0311,
-        "tokens": 2746,
-        "tasks": 2,
-        "hoursSaved": 0.5,
-        "avgDurationMs": 19825
+        "cost": 0.0809,
+        "tokens": 7275,
+        "tasks": 5,
+        "hoursSaved": 1.25,
+        "avgDurationMs": 20225
       },
       "novacrm": {
-        "cost": 0.0245,
-        "tokens": 1771,
-        "tasks": 1,
-        "hoursSaved": 0.25,
-        "avgDurationMs": 35449
+        "cost": 0.0777,
+        "tokens": 5724,
+        "tasks": 4,
+        "hoursSaved": 1,
+        "avgDurationMs": 26917
       },
       "atlas-wealth": {
-        "cost": 0.058,
-        "tokens": 4130,
-        "tasks": 2,
-        "hoursSaved": 0.5,
-        "avgDurationMs": 38255
+        "cost": 0.1291,
+        "tokens": 9242,
+        "tasks": 5,
+        "hoursSaved": 1.25,
+        "avgDurationMs": 34204
+      },
+      "meridian-health": {
+        "cost": 0.0516,
+        "tokens": 4805,
+        "tasks": 3,
+        "hoursSaved": 0.75,
+        "avgDurationMs": 21341
       }
     }
   },
-  "lastUpdated": "2026-02-22T03:19:24.959Z",
+  "lastUpdated": "2026-02-22T12:30:54.672Z",
   "recentActivity": [
+    {
+      "ts": "2026-02-22T12:30:54.666Z",
+      "agent": "client-followup",
+      "action": "Drafted client status update for Nakamura Family Trust — Trust Amendment",
+      "type": "client-communication",
+      "artifact": "deliverables/pacific-legal/client-email-2026-02-22T12-30-54-666Z.md",
+      "real": true,
+      "runId": "run-1771763443943-3qq7ur"
+    },
+    {
+      "ts": "2026-02-22T12:30:43.914Z",
+      "agent": "document-analyst",
+      "action": "Generated legal brief summary and analysis",
+      "type": "document-review",
+      "artifact": "deliverables/pacific-legal/brief-summary-2026-02-22T12-30-43-914Z.md",
+      "real": true,
+      "runId": "run-1771763422554-9lltyw"
+    },
+    {
+      "ts": "2026-02-22T12:30:22.526Z",
+      "agent": "document-analyst",
+      "action": "Completed contract review and risk assessment",
+      "type": "document-review",
+      "artifact": "deliverables/pacific-legal/contract-review-2026-02-22T12-30-22-526Z.md",
+      "real": true,
+      "runId": "run-1771763393130-saxlns"
+    },
+    {
+      "ts": "2026-02-22T12:29:53.097Z",
+      "agent": "support-triage",
+      "action": "Triaged ticket TK-4204: Request for custom webhook endpoint for Apex Retail Group",
+      "type": "triage",
+      "artifact": "deliverables/novacrm/ticket-triage-2026-02-22T12-29-53-097Z.md",
+      "real": true,
+      "runId": "run-1771763373610-w1g6xn"
+    },
+    {
+      "ts": "2026-02-22T12:29:33.581Z",
+      "agent": "onboarding-specialist",
+      "action": "Generated onboarding update for Starline Media (training — 80%)",
+      "type": "onboarding",
+      "artifact": "deliverables/novacrm/onboarding-update-2026-02-22T12-29-33-581Z.md",
+      "real": true,
+      "runId": "run-1771763349431-1delij"
+    },
+    {
+      "ts": "2026-02-22T12:29:09.403Z",
+      "agent": "churn-analyst",
+      "action": "Completed churn risk analysis for Nexus Financial (score: 86)",
+      "type": "analysis",
+      "artifact": "deliverables/novacrm/churn-analysis-2026-02-22T12-29-09-403Z.md",
+      "real": true,
+      "runId": "run-1771763320822-ynj16w"
+    },
+    {
+      "ts": "2026-02-22T12:28:40.792Z",
+      "agent": "records-analyst",
+      "action": "Processed records request RR-014 for William Osei",
+      "type": "records",
+      "artifact": "deliverables/meridian-health/records-summary-2026-02-22T12-28-40-792Z.md",
+      "real": true,
+      "runId": "run-1771763299719-okal88"
+    },
+    {
+      "ts": "2026-02-22T12:28:19.645Z",
+      "agent": "compliance-officer",
+      "action": "Generated HIPAA compliance audit report",
+      "type": "compliance",
+      "artifact": "deliverables/meridian-health/compliance-report-2026-02-22T12-28-19-645Z.md",
+      "real": true,
+      "runId": "run-1771763272807-ahlclw"
+    },
+    {
+      "ts": "2026-02-22T12:28:01.059Z",
+      "agent": "patient-coordinator",
+      "action": "Generated scheduling confirmation for Francesca Moretti — Gastroenterology",
+      "type": "scheduling",
+      "artifact": "deliverables/meridian-health/scheduling-confirmation-2026-02-22T12-28-01-059Z.md",
+      "real": true,
+      "runId": "run-1771763264947-41zeog"
+    },
+    {
+      "ts": "2026-02-22T12:27:44.914Z",
+      "agent": "site-reporter",
+      "action": "Generated daily site report for Hillsboro Medical Office Building",
+      "type": "site-report",
+      "artifact": "deliverables/buildright/site-report-2026-02-22T12-27-44-914Z.md",
+      "real": true,
+      "runId": "run-1771763239325-88yswj"
+    },
+    {
+      "ts": "2026-02-22T12:27:19.294Z",
+      "agent": "filing-coordinator",
+      "action": "Updated Form CRS filing status — Atlas Wealth Advisors",
+      "type": "filing",
+      "artifact": "deliverables/atlas-wealth/filing-status-2026-02-22T12-27-19-294Z.md",
+      "real": true,
+      "runId": "run-1771763213269-n30wnf"
+    },
+    {
+      "ts": "2026-02-22T12:26:53.239Z",
+      "agent": "compliance-monitor",
+      "action": "Completed best_interest_documentation check — Reg BI",
+      "type": "compliance",
+      "artifact": "deliverables/atlas-wealth/compliance-check-2026-02-22T12-26-53-239Z.md",
+      "real": true,
+      "runId": "run-1771763182776-fsq3f3"
+    },
+    {
+      "ts": "2026-02-22T12:26:22.741Z",
+      "agent": "portfolio-reviewer",
+      "action": "Completed portfolio review for Greenfield Pension Fund ($$28500000 AUM)",
+      "type": "review",
+      "artifact": "deliverables/atlas-wealth/portfolio-review-2026-02-22T12-26-22-741Z.md",
+      "real": true,
+      "runId": "run-1771763144716-698gef"
+    },
     {
       "ts": "2026-02-21T18:53:34.211Z",
       "agent": "client-followup",
@@ -2063,6 +2463,162 @@
     }
   ],
   "deliveryLog": [
+    {
+      "ts": "2026-02-22T12:30:54.672Z",
+      "companyId": "pacific-legal",
+      "deliverable": "deliverables/pacific-legal/client-email-2026-02-22T12-30-54-666Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/pacific-legal/client-email-2026-02-22T12-30-54-666Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:30:43.920Z",
+      "companyId": "pacific-legal",
+      "deliverable": "deliverables/pacific-legal/brief-summary-2026-02-22T12-30-43-914Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/pacific-legal/brief-summary-2026-02-22T12-30-43-914Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:30:22.533Z",
+      "companyId": "pacific-legal",
+      "deliverable": "deliverables/pacific-legal/contract-review-2026-02-22T12-30-22-526Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/pacific-legal/contract-review-2026-02-22T12-30-22-526Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:29:53.107Z",
+      "companyId": "novacrm",
+      "deliverable": "deliverables/novacrm/ticket-triage-2026-02-22T12-29-53-097Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/novacrm/ticket-triage-2026-02-22T12-29-53-097Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:29:33.589Z",
+      "companyId": "novacrm",
+      "deliverable": "deliverables/novacrm/onboarding-update-2026-02-22T12-29-33-581Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/novacrm/onboarding-update-2026-02-22T12-29-33-581Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:29:09.411Z",
+      "companyId": "novacrm",
+      "deliverable": "deliverables/novacrm/churn-analysis-2026-02-22T12-29-09-403Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/novacrm/churn-analysis-2026-02-22T12-29-09-403Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:28:40.800Z",
+      "companyId": "meridian-health",
+      "deliverable": "deliverables/meridian-health/records-summary-2026-02-22T12-28-40-792Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/meridian-health/records-summary-2026-02-22T12-28-40-792Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:28:19.653Z",
+      "companyId": "meridian-health",
+      "deliverable": "deliverables/meridian-health/compliance-report-2026-02-22T12-28-19-645Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/meridian-health/compliance-report-2026-02-22T12-28-19-645Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:28:01.066Z",
+      "companyId": "meridian-health",
+      "deliverable": "deliverables/meridian-health/scheduling-confirmation-2026-02-22T12-28-01-059Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/meridian-health/scheduling-confirmation-2026-02-22T12-28-01-059Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:27:44.921Z",
+      "companyId": "buildright",
+      "deliverable": "deliverables/buildright/site-report-2026-02-22T12-27-44-914Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/buildright/site-report-2026-02-22T12-27-44-914Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:27:19.301Z",
+      "companyId": "atlas-wealth",
+      "deliverable": "deliverables/atlas-wealth/filing-status-2026-02-22T12-27-19-294Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/atlas-wealth/filing-status-2026-02-22T12-27-19-294Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:26:53.247Z",
+      "companyId": "atlas-wealth",
+      "deliverable": "deliverables/atlas-wealth/compliance-check-2026-02-22T12-26-53-239Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/atlas-wealth/compliance-check-2026-02-22T12-26-53-239Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-22T12:26:22.749Z",
+      "companyId": "atlas-wealth",
+      "deliverable": "deliverables/atlas-wealth/portfolio-review-2026-02-22T12-26-22-741Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/atlas-wealth/portfolio-review-2026-02-22T12-26-22-741Z.md"
+        }
+      ]
+    },
     {
       "ts": "2026-02-21T18:53:34.222Z",
       "companyId": "pacific-legal",

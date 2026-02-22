@@ -23,6 +23,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// Root redirect
+app.get('/', (req, res) => res.redirect('/demo/'));
+
 // Static files (existing demo HTML)
 app.use('/demo', express.static(DEMO, { extensions: ['html'] }));
 
