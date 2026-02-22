@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI — Client Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#111;--border:#1a1a1a;--gold:#FFD700;--gold2:#eab308;--white:#fff;--gray:#888;--green:#22c55e}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--white);min-height:100vh;line-height:1.6}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--border);padding:20px 0}
+.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:1.5rem;font-weight:800;letter-spacing:-0.5px}
+.logo span{color:var(--gold)}
+.system-status{display:flex;align-items:center;gap:8px;font-size:.9rem}
+.status-dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:border-color .2s}
+.stat-card:hover{border-color:var(--gold2)}
+.stat-value{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:var(--gray);font-size:.85rem;margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card h2{font-size:1.1rem;margin-bottom:16px;color:var(--gold)}
+.bar-group{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.bar-label{width:80px;font-size:.85rem;color:var(--gray);text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:28px;background:#1a1a1a;border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold2),var(--gold));display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:.8rem;font-weight:700;color:#0a0a0a;transition:width .8s ease}
+.progress-section{margin-bottom:16px}
+.progress-header{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px}
+.progress-bar{height:12px;background:#1a1a1a;border-radius:6px;overflow:hidden}
+.progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold2),var(--gold));transition:width .8s ease}
+.savings-big{font-size:2.5rem;font-weight:800;text-align:center;padding:20px 0;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.savings-sub{text-align:center;color:var(--gray);font-size:.9rem}
+.feed{list-style:none}
+.feed li{padding:10px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:12px;font-size:.9rem}
+.feed li:last-child{border:none}
+.feed-time{color:var(--gray);white-space:nowrap;font-size:.8rem;flex-shrink:0}
+.feed-action{flex:1}
+.feed-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
+footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;margin-top:32px;color:var(--gray);font-size:.85rem}
+footer strong{color:var(--white)}
+.cta-btn{display:inline-block;margin-top:12px;padding:10px 24px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0a0a0a;font-weight:700;border-radius:8px;font-size:.9rem;transition:transform .2s}
+.cta-btn:hover{transform:translateY(-2px);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<div class="container header-inner">
+<div class="logo">Afrex<span>AI</span> <small style="font-size:.7rem;color:var(--gray);font-weight:400">Agent Dashboard</small></div>
+<div class="system-status"><span class="status-dot"></span> All Systems Operational</div>
+</div>
+</header>
+
+<main class="container" style="padding-top:8px;padding-bottom:24px">
+<!-- Quick Stats -->
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-value">99.97%</div><div class="stat-label">Uptime</div></div>
+<div class="stat-card"><div class="stat-value">1,247</div><div class="stat-label">Tasks Completed</div></div>
+<div class="stat-card"><div class="stat-value">186h</div><div class="stat-label">Hours Saved</div></div>
+<div class="stat-card"><div class="stat-value">312%</div><div class="stat-label">ROI</div></div>
+</div>
+
+<div class="grid-2">
+<!-- Agent Activity -->
+<div class="card">
+<h2>📊 Agent Activity</h2>
+<div class="bar-group"><span class="bar-label">Today</span><div class="bar-track"><div class="bar-fill" style="width:65%">47</div></div></div>
+<div class="bar-group"><span class="bar-label">This Week</span><div class="bar-track"><div class="bar-fill" style="width:82%">284</div></div></div>
+<div class="bar-group"><span class="bar-label">This Month</span><div class="bar-track"><div class="bar-fill" style="width:95%">1,247</div></div></div>
+</div>
+
+<!-- Time Saved -->
+<div class="card">
+<h2>⏱️ Time Saved</h2>
+<div class="progress-section">
+<div class="progress-header"><span>This Week</span><span style="color:var(--gold)">38h / 40h target</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+</div>
+<div class="progress-section">
+<div class="progress-header"><span>This Month</span><span style="color:var(--gold)">186h / 200h target</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:93%"></div></div>
+</div>
+<p style="margin-top:16px;color:var(--gray);font-size:.85rem;text-align:center">Equivalent to <strong style="color:var(--white)">4.6 full-time employees</strong></p>
+</div>
+</div>
+
+<div class="grid-2" style="margin-top:0">
+<!-- Cost Savings -->
+<div class="card">
+<h2>💰 Cost Savings</h2>
+<div class="savings-big">$24,800</div>
+<div class="savings-sub">Estimated savings this month vs. manual operations</div>
+<div style="display:flex;justify-content:space-around;margin-top:20px;font-size:.85rem">
+<div style="text-align:center"><div style="color:var(--gold);font-size:1.3rem;font-weight:700">$5,200</div><div style="color:var(--gray)">This Week</div></div>
+<div style="text-align:center"><div style="color:var(--gold);font-size:1.3rem;font-weight:700">$24,800</div><div style="color:var(--gray)">This Month</div></div>
+<div style="text-align:center"><div style="color:var(--gold);font-size:1.3rem;font-weight:700">$68,400</div><div style="color:var(--gray)">Quarter</div></div>
+</div>
+</div>
+
+<!-- Recent Activity Feed -->
+<div class="card">
+<h2>🔄 Recent Activity</h2>
+<ul class="feed" id="feed"></ul>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<p>Powered by <strong>AfrexAI</strong> — AI Agents That Work While You Sleep</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn" target="_blank">Book a Strategy Call →</a>
+</div>
+</footer>
+
+<script>
+const activities = [
+  ["Invoice #4821 generated and sent to client", "2 min ago"],
+  ["Weekly analytics report compiled", "18 min ago"],
+  ["3 customer support tickets resolved", "42 min ago"],
+  ["Social media posts scheduled (7 posts)", "1h ago"],
+  ["CRM records updated — 12 contacts enriched", "1.5h ago"],
+  ["Expense report categorised and filed", "2h ago"],
+  ["Meeting notes transcribed and distributed", "3h ago"],
+  ["Lead scoring model updated — 28 new leads ranked", "4h ago"],
+  ["Email campaign A/B test results analysed", "5h ago"],
+  ["Database backup verified — all systems green", "6h ago"]
+];
+const feed = document.getElementById('feed');
+activities.forEach(([action, time]) => {
+  const li = document.createElement('li');
+  li.innerHTML = `<span class="feed-dot"></span><span class="feed-action">${action}</span><span class="feed-time">${time}</span>`;
+  feed.appendChild(li);
+});
+
+// Animate bars on load
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.bar-fill, .progress-fill').forEach(el => {
+    const w = el.style.width;
+    el.style.width = '0';
+    requestAnimationFrame(() => { requestAnimationFrame(() => { el.style.width = w; }); });
+  });
+});
+</script>
+</body>
+</html>
