@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-24T20:31:55.867Z",
+  "lastUpdated": "2026-02-24T22:32:12.057Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 3123,
-        "hoursSaved": 395.42,
+        "tasksCompleted": 3124,
+        "hoursSaved": 395.8,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,8 +16,8 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-24T19:58:30.458Z",
-          "taskCount": 1028
+          "lastActive": "2026-02-24T22:23:43.269Z",
+          "taskCount": 1029
         },
         {
           "id": "compliance-officer",
@@ -35,6 +35,12 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:23:43.269Z",
+          "agent": "patient-coordinator",
+          "action": "Rescheduled Christine Hoffman to 3:30 PM",
+          "type": "scheduling"
+        },
         {
           "ts": "2026-02-24T20:26:59.724Z",
           "agent": "compliance-officer",
@@ -328,12 +334,6 @@
           "agent": "compliance-officer",
           "action": "Reviewed Dr. Kim's access to prescription log — authorized",
           "type": "audit"
-        },
-        {
-          "ts": "2026-02-22T05:47:45.367Z",
-          "agent": "patient-coordinator",
-          "action": "Scheduled lab review appointment for Tamika Jackson — Endocrinology",
-          "type": "scheduling"
         }
       ]
     },
@@ -342,8 +342,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2313,
-        "hoursSaved": 315.98,
+        "tasksCompleted": 2317,
+        "hoursSaved": 317.18,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -352,25 +352,49 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-24T20:08:21.768Z",
-          "taskCount": 774
+          "lastActive": "2026-02-24T22:23:56.573Z",
+          "taskCount": 776
         },
         {
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-24T20:03:36.558Z",
-          "taskCount": 775
+          "lastActive": "2026-02-24T22:23:49.466Z",
+          "taskCount": 776
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-24T20:19:29.274Z",
-          "taskCount": 764
+          "lastActive": "2026-02-24T22:25:45.208Z",
+          "taskCount": 765
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:23:49.466Z",
+          "agent": "document-analyst",
+          "action": "Summarised deposition transcript — Rivera Employment Dispute",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-24T22:23:56.573Z",
+          "agent": "legal-ea",
+          "action": "Sent court appearance reminder — Clackamas County Circuit Court",
+          "type": "notification"
+        },
+        {
+          "ts": "2026-02-24T22:21:47.013Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for Michael Tanaka",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-24T22:25:45.208Z",
+          "agent": "client-followup",
+          "action": "Sent case status update to Marcus Johnson",
+          "type": "communication"
+        },
         {
           "ts": "2026-02-24T20:19:29.274Z",
           "agent": "client-followup",
@@ -646,30 +670,6 @@
           "agent": "legal-ea",
           "action": "Sent court appearance reminder — Multnomah County Circuit Court",
           "type": "notification"
-        },
-        {
-          "ts": "2026-02-22T07:19:34.510Z",
-          "agent": "client-followup",
-          "action": "Sent high reminder: Disclose expert witnesses per court deadline for Miguel Torres",
-          "type": "follow-up"
-        },
-        {
-          "ts": "2026-02-22T07:17:51.412Z",
-          "agent": "client-followup",
-          "action": "Scheduled consultation with Kimura Commercial Properties",
-          "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-22T06:48:54.326Z",
-          "agent": "client-followup",
-          "action": "Scheduled consultation with Chen Industries LLC",
-          "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-22T06:54:35.686Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in Lease Amendment",
-          "type": "review"
         }
       ]
     },
@@ -678,8 +678,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 679,
-        "hoursSaved": 141.5,
+        "tasksCompleted": 683,
+        "hoursSaved": 143.04,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -688,11 +688,35 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-24T20:25:36.518Z",
-          "taskCount": 679
+          "lastActive": "2026-02-24T22:31:13.378Z",
+          "taskCount": 683
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:31:13.378Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Riverfront Mixed-Use Development",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-24T22:18:41.972Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Summit Ridge Residential Phase 2",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-24T22:29:44.827Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Riverfront Mixed-Use: clear — none",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-24T22:17:30.812Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Summit Ridge Residential Phase 2",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-24T20:25:36.518Z",
           "agent": "site-reporter",
@@ -968,30 +992,6 @@
           "agent": "site-reporter",
           "action": "Flagged schedule variance — Pearl District Parking Structure (ahead)",
           "type": "alert"
-        },
-        {
-          "ts": "2026-02-22T06:52:10.329Z",
-          "agent": "site-reporter",
-          "action": "Flagged schedule variance — Pearl District Parking Structure (ahead)",
-          "type": "alert"
-        },
-        {
-          "ts": "2026-02-22T07:01:05.152Z",
-          "agent": "site-reporter",
-          "action": "Updated milestone: Cast-in-place concrete levels 1-3 at Hillsboro Medical Office Building",
-          "type": "milestone"
-        },
-        {
-          "ts": "2026-02-22T06:26:33.501Z",
-          "agent": "site-reporter",
-          "action": "Compiled weekly progress summary for Cascade Elementary School Renovation",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-22T05:51:50.393Z",
-          "agent": "site-reporter",
-          "action": "Flagged schedule variance — Riverfront Mixed-Use Development (on_track)",
-          "type": "alert"
         }
       ]
     },
@@ -1000,8 +1000,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 2150,
-        "hoursSaved": 280.01,
+        "tasksCompleted": 2152,
+        "hoursSaved": 280.78,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -1010,8 +1010,8 @@
           "id": "churn-analyst",
           "name": "Churn Analyst",
           "status": "active",
-          "lastActive": "2026-02-24T20:19:01.636Z",
-          "taskCount": 705
+          "lastActive": "2026-02-24T22:31:17.264Z",
+          "taskCount": 706
         },
         {
           "id": "onboarding-specialist",
@@ -1024,11 +1024,23 @@
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-24T20:27:24.619Z",
-          "taskCount": 732
+          "lastActive": "2026-02-24T22:26:35.341Z",
+          "taskCount": 733
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:26:35.341Z",
+          "agent": "support-triage",
+          "action": "Resolved ticket TK-4210 — access issue for Oaktree Consulting",
+          "type": "resolution"
+        },
+        {
+          "ts": "2026-02-24T22:31:17.264Z",
+          "agent": "churn-analyst",
+          "action": "Detected usage decline at Horizon Pharma — active users down 25%",
+          "type": "analysis"
+        },
         {
           "ts": "2026-02-24T20:27:24.619Z",
           "agent": "support-triage",
@@ -1316,18 +1328,6 @@
           "agent": "churn-analyst",
           "action": "Detected usage decline at Redwood Healthcare — active users down 31%",
           "type": "analysis"
-        },
-        {
-          "ts": "2026-02-22T07:20:39.206Z",
-          "agent": "onboarding-specialist",
-          "action": "Sent onboarding checklist to Nexus Financial",
-          "type": "communication"
-        },
-        {
-          "ts": "2026-02-22T07:16:57.811Z",
-          "agent": "support-triage",
-          "action": "SLA check: TK-4210 — 2h SLA, on track",
-          "type": "monitoring"
         }
       ]
     },
@@ -1336,8 +1336,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2519,
-        "hoursSaved": 354.88,
+        "tasksCompleted": 2522,
+        "hoursSaved": 355.49,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1353,18 +1353,36 @@
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-24T20:25:32.689Z",
-          "taskCount": 853
+          "lastActive": "2026-02-24T22:22:11.765Z",
+          "taskCount": 854
         },
         {
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-24T20:08:37.164Z",
-          "taskCount": 832
+          "lastActive": "2026-02-24T22:22:09.737Z",
+          "taskCount": 834
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:22:09.737Z",
+          "agent": "filing-coordinator",
+          "action": "Prepared Form ADV Part 2B draft for CCO review",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-24T22:22:11.765Z",
+          "agent": "portfolio-reviewer",
+          "action": "Prepared client review materials for Viktor & Olena Kovalenko — meeting 2026-03-28",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-24T22:21:31.961Z",
+          "agent": "filing-coordinator",
+          "action": "Deadline alert: Schedule 13D (Beneficial ownership — Thornton Industries) due 2026-02-20",
+          "type": "alert"
+        },
         {
           "ts": "2026-02-24T20:25:32.689Z",
           "agent": "portfolio-reviewer",
@@ -1646,24 +1664,6 @@
           "agent": "compliance-monitor",
           "action": "Flagged overdue annual_amendment for Atlas Wealth Advisors",
           "type": "alert"
-        },
-        {
-          "ts": "2026-02-22T06:49:37.587Z",
-          "agent": "portfolio-reviewer",
-          "action": "Prepared client review materials for Viktor & Olena Kovalenko — meeting 2026-03-28",
-          "type": "preparation"
-        },
-        {
-          "ts": "2026-02-22T06:31:05.769Z",
-          "agent": "filing-coordinator",
-          "action": "Submitted Form ADV Part 1 to SEC EDGAR — Atlas Wealth Advisors",
-          "type": "filing"
-        },
-        {
-          "ts": "2026-02-22T06:27:29.982Z",
-          "agent": "compliance-monitor",
-          "action": "Completed customer_verification check — AML/KYC — review_needed",
-          "type": "compliance"
         }
       ]
     }
