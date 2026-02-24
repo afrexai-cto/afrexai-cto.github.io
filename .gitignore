@@ -30,3 +30,4 @@ Thumbs.db
 # Build
 dist/
 build/
+systems/db-backups/backups/*.tar.enc
