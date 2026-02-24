@@ -1729,6 +1729,17 @@
   },
   "taskRuns": [
     {
+      "id": "run-1771956001970-034x5x",
+      "companyId": "buildright",
+      "taskId": "daily-site-report",
+      "agentId": "site-reporter",
+      "agentName": "Site Reporter",
+      "status": "failed",
+      "startedAt": "2026-02-24T18:00:01.971Z",
+      "error": "This request would exceed your account's rate limit. Please try again later.",
+      "completedAt": "2026-02-24T18:00:02.372Z"
+    },
+    {
       "id": "run-1771948823882-pnt5ij",
       "companyId": "pacific-legal",
       "taskId": "client-followup",
@@ -2327,11 +2338,11 @@
       "label": "Daily Site Report (6pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.501Z",
-      "lastRun": "2026-02-23T18:00:21.359Z",
+      "lastRun": "2026-02-24T18:00:01.920Z",
       "lastResult": {
         "status": "error",
-        "error": "No ANTHROPIC_API_KEY available",
-        "at": "2026-02-23T18:00:21.359Z"
+        "error": "This request would exceed your account's rate limit. Please try again later.",
+        "at": "2026-02-24T18:00:01.920Z"
       }
     },
     {
@@ -2455,7 +2466,7 @@
       }
     }
   },
-  "lastUpdated": "2026-02-24T17:06:01.810Z",
+  "lastUpdated": "2026-02-24T18:00:02.378Z",
   "recentActivity": [
     {
       "ts": "2026-02-22T12:30:54.666Z",

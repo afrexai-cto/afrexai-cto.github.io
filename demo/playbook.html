@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfrexAI Production AI Agent Engineering Playbook</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 850px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.6; }
+  h1 { color: #0a0a0a; border-bottom: 3px solid #eab308; padding-bottom: 10px; }
+  h2 { color: #0a0a0a; border-bottom: 2px solid #eab308; padding-bottom: 6px; margin-top: 40px; }
+  h3 { color: #333; margin-top: 20px; }
+  code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+  pre { background: #1a1a1a; color: #e0e0e0; padding: 16px; border-radius: 8px; overflow-x: auto; }
+  pre code { background: none; color: inherit; }
+  ul { padding-left: 24px; }
+  li { margin-bottom: 4px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
+  th { background: #0a0a0a; color: #eab308; }
+  blockquote { border-left: 4px solid #eab308; margin: 12px 0; padding: 8px 16px; background: #fffde6; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
+  .tip { background: #fffde6; border: 1px solid #eab308; padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  input[type="checkbox"] { margin-right: 8px; }
+  @media print { body { max-width: 100%; } pre { white-space: pre-wrap; } }
+</style>
+</head>
+<body>
+
+<h1>AfrexAI Production AI Agent Engineering Playbook</h1>
+<p><strong>Version:</strong> 1.0 &nbsp;|&nbsp; <strong>Date:</strong> 2026-02-24 &nbsp;|&nbsp; <strong>Author:</strong> AfrexAI Engineering<br>
+<strong>Source:</strong> Based on "How to Build a Production Grade AI Agent" by Rohit (@rohit4verse)<br>
+<strong>Status:</strong> Active SOP</p>
+
+<div class="tip">
+<strong>💡 Quick Start:</strong> To save this as a Google Doc — open this page in Chrome, press <strong>Ctrl+A</strong> (select all), then <strong>Ctrl+C</strong> (copy), open a new Google Doc, and <strong>Ctrl+V</strong> (paste). Formatting will transfer cleanly.
+</div>
+
+<hr>
+
+<h2>Why This Exists</h2>
+<p>40% of AI agent projects fail in production. Not because the models are bad — because the engineering around them is weak. This playbook is our defence against that. Every agent we ship follows these 10 principles. No exceptions.</p>
+
+<hr>
+
+<h2>1. Define Agent Boundary and Threat Model</h2>
+
+<h3>Why It Matters</h3>
+<p>An agent without boundaries is a liability. The "confused deputy problem" — where an agent is tricked into using its privileges on behalf of an attacker — is the #1 security risk in agent systems. Prompt injection can turn your helpful assistant into an attacker's tool.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Define explicit trust boundaries for every agent (what it can access, what it cannot)</li>
+<li>☐ Document the threat model before writing a single line of agent code</li>
+<li>☐ Implement input filtering on all user-facing inputs</li>
+<li>☐ Apply sanitization to strip or escape injection patterns</li>
+<li>☐ Use semantic analysis to detect intent manipulation (e.g., "ignore previous instructions")</li>
+<li>☐ Maintain deny lists for known injection patterns</li>
+<li>☐ Maintain allow lists for expected input formats</li>
+<li>☐ Separate user instructions from system instructions at the architecture level</li>
+<li>☐ Test with adversarial prompts before every deployment</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>Input filtering:</strong> Regex + LLM-based classifier chain. Flag inputs that attempt instruction override.</li>
+<li><strong>Sanitization:</strong> Strip control characters, normalize unicode, escape special tokens.</li>
+<li><strong>Semantic analysis:</strong> Run a lightweight classifier (distilled model) to detect prompt injection attempts before passing to the main agent.</li>
+<li><strong>Deny/allow lists:</strong> Maintain in Supabase with version history. Update weekly from threat intel.</li>
+<li><strong>Architecture:</strong> Never concatenate user input directly into system prompts. Use structured message arrays with clear role separation.</li>
+</ul>
+
+<hr>
+
+<h2>2. Contracts Everywhere</h2>
+
+<h3>Why It Matters</h3>
+<p>Agents talk to tools, APIs, databases, and other agents. Without typed contracts, you get silent failures, corrupted state, and debugging nightmares. Every boundary crossing needs a contract.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Define typed schemas for every tool input and output (Zod for TypeScript)</li>
+<li>☐ Validate all inputs server-side — never trust client or agent output without validation</li>
+<li>☐ Use idempotency keys on all state-changing operations</li>
+<li>☐ Version all schemas (e.g., v1, v2) — never break backwards compatibility silently</li>
+<li>☐ Return structured error responses with error codes, messages, and retry guidance</li>
+<li>☐ Document contracts in a shared schema registry</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>Zod schemas:</strong> Define in <code>src/schemas/</code> directory. Every tool gets a <code>.schema.ts</code> file.</li>
+<li><strong>Idempotency:</strong> Generate UUID v4 keys client-side. Store in Redis with 24h TTL. Reject duplicates.</li>
+<li><strong>Versioning:</strong> Prefix all API routes with version. Use schema migration scripts for breaking changes.</li>
+<li><strong>Error responses:</strong> Always return <code>{ success, data?, error?: { code, message, retryable } }</code>.</li>
+</ul>
+
+<hr>
+
+<h2>3. Secure Tool Execution</h2>
+
+<h3>Why It Matters</h3>
+<p>Agents execute tools — that means they run code, call APIs, and modify state. Without proper access control, a compromised or hallucinating agent can do real damage.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Implement RBAC for all tool access — agents get roles, roles get permissions</li>
+<li>☐ Apply least privilege — each agent gets only the permissions it needs, nothing more</li>
+<li>☐ Sandbox tool execution (containers, V8 isolates, or subprocess jails)</li>
+<li>☐ Use short-lived certificates for agent identity (rotate every hour)</li>
+<li>☐ Apply zero trust — verify every tool call, even from "trusted" agents</li>
+<li>☐ Implement human-in-the-loop approval for high-impact operations (deletes, payments, external comms)</li>
+<li>☐ Log every tool execution with full context (who, what, when, why)</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>RBAC:</strong> Define roles in Supabase RLS policies. Agent roles: reader, writer, admin, executor.</li>
+<li><strong>Sandboxing:</strong> Use OpenClaw's built-in sandbox for shell execution. For custom tools, use isolated V8 contexts or Docker containers with resource limits.</li>
+<li><strong>Agent identity:</strong> Issue short-lived JWTs (1h expiry) via Supabase Auth. Store signing keys in 1Password vault.</li>
+<li><strong>Human-in-the-loop:</strong> Define a HIGH_IMPACT_OPS list. Any tool call matching this list triggers a Slack approval flow before execution.</li>
+<li><strong>Zero trust:</strong> Validate agent JWT + check RBAC permissions on every single tool call. No caching of auth decisions.</li>
+</ul>
+
+<hr>
+
+<h2>4. Context Engineering</h2>
+
+<h3>Why It Matters</h3>
+<p>Context is the most expensive resource in agent systems — both in tokens (cost) and quality (accuracy). Bad context engineering means bloated prompts, hallucinations, and wasted spend.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Layer context: system → role → task → conversation → retrieved knowledge</li>
+<li>☐ Keep context compact — target 10:1 compression ratio from raw data to context</li>
+<li>☐ Use intent-based retrieval — don't dump everything, retrieve what's relevant</li>
+<li>☐ Separate working memory (current task) from long-term memory (historical knowledge)</li>
+<li>☐ Make all context auditable — log what context was provided for every agent decision</li>
+<li>☐ Set hard token budgets per context layer</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>Layered context architecture:</strong>
+  <ol>
+  <li><strong>System layer</strong> (static): Agent identity, capabilities, constraints (~200 tokens)</li>
+  <li><strong>Role layer</strong> (semi-static): Domain knowledge, persona (~500 tokens)</li>
+  <li><strong>Task layer</strong> (dynamic): Current objective, constraints (~300 tokens)</li>
+  <li><strong>Conversation layer</strong> (sliding window): Recent exchanges (~2000 tokens)</li>
+  <li><strong>Retrieved layer</strong> (on-demand): RAG results, tool outputs (~1000 tokens)</li>
+  </ol>
+</li>
+<li><strong>10:1 compression:</strong> Summarize long documents before injection.</li>
+<li><strong>Intent-based retrieval:</strong> Classify user intent first, then query only relevant knowledge bases.</li>
+<li><strong>Working memory:</strong> Redis with sliding window (last N interactions + current task state).</li>
+<li><strong>Long-term memory:</strong> Vector DB (Supabase pgvector) for semantic search + relational tables for structured facts.</li>
+</ul>
+
+<hr>
+
+<h2>5. Knowledge Grounding</h2>
+
+<h3>Why It Matters</h3>
+<p>Agents that make things up are worse than useless — they're dangerous. Knowledge grounding through governed RAG ensures agents answer from verified sources, not hallucinations.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Implement governed RAG — all retrieval goes through a controlled pipeline</li>
+<li>☐ Enforce tenant isolation — agent A cannot access agent B's knowledge base</li>
+<li>☐ Establish source governance — every document has an owner, review date, and trust level</li>
+<li>☐ Track lineage — every agent answer should trace back to its source documents</li>
+<li>☐ Separate read permissions from execute permissions</li>
+<li>☐ Set confidence thresholds — if retrieval confidence is below threshold, say "I don't know"</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>RAG pipeline:</strong> Query → intent classification → embedding → vector search → re-rank → inject top-K with citations</li>
+<li><strong>Tenant isolation:</strong> Use Supabase RLS with tenant_id on all knowledge tables</li>
+<li><strong>Lineage tracking:</strong> Every agent response includes sources with doc_id, chunk_id, relevance_score</li>
+<li><strong>Read vs execute:</strong> Separate Supabase policies for SELECT (read) and INSERT/UPDATE/DELETE (execute)</li>
+</ul>
+
+<hr>
+
+<h2>6. Planning and Orchestration</h2>
+
+<h3>Why It Matters</h3>
+<p>Complex tasks require multi-step execution. Without proper orchestration, agents go in circles, get stuck, or take destructive actions without checkpoints.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Model agent workflows as state machines with explicit states and transitions</li>
+<li>☐ Implement ReAct (Reason + Act) patterns — think before acting, observe after acting</li>
+<li>☐ Use plan-execute-evaluate loops for complex tasks</li>
+<li>☐ Add circuit breakers — if an agent fails N times, stop and escalate</li>
+<li>☐ Set iteration caps — no agent runs more than 25 steps without checkpoint</li>
+<li>☐ Define manual intervention points — specific states where human review is required</li>
+<li>☐ Log state transitions for debugging and audit</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>ReAct loop:</strong> Reason → Act → Observe → Repeat until goal met or cap reached</li>
+<li><strong>Circuit breaker:</strong> Trip after 3 consecutive failures or 10 in 60 seconds. Reset after 5 min cool-down.</li>
+<li><strong>Iteration cap:</strong> Default 25 steps. At cap, checkpoint and escalate to human.</li>
+<li><strong>Manual intervention:</strong> Define HUMAN_REVIEW_STATES in agent config. Pause and notify via Slack.</li>
+</ul>
+
+<hr>
+
+<h2>7. Memory and State Architecture</h2>
+
+<h3>Why It Matters</h3>
+<p>Agents need memory to be useful across interactions. Without proper architecture, you get stale data, privacy leaks, and unbounded storage costs.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Implement short-term memory with TTL (conversation context, current task state)</li>
+<li>☐ Implement long-term memory with proper indexing (user preferences, historical decisions)</li>
+<li>☐ Encrypt all memory at rest and in transit</li>
+<li>☐ Classify data (PII, sensitive, internal, public) and apply appropriate controls</li>
+<li>☐ Verify permissions continuously — re-check access on every memory read</li>
+<li>☐ Implement memory garbage collection — prune stale entries automatically</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>Short-term:</strong> Redis — conversation buffer (last 20 msgs, 1h TTL), task state (24h TTL), working scratchpad (1h TTL)</li>
+<li><strong>Long-term:</strong> Vector DB (pgvector) for semantic, PostgreSQL for structured, time series for metrics</li>
+<li><strong>Encryption:</strong> AES-256 at rest, TLS 1.3 in transit, field-level encryption for PII</li>
+<li><strong>Data classification:</strong> PUBLIC → INTERNAL → SENSITIVE → PII (each with escalating controls)</li>
+</ul>
+
+<hr>
+
+<h2>8. Reliability Mechanics</h2>
+
+<h3>Why It Matters</h3>
+<p>LLMs fail. APIs timeout. Networks drop. A production agent must handle all of this gracefully without losing work or corrupting state.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Implement exponential backoff with jitter on all external calls</li>
+<li>☐ Add circuit breakers on all tool and API integrations</li>
+<li>☐ Configure graceful degradation — fallback models when primary is down</li>
+<li>☐ Implement checkpointing for mid-execution recovery</li>
+<li>☐ Set timeout budgets for every operation</li>
+<li>☐ Monitor and alert on reliability metrics</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>Backoff:</strong> Start 1s, double each retry, max 30s, add random jitter to prevent thundering herd</li>
+<li><strong>Circuit breaker:</strong> 10 errors in 60s → OPEN → 5min cool-down → HALF_OPEN → test → CLOSED</li>
+<li><strong>Degradation chain:</strong> Claude Opus → Sonnet → Haiku → cached response + human escalation</li>
+<li><strong>Checkpointing:</strong> Save state after every successful tool call. Resume from last checkpoint on failure.</li>
+<li><strong>Timeouts:</strong> LLM: 30s, Tools: 10s, Total task: 5min (all configurable)</li>
+</ul>
+
+<hr>
+
+<h2>9. Observability</h2>
+
+<h3>Why It Matters</h3>
+<p>You can't fix what you can't see. Observability is the difference between "it's broken" and "step 3 failed because the RAG query returned 0 results for tenant X."</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Instrument all agent operations with OpenTelemetry traces</li>
+<li>☐ Track key metrics: latency, token usage, error rates, cost per task</li>
+<li>☐ Implement structured logging (JSON) with correlation IDs</li>
+<li>☐ Build dashboards with alerts for anomalies</li>
+<li>☐ Log every LLM call with input/output (redact PII)</li>
+<li>☐ Track cost per agent, per task, per user</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>Traces:</strong> task.start → plan → tool.call → evaluate → task.complete (with agent_id, task_id, model, tokens, cost)</li>
+<li><strong>Key metrics:</strong> latency p50/p95/p99, tokens input/output, errors/min, cost/task, success rate</li>
+<li><strong>Alerts:</strong> Error rate >5% over 5min, P95 latency >10s, daily cost >budget, circuit breaker trips</li>
+</ul>
+
+<hr>
+
+<h2>10. Evaluation and Continuous Improvement</h2>
+
+<h3>Why It Matters</h3>
+<p>An agent that works today might break tomorrow — models update, data drifts, edge cases accumulate. Without continuous evaluation, quality degrades silently.</p>
+
+<h3>What To Do</h3>
+<ul>
+<li>☐ Build automated test suites for every agent (unit + integration + E2E)</li>
+<li>☐ Run adversarial red-teaming monthly — try to break your own agents</li>
+<li>☐ Implement A/B testing for prompt changes and model upgrades</li>
+<li>☐ Maintain regression suites — known-good inputs and expected outputs</li>
+<li>☐ Create feedback loops — capture user corrections and feed back into evaluation</li>
+<li>☐ Track eval metrics over time — quality should trend up, never down</li>
+</ul>
+
+<h3>How</h3>
+<ul>
+<li><strong>Testing:</strong> Unit (tools/schemas), Integration (agent→tool→DB), E2E (scripted scenarios)</li>
+<li><strong>Red-teaming:</strong> Monthly, 2hrs, categories: injection, exfiltration, privilege escalation, hallucination</li>
+<li><strong>A/B testing:</strong> 10% traffic to new version, promote only if all metrics improve</li>
+<li><strong>Regression:</strong> JSON test fixtures in tests/regression/. Block deploys on regression.</li>
+<li><strong>Feedback:</strong> Thumbs up/down → feedback table → weekly review → new test cases</li>
+</ul>
+
+<hr>
+
+<h2>AfrexAI Stack Reference</h2>
+
+<table>
+<tr><th>Component</th><th>Technology</th></tr>
+<tr><td>Agent Runtime</td><td>OpenClaw</td></tr>
+<tr><td>Language</td><td>TypeScript</td></tr>
+<tr><td>API Framework</td><td>Hono / Express</td></tr>
+<tr><td>Database</td><td>Supabase (PostgreSQL + pgvector)</td></tr>
+<tr><td>Cache</td><td>Redis (Upstash or self-hosted)</td></tr>
+<tr><td>Secrets</td><td>1Password (op CLI)</td></tr>
+<tr><td>Auth</td><td>Supabase Auth + short-lived JWTs</td></tr>
+<tr><td>Observability</td><td>OpenTelemetry → Grafana</td></tr>
+<tr><td>CI/CD</td><td>GitHub Actions</td></tr>
+</table>
+
+<hr>
+
+<h2>Pre-Deployment Checklist</h2>
+
+<h3>Security</h3>
+<ul>
+<li>☐ Threat model documented and reviewed</li>
+<li>☐ Input filtering and sanitization active</li>
+<li>☐ Prompt injection defences tested with adversarial inputs</li>
+<li>☐ RBAC policies configured and tested</li>
+<li>☐ Least privilege verified</li>
+<li>☐ Tool execution sandboxed</li>
+<li>☐ Human-in-the-loop for high-impact operations</li>
+<li>☐ All secrets in 1Password — zero plaintext</li>
+</ul>
+
+<h3>Contracts &amp; Validation</h3>
+<ul>
+<li>☐ Zod schemas for all tool inputs and outputs</li>
+<li>☐ Server-side validation on all endpoints</li>
+<li>☐ Idempotency keys for state-changing operations</li>
+<li>☐ Structured error responses</li>
+<li>☐ Schema versions documented</li>
+</ul>
+
+<h3>Context &amp; Knowledge</h3>
+<ul>
+<li>☐ Context layers defined with token budgets</li>
+<li>☐ RAG pipeline tested</li>
+<li>☐ Tenant isolation verified</li>
+<li>☐ Source governance active</li>
+<li>☐ Lineage tracking active</li>
+</ul>
+
+<h3>Orchestration &amp; State</h3>
+<ul>
+<li>☐ State machine modelled</li>
+<li>☐ Circuit breakers configured</li>
+<li>☐ Iteration caps set</li>
+<li>☐ Manual intervention points defined</li>
+<li>☐ Memory architecture configured</li>
+<li>☐ Data classification applied</li>
+</ul>
+
+<h3>Reliability</h3>
+<ul>
+<li>☐ Exponential backoff with jitter</li>
+<li>☐ Graceful degradation chain defined</li>
+<li>☐ Checkpointing active</li>
+<li>☐ Timeout budgets set</li>
+</ul>
+
+<h3>Observability</h3>
+<ul>
+<li>☐ OpenTelemetry traces instrumented</li>
+<li>☐ Key metrics tracked</li>
+<li>☐ Structured logging with correlation IDs</li>
+<li>☐ Dashboard alerts configured</li>
+<li>☐ Cost tracking active</li>
+</ul>
+
+<h3>Evaluation</h3>
+<ul>
+<li>☐ Test suite passing (unit + integration + E2E)</li>
+<li>☐ Regression suite populated</li>
+<li>☐ Red-team exercise completed or scheduled</li>
+<li>☐ Feedback collection active</li>
+<li>☐ A/B testing framework ready</li>
+</ul>
+
+<hr>
+
+<p><em>This is a living document. Update it as we learn. Based on "How to Build a Production Grade AI Agent" by Rohit (@rohit4verse).</em></p>
+<p><strong>© 2026 AfrexAI — Internal SOP</strong></p>
+
+</body>
+</html>

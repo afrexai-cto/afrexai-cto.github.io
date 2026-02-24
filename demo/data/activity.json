@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-24T17:32:15.600Z",
+  "lastUpdated": "2026-02-24T18:02:48.800Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 3116,
-        "hoursSaved": 392.89,
+        "tasksCompleted": 3119,
+        "hoursSaved": 393.96,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -23,18 +23,36 @@
           "id": "compliance-officer",
           "name": "Compliance Officer",
           "status": "active",
-          "lastActive": "2026-02-22T17:51:51.068Z",
-          "taskCount": 1050
+          "lastActive": "2026-02-24T18:01:09.645Z",
+          "taskCount": 1052
         },
         {
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-24T17:22:59.810Z",
-          "taskCount": 1039
+          "lastActive": "2026-02-24T17:49:54.819Z",
+          "taskCount": 1040
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T18:01:09.645Z",
+          "agent": "compliance-officer",
+          "action": "Generated monthly compliance report",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-24T17:49:54.819Z",
+          "agent": "records-analyst",
+          "action": "Completed chart review — Orthopedics",
+          "type": "quality"
+        },
+        {
+          "ts": "2026-02-24T17:57:18.707Z",
+          "agent": "compliance-officer",
+          "action": "Flagged expired BAA with IT Health Systems",
+          "type": "compliance"
+        },
         {
           "ts": "2026-02-24T17:29:30.158Z",
           "agent": "patient-coordinator",
@@ -316,24 +334,6 @@
           "agent": "patient-coordinator",
           "action": "Scheduled follow-up appointment for Aleksandr Kozlov — Gastroenterology",
           "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-21T22:27:40.273Z",
-          "agent": "patient-coordinator",
-          "action": "Confirmed insurance eligibility for Ingrid Svensson (Blue Cross PPO)",
-          "type": "verification"
-        },
-        {
-          "ts": "2026-02-21T22:31:06.767Z",
-          "agent": "patient-coordinator",
-          "action": "Scheduled annual physical appointment for Catherine Dubois — Internal Medicine",
-          "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-21T22:30:44.705Z",
-          "agent": "records-analyst",
-          "action": "Sent records to Heart Rhythm Specialists NW via secure transfer",
-          "type": "records"
         }
       ]
     },
@@ -342,8 +342,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2306,
-        "hoursSaved": 313.45,
+        "tasksCompleted": 2310,
+        "hoursSaved": 314.86,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -352,25 +352,49 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-24T17:26:19.800Z",
-          "taskCount": 771
+          "lastActive": "2026-02-24T18:01:59.120Z",
+          "taskCount": 773
         },
         {
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-24T17:27:08.173Z",
-          "taskCount": 773
+          "lastActive": "2026-02-24T17:48:34.898Z",
+          "taskCount": 774
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-22T17:53:02.564Z",
-          "taskCount": 762
+          "lastActive": "2026-02-24T18:02:38.220Z",
+          "taskCount": 763
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T18:02:38.220Z",
+          "agent": "client-followup",
+          "action": "Sent high reminder: Disclose expert witnesses per court deadline for Miguel Torres",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-24T17:48:34.898Z",
+          "agent": "document-analyst",
+          "action": "Reviewed contract for Omar Hassan (16 pages)",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-24T18:01:59.120Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for David Ashworth",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-24T17:56:22.133Z",
+          "agent": "legal-ea",
+          "action": "Prepared conference agenda for David Ashworth",
+          "type": "preparation"
+        },
         {
           "ts": "2026-02-24T17:27:08.173Z",
           "agent": "document-analyst",
@@ -646,30 +670,6 @@
           "agent": "document-analyst",
           "action": "Flagged non-standard clause in Lease Negotiation",
           "type": "review"
-        },
-        {
-          "ts": "2026-02-22T06:18:18.155Z",
-          "agent": "document-analyst",
-          "action": "Completed due diligence review for Estate of Harold Williams",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-22T05:51:40.168Z",
-          "agent": "document-analyst",
-          "action": "Completed due diligence review for Marcus Johnson",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-21T23:01:22.421Z",
-          "agent": "document-analyst",
-          "action": "Reviewed contract for Omar Hassan (15 pages)",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-21T22:55:49.261Z",
-          "agent": "client-followup",
-          "action": "Sent high reminder: Prepare for oral argument appellate brief review for Grace Okafor",
-          "type": "follow-up"
         }
       ]
     },
@@ -678,8 +678,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 672,
-        "hoursSaved": 139.47,
+        "tasksCompleted": 673,
+        "hoursSaved": 139.88,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -688,11 +688,17 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-24T17:22:09.537Z",
-          "taskCount": 672
+          "lastActive": "2026-02-24T17:54:53.498Z",
+          "taskCount": 673
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:54:53.498Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Summit Ridge Residential Phase 2",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-24T17:22:09.537Z",
           "agent": "site-reporter",
@@ -986,12 +992,6 @@
           "agent": "site-reporter",
           "action": "Compiled weekly progress summary for Summit Ridge Residential Phase 2",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-21T22:28:48.553Z",
-          "agent": "site-reporter",
-          "action": "Logged weather delay at Riverfront Mixed-Use: rain — reduced",
-          "type": "delay"
         }
       ]
     },
@@ -1000,8 +1000,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 2140,
-        "hoursSaved": 276.63,
+        "tasksCompleted": 2144,
+        "hoursSaved": 278.24,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -1010,25 +1010,49 @@
           "id": "churn-analyst",
           "name": "Churn Analyst",
           "status": "active",
-          "lastActive": "2026-02-24T17:26:40.352Z",
-          "taskCount": 701
+          "lastActive": "2026-02-24T17:53:23.260Z",
+          "taskCount": 703
         },
         {
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-24T17:18:08.796Z",
-          "taskCount": 710
+          "lastActive": "2026-02-24T17:58:07.223Z",
+          "taskCount": 711
         },
         {
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-24T17:17:38.760Z",
-          "taskCount": 728
+          "lastActive": "2026-02-24T17:51:29.650Z",
+          "taskCount": 729
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:53:23.260Z",
+          "agent": "churn-analyst",
+          "action": "Detected usage decline at SummitView Analytics — active users down 46%",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-24T17:58:07.223Z",
+          "agent": "onboarding-specialist",
+          "action": "Generated onboarding pipeline status report",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-24T17:50:17.245Z",
+          "agent": "churn-analyst",
+          "action": "Calculated health score for Pinecrest Hotels — 71/100",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-24T17:51:29.650Z",
+          "agent": "support-triage",
+          "action": "Auto-triaged ticket TK-4202: Dashboard loading slowly — routed to performance",
+          "type": "triage"
+        },
         {
           "ts": "2026-02-24T17:26:40.352Z",
           "agent": "churn-analyst",
@@ -1304,30 +1328,6 @@
           "agent": "churn-analyst",
           "action": "Triggered re-engagement sequence for GreenLeaf Foods",
           "type": "automation"
-        },
-        {
-          "ts": "2026-02-22T06:02:26.189Z",
-          "agent": "support-triage",
-          "action": "Categorised 7 new tickets — 2 auto-resolved",
-          "type": "triage"
-        },
-        {
-          "ts": "2026-02-21T23:01:18.848Z",
-          "agent": "support-triage",
-          "action": "Resolved ticket TK-4205 — billing issue for Titanium Fitness",
-          "type": "resolution"
-        },
-        {
-          "ts": "2026-02-21T22:52:11.345Z",
-          "agent": "onboarding-specialist",
-          "action": "Advanced Urban Harvest Co to data_import stage (25% complete)",
-          "type": "onboarding"
-        },
-        {
-          "ts": "2026-02-21T22:20:41.974Z",
-          "agent": "churn-analyst",
-          "action": "Generated weekly churn risk report — 5 accounts at risk",
-          "type": "reporting"
         }
       ]
     },
@@ -1336,8 +1336,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2510,
-        "hoursSaved": 352.04,
+        "tasksCompleted": 2514,
+        "hoursSaved": 353.39,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1346,25 +1346,49 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-22T17:49:57.709Z",
-          "taskCount": 830
+          "lastActive": "2026-02-24T17:54:54.751Z",
+          "taskCount": 831
         },
         {
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-24T17:21:02.505Z",
-          "taskCount": 849
+          "lastActive": "2026-02-24T18:02:39.017Z",
+          "taskCount": 850
         },
         {
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-24T17:31:43.045Z",
-          "taskCount": 829
+          "lastActive": "2026-02-24T17:55:12.389Z",
+          "taskCount": 831
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:54:54.751Z",
+          "agent": "compliance-monitor",
+          "action": "Reviewed personal trading pre-clearance — 11 requests, no violations",
+          "type": "compliance"
+        },
+        {
+          "ts": "2026-02-24T17:55:12.389Z",
+          "agent": "filing-coordinator",
+          "action": "Updated Form U4 filing progress — in_progress",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-24T18:02:39.017Z",
+          "agent": "portfolio-reviewer",
+          "action": "Calculated RMD for James & Patricia Holloway — distribution schedule updated",
+          "type": "analysis"
+        },
+        {
+          "ts": "2026-02-24T17:56:54.039Z",
+          "agent": "filing-coordinator",
+          "action": "Generated regulatory filing status report — 1 filings due this month",
+          "type": "reporting"
+        },
         {
           "ts": "2026-02-24T17:31:43.045Z",
           "agent": "filing-coordinator",
@@ -1640,30 +1664,6 @@
           "agent": "portfolio-reviewer",
           "action": "Completed quarterly portfolio review for Pacific Northwest Teachers Union ($$42000000 AUM)",
           "type": "review"
-        },
-        {
-          "ts": "2026-02-21T22:49:33.083Z",
-          "agent": "compliance-monitor",
-          "action": "Reviewed personal trading pre-clearance — 4 requests, no violations",
-          "type": "compliance"
-        },
-        {
-          "ts": "2026-02-21T22:57:30.813Z",
-          "agent": "compliance-monitor",
-          "action": "Generated weekly compliance review — 1 action items",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-21T22:23:48.097Z",
-          "agent": "filing-coordinator",
-          "action": "Prepared Form 13F draft for CCO review",
-          "type": "preparation"
-        },
-        {
-          "ts": "2026-02-21T22:32:25.644Z",
-          "agent": "filing-coordinator",
-          "action": "Generated regulatory filing status report — 2 filings due this month",
-          "type": "reporting"
         }
       ]
     }
