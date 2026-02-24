@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-22T18:02:02.116Z",
+  "lastUpdated": "2026-02-24T17:32:15.600Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 3112,
-        "hoursSaved": 391.67,
+        "tasksCompleted": 3116,
+        "hoursSaved": 392.89,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,8 +16,8 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-22T13:51:17.427Z",
-          "taskCount": 1025
+          "lastActive": "2026-02-24T17:29:30.158Z",
+          "taskCount": 1027
         },
         {
           "id": "compliance-officer",
@@ -30,11 +30,35 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-22T16:00:15.898Z",
-          "taskCount": 1037
+          "lastActive": "2026-02-24T17:22:59.810Z",
+          "taskCount": 1039
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:29:30.158Z",
+          "agent": "patient-coordinator",
+          "action": "Confirmed insurance eligibility for James Chen (Aetna HMO)",
+          "type": "verification"
+        },
+        {
+          "ts": "2026-02-24T17:20:56.656Z",
+          "agent": "patient-coordinator",
+          "action": "Updated intake forms for Carlos Rivera",
+          "type": "documentation"
+        },
+        {
+          "ts": "2026-02-24T17:22:59.810Z",
+          "agent": "records-analyst",
+          "action": "Sent records to Oregon Digestive Health via secure transfer",
+          "type": "records"
+        },
+        {
+          "ts": "2026-02-24T17:23:51.290Z",
+          "agent": "records-analyst",
+          "action": "Processed records request from Providence St. Vincent Medical Center for Maria Santos",
+          "type": "records"
+        },
         {
           "ts": "2026-02-22T17:51:51.068Z",
           "agent": "compliance-officer",
@@ -310,30 +334,6 @@
           "agent": "records-analyst",
           "action": "Sent records to Heart Rhythm Specialists NW via secure transfer",
           "type": "records"
-        },
-        {
-          "ts": "2026-02-21T22:21:42.395Z",
-          "agent": "compliance-officer",
-          "action": "Reviewed Dr. Kim's access to prescription log — authorized",
-          "type": "audit"
-        },
-        {
-          "ts": "2026-02-21T21:53:10.384Z",
-          "agent": "compliance-officer",
-          "action": "Completed HIPAA training verification — Nurse Williams",
-          "type": "compliance"
-        },
-        {
-          "ts": "2026-02-21T21:54:07.195Z",
-          "agent": "records-analyst",
-          "action": "Processed records request from Portland Gastroenterology Center for David Nakamura",
-          "type": "records"
-        },
-        {
-          "ts": "2026-02-21T21:28:35.560Z",
-          "agent": "patient-coordinator",
-          "action": "Updated intake forms for Ingrid Svensson",
-          "type": "documentation"
         }
       ]
     },
@@ -342,8 +342,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2302,
-        "hoursSaved": 311.98,
+        "tasksCompleted": 2306,
+        "hoursSaved": 313.45,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -352,15 +352,15 @@
           "id": "legal-ea",
           "name": "Legal EA",
           "status": "active",
-          "lastActive": "2026-02-22T16:59:46.624Z",
-          "taskCount": 769
+          "lastActive": "2026-02-24T17:26:19.800Z",
+          "taskCount": 771
         },
         {
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-22T18:01:07.874Z",
-          "taskCount": 771
+          "lastActive": "2026-02-24T17:27:08.173Z",
+          "taskCount": 773
         },
         {
           "id": "client-followup",
@@ -371,6 +371,30 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:27:08.173Z",
+          "agent": "document-analyst",
+          "action": "Completed due diligence review for Miguel Torres",
+          "type": "review"
+        },
+        {
+          "ts": "2026-02-24T17:26:19.800Z",
+          "agent": "legal-ea",
+          "action": "Filed motion in Nakamura Property Trust",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-24T17:27:25.845Z",
+          "agent": "legal-ea",
+          "action": "Sent court appearance reminder — Our office - Deposition Suite",
+          "type": "notification"
+        },
+        {
+          "ts": "2026-02-24T17:28:30.759Z",
+          "agent": "document-analyst",
+          "action": "Reviewed contract for Grace Okafor (21 pages)",
+          "type": "review"
+        },
         {
           "ts": "2026-02-22T18:01:07.874Z",
           "agent": "document-analyst",
@@ -646,30 +670,6 @@
           "agent": "client-followup",
           "action": "Sent high reminder: Prepare for oral argument appellate brief review for Grace Okafor",
           "type": "follow-up"
-        },
-        {
-          "ts": "2026-02-21T22:56:24.366Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in Okafor v. Northwest Mutual",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-21T22:18:15.528Z",
-          "agent": "document-analyst",
-          "action": "Completed due diligence review for Chen Industries LLC",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-21T22:20:25.074Z",
-          "agent": "client-followup",
-          "action": "Followed up on outstanding invoice — Greenfield Acquisitions LLC",
-          "type": "billing"
-        },
-        {
-          "ts": "2026-02-21T22:23:26.775Z",
-          "agent": "document-analyst",
-          "action": "Completed due diligence review for Chen Industries LLC",
-          "type": "review"
         }
       ]
     },
@@ -678,8 +678,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 669,
-        "hoursSaved": 138.79,
+        "tasksCompleted": 672,
+        "hoursSaved": 139.47,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -688,11 +688,29 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-22T17:54:14.935Z",
-          "taskCount": 669
+          "lastActive": "2026-02-24T17:22:09.537Z",
+          "taskCount": 672
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:22:09.537Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Hillsboro Medical Office Building",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-24T17:26:26.747Z",
+          "agent": "site-reporter",
+          "action": "Compiled weekly progress summary for Hillsboro Medical Office Building",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-24T17:31:35.781Z",
+          "agent": "site-reporter",
+          "action": "Updated milestone: Exterior envelope and waterproofing at Summit Ridge Residential Phase 2",
+          "type": "milestone"
+        },
         {
           "ts": "2026-02-22T17:54:14.935Z",
           "agent": "site-reporter",
@@ -974,24 +992,6 @@
           "agent": "site-reporter",
           "action": "Logged weather delay at Riverfront Mixed-Use: rain — reduced",
           "type": "delay"
-        },
-        {
-          "ts": "2026-02-21T21:53:33.663Z",
-          "agent": "site-reporter",
-          "action": "Generated daily report — Summit Ridge Residential Phase 2",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-21T22:03:11.060Z",
-          "agent": "site-reporter",
-          "action": "Compiled weekly progress summary for Cascade Elementary School Renovation",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-21T21:22:56.353Z",
-          "agent": "site-reporter",
-          "action": "Updated milestone: Foundation and ground floor slab at Hillsboro Medical Office Building",
-          "type": "milestone"
         }
       ]
     },
@@ -1000,8 +1000,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 2137,
-        "hoursSaved": 275.75,
+        "tasksCompleted": 2140,
+        "hoursSaved": 276.63,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -1010,25 +1010,43 @@
           "id": "churn-analyst",
           "name": "Churn Analyst",
           "status": "active",
-          "lastActive": "2026-02-22T16:56:56.664Z",
-          "taskCount": 700
+          "lastActive": "2026-02-24T17:26:40.352Z",
+          "taskCount": 701
         },
         {
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-22T16:49:35.524Z",
-          "taskCount": 709
+          "lastActive": "2026-02-24T17:18:08.796Z",
+          "taskCount": 710
         },
         {
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-22T17:53:58.331Z",
-          "taskCount": 727
+          "lastActive": "2026-02-24T17:17:38.760Z",
+          "taskCount": 728
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:26:40.352Z",
+          "agent": "churn-analyst",
+          "action": "Flagged churn risk: Urban Harvest Co (Starter, $$380/mo) — score dropped below 50",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-24T17:18:08.796Z",
+          "agent": "onboarding-specialist",
+          "action": "Sent onboarding checklist to SummitView Analytics",
+          "type": "communication"
+        },
+        {
+          "ts": "2026-02-24T17:17:38.760Z",
+          "agent": "support-triage",
+          "action": "Resolved ticket TK-4207 — onboarding issue for Urban Harvest Co",
+          "type": "resolution"
+        },
         {
           "ts": "2026-02-22T17:53:58.331Z",
           "agent": "support-triage",
@@ -1310,24 +1328,6 @@
           "agent": "churn-analyst",
           "action": "Generated weekly churn risk report — 5 accounts at risk",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-21T22:24:31.268Z",
-          "agent": "onboarding-specialist",
-          "action": "Sent onboarding checklist to Nexus Financial",
-          "type": "communication"
-        },
-        {
-          "ts": "2026-02-21T22:21:33.100Z",
-          "agent": "support-triage",
-          "action": "Resolved ticket TK-4209 — security issue for Horizon Pharma",
-          "type": "resolution"
-        },
-        {
-          "ts": "2026-02-21T21:57:14.030Z",
-          "agent": "onboarding-specialist",
-          "action": "Scheduled kickoff call with Cobalt Security — Jake Torres",
-          "type": "scheduling"
         }
       ]
     },
@@ -1336,8 +1336,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2508,
-        "hoursSaved": 351.38,
+        "tasksCompleted": 2510,
+        "hoursSaved": 352.04,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1353,18 +1353,30 @@
           "id": "portfolio-reviewer",
           "name": "Portfolio Reviewer",
           "status": "active",
-          "lastActive": "2026-02-22T15:50:51.029Z",
-          "taskCount": 848
+          "lastActive": "2026-02-24T17:21:02.505Z",
+          "taskCount": 849
         },
         {
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-22T17:54:06.044Z",
-          "taskCount": 828
+          "lastActive": "2026-02-24T17:31:43.045Z",
+          "taskCount": 829
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T17:31:43.045Z",
+          "agent": "filing-coordinator",
+          "action": "Prepared Form 13F draft for CCO review",
+          "type": "preparation"
+        },
+        {
+          "ts": "2026-02-24T17:21:02.505Z",
+          "agent": "portfolio-reviewer",
+          "action": "Completed quarterly portfolio review for Barbara Steinfeld ($$680000 AUM)",
+          "type": "review"
+        },
         {
           "ts": "2026-02-22T17:54:06.044Z",
           "agent": "filing-coordinator",
@@ -1652,18 +1664,6 @@
           "agent": "filing-coordinator",
           "action": "Generated regulatory filing status report — 2 filings due this month",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-21T21:59:09.745Z",
-          "agent": "filing-coordinator",
-          "action": "Submitted Form ADV Part 1 to SEC EDGAR — Atlas Wealth Advisors",
-          "type": "filing"
-        },
-        {
-          "ts": "2026-02-21T21:59:51.526Z",
-          "agent": "filing-coordinator",
-          "action": "Prepared Form 13F draft for CCO review",
-          "type": "preparation"
         }
       ]
     }

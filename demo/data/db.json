@@ -1729,6 +1729,138 @@
   },
   "taskRuns": [
     {
+      "id": "run-1771948823882-pnt5ij",
+      "companyId": "pacific-legal",
+      "taskId": "client-followup",
+      "agentId": "client-followup",
+      "agentName": "Client Follow-up Coordinator",
+      "status": "failed",
+      "startedAt": "2026-02-24T16:00:23.883Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-24T16:00:23.969Z"
+    },
+    {
+      "id": "run-1771941623672-4g57kh",
+      "companyId": "meridian-health",
+      "taskId": "records-request",
+      "agentId": "records-analyst",
+      "agentName": "Records Analyst",
+      "status": "failed",
+      "startedAt": "2026-02-24T14:00:23.675Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-24T14:00:23.777Z"
+    },
+    {
+      "id": "run-1771923623084-ye9fak",
+      "companyId": "meridian-health",
+      "taskId": "records-request",
+      "agentId": "records-analyst",
+      "agentName": "Records Analyst",
+      "status": "failed",
+      "startedAt": "2026-02-24T09:00:23.086Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-24T09:00:23.168Z"
+    },
+    {
+      "id": "run-1771920022893-nn12wx",
+      "companyId": "meridian-health",
+      "taskId": "schedule-patient",
+      "agentId": "patient-coordinator",
+      "agentName": "Patient Coordinator",
+      "status": "failed",
+      "startedAt": "2026-02-24T08:00:22.894Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-24T08:00:23.003Z"
+    },
+    {
+      "id": "run-1771916422882-vvp1ho",
+      "companyId": "pacific-legal",
+      "taskId": "contract-review",
+      "agentId": "document-analyst",
+      "agentName": "Document Analyst",
+      "status": "failed",
+      "startedAt": "2026-02-24T07:00:22.887Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-24T07:00:22.988Z"
+    },
+    {
+      "id": "run-1771869621392-dsenc2",
+      "companyId": "buildright",
+      "taskId": "daily-site-report",
+      "agentId": "site-reporter",
+      "agentName": "Site Reporter",
+      "status": "failed",
+      "startedAt": "2026-02-23T18:00:21.394Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-23T18:00:21.507Z"
+    },
+    {
+      "id": "run-1771862421116-hb8xl6",
+      "companyId": "pacific-legal",
+      "taskId": "client-followup",
+      "agentId": "client-followup",
+      "agentName": "Client Follow-up Coordinator",
+      "status": "failed",
+      "startedAt": "2026-02-23T16:00:21.117Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-23T16:00:21.211Z"
+    },
+    {
+      "id": "run-1771855220775-mc4ftz",
+      "companyId": "meridian-health",
+      "taskId": "records-request",
+      "agentId": "records-analyst",
+      "agentName": "Records Analyst",
+      "status": "failed",
+      "startedAt": "2026-02-23T14:00:20.777Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-23T14:00:21.350Z"
+    },
+    {
+      "id": "run-1771837220173-7r332c",
+      "companyId": "meridian-health",
+      "taskId": "records-request",
+      "agentId": "records-analyst",
+      "agentName": "Records Analyst",
+      "status": "failed",
+      "startedAt": "2026-02-23T09:00:20.177Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-23T09:00:20.253Z"
+    },
+    {
+      "id": "run-1771833620037-onyxst",
+      "companyId": "meridian-health",
+      "taskId": "schedule-patient",
+      "agentId": "patient-coordinator",
+      "agentName": "Patient Coordinator",
+      "status": "failed",
+      "startedAt": "2026-02-23T08:00:20.039Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-23T08:00:20.177Z"
+    },
+    {
+      "id": "run-1771830019920-om6qgf",
+      "companyId": "pacific-legal",
+      "taskId": "contract-review",
+      "agentId": "document-analyst",
+      "agentName": "Document Analyst",
+      "status": "failed",
+      "startedAt": "2026-02-23T07:00:19.930Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-23T07:00:20.001Z"
+    },
+    {
+      "id": "run-1771826419849-55j2p8",
+      "companyId": "meridian-health",
+      "taskId": "compliance-audit",
+      "agentId": "compliance-officer",
+      "agentName": "Compliance Officer",
+      "status": "failed",
+      "startedAt": "2026-02-23T06:00:19.852Z",
+      "error": "No ANTHROPIC_API_KEY available",
+      "completedAt": "2026-02-23T06:00:20.116Z"
+    },
+    {
       "id": "run-1771763916622-bl2lrw",
       "companyId": "atlas-wealth",
       "taskId": "portfolio-review",
@@ -2195,8 +2327,12 @@
       "label": "Daily Site Report (6pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.501Z",
-      "lastRun": null,
-      "lastResult": null
+      "lastRun": "2026-02-23T18:00:21.359Z",
+      "lastResult": {
+        "status": "error",
+        "error": "No ANTHROPIC_API_KEY available",
+        "at": "2026-02-23T18:00:21.359Z"
+      }
     },
     {
       "id": "sched-1771694925503-atsg",
@@ -2206,8 +2342,12 @@
       "label": "Morning Scheduling Run (8am weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.503Z",
-      "lastRun": null,
-      "lastResult": null
+      "lastRun": "2026-02-24T08:00:22.859Z",
+      "lastResult": {
+        "status": "error",
+        "error": "No ANTHROPIC_API_KEY available",
+        "at": "2026-02-24T08:00:22.859Z"
+      }
     },
     {
       "id": "sched-1771694925505-064n",
@@ -2217,8 +2357,12 @@
       "label": "Weekly Compliance Audit (Mon 6am)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.505Z",
-      "lastRun": null,
-      "lastResult": null
+      "lastRun": "2026-02-23T06:00:19.772Z",
+      "lastResult": {
+        "status": "error",
+        "error": "No ANTHROPIC_API_KEY available",
+        "at": "2026-02-23T06:00:19.772Z"
+      }
     },
     {
       "id": "sched-1771694925506-5gps",
@@ -2228,8 +2372,12 @@
       "label": "Records Processing (9am & 2pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.506Z",
-      "lastRun": null,
-      "lastResult": null
+      "lastRun": "2026-02-24T14:00:23.615Z",
+      "lastResult": {
+        "status": "error",
+        "error": "No ANTHROPIC_API_KEY available",
+        "at": "2026-02-24T14:00:23.615Z"
+      }
     },
     {
       "id": "sched-1771694925507-dmhv",
@@ -2239,8 +2387,12 @@
       "label": "Morning Contract Review (7am weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.507Z",
-      "lastRun": null,
-      "lastResult": null
+      "lastRun": "2026-02-24T07:00:22.804Z",
+      "lastResult": {
+        "status": "error",
+        "error": "No ANTHROPIC_API_KEY available",
+        "at": "2026-02-24T07:00:22.804Z"
+      }
     },
     {
       "id": "sched-1771694925509-h373",
@@ -2250,8 +2402,12 @@
       "label": "Afternoon Client Follow-ups (4pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.509Z",
-      "lastRun": null,
-      "lastResult": null
+      "lastRun": "2026-02-24T16:00:23.830Z",
+      "lastResult": {
+        "status": "error",
+        "error": "No ANTHROPIC_API_KEY available",
+        "at": "2026-02-24T16:00:23.830Z"
+      }
     }
   ],
   "dataSources": {},
@@ -2299,7 +2455,7 @@
       }
     }
   },
-  "lastUpdated": "2026-02-23T04:23:52.528Z",
+  "lastUpdated": "2026-02-24T17:06:01.810Z",
   "recentActivity": [
     {
       "ts": "2026-02-22T12:30:54.666Z",
