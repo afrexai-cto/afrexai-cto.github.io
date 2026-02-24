@@ -1,0 +1,11 @@
+systems/personal-crm/crm.db
+systems/earnings-reports/earnings.db
+systems/social-tracker/data/social-tracker.db
+systems/platform-health/health.db
+systems/model-cost-tracker/tracker.db
+systems/urgent-email-detection/emails.db
+systems/meeting-actions/meeting-actions.db
+systems/knowledge-base/knowledge.db
+systems/health-tracker/health.db
+systems/advisory-council/council.db
+systems/newsletter-crm/data.db
