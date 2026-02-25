@@ -204,6 +204,27 @@
 - Terminology: "DSO", "practice administrator", "managing partner", "Dentrix", "Eaglesoft", "Open Dental", "BAA", "ePHI", "NPP", "covered entity"
 - Content handoff created for blog + lead magnet (6-Point AI Governance Checklist)
 
+### Recruitment & Staffing Agencies — AI Hiring Compliance (Added 2026-02-25)
+- **Primary pain:** Multi-state AI hiring regulation patchwork — agencies placing across jurisdictions face NYC LL144, Colorado AI Act, Illinois AIVIA simultaneously
+- NYC Local Law 144: annual bias audits for AEDTs, $500-$1,500 per violation per day — applies to staffing agencies screening for NYC placements
+- Colorado SB 24-205 (effective Feb 2026): impact assessments mandatory for "high-risk" AI including hiring — staffing agencies = deployers
+- EEOC guidance: staffing agency is **jointly liable** with client employer for disparate impact from AI screening tools
+- 55% of US HR leaders use predictive algorithms in hiring (Brookings/Mercer survey)
+- ATS platforms (Bullhorn, JobAdder, Vincere) embedding AI for candidate matching/resume parsing — agencies using with zero governance
+- Enterprise clients increasingly requiring AI governance documentation as part of MSA/vendor qualification — agencies losing bids without it
+- Recruiters pasting CVs, salary data, performance notes into ChatGPT — no data classification, no retention policies
+- ROI: ~$80K/yr value for 40-person agency vs $120K implementation (~18-month breakeven); enterprise client qualification is the revenue driver
+- CRM has ~8 recruitment companies (UK-based, small) — Tiger Recruitment (50), Sphere Digital (50), Brite (30), MRJ (20), 80Twenty (10)
+- **Gap:** CRM recruitment companies are UK-based and small. Need US staffing firms 50-500 employees for stronger ICP
+- Key objection: "Our ATS handles compliance" → "Who audited those algorithms for bias? When NYC asks for your impact assessment, Bullhorn won't provide it."
+- Terminology: "ATS", "candidate matching", "resume parsing", "bias audit", "disparate impact", "AEDT", "MSA", "vendor qualification", "placement"
+- Content handoff created for blog + lead magnet (5-Point AI Compliance Checklist)
+
+### Cross-Vertical Universal Pitch (Identified 2026-02-25)
+- **Pattern across ALL verticals:** "The entity at the top is always liable for ungoverned AI at the bottom"
+- Real Estate: broker liable for agent AI → Insurance: agency for producer AI → Banking: bank for vendor AI → Law: partners for associate AI → Staffing: agency for screening AI → Dental: DSO for practice AI → Accounting: firm for staff AI
+- This is AfrexAI's universal positioning — governance framework as liability shield
+
 - *This section updated as new verticals, use cases, and insights are developed*
 
 ## Shared Reference

@@ -4,46 +4,38 @@
 **Status:** CLOSED — ~14% (1/7 tasks completed)
 **Closed:** 2026-02-22
 
-## Final Task Status
-
-| # | Task | Owner | Priority | Final Status | Notes |
-|---|------|-------|----------|-------------|-------|
-| 1 | Resolve DNS blocker | Ops 🔧 | P0 | 🔴 OVERDUE | **14+ days blocked.** No resolution. Carried forward. |
-| 2 | Complete remaining 4 agent configs | Ops 🔧 | P0 | ❓ Unknown | No status update received since sprint start |
-| 3 | Google Workspace setup | Ops 🔧 | P1 | 🚫 Blocked | Blocked by DNS — carried forward |
-| 4 | LinkedIn admin access | Ops 🔧 | P1 | 🚫 Blocked | 14+ days no movement — carried forward |
-| 5 | Content engine daily output | Content agent | P1 | 🟢 Done | Ongoing, operating |
-| 6 | Agent swarm 9/9 operational | Ops 🔧 | P1 | 🔨 Partial | Sage agent active (11 deals created Feb 20-21). Others unknown. |
-| 7 | DNS fallback plan | Ops 🔧 | P0 | 🔴 OVERDUE | Never executed |
-
-## Sprint Velocity
-- W07: 37.5% (3/8)
-- W08: ~14% (1/7)
-- **Trend: declining.** Two consecutive weak sprints.
+*(Archived — see sprints/ for full history)*
 
 ---
 
 # 📌 Sprint Board — W09 (24–28 Feb 2026)
 
-**Sprint Goal:** TBD — needs Monday planning session
-**Status:** NOT STARTED
+**Sprint Goal:** Right-size sprint around what's actually moving. Pipeline activation > DNS rabbit hole.
+**Status:** IN PROGRESS — Day 2 (Wed)
 
-## Known Carry-Forward
+## Tasks
 
-| # | Task | Owner | Priority | Status | Notes |
-|---|------|-------|----------|--------|-------|
-| 1 | Resolve DNS blocker | Ops 🔧 | P0 | 🔴 OVERDUE (14d) | Must resolve or permanently abandon this week |
-| 2 | Google Workspace setup | Ops 🔧 | P1 | 🚫 Blocked by DNS | |
-| 3 | LinkedIn admin access | Ops 🔧 | P1 | 🚫 Blocked | Needs human action |
-| 4 | Agent swarm status audit | Ops 🔧 | P1 | NEW | Need actual count — Sage confirmed active, others? |
+| # | Task | Owner | Priority | Status | Due | Notes |
+|---|------|-------|----------|--------|-----|-------|
+| 1 | DNS blocker: resolve or kill | Ops 🔧 | P0 | 🔴 OVERDUE (17d) | Feb 25 | **Decision deadline TODAY.** Resolve or adopt permanent workaround. Stop carrying. |
+| 2 | Hunter outreach — 20 personalized emails | Hunter 🎯 | P0 | 🔨 In Progress | Feb 28 | 10 emails sent since Feb 22. On pace. |
+| 3 | Pipeline deals → Contacted stage | Sage / Hunter | P1 | 🔨 In Progress | Feb 28 | 21 deals ($1.96M) all in prospecting. Need stage progression. |
+| 4 | Agent swarm status audit | Ops 🔧 | P1 | TODO | Feb 26 | Which agents are active? Sage + Hunter confirmed. Others? |
+| 5 | Google Workspace setup | Ops 🔧 | P1 | 🚫 Blocked by DNS | Feb 28 | If DNS killed, need alt email auth path |
+| 6 | LinkedIn admin access | Ops 🔧 | P2 | 🚫 Blocked | Feb 28 | Needs human action — deprioritized |
+| 7 | Content engine daily output | Content agent | P1 | 🟢 Running | Ongoing | Verify still producing |
 
-## New Activity Since W08
+## Sprint Velocity
+- W07: 37.5% (3/8)
+- W08: ~14% (1/7)
+- W09 target: 57%+ (4/7) — right-sized to what's achievable
 
-- **Sage agent** created 11 deals in CRM (Feb 20-21) — AI Governance Framework @ $120K each across Legal, Accounting, Insurance verticals
-- **Pipeline value added:** $1.32M in prospecting stage
-- **No new activities logged** in activities table since Feb 18
+## Pipeline Snapshot (Live CRM)
+- **Deals:** 21 | **Total pipeline:** $1.96M | **All in:** prospecting stage
+- **Activities since Feb 22:** 10 outbound emails (Hunter)
+- **Active agents confirmed:** Sage (deal creation), Hunter (outbound email)
 
 ## Risks
-- 🔴 DNS blocker at 14+ days with zero progress — cascading impact on cold email, Google Workspace
-- 🟡 Sprint velocity declining (37.5% → 14%) — need to right-size W09
-- 🟡 No input files received since Feb 18 — communication gap between agents
+- 🔴 DNS at 17 days — must make kill/fix decision TODAY, stop carrying
+- 🟡 All 21 deals stuck in prospecting — zero stage progression
+- 🟡 Agent visibility gap — only 2/9 agents confirmed active

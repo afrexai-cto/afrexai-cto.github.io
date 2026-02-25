@@ -78,3 +78,13 @@ Mayer Brown published formal guidance stating agentic AI should be contracted as
 **AfrexAI connection:** Aligns with Step 2 (Service Accounts). Partnership provides warm leads from platform's own pipeline, instant credibility, and co-marketing.
 **What it takes:** Identify partnership program requirements for one vendor. ServiceNow or Microsoft Copilot Studio most aligned with our verticals. Application + demo of vertical capability.
 **Risk:** Partnership requirements may include certifications or minimum headcount. Research before committing.
+
+## 2026-02-25: Real Estate AaaS Sprint
+
+**What:** Launch targeted AaaS outreach to top 10 Real Estate brokerages in FL and TX (ICP 3-4). $5,500/mo single agent pricing, $3,500 intro for warm leads.
+
+**Why now:** 100 RE companies in CRM sitting cold while all pipeline concentrated in accounting. Real estate has lower compliance friction than fintech/legal = faster close cycle. Sean Ford (Miami) is already inbound.
+
+**Connection to 3-step plan:** Step 2 (Service Accounts). AaaS for RE brokerages = recurring revenue with standardized deployment. Each brokerage runs similar workflows (lead follow-up, listing management, client comms) making it highly templatable.
+
+**What it takes:** Contact enrichment for 10 companies, personalized outreach sequences, RE-specific demo/pitch deck. 2-3 days of Hunter + Sage coordination.

@@ -8,8 +8,8 @@
 ## Financial State
 
 - **Current state**: PARTIAL — Stripe accessible, QBO not used — PostgreSQL CRM is the source of truth
-- **Last reconciliation**: 2026-02-19 08:10 GMT (Stripe-only)
-- **Stripe balance**: $76.65 available, $0.00 pending
+- **Last reconciliation**: 2026-02-25 12:16 GMT (Stripe-only)
+- **Stripe balance**: $0.00 available, $0.00 pending
 - **Total paid out to bank (all-time)**: $111,227.91
 - **Gross revenue (all-time, Stripe)**: $84,621.66
 - **Trailing 6mo avg monthly revenue**: ~$13,900/mo
@@ -18,7 +18,8 @@
 - **Runway**: UNKNOWN (requires QBO)
 - **Key client revenue**: ~$12,143/mo recurring (VADIS-style invoice payments)
 - **Subscription**: $120/mo recurring — recovered on 2026-02-16 after 3 consecutive failures
-- **Open invoices**: 8 totaling $26,073.00 (7 overdue totaling $16,073.00; oldest: 262 days, VADA $1,250)
+- **Open invoices**: 7 totaling $13,930.00 (6 overdue totaling $3,930.00; oldest: 268 days, VADA $1,250)
+- **VADIS $12,143 paid 2026-02-23** — was 19 days overdue, now cleared
 - **Revenue concentration**: VADIS = ~87% of MRR — CRITICAL single-client risk
 
 ## Business Model & Targets
@@ -47,6 +48,7 @@
 - **2026-02-18 20:10 GMT**: Evening reconciliation. Zero revenue day — no charges or payment events. Balance unchanged: -$37.77 avail / $114.42 pending. 8 open invoices ($26,073), 6 overdue ($16,073). 3 invoices now CRITICAL (>90d): Jacob Johnson $2,200 @ 99d, BuildGrid $120 @ 128d, VADA $1,250 @ 261d. Recommended VADA write-off. Output: `output/daily-2026-02-18-pm.md`.
 - **2026-02-19 08:10 GMT**: Morning check. Zero overnight revenue (3rd consecutive zero day). Balance: $76.65 avail / $0.00 pending (pending cleared). 8 open invoices ($26,073), 7 overdue ($16,073). VADIS $12,143 now 13 days overdue — approaching escalation threshold. 3 invoices CRITICAL (>90d). Output: `output/daily-2026-02-19-am.md`.
 - **2026-02-20 08:10 GMT**: Morning check. 4th consecutive zero-revenue day. Balance unchanged: $76.65 avail / $0.00 pending. 8 open invoices ($26,073), 7 overdue ($16,073). VADIS $12,143 now 14d overdue — WARN escalation. Lisa Kingham $120 now 2d overdue. VADA 263d overdue. 3 invoices CRITICAL (>90d, $3,570). Output: `output/daily-2026-02-20-am.md`.
+- **2026-02-25 12:16 GMT**: Morning check (delayed — 5 days since last run). VADIS $12,143.00 paid Feb 23 — overdue resolved. Balance: $0.00/$0.00 (all swept to bank). 7 open invoices ($13,930), 6 overdue ($3,930). BuildGrid 3 invoices overdue (43/74/135d) — recommend pause + collections. VADA 268d — recommend write-off. Jacob Johnson $10K due Mar 1. Output: `output/daily-2026-02-25-am.md`.
 
 ## Lessons Learned
 - Vault at `scripts/vault.sh` must be initialized before any API access works. This is a blocker for all financial operations.

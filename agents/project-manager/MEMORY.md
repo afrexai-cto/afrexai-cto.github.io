@@ -43,6 +43,7 @@
 - **2026-02-16 (PM):** Evening close-out. No input received all day. Sprint W08 still at 0%. DNS now 8 days — tomorrow is do-or-die. No progress signals on agent configs either. Zero-output Monday. Escalation repeated.
 - **2026-02-18 (AM):** Wed standup. Sprint W08 Day 3, still 0% complete. DNS now 10 days — hard deadline (Tue) missed, fallback not executed either. Both P0 items overdue. No input files received Mon-Wed. Agent configs due tomorrow, no signals. This sprint is failing. Escalating again.
 - **2026-02-22 (AM):** Sunday standup. Sprint W08 CLOSED at ~14% (1/7). DNS now 14+ days — consumed 2 full sprints. Sage agent active — created 11 deals ($1.32M pipeline) Feb 20-21. No other agent status updates. No input files since Feb 18. W09 carry-forward queued. Escalation: DNS must resolve or die by Tue Feb 24. Velocity declining — need right-sized sprints.
+- **2026-02-25 (PM):** Wed standup (late — 12:24). W09 Day 2. CRM now shows 21 deals ($1.96M pipeline). Hunter confirmed active — 10 outbound emails since Feb 22. All deals still in prospecting stage — zero progression. DNS at 17 days — issued final kill-or-fix ultimatum for today. Sprint right-sized to 7 tasks. 2/9 agents confirmed active (Sage, Hunter). No input files received.
 
 ## Shared Reference
 - **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.

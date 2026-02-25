@@ -119,6 +119,15 @@ Customers don't buy technology. They buy outcomes. Frame everything as: "We give
 - **⚠️ Brave API at 99.2% (1984/2000).** Critical — all research agents degraded. Upgrade decision needed Monday.
 - **New opportunity: Platform Partnership Play** — pursue formal implementation partnership with ServiceNow or Microsoft for warm leads + credibility.
 
+## Key Intelligence (Updated 2026-02-25)
+
+- **Brave Search API DEAD** — 2001/2000 quota. All research agents blind since ~Feb 24. Upgrade critical.
+- **Pipeline stall diagnosed:** 11 Sage deals from Feb 20, zero advancement, zero contacts linked. Copy-paste pipeline, not real sales motion.
+- **Real Estate sprint launched:** Created 10 new RE deals ($624K pipeline) with AaaS pricing ($5,500/mo annualized). Top ICP companies in FL and TX. Close date Apr 30.
+- **Pipeline diversified:** Now 21 deals, 2 owners (Sage + Oracle), 2 verticals (Accounting + Real Estate), 2 deal types (Governance Framework + AaaS).
+- **Real Estate thesis:** 100 companies in CRM, largest vertical, zero previous pipeline. Lower compliance = faster sales cycle. Sean Ford inbound = proof case.
+- **Concentration risk flagged:** Sage owns 100% of original pipeline. Single point of failure. Oracle deals add redundancy.
+
 ## Open Strategic Questions
 
 - When do we move from Step 1 (Skills) to Step 2 (Service Accounts)?

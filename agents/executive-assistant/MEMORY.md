@@ -49,6 +49,7 @@
 | 2026-02-13 | 8AM (ran 21:32) | Second run. Same three blockers persist: no Gmail IMAP skill/plugin, no Calendar integration, no Slack. No input queue items. Briefing written to output/briefing-2026-02-13.md. Escalation recommended to Kael. |
 | 2026-02-16 | 8AM | Morning briefing written. Day 3 of same 3 blockers (Gmail, Calendar, Slack). Input queue empty. Gmail IMAP auth still failing. |
 | 2026-02-16 | 8PM | Evening wrap. Day 4, no change. Escalated Gmail IMAP to P0. All 3 blockers persist. No handoff packets. No founder requests. Briefing updated. |
+| 2026-02-25 | 8AM (ran 12:06) | Gmail IMAP working for ksmolichki@. 454 unread (bulk GitHub noise). No urgent client emails. Stripe: $12,143 VADIS payment captured. 2 BuildGrid invoices overdue, VADA $1,250 259d overdue. Calendar still unavailable. Christina inbox still needs separate creds. Input queue empty. |
 
 ## Shared Reference
 - **ALWAYS read**: /Users/openclaw/.openclaw/workspace-main/agents/SHARED-CONTEXT.md for CRM schema, Stripe data, Gmail access, and key links.
