@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-24T22:32:12.057Z",
+  "lastUpdated": "2026-02-24T23:02:51.001Z",
   "companies": {
     "meridian-health": {
       "name": "Meridian Health Partners",
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 3124,
-        "hoursSaved": 395.8,
+        "tasksCompleted": 3125,
+        "hoursSaved": 396.13,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
       },
@@ -16,8 +16,8 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-24T22:23:43.269Z",
-          "taskCount": 1029
+          "lastActive": "2026-02-24T22:58:04.757Z",
+          "taskCount": 1030
         },
         {
           "id": "compliance-officer",
@@ -35,6 +35,12 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:58:04.757Z",
+          "agent": "patient-coordinator",
+          "action": "Processed referral from Dr. Nguyen → Neurology",
+          "type": "referral"
+        },
         {
           "ts": "2026-02-24T22:23:43.269Z",
           "agent": "patient-coordinator",
@@ -328,12 +334,6 @@
           "agent": "records-analyst",
           "action": "Flagged incomplete chart for Dr. Nguyen",
           "type": "quality"
-        },
-        {
-          "ts": "2026-02-22T05:47:27.587Z",
-          "agent": "compliance-officer",
-          "action": "Reviewed Dr. Kim's access to prescription log — authorized",
-          "type": "audit"
         }
       ]
     },
@@ -342,8 +342,8 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2317,
-        "hoursSaved": 317.18,
+        "tasksCompleted": 2320,
+        "hoursSaved": 318.2,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
       },
@@ -359,18 +359,36 @@
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-24T22:23:49.466Z",
-          "taskCount": 776
+          "lastActive": "2026-02-24T23:00:47.791Z",
+          "taskCount": 777
         },
         {
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-24T22:25:45.208Z",
-          "taskCount": 765
+          "lastActive": "2026-02-24T23:01:58.230Z",
+          "taskCount": 767
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T23:01:58.230Z",
+          "agent": "client-followup",
+          "action": "Scheduled consultation with Westbrook Manufacturing Inc",
+          "type": "scheduling"
+        },
+        {
+          "ts": "2026-02-24T22:48:04.550Z",
+          "agent": "client-followup",
+          "action": "Sent low reminder: File annual report with Oregon Secretary of State for Pacific Rim Imports LLC",
+          "type": "follow-up"
+        },
+        {
+          "ts": "2026-02-24T23:00:47.791Z",
+          "agent": "document-analyst",
+          "action": "Flagged non-standard clause in Probate Filing",
+          "type": "review"
+        },
         {
           "ts": "2026-02-24T22:23:49.466Z",
           "agent": "document-analyst",
@@ -652,24 +670,6 @@
           "agent": "legal-ea",
           "action": "Prepared conference agenda for David Ashworth",
           "type": "preparation"
-        },
-        {
-          "ts": "2026-02-22T07:57:37.350Z",
-          "agent": "document-analyst",
-          "action": "Flagged non-standard clause in Lease Negotiation",
-          "type": "review"
-        },
-        {
-          "ts": "2026-02-22T08:08:08.142Z",
-          "agent": "client-followup",
-          "action": "Sent low reminder: Send revised lease amendment to opposing counsel for Kimura Commercial Properties",
-          "type": "follow-up"
-        },
-        {
-          "ts": "2026-02-22T07:30:41.312Z",
-          "agent": "legal-ea",
-          "action": "Sent court appearance reminder — Multnomah County Circuit Court",
-          "type": "notification"
         }
       ]
     },
@@ -678,8 +678,8 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 683,
-        "hoursSaved": 143.04,
+        "tasksCompleted": 687,
+        "hoursSaved": 143.97,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
       },
@@ -688,11 +688,35 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-24T22:31:13.378Z",
-          "taskCount": 683
+          "lastActive": "2026-02-24T22:58:24.648Z",
+          "taskCount": 687
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:58:24.648Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Pearl District Parking: fog — none",
+          "type": "delay"
+        },
+        {
+          "ts": "2026-02-24T22:59:17.143Z",
+          "agent": "site-reporter",
+          "action": "Generated daily report — Hillsboro Medical Office Building",
+          "type": "reporting"
+        },
+        {
+          "ts": "2026-02-24T22:55:43.118Z",
+          "agent": "site-reporter",
+          "action": "Flagged schedule variance — Riverfront Mixed-Use Development (on_track)",
+          "type": "alert"
+        },
+        {
+          "ts": "2026-02-24T22:54:30.970Z",
+          "agent": "site-reporter",
+          "action": "Logged weather delay at Riverfront Mixed-Use: clear — none",
+          "type": "delay"
+        },
         {
           "ts": "2026-02-24T22:31:13.378Z",
           "agent": "site-reporter",
@@ -968,30 +992,6 @@
           "agent": "site-reporter",
           "action": "Generated daily report — Summit Ridge Residential Phase 2",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-22T09:00:16.196Z",
-          "agent": "site-reporter",
-          "action": "Updated milestone: Interior finishes and flooring at Pearl District Parking Structure",
-          "type": "milestone"
-        },
-        {
-          "ts": "2026-02-22T07:55:42.687Z",
-          "agent": "site-reporter",
-          "action": "Compiled weekly progress summary for Cascade Elementary School Renovation",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-22T07:26:29.981Z",
-          "agent": "site-reporter",
-          "action": "Compiled weekly progress summary for Pearl District Parking Structure",
-          "type": "reporting"
-        },
-        {
-          "ts": "2026-02-22T07:29:28.550Z",
-          "agent": "site-reporter",
-          "action": "Flagged schedule variance — Pearl District Parking Structure (ahead)",
-          "type": "alert"
         }
       ]
     },
@@ -1000,8 +1000,8 @@
       "tier": "professional",
       "vertical": "saas",
       "kpis": {
-        "tasksCompleted": 2152,
-        "hoursSaved": 280.78,
+        "tasksCompleted": 2156,
+        "hoursSaved": 282.11,
         "accuracyRate": 98.9,
         "activeSince": "2026-01-10"
       },
@@ -1010,25 +1010,49 @@
           "id": "churn-analyst",
           "name": "Churn Analyst",
           "status": "active",
-          "lastActive": "2026-02-24T22:31:17.264Z",
-          "taskCount": 706
+          "lastActive": "2026-02-24T22:56:43.950Z",
+          "taskCount": 707
         },
         {
           "id": "onboarding-specialist",
           "name": "Onboarding Specialist",
           "status": "active",
-          "lastActive": "2026-02-24T20:11:38.923Z",
-          "taskCount": 712
+          "lastActive": "2026-02-24T22:54:15.411Z",
+          "taskCount": 713
         },
         {
           "id": "support-triage",
           "name": "Support Triage",
           "status": "active",
-          "lastActive": "2026-02-24T22:26:35.341Z",
-          "taskCount": 733
+          "lastActive": "2026-02-24T22:53:20.368Z",
+          "taskCount": 735
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:54:15.411Z",
+          "agent": "onboarding-specialist",
+          "action": "Sent onboarding checklist to Urban Harvest Co",
+          "type": "communication"
+        },
+        {
+          "ts": "2026-02-24T22:53:20.368Z",
+          "agent": "support-triage",
+          "action": "SLA check: TK-4202 — 8h SLA, on track",
+          "type": "monitoring"
+        },
+        {
+          "ts": "2026-02-24T22:56:36.064Z",
+          "agent": "support-triage",
+          "action": "SLA check: TK-4205 — 2h SLA, on track",
+          "type": "monitoring"
+        },
+        {
+          "ts": "2026-02-24T22:56:43.950Z",
+          "agent": "churn-analyst",
+          "action": "Triggered re-engagement sequence for Starline Media",
+          "type": "automation"
+        },
         {
           "ts": "2026-02-24T22:26:35.341Z",
           "agent": "support-triage",
@@ -1304,30 +1328,6 @@
           "agent": "onboarding-specialist",
           "action": "Scheduled kickoff call with Horizon Pharma — Sarah Chen",
           "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-22T08:07:16.763Z",
-          "agent": "support-triage",
-          "action": "Categorised 3 new tickets — 2 auto-resolved",
-          "type": "triage"
-        },
-        {
-          "ts": "2026-02-22T07:54:42.489Z",
-          "agent": "onboarding-specialist",
-          "action": "Scheduled kickoff call with Pinecrest Hotels — Jake Torres",
-          "type": "scheduling"
-        },
-        {
-          "ts": "2026-02-22T07:30:47.440Z",
-          "agent": "support-triage",
-          "action": "Resolved ticket TK-4205 — billing issue for Titanium Fitness",
-          "type": "resolution"
-        },
-        {
-          "ts": "2026-02-22T07:23:49.904Z",
-          "agent": "churn-analyst",
-          "action": "Detected usage decline at Redwood Healthcare — active users down 31%",
-          "type": "analysis"
         }
       ]
     },
@@ -1336,8 +1336,8 @@
       "tier": "enterprise",
       "vertical": "financial-services",
       "kpis": {
-        "tasksCompleted": 2522,
-        "hoursSaved": 355.49,
+        "tasksCompleted": 2524,
+        "hoursSaved": 356.13,
         "accuracyRate": 99.4,
         "activeSince": "2026-01-05"
       },
@@ -1346,8 +1346,8 @@
           "id": "compliance-monitor",
           "name": "Compliance Monitor",
           "status": "active",
-          "lastActive": "2026-02-24T20:06:35.307Z",
-          "taskCount": 832
+          "lastActive": "2026-02-24T22:51:13.669Z",
+          "taskCount": 833
         },
         {
           "id": "portfolio-reviewer",
@@ -1360,11 +1360,23 @@
           "id": "filing-coordinator",
           "name": "Filing Coordinator",
           "status": "active",
-          "lastActive": "2026-02-24T22:22:09.737Z",
-          "taskCount": 834
+          "lastActive": "2026-02-24T22:58:29.645Z",
+          "taskCount": 835
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-24T22:58:29.645Z",
+          "agent": "filing-coordinator",
+          "action": "Submitted Form ADV Part 2B to SEC EDGAR — Margaret Liu",
+          "type": "filing"
+        },
+        {
+          "ts": "2026-02-24T22:51:13.669Z",
+          "agent": "compliance-monitor",
+          "action": "Completed annual_review check — SEC Rule 206(4)-7 — compliant",
+          "type": "compliance"
+        },
         {
           "ts": "2026-02-24T22:22:09.737Z",
           "agent": "filing-coordinator",
@@ -1652,18 +1664,6 @@
           "agent": "portfolio-reviewer",
           "action": "Generated performance attribution report for Chen Family Office",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-22T06:54:04.248Z",
-          "agent": "filing-coordinator",
-          "action": "Deadline alert: Form 13F (Q4 2025 institutional holdings) due 2026-02-14",
-          "type": "alert"
-        },
-        {
-          "ts": "2026-02-22T06:55:14.385Z",
-          "agent": "compliance-monitor",
-          "action": "Flagged overdue annual_amendment for Atlas Wealth Advisors",
-          "type": "alert"
         }
       ]
     }

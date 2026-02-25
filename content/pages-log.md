@@ -65,3 +65,12 @@ All pages: dark theme (#0a0a0a), gold (#FFD700), standalone HTML, inline CSS, mo
 5. `/blog/how-to-automate-employee-onboarding/index.html` — SEO blog: "How to Automate Employee Onboarding With AI Agents (2026 Guide)" (5-step playbook, document collection, system provisioning, training, benefits, 30/60/90 check-ins)
 6. `/blog/ai-agents-real-estate-2026/index.html` — Blog: "AI Agents in Real Estate: 8 Use Cases Transforming the Industry in 2026" (lead qual, CMA, transaction coord, property mgmt, listing content, market analysis, showings, compliance)
 7. `/content/resources/index.html` — Resource Hub page: links to all calculators, guides, playbooks, blog posts, videos, and webinars in one place
+
+## 2026-02-25
+1. `seo/ai-agent-services-philadelphia/index.html` — SEO city page for Philadelphia
+2. `seo/ai-automation-for-real-estate/index.html` — SEO automation page for real estate
+3. `one-pagers/financial-services/index.html` — One-pager for financial services
+4. `one-pagers/recruitment/index.html` — One-pager for recruitment agencies
+5. `blog/how-to-automate-document-processing.html` — How-to guide: document processing automation
+6. `seo/ai-agent-services-nashville/index.html` — SEO city page for Nashville
+7. `blog/ai-compliance-checklist-2026.html` — AI compliance checklist guide for 2026

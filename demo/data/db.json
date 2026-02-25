@@ -5,7 +5,7 @@
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 3048,
+        "tasksCompleted": 3050,
         "hoursSaved": 372.43,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
@@ -15,8 +15,8 @@
           "id": "patient-coordinator",
           "name": "Patient Coordinator",
           "status": "active",
-          "lastActive": "2026-02-22T12:28:01.059Z",
-          "taskCount": 1012
+          "lastActive": "2026-02-25T08:00:20.141Z",
+          "taskCount": 1013
         },
         {
           "id": "compliance-officer",
@@ -29,11 +29,29 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-22T12:28:40.792Z",
-          "taskCount": 1018
+          "lastActive": "2026-02-25T09:00:22.182Z",
+          "taskCount": 1019
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-25T09:00:22.182Z",
+          "agent": "records-analyst",
+          "action": "Processed records request RR-027 for Anthony Washington",
+          "type": "records",
+          "artifact": "deliverables/meridian-health/records-summary-2026-02-25T09-00-22-182Z.md",
+          "real": true,
+          "runId": "run-1772010003575-u1m1z7"
+        },
+        {
+          "ts": "2026-02-25T08:00:20.141Z",
+          "agent": "patient-coordinator",
+          "action": "Generated scheduling confirmation for Rosa Castillo — Rheumatology",
+          "type": "scheduling",
+          "artifact": "deliverables/meridian-health/scheduling-confirmation-2026-02-25T08-00-20-141Z.md",
+          "real": true,
+          "runId": "run-1772006403523-0tfh9q"
+        },
         {
           "ts": "2026-02-22T12:28:40.792Z",
           "agent": "records-analyst",
@@ -333,18 +351,6 @@
           "agent": "compliance-officer",
           "action": "Generated monthly compliance report",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-20T20:03:34.371Z",
-          "agent": "records-analyst",
-          "action": "Archived 5 inactive patient records",
-          "type": "maintenance"
-        },
-        {
-          "ts": "2026-02-20T19:57:00.623Z",
-          "agent": "compliance-officer",
-          "action": "Completed HIPAA training verification — Dr. Kim",
-          "type": "compliance"
         }
       ]
     },
@@ -353,7 +359,7 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2237,
+        "tasksCompleted": 2238,
         "hoursSaved": 291.5,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
@@ -370,8 +376,8 @@
           "id": "document-analyst",
           "name": "Document Analyst",
           "status": "active",
-          "lastActive": "2026-02-22T12:30:43.914Z",
-          "taskCount": 754
+          "lastActive": "2026-02-25T07:00:31.018Z",
+          "taskCount": 755
         },
         {
           "id": "client-followup",
@@ -382,6 +388,15 @@
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-25T07:00:31.018Z",
+          "agent": "document-analyst",
+          "action": "Completed contract review and risk assessment",
+          "type": "document-review",
+          "artifact": "deliverables/pacific-legal/contract-review-2026-02-25T07-00-31-018Z.md",
+          "real": true,
+          "runId": "run-1772002803468-xdlz77"
+        },
         {
           "ts": "2026-02-22T12:30:54.666Z",
           "agent": "client-followup",
@@ -690,12 +705,6 @@
           "agent": "legal-ea",
           "action": "Prepared conference agenda for Rachel Abrams",
           "type": "preparation"
-        },
-        {
-          "ts": "2026-02-20T20:01:37.777Z",
-          "agent": "legal-ea",
-          "action": "Calendared deadline: client_meeting — Estate of Williams on 2026-02-18",
-          "type": "scheduling"
         }
       ]
     },
@@ -1729,6 +1738,48 @@
   },
   "taskRuns": [
     {
+      "id": "run-1772010003575-u1m1z7",
+      "companyId": "meridian-health",
+      "taskId": "records-request",
+      "agentId": "records-analyst",
+      "agentName": "Records Analyst",
+      "status": "completed",
+      "startedAt": "2026-02-25T09:00:03.578Z",
+      "completedAt": "2026-02-25T09:00:22.182Z",
+      "cost": 0.013853999999999998,
+      "tokens": 1046,
+      "durationMs": 18607,
+      "deliverablePath": "deliverables/meridian-health/records-summary-2026-02-25T09-00-22-182Z.md"
+    },
+    {
+      "id": "run-1772006403523-0tfh9q",
+      "companyId": "meridian-health",
+      "taskId": "schedule-patient",
+      "agentId": "patient-coordinator",
+      "agentName": "Patient Coordinator",
+      "status": "completed",
+      "startedAt": "2026-02-25T08:00:03.524Z",
+      "completedAt": "2026-02-25T08:00:20.141Z",
+      "cost": 0.009167999999999999,
+      "tokens": 744,
+      "durationMs": 16618,
+      "deliverablePath": "deliverables/meridian-health/scheduling-confirmation-2026-02-25T08-00-20-141Z.md"
+    },
+    {
+      "id": "run-1772002803468-xdlz77",
+      "companyId": "pacific-legal",
+      "taskId": "contract-review",
+      "agentId": "document-analyst",
+      "agentName": "Document Analyst",
+      "status": "completed",
+      "startedAt": "2026-02-25T07:00:03.469Z",
+      "completedAt": "2026-02-25T07:00:31.018Z",
+      "cost": 0.022515,
+      "tokens": 2037,
+      "durationMs": 27550,
+      "deliverablePath": "deliverables/pacific-legal/contract-review-2026-02-25T07-00-31-018Z.md"
+    },
+    {
       "id": "run-1771956001970-034x5x",
       "companyId": "buildright",
       "taskId": "daily-site-report",
@@ -2353,11 +2404,11 @@
       "label": "Morning Scheduling Run (8am weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.503Z",
-      "lastRun": "2026-02-24T08:00:22.859Z",
+      "lastRun": "2026-02-25T08:00:03.484Z",
       "lastResult": {
-        "status": "error",
-        "error": "No ANTHROPIC_API_KEY available",
-        "at": "2026-02-24T08:00:22.859Z"
+        "status": "ok",
+        "runId": "run-1772006403523-0tfh9q",
+        "at": "2026-02-25T08:00:03.484Z"
       }
     },
     {
@@ -2383,11 +2434,11 @@
       "label": "Records Processing (9am & 2pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.506Z",
-      "lastRun": "2026-02-24T14:00:23.615Z",
+      "lastRun": "2026-02-25T09:00:03.548Z",
       "lastResult": {
-        "status": "error",
-        "error": "No ANTHROPIC_API_KEY available",
-        "at": "2026-02-24T14:00:23.615Z"
+        "status": "ok",
+        "runId": "run-1772010003575-u1m1z7",
+        "at": "2026-02-25T09:00:03.548Z"
       }
     },
     {
@@ -2398,11 +2449,11 @@
       "label": "Morning Contract Review (7am weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.507Z",
-      "lastRun": "2026-02-24T07:00:22.804Z",
+      "lastRun": "2026-02-25T07:00:03.392Z",
       "lastResult": {
-        "status": "error",
-        "error": "No ANTHROPIC_API_KEY available",
-        "at": "2026-02-24T07:00:22.804Z"
+        "status": "ok",
+        "runId": "run-1772002803468-xdlz77",
+        "at": "2026-02-25T07:00:03.392Z"
       }
     },
     {
@@ -2424,10 +2475,10 @@
   "dataSources": {},
   "outputConfigs": {},
   "metrics": {
-    "totalCost": 0.3747,
-    "totalTokens": 29735,
-    "totalTasks": 19,
-    "totalHoursSaved": 4.75,
+    "totalCost": 0.4203,
+    "totalTokens": 33562,
+    "totalTasks": 22,
+    "totalHoursSaved": 5.5,
     "byCompany": {
       "buildright": {
         "cost": 0.0354,
@@ -2437,11 +2488,11 @@
         "avgDurationMs": 26529
       },
       "pacific-legal": {
-        "cost": 0.0809,
-        "tokens": 7275,
-        "tasks": 5,
-        "hoursSaved": 1.25,
-        "avgDurationMs": 20225
+        "cost": 0.1034,
+        "tokens": 9312,
+        "tasks": 6,
+        "hoursSaved": 1.5,
+        "avgDurationMs": 21446
       },
       "novacrm": {
         "cost": 0.0777,
@@ -2458,16 +2509,43 @@
         "avgDurationMs": 34204
       },
       "meridian-health": {
-        "cost": 0.0516,
-        "tokens": 4805,
-        "tasks": 3,
-        "hoursSaved": 0.75,
-        "avgDurationMs": 21341
+        "cost": 0.0747,
+        "tokens": 6595,
+        "tasks": 5,
+        "hoursSaved": 1.25,
+        "avgDurationMs": 19849
       }
     }
   },
-  "lastUpdated": "2026-02-24T18:00:02.378Z",
+  "lastUpdated": "2026-02-25T09:00:22.196Z",
   "recentActivity": [
+    {
+      "ts": "2026-02-25T09:00:22.182Z",
+      "agent": "records-analyst",
+      "action": "Processed records request RR-027 for Anthony Washington",
+      "type": "records",
+      "artifact": "deliverables/meridian-health/records-summary-2026-02-25T09-00-22-182Z.md",
+      "real": true,
+      "runId": "run-1772010003575-u1m1z7"
+    },
+    {
+      "ts": "2026-02-25T08:00:20.141Z",
+      "agent": "patient-coordinator",
+      "action": "Generated scheduling confirmation for Rosa Castillo — Rheumatology",
+      "type": "scheduling",
+      "artifact": "deliverables/meridian-health/scheduling-confirmation-2026-02-25T08-00-20-141Z.md",
+      "real": true,
+      "runId": "run-1772006403523-0tfh9q"
+    },
+    {
+      "ts": "2026-02-25T07:00:31.018Z",
+      "agent": "document-analyst",
+      "action": "Completed contract review and risk assessment",
+      "type": "document-review",
+      "artifact": "deliverables/pacific-legal/contract-review-2026-02-25T07-00-31-018Z.md",
+      "real": true,
+      "runId": "run-1772002803468-xdlz77"
+    },
     {
       "ts": "2026-02-22T12:30:54.666Z",
       "agent": "client-followup",
@@ -2641,6 +2719,42 @@
     }
   ],
   "deliveryLog": [
+    {
+      "ts": "2026-02-25T09:00:22.192Z",
+      "companyId": "meridian-health",
+      "deliverable": "deliverables/meridian-health/records-summary-2026-02-25T09-00-22-182Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/meridian-health/records-summary-2026-02-25T09-00-22-182Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-25T08:00:20.169Z",
+      "companyId": "meridian-health",
+      "deliverable": "deliverables/meridian-health/scheduling-confirmation-2026-02-25T08-00-20-141Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/meridian-health/scheduling-confirmation-2026-02-25T08-00-20-141Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-25T07:00:31.055Z",
+      "companyId": "pacific-legal",
+      "deliverable": "deliverables/pacific-legal/contract-review-2026-02-25T07-00-31-018Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/pacific-legal/contract-review-2026-02-25T07-00-31-018Z.md"
+        }
+      ]
+    },
     {
       "ts": "2026-02-22T12:30:54.672Z",
       "companyId": "pacific-legal",
