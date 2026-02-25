@@ -5,7 +5,7 @@
       "tier": "enterprise",
       "vertical": "healthcare",
       "kpis": {
-        "tasksCompleted": 3050,
+        "tasksCompleted": 3051,
         "hoursSaved": 372.43,
         "accuracyRate": 99.2,
         "activeSince": "2026-01-15"
@@ -29,11 +29,20 @@
           "id": "records-analyst",
           "name": "Records Analyst",
           "status": "active",
-          "lastActive": "2026-02-25T09:00:22.182Z",
-          "taskCount": 1019
+          "lastActive": "2026-02-25T14:00:21.002Z",
+          "taskCount": 1020
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-25T14:00:21.002Z",
+          "agent": "records-analyst",
+          "action": "Processed records request RR-001 for Maria Santos",
+          "type": "records",
+          "artifact": "deliverables/meridian-health/records-summary-2026-02-25T14-00-21-002Z.md",
+          "real": true,
+          "runId": "run-1772028004003-5a7s27"
+        },
         {
           "ts": "2026-02-25T09:00:22.182Z",
           "agent": "records-analyst",
@@ -345,12 +354,6 @@
           "agent": "records-analyst",
           "action": "Archived 8 inactive patient records",
           "type": "maintenance"
-        },
-        {
-          "ts": "2026-02-20T20:10:48.126Z",
-          "agent": "compliance-officer",
-          "action": "Generated monthly compliance report",
-          "type": "reporting"
         }
       ]
     },
@@ -359,7 +362,7 @@
       "tier": "professional",
       "vertical": "legal",
       "kpis": {
-        "tasksCompleted": 2238,
+        "tasksCompleted": 2239,
         "hoursSaved": 291.5,
         "accuracyRate": 98.7,
         "activeSince": "2026-01-20"
@@ -383,11 +386,20 @@
           "id": "client-followup",
           "name": "Client Follow-up",
           "status": "active",
-          "lastActive": "2026-02-22T12:30:54.666Z",
-          "taskCount": 740
+          "lastActive": "2026-02-25T16:00:15.265Z",
+          "taskCount": 741
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-25T16:00:15.265Z",
+          "agent": "client-followup",
+          "action": "Drafted client status update for Estate of Harold Williams — Probate Administration",
+          "type": "client-communication",
+          "artifact": "deliverables/pacific-legal/client-email-2026-02-25T16-00-15-265Z.md",
+          "real": true,
+          "runId": "run-1772035204249-jh83xr"
+        },
         {
           "ts": "2026-02-25T07:00:31.018Z",
           "agent": "document-analyst",
@@ -699,12 +711,6 @@
           "agent": "client-followup",
           "action": "Sent medium reminder: Complete due diligence title search for Greenfield Acquisitions LLC",
           "type": "follow-up"
-        },
-        {
-          "ts": "2026-02-20T20:10:28.728Z",
-          "agent": "legal-ea",
-          "action": "Prepared conference agenda for Rachel Abrams",
-          "type": "preparation"
         }
       ]
     },
@@ -713,7 +719,7 @@
       "tier": "starter",
       "vertical": "construction",
       "kpis": {
-        "tasksCompleted": 605,
+        "tasksCompleted": 606,
         "hoursSaved": 119.86,
         "accuracyRate": 97.5,
         "activeSince": "2026-02-01"
@@ -723,11 +729,20 @@
           "id": "site-reporter",
           "name": "Site Reporter",
           "status": "active",
-          "lastActive": "2026-02-22T12:27:44.914Z",
-          "taskCount": 605
+          "lastActive": "2026-02-25T18:00:36.405Z",
+          "taskCount": 606
         }
       ],
       "recentActivity": [
+        {
+          "ts": "2026-02-25T18:00:36.405Z",
+          "agent": "site-reporter",
+          "action": "Generated daily site report for Hillsboro Medical Office Building",
+          "type": "site-report",
+          "artifact": "deliverables/buildright/site-report-2026-02-25T18-00-36-405Z.md",
+          "real": true,
+          "runId": "run-1772042404479-ku2jg5"
+        },
         {
           "ts": "2026-02-22T12:27:44.914Z",
           "agent": "site-reporter",
@@ -1027,12 +1042,6 @@
           "agent": "site-reporter",
           "action": "Compiled weekly progress summary for Cascade Elementary School Renovation",
           "type": "reporting"
-        },
-        {
-          "ts": "2026-02-20T18:00:00.651Z",
-          "agent": "site-reporter",
-          "action": "Updated milestone: Framing units 20-40 at Cascade Elementary School Renovation",
-          "type": "milestone"
         }
       ]
     },
@@ -1738,6 +1747,48 @@
   },
   "taskRuns": [
     {
+      "id": "run-1772042404479-ku2jg5",
+      "companyId": "buildright",
+      "taskId": "daily-site-report",
+      "agentId": "site-reporter",
+      "agentName": "Site Reporter",
+      "status": "completed",
+      "startedAt": "2026-02-25T18:00:04.481Z",
+      "completedAt": "2026-02-25T18:00:36.405Z",
+      "cost": 0.021377999999999998,
+      "tokens": 1590,
+      "durationMs": 31926,
+      "deliverablePath": "deliverables/buildright/site-report-2026-02-25T18-00-36-405Z.md"
+    },
+    {
+      "id": "run-1772035204249-jh83xr",
+      "companyId": "pacific-legal",
+      "taskId": "client-followup",
+      "agentId": "client-followup",
+      "agentName": "Client Follow-up Coordinator",
+      "status": "completed",
+      "startedAt": "2026-02-25T16:00:04.251Z",
+      "completedAt": "2026-02-25T16:00:15.265Z",
+      "cost": 0.007791,
+      "tokens": 649,
+      "durationMs": 11016,
+      "deliverablePath": "deliverables/pacific-legal/client-email-2026-02-25T16-00-15-265Z.md"
+    },
+    {
+      "id": "run-1772028004003-5a7s27",
+      "companyId": "meridian-health",
+      "taskId": "records-request",
+      "agentId": "records-analyst",
+      "agentName": "Records Analyst",
+      "status": "completed",
+      "startedAt": "2026-02-25T14:00:04.005Z",
+      "completedAt": "2026-02-25T14:00:21.002Z",
+      "cost": 0.011838,
+      "tokens": 910,
+      "durationMs": 16999,
+      "deliverablePath": "deliverables/meridian-health/records-summary-2026-02-25T14-00-21-002Z.md"
+    },
+    {
       "id": "run-1772010003575-u1m1z7",
       "companyId": "meridian-health",
       "taskId": "records-request",
@@ -2389,11 +2440,11 @@
       "label": "Daily Site Report (6pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.501Z",
-      "lastRun": "2026-02-24T18:00:01.920Z",
+      "lastRun": "2026-02-25T18:00:04.442Z",
       "lastResult": {
-        "status": "error",
-        "error": "This request would exceed your account's rate limit. Please try again later.",
-        "at": "2026-02-24T18:00:01.920Z"
+        "status": "ok",
+        "runId": "run-1772042404479-ku2jg5",
+        "at": "2026-02-25T18:00:04.442Z"
       }
     },
     {
@@ -2434,11 +2485,11 @@
       "label": "Records Processing (9am & 2pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.506Z",
-      "lastRun": "2026-02-25T09:00:03.548Z",
+      "lastRun": "2026-02-25T14:00:03.933Z",
       "lastResult": {
         "status": "ok",
-        "runId": "run-1772010003575-u1m1z7",
-        "at": "2026-02-25T09:00:03.548Z"
+        "runId": "run-1772028004003-5a7s27",
+        "at": "2026-02-25T14:00:03.933Z"
       }
     },
     {
@@ -2464,35 +2515,35 @@
       "label": "Afternoon Client Follow-ups (4pm weekdays)",
       "enabled": true,
       "createdAt": "2026-02-21T17:28:45.509Z",
-      "lastRun": "2026-02-24T16:00:23.830Z",
+      "lastRun": "2026-02-25T16:00:04.216Z",
       "lastResult": {
-        "status": "error",
-        "error": "No ANTHROPIC_API_KEY available",
-        "at": "2026-02-24T16:00:23.830Z"
+        "status": "ok",
+        "runId": "run-1772035204249-jh83xr",
+        "at": "2026-02-25T16:00:04.216Z"
       }
     }
   ],
   "dataSources": {},
   "outputConfigs": {},
   "metrics": {
-    "totalCost": 0.4203,
-    "totalTokens": 33562,
-    "totalTasks": 22,
-    "totalHoursSaved": 5.5,
+    "totalCost": 0.4613,
+    "totalTokens": 36711,
+    "totalTasks": 25,
+    "totalHoursSaved": 6.25,
     "byCompany": {
       "buildright": {
-        "cost": 0.0354,
-        "tokens": 2689,
-        "tasks": 2,
-        "hoursSaved": 0.5,
-        "avgDurationMs": 26529
+        "cost": 0.0568,
+        "tokens": 4279,
+        "tasks": 3,
+        "hoursSaved": 0.75,
+        "avgDurationMs": 28328
       },
       "pacific-legal": {
-        "cost": 0.1034,
-        "tokens": 9312,
-        "tasks": 6,
-        "hoursSaved": 1.5,
-        "avgDurationMs": 21446
+        "cost": 0.1112,
+        "tokens": 9961,
+        "tasks": 7,
+        "hoursSaved": 1.75,
+        "avgDurationMs": 19956
       },
       "novacrm": {
         "cost": 0.0777,
@@ -2509,16 +2560,43 @@
         "avgDurationMs": 34204
       },
       "meridian-health": {
-        "cost": 0.0747,
-        "tokens": 6595,
-        "tasks": 5,
-        "hoursSaved": 1.25,
-        "avgDurationMs": 19849
+        "cost": 0.0865,
+        "tokens": 7505,
+        "tasks": 6,
+        "hoursSaved": 1.5,
+        "avgDurationMs": 19374
       }
     }
   },
-  "lastUpdated": "2026-02-25T09:00:22.196Z",
+  "lastUpdated": "2026-02-25T18:00:36.427Z",
   "recentActivity": [
+    {
+      "ts": "2026-02-25T18:00:36.405Z",
+      "agent": "site-reporter",
+      "action": "Generated daily site report for Hillsboro Medical Office Building",
+      "type": "site-report",
+      "artifact": "deliverables/buildright/site-report-2026-02-25T18-00-36-405Z.md",
+      "real": true,
+      "runId": "run-1772042404479-ku2jg5"
+    },
+    {
+      "ts": "2026-02-25T16:00:15.265Z",
+      "agent": "client-followup",
+      "action": "Drafted client status update for Estate of Harold Williams — Probate Administration",
+      "type": "client-communication",
+      "artifact": "deliverables/pacific-legal/client-email-2026-02-25T16-00-15-265Z.md",
+      "real": true,
+      "runId": "run-1772035204249-jh83xr"
+    },
+    {
+      "ts": "2026-02-25T14:00:21.002Z",
+      "agent": "records-analyst",
+      "action": "Processed records request RR-001 for Maria Santos",
+      "type": "records",
+      "artifact": "deliverables/meridian-health/records-summary-2026-02-25T14-00-21-002Z.md",
+      "real": true,
+      "runId": "run-1772028004003-5a7s27"
+    },
     {
       "ts": "2026-02-25T09:00:22.182Z",
       "agent": "records-analyst",
@@ -2719,6 +2797,42 @@
     }
   ],
   "deliveryLog": [
+    {
+      "ts": "2026-02-25T18:00:36.422Z",
+      "companyId": "buildright",
+      "deliverable": "deliverables/buildright/site-report-2026-02-25T18-00-36-405Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/buildright/site-report-2026-02-25T18-00-36-405Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-25T16:00:15.281Z",
+      "companyId": "pacific-legal",
+      "deliverable": "deliverables/pacific-legal/client-email-2026-02-25T16-00-15-265Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/pacific-legal/client-email-2026-02-25T16-00-15-265Z.md"
+        }
+      ]
+    },
+    {
+      "ts": "2026-02-25T14:00:21.028Z",
+      "companyId": "meridian-health",
+      "deliverable": "deliverables/meridian-health/records-summary-2026-02-25T14-00-21-002Z.md",
+      "results": [
+        {
+          "type": "file",
+          "status": "ok",
+          "path": "deliverables/meridian-health/records-summary-2026-02-25T14-00-21-002Z.md"
+        }
+      ]
+    },
     {
       "ts": "2026-02-25T09:00:22.192Z",
       "companyId": "meridian-health",

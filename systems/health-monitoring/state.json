@@ -1,34 +1,29 @@
 {
   "lastRun": {
-    "daily": 1771733037847,
-    "weekly": 1771733037847,
-    "monthly": 1771733037847
+    "daily": 1772023590101,
+    "weekly": 1772023590101,
+    "monthly": 1772023590101
   },
   "alerts": [
     {
-      "level": "info",
-      "check": "git-backup",
-      "message": "85 uncommitted changes detected"
-    },
-    {
-      "level": "warn",
-      "check": "git-backup",
-      "message": "Remote unreachable: spawnSync /bin/sh ETIMEDOUT"
+      "level": "critical",
+      "check": "gateway-binding",
+      "message": "Gateway appears to bind to all interfaces: node      18164 openclaw   13u  IPv6 0x17dd89dcd947c2f3      0t0  TCP *:3001 (LISTEN)"
     },
     {
       "level": "critical",
       "check": "gateway-binding",
-      "message": "Gateway appears to bind to all interfaces: node    18164 openclaw   13u  IPv6 0x17dd89dcd947c2f3      0t0  TCP *:3001 (LISTEN)"
+      "message": "Gateway appears to bind to all interfaces: node      37722 openclaw   12u  IPv4 0x717d9bb03ba441f2      0t0  TCP *:3700 (LISTEN)"
     },
     {
       "level": "critical",
       "check": "gateway-binding",
-      "message": "Gateway appears to bind to all interfaces: node    45691 openclaw   13u  IPv6  0x904ad46bc5b661d      0t0  TCP *:3000 (LISTEN)"
+      "message": "Gateway appears to bind to all interfaces: node      45691 openclaw   13u  IPv6  0x904ad46bc5b661d      0t0  TCP *:3000 (LISTEN)"
     },
     {
       "level": "critical",
       "check": "gateway-binding",
-      "message": "Gateway appears to bind to all interfaces: node    69757 openclaw   15u  IPv4 0x7f2f3113046b141e      0t0  TCP *:18789 (LISTEN)"
+      "message": "Gateway appears to bind to all interfaces: node      60973 openclaw   15u  IPv4 0x87bb9a242e91d499      0t0  TCP *:18789 (LISTEN)"
     },
     {
       "level": "info",
@@ -36,5 +31,5 @@
       "message": "No gateway config files found to verify auth settings"
     }
   ],
-  "lastRunTimestamp": "2026-02-22T04:03:57.847Z"
+  "lastRunTimestamp": "2026-02-25T12:46:30.101Z"
 }

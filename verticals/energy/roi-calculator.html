@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy &amp; Utilities AI ROI Calculator | AfrexAI</title>
+<meta name="description" content="Calculate how much your utility spends on manual compliance, maintenance scheduling, and outage coordination. See AI automation ROI in 60 seconds.">
+<meta property="og:title" content="Energy &amp; Utilities AI ROI Calculator | AfrexAI">
+<meta property="og:description" content="Calculate your utility's AI automation ROI in 60 seconds. NERC compliance, maintenance, outage response — quantified.">
+<meta property="og:url" content="https://afrexai-cto.github.io/verticals/energy/roi-calculator.html">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Energy &amp; Utilities AI ROI Calculator | AfrexAI">
+<meta name="twitter:description" content="Calculate your utility's AI automation ROI in 60 seconds.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7}
+a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(10px)}
+nav .logo{font-size:1.4rem;font-weight:700;color:#FFD700;letter-spacing:1px}
+nav .links{display:flex;gap:1.5rem;align-items:center}
+nav .links a{color:#ccc;font-size:0.9rem}nav .links a:hover{color:#FFD700}
+.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:0.85rem 2rem;border-radius:6px;font-weight:700;font-size:1rem;transition:all 0.3s;border:2px solid #FFD700;cursor:pointer}
+.cta-btn:hover{background:transparent;color:#FFD700;text-decoration:none}
+.container{max-width:900px;margin:0 auto;padding:8rem 2rem 4rem}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:1rem}
+h1 span{color:#FFD700}
+.subtitle{font-size:1.1rem;color:#aaa;margin-bottom:3rem;max-width:640px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3rem}
+@media(max-width:768px){.calc-grid{grid-template-columns:1fr}}
+.input-group{margin-bottom:1.5rem}
+.input-group label{display:block;font-size:0.9rem;color:#ccc;margin-bottom:0.5rem;font-weight:500}
+.input-group input{width:100%;padding:0.75rem 1rem;background:#161616;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:1rem}
+.input-group input:focus{outline:none;border-color:#FFD700}
+.input-group .hint{font-size:0.75rem;color:#666;margin-top:0.3rem}
+.results-panel{background:#161616;border:1px solid #333;border-radius:12px;padding:2rem;position:sticky;top:6rem}
+.results-panel h2{color:#FFD700;font-size:1.3rem;margin-bottom:1.5rem}
+.result-row{display:flex;justify-content:space-between;padding:0.75rem 0;border-bottom:1px solid #222}
+.result-row:last-of-type{border-bottom:none}
+.result-row .label{color:#aaa;font-size:0.9rem}
+.result-row .value{font-weight:700;font-size:1rem}
+.result-row .value.gold{color:#FFD700;font-size:1.3rem}
+.result-row .value.red{color:#ef4444}
+.result-row .value.green{color:#22c55e}
+.big-number{text-align:center;margin:2rem 0;padding:2rem;background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:12px}
+.big-number .amount{font-size:3rem;font-weight:800;color:#FFD700}
+.big-number .desc{font-size:0.9rem;color:#aaa;margin-top:0.5rem}
+.cta-section{text-align:center;margin-top:3rem;padding:3rem;background:#161616;border-radius:12px;border:1px solid #333}
+.cta-section h2{font-size:1.5rem;margin-bottom:0.75rem}
+.cta-section p{color:#aaa;margin-bottom:1.5rem}
+footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#555;font-size:0.8rem;margin-top:4rem}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">AfrexAI</a>
+<div class="links">
+<a href="/verticals/energy/">Energy &amp; Utilities</a>
+<a href="/industries/">All Industries</a>
+<a href="/blog/">Blog</a>
+</div>
+</nav>
+
+<div class="container">
+<h1>How much is your utility spending on <span>manual compliance work</span>?</h1>
+<p class="subtitle">Adjust the numbers to match your organization. See what AI agents recover in staff hours, penalty risk reduction, and ROI.</p>
+
+<div class="calc-grid">
+<div>
+<div class="input-group">
+<label>Number of Compliance Staff</label>
+<input type="number" id="staff" value="8" min="1" oninput="calc()">
+<div class="hint">FTEs dedicated to regulatory compliance</div>
+</div>
+<div class="input-group">
+<label>Average Salary per Staff ($)</label>
+<input type="number" id="salary" value="85000" min="0" oninput="calc()">
+<div class="hint">Fully loaded annual cost per compliance FTE</div>
+</div>
+<div class="input-group">
+<label>Hours/Week on NERC/FERC Reporting</label>
+<input type="number" id="nercHrs" value="15" min="0" oninput="calc()">
+<div class="hint">Per staff member — compiling, formatting, filing</div>
+</div>
+<div class="input-group">
+<label>Hours/Week on Inspection Scheduling</label>
+<input type="number" id="inspectHrs" value="10" min="0" oninput="calc()">
+<div class="hint">Coordinating, tracking, documenting asset inspections</div>
+</div>
+<div class="input-group">
+<label>Hours/Week on Outage Coordination</label>
+<input type="number" id="outageHrs" value="8" min="0" oninput="calc()">
+<div class="hint">Status updates, crew dispatch, regulatory notification</div>
+</div>
+<div class="input-group">
+<label>Annual Regulatory Penalty Risk ($)</label>
+<input type="number" id="penaltyRisk" value="500000" min="0" oninput="calc()">
+<div class="hint">Estimated annual exposure from late/incomplete filings</div>
+</div>
+</div>
+
+<div class="results-panel">
+<h2>Your AI Agent ROI</h2>
+<div class="result-row"><span class="label">Manual compliance hours / year</span><span class="value red" id="r-manualHrs">—</span></div>
+<div class="result-row"><span class="label">Cost of manual compliance / year</span><span class="value red" id="r-manualCost">—</span></div>
+<div class="result-row"><span class="label">Hours recovered by AI (65%)</span><span class="value green" id="r-recoveredHrs">—</span></div>
+<div class="result-row"><span class="label">Staff cost savings</span><span class="value green" id="r-costSavings">—</span></div>
+<div class="result-row"><span class="label">Penalty risk reduction (80%)</span><span class="value green" id="r-penaltyReduction">—</span></div>
+
+<div class="big-number">
+<div class="amount" id="r-totalValue">—</div>
+<div class="desc">Total Annual Value from AI Agents</div>
+</div>
+
+<div class="result-row"><span class="label">AI Agent Cost (est.)</span><span class="value" id="r-agentCost">—</span></div>
+<div class="result-row"><span class="label">Net ROI</span><span class="value gold" id="r-roi">—</span></div>
+<div class="result-row"><span class="label">Payback Period</span><span class="value gold" id="r-payback">—</span></div>
+</div>
+</div>
+
+<div class="cta-section">
+<h2>Want the detailed compliance automation plan?</h2>
+<p>Book a free 30-minute AI audit. We'll map your regulatory obligations and show you exactly where AI agents eliminate manual work.</p>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Free AI Audit</a>
+</div>
+</div>
+
+<footer>
+<p>© 2026 AfrexAI. Energy &amp; Utilities AI ROI Calculator.</p>
+<p style="margin-top:0.5rem"><a href="/">Home</a> · <a href="/verticals/energy/">Energy &amp; Utilities</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a></p>
+</footer>
+
+<script>
+function fmt(n){return'$'+Math.round(n).toLocaleString()}
+function calc(){
+  const staff=+document.getElementById('staff').value||0;
+  const salary=+document.getElementById('salary').value||0;
+  const nercH=+document.getElementById('nercHrs').value||0;
+  const inspH=+document.getElementById('inspectHrs').value||0;
+  const outH=+document.getElementById('outageHrs').value||0;
+  const penalty=+document.getElementById('penaltyRisk').value||0;
+
+  const hourlyRate=salary/2080;
+  const weeklyHrs=(nercH+inspH+outH)*staff;
+  const annualHrs=weeklyHrs*52;
+  const manualCost=annualHrs*hourlyRate;
+  const recoveredHrs=Math.round(annualHrs*0.65);
+  const costSavings=recoveredHrs*hourlyRate;
+  const penaltyReduction=penalty*0.8;
+  const totalVal=costSavings+penaltyReduction;
+  const agentCost=staff*600*12;
+  const roi=agentCost>0?Math.round(((totalVal-agentCost)/agentCost)*100):0;
+  const paybackMonths=totalVal>0?Math.max(1,Math.round(agentCost/(totalVal/12))):0;
+
+  document.getElementById('r-manualHrs').textContent=annualHrs.toLocaleString()+' hrs';
+  document.getElementById('r-manualCost').textContent=fmt(manualCost);
+  document.getElementById('r-recoveredHrs').textContent=recoveredHrs.toLocaleString()+' hrs';
+  document.getElementById('r-costSavings').textContent=fmt(costSavings);
+  document.getElementById('r-penaltyReduction').textContent=fmt(penaltyReduction);
+  document.getElementById('r-totalValue').textContent=fmt(totalVal);
+  document.getElementById('r-agentCost').textContent=fmt(agentCost)+'/yr';
+  document.getElementById('r-roi').textContent=roi+'%';
+  document.getElementById('r-payback').textContent=paybackMonths+' month'+(paybackMonths!==1?'s':'');
+}
+calc();
+</script>
+</body>
+</html>

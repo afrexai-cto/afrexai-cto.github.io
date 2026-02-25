@@ -1,5 +1,5 @@
 {
-  "runId": 5,
+  "runId": 6,
   "overall": 70,
   "results": [
     {
@@ -14,7 +14,7 @@
     {
       "score": 60,
       "findings": [
-        "📊 178 JS/TS files, ~9533 total lines",
+        "📊 178 JS/TS files, ~9536 total lines",
         "⚠️ 3 TODO comments found",
         "⚠️ 3 files exceed 300 lines",
         "⚠️ 22 async files without try/catch"
@@ -68,11 +68,11 @@
       "findings": [
         "📁 Large files (>1MB):",
         "  - ./systems/security-council/scan-data.json (4.6MB)",
-        "  - ./systems/db-backups/backups/backup-20260221-230305.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260222-000215.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260222-010151.tar.enc (1.4MB)",
-        "  - ./systems/db-backups/backups/backup-20260222-020203.tar.enc (1.4MB)",
-        "📊 Total large file storage: 14.3MB"
+        "  - ./systems/db-backups/backups/backup-20260224-201429.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260224-230313.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260225-000255.tar.enc (1.4MB)",
+        "  - ./systems/db-backups/backups/backup-20260225-010203.tar.enc (1.4MB)",
+        "📊 Total large file storage: 14.4MB"
       ],
       "area": "storage",
       "status": "warning"
@@ -118,5 +118,5 @@
     "storage: Room for improvement (score: 79)",
     "skill-integrity: Room for improvement (score: 68)"
   ],
-  "timestamp": "2026-02-22T05:02:14.145Z"
+  "timestamp": "2026-02-25T12:47:55.155Z"
 }
