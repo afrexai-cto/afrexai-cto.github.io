@@ -1,4 +1,4 @@
-# ☀️ Daily Briefing — Sunday, 22 February 2026
+# ☀️ Daily Briefing — Wednesday, 25 February 2026
 
 ## 📅 Today's Schedule
 
