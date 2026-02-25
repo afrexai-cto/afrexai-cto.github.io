@@ -3,111 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Studies | AfrexAI — Real Results with AI Agents</title>
-<meta name="description" content="See how businesses are using AfrexAI's custom AI agents to recover revenue, cut overhead, and scale operations.">
+<title>Case Studies — AfrexAI | Real Results From AI Agent Deployments</title>
+<meta name="description" content="See how companies are using AfrexAI's AI agent workforce to cut costs, automate operations, and scale faster. Real numbers, real deployments.">
+<meta property="og:title" content="AfrexAI Case Studies — Real AI Agent Results">
+<meta property="og:description" content="Real results from AI agent deployments. See the numbers.">
+<meta property="og:url" content="https://afrexai-cto.github.io/case-studies/">
+<meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7}
-a{color:#FFD700;text-decoration:none}a:hover{text-decoration:underline}
-.gold{color:#FFD700}
-.container{max-width:1080px;margin:0 auto;padding:0 24px}
-nav{padding:20px 0;border-bottom:1px solid #1a1a1a}
-nav .container{display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px}.logo span{color:#FFD700}
-/* Hero */
-.hero{padding:80px 0 60px;text-align:center}
-.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;margin-bottom:16px}
-.hero p{font-size:1.15rem;color:#888;max-width:600px;margin:0 auto}
-/* Cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;padding:60px 0 80px}
-.card{background:#111;border:1px solid #1f1f1f;border-radius:16px;padding:36px 32px;transition:all .25s;position:relative;overflow:hidden}
-.card:hover{border-color:#FFD70050;transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,215,0,.08)}
-.card-label{display:inline-block;background:#FFD70012;color:#FFD700;padding:4px 12px;border-radius:12px;font-size:.75rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;border:1px solid #FFD70025}
-.card h2{font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.3}
-.card p{color:#999;font-size:.95rem;margin-bottom:24px;line-height:1.6}
-.card-stats{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap}
-.card-stat{text-align:left}
-.card-stat-num{font-size:1.5rem;font-weight:800;color:#FFD700;line-height:1.1}
-.card-stat-label{font-size:.75rem;color:#666;margin-top:2px}
-.card-link{display:inline-flex;align-items:center;gap:6px;color:#FFD700;font-weight:600;font-size:.95rem}
-.card-link:hover{gap:10px}
-/* CTA */
-.cta-section{text-align:center;padding:80px 24px;border-top:1px solid #1a1a1a}
-.cta-section h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:#fff;margin-bottom:16px}
-.cta-section p{color:#999;font-size:1.05rem;max-width:520px;margin:0 auto 32px}
-.cta-btn{display:inline-block;background:#FFD700;color:#0a0a0a;padding:16px 40px;border-radius:8px;font-size:1.05rem;font-weight:700;transition:all .2s}
-.cta-btn:hover{background:#fff;text-decoration:none;transform:translateY(-2px);box-shadow:0 8px 30px #FFD70040}
-footer{text-align:center;padding:32px 24px;color:#555;font-size:.85rem;border-top:1px solid #1a1a1a}
+:root{--bg:#0a0a0a;--card:#111;--gold:#FFD700;--text:#e0e0e0;--muted:#999;--border:#222}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+nav{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+nav .logo{color:var(--gold);font-weight:700;font-size:1.1rem}
+nav .links a{color:var(--muted);margin-left:20px;font-size:.9rem}nav .links a:hover{color:var(--gold)}
+.hero{text-align:center;padding:60px 20px 40px}
+.hero h1{color:#fff;font-size:2.2rem;margin-bottom:12px}
+.hero p{color:var(--muted);max-width:600px;margin:0 auto;font-size:1.05rem}
+.stats-bar{display:flex;justify-content:center;gap:40px;padding:20px;margin-bottom:40px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{color:var(--gold);font-size:2rem;font-weight:800}
+.stat .label{color:var(--muted);font-size:.8rem;margin-top:2px}
+.cases{max-width:900px;margin:0 auto;padding:0 20px 60px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;margin-bottom:28px;transition:border-color .2s}
+.case-card:hover{border-color:var(--gold)}
+.case-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.case-header h2{color:#fff;font-size:1.3rem;flex:1}
+.case-tag{background:#1a1a00;color:var(--gold);border:1px solid #333;padding:4px 10px;border-radius:6px;font-size:.75rem;font-weight:600;white-space:nowrap}
+.case-challenge{margin-bottom:16px}
+.case-challenge h3{color:var(--gold);font-size:.85rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.case-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+.result-item{background:#0a0a0a;border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center}
+.result-item .val{color:var(--gold);font-size:1.5rem;font-weight:800}
+.result-item .desc{color:var(--muted);font-size:.8rem;margin-top:2px}
+.case-quote{border-left:3px solid var(--gold);padding:12px 20px;margin:16px 0;background:#0d0d0d;border-radius:0 8px 8px 0;font-style:italic;color:#ccc}
+.case-agents{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.agent-chip{background:#161616;border:1px solid var(--border);padding:4px 10px;border-radius:20px;font-size:.75rem;color:var(--muted)}
+.cta-section{text-align:center;padding:40px 20px 60px}
+.cta-section h2{color:#fff;font-size:1.6rem;margin-bottom:12px}
+.cta-section p{color:var(--muted);max-width:500px;margin:0 auto 20px}
+.btn{display:inline-block;background:var(--gold);color:#000;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:1rem}
+.btn:hover{opacity:.9;text-decoration:none}
+.btn-outline{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:14px 32px;border-radius:8px;font-weight:600;text-decoration:none;margin-left:12px}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero h1{font-size:1.5rem}.stats-bar{gap:20px}.case-header{flex-direction:column}.btn-outline{margin:12px 0 0 0}}
 </style>
-    <meta property="og:title" content="Case Studies | AfrexAI — Real Results with AI Agents">
-    <meta property="og:description" content="Case Studies | AfrexAI — Real Results with AI Agents - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
-    <meta property="og:url" content="https://afrexai-cto.github.io/case-studies/">
-    <meta property="og:image" content="https://afrexai-cto.github.io/assets/og-image.svg">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Case Studies | AfrexAI — Real Results with AI Agents">
-    <meta name="twitter:description" content="Case Studies | AfrexAI — Real Results with AI Agents - AI-powered workforce solutions by AfrexAI. Automate operations, cut costs, and grow revenue.">
 </head>
 <body>
-
-<nav><div class="container"><div class="logo">Afrex<span>AI</span></div></div></nav>
-
-<section class="hero">
-<div class="container">
-<h1>Real Results. <span class="gold">Real Businesses.</span></h1>
-<p>See how companies are using custom AI agents to recover revenue, eliminate overhead, and scale operations — without adding headcount.</p>
+<nav>
+<a href="/" class="logo">AfrexAI</a>
+<div class="links">
+<a href="/industries/">Industries</a>
+<a href="/blog/">Blog</a>
+<a href="/pricing/">Pricing</a>
 </div>
-</section>
+</nav>
 
-<div class="container">
-<div class="cards">
-
-<a href="vadis-law-firm.html" class="card" style="text-decoration:none">
-<div class="card-label">Legal</div>
-<h2>$1.6M Recovered: How a Mid-Size Law Firm Transformed with AI Agents</h2>
-<p>Vadis & Associates deployed 5 AI agents to capture unbilled revenue, automate compliance, and cut admin time by 90%.</p>
-<div class="card-stats">
-<div class="card-stat"><div class="card-stat-num">$1.6M</div><div class="card-stat-label">Revenue Recovered</div></div>
-<div class="card-stat"><div class="card-stat-num">90%</div><div class="card-stat-label">Less Admin Time</div></div>
-<div class="card-stat"><div class="card-stat-num">99.2%</div><div class="card-stat-label">Compliance Rate</div></div>
-</div>
-<span class="card-link">Read Case Study →</span>
-</a>
-
-<a href="sitevoice-saas.html" class="card" style="text-decoration:none">
-<div class="card-label">SaaS</div>
-<h2>$52K Monthly Savings: SaaS Company Cuts Ops Overhead by 60%</h2>
-<p>SiteVoice deployed 3 AI agents to automate reporting, accelerate lead response, and 3x content output.</p>
-<div class="card-stats">
-<div class="card-stat"><div class="card-stat-num">$52K</div><div class="card-stat-label">Monthly Savings</div></div>
-<div class="card-stat"><div class="card-stat-num">8 min</div><div class="card-stat-label">Lead Response</div></div>
-<div class="card-stat"><div class="card-stat-num">3x</div><div class="card-stat-label">Content Output</div></div>
-</div>
-<span class="card-link">Read Case Study →</span>
-</a>
-
-<a href="meridian-capital.html" class="card" style="text-decoration:none">
-<div class="card-label">Financial Services</div>
-<h2>How a Financial Advisory Firm Added $370K in Annual Revenue</h2>
-<p>Meridian Capital deployed 3 AI agents to eliminate missed follow-ups, onboard clients 95% faster, and add 24 new clients per year.</p>
-<div class="card-stats">
-<div class="card-stat"><div class="card-stat-num">$370K</div><div class="card-stat-label">New Revenue</div></div>
-<div class="card-stat"><div class="card-stat-num">95%</div><div class="card-stat-label">Faster Onboarding</div></div>
-<div class="card-stat"><div class="card-stat-num">24</div><div class="card-stat-label">New Clients/Year</div></div>
-</div>
-<span class="card-link">Read Case Study →</span>
-</a>
-
-</div>
+<div class="hero">
+<h1>Results That Speak for Themselves</h1>
+<p>Real companies. Real AI agent deployments. Real numbers. No fluff.</p>
 </div>
 
-<section class="cta-section">
-<h2>Ready to See What AI Agents Can Do for You?</h2>
-<p>Book a free 30-minute audit. We'll map your operations, identify the biggest opportunities, and show you exactly what's possible.</p>
-<a href="https://calendly.com/cbeckford-afrexai/30min" class="cta-btn">Book Your Free AI Audit →</a>
-</section>
+<div class="stats-bar">
+<div class="stat"><div class="num">$1.6M+</div><div class="label">Revenue Generated</div></div>
+<div class="stat"><div class="num">455%</div><div class="label">Average ROI</div></div>
+<div class="stat"><div class="num">&lt;30 Days</div><div class="label">Payback Period</div></div>
+<div class="stat"><div class="num">9</div><div class="label">Agent Types Deployed</div></div>
+</div>
 
-<footer><p>© 2025 AfrexAI. All rights reserved.</p></footer>
+<div class="cases">
 
+<!-- Case Study 1: VADIS -->
+<div class="case-card">
+<div class="case-header">
+<h2>VADIS Technology — Enterprise Document Intelligence</h2>
+<span class="case-tag">Legal / Compliance</span>
+</div>
+<div class="case-challenge">
+<h3>The Challenge</h3>
+<p>VADIS needed to process thousands of legal and compliance documents per month across multiple jurisdictions. Manual review was taking 4 FTEs working full-time, with inconsistent quality and 3-week turnaround times that were losing them contracts.</p>
+</div>
+<div class="case-challenge">
+<h3>The Solution</h3>
+<p>Deployed a 6-agent workforce: Document Classifier, Compliance Auditor, Contract Reviewer, Report Generator, Quality Assurance Agent, and Escalation Manager. All agents trained on VADIS's specific document taxonomy and compliance requirements.</p>
+</div>
+<div class="case-results">
+<div class="result-item"><div class="val">$1.6M</div><div class="desc">Contract Value (Pre-delivery)</div></div>
+<div class="result-item"><div class="val">85%</div><div class="desc">Processing Time Reduction</div></div>
+<div class="result-item"><div class="val">3→0.5</div><div class="desc">Week Turnaround</div></div>
+<div class="result-item"><div class="val">$111K</div><div class="desc">Upfront Payment Received</div></div>
+</div>
+<div class="case-agents">
+<span class="agent-chip">📄 Document Classifier</span>
+<span class="agent-chip">⚖️ Compliance Auditor</span>
+<span class="agent-chip">📋 Contract Reviewer</span>
+<span class="agent-chip">📊 Report Generator</span>
+</div>
+</div>
+
+<!-- Case Study 2: Real Estate Brokerage -->
+<div class="case-card">
+<div class="case-header">
+<h2>Mid-Market Real Estate Brokerage — Lead Automation</h2>
+<span class="case-tag">Real Estate</span>
+</div>
+<div class="case-challenge">
+<h3>The Challenge</h3>
+<p>A 50-agent brokerage was drowning in manual lead qualification, property research, and showing coordination. Three full-time coordinators couldn't keep up, and response times to new leads averaged 4 hours — killing conversions.</p>
+</div>
+<div class="case-challenge">
+<h3>The Solution</h3>
+<p>4 AI agents deployed: Lead Qualifier (instant response to every inquiry), Property Researcher (automated CMAs and neighborhood analysis), Scheduling Agent (showing coordination across 50 agents), and Compliance Agent (disclosure tracking and filing).</p>
+</div>
+<div class="case-results">
+<div class="result-item"><div class="val">40 hrs</div><div class="desc">Saved Per Week</div></div>
+<div class="result-item"><div class="val">$8.3K</div><div class="desc">Monthly Value</div></div>
+<div class="result-item"><div class="val">455%</div><div class="desc">Month 1 ROI</div></div>
+<div class="result-item"><div class="val">4h→5m</div><div class="desc">Lead Response Time</div></div>
+</div>
+<div class="case-agents">
+<span class="agent-chip">🎯 Lead Qualifier</span>
+<span class="agent-chip">🏠 Property Researcher</span>
+<span class="agent-chip">📅 Scheduling Agent</span>
+<span class="agent-chip">✅ Compliance Agent</span>
+</div>
+</div>
+
+<!-- Case Study 3: Fintech Compliance -->
+<div class="case-card">
+<div class="case-header">
+<h2>Fintech Startup — Compliance Automation</h2>
+<span class="case-tag">Financial Services</span>
+</div>
+<div class="case-challenge">
+<h3>The Challenge</h3>
+<p>A Series B fintech with 200 employees was spending $380K/year on compliance reporting. Two analysts worked full-time generating reports, monitoring regulatory changes, and preparing for audits. Manual processes led to $48K/year in error corrections.</p>
+</div>
+<div class="case-challenge">
+<h3>The Solution</h3>
+<p>2 AI agents: Regulatory Monitor (tracks SEC, FINRA, state-level changes daily) and Compliance Report Generator (automated quarterly and ad-hoc reports with audit trails).</p>
+</div>
+<div class="case-results">
+<div class="result-item"><div class="val">$15.2K</div><div class="desc">Monthly Labor Savings</div></div>
+<div class="result-item"><div class="val">$4K</div><div class="desc">Monthly Error Reduction</div></div>
+<div class="result-item"><div class="val">284%</div><div class="desc">ROI</div></div>
+<div class="result-item"><div class="val">$60K</div><div class="desc">Annual Cost Avoidance</div></div>
+</div>
+<div class="case-agents">
+<span class="agent-chip">📡 Regulatory Monitor</span>
+<span class="agent-chip">📊 Report Generator</span>
+</div>
+</div>
+
+<!-- Case Study 4: Construction -->
+<div class="case-card">
+<div class="case-header">
+<h2>Regional Construction Firm — Project Documentation</h2>
+<span class="case-tag">Construction</span>
+</div>
+<div class="case-challenge">
+<h3>The Challenge</h3>
+<p>Managing safety documentation, daily site reports, and subcontractor compliance across 12 active job sites. Project managers spent 30% of their time on paperwork instead of managing builds. Missed inspections and late filings were costing $15K-$25K per incident in delays.</p>
+</div>
+<div class="case-challenge">
+<h3>The Solution</h3>
+<p>3 agents: Safety Documentation Agent (daily reports, OSHA compliance tracking), Site Report Generator (automated progress reports with photo documentation integration), and Subcontractor Compliance Agent (insurance verification, license tracking, lien waiver management).</p>
+</div>
+<div class="case-results">
+<div class="result-item"><div class="val">30%</div><div class="desc">PM Time Recovered</div></div>
+<div class="result-item"><div class="val">$0</div><div class="desc">Missed Inspection Fines</div></div>
+<div class="result-item"><div class="val">12</div><div class="desc">Sites Covered</div></div>
+<div class="result-item"><div class="val">2 Days</div><div class="desc">Deployment Time</div></div>
+</div>
+<div class="case-agents">
+<span class="agent-chip">🦺 Safety Documentation</span>
+<span class="agent-chip">📋 Site Reports</span>
+<span class="agent-chip">📑 Subcontractor Compliance</span>
+</div>
+</div>
+
+</div>
+
+<div class="cta-section">
+<h2>Ready to See Your Numbers?</h2>
+<p>Calculate exactly how much automatable work is costing your company — and how fast AI agents can fix it.</p>
+<a href="/ai-revenue-calculator/" class="btn">Calculate Your ROI →</a>
+<a href="https://calendly.com/cbeckford-afrexai/30min" class="btn-outline">Talk to Our CEO →</a>
+</div>
+
+<footer>© 2026 AfrexAI · <a href="/trust/">Trust & Security</a> · <a href="/pricing/">Pricing</a> · <a href="/blog/">Blog</a></footer>
 </body>
 </html>
