@@ -1,10 +1,15 @@
 {
   "lastRun": {
-    "daily": 1772023590101,
-    "weekly": 1772023590101,
-    "monthly": 1772023590101
+    "daily": 1772078717510,
+    "weekly": 1772078717510,
+    "monthly": 1772078717510
   },
   "alerts": [
+    {
+      "level": "info",
+      "check": "git-backup",
+      "message": "14 uncommitted changes detected"
+    },
     {
       "level": "critical",
       "check": "gateway-binding",
@@ -31,5 +36,5 @@
       "message": "No gateway config files found to verify auth settings"
     }
   ],
-  "lastRunTimestamp": "2026-02-25T12:46:30.101Z"
+  "lastRunTimestamp": "2026-02-26T04:05:17.510Z"
 }

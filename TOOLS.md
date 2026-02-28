@@ -24,6 +24,9 @@ Things like:
 - Full guide: `docs/security/VAULT-GUIDE.md`
 - Old vault files at `/Users/openclaw/.openclaw/vault/` — migrate to 1Password and delete
 
+## Known Issues
+- **Brave Search API** — Free tier quota exhausted (2000/2000). `web_search` tool returns 429. Use `web_fetch` as workaround or upgrade plan.
+
 ## Examples
 
 ```markdown
